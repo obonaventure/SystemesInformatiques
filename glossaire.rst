@@ -572,4 +572,4 @@ Glossaire
 
  
 
-.. include:: /links.rst
+

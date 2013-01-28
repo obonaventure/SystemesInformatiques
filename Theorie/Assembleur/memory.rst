@@ -16,7 +16,7 @@ Un des premiers principes fondateurs et le modèle d'architecture de :term:`von 
 La figure ci-dessous illustre les principaux éléments du modèle de von Neumann.
 
 
-.. figure:: /S4/fig/figures-memoire-001-c.png
+.. figure:: /Theorie/Assembleur/fig/figures-memoire-001-c.png
    :align: center
 
    Modèle de von Neumann
@@ -27,7 +27,7 @@ Les technologies utilisées pour construire les processeurs et la mémoire ont f
 En pratique, l'organisation physique d'un ordinateur actuel est plus complexe que le modèle de von Neumann. Schématiquement, on peut considérer l'organisation présentée dans la figure ci-dessous. Le processeur est directement connecté à la mémoire via un :term:`bus` de communication rapide. Ce bus permet des échanges de données et d'instructions efficaces entre la mémoire et le processeur. Outre le processeur et la mémoire, un troisième dispositif, souvent baptisé
 adaptateur de bus est connecté au bus processeur-mémoire. Cet adapteur permet au processeur d'accéder aux dispositifs de stockage ou aux dispositifs d'entrées-sorties tels que le clavier, la souris ou les cartes réseau. En pratique, cela se réalise en connectant les différents dispositifs à un autre bus de communication (PCI, SCSI, ...) et en utilisant un adapteur de bus qui est capable de traduire les commandes venant du processeur. 
 
-.. figure:: /S4/fig/figures-memoire-002-c.png
+.. figure:: /Theorie/Assembleur/fig/figures-memoire-002-c.png
    :align: center
 
    Architecture d'un ordinateur actuel 
@@ -77,7 +77,7 @@ Une première solution pour combiner la :term:`SRAM` et la :term:`DRAM` serait d
 
 La deuxième solution est d'utiliser le principe de la :term:`mémoire cache`. Une :term:`mémoire cache` est une mémoire de faible capacité mais rapide qui est capable de stocker des données provenant de mémoire de plus grande capacité mais plus lente. Cette mémoire cache sert d'interface entre le processeur et la mémoire principale. Toutes les demandes d'accès à la mémoire principale passent par la mémoire cache comme illustré dans la figure ci-dessous.
 
-.. figure:: /S4/fig/figures-memoire-005-c.png
+.. figure:: /Theorie/Assembleur/fig/figures-memoire-005-c.png
    :align: center
 
    Le processeur, la cache et la mémoire principale
@@ -87,7 +87,7 @@ On utilise des mémoires caches dans de nombreux systèmes informatiques de faç
 Les mémoires caches exploitent ces principes de localité en stockant de façon transparente les instructions et les données les plus récemment utilisées. D'un point de vue physique, on peut voir le processeur comme étant connecté à la (ou parfois les) mémoire(s) cache qui est elle-même connectée à la mémoire :term:`RAM`. Les opérations de lecture en mémoire se déroulent généralement comme suit. Chaque fois que le processeur a besoin de lire une donnée se trouvant à une adresse, il fournit l'adresse demandée à la mémoire cache. Si la donnée correspondant à cette adresse est présente en mémoire cache, celle-ci répond directement au processeur. Sinon, la mémoire cache interroge la mémoire :term:`RAM`, se met à jour et ensuite fournit la donnée demandée au processeur. Ce mode de fonctionnement permet à la mémoire cache de se mettre à jour au fur et à mesure des demandes faites par le processeur afin de profiter de la localité temporelle. Pour profiter de la localité spatiale, la plupart des caches se mettent à jour en chargeant directement une :term:`ligne de cache` qui peut compter jusqu'à quelques dizaines d'adresses en mémoire. Ce chargement d'une ligne complète de cache permet également de profiter des mémoires :term:`DRAM` qui aujourd'hui sont souvent optimisées pour fournir des débits de transfert élevés pour de longs blocs consécutifs en mémoire.
 La figure ci-dessous illustre graphiquement la hiérarchie de mémoires dans un ordinateur.
 
-.. figure:: /S4/fig/figures-memoire-003-c.png
+.. figure:: /Theorie/Assembleur/fig/figures-memoire-003-c.png
    :align: center
 
    La hiérarchie de mémoires 
@@ -342,7 +342,7 @@ Les instructions de saut
 
 Les instructions de saut sont des instructions de base pour tous les processeurs. Elles permettent de modifier la valeur du compteur de programme ``%epi`` de façon à modifier l'ordre d'exécution des instructions. Elles sont nécessaires pour implémenter les tests, les boucles et les appels de fonction. Les premiers langages de programmation et des langages tels que BASIC ou FORTRAN disposent d'une construction similaire avec l'instruction ``goto``. Cependant, l'utilisation de l'instruction ``goto`` dans des programmes de haut niveau rend souvent le code difficile à lire et de nombreux langages de programmation n'ont plus de ``goto`` [Dijkstra1968]_. Contrairement à Java, le C contient une instruction ``goto``, mais son utilisation est fortement découragée. En C, l'instruction ``goto`` prend comme argument une étiquette (label en anglais). Lors de l'exécution d'un ``goto``, le programme saute directement à l'exécution de l'instruction qui suit le label indiqué. Ceci est illustré dans l'exemple ci-dessous :
 
-.. literalinclude:: /S4/src/goto.c
+.. literalinclude:: /Theorie/Assembleur/src/goto.c
    :encoding: iso-8859-1
    :language: c
    :start-after: ///AAA
@@ -545,7 +545,7 @@ Les fonctions et les procédures sont essentielles dans tout langage de programm
 
 Une procédure est un ensemble d'instructions qui peuvent être appelées depuis n'importe quel endroit du programme. Généralement, une procédure est appelée depuis plusieurs endroits différents d'un programme. Pour comprendre l'implémentation des procédures, nous allons considérer des procédures de complexité croissante. Nos premières procédures ne prenne aucun argument. En C, elles peuvent s'écrire sous la forme de fonctions ``void`` comme suit.
 
-.. literalinclude:: /S4/src/proc.c
+.. literalinclude:: /Theorie/Assembleur/src/proc.c
    :encoding: iso-8859-1
    :language: c
    :start-after: ///AAA
@@ -585,7 +585,7 @@ Dans ce code assembleur, on retrouve dans le bas du code la déclaration des deu
 
 Considérons une petite variante de notre programme C dans lequel une procédure ``p`` appelle une procédure ``q``.
 
-.. literalinclude:: /S4/src/proc2.c
+.. literalinclude:: /Theorie/Assembleur/src/proc2.c
    :encoding: iso-8859-1
    :language: c
    :start-after: ///AAA
@@ -611,7 +611,7 @@ La seule différence par rapport au programme précédent est que la procédure 
 
 Considérons maintenant une procédure qui prend un argument. Pour qu'une telle procédure puisse utiliser un argument, il faut que la procédure appelante puisse placer sa valeur à un endroit où la procédure appelée peut facilement y accéder. Dans l'architecture [IA32]_, c'est la pile qui joue ce rôle et permet la passage des arguments. En C, les arguments sont passés par valeur et ce sera donc la valeur des arguments qui sera placée sur la pile. A titre d'exemple, considérons une procédure simple qui prend deux arguments entiers.
 
-.. literalinclude:: /S4/src/fct.c
+.. literalinclude:: /Theorie/Assembleur/src/fct.c
    :encoding: iso-8859-1
    :language: c
    :start-after: ///AAA
@@ -655,7 +655,7 @@ Le passage des arguments de la fonction ``init`` depuis la fonction ``main`` se 
 
 La différence entre une procédure et une fonction est qu'une fonction retourne un résultat. Considérons le programme suivant et les fonctions triviales ``int init()`` et ``int sum(int, int)``. Pour que de telles fonctions puissent s'exécuter et retourner un résultat, il faut que la procédure appelante puisse savoir où aller chercher ce résultat après exécution de l'instruction ``ret``. 
 
-.. literalinclude:: /S4/src/fct2.c
+.. literalinclude:: /Theorie/Assembleur/src/fct2.c
    :encoding: iso-8859-1
    :language: c
    :start-after: ///AAA
@@ -702,7 +702,7 @@ La compilation du programme C ci-dessus en assembleur produit le code suivant. D
 
 Pour terminer notre exploration de la compilation de fonctions C en assembleur, considérons une fonction récursive. Par simplicité, nous utilisons la fonction ``sumn`` qui calcule de façon récursive la somme des n premiers entiers.
 
-.. literalinclude:: /S4/src/sumn.c
+.. literalinclude:: /Theorie/Assembleur/src/sumn.c
    :encoding: iso-8859-1
    :language: c
    :start-after: ///AAA

@@ -1,5 +1,5 @@
-# Ignore all bin directories
-bin
+# Ignore all _build directories
+_build
 # Ignore all files ending with ~
 *~
 *.o

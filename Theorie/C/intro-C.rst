@@ -2,13 +2,13 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
-Introduction
+Le langage C
 ============
 
 
 Différents langages permettent au programmeur de construire des programmes qui seront exécutés par le processeur. En réalité, le processeur ne comprend qu'un langage : le langage machine. Ce langage est un langage binaire dans lequel toutes les commandes et toutes les données sont représentés sous la forme de séquences de bits. 
 
-.. comment:: Sur certains processeurs, ces séquences ont une taille fixe (par exemple 32 ou 64 bits). C'est le cas par exemple sur certains processeurs de type :term:`RISC`. D'autres processeurs supportent des instructions en langage machine qui sont encodées sous la forme d'un nombre variables de bits. C'est le cas de processeurs de type :term:`CISC` et notamment les processeurs de la famille :term:`x86` développés initialement par intel et qui sont largement utilisés de nos jours. 
+.. commentaire  Sur certains processeurs, ces séquences ont une taille fixe (par exemple 32 ou 64 bits). C'est le cas par exemple sur certains processeurs de type :term:`RISC`. D'autres processeurs supportent des instructions en langage machine qui sont encodées sous la forme d'un nombre variables de bits. C'est le cas de processeurs de type :term:`CISC` et notamment les processeurs de la famille :term:`x86` développés initialement par intel et qui sont largement utilisés de nos jours. 
 
 Le langage machine est peu adapté aux humains et il est extrèmement rare qu'un informaticien doive manipuler des programmes directement en langage machine. Par contre, pour certaines tâches bien spécifiques, comme par exemple le développement de routines spéciales qui doivent être les plus rapides possibles ou qui doivent interagir directement avec le matériel, il est important de pouvoir efficacemment générer du langage machine. Cela peut se faire en utilisant un langage d'assemblage. Chaque famille de processeurs a un langage d'assemblage qui lui est propre. Le langage d'assemblage permet d'exprimer de façon symbolique les différentes instructions qu'un processeur doit exécuter. Nous aurons l'occasion de traiter à plusieurs reprises des exemples en langage d'assemblage dans le cadre de ce cours. Cela nous permettra de mieux comprendre la façon dont le processeur fonctionne et exécute les programmes. Le langage d'assemblage est converti en langage machine grâce à un :term:`assembleur`.
 
