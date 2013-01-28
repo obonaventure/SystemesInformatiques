@@ -11,12 +11,41 @@ Systèmes informatiques
 Théorie
 *******
 
+
+Introduction
+*************
 .. toctree::
    :maxdepth: 2
 
    Theorie/intro
 
+Langage C
+*********
 
+.. toctree::
+   :maxdepth: 2
+ 
+   Theorie/C/intro-C
+   Theorie/C/datatypes
+   Theorie/C/malloc
+   Theorie/C/linker.rst
+
+Structure des ordinateurs
+*************************
+.. toctree::
+   :maxdepth: 2
+
+   Theorie/Assembleur/memory
+
+Systèmes Multiprocesseurs
+*************************
+.. toctree::
+   :maxdepth: 2
+
+   Theorie/Threads/threads
+   Theorie/Threads/threads2
+   Theorie/Threads/coordination
+   Theorie/Threads/processus
 
 *********
 Exercices
@@ -27,14 +56,14 @@ Exercices
 
    Exercices/intro
 
-*******
+******
 Outils
 ******
 
 .. toctree::
    :maxdepth: 2
 
-   Outils/intro
+   Outils/intro-outils
 
 *******
 Annexes
@@ -46,10 +75,3 @@ Annexes
    bib
    glossaire
    
-*****************
-Indices et tables
-*****************
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
