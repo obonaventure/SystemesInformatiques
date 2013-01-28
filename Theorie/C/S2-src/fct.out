@@ -1,0 +1,5 @@
+i:1252
+times_two(&i)=2504
+après times_two, i:1252
+timestwo(&i)=2504
+après timestwo, i:2504

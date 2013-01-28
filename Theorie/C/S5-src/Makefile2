@@ -1,0 +1,21 @@
+#
+# Makefile for source code
+#
+# Builds all .c files, assuming they are all independant and runs them 
+# to collect the output on stdout
+#
+# Automatically builds some of the examples to be included in the text
+#
+
+###AAA
+
+myprog: main.o min.o
+	gcc -std=c99 -o myprog main.o min.o
+
+main.o: main.c min.h
+	gcc -std=c99 -c main.c
+
+min.o: min.c min.h
+	gcc -std=c99 -c min.c
+
+###BBB
