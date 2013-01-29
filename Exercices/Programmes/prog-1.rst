@@ -176,7 +176,11 @@ Pour vous familiarisez avec le shell, faites les petits exercices suivants dans 
 --------------------
 
 
-#.  Faites l'exercice sur `Pythia <http://pythia.info.ucl.ac.be/module/10/problem/26>` sur la commande `test(1)`_. Pythia est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécuté sur ce code. Cela vous permettra vérifier que votre programme fonctionne. Vous avez besoin d'un login sur Pythia, que vous recevrez durant l'après-midi du 29 janvier.
+#.  Faites l'exercice sur `Pythia <http://pythia.info.ucl.ac.be/module/10/problem/26>`_ sur la commande `test(1)`_.
+
+    Pythia est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécuté sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
+
+    Vous avez besoin d'un login sur Pythia, que vous recevrez durant l'après-midi du 29 janvier.
 
 
 #. Faites de même pour la commande `expr(1)`_. On vous demande d'implémenter les expressions suivante: ``+``, ``-``, ``*``, ``/`` et ``%``. Mais cette-fois ci sans utiliser Pythia. Vous devriez tester votre programme vous-même et assurez le bon fonctionnement de celui-ci.
