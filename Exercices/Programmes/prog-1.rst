@@ -176,21 +176,14 @@ Pour vous familiarisez avec le shell, faites les petits exercices suivants dans 
 --------------------
 
 
-#. La commande `test(1)`_ permet d'évaluer une expression passée en paramètre et retourne ``0`` ou ``1`` si l'expression est respectivement vraie ou fausse.
+#.  Faites l'exercice sur `Pythia <http://pythia.info.ucl.ac.be/module/10/problem/26>`_ sur la commande `test(1)`_.
 
-   On vous demande d'écrire un sous-ensemble de la commande `test(1)`_ en C. Les expressions à implémenter sont ``-eq``, ``-ge``, ``-gt``, ``-le``, ``-lt``, ``-ne``. Pour plus de détails sur ces paramètres regardez la man-page de `test(1)`_.
+    Pythia est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécuté sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
 
-   Il est obligatoire de structurer votre programme avec des appels de sous-fonction et donc de ne pas faire toute l'exécution dans la fonction ``main()``.
-
-   Il existe plusieurs façon pour tester votre code, une de ces façon est de regarder le contenu de la variable ``$?`` après chaque exécution de votre implémentation. Une autre façon est de profiter de l'instruction conditionnelle `if-then-else`. Pour tester votre code, vous pouvez exécuter le bout code suivant dans votre console (si vous vous trouvez dans le répertoire où se trouve votre exécutable et que ce dernier a comme nom ``test``).
-
-        .. code-block:: console
-        
-                $ if ./test 1 -eq 1 ; then echo "It works :)" ; else echo "It doesn't work :("; fi
-                It works :)
+    Vous avez besoin d'un login sur Pythia, que vous recevrez durant l'après-midi du 29 janvier.
 
 
-#. Faites de même pour la commande `expr(1)`_. On vous demande d'implémenter les expressions suivante: ``+``, ``-``, ``*``, ``/`` et ``%``.
+#. Faites de même pour la commande `expr(1)`_. On vous demande d'implémenter les expressions suivante: ``+``, ``-``, ``*``, ``/`` et ``%``. Mais cette-fois ci sans utiliser Pythia. Vous devriez tester votre programme vous-même et assurez le bon fonctionnement de celui-ci.
 
    N'oubliez pas de respecter les valeurs de retour comme décrit dans les man-pages.
 
