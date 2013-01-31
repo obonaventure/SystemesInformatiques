@@ -24,7 +24,7 @@ Pour rappel, quelques commandes de base dans le shell pour gèrer les dossiers e
 
 Pour vous familiarisez avec le shell, faites les petits exercices suivants dans le shell:
 
-#. Créez, dans un nouveau répertoire ``my_dir`` le fichier nommé ``first`` contenant le texte "`Inserer`". Vérifiez chaque étape que vous avez en utilisant une des commandes `ls(1)`_, `pwd(1)`_ et `cat(1)`_.
+#. Créez, dans un nouveau répertoire ``my_dir`` le fichier nommé ``first`` contenant le texte "`Inserer`". Vérifiez chaque étape en utilisant une des commandes `ls(1)`_, `pwd(1)`_ et `cat(1)`_.
 #. Copiez le fichier ``first`` vers ``second`` et ajoutez la ligne "`Retirer`" à ``second``.
 #. Comment pourriez-vous afficher la taille des fichiers avec `ls(1)`_?
 #. Concaténez ``first`` et ``second`` dans un nouveau fichier ``third`` (sans utiliser la command `echo(1)`_)
@@ -53,7 +53,7 @@ Pour vous familiarisez avec le shell, faites les petits exercices suivants dans 
                         ``-Werror``
                                    Make all warnings into errors.
 
-#. Recompilez le code du point `1` avec l'option ``-Werror``, que ce passe-t'il ? Que faut-t'il rajouter dans le code pour qu'il compile sans erreurs ? 
+#. Recompilez le code du point `1` avec l'option ``-Werror``, que se passe-t-il ? Que faut-t-il rajouter dans le code pour qu'il compile sans erreurs ? 
 
         .. only:: staff
 
@@ -61,7 +61,7 @@ Pour vous familiarisez avec le shell, faites les petits exercices suivants dans 
                 
                         Le programme ne compile plus. Il faut inclure ``stdio.h`` parce que C nécessite d'avoir une déclaration des fonctions.
 
-#. (bonus) comment se fait-t'il que ``gcc`` compilait sans problème au point `1`?
+#. (bonus) comment se fait-t-il que ``gcc`` compilait sans problème au point `1`?
 
         .. only:: staff
 
