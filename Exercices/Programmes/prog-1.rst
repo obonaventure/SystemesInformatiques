@@ -122,7 +122,7 @@ Pour vous familiarisez avec le shell, faites les petits exercices suivants dans 
                         ``atoi`` = transforme une chaine de caractère en un entier.
                         Le programme renvoi une segmentation fault lorsque l'on ne passe pas d'argument. Il faut donc utiliser ``argc`` pour tester que l'on a le bon nombre d'argument.
 
-#. Ecrivez un programme qui va itérer (avec une boucle ``for`` et une boucle ``while``) et afficher tous les arguments qui lui sont passé à la sortie standard. 
+#. Ecrivez un programme qui va itérer (avec une boucle ``for`` et une boucle ``while``) et afficher tous les arguments qui lui sont passés à la sortie standard. 
 
         .. only:: staff 
 
