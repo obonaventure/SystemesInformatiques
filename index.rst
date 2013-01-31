@@ -67,6 +67,8 @@ Outils
    :maxdepth: 2
 
    Outils/intro-outils
+   Outils/make
+   Outils/ssh
 
 *******
 Annexes
