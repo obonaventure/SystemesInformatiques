@@ -12,7 +12,7 @@ Cette section comprendra deux types d'exercices afin de permettre aux étudiants
 Questionnaires à choix multiples
 --------------------------------
 
-Disponible `ici <../_static/Mission-1-qcm.html>`_.
+Disponible `ici </static/_static/Mission-1-qcm.html>`_.
 
 
 Programmes à préparer
