@@ -215,7 +215,25 @@ Type              Bits          Minimum            Maximum
 
 Le fichier `stdint.h`_ contient de nombreuses constantes qui doivent
 être utilisées lorsque l'on a besoin des valeurs minimales et
-maximales pour un type donné.
+maximales pour un type donné. Voici à titre d'exemple quelques unes de ces valeurs :
+
+.. code-block:: c
+
+   #define INT8_MAX         127
+   #define INT16_MAX        32767
+   #define INT32_MAX        2147483647
+   #define INT64_MAX        9223372036854775807LL
+
+   #define INT8_MIN          -128
+   #define INT16_MIN         -32768
+   #define INT32_MIN        (-INT32_MAX-1)
+   #define INT64_MIN        (-INT64_MAX-1)
+
+   #define UINT8_MAX         255
+   #define UINT16_MAX        65535
+   #define UINT32_MAX        4294967295U
+   #define UINT64_MAX        18446744073709551615ULL
+
 
 L'utilisation d'un nombre fixe de bits pour représenter les entiers
 peut causer des erreurs dans certains calculs. A titre d'exemple,
@@ -282,9 +300,16 @@ propriétés s'appliquent de la même façon à la simple qu'à la double préci
  - les représentations en virgule flottante privilégient les nombres réels compris dans l'intervalle :math:`[-1,1]`. On retrouve autant de nombres réels représentables dans cet intervalle que de nombres dont la valeur absolue est supérieure à `1`.
 
 En C, ces nombres en virgule flottante sont représentés en utilisant
-les types ``float`` (simplement précision) et ``double`` (double précision). Les fichiers `float.h`_ et `math.h`_ définissent de nombreuses constantes relatives à ces types.
+les types ``float`` (simplement précision) et ``double`` (double précision). Les fichiers `float.h`_ et `math.h`_ définissent de nombreuses constantes relatives à ces types. Voici à titre d'exemple les valeurs minimales et maximales pour les ``float`` et les ``double`` et les constantes associées. Pour qu'un programme soit portable, il faut utiliser les constantes définies dans `float.h`_ et `math.h`_ et non leurs valeurs numériques.
 
-.. todo:: tableau constantes min et max
+.. code-block:: c
+
+   #define FLT_MIN 1.17549435e-38F
+   #define FLT_MAX 3.40282347e+38F
+
+   #define DBL_MIN 2.2250738585072014e-308
+   #define DBL_MAX 1.7976931348623157e+308
+
 
 Les tableaux
 ------------
@@ -308,7 +333,7 @@ Un tableau à une dimension peut s'utiliser avec une syntaxe similaire à celle 
    :end-before: ///DDD
 
 
-C permet aussi la manipulation de matrices carrées ou rectangulaires qui sont composées d'éléments d'un même type. L'exemple ci-dessous calcule l'élément minimum d'un matrice rectangulaire. Il utilisé la constante ``FLT_MAX`` qui correspond au plus grand nombre réel représentable avec un ``float`` qui est définie dans `float.h`_. 
+C permet aussi la manipulation de matrices carrées ou rectangulaires qui sont composées d'éléments d'un même type. L'exemple ci-dessous calcule l'élément minimum d'un matrice rectangulaire. Il utilise la constante ``FLT_MAX`` qui correspond au plus grand nombre réel représentable avec un ``float`` qui est définie dans `float.h`_. 
 
 .. literalinclude:: /Theorie/C/S2-src/array.c
    :language: c
@@ -597,7 +622,66 @@ caractères peut se réécrire comme suit.
    :start-after: ///AAA
    :end-before: ///BBB
 
-.. todo:: pointeurs de pointeurs et autres structures compliquées ?
+
+Les pointeurs sont fréquemment utilisés dans les programmes écrits en langage C et il est important de bien comprendre leur fonctionnement. Un point important à bien comprendre est ce que l'on appelle l'`arithmétique des pointeurs`, c'est-à-dire la façon dont les opérations sur les pointeurs sont exécutées en langage C. Pour cela, il est intéressant de considérez la manipulation d'un tableau d'entiers à travers des pointeurs.
+
+.. literalinclude:: /Theorie/C/src/ptr_arith.c
+   :encoding: iso-8859-1
+   :language: c
+   :start-after: ///AAA
+   :end-before: ///BBB
+
+En mémoire, ce tableau est stocké en utilisant trois mots consécutifs de 32 bits comme le montre l'exécution du programme ci-dessous :
+
+.. literalinclude:: /Theorie/C/src/ptr_arith.c
+   :encoding: iso-8859-1
+   :language: c
+   :start-after: ///CCC
+   :end-before: ///DDD
+
+.. code-block:: console
+
+  1020304 est a l'adresse 0x7fff5fbff750
+  5060708 est a l'adresse 0x7fff5fbff754
+  90A0B0C est a l'adresse 0x7fff5fbff758
+
+La même sortie est produite avec le fragment de programme suivant qui utilise un pointeur.
+
+.. literalinclude:: /Theorie/C/src/ptr_arith.c
+   :encoding: iso-8859-1
+   :language: c
+   :start-after: ///EEE
+   :end-before: ///FFF
+
+Ce fragment de programme est l'occasion de réfléchir sur la façon dont le C évalue les expressions qui contiennent des pointeurs. La première est l'assignation ``ptr=tab``. Lorsque ``tab`` est déclaré pas la ligne ``unsigned int tab[3]``, le compilateur considère que ``tab`` est une constante qui contiendra toujours l'adresse du premier élément du tableau. Il faut noter que puisque ``tab`` est considéré comme une constante, il est interdit d'en modifier la valeur en utilisant une assignation comme ``tab=tab+1``. Le pointeur ``ptr``, par contre correspond à une zone mémoire qui contient une adresse. Il est tout à fait possible d'en modifier la valeur. Ainsi, l'assignation ``ptr=tab``  (ou ``ptr=&(tab[0])``) place dans ``ptr`` l'adresse du premier élément du tableau. Les pointeurs peuvent aussi être modifiés en utilisant des expressions arithmétiques. 
+
+.. code-block:: c
+
+   ptr=ptr+1;  // ligne 1
+   ptr++;      // ligne 2
+   ptr=ptr-2;  // ligne 3
+
+Après l'exécution de la première ligne, ``ptr`` va contenir l'adresse de l'élément ``1`` du tableau ``tab`` (c'est-à-dire ``&(tab[1])``). Ce résultat peut surprendre car si l'élément ``tab[0]`` se trouve à l'adresse ``0x7fff5fbff750`` c'est cette adresse qui est stocké dans la zone mémoire correspondant au pointeur ``ptr``. On pourrait donc s'attendre à ce que l'expression ``ptr+1`` retourne plutôt la valeur ``0x7fff5fbff751``. Il n'est en rien. En C, lorsque l'on utilise des calculs qui font intervenir des pointeurs, le compilateur prend en compte le type du pointeur qui est utilisé. Comme ``ptr`` est de type ``unsigned int*``, il pointe toujours vers une zone mémoire permettant de stocker un entier non-signé sur 32 bits. L'expression ``ptr+1`` revient en fait à calculer la valeur ``ptr+sizeof(unsigned int)`` et donc ``ptr+1`` correspondra à l'adresse ``0x7fff5fbff754``. Pour la même raison, l'exécution de la deuxième ligne placera l'adresse ``0x7fff5fbff758`` dans ``ptr``. Enfin, la dernière ligne calculera ``0x7fff5fbff758-2*sizeof(unsigned int)`` ce qui correspond à ``0x7fff5fbff750``.
+
+Il est intéressant pour terminer cette première discussion de l'arithmétique des pointeurs, de considérer l'exécution du fragment de code ci-dessous. 
+
+.. literalinclude:: /Theorie/C/src/ptr_arith.c
+   :encoding: iso-8859-1
+   :language: c
+   :start-after: ///GGG
+   :end-before: ///HHH
+
+L'exécution de ce fragment de code produit une sortie qu'il est intéressant d'analyser.
+
+.. code-block:: console
+
+   ptr_char contient 0x7fff5fbff750
+   4 est a l'adresse 0x7fff5fbff750
+   3 est a l'adresse 0x7fff5fbff751
+   2 est a l'adresse 0x7fff5fbff752
+   1 est a l'adresse 0x7fff5fbff753
+
+Tout d'abord, l'initialisation du pointeur ``ptr_char`` a bien stocké dans ce pointeur l'adresse en mémoire du premier élément du tableau. Ensuite, comme ``ptr_char`` est un pointeur de type ``unsigned char *``, l'expression  ``*ptr_char`` a retourné la valeur de l'octet se trouvant à l'adresse ``0x7fff5fbff750``. L'incrémentation du pointeur ``ptr_char`` s'est faite en respectant l'arithmétique des pointeurs. Comme ``sizeof(unsigned char)`` retourne ``1``, la valeur stockée dans ``ptr_char`` a été incrémentée d'une seule unité par l'instruction ``ptr_char++``. En analysant les quatre ``unsigned char`` se trouvant aux adresses ``0x7fff5fbff750`` à ``0x7fff5fbff753``, on retrouve bien l'entier ``0x01020304`` qui avait été placé dans ``tab[0]``.
 
 .. todo:: exemples
 
@@ -688,9 +772,6 @@ Les pointeurs sont fréquemment utilisés lors de la manipulation de structures.
    :end-before: ///BBB
 
 Les pointeurs sont fréquemment utilisés en combinaison avec des structures et on retrouve très souvent la seconde notation dans des programmes écrits en C.
-
-Compléments en langage C
-========================
 
 
 Les fonctions
