@@ -15,6 +15,84 @@
 Semaine 2 : Types de données
 ============================
 
+Question Conversion de types
+----------------------------
+
+En C tout comme dans des langages comme Java, il est possible de convertir des nombres d'un type primitif vers un autre. Cependant, alors que le compilateur Java vérifie si la conversion est sans risque, le compilateur C ne fait aucune vérification et suppose que si le programmeur a effectué une conversion explicite entre types, il a pris ses précautions. Sur une architecture où les types de données sont stockés comme suit :
+
+.. code:: c
+
+    // char			1 octet(s)
+    // unsigned char		1 octet(s)
+    // short			2 octet(s)
+    // unsigned short		2 octet(s)
+    // int			4 octet(s)
+    // unsigned int		4 octet(s)
+
+
+    int i;
+    short s;
+    long l;
+    char c;
+    unsigned int ui;
+    unsigned char uc;
+    unsigned long ul;
+    unsigned short us;
+
+Un seul de fragments de code ci-dessous contient des conversions de type qui sont sans risque. Lequel ?
+
+.. class:: positive
+
+-
+ .. code:: c
+
+    i=(int ) s;
+    s=(short) uc;
+    l=(long )i; 
+
+-
+ .. code:: c
+
+    ui=(unsigned int) s;
+    s=(short) c;
+    ul=(unsigned long )ui; 
+    
+
+.. class:: negative
+
+-
+ .. code:: c
+
+    ui=(unsigned int ) s;
+    us=(unsigned short) uc;
+    l=(long )i; 
+
+ .. class:: comment
+
+    Si ``s`` est négatif, la conversion en ``unsigned int`` risque de poser problème.
+
+
+-
+ .. code:: c
+
+    i=(int ) us;
+    us=(unsigned short) i;
+    l=(long )c; 
+
+ .. class:: comment
+
+    La conversion d'un ``int`` en un ``unsigned short`` risque de poser problème.
+
+-
+ .. code:: c
+
+    ui=(int) s;
+    s=(short) c;
+    ul=(unsigned long )ui; 
+
+ .. class:: comment 
+
+    La première conversion risque de poser des problèmes.
 
 Question Notation hexadécimale
 ------------------------------
@@ -344,15 +422,6 @@ Il est parfois nécessaire en C de manipuler directement la représentation bina
 
 
 
-Question Tableaux
------------------
-
-
-Considérons le fragment de code
-
-
-
-
 Question Chaînes de caractères
 ------------------------------
 
@@ -599,8 +668,146 @@ Dans ce code, une seule des affirmations suivantes est vraie, laquelle ?
      ``ptr2`` et ``ptr1`` sont des pointeurs vers des entiers. L'arithmétique des pointeurs s'applique pour cette opération. Vu leur initialisation, la différence vaut ``2``. L'expression ``*(2)`` correspond à une donnée à une adresse dans le bas de la mémoire qui n'est normalement pas accessible au programme.
 
 
-Question  Expressions 
-----------------------
+
+Question Pointeurs et fonctions
+-------------------------------
+
+En C, il est parfois nécessaire d'échanger le contenu de deux variables. Si ``a`` et ``b`` sont des variables de type ``int``,  laquelle des fonctions ci-dessous permet de réaliser cette échange entre les contenu des variables ?
+
+
+.. class:: positive
+
+-
+ .. code:: c
+ 
+    void swap(int *i, int *j) {
+      int k;
+      k=*i;
+      *i=*j;
+      *j=k;
+    }
+    //échange
+    swap(&a,&b);
+
+
+-
+ .. code:: c
+ 
+    void swap(int *i, int *j) {
+      int k;
+      k=*j;
+      *j=*i;
+      *i=k;
+    }
+    //échange
+    swap(&a,&b);
+
+.. class:: negative
+
+-
+ .. code:: c
+ 
+    void swap(int i, int j) {
+      int k;
+      k=i;
+      i=j;
+      j=k;
+    }
+    //échange
+    swap(a,b);
+
+ .. class:: comment
+
+    Cette fonction ne fait rien du tout d'utile.
+
+-  
+ .. code:: c
+ 
+    void swap(int i, int j) {
+      int k;
+      k=i;
+      i=j;
+    }
+    //échange
+    swap(&a,&b);
+
+ .. class:: comment
+
+    Cette fonction reçoit comme argument l'adresse de ``a`` et l'adresse de ``b`` mais ne modifie en rien le contenu de ces variables.
+
+-
+ .. code:: c
+ 
+    void swap(int i, int j) {
+      int k;
+      int *i_ptr=&i;
+      int *j_ptr=&j;
+      k=i;
+      *(i_ptr)=j;
+      *(j_ptr)=k;
+    }
+    //échange
+    swap(a,b);
+
+ .. class:: comment
+
+    Lors de son exécution, la fonction ``swap`` ci-dessus reçoit les valeurs des variables ``a`` et ``b``, mais elle n'a aucune idée de l'endroit où ces variables sont stockées en mémoire. Elle ne peut donc pas modifier leur contenu.
+
+Question Pointeurs et structures
+--------------------------------
+
+
+Dans un programme de manipulation de fractions, on définit la structure suivante pour représenter une fraction entière : 
+
+    .. code:: c
+        
+       struct fract_t {
+            int num;
+            int denum;
+       };
+
+   On veut pouvoir facilement écrire une fonction de type ``void`` qui remplace la valeur stockée dans la fraction par le résultat de l'addition de la fraction et un nombre entier passé en fragment. La spécification de cette fonction pourrait être :
+
+ .. code:: c
+
+    /* 
+     * augmente la fraction passé en argument de l'entier n et place
+     * la somme calculée dans la fraction
+     * Exemples
+     *  Si f vaut 1/3, alors l'application de la fonction avec f et 2 comme
+     *  arguments a comme résultat de stocker la valeur 7/3 dans f
+     *  Si f vaut 2/1, alors l'application de la fonction avec f et 1 comme
+     *  arguments a comme résultat de stocker la valeur 3/1 dans f
+     */
+
+
+Laquelle des signatures ci-dessous peut-elle être utilisée pour effectuer cette opération et modifier la fraction passé en argument ?
+
+
+.. class:: positive
+
+
+-
+ .. code:: c
+
+    void scale(struct *fract_t f, int s);
+    // appel à la fonction :
+    // scale(&f,3);
+
+.. class:: negative
+
+-
+ .. code:: c
+
+    void scale(struct fract_t f, int s);
+    // appel à la fonction :
+    // scale(f,3);
+-
+ .. code:: c
+
+    void scale(int num, int den, int s);
+    // appel à la fonction :
+    // scale(f.num, f.denum,3);
 
 
 
