@@ -14,6 +14,8 @@ Questionnaires à choix multiples
 
 Disponible `ici </static/_static/Mission-1-qcm.html>`_.
 
+Le questionaire de la semaine 2 est disponible `ici </static/_static/Mission-2-qcm.html>`_.
+
 
 Programmes à préparer
 ---------------------

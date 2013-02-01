@@ -39,7 +39,7 @@ En C tout comme dans des langages comme Java, il est possible de convertir des n
     unsigned long ul;
     unsigned short us;
 
-Un seul de fragments de code ci-dessous contient des conversions de type qui sont sans risque. Lequel ?
+Un seul des fragments de code ci-dessous contient des conversions de type qui sont sans risque. Lequel ?
 
 .. class:: positive
 
@@ -53,7 +53,7 @@ Un seul de fragments de code ci-dessous contient des conversions de type qui son
 -
  .. code:: c
 
-    ui=(unsigned int) s;
+    ui=(unsigned int) us;
     s=(short) c;
     ul=(unsigned long )ui; 
     
@@ -358,7 +358,7 @@ Question Extraction de bits
 ---------------------------
 
 
-Il est parfois nécessaire en C de manipuler directement la représentation binaire d'un nombre. Si ``f`` est un nombre de type ``float`` stocké sur 32 bits, laquelle des expressions ci-dessous peut-elle être intégrée dans ce code pour afficher positif ou négatif en focntion du signe de ce nombre ? 
+Il est parfois nécessaire en C de manipuler directement la représentation binaire d'un nombre. Si ``f`` est un nombre de type ``float`` stocké sur 32 bits, laquelle des expressions ci-dessous peut-elle être intégrée dans ce code pour afficher positif ou négatif en fonction du signe de ce nombre ? 
 
 .. code:: c
 
@@ -571,7 +571,7 @@ Si ``ptr`` a été déclaré sous la forme ``int *ptr``, un seul des groupes d'a
   - l'expression ``&ptr`` est une adresse en mémoire
 
 -
-  - l'expression ``*(ptr+1)==ptr[1]`` est toujours vraie invalide
+  - l'expression ``*(ptr+1)==ptr[1]`` est toujours vraie
   - l'expression ``ptr--`` est syntaxiquement invalide
 
 
@@ -635,9 +635,9 @@ Considérons le fragment de code ci-dessous.
 
 .. code:: c
 
-   int[] tab={ 10, 20, 30, 40 };
-   int *ptr1=tab[1];
-   int *ptr2=tab[3];
+   int tab[]={ 10, 20, 30, 40 };
+   int *ptr1=&tab[1];
+   int *ptr2=&tab[3];
 
 Dans ce code, une seule des affirmations suivantes est vraie, laquelle ?
 
