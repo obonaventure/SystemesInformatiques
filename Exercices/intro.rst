@@ -12,7 +12,9 @@ Cette section comprendra deux types d'exercices afin de permettre aux étudiants
 Questionnaires à choix multiples
 --------------------------------
 
-Disponible `ici </static/_static/Mission-1-qcm.html>`_.
+- `Questionnaire de la première semaine </static/_static/Mission-1-qcm.html>`_
+- `Questionnaire de la deuxième semaine </static/_static/Mission-2-qcm.html>`_
+
 
 Programmes à préparer
 ---------------------
@@ -25,12 +27,6 @@ Programmes à préparer
 
 Langage C
 =========
-
-Questionnaires à choix multiples
---------------------------------
-
-Disponible `ici </static/_static/Mission-2-qcm.html>`_.
-
 
 Programmes à préparer
 ---------------------
