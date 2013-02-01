@@ -1,0 +1,6 @@
+$ echo "Un petit fichier de textes" > file.txt
+$ echo "aaaaa bbbbb" >> file.txt
+$ echo "bbbb ccc" >> file.txt
+$ grep -v bbbb < file.txt > file.out
+$ cat file.out
+Un petit fichier de textes
