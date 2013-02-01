@@ -17,6 +17,9 @@ De nombreux éditeurs sont utilisables pour manipuler efficacement du code sourc
  - `gedit <http://projects.gnome.org/gedit/>`_ est l'éditeur de base dans l'environnement graphique `GNOME <http://www.gnome.org>`_ utilisé dans les distributions Linux.
  - `eclipse <http://www.eclipse.org>`_ est un environnement complet de développement écrit en Java pour supporter initialement ce langage. De nombreuses extensions à `eclipse <http://www.eclipse.org>`_ existent, dont `CDT <http://www.eclipse.org/cdt/>`_ qui permet la manipulation efficace de code source en langages C et C++.
 
+
+.. _svn:
+
 Gestionnaires de code partagé
 =============================
 

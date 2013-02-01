@@ -14,9 +14,6 @@ Questionnaires à choix multiples
 
 Disponible `ici </static/_static/Mission-1-qcm.html>`_.
 
-Le questionaire de la semaine 2 est disponible `ici </static/_static/Mission-2-qcm.html>`_.
-
-
 Programmes à préparer
 ---------------------
 
@@ -26,5 +23,19 @@ Programmes à préparer
    Programmes/prog-1
  
 
-Projets
--------
+Langage C
+=========
+
+Questionnaires à choix multiples
+--------------------------------
+
+Disponible `ici </static/_static/Mission-2-qcm.html>`_.
+
+
+Programmes à préparer
+---------------------
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-2
