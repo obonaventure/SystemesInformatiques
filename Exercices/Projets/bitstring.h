@@ -20,19 +20,20 @@ void bitstring_set(bitstring_t *b, int n, bit_t bit);
 /* Retourne la valeur du <code>n</code>ième bit du bitstring <code>b</code> */
 bit_t bitstring_get(bitstring_t *b, int n);
 
-/* Applique une rotation vers la droite de <code>n</code> bits sur le bitstring
+/* Applique une rotation vers la gauche de <code>n</code> bits sur le bitstring
  * <code>b</code>.
  * Par exemple, pour un <code>b = 0111101</code> et <code>n = 3</code>,
- * <code>b</code> deviendra <code>1010111</code> après l'appel à cette fonction.
+ * <code>b</code> deviendra <code>1101011</code> après l'appel à cette fonction.
  */
 void bitstring_rotate(bitstring_t *b, int n);
 
-/* Applique un déclage de <code>n</code> bits vers la droite sur le bitstring
+/* Applique un déclage de <code>n</code> bits vers la gauche sur le bitstring
  * <code>b</code> sans perte d'information. Les nouveaux bits ajoutés sont des
  * <code>0</code>. Après l'appel de cette fonction le nombre de bits de
  * <code>b</code> est donc augementée de <code>n</code>.
  * Par exemple, pour un <code>b = 0111101</code> et <code>n = 3</code>,
- * <code>b</code> deviendra <code>0000111101</code> après l'appel à cette fonction.
+ * <code>b</code> deviendra <code>0111101000</code> après l'appel à cette
+ * fonction.
  */
 void bitstring_shift(bitstring_t *b, int n);
 
