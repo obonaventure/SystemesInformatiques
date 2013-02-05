@@ -10,15 +10,25 @@ typedef struct bitstring bitstring_t;
 typedef unsigned char bit_t;
 
 /* Alloue une bitstring de <code>n</code> bits initialisés à 0 */
-bitstring_t * bitstring_alloc(int n);
+bitstring_t *bitstring_alloc(size_t n);
 
 /* Met le <code>n</code>ième bit à la valeur de <code>bit</code>
  * du bitstring <code>b</code>
+ *
+ * <code>n</code> est plus grand ou égale à 0 et strictement plus petit que 
+ * <code>bitstring_len(b)</code>
  */
-void bitstring_set(bitstring_t *b, int n, bit_t bit);
+void bitstring_set(bitstring_t *b, unsigned int n, bit_t bit);
 
-/* Retourne la valeur du <code>n</code>ième bit du bitstring <code>b</code> */
+/* Retourne la valeur du <code>n</code>ième bit du bitstring <code>b</code>
+ *
+ * <code>n</code> est plus grand ou égale à 0 et strictement plus petit que 
+ * <code>bitstring_len(b)</code>
+ */
 bit_t bitstring_get(bitstring_t *b, int n);
+
+/* Renvoi la longueur du bitstring */
+size_t bitstring_len(bitstring_t *b);
 
 /* Applique une rotation vers la gauche de <code>n</code> bits sur le bitstring
  * <code>b</code>.
@@ -38,12 +48,12 @@ void bitstring_rotate(bitstring_t *b, int n);
 void bitstring_shift(bitstring_t *b, int n);
 
 /* Effectue l'opération ou exclusif entre <code>b1</code> et <code>b2</code> 
- * (<code>b1 ^ b2</code>). Retourne le résultat sous forme d'un nouveau
- * bitstring si <code>b1</code> et <code>b2</code> sont de même taille,
- * <code>NULL</code> sinon. <code>b1</code> et <code>b2</code> restent
- * intouchés.
+ * (<code>b1 ^ b2</code>).
+ *
+ * Le résultat est fourni à l'appellant via <code>res</code>.
+ * La valeur de retour est 0 en cas de succès, -1 en cas d'erreur.
  */
-bitstring_t *bitstring_xor(bitstring_t *b1, bitstring_t *b2);
+int bitstring_xor(bitstring_t *b1, bitstring_t *b2, bitstring_t **res);
 
 /* Affiche en représentation hexadécimale le bitstring <code>b</code> dans
  * le buffer <code>buf</code> de taille <code>*len</code>. Retourne 
@@ -53,5 +63,8 @@ bitstring_t *bitstring_xor(bitstring_t *b1, bitstring_t *b2);
  * caractère '\0'.
  */
 int bitstring_print(bitstring_t *b, char *buf, size_t *len);
+
+/* Libère la mémoire du bitstring */
+void bitstring_free(bitstring_t *b);
 
 #endif
