@@ -1,0 +1,10 @@
+$ cat exemple.txt
+Un simple fichier de textes
+aaaaaaaaaa bbbbbb
+bbbbb ccccccccccc
+eeeee fffffffff
+aaaaaaaaaa bbbbbb
+$ grep fichier exemple.txt
+Un simple fichier de textes
+$ wc exemple.txt
+       5      13      98 exemple.txt

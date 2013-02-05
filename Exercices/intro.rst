@@ -5,31 +5,33 @@
 Introduction
 ============
 
-
 Cette section comprendra deux types d'exercices afin de permettre aux étudiants de mieux ancrer leur compréhension des bases des systèmes informatiques. Les premiers sont des questionnaires à choix multiples. Pour chaque module de cours, entre 5 et 10 questions à choix multiples seront proposées. Elle permettront à chaque étudiant(2) de valider son(sa) compréhension de la matière. Ensuite, les étudiants seront invités à écrire de petits programmes, généralement en langage C. Ces programmes sont l'occasion de mettre en pratiques les compétences acquises chaque semaine. La plupart des programmes ont un rôle formatif, ils permettront de guider la discussion avec les tuteurs durant les séances tutorées. Certains programmes se feront par groupe et seront évalués. Cette évaluation contribuera à la cote finale.
 
 
-Questionnaires à choix multiples
---------------------------------
+Première semaine
+----------------
 
-- `Questionnaire de la première semaine </static/_static/Mission-1-qcm.html>`_
-- `Questionnaire de la deuxième semaine </static/_static/Mission-2-qcm.html>`_
-
+`QCM1 </static/_static/Mission-1-qcm.html>`_
 
 Programmes à préparer
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    Programmes/prog-1
- 
 
-Langage C
-=========
+
+Deuxième semaine
+----------------
+
+La matière couverte cette semaine la section relative aux `types de données <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_)
+
+`QCM2 </static/_static/Mission-2-qcm.html>`_
+
 
 Programmes à préparer
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 2

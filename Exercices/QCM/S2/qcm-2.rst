@@ -15,8 +15,11 @@
 Semaine 2 : Types de données
 ============================
 
-Question Conversion de types
-----------------------------
+La matière couverte cette semaine la section relative aux `types de données <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_
+
+
+Question 1. Conversion de types
+-------------------------------
 
 En C tout comme dans des langages comme Java, il est possible de convertir des nombres d'un type primitif vers un autre. Cependant, alors que le compilateur Java vérifie si la conversion est sans risque, le compilateur C ne fait aucune vérification et suppose que si le programmeur a effectué une conversion explicite entre types, il a pris ses précautions. Sur une architecture où les types de données sont stockés comme suit :
 
@@ -94,8 +97,8 @@ Un seul des fragments de code ci-dessous contient des conversions de type qui so
 
     La première conversion risque de poser des problèmes.
 
-Question Notation hexadécimale
-------------------------------
+Question 2. Notation hexadécimale
+---------------------------------
 
 Parmi les affirmations suivantes relatives aux nombres en représentation hexadécimale, une seule est vraie. Laquelle ?
 
@@ -133,8 +136,8 @@ Parmi les affirmations suivantes relatives aux nombres en représentation hexad�
      :math:`15*16+15` ne vaut pas ``128``
 
 
-Question Notation binaire
--------------------------
+Question 3. Notation binaire
+----------------------------
 
 Parmi les affirmations suivantes relatives aux nombres en représentation binaire, une seule est vraie. Laquelle ?
 
@@ -172,8 +175,8 @@ Parmi les affirmations suivantes relatives aux nombres en représentation binair
      Ce sont les entiers positifs pairs (et zéro) qui ont ``0`` comme bit de poids faible.
 
 
-Question Notation binaire
--------------------------
+Question 4. Notation binaire
+----------------------------
 
 Parmi les affirmations suivantes relatives aux nombres signés en représentation binaire, une seule est vraie. Laquelle ?
 
@@ -219,8 +222,8 @@ Parmi les affirmations suivantes relatives aux nombres signés en représentatio
 
 
 
-Question Manipulations de bits
-------------------------------
+Question 5. Manipulations de bits
+---------------------------------
 
 
 Si la variable ``c`` est de type ``unsigned char`` sur 8 bits, laquelle des suites d'instructions ci-dessous permet d'en échanger les 4 bits de poids faible avec les 4 bits de poids fort ?
@@ -292,8 +295,8 @@ Si la variable ``c`` est de type ``unsigned char`` sur 8 bits, laquelle des suit
     Ne confondez pas la l'opérateur binaire ``&`` avec la conjonction logique ``&&``. 
 
 
-Question Multiplication entière
--------------------------------
+Question 6. Multiplication entière
+----------------------------------
 
 
 Parmi les expressions suivantes, une seule permet de calculer ``x*7`` lorsque ``x`` est un nombre entier. Laquelle ?
@@ -354,8 +357,8 @@ Parmi les expressions suivantes, une seule permet de calculer ``x*7`` lorsque ``
 
     Cette expression divise ``x`` par :math:`2^7`
        
-Question Extraction de bits
----------------------------
+Question 7. Extraction de bits
+------------------------------
 
 
 Il est parfois nécessaire en C de manipuler directement la représentation binaire d'un nombre. Si ``f`` est un nombre de type ``float`` stocké sur 32 bits, laquelle des expressions ci-dessous peut-elle être intégrée dans ce code pour afficher positif ou négatif en fonction du signe de ce nombre ? 
@@ -422,8 +425,8 @@ Il est parfois nécessaire en C de manipuler directement la représentation bina
 
 
 
-Question Chaînes de caractères
-------------------------------
+Question 8. Chaînes de caractères
+---------------------------------
 
 Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences du caractère ``c`` dans la chaîne de caractères ``c``. Laquelle ?
 
@@ -539,8 +542,8 @@ Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences
     Ce code compare le pointeur ``s`` c'est-à-dire *l'adresse* du première caractère de la chaîne ``s`` en mémoire avec ``\0`` et ``c`` et non le caractère pointé par ``s``.
 
 
-Question Pointeurs
-------------------
+Question 9. Pointeurs
+---------------------
 
 Si ``ptr`` a été déclaré sous la forme ``int *ptr``, un seul des groupes d'affirmations suivantes est vrai, lequel ?
 
@@ -575,8 +578,8 @@ Si ``ptr`` a été déclaré sous la forme ``int *ptr``, un seul des groupes d'a
   - l'expression ``ptr--`` est syntaxiquement invalide
 
 
-Question Pointeurs et tableaux
-------------------------------
+Question 10. Pointeurs et tableaux
+----------------------------------
 
 Considérons le tableau ``tab`` déclaré comme suit :
 
@@ -628,8 +631,8 @@ Dans une architecture 32 bits, un seul des groupes d'affirmations ci-dessous est
      La première affirmation est fausse, ``*(tab)+i`` équivaut à ``tab[0]+i``
 
 
-Question Pointeurs
-------------------
+Question 11. Pointeurs
+----------------------
 
 Considérons le fragment de code ci-dessous.
 
@@ -669,8 +672,8 @@ Dans ce code, une seule des affirmations suivantes est vraie, laquelle ?
 
 
 
-Question Pointeurs et fonctions
--------------------------------
+Question 12. Pointeurs et fonctions
+-----------------------------------
 
 En C, il est parfois nécessaire d'échanger le contenu de deux variables. Si ``a`` et ``b`` sont des variables de type ``int``,  laquelle des fonctions ci-dessous permet de réaliser cette échange entre les contenu des variables ?
 
@@ -753,8 +756,8 @@ En C, il est parfois nécessaire d'échanger le contenu de deux variables. Si ``
 
     Lors de son exécution, la fonction ``swap`` ci-dessus reçoit les valeurs des variables ``a`` et ``b``, mais elle n'a aucune idée de l'endroit où ces variables sont stockées en mémoire. Elle ne peut donc pas modifier leur contenu.
 
-Question Pointeurs et structures
---------------------------------
+Question 13. Pointeurs et structures
+------------------------------------
 
 
 Dans un programme de manipulation de fractions, on définit la structure suivante pour représenter une fraction entière : 

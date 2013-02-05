@@ -221,7 +221,7 @@ Glossaire
       à compléter
 
  processus
-      à compléter
+   Ensemble cohérent d'instructions utilisant une partie de la mémoire, initié par le système d'exploitation et exécuté sur un des processeurs du système. Le système d'exploitation libère les ressources qui lui sont allouées à la fin de son exécution. 
 
  pid
  process identifier
