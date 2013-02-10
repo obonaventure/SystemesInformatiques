@@ -591,7 +591,7 @@ déclaration de celui-ci.
    
 
 Grâce aux pointeurs il est possible non seulement d'accéder à
-l'adresse où une donné est stockée, mais aussi d'accéder à la valeur
+l'adresse où une donnée est stockée, mais aussi d'accéder à la valeur
 qui est stockée dans la zone mémoire pointée par le pointeur en utilisation
 l'expression ``*ptr``. Il est
 également possible d'effectuer des calculs sur les pointeurs comme
