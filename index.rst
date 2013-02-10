@@ -19,12 +19,12 @@ Systèmes informatiques
     <span class='st_pinterest' displayText='Pinterest'></span>
     <span class='st_email' displayText='Email'></span>
 
- Ce site web contient le support du cours `SINF1252 <http://www.uclouvain.be/en-cours-2012-lsinf1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les notes sont mises à jour chaque semaine et les étudiants sont invités à ajouter leur commentaires directement sur le site web. L'identification via un login openid a uniquement pour but d'éviter les spams.
+ Ce site web contient le support du cours `SINF1252 <http://www.uclouvain.be/en-cours-2012-lsinf1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les notes sont mises à jour chaque semaine et les étudiants sont invités à ajouter leur commentaires soit directement sur le site web (l'identification via un login openid a uniquement pour but d'éviter les spams) ou en soumettant des patches via https://github.com/obonaventure/SystemesInformatiques .
 
- La version HTML est la préférable car elle contient des liens hypertexte vers les pages de manuel Linux qui font partie de la matière. D'autres formats sont possibles pour ceux qui veulent lire le document hors-ligne :
+ La version HTML est la préférable car elle contient des liens hypertextes vers les pages de manuel Linux qui font partie de la matière. D'autres formats sont possibles pour ceux qui veulent lire le document hors ligne :
 
-        - :download:`distrib/SINF1252.epub` en format epub lisible sur tablettes style ipad ou galaxy tab
-        - :download:`distrib/SINF1252.pdf` en format pdf pour lecture via les logiciels adobe ou pour impression
+        - :download:`distrib/SINF1252.epub` en format epub lisible sur tablettes style iPad ou Galaxy Tab
+        - :download:`distrib/SINF1252.pdf` en format pdf pour lecture via les logiciels Adobe ou pour impression
 
 
 
