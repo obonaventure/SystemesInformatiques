@@ -333,7 +333,7 @@ Un tableau à une dimension peut s'utiliser avec une syntaxe similaire à celle 
    :end-before: ///DDD
 
 
-C permet aussi la manipulation de matrices carrées ou rectangulaires qui sont composées d'éléments d'un même type. L'exemple ci-dessous calcule l'élément minimum d'un matrice rectangulaire. Il utilise la constante ``FLT_MAX`` qui correspond au plus grand nombre réel représentable avec un ``float`` qui est définie dans `float.h`_. 
+C permet aussi la manipulation de matrices carrées ou rectangulaires qui sont composées d'éléments d'un même type. L'exemple ci-dessous calcule l'élément minimum d'une matrice rectangulaire. Il utilise la constante ``FLT_MAX`` qui correspond au plus grand nombre réel représentable avec un ``float`` qui est définie dans `float.h`_. 
 
 .. literalinclude:: /Theorie/C/S2-src/array.c
    :language: c
