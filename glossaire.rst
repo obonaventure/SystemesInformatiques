@@ -127,10 +127,10 @@ Glossaire
      Message d'avertissement émis par un compilateur C. Un :term:`warning` n'empêche pas la compilation et la génération du code objet. Cependant, la plupart des warnings indiquent un problème dans le programme compilé et il est nettement préférable de les supprimer du code.
 
  bit de poids fort
-     à compléter
+     Par convention, le bit le plus à gauche d'une séquence de n bits.
  
  bit de poids faible
-     à compléter
+     Par convention, bit le plus à droite d'une séquence de n bits.
  
  simple précision
      Représentation de nombre réels en virgule flottante (type ``float`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 32 bits.
