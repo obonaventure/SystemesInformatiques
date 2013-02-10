@@ -10,7 +10,7 @@ Exercices
 1. Exercices en bash
 --------------------
 
-Pour rappel, quelques commandes de base dans le shell pour gèrer les dossiers et fichiers:
+Pour rappel, quelques commandes de base dans le shell pour gérer les dossiers et fichiers:
 
  - `ls(1)`_ : affiche la liste des fichiers et dossiers du répertoire spécifié
  - `mv(1)`_ : utilitiaire pour renommer ou déplacer un fichier ou dossier
