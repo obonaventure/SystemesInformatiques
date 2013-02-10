@@ -13,7 +13,7 @@ Exercices
 Pour rappel, quelques commandes de base dans le shell pour gérer les dossiers et fichiers:
 
  - `ls(1)`_ : affiche la liste des fichiers et dossiers du répertoire spécifié
- - `mv(1)`_ : utilitiaire pour renommer ou déplacer un fichier ou dossier
+ - `mv(1)`_ : utilitaire pour renommer ou déplacer un fichier ou dossier
  - `cp(1)`_ : copie un fichier ou dossier (``-r`` pour les dossiers)
  - `rm(1)`_ : efface un fichier ou dossier
  - `mkdir(1)`_ : crée un répertoire
@@ -22,7 +22,7 @@ Pour rappel, quelques commandes de base dans le shell pour gérer les dossiers e
  - `pwd(1)`_ : affiche le répertoire courant
  - `grep(1)`_ : permet de faire des recherches sur le contenu des fichiers
 
-Pour vous familiarisez avec le shell, faites les petits exercices suivants dans le shell:
+Pour vous familiariser avec le shell, faites les petits exercices suivants dans le shell:
 
 #. Créez, dans un nouveau répertoire ``my_dir`` le fichier nommé ``first`` contenant le texte "`Inserer`". Vérifiez chaque étape en utilisant une des commandes `ls(1)`_, `pwd(1)`_ et `cat(1)`_.
 #. Copiez le fichier ``first`` vers ``second`` et ajoutez la ligne "`Retirer`" à ``second``.
@@ -61,7 +61,7 @@ Pour vous familiarisez avec le shell, faites les petits exercices suivants dans 
                 
                         Le programme ne compile plus. Il faut inclure ``stdio.h`` parce que C nécessite d'avoir une déclaration des fonctions.
 
-#. (bonus) comment se fait-t-il que ``gcc`` compilait sans problème au point `1`?
+#. (bonus) comment se fait-il que ``gcc`` compilait sans problème au point `1`?
 
         .. only:: staff
 
@@ -69,7 +69,7 @@ Pour vous familiarisez avec le shell, faites les petits exercices suivants dans 
                 
                         ``gcc`` crée une déclaration implicite des fonctions de la librairie C. Il n'affiche qu'un warning.
 
-#. Lorsque j'exécute le programme corrigé du point `3` dans une console, j'ai accès à plusieurs variables, l'une d'elle est ``$?`` qui permet de récupérer la valeur de retour du dernier programme exécuté. Expliquez à quoi sert cette valeur.
+#. Lorsque j'exécute le programme corrigé du point `3` dans une console, j'ai accès à plusieurs variables. L'une d'elles est ``$?`` qui permet de récupérer la valeur de retour du dernier programme exécuté. Expliquez à quoi sert cette valeur.
 
         .. code-block:: console
 
@@ -94,7 +94,7 @@ Pour vous familiarisez avec le shell, faites les petits exercices suivants dans 
                         ``-Wall``
                                 This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid (or modify to prevent the warning), even in conjunction with macros.
 
-#. Recompilez le code corrigé du point `3` avec les options ``-Wall`` et ``-Werror``, que ce passe-t'il ? Que faut-t'il rajouter dans le code pour qu'il compile sans erreurs ?
+#. Recompilez le code corrigé du point `3` avec les options ``-Wall`` et ``-Werror``, que se passe-t-il ? Que faut-il rajouter dans le code pour qu'il compile sans erreurs ? 
 
         .. only:: staff 
 
@@ -148,7 +148,7 @@ Pour vous familiarisez avec le shell, faites les petits exercices suivants dans 
                 $ if ! ./false; then echo "false fonctionne"; fi
                 false fonctionne
 
-   Bash permet aussi de faire des ``else``. Trouvez comme faire ceci en regardant ce `lien <http://tldp.org/LDP/abs/html/tests.html>`_.
+   Bash permet aussi de faire des ``else``. Trouvez comme faire en regardant ce `lien <http://tldp.org/LDP/abs/html/tests.html>`_.
         .. only:: staff 
 
                 .. note::
@@ -178,14 +178,14 @@ Pour vous familiarisez avec le shell, faites les petits exercices suivants dans 
 
 #.  Faites l'exercice sur `Pythia <http://pythia.info.ucl.ac.be/module/10/problem/26>`_ sur la commande `test(1)`_.
 
-    Pythia est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécuté sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
+    Pythia est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécutés sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
 
     Vous avez besoin d'un login sur Pythia, que vous recevrez durant l'après-midi du 29 janvier.
 
 
-#. Faites de même pour la commande `expr(1)`_. On vous demande d'implémenter les expressions suivante: ``+``, ``-``, ``*``, ``/`` et ``%``. Mais cette-fois ci sans utiliser Pythia. Vous devriez tester votre programme vous-même et assurez le bon fonctionnement de celui-ci.
+#. Faites de même pour la commande `expr(1)`_. On vous demande d'implémenter les expressions suivantes : ``+``, ``-``, ``*``, ``/`` et ``%``, mais cette fois-ci sans utiliser Pythia. Vous devriez tester votre programme vous-même et assurer le bon fonctionnement de celui-ci.
 
-   N'oubliez pas de respecter les valeurs de retour comme décrit dans les man-pages.
+   N'oubliez pas de respecter les valeurs de retour qui sont décrites dans les man-pages.
 
 
-#. En utilisant le shell et un programme C, essayez de déterminer expérimentalement le nombre maximum d'arguments que vous pouvez passer à un programme C. Y-a-t-il une limite à ce nombre d'arguments ? Si oui, d'où vient-elle et de quoi dépend-elle ?
+#. En utilisant le shell et un programme C, essayez de déterminer expérimentalement le nombre maximum d'arguments que vous pouvez passer à un programme C. Y a-t-il une limite à ce nombre d'arguments ? Si oui, d'où vient-elle et de quoi dépend-elle ?
