@@ -9,7 +9,10 @@ struct bitstring;
 /* A vous de définir votre structure dans bitstring.c */
 
 typedef struct bitstring bitstring_t;
-typedef unsigned char bit_t;
+typedef enum {
+        BITNULL = 0,
+        BITSET = 1
+} bit_t;
 
 /* Alloue un bitstring de <code>n</code> bits initialisés à 0 */
 bitstring_t *bitstring_alloc(size_t n);
@@ -46,8 +49,10 @@ void bitstring_rotate(bitstring_t *b, int n);
  * Par exemple, pour un <code>b = 0111101</code> et <code>n = 3</code>,
  * <code>b</code> deviendra <code>0111101000</code> après l'appel à cette
  * fonction.
+ *
+ * La valeur de retour est 0 en cas de succès, -1 en cas d'erreur.
  */
-void bitstring_shift(bitstring_t *b, int n);
+int bitstring_shift(bitstring_t *b, int n);
 
 /* Effectue l'opération ou exclusif entre <code>b1</code> et <code>b2</code> 
  * (<code>b1 ^ b2</code>).

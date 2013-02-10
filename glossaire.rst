@@ -505,9 +505,6 @@ Glossaire
  signal asynchrone
        à compléter     
 
- fifo
-       à compléter     
-
  interpréteur
        à compléter
 
@@ -523,7 +520,7 @@ Glossaire
 
  SSD
  Solid State Drive
-       à compléter
+       Système de stockage de données s'appuyant uniquement sur de la mémoire flash.
 
  page
        à compléter
@@ -552,7 +549,7 @@ Glossaire
        à compléter
 
  file FIFO
-       à compléter
+       De "First In, First Out". Le premier élement à entrer dans la file sera le premeir à en sortir. (!= LIFO, "Last In First Out") 
 
  dirty bit
  bit de modification
