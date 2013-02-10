@@ -30,7 +30,7 @@ tandis que celui qui se trouve le plus à droite est appelé le
 ``0101`` correspond à l'entier non signé représentant la valeur
 cinq. Le bit de poids fort (resp. faible) de ce nibble est ``0``
 (resp. ``1``). La table ci-dessous reprend les différentes valeurs décimales
-correspondants à toutes les séquences de quatre bits consécutifs.
+correspondant à toutes les séquences de quatre bits consécutifs.
 
 =======      =====  ===========  =======
 binaire      octal  hexadécimal  décimal
