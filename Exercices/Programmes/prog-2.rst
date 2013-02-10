@@ -63,7 +63,7 @@ Mini-Projets
 
 
 
-#. Lorsque l'on veut améliorer les performances d'un programme, il est utile de pouvoir mesure précisément son temps d'exécution. La commande `time(1posix)`_ permet d'effectuer cette mesure depuis la ligne de commande. Parfois, on souhaite mesurer le temps de calcul une partie critique d'un code. Une façon simple pour obtenir cette mesure est d'utiliser `gettimeofday(2)`_ comme dans l'exemple ci-dessous (:download:`/Exercices/Programmes/s2_perf.c`).
+#. Lorsque l'on veut améliorer les performances d'un programme, il est utile de pouvoir mesurer précisément son temps d'exécution. La commande `time(1posix)`_ permet d'effectuer cette mesure depuis la ligne de commande. Parfois, on souhaite mesurer le temps de calcul une partie critique d'un code. Une façon simple pour obtenir cette mesure est d'utiliser `gettimeofday(2)`_ comme dans l'exemple ci-dessous (:download:`/Exercices/Programmes/s2_perf.c`).
 
         .. literalinclude:: /Exercices/Programmes/s2_perf.c
                 :encoding: iso-8859-1
