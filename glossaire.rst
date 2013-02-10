@@ -549,7 +549,7 @@ Glossaire
        à compléter
 
  file FIFO
-       De "First In, First Out". Le premier élement à entrer dans la file sera le premeir à en sortir. (!= LIFO, "Last In First Out") 
+       De "First In, First Out". Le premier élement à entrer dans la file sera le premier à en sortir. (!= LIFO, "Last In First Out") 
 
  dirty bit
  bit de modification
