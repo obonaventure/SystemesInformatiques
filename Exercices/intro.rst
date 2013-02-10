@@ -25,7 +25,7 @@ Programmes à préparer
 Deuxième semaine
 ----------------
 
-La matière couverte cette semaine la section relative aux `types de données <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_)
+La matière couverte cette semaine correspond à la section relative aux `types de données <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_)
 
 `QCM2 </static/_static/Mission-2-qcm.html>`_
 
