@@ -494,7 +494,7 @@ programmeur qui doit explicitement allouer et désallouer la mémoire.
 
 Les `pointeurs` sont une des caractéristiques principales du langage C
 par rapport à de nombreux autres langage. Un :term:`pointeur` est
-définit comme étant une variable contenant l'adresse d'une autre
+défini comme étant une variable contenant l'adresse d'une autre
 variable. Pour bien comprendre le fonctionnement des pointeurs, il est
 important d'avoir en tête la façon dont la mémoire est organisée sur
 un ordinateur. D'un point de vue abstrait, la mémoire d'un ordinateur
@@ -554,7 +554,7 @@ informations reprises dans la table ci-dessous.
 +-------------+-----------+
 
 En langage C, l'expression ``&var`` permet de récupérer l'adresse à
-laquelle une variable a été stockée. Appliquée à l'exemple ci-dessous,
+laquelle une variable a été stockée. Appliquée à l'exemple ci-dessus,
 l'expression ``&(name[0])`` retournerait la valeur ``0b000`` tandis que 
 ``&c`` retournerait la valeur ``0b101``.
 
