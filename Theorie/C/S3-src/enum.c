@@ -25,7 +25,7 @@ typedef enum {
         BITSET = 1
 } bit_t;
 
-//BBBB
+///BBB
 
 
 int main(int argc, char *argv[]) {
