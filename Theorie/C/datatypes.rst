@@ -135,7 +135,7 @@ Le nombre de bits utilisés pour stocker chaque type d'entier non signé
 peut varier d'une implémentation à l'autre. Le langage C permet de
 facilement déterminer le nombre de bits utilisés pour stocker un type
 de données particulier en utilisant l'expression ``sizeof``. Appliquée
-à un type de données, celle-ci retourne le nombre d'octets qu'elle
+à un type de données, celle-ci retourne le nombre d'octets que ce type
 occupe. Ainsi, sur de nombreuses plateformes,
 ``sizeof(int)`` retournera la valeur ``4``.
 
@@ -394,7 +394,7 @@ accentués comme l'anglais. Pour le français et de nombreuses langues
 d'Europe occidentale, la table sur `8` bits est suffisante et la norme
 ISO-8859_ contient des tables de caractères `8` bits pour de
 nombreuses langues. La norme Unicode va plus loin en permettant de
-représenter tous les caractères écrits de toutes les langues connues
+représenter les caractères écrits de toutes les langues connues
 sur Terre. Une description détaillée du support de ces types de
 caractères sort du cadre de ce cours sur les systèmes
 informatiques. Il est cependant important que vous soyez conscient de
