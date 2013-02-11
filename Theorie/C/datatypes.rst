@@ -909,7 +909,7 @@ A     B      A AND B
 1     1	     1
 ===   ===    ============  
 
-La troisième opération est la :term:`disjonction logique` (:term:`OR` en anglais). Cette opération prend deux arguments binaires.  Dans des formules mathématiques, la négation est souvent représentée sous la forme :math:`A \vee B`. 
+La troisième opération est la :term:`disjonction logique` (:term:`OR` en anglais). Cette opération prend deux arguments binaires.  Dans des formules mathématiques, la disjonction logique est souvent représentée sous la forme :math:`A \vee B`. 
 Elle se définit par la table de vérité suivante.
 
 ===   ===    ===========    
