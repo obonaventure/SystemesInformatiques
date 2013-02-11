@@ -517,7 +517,7 @@ non-signés. Sur la plupart des architectures de processeurs, une
 adresse correspond à une zone mémoire permettant de stocker un octet. 
 Lorsque nous utiliserons une représentation graphique de la mémoire,
 nous placerons toujours les adresses numériquement basses en bas de la
-figure et elles croitront vers le haut. 
+figure et elles croîtront vers le haut. 
 
 Considérons l'initialisation ci-dessous et supposons qu'elle est
 stockée dans une mémoire où les adresses sont encodées sur `3`
@@ -744,7 +744,7 @@ Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeabl
 
  Le renommage de types de données a des avantages et des inconvénients dont il faut être conscient pour pouvoir l'utiliser à bon escient. L'utilisation de ``typedef`` peut faciliter la lecture et la portabilité de certains programmes. Lorsqu'un ``typedef`` est associé à une structure, cela facilite la déclaration de variables de ce type et permet le cas échéant de modifier la structure de données ultérieurement sans pour autant devoir modifier l'ensemble du programme. Cependant, contrairement aux langages orientés objet, des méthodes ne sont pas directement associées aux structures et la modification d'une structure oblige souvent à vérifier toutes les fonctions qui utilisent cette structure. L'utilisation de ``typedef`` permet de clarifier le rôle de certains types de données ou valeurs de retour de fonctions. A titre d'exemple, l'appel système `read(2)`_ qui permet notamment de lire des données dans un fichier retourne le nombre d'octets qui ont été lus après chaque appel. Cette valeur de retour est de type ``ssize_t``. L'utilisation de ces types permet au compilateur de vérifier que les bons types de données sont utilisés lors des appels de fonctions.
 
- ``typedef`` est souvent utilisé pour avoir des identifiants de types de données plus court. Par exemple, il est très courant d'abrévier les types ``unsigned`` comme ci-dessous. 
+ ``typedef`` est souvent utilisé pour avoir des identifiants de type de données plus court. Par exemple, il est très courant d'abrévier les types ``unsigned`` comme ci-dessous. 
 
   .. literalinclude:: /Theorie/C/S2-src/typedef.c
      :encoding: iso-8859-1
@@ -778,8 +778,8 @@ Les fonctions
 -------------
 
 Comme la plupart des langages, le C permet de modulariser un programme
-en le découpant en de nombreuses fonctions qui chacune réalisent une
-tâche simple. Tout comme java, C permet la définition de fonctions qui ne retournent aucun résultat. Celles-ci sont de type ``void`` comme l'exemple trivial ci-dessous.
+en le découpant en de nombreuses fonctions. Chacune réalise une
+tâche simple. Tout comme Java, C permet la définition de fonctions qui ne retournent aucun résultat. Celles-ci sont de type ``void`` comme l'exemple trivial ci-dessous.
 
 .. literalinclude:: /Theorie/C/S2-src/fct.c
    :encoding: iso-8859-1
@@ -787,7 +787,7 @@ tâche simple. Tout comme java, C permet la définition de fonctions qui ne reto
    :start-after: ///AAA
    :end-before: ///BBB
 
-La plupart des fonctions utiles retournent un résultat qui peut être une donnée d'un des types standard ou une structure. Cette utilisation est similaire à ce que l'on trouve dans des langages comme Java. Il faut cependant être attentif à la façon dont le langage C traite les arguments des fonctions. Le langage C utilise le ``passage par valeur`` des arguments. Lorsqu'une fonction est exécutée, elle reçoit les valeurs de ces arguments. Ces valeurs sont stockées dans une zone mémoire qui est locale à la fonction. Toute modification faite sur la valeur d'une variable à l'intérieur d'une fonction est donc locale à cette fonction. Les deux fonctions ci-dessous ont le même résultat et aucune des deux n'a d'effet de bord.
+La plupart des fonctions utiles retournent un résultat qui peut être une donnée d'un des types standard ou une structure. Cette utilisation est similaire à ce que l'on trouve dans des langages comme Java. Il faut cependant être attentif à la façon dont le langage C traite les arguments des fonctions. Le langage C utilise le `passage par valeur` des arguments. Lorsqu'une fonction est exécutée, elle reçoit les valeurs de ces arguments. Ces valeurs sont stockées dans une zone mémoire qui est locale à la fonction. Toute modification faite sur la valeur d'une variable à l'intérieur d'une fonction est donc locale à cette fonction. Les deux fonctions ci-dessous ont le même résultat et aucune des deux n'a d'effet de bord.
 
 .. literalinclude:: /Theorie/C/S2-src/fct.c
    :encoding: iso-8859-1
@@ -817,7 +817,7 @@ Cet exemple illustre aussi une contrainte imposée par le langage C sur l'ordre 
    :start-after: ///HHH
    :end-before: ///III
 
-Les fonctions peuvent évidemment recevoir également des tableaux comme arguments. Cela permet par exemple d'implémenter une fonction qui calcule la longueur d'une chaîne de caractères en itérant dessus jusqu'à trouver le caractères de fin de chaîne. 
+Les fonctions peuvent évidemment recevoir également des tableaux comme arguments. Cela permet par exemple d'implémenter une fonction qui calcule la longueur d'une chaîne de caractères en itérant dessus jusqu'à trouver le caractère de fin de chaîne.
 
 .. literalinclude:: /Theorie/C/S2-src/strlenptr.c
    :encoding: iso-8859-1
@@ -825,7 +825,7 @@ Les fonctions peuvent évidemment recevoir également des tableaux comme argumen
    :start-after: ///AAA
    :end-before: ///BBB
 
-Tout comme cette fonction peut accéder au ième caractère de la chaîne passé en argument, elle peut également et sans aucune restriction modifier chacun des caractères de cette chaîne. Par contre, comme le pointeur vers la chaîne de caractères est passé par valeur, la fonction ne peut pas modifier la zone mémoire qui est pointée par l'argument. 
+Tout comme cette fonction peut accéder au ième caractère de la chaîne passée en argument, elle peut également et sans aucune restriction modifier chacun des caractères de cette chaîne. Par contre, comme le pointeur vers la chaîne de caractères est passé par valeur, la fonction ne peut pas modifier la zone mémoire qui est pointée par l'argument. 
 
 Un autre exemple de fonctions qui manipulent les tableaux sont des fonctions mathématiques qui traitent des vecteurs par exemple. 
 
@@ -855,7 +855,7 @@ Ces deux fonctions peuvent être utilisées par le fragment de code ci-dessous :
      :start-after: ///GGG
      :end-before: ///HHH
 
- Dans ce fragment de programme, l'appel à ``print_vecteur`` est tout à fait valide. Par contre, l'appel à ``plusun`` est lui erroné puisque le premier argument est un tableau d'entiers (ou plus précisément un pointeur vers le premier élément d'une tableau d'entier) alors que la fonction ``plusun`` attend un entier. Inversement, le second argument est un entier à la place d'un tableau d'entiers. Cette erreur n'empêche pas le compilateur `gcc(1)`_ de compiler le programme correspondant. Il émet cependant le :term:`warning` suivant :
+ Dans ce fragment de programme, l'appel à ``print_vecteur`` est tout à fait valide. Par contre, l'appel à ``plusun`` est lui erroné puisque le premier argument est un tableau d'entiers (ou plus précisément un pointeur vers le premier élément d'un tableau d'entiers) alors que la fonction ``plusun`` attend un entier. Inversement, le second argument est un entier à la place d'un tableau d'entiers. Cette erreur n'empêche pas le compilateur `gcc(1)`_ de compiler le programme correspondant. Il émet cependant le :term:`warning` suivant :
 
   .. code-block:: console
 
@@ -952,7 +952,7 @@ En C, ces expressions logiques s'utilisent comme dans le fragment de code suivan
    :start-after: ///AAA
    :end-before: ///BBB
 
-En pratique, les opérations logiques sont utiles pour effectuer des manipulations au niveau des bits de données stockées en mémoire. Une utilisation fréquente dans certaines applications réseaux ou système est de forcer certains bits à la prendre la valeur ``0`` ou ``1``. La conjonction logique permet de forcer facilement un bit à zéro tandis que la disjonction logique permet de forcer facilement un bit à un. L'exemple ci-dessous montre comment forcer les valeurs de certains bits dans un ``unsigned char``. Elle peut évidemment se généraliser à des séquences de bits plus longues.
+En pratique, les opérations logiques sont utiles pour effectuer des manipulations au niveau des bits de données stockées en mémoire. Une utilisation fréquente dans certaines applications réseaux ou systèmes est de forcer certains bits à la prendre la valeur ``0`` ou ``1``. La conjonction logique permet de forcer facilement un bit à zéro tandis que la disjonction logique permet de forcer facilement un bit à un. L'exemple ci-dessous montre comment forcer les valeurs de certains bits dans un ``unsigned char``. Il peut évidemment se généraliser à des séquences de bits plus longues.
 
 .. literalinclude:: /Theorie/C/S2-src/exprbin.c
    :encoding: iso-8859-1
@@ -960,7 +960,7 @@ En pratique, les opérations logiques sont utiles pour effectuer des manipulatio
    :start-after: ///CCC
    :end-before: ///DDD
 
-L'opération XOR joue un rôle important dans certaines applications. La plupart des méthodes de chiffrement et de déchiffrement utilisent de façon extensive cette opération. Une des propriétés intéressantes de l'opération XOR est que :math:`(A \oplus B) \oplus B=A`. Cette propriété est largement utilisée par les méthodes de chiffrement. La méthode développée par Vernam au début du vingtième siècle s'appuie sur l'opération XOR. Pour transmettre un message `M` de façon sûre, elle applique l'opération XOR bit à bit entre tous les bits du message `M` et une clé `K` doit avoir au moins le même nombre de bits que `M`. Si la cette clé `K` est totalement aléatoire et n'est utilisée qu'une seule fois, alors on parle de one-time-pad. On peut montrer que dans ce cas, la méthode de chiffrement est totalement sûre. En pratique, il est malheureusement difficile d'avoir une clé totalement aléatoire qui est aussi longue que le message à transmettre. Le programme ci-dessous implémente cette méthode de façon triviale. La fonction `memfrob(3)`_ de la librairie :term:`GNU` utilise également un chiffrement via un XOR.
+L'opération XOR joue un rôle important dans certaines applications. La plupart des méthodes de chiffrement et de déchiffrement utilisent de façon extensive cette opération. Une des propriétés intéressantes de l'opération XOR est que :math:`(A \oplus B) \oplus B=A`. Cette propriété est largement utilisée par les méthodes de chiffrement. La méthode développée par Vernam au début du vingtième siècle s'appuie sur l'opération XOR. Pour transmettre un message `M` de façon sûre, elle applique l'opération XOR bit à bit entre tous les bits du message `M` et une clé `K` doit avoir au moins le même nombre de bits que `M`. Si cette clé `K` est totalement aléatoire et n'est utilisée qu'une seule fois, alors on parle de *one-time-pad*. On peut montrer que dans ce cas, la méthode de chiffrement est totalement sûre. En pratique, il est malheureusement difficile d'avoir une clé totalement aléatoire qui soit aussi longue que le message à transmettre. Le programme ci-dessous implémente cette méthode de façon triviale. La fonction `memfrob(3)`_ de la librairie :term:`GNU` utilise également un chiffrement via un XOR.
 
 .. literalinclude:: /Theorie/C/S2-src/xor.c
    :encoding: iso-8859-1
@@ -975,9 +975,9 @@ L'opération XOR joue un rôle important dans certaines applications. La plupart
   .. code-block:: console 
 
      0b0100 & 0b0101 = 0b0100
-     0b0100 && 0b0101 = 0x0001
-     0b0100 | 0b0101 = 0x0101
-     0b0100 || 0b0101 = 0x0001
+     0b0100 && 0b0101 = 0b0001
+     0b0100 | 0b0101 = 0b0101
+     0b0100 || 0b0101 = 0b0001
 
  Un autre point important à mentionner concernant les expressions logiques est qu'en C celles-ci sont évaluées de gauche à droite. Cela implique que dans l'expression ``( expr1 && expr2 )``, le compilateur C va d'abord évaluer l'expression ``expr1``. Si celle-ci est évaluée à la valeur ``0``, la seconde expression ne sera pas évaluée. Cela peut être très utile lorsque l'on doit exécuter du code si un pointeur est non ``NULL`` et qu'il pointe vers une valeur donnée. Dans ce cas, la condition sera du type ``( (ptr!=NULL) && (ptr->den>0) )``.
 
