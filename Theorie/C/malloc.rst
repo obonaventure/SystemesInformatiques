@@ -101,7 +101,7 @@ Une union, ``u`` et une structure, ``s`` sont déclarées dans ce fragment de pr
    :end-before: ///DDD
 
 La structure ``s`` peut contenir à la fois un entier et un caractère. Par contre, l'``union`` ``u``, peut elle contenir un entier (``u.i``) *ou* un caractère (``u.c``), mais jamais les deux en même temps.
-Le compilateur C alloue la taille pour l'``union`` de façon à ce qu'elle puisse contenir le type de donnée se trouvant dans l'``union`` est qui nécessite le plus de mémoire. Si les unions sont utiles dans certains cas très particulier, il faut faire très attention à leur utilisation. Lorsqu'une ``union`` est utilisée, le compilateur C fait encore moins de vérifications sur les types de données et le code ci-dessous est considéré comme valide par le compilateur :
+Le compilateur C alloue la taille pour l'``union`` de façon à ce qu'elle puisse contenir le type de donnée se trouvant dans l'``union`` nécessitant le plus de mémoire. Si les unions sont utiles dans certains cas très particulier, il faut faire très attention à leur utilisation. Lorsqu'une ``union`` est utilisée, le compilateur C fait encore moins de vérifications sur les types de données et le code ci-dessous est considéré comme valide par le compilateur :
 
 .. literalinclude:: /Theorie/C/S3-src/union.c
    :encoding: iso-8859-1
