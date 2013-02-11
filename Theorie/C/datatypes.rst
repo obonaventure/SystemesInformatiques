@@ -94,7 +94,7 @@ correspondent toutes à la même valeur.
 Certains compilateurs permettent d'entrer des constantes en binaire
 directement en préfixant le nombre avec ``0b`` comme dans
 ``i=0b1111011;``. Cependant, cette notation n'est pas portable sur
-tous les compilateurs. Elle doit donc être utilisée avec précautions,
+tous les compilateurs. Elle doit donc être utilisée avec précaution,
 contrairement à la notation hexadécimale qui fait partie du langage.
 
 .. note:: Notation octale
