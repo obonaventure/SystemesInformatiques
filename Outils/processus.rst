@@ -1,4 +1,4 @@
- .. -*- coding: utf-8 -*-
+.. -*- coding: utf-8 -*-
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
@@ -21,7 +21,7 @@ Dans cet exemple, l'utilisateur ``obo`` possède actuellement deux processus. Le
 
 Pour comprendre le fonctionnement des processus, il est intéressant d'expérimenter avec le processus ci-dessous. Celui-ci utilise l'appel système `getpid(2)`_ pour récupérer son :term:`pid`, l'affiche et utilise la fonction `sleep(3)`_ de la librairie pour se mettre en veille pendant trente secondes avant de se terminer.
 
-.. literalinclude:: /S3/src/getpid.c
+.. literalinclude:: /Outils/src/getpid.c
    :encoding: iso-8859-1
    :language: c
    :start-after: ///AAA
