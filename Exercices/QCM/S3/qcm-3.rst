@@ -125,7 +125,7 @@ Parmi les affirmations suivantes, un seul groupe est correct. Lequel ?
 
    .. class:: comment
 
-      La fonction ``g`` peut accéder à la variable globale ``i`` et modifier sa valeur par la fonction ``f`` ne peut pas le faire car elle ne peut accéder qu'à son argument nommé également ``i``.
+      La fonction ``g`` peut accéder à la variable globale ``i`` et modifier sa valeur par contre la fonction ``f`` ne peut pas le faire car elle ne peut accéder qu'à son argument nommé également ``i``.
 
 
 -
@@ -258,6 +258,7 @@ Les fonctions `malloc(3)`_ et `free(3)`_ sont importantes pour la manipulation d
 	 if(r!=NULL)
 	 {  
 	    memcpy(r, ptr, len);
+	    free(ptr);
 	 }
          return r;
        }
@@ -346,8 +347,6 @@ Considérons le programme :download:`/Theorie/C/S3-src/stack.c` présenté dans 
      }
 
 
-.. class:: negative
-
 -
   .. code-block:: c
 
@@ -356,11 +355,14 @@ Considérons le programme :download:`/Theorie/C/S3-src/stack.c` présenté dans 
          int count = 0;
          while (stack!=NULL) {
              count ++;
- 	     stack = stack->next;
+             stack = stack->next;
          }
          return count;
      }
 
+
+
+.. class:: negative
 
 -
   .. code-block:: c
@@ -429,6 +431,8 @@ une implémentation de `strdup(3)`_ ?
      char *strdup(const char *s)
      {
          char *new = (char *) malloc ((strlen(s)+1) * sizeof(char));
+         if (new == NULL)
+             return NULL;
          return memcpy(new, s, (strlen(s)+1) * sizeof(char));
      }
 
@@ -438,6 +442,8 @@ une implémentation de `strdup(3)`_ ?
      char *strdup(const char *s)
      {
          char *new = (char *) malloc ((strlen(s)+1) * sizeof(char));
+         if (!new)
+             return NULL;
          return memcpy(new, s, (strlen(s)+1) * sizeof(char));
      }
 
@@ -450,6 +456,8 @@ une implémentation de `strdup(3)`_ ?
      char *strdup(const char s)
      {
          void *new = malloc (strlen(s));
+         if (new == NULL)
+             return NULL;
          return memcpy(new, s, strlen(s));
      }
 
@@ -470,6 +478,8 @@ une implémentation de `strdup(3)`_ ?
      char *strdup(const char *s)
      {
          char *new = (char *) calloc (strlen(s) * sizeof(char));
+         if (new == NULL)
+             return NULL;
          return memcpy(new, s, (strlen(s) * sizeof(char)));
      }
 
