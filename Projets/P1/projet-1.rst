@@ -9,7 +9,15 @@ définir vous même cette structure afin d'implémenter éfficacement les foncti
 déclarés dans le fichier :download:`/Projets/P1/src/bitstring.h` dans un fichier
 ``bitstring.c``.
 
-Ce projet sera évalué et comptera dans la note finale. Ce projet se fait par
+Ce projet sera évalué et comptera dans la note finale. Les critères de cotations (non-exhaustifs) sont les suivants:
+
+    - Qualité du code (indentation, respect d'une convention, etc.);
+    - Commentaires;
+    - Tests de la valeur de retour des fonctions;
+    - Exhaustivité et qualité des tests;
+    - Gestion de la mémoire (efficacité, memory leak, etc.).
+
+Ce projet se fait par
 groupes de deux et vous devez vous inscrire au SVN ``SINF1252_2013_P1`` sur le
 site `<https://scm.info.ucl.ac.be/cgi-bin/inscription.sh>`_. Faites bien
 attention à introduire aussi l'adresse mail de votre binôme lors de votre
