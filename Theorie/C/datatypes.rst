@@ -897,7 +897,7 @@ A     NOT(A)
 1     0
 ===   ===========  
 
-La deuxième opération est la :term:`conjonction logique` (:term:`AND` en anglais). Cette opération prend deux arguments binaires et retourne un résultat binaire.  Dans des formules mathématiques, la négation est souvent représentée sous la forme :math:`A \wedge B`. 
+La deuxième opération est la :term:`conjonction logique` (:term:`AND` en anglais). Cette opération prend deux arguments binaires et retourne un résultat binaire.  Dans des formules mathématiques, la conjonction logique est souvent représentée sous la forme :math:`A \wedge B`. 
 Elle se définit par la table de vérité suivante :
 
 ===   ===    ============    
