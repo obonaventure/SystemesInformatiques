@@ -28,4 +28,11 @@ attention à introduire aussi l'adresse mail de votre binôme lors de votre
 inscription. Le projet doit être soumis avant lundi 4 mars 2013 à 23h55. Votre
 dossier doit contenir **tous** les fichiers source nécessaires à la compilation
 et l'utilisation de votre implémentation ainsi que les fonctions de test que
-vous avez défini pour valider votre implémentation.
+vous avez défini pour valider votre implémentation. Ces fichiers sont:
+
+    - ``bitstring.h`` (non-modifée)
+    - ``bitstring.c``
+    - ``test.c``
+    - ``Makefile`` (non-modifiée)
+
+ Ils doivent être placé sur le svn dans votre dossier ``grpXX``.
