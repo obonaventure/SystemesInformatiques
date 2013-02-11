@@ -245,8 +245,8 @@ Si la variable ``c`` est de type ``unsigned char`` sur 8 bits, laquelle des suit
  .. code:: c
 
     unsigned char temp1, temp2; 
-    temp1=temp1 << 4;
-    temp2=temp2 >> 4; 
+    temp1=c << 4;
+    temp2=c >> 4; 
     c= temp2|temp1; 
 
 
@@ -256,8 +256,8 @@ Si la variable ``c`` est de type ``unsigned char`` sur 8 bits, laquelle des suit
  .. code:: c
 
     unsigned char temp1, temp2; 
-    temp1=temp1 << 4;
-    temp2=temp2 >> 4; 
+    temp1=c << 4;
+    temp2=c >> 4; 
     c= temp2||temp1; 
 
 
