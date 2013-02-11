@@ -6,17 +6,24 @@
 
   <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
-  <script type="text/javascript" src="js/rst-form.js"></script
-  <script type="text/javascript">$nmbr_prop = 4</script> 
-  <script type="text/javascript">$nmbr_prop = 4</script> 
+  <script type="text/javascript" src="js/rst-form.js"></script>
+  <script type="text/javascript" src="js/prettify.js"></script>
+  <script type="text/javascript">$nmbr_prop = 3</script> 
+
 
 
 =================
 Troisième semaine
 =================
 
-Question. Portée des variables
-------------------------------
+Cette semaine, la matière porte sur l'organisation de la mémoire et l'utilisation des fonctions `malloc(3)`_ et `free(3)`_
+
+ - http://sinf1252.info.ucl.ac.be/Theorie/C/malloc/#organisation-de-la-memoire
+
+
+
+Question 1. Portée des variables
+--------------------------------
 
 Lorsque l'on écrit un programme C, il est préférable d'éviter d'avoir deux variables qui ont le même nom et peuvent être utilisées dans une fonction. Un étudiant a écrit le programme ci-dessous :
 
@@ -86,8 +93,8 @@ Lors de son exécution, ce programme affiche :
     C:0 1252
     D:0
 
-Question. Portée des variables
-------------------------------
+Question 2. Portée des variables
+--------------------------------
 
 L'extrait ci-dessous provient d'un programme écrit par un étudiant.
 
@@ -149,8 +156,8 @@ Parmi les affirmations suivantes, un seul groupe est correct. Lequel ?
 
 
 
-Question. Organisation de la mémoire
-------------------------------------
+Question 3. Organisation de la mémoire
+--------------------------------------
 
 Considérons le fragment de programme ci-dessous.
 
@@ -228,14 +235,90 @@ Lors de l'exécution de ce programmes, les valeurs des différentes variables so
  - la variable ``k`` déclarée en ``ligne F`` est stockée sur le tas
 
 
-Question. Initialisation des variables
---------------------------------------
+Question 4. Initialisation des variables
+----------------------------------------
 
-init ptr, char, etc
+En C, une règle de bonne pratique est d'initialiser toutes les variables avant leur utilisation. Utiliser une variable qui n'a pas été correctement initialisée pour être une source de problèmes. Un étudiant a écrit les déclarations ci-dessous :
+
+ .. code-block:: c
+
+  int k=0;
+  int i;
+  short j;
+  float f;
+  double d;
+  char c[10];
+  char* string;
+  void* v;
+  int* ptr;
+  ptr=(int*) malloc(5*sizeof(int));
 
 
-Question. `malloc(3)`_ et compagnie
------------------------------------
+Après exécution de ces lignes, un seul des groupes d'affirmations ci-dessous est correct. Lequel ?
+
+.. class:: positive
+
+-
+ - la variable ``i`` est initialisée à  la valeur ``0`` 
+ - le pointeur ``string`` est initialisé à la valeur ``NULL`` 
+ - ``c[2]`` contient le caractère ``'\0'``
+ - Après exécution de ``malloc``, le contenu de l'adresse ``ptr+1`` est indéterminé
+
+ .. class:: comment
+
+    Pour des raisons d'efficacité, `malloc(3)`_ n'initialise pas à zéro les zones mémoires allouées, contrairement à `calloc(3)`_
+
+-
+ - la variable ``j`` est initialisée à  la valeur ``0`` 
+ - le pointeur ``v`` est initialisé à la valeur ``NULL`` 
+ - ``c[4]`` contient le caractère ``'\0'``
+ - Après exécution de ``malloc``, le contenu de l'adresse ``ptr+4`` est indéterminé
+
+ .. class:: comment
+
+    Pour des raisons d'efficacité, `malloc(3)`_ n'initialise pas à zéro les zones mémoires allouées, contrairement à `calloc(3)`_
+
+.. class:: negative
+
+-
+ - la variable ``f`` est initialisée à  la valeur ``0.0`` 
+ - le pointeur ``string`` n'a aucune valeur et n'est pas utilisable 
+ - ``c[2]`` contient le caractère espace
+ - Après exécution de ``malloc``, l'adresse ``ptr+1`` contient le caractère ``'\0'``
+
+ .. class:: comment
+
+    `malloc(3)`_ n'initialise pas la zone mémoire allouée. ``string`` contient ``NULL`` et ``c[2]`` le caractère ``'\0'``
+
+-
+ - la variable ``f`` est initialisée à  la valeur ``0.0`` 
+ - le pointeur ``v`` n'a aucune valeur et n'est pas utilisable 
+ - ``c[2]`` contient le caractère espace
+ - Après exécution de ``malloc``, l'adresse ``ptr`` contient le caractère ``'\0'``
+
+-
+ - la variable ``f`` est initialisée à  la valeur ``0.0`` 
+ - le pointeur ``string`` est initialisé à ``NULL``
+ - ``c[10]`` contient le caractère espace
+ - Après exécution de ``malloc``, l'adresse ``ptr+3`` contient le caractère ``'\0'``
+ 
+ .. class:: comment
+
+    ``c[10]`` est hors du tableau ``c``. `malloc(3)`_ n'initialise pas la zone mémoire allouée.
+
+-
+ - la variable ``f`` est initialisée à  la valeur ``0.0`` 
+ - le pointeur ``v`` est initialisé à ``NULL``
+ - ``c[6]`` contient le caractère ``'\0'``
+ - Après exécution de ``malloc``, l'adresse ``ptr+5`` contient le caractère ``'\0'``
+
+ .. class:: comment
+
+    `malloc(3)`_ n'initialise pas la zone mémoire allouée. De plus, ``ptr+5`` se trouve en dehors de la zone mémoire allouée par `malloc(3)`_
+
+
+Question 5. `malloc(3)`_ et compagnie
+-------------------------------------
 
 
 Les fonctions `malloc(3)`_ et `free(3)`_ sont importantes pour la manipulation de la mémoire sur le tas. Parmi les groupes d'affirmation suivants, un seul est correct. Lequel ?
@@ -325,10 +408,10 @@ Les fonctions `malloc(3)`_ et `free(3)`_ sont importantes pour la manipulation d
     
 
 
-Question. Stack
----------------
+Question 6. Stack
+-----------------
 
-Considérons le programme :download:`/Theorie/C/S3-src/stack.c` présenté dans le syllabus. Cette implémentation d'une pile permet d'ajouter et de retirer un élément de la pile. Laquelle des implémentations ci-dessous est-elle une implémentation correcte d'une fonction ``size`` permettant de calculer le nombre d'éléments stockés dans la pile ?
+Considérons le programme `stack.c` présenté dans le syllabus. Cette implémentation d'une pile permet d'ajouter et de retirer un élément de la pile. Laquelle des implémentations ci-dessous est-elle une implémentation correcte d'une fonction ``size`` permettant de calculer le nombre d'éléments stockés dans la pile ?
 
 .. class:: positive
 
@@ -417,8 +500,8 @@ Considérons le programme :download:`/Theorie/C/S3-src/stack.c` présenté dans 
      }
 
 
-Question. `strdup(3)`_
-----------------------
+Question 7. `strdup(3)`_
+------------------------
 
 La librairie standard contient la fonction `strdup(3)`_. Laquelle des fonctions ci-dessous est-elle 
 une implémentation de `strdup(3)`_ ?
@@ -461,6 +544,15 @@ une implémentation de `strdup(3)`_ ?
          return memcpy(new, s, strlen(s));
      }
 
+-
+  .. code-block:: c
+
+     char *strdup(const char *s)
+     {
+         char new [strlen(s)+1]; 
+         return memcpy(new, s, (strlen(s)+1) * sizeof(char));
+     }
+
 
 -
   .. code-block:: c
@@ -491,6 +583,9 @@ une implémentation de `strdup(3)`_ ?
          char *new = (char *) malloc (strlen(s) * sizeof(char));
          return memcpy(new, s, (strlen(s) * sizeof(char));
      }
+
+
+
 
 .. include:: ../../../links.rst
 .. include:: ../../../man_links.rst

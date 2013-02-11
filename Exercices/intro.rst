@@ -13,8 +13,8 @@ Première semaine
 
 `QCM1 </static/_static/Mission-1-qcm.html>`_
 
-Programmes à préparer
-^^^^^^^^^^^^^^^^^^^^^
+Séance tutorée
+^^^^^^^^^^^^^^ 
 
 .. toctree::
    :maxdepth: 1
@@ -29,11 +29,27 @@ La matière couverte cette semaine correspond à la section relative aux `types 
 
 `QCM2 </static/_static/Mission-2-qcm.html>`_
 
-
-Programmes à préparer
-^^^^^^^^^^^^^^^^^^^^^
+Séance tutorée
+^^^^^^^^^^^^^^ 
 
 .. toctree::
    :maxdepth: 2
    
    Programmes/prog-2
+
+
+Troisième semaine
+-----------------
+
+La matière couverte cette semaine correspond à la section relative à l'`organisation de la mémoire <http://sinf1252.info.ucl.ac.be/Theorie/C/malloc/#organisation-de-la-memoire>`_ 
+
+`QCM3 </static/_static/Mission-3-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-3
