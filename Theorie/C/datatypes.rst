@@ -107,7 +107,7 @@ contrairement à la notation hexadécimale qui fait partie du langage.
 
  Ainsi, le fragment de code ci-dessous affichera à l'écran le message
  ``65 et 53 sont différents`` car le compilateur C interprète la ligne
- ``j=065;`` comme contenant un entier en notation octale et non en décimal.
+ ``j=065;`` comme contenant un entier en notation octale et non décimale.
  
  .. literalinclude:: /Theorie/C/S2-src/octal.c
     :encoding: iso-8859-1
