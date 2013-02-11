@@ -8,7 +8,7 @@ CUnit: librarie de tests
 ------------------------
 
 `CUnit <http://cunit.sourceforge.net>`_ est une librarie de tests unitaires en C. Cette librarie doit être utilisée dans le cadre de ce projet. Un petit
-exemple de test est déjà disponible dans l'archive fournie.
+exemple de test est déjà disponible dans l'archive fournie dans le projet :ref:`projet1`.
 
 CUnit n'est pas installé par défaut sur les machines des salles. Vous devez donc l'installer par vous même. Le reste de cette section à pour but de vous
 aider dans l'installation de celle-ci.

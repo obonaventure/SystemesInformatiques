@@ -9,6 +9,8 @@ Le cours comprend trois projets couvrant des parties différentes de la matière
 Chaque projet sera coté et comptera pour une partie de la note finale (à
 définir).
 
+.. _projet1:
+
 Premier Projet: Manipulation de bits
 ------------------------------------
 
