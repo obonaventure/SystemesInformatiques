@@ -80,6 +80,16 @@ Exercices
 
    Exercices/intro
 
+
+*******
+Projets
+*******
+
+.. toctree::
+   :maxdepth: 2
+
+   Projets/index
+
 ******
 Outils
 ******
@@ -90,6 +100,7 @@ Outils
    Outils/intro-outils
    Outils/make
    Outils/ssh
+   Outils/cunit
 
 *******
 Annexes
