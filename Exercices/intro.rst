@@ -11,7 +11,9 @@ Cette section comprendra deux types d'exercices afin de permettre aux étudiants
 Première semaine
 ----------------
 
-`QCM1 </static/_static/Mission-1-qcm.html>`_
+.. only:: html
+
+   `QCM1 </static/_static/Mission-1-qcm.html>`_
 
 Séance tutorée
 ^^^^^^^^^^^^^^ 
@@ -27,7 +29,9 @@ Deuxième semaine
 
 La matière couverte cette semaine correspond à la section relative aux `types de données <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_)
 
-`QCM2 </static/_static/Mission-2-qcm.html>`_
+.. only:: html
+
+  `QCM2 </static/_static/Mission-2-qcm.html>`_
 
 Séance tutorée
 ^^^^^^^^^^^^^^ 
@@ -43,7 +47,9 @@ Troisième semaine
 
 La matière couverte cette semaine correspond à la section relative à l'`organisation de la mémoire <http://sinf1252.info.ucl.ac.be/Theorie/C/malloc/#organisation-de-la-memoire>`_ 
 
-`QCM3 </static/_static/Mission-3-qcm.html>`_
+.. only:: html
+
+   `QCM3 </static/_static/Mission-3-qcm.html>`_
 
 
 Séance tutorée
