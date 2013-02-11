@@ -300,7 +300,7 @@ propriétés s'appliquent de la même façon à la simple qu'à la double préci
  - les représentations en virgule flottante privilégient les nombres réels compris dans l'intervalle :math:`[-1,1]`. On retrouve autant de nombres réels représentables dans cet intervalle que de nombres dont la valeur absolue est supérieure à `1`.
 
 En C, ces nombres en virgule flottante sont représentés en utilisant
-les types ``float`` (simplement précision) et ``double`` (double précision). Les fichiers `float.h`_ et `math.h`_ définissent de nombreuses constantes relatives à ces types. Voici à titre d'exemple les valeurs minimales et maximales pour les ``float`` et les ``double`` et les constantes associées. Pour qu'un programme soit portable, il faut utiliser les constantes définies dans `float.h`_ et `math.h`_ et non leurs valeurs numériques.
+les types ``float`` (simple précision) et ``double`` (double précision). Les fichiers `float.h`_ et `math.h`_ définissent de nombreuses constantes relatives à ces types. Voici à titre d'exemple les valeurs minimales et maximales pour les ``float`` et les ``double`` et les constantes associées. Pour qu'un programme soit portable, il faut utiliser les constantes définies dans `float.h`_ et `math.h`_ et non leurs valeurs numériques.
 
 .. code-block:: c
 
