@@ -27,7 +27,7 @@ Question 1. Portée des variables
 
 Lorsque l'on écrit un programme C, il est préférable d'éviter d'avoir deux variables qui ont le même nom et peuvent être utilisées dans une fonction. Un étudiant a écrit le programme ci-dessous :
 
- .. code-block::
+ .. code-block:: c
 
     #include <stdio.h>
     int i = 1;                
