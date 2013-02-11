@@ -234,7 +234,7 @@ Glossaire
       Sous Linux, représentation de l'information stockée dans la :term:`table des processus` sous la forme d'une arborescence directement accessible via les commandes du :term:`shell`. Voir `proc(5)`_
 
  signal
-      mécanisme permettant la communication entre processus. Utilisé notamment pour arrêter un processus via la commande `kill(1)`_
+     mécanisme permettant la communication entre processus. Utilisé notamment pour arrêter un processus via la commande `kill(1)`_
 
  von Neumann
      Un des inventaires des premiers ordinateurs. A défini l'architecture de base des premiers ordinateurs qui est maintenant connue comme le modèle de von Neumann [Krakowiak2011]_
@@ -303,7 +303,6 @@ Glossaire
  write-back
        à compléter
  
- %eip
  program counter
        à compléter
 
