@@ -7,10 +7,9 @@
 #define LEN 24
 
 #define MY_CU_ASSERT(value, args...) do { \
-    if(! (CU_ASSERT(value))) { \
-        printf(args); \
-        return; \
-    } \
+    int __b__ = (value); \
+    if(! __b__) printf(args); \
+    CU_ASSERT_FATAL(__b__); \
 } while(0)
 
 /* Ptr vers les bitstring employés pour les tests */
@@ -42,36 +41,37 @@ void testAlloc() {
 
     printf("\n");
     /* verif mémoire allouée */
-    MY_CU_ASSERT(b != NULL, "\t%s\n",
-                 "- Le ptr bitstring 'b' ne pointe vers aucune addresse"
+    MY_CU_ASSERT(b != NULL,
+                 "Erreur : Le ptr bitstring 'b' ne pointe vers aucune addresse"
                  " mémoire. Lui avez-vous alloué de la mémoire (malloc()) ?"
-                 " Renvoyez-vous le bon pointeur ?");
-    MY_CU_ASSERT(bitstring_len(b) == LEN, "\t%s\n",
-                 "Le bitstring n'a pas la bonne longueur (en bits)."
+                 " Renvoyez-vous le bon pointeur ?\n");
+
+    MY_CU_ASSERT(bitstring_len(b) == LEN,
+                 "Erreur : Le bitstring n'a pas la bonne longueur (en bits)."
                  " Avez-vous pensé à l'affecter à une variable de la structure après avoir"
                  " alloué la mémoire ? Il se peut que ce soit votre fonction 'bitstring_len()'"
-                 " qui n'est pas correcte.");
+                 " qui n'est pas correcte.\n");
 
     for (i = 0; i < LEN; i++) {
-        MY_CU_ASSERT(bitstring_get(b, i) == 0, "\t%s\n",
-                     "Au moins un des bits du bitstring ne vaut pas 0. Assurez-vous"
+        MY_CU_ASSERT(bitstring_get(b, i) == 0,
+                     "Erreur : Au moins un des bits du bitstring ne vaut pas 0. Assurez-vous"
                      " que l'espace mémoire pour les données du bitstring soit bien mis"
-                     " à 0 après l'allocation. De plus, est-ce que bitstring_get est correcte?");
+                     " à 0 après l'allocation. De plus, est-ce que bitstring_get est correcte?\n");
     }
 
     bitstring_free(b);
     b = bitstring_alloc(18); /* 18 n'est pas multiple de 8 */
 
-    MY_CU_ASSERT(b == NULL, "\t%s\n",
-                 "Le ptr bitstring 'b' devrait être NULL car on a essayé de l'allouer"
+    MY_CU_ASSERT(b == NULL,
+                 "Erreur : Le ptr bitstring 'b' devrait être NULL car on a essayé de l'allouer"
                  " pour une longueur de 18 bits, ce qui n'est pas multiple de 8."
                  " Avez-vous pensé à vérifier que la longueur passée en paramètre"
                  " était bien un multiple de 8 avant d'allouer de la mémoire ?"
-                 " Renvoyez-vous bien le ptr NULL si ce n'est pas un multiple de 8 ?");
+                 " Renvoyez-vous bien le ptr NULL si ce n'est pas un multiple de 8 ?\n");
 
     bitstring_free(b);
     b = NULL;
-    printf("\t\tVotre fonction 'bitstring_alloc()' a l'air correcte.\n");
+    printf("\n\tVotre fonction 'bitstring_alloc()' a l'air correcte.\n");
     printf("\t");
 }
 
@@ -91,14 +91,14 @@ void testSet() {
     for(i = 0; i < LEN; ++i) {
         if(i == testbit)
                 continue;
-        MY_CU_ASSERT(bitstring_get(b, i) == 0, "\t%s\n",
-                     "Impossible de tester la fonction 'bitstring_set()' car"
-                     " votre fonction 'bitstring_get()' ou 'bitstring_alloc()' n'est pas correcte.");
+        MY_CU_ASSERT(bitstring_get(b, i) == 0,
+                     "Erreur : Impossible de tester la fonction 'bitstring_set()' car"
+                     " votre fonction 'bitstring_get()' ou 'bitstring_alloc()' n'est pas correcte.\n");
     }
 
     /* vérifie que le bit testbit est bien à 1 */
     MY_CU_ASSERT(bitstring_get(b, testbit) == 1,
-                 "\t- Tous les bits semblent être à 0 dans votre bitstring alors"
+                 "Erreur : Tous les bits semblent être à 0 dans votre bitstring alors"
                  " que le n°%d (0 étant le premier) devrait être à 1. Le problème"
                  " peut venir de 'bitstring_set()', mais aussi de 'bitstring_get()'.\n",
                  testbit);
@@ -113,17 +113,17 @@ void testSet() {
 mais ne devrait pas trigger dans le cas contraire */
     for(i = 0; i < LEN; ++i) {
         if(i == testbit || i == testbit + 2) {
-            MY_CU_ASSERT(bitstring_get(b, i) == 1, "\t%s\n",
-                         "- Affecter un seul bit fonctionne correctement, mais en"
+            MY_CU_ASSERT(bitstring_get(b, i) == 1,
+                         "Erreur : Affecter un seul bit fonctionne correctement, mais en"
                          " affecter un second dans le même octet semble effacer le premier (ou ne"
                          " pas affecter correctement le second). Vérifiez que vous ne mettez pas"
                          " tout l'octet à 0 avant d'y set un bit. (Il se peut aussi que ce soit du"
-                         " à 'bitstring_get()')");
+                         " à 'bitstring_get()')\n");
         } else {
-            MY_CU_ASSERT(bitstring_get(b, i) == 0, "\t%s\n",
-                         "- Affecter un seul bit fonctionne correctement, mais en"
+            MY_CU_ASSERT(bitstring_get(b, i) == 0,
+                         "Erreur : Affecter un seul bit fonctionne correctement, mais en"
                          " affecter un second dans le même octet altère des bits qui ne devraient pas"
-                         " l'être. (Il se peut aussi que ce soit dû à 'bitstring_get()')");
+                         " l'être. (Il se peut aussi que ce soit dû à 'bitstring_get()')\n");
         }
     }
 
@@ -132,7 +132,7 @@ mais ne devrait pas trigger dans le cas contraire */
 pour voir s'il n'y a pas d'effet de bord : les numéros de bits allant de 0 à bitstring_len() − 1 */
 
     /* succès */
-    printf("\t\tVotre fonction 'bitstring_set()' a l'air correcte.\n");
+    printf("\n\tVotre fonction 'bitstring_set()' a l'air correcte.\n");
     printf("\t");
 }
 
@@ -164,7 +164,7 @@ int main()
     }
 
     /* Run all tests using the CUnit Basic interface */
-    CU_basic_set_mode(CU_BRM_VERBOSE);
+    CU_basic_set_mode(CU_BRM_SILENT);
     CU_basic_run_tests();
     CU_cleanup_registry();
     return CU_get_error();
