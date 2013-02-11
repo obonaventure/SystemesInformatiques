@@ -17,7 +17,7 @@ La première étape consiste à récupérer les sources de CUnit sur `<http://so
 ``CUnit-*-src.tar.bz2`` et la dernière version devrait se nomer ``CUnit-2.1.2-src.tar.bz2``. Une fois l'archive téléchargée, ouvrez un terminal et placer
 vous dans le dossier où se trouve celle-ci. Executez:
 
-    .. code-block:: terminal
+    .. code-block:: console
 
             $ tar xjvf CUnit-2.1.2-src.tar.bz2
             $ cd CUnit-2.1-2
@@ -42,7 +42,7 @@ effectuer le linkage avec la librarie CUnit ainsi que lui spécifier ``-L$HOME/l
 Lors de l'exécution, il faut également spécifier où se trouvent les libraries. Par exemple pour un binaire ``test`` qui utilise la librarie CUnit, on peut
 exécuter:
 
-  .. code-block:: terminal
+  .. code-block:: console
 
           $ export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
           $ ./test
