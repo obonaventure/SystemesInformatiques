@@ -6,8 +6,12 @@ On vous demande d'implémenter quelques fonctions de manipulation de bits. Dans
 ce projet nous utiliserons une notation specifique pour représenter un nombre
 non-signé de taille variable: ``struct bitstring``. Nous vous demandons de
 définir vous même cette structure afin d'implémenter éfficacement les fonctions
-déclarés dans le fichier :download:`/Projets/P1/src/bitstring.h` dans un fichier
-``bitstring.c``.
+déclarés dans le fichier :download:`/Projets/P1/src/bitstring.h` dans un
+fichier ``bitstring.c``. Vous devez partir du code fourni dans l'archive
+:download:`/Projets/P1/projet-1.tar.gz`. L'archive contient déjà un fichier
+``test.c`` qui contient un exemple d'utilisation de la librarie CUnit (voir
+:ref:`ref_cunit` pour installer la librarie). Vous devez bien entendu compléter
+ce fichier pour la soumission.
 
 Ce projet sera évalué et comptera dans la note finale. Les critères de cotations (non-exhaustifs) sont les suivants:
 
