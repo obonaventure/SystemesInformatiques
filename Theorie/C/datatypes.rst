@@ -333,7 +333,7 @@ Un tableau à une dimension peut s'utiliser avec une syntaxe similaire à celle 
    :end-before: ///DDD
 
 
-C permet aussi la manipulation de matrices carrées ou rectangulaires qui sont composées d'éléments d'un même type. L'exemple ci-dessous calcule l'élément minimum d'une matrice rectangulaire. Il utilise la constante ``FLT_MAX`` qui correspond au plus grand nombre réel représentable avec un ``float`` qui est définie dans `float.h`_. 
+C permet aussi la manipulation de matrices carrées ou rectangulaires qui sont composées d'éléments d'un même type. L'exemple ci-dessous calcule l'élément minimum d'une matrice rectangulaire. Il utilise la constante ``FLT_MAX`` qui correspond au plus grand nombre réel représentable avec un ``float`` qui est définie dans `float.h`_.
 
 .. literalinclude:: /Theorie/C/S2-src/array.c
    :language: c
@@ -353,8 +353,8 @@ différentes. Cinq bits ne permettent pas facilement de représenter à
 la fois les chiffres et les lettres et les premiers ordinateurs
 utilisaient différentes astuces pour supporter ces caractères sur 5
 bits.  Ensuite, des représentations sur six puis sept et huit bits
-ont été utilisées. Au début des années septante le code de caractères
-ASCII sur ``7`` et ``8`` bits s'est imposé sur un grande nombre
+ont été utilisées. Au début des années septante, le code de caractères
+ASCII sur ``7`` et ``8`` bits s'est imposé sur un grand nombre
 d'ordinateurs et a été utilisé comme standard pour de nombreuses
 applications et notamment sur Internet :rfc:`20`. La table de
 caractères ASCII définit une correspondance entre des séquences de
@@ -403,7 +403,7 @@ développerez des applications qui doivent traiter du texte dans
 différentes langues.
 A titre d'exemple, la fonction `toupper(3)`_ qui est implémentée dans
 les versions actuelles de Linux est nettement plus complexe que celle
-que nous avons vu ci-dessus. Tout d'abord, la fonction `toupper(3)`_
+que nous avons vue ci-dessus. Tout d'abord, la fonction `toupper(3)`_
 prend comme argument un ``int`` et non un ``char``. Cela lui permet
 d'accepter des caractères dans n'importe quel encodage. Ensuite, le
 traitement qu'elle effectue dépend du type d'encodage qui a été
@@ -468,7 +468,7 @@ sur la façon dont un programme manipule un tableau. En C, il est tout
 En Java, tous les accès au tableau ``name`` en dehors de la zone
 mémoire réservée provoqueraient une ``ArrayOutOfBoundException``. En
 C, il n'y a pas de mécanisme d'exception et le langage présuppose que
-lorsqu'un programmeur écrit ``name[i]`` il a la garantie qui la valeur
+lorsqu'un programmeur écrit ``name[i]``, il a la garantie que la valeur
 ``i`` sera telle qu'il accédera bien à un élément valide du tableau
 ``name``. Ce choix de conception du C permet d'obtenir du code plus
 efficace qu'avec Java puisque l'interpréteur Java doit vérifier tous
@@ -493,7 +493,7 @@ mémoire. Cependant, comme nous le verrons plus tard, c'est le
 programmeur qui doit explicitement allouer et désallouer la mémoire.
 
 Les `pointeurs` sont une des caractéristiques principales du langage C
-par rapport à de nombreux autres langage. Un :term:`pointeur` est
+par rapport à de nombreux autres langages. Un :term:`pointeur` est
 défini comme étant une variable contenant l'adresse d'une autre
 variable. Pour bien comprendre le fonctionnement des pointeurs, il est
 important d'avoir en tête la façon dont la mémoire est organisée sur
@@ -578,7 +578,7 @@ L'exécution de ce fragment de programme produit la sortie suivante.
 L'intérêt des pointeurs en C réside dans la possibilité de les
 utiliser pour accéder et manipuler des données se trouvant en mémoire
 de façon efficace. En C, chaque pointeur a un type et le type du
-pointeur indique le type de donnée qui est stocké dans une zone
+pointeur indique le type de la donnée qui est stockée dans une zone
 mémoire particulière. Le type est associé au pointeur lors de la
 déclaration de celui-ci.
 
@@ -590,9 +590,9 @@ déclaration de celui-ci.
    char *ptr_c;    // pointeur vers un char
    
 
-Grâce aux pointeurs il est possible non seulement d'accéder à
+Grâce aux pointeurs, il est possible non seulement d'accéder à
 l'adresse où une donnée est stockée, mais aussi d'accéder à la valeur
-qui est stockée dans la zone mémoire pointée par le pointeur en utilisation
+qui est stockée dans la zone mémoire pointée par le pointeur en utilisant
 l'expression ``*ptr``. Il est
 également possible d'effectuer des calculs sur les pointeurs comme
 représenté dans l'exemple ci-dessous.
@@ -623,7 +623,7 @@ caractères peut se réécrire comme suit.
    :end-before: ///BBB
 
 
-Les pointeurs sont fréquemment utilisés dans les programmes écrits en langage C et il est important de bien comprendre leur fonctionnement. Un point important à bien comprendre est ce que l'on appelle l'`arithmétique des pointeurs`, c'est-à-dire la façon dont les opérations sur les pointeurs sont exécutées en langage C. Pour cela, il est intéressant de considérez la manipulation d'un tableau d'entiers à travers des pointeurs.
+Les pointeurs sont fréquemment utilisés dans les programmes écrits en langage C et il est important de bien comprendre leur fonctionnement. Un point important à bien comprendre est ce que l'on appelle l'`arithmétique des pointeurs`, c'est-à-dire la façon dont les opérations sur les pointeurs sont exécutées en langage C. Pour cela, il est intéressant de considérer la manipulation d'un tableau d'entiers à travers des pointeurs.
 
 .. literalinclude:: /Theorie/C/src/ptr_arith.c
    :encoding: iso-8859-1
@@ -714,7 +714,7 @@ Les structures permettent de facilement regrouper des données qui sont logiquem
 
 Dans les premières versions du langage C, une structure devait nécessairement contenir uniquement des données qui ont une taille fixe, c'est-à-dire des nombres, des caractères, des pointeurs ou des tableaux de taille fixe. Il n'était pas possible de stocker des tableaux de taille variable comme une chaîne de caractères ``char []``. Les compilateurs récents [C99]_ permettent de supporter des tableaux flexibles à l'intérieur de structures. Nous ne les utiliserons cependant pas dans le cadre de ce cours.
 
-Les structures sont utilisées dans différentes librairies et appels systèmes sous Unix et Linux. Un exemple classique est la gestion du temps sur un système Unix. Un système informatique contient généralement une horloge dite `temps-réel` qui est en pratique construite autour d'un crystal qui oscille à une fréquence fixée. Ce crystal est piloté par un circuit électronique qui compte ses oscillations, ce qui permet de mesurer le passage du temps. Le système d'exploitation utilise cette horloge `temps réel` pour diverses fonctions et notamment la mesure du temps du niveau des applications. 
+Les structures sont utilisées dans différentes librairies et appels systèmes sous Unix et Linux. Un exemple classique est la gestion du temps sur un système Unix. Un système informatique contient généralement une horloge dite `temps-réel` qui est en pratique construite autour d'un cristal qui oscille à une fréquence fixée. Ce cristal est piloté par un circuit électronique qui compte ses oscillations, ce qui permet de mesurer le passage du temps. Le système d'exploitation utilise cette horloge `temps réel` pour diverses fonctions et notamment la mesure du temps du niveau des applications.
 
 Un système de type Unix maintient différentes structures qui sont associées à la mesure du temps [#ftimelibc]_. La première sert à mesurer le nombre de secondes et de microsecondes qui se sont écoulées depuis le 1er janvier 1970. Cette structure, baptisée ``struct timeval`` est définie dans `sys/time.h`_ comme suit :
 
@@ -725,7 +725,7 @@ Un système de type Unix maintient différentes structures qui sont associées �
              suseconds_t  tv_usec;  /* and microseconds */
      };
 
-Cette structure est utilisée par des appels système tels que `gettimeofday(2)`_ pour notamment récupérer l'heure courante ou les appels de manipulation de timers tels que `getitimer(2)`_ / `setitimer(2)`_. Elle est aussi utilisée par la fonction `time(3posix)`_ de la librairie standard et est très utile pour mesure les performances d'un programme.
+Cette structure est utilisée par des appels système tels que `gettimeofday(2)`_ pour notamment récupérer l'heure courante ou les appels de manipulation de timers tels que `getitimer(2)`_ / `setitimer(2)`_. Elle est aussi utilisée par la fonction `time(3posix)`_ de la librairie standard et est très utile pour mesurer les performances d'un programme.
 
 Les structures sont également fréquemment utilisées pour représenter des formats de données spéciaux sur disque comme le format des répertoires [#fdirent]_ ou les formats de paquets qui sont échangés sur le réseau [#freseau]_. 
 
@@ -738,7 +738,7 @@ La définition de ``struct timeval`` utilise une fonctionnalité fréquemment ut
    :end-before: ///BBB
 
 
-Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeables à l'intérieur du programme une fois qu'ils ont été définis. 
+Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeable à l'intérieur du programme une fois qu'ils ont été définis.
 
 .. note:: ``typedef`` en pratique
 
