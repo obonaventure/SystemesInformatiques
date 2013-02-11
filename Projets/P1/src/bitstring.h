@@ -14,60 +14,66 @@ typedef enum {
         BITSET = 1
 } bit_t;
 
-/* Alloue un bitstring de <code>n</code> bits initialisés à 0 */
+/* Alloue un bitstring de 'n' bits initialisés à 0.
+ * 'n' est un multiple de 8!
+ *
+ * En cas d'erreur, NULL est retourné.
+ */
 bitstring_t *bitstring_alloc(size_t n);
 
-/* Met le <code>n</code>ième bit à la valeur de <code>bit</code>
- * du bitstring <code>b</code>
+/* Alloue un bitstring dont la séquence de bits représente 'x'.
  *
- * <code>n</code> est plus grand ou égal à 0 et strictement plus petit que 
- * <code>bitstring_len(b)</code>
+ * En cas d'erreur, NULL est retourné.
+ */
+bitstring_t *bitstring_alloc_from_int(unsigned int x);
+
+/* Met le n'ième bit à la valeur de bit
+ * du bitstring 'b'
+ *
+ * 'n' est plus grand ou égal à 0 et strictement plus petit que 
+ * bitstring_len(b)
  */
 void bitstring_set(bitstring_t *b, unsigned int n, bit_t bit);
 
-/* Retourne la valeur du <code>n</code>ième bit du bitstring <code>b</code>
+/* Retourne la valeur du n'ième bit du bitstring 'b'
  *
- * <code>n</code> est plus grand ou égal à 0 et strictement plus petit que 
- * <code>bitstring_len(b)</code>
+ * 'n' est plus grand ou égal à 0 et strictement plus petit que 
+ * bitstring_len(b)
  */
 bit_t bitstring_get(bitstring_t *b, int n);
 
 /* Renvoi la longueur du bitstring */
 size_t bitstring_len(bitstring_t *b);
 
-/* Applique une rotation vers la gauche de <code>n</code> bits sur le bitstring
- * <code>b</code>.
- * Par exemple, pour un <code>b = 0111101</code> et <code>n = 3</code>,
- * <code>b</code> deviendra <code>1101011</code> après l'appel à cette fonction.
+/* Applique une rotation vers la gauche de 'n' bits sur le bitstring
+ * 'b'.
+ * Par exemple, pour un b = 00111101 et n = 3,
+ * b deviendra 11101001 après l'appel à cette fonction.
  */
 void bitstring_rotate(bitstring_t *b, int n);
 
-/* Applique un déclage de <code>n</code> bits vers la gauche sur le bitstring
- * <code>b</code> sans perte d'information. Les nouveaux bits ajoutés sont des
- * <code>0</code>. Après l'appel de cette fonction le nombre de bits de
- * <code>b</code> est donc augementée de <code>n</code>.
- * Par exemple, pour un <code>b = 0111101</code> et <code>n = 3</code>,
- * <code>b</code> deviendra <code>0111101000</code> après l'appel à cette
- * fonction.
+/* Concate les bitstrings de 'b1' et 'b2'.
  *
- * La valeur de retour est 0 en cas de succès, -1 en cas d'erreur.
+ * Le résultat est stocké dans 'b1'.
+ *
+ * Retourne 0 en cas de succès, -1 en cas d'erreur.
  */
-int bitstring_shift(bitstring_t *b, int n);
+int bitstring_concat(bitstring_t *b1, bitstring_t *b2);
 
-/* Effectue l'opération ou exclusif entre <code>b1</code> et <code>b2</code> 
- * (<code>b1 ^ b2</code>).
+/* Effectue l'opération ou exclusif entre 'b1' et 'b2' 
+ * (b1 ^ b2).
  *
- * Si les bitstring <code>b1</code> et <code>b2</code> sont de taille
+ * Si les bitstring 'b1' et 'b2' sont de taille
  * différente, une erreur est renvoyée. Sinon, le résultat est fourni à
- * l'appellant via <code>res</code>. <code>b1</code> et <code>b2</code>
- * sont inchangés.
+ * l'appellant via 'res'. 'b1' et 'b2' sont inchangés.
+ *
  * La valeur de retour est 0 en cas de succès, -1 en cas d'erreur.
  */
 int bitstring_xor(bitstring_t *b1, bitstring_t *b2, bitstring_t **res);
 
-/* Affiche en représentation hexadécimale le bitstring <code>b</code> dans
- * le buffer <code>buf</code> de taille <code>len</code>. Retourne 
- * <code>-1</code> si le buffer ne peut contenir toute la representation.
+/* Affiche en représentation hexadécimale le bitstring 'b' dans
+ * le buffer 'buf' de taille 'len'.
+ * Retourne -1 si le buffer ne peut contenir toute la representation.
  * Retourne le nombre de caractères hexadécimals (+'\0') écrits sinon. 
  */
 int bitstring_print(bitstring_t *b, char *buf, size_t len);
