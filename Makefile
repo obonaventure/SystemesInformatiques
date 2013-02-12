@@ -156,6 +156,6 @@ qcm:
 	@for dir in Exercices/QCM/S*; do make -C $${dir}; done
 
 projets:
-	@for dir in Projets/P*; do [ -e $${dir}/Makefile ] && echo make -C $${dir}; true; done
+	@for dir in Projets/P*; do [ -e $${dir}/Makefile ] && make -C $${dir}; true; done
 
 sinf1252: qcm projets html latexpdf epub
