@@ -98,7 +98,7 @@ Question 2. Portée des variables
 
 L'extrait ci-dessous provient d'un programme écrit par un étudiant.
 
- .. code-block::
+ .. code-block:: c
 
     #include <stdio.h>
     int i = 1252;                
@@ -361,7 +361,6 @@ Les fonctions `malloc(3)`_ et `free(3)`_ sont importantes pour la manipulation d
        void *realloc(void *ptr, size_t len)
        {
          void *r;
-
 	 r = malloc(len);
 	 memcpy(r, ptr, len);
 	 return r;
@@ -379,7 +378,7 @@ Les fonctions `malloc(3)`_ et `free(3)`_ sont importantes pour la manipulation d
 
        void *realloc(void *ptr, size_t len)
        {
-         return calloc(len);
+         return malloc(len);
        }
     
 
@@ -562,7 +561,6 @@ une implémentation de `strdup(3)`_ ?
          void *new = malloc (strlen(s+1));
          return memcpy(new, s, strlen(s+1));
      }
-
 
 -   
   .. code-block:: c
