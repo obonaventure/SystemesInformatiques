@@ -11,7 +11,5 @@ définir).
 
 .. _projet1:
 
-Premier Projet: Manipulation de bits
-------------------------------------
 
-.. include:: ./P1/projet-1.rst
+

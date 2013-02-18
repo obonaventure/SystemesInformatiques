@@ -2,6 +2,8 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+.. _ordinateurs:
+
 
 Organisation des ordinateurs
 ============================
@@ -98,6 +100,8 @@ Pour les opérations d'écriture, la situation est plus compliquée. Si le proce
 
 
 .. C'est particulièrement important lorsque des dispositifs tels qu'une carte réseau ou un controleur de disque dur peuvent aller lire des données en mémoire. Ces dispositifs doivent trouver en mémoire :term:`RAM` la dernière donnée écrite par le processeur 
+
+.. _ia32:
 
 Etude de cas : Architecture [IA32]_
 ===================================

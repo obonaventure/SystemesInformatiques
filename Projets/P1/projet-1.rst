@@ -2,6 +2,11 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+.. _projet1:
+
+Premier Projet: Manipulation de bits
+------------------------------------
+
 On vous demande d'implémenter quelques fonctions de manipulation de bits. Dans
 ce projet nous utiliserons une notation specifique pour représenter un nombre
 non-signé de taille variable: ``struct bitstring``. Nous vous demandons de

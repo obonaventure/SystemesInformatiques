@@ -7,9 +7,10 @@
 --------------------
 
 #. La zone mémoire utilisée diffère d'un type primitif à un autre. Ecrivez un code qui permet d'afficher le nombre de bytes utilisés sur un système 64 bits (une machine des salles) et une machine 32 bits (sirius, voir section :ref:`ssh`) pour représenter un ``int``, ``long``, ``void *``, ``char *``, ``size_t`` et ``uint64_t``. Expliquez les différences.
+
         .. important::
 
-                Il est nécessaire de recompiler le code source si vous voulez exécuter le binaire sur une autre architecture.
+                Il est nécessaire de recompiler le code source si vous voulez exécuter le binaire sur une autre architecture. Le type ``uint64_t`` est défini dans `stdint.h`_.
                 Sur sirius ``gcc`` n'est pas forcément disponible, il faut dans ce cas utiliser ``cc`` à la place.
 
 #. En utilisant des opérations binaires (décalage, and, or, ...), définissez un algorithme efficace pour trouver la valeur du bit le moins significatif d'un entier ``i`` (ex, 8 pour 56, 16 pour 208).
