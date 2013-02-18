@@ -86,7 +86,7 @@ La commande `ls(1)`_ permet de lister le contenu d'un répertoire. Elle supporte
 
   .. class:: comment
 
-     Relisez la page de manuel de `ls(1)`_. Sous Unix, le shell va remplacer ``*`` par l'ensemble des fichiers présents dans le répertoire courant
+     Relisez la page de manuel de `ls(1)`_. Sous Unix, l'appel à `ls(1)`_ sans argument dans le shell affichera l'ensemble des fichiers présents dans le répertoire courant
 
 
 
