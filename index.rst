@@ -88,7 +88,7 @@ Projets
 .. toctree::
    :maxdepth: 2
 
-   Projets/index
+   Projets/P1/projet-1
 
 ******
 Outils
@@ -102,6 +102,8 @@ Outils
    Outils/ssh
    Outils/cunit
    Outils/processus
+   Outils/valgrind
+   Outils/gdb
 
 *******
 Annexes
