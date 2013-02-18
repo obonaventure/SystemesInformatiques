@@ -41,11 +41,10 @@ Séance tutorée
    
    Programmes/prog-2
 
-
 Troisième semaine
 -----------------
 
-La matière couverte cette semaine correspond à la section relative à l'`organisation de la mémoire <http://sinf1252.info.ucl.ac.be/Theorie/C/malloc/#organisation-de-la-memoire>`_ 
+La matière couverte cette semaine correspond aux section relative à l'`organisation de la mémoire <http://sinf1252.info.ucl.ac.be/Theorie/C/malloc/#organisation-de-la-memoire>`_ 
 
 .. only:: html
 
@@ -59,3 +58,29 @@ Séance tutorée
    :maxdepth: 2
    
    Programmes/prog-3
+
+
+
+Quatrième semaine
+-----------------
+
+La matière couverte cette semaine correspond aux sections :
+
+ - :ref:`ordinateurs`
+ - :ref:`ia32` 
+
+.. only:: html
+
+   `QCM4 </static/_static/Mission-4-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-4
+
+
+
