@@ -282,7 +282,7 @@ Parmi les groupes d'affirmations ci-dessous, un seul ne contient que des affirma
 
   .. class:: comment
 
-     Les trois affirmations sont fausses.
+     Les trois affirmations sont fausses. ``argc`` sera toujours initialisé à un vu que le nom du programme est toujours passé en argument. Le premier élément du tableau ``argv[]``, ``argv[0]``, est le nom du programme qui est exécuté. Enfin, la fonction ``atoi`` permet de convertir une chaîne de caractères en l'entier équivalent.
 
 -  
   - Lors de l'exécution de la fonction ``main``, ``argc`` est le nombre maximum d'arguments que l'on peut lui passer.
@@ -291,7 +291,7 @@ Parmi les groupes d'affirmations ci-dessous, un seul ne contient que des affirma
 
   .. class:: comment
 
-     Les deux premières affirmations sont fausses.
+     Les deux premières affirmations sont fausses. ``argc`` contient le nombre d'arguments passés effectivement au programme. Le premier élément du tableau ``argv[]``, ``argv[0]``, est le nom du programme qui est exécuté.
 
 -  
   - Lors de l'exécution de la fonction ``main``, le tableau ``argv[]`` contient dans ```argv[0]`` le premier argument, dans ``argv[1]`` le second argument, etc.
