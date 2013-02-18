@@ -12,7 +12,7 @@ Exercices
 	* Ecrivez en C une fonction d'initialisation de cette zone mémoire qui ne profite pas du tout de la localité spatiale
 	* Comparez les performances des deux programmes que vous avez écrit. Si nécessaire, désactivez l'optimisation du compilateur.
 
-#. Un programmeur doit manipuler des tableaux contenant 100.000.000 éléments. Chaque élément du tableau contient un nombre réel et une chaîne contenant 40 caractères. Une opération très courante à effectuer est de calculer la some de tous les éléments du tableau. A votre avis, quelles seront les performances des deux implémentations suivantes de ce programme :
+#. Un programmeur doit manipuler des tableaux contenant 100.000.000 éléments. Chaque élément du tableau contient un nombre réel et une chaîne contenant 40 caractères. Une opération très courante à effectuer est de calculer la somme de tous les éléments du tableau. A votre avis, quelles seront les performances des deux implémentations suivantes de ce programme :
 
 	* Le tableau est implémenté comme un tableau contenant 100.000.000 structures avec dans chaque structure un ``float`` et un ``char c[40]``.
 	* Le tableau est implémenté comme deux tableaux distincts. Le premier contient tous les ``float`` et le second toutes les chaînes de caractères.
@@ -25,7 +25,7 @@ Exercices
 		:start-after: ///AAA
 		:end-before: ///BBB
 
-#. Dans le cours théorique, nous avons parlé des instructions ``set`` qui permettent de fixer la valeur d'un byte d'un registre en fonction de la valeur des drapeaux du registre ``eflags``. Comment feriez-vous pour compiler en assembleur la ligne ```b=(a>0)`` sans utilisez cette instruction et en sachant que les valeurs de ``a`` et ``b`` sont initialement dans les registres ``%eax`` et ``%ecx``. Pour répondre à cette question, écrivez d'abord un code en C semblable au code ci-dessous :
+#. Dans le cours théorique, nous avons parlé des instructions ``set`` qui permettent de fixer la valeur d'un byte d'un registre en fonction de la valeur des drapeaux du registre ``eflags``. Comment feriez-vous pour compiler en assembleur la ligne ``b=(a>0)`` sans utilisez cette instruction et en sachant que les valeurs de ``a`` et ``b`` sont initialement dans les registres ``%eax`` et ``%ecx``. Pour répondre à cette question, écrivez d'abord un code en C semblable au code ci-dessous :
 
 	.. code-block:: c
 
