@@ -13,7 +13,6 @@ $(TEST): $(OBJ)
 	$(CC) -o $@ $(OBJ) $(LDFLAGS)
 
 test: $(TEST)
-	@LD_LIBRARY_PATH=$HOME/local/lib ./$(TEST) 
+	@LD_LIBRARY_PATH=$(HOME)/local/lib ./$(TEST) 
 
 .PHONY: exec test
-
