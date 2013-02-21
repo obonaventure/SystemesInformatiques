@@ -20,7 +20,7 @@ union u_t {
   char c;
 } u;
 
-//BBB
+///BBB
 
 typedef enum { INTEGER, CHAR } Type;
 
