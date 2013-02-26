@@ -104,7 +104,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule est la t
 Question 2. Pointeurs et tableaux
 ---------------------------------
 
-Les pointeurs peuvent être utilisés pour accéder à des tableaux. Considérons une fragment de code C utilisant un tableau d'entiers à une dimension :
+Les pointeurs peuvent être utilisés pour accéder à des tableaux. Considérons un fragment de code C utilisant un tableau d'entiers à une dimension :
 
 .. code-block:: c
 
@@ -114,7 +114,7 @@ Les pointeurs peuvent être utilisés pour accéder à des tableaux. Considéron
    printf("%d %d %d %d\n",a[0],a[1],a[2],a[a[3]]);
 
 
-Lors de son exécution, ce programme affiche ``2 4 3 4 8`` sur sa sortie standard.
+Lors de son exécution, ce programme affiche ``2 4 3 8`` sur sa sortie standard.
 
 Après exécution de ``ptr=&(a[0]);``, une seule des instructions ci-dessous affiche la même séquence de chiffres. Laquelle ?
 
@@ -154,7 +154,7 @@ Après exécution de ``ptr=&(a[0]);``, une seule des instructions ci-dessous aff
 
  .. class:: comment
 
-    Cette ligne affiche ``4 4 8 4``. ``*(ptr+0)`` est ``a[0]`` et non ``a[1]``.
+    Cette ligne affiche ``2 2 4 5``. ``*(ptr+0)`` est ``a[0]`` et non ``a[1]``.
 
 -
  .. code-block:: c
@@ -198,11 +198,12 @@ A côté de la notation ``argv[i]``, il est aussi possible d'accéder à ``argv`
    .. code-block:: c
 
        char **ptr;
+       int i=0;
        ptr=argv;
        while(i<argc) {
          printf("%d %p %s\n",i,&(*ptr),*ptr);
        	 i++;
-       	 ptr3++;
+       	 ptr++;
        }
 
 
@@ -212,6 +213,7 @@ A côté de la notation ``argv[i]``, il est aussi possible d'accéder à ``argv`
    .. code-block:: c
 
       char **ptr;
+      int i=0;
       ptr=argv;
       while(i<argc) {
         printf("%d %p %s\n",i,&(ptr),*ptr);
@@ -235,6 +237,7 @@ A côté de la notation ``argv[i]``, il est aussi possible d'accéder à ``argv`
    .. code-block:: c
 
       char *ptr;
+      int i=0;
       ptr=*argv;
       while(i<argc) {
         printf("%d %p %s\n",i,&(ptr),*ptr);
@@ -249,6 +252,7 @@ A côté de la notation ``argv[i]``, il est aussi possible d'accéder à ``argv`
 - 
    .. code-block:: c
 
+      int i=0;
       while(i<argc) {
          printf("%d %p %s\n",i,&(argv+i),*(argv+i));
     	 i++;
@@ -261,9 +265,10 @@ A côté de la notation ``argv[i]``, il est aussi possible d'accéder à ``argv`
 -
    .. code-block:: c
 
+      int i=0;
       while(i<argc) {
-       printf("%d %p %s\n",i,&(*(argv+i)),(argv+i));
-       i++;
+        printf("%d %p %s\n",i,&(*(argv+i)),(argv+i));
+        i++;
       }
 
 
@@ -333,7 +338,7 @@ Question 5. Variable ``errno``
 ------------------------------
 
 
-En C, la variable ``errno`` est utilisée par le système pour fournir une indication sur une erreur qui s'est produite lors de l'exécution d'un appel système ou d'une fonction de la librairie. Parmi les fonctions ci-dessous, une seule ne modifie par ``errno`` en cas d'erreur. Laquelle ?
+En C, la variable ``errno`` est utilisée par le système pour fournir une indication sur une erreur qui s'est produite lors de l'exécution d'un appel système ou d'une fonction de la librairie. Parmi les fonctions ci-dessous, une seule ne modifie pas ``errno`` en cas d'erreur. Laquelle ?
 
 .. class:: positive
 
@@ -396,6 +401,7 @@ La fonction `pthread_create(3)`_ permet de créer un thread. Parmi les fragments
 
       pthread_t t;
       int err;
+      char *s;
       err=pthread_create(&t,NULL,&(f),(void *) s); 
     }
 
