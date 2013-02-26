@@ -91,4 +91,18 @@ La matière couverte cette semaine correspond aux sections :
  - :ref:`thread`
 
 
+.. only:: html
+
+   `QCM5 </static/_static/Mission-5-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-5
+
+
 
