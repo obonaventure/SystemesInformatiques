@@ -21,19 +21,19 @@ Exercices
 
 #. Un étudiant souhaite passer un tableau d'entiers comme argument à un thread et écrit le code suivant. Qu'en pensez-vous ?
 
- .. literalinclude:: /Programmes/Exercices/src/pthread-array.c
-    :encoding: iso-8859-1
-    :language: c
-    :start-after: ///AAA
+   .. literalinclude:: /Exercices/Programmes/src/pthread-array.c
+      :encoding: iso-8859-1
+      :language: c
+      :start-after: ///AAA
 
 #. Considérons le programme de test des threads POSIX ci-dessous. Ce programme utilise 4 threads qui incrémentent chacun un million de fois une variable globale. 
 
- .. literalinclude:: /Exercices/Programmes/src/pthread-test.c
-    :encoding: iso-8859-1
-    :language: c
-    :start-after: ///AAA
+   .. literalinclude:: /Exercices/Programmes/src/pthread-test.c
+      :encoding: iso-8859-1
+      :language: c
+      :start-after: ///AAA
  
- Exécutez ce programme (:download:`/Exercices/Programmes/src/pthread-test.c`) et observez le résultat qu'il affiche à l'écran. Pouvez-vous expliquer le comportement de ce programme ?
+   Exécutez ce programme (:download:`/Exercices/Programmes/src/pthread-test.c`) et observez le résultat qu'il affiche à l'écran. Pouvez-vous expliquer le comportement de ce programme ?
  
 #. Résolvez des sudokus. Exercice disponible sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/42>`_.
 
