@@ -57,7 +57,7 @@ Un exemple d'utilisation du programme est le suivant:
 
 Vous devez donc vous baser sur le code existant afin de paralléliser le chiffrement/déchiffrement des mots de passes. Vous ne devez pas nécéssairement afficher les mots de passes (ou chiffrés) dans l'ordre. Vous devez cependant ajouter un argument ``-t`` au programme qui définit le nombre de thread que le programme exécutera en parallèle. 
 
-On vous demande également d'évaluer l'impact des arguments ``-t`` et ``-n`` sur l'exécution du programme. Pensez à executer votre programme avec un argument ``-n`` suffisement grand si vous voulez évaluer l'impact de ``-t``. On vous demande plus spécifiquement de générer un graphique qui montre pour différente valeur le temps de calcul. Vous pouvez utiliser `time(1)`_ afin de récuperer le temps d'exécution d'un programme:
+On vous demande également d'évaluer l'impact des arguments ``-t`` et ``-n`` sur l'exécution du programme. Pensez à executer votre programme avec un argument ``-n`` suffisamment grand si vous voulez évaluer l'impact de ``-t``. On vous demande plus spécifiquement de générer un graphique qui montre pour différente valeur le temps de calcul. Vous pouvez utiliser `time(1)`_ afin de récuperer le temps d'exécution d'un programme:
 
     .. code-block:: c
         
