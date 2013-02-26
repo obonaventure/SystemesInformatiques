@@ -82,5 +82,13 @@ Séance tutorée
    
    Programmes/prog-4
 
+Cinquième semaine
+-----------------
+
+La matière couverte cette semaine correspond aux sections :
+
+ - :ref:`complementsC` 
+ - :ref:`thread`
+
 
 
