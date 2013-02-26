@@ -6,13 +6,8 @@
 Exercices
 =========
 
-#. Considérons un tableau contenant des fractions. Chacun de ces fractions est définie en utilisant la structure ``fraction_t``. Comment feriez-vous pour trier ce tableau en ordre croissant en utilisant `qsort(3)`_ ? Ecrivez la fonction de comparaison et l'appel à `qsort(3)`_
-
-#. Proposez une implémentation d'un sous-ensemble de la fonction `strsep(3)`_ de la librairie. Pour votre implémentation, supposez que votre version de `strsep(3)`_ est toujours appelée avec un pointeur vers un seul caractère comme second argument. Comparez votre implémentation avec celle de la librairie standard.
 
 #. La fonction `pthread_join(3)`_ utilise un deuxième argument de type ``void **``. Pourquoi est-il nécessaire d'utiliser un pointeur vers un pointeur et pas simplement un pointeur ``void *`` ?
-
-#. Le programme :download:`/Exercices/Programmes/src/stack.c` que nous avons vu précédemment implémente un stack en utilisant un pointer vers le sommet de la pile qui est une variable globale. Comment pourriez-vous réécrire les fonctions ``push`` et ``pop`` de façon à ce qu'elles puissent être génériques et s'appliquer à une pile quelconque qui est indiquée dans leur premier argument. Astuce: pensez à utiliser des pointeurs vers des pointeurs.
 
 #. A votre avis, pourquoi le premier argument de la fonction `pthread_create(3)`_ est-il un pointeur de type `pthread_t *` alors que le premier argument de la fonction `pthread_join(3)`_ est lui simplement de type `pthread_t`?
 
