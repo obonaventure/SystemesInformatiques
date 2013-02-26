@@ -18,7 +18,7 @@ Exercices
 
 #. Avec les threads POSIX, comment peut-on passer plusieurs arguments à la fonction démarrée par `pthread_create(3)`_ ? Ecrivez un petit exemple en C qui permet de passer un entier et un caractère à cette fonction.
 
-#. Avec les threads POSIX, est-il possible de récupérer un tableau d'entiers comme résultat d'exécution d'un thread ? Si oui, écrivez le code permettant de créer un thread qui initialise un tableau de ``n`` entiers à la valeur ``1`` et retourne ce tableau. Si non, expliquez pourquoi.
+#. Ecrivez un code qui permet de récupérer un tableau d'entier d'un thread. Exercice disponible sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/41>`_.
 
 #. Essayez de lancer un grand nombre de threads d'exécution sur votre machine. Quel est le nombre maximum de threads que `pthread_create(3)`_ vous autorise de lancer ?
 
@@ -39,4 +39,6 @@ Exercices
     :start-after: ///AAA
  
  Exécutez ce programme (:download:`/Exercices/Programmes/src/pthread-test.c`) et observez le résultat qu'il affiche à l'écran. Pouvez-vous expliquer le comportement de ce programme ?
+ 
+#. Résolvez des sudokus. Exercice disponible sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/42>`_.
 

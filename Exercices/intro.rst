@@ -88,7 +88,7 @@ Cinquième semaine
 La matière couverte cette semaine correspond aux sections :
 
  - :ref:`complementsC` 
- - :ref:`thread`
+ - :ref:`threads`
 
 
 .. only:: html
