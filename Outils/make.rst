@@ -20,6 +20,20 @@ Un Makefile est composé d'un ensemble de règles de la forme:
 
 Chaque règle commence par une ligne de dépendance qui défini une ou plusieurs cibles (``target``) suivies par le caractère ``:`` et éventuellement une liste de composants (``components``) dont dépend la cible. Une cible ou un composant peut-être un ficher ou un simple label.
 
+Il est important de se rendre compte que l'espacement derrière les ``command``
+doit impérativement commencer par une *tabulation*.
+Ça ne peut pas commencer par des espaces.
+Il ne faut pas non plus confondre la touche tabulation du clavier
+qui est souvent interprétée par les éditeurs de texte
+par une indentation et le caractère de tabulation
+(souvent écrit ``\\t`` comme en C ou en bash) qui sont souvent affichés
+avec 2, 3, 4 ou 8 espacements en fonction des préférences de l'utilisateur.
+On parle bien ici du caractère de tabulation.
+Heureusement, bien que beaucoup de gens configurent
+leur éditeur de texte pour indenter avec des espaces,
+la plupart des bons éditeurs reconnaissent que c'est
+un Makefile et indentent avec des tabulations.
+
 Le fichier suivant reprend un exemple de règle où la cible et le composant sont des fichiers. 
 	
 	.. code-block:: make
