@@ -27,8 +27,8 @@ bitstring_t *bitstring_alloc(size_t n);
  */
 bitstring_t *bitstring_alloc_from_int(unsigned int x);
 
-/* Met le n'ième bit à la valeur de bit
- * du bitstring 'b'
+/* Met le n'ième bit du bitstring 'b' à la valeur de 'bit'.
+ * Pour trouver le n'ième bit on compte à partir du bit de poids fort.
  *
  * 'n' est plus grand ou égal à 0 et strictement plus petit que 
  * bitstring_len(b)
@@ -36,6 +36,7 @@ bitstring_t *bitstring_alloc_from_int(unsigned int x);
 void bitstring_set(bitstring_t *b, unsigned int n, bit_t bit);
 
 /* Retourne la valeur du n'ième bit du bitstring 'b'
+ * Pour trouver le n'ième bit on compte à partir du bit de poids fort.
  *
  * 'n' est plus grand ou égal à 0 et strictement plus petit que 
  * bitstring_len(b)

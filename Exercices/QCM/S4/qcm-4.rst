@@ -18,6 +18,8 @@ Quatrième semaine
 
 Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
 
+ - :ref:`ordinateurs`
+ - :ref:`ia32` 
 
 Question 1. Instruction ``mov``
 -------------------------------

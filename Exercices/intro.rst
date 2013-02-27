@@ -82,5 +82,27 @@ Séance tutorée
    
    Programmes/prog-4
 
+Cinquième semaine
+-----------------
+
+La matière couverte cette semaine correspond aux sections :
+
+ - :ref:`complementsC` 
+ - :ref:`threads`
+
+
+.. only:: html
+
+   `QCM5 </static/_static/Mission-5-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-5
+
 
 
