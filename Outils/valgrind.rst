@@ -32,3 +32,31 @@ On vous encourage à lancer `valgrind(1)`_ sur votre projet pour vérifier que v
 	* http://valgrind.org
 
 
+Détecter les deadlocks avec ``valgrind``
+----------------------------------------
+
+`valgrind(1)`_ contient des outils qui vont au-delà des simples tests de l'allocation de la mémoire. Notamment l'outil ``helgrind`` permet de détecter des deadlocks. Utilisez ``helgrind`` sur le petit programme :download:`/Outils/src/thread_crash.c` en faisant:
+
+        .. code-block:: console
+
+                $ valgrind --tool=helgrind [my binary]
+                
+                ==24314== Helgrind, a thread error detector
+                ==24314== Copyright (C) 2007-2010, and GNU GPL'd, by OpenWorks LLP et al.
+                ==24314== Using Valgrind-3.6.1-Debian and LibVEX; rerun with -h for copyright info
+                ==24314== Command: ./thread_crash
+                ==24314==
+                ==24314== Thread #2 was created
+                ==24314==    at 0x512E85E: clone (clone.S:77)
+                ==24314==    by 0x4E36E7F: do_clone.constprop.3 (createthread.c:75)
+                ==24314==    by 0x4E38604: pthread_create@@GLIBC_2.2.5 (createthread.c:256)
+                ==24314==    by 0x4C29B23: pthread_create_WRK (hg_intercepts.c:257)
+                ==24314==    by 0x4C29CA7: pthread_create@* (hg_intercepts.c:288)
+                ==24314==    by 0x400715: main (in /home/christoph/workspace/SINF1252/SINF1252/2012/S6/src/thread_crash)
+                ==24314==
+                ==24314== Thread #2: Exiting thread still holds 1 lock
+                ==24314==    at 0x4E37FB6: start_thread (pthread_create.c:430)
+                ==24314==    by 0x512E89C: clone (clone.S:112)
+
+Plus d'informations sur:
+        * http://valgrind.org/docs/manual/hg-manual.html

@@ -47,3 +47,15 @@ Plus d'informations sur `gdb(1)`_ peuvent être trouvées sur:
 	* http://www.ibm.com/developerworks/library/l-gdb/
 
 
+Débuggage des threads avec GDB
+------------------------------
+
+`gdb(1)`_ est aussi utile pour débugger des programmes avec des threads. Il permet de faire les opérations suivantes sur les threads:
+
+        * Notifier lors de la création d'un nouveau thread.
+        * Afficher la liste complète des threads avec ``info threads``.
+        * Mettre un breakpoint dans un thread. En effet, si vous placez un breakpoint dans une certaine fonction, et un thread passe lors de son exécution à travers de ce breakpoint, ``gdb`` va mettre l'exécution de tous les threads en pause et changer le contexte de la console `gdb(1)`_ vers ce thread.
+        * Lorsque les threads sont en pause, vous pouvez manuellement donner la main à un thread en faisant ``thread [thread_no]`` avec ``thread_no`` étant l'indice du thread comme indiqué par ``info threads``
+
+D'autres commandes pour utiliser `gdb(1)`_ avec les threads:
+        * http://sourceware.org/gdb/current/onlinedocs/gdb/Threads.html
