@@ -1,3 +1,4 @@
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "bitmap.h"
@@ -33,7 +34,7 @@ u_int32_t power(a, b)
     return res;
 }
 
-struct image *load_bmp(char *file)
+int load_bmp(char *file, struct image **res_image)
 {
     FILE *fp;
     struct bitmap_file_header hdr;
@@ -42,32 +43,36 @@ struct image *load_bmp(char *file)
     int num_pixels;
     int i;
 
-    img = (struct image *) malloc(sizeof(*img));
-    if (!img) {
-        perror("Malloc failed");
-        return NULL;
+    if (!res_image) {
+        printf("**image pointer to pointer is not initialized!!!\n");
+        errno = -EAGAIN;
+        return -EAGAIN;
     }
+    
+    img = (struct image *) malloc(sizeof(*img));
+    if (!img)
+        return errno;
+
+    *res_image = img;
 
     /* open the file */
-    if ((fp = fopen(file,"r")) == NULL) {
-        printf("Error opening file %s.\n", file);
-        perror("");
-        return NULL;
-    }
+    if ((fp = fopen(file,"r")) == NULL)
+        return errno;
 
     /* Read bitmap header */
     if (fread(&hdr, sizeof(hdr), 1, fp) != 1)
-        goto seek_error;
+        goto error;
 
     /* Check format */
     if (hdr.id[0] != 'B' || hdr.id[1] != 'M') {
         printf("%s is not a bitmap file in windows-format.\n", file);
-        goto seek_error;
+        errno = -EAGAIN;
+        goto error;
     }
 
     /* Read bitmap info header */
     if (fread(&infohdr, sizeof(infohdr), 1, fp) != 1)
-        goto seek_error;
+        goto error;
 
     if (infohdr.num_colors == 0) {
         /* This means, the number of colors in the color-pallette is 2**bits_per_pixel */
@@ -78,6 +83,9 @@ struct image *load_bmp(char *file)
         infohdr.compression != 0 || infohdr.num_colors != 0 ||
         infohdr.important_colors != 0) {
         printf("The bmp image is not in a supported format!\n");
+        printf("The supported format requires: colorplanes == 0, 24 bits per "
+               "pixel, no compression, num-colors == 0 and important-colors == 0\n");
+        errno = -EAGAIN;
         goto error;
     }
 
@@ -88,36 +96,31 @@ struct image *load_bmp(char *file)
 
     /* Now, move the pointer to the pixel-array */
     if (fseek(fp, infohdr.hdrsize - sizeof(infohdr), SEEK_CUR))
-        goto seek_error;
+        goto error;
 
     num_pixels = img->width*img->height;
     img->pixels = (struct pixel *) malloc(sizeof(struct pixel)*num_pixels);
-    if (!img->pixels) {
-        perror("Error allocating memory");
+    if (!img->pixels)
         goto error;
-    }
 
     for (i = 0; i < num_pixels; i++) {
         if (fread(&img->pixels[i].b, 1, 1, fp) != 1)
-            goto seek_error;
+            goto error;
         
         if (fread(&img->pixels[i].g, 1, 1, fp) != 1)
-            goto seek_error;
+            goto error;
         
         if (fread(&img->pixels[i].r, 1, 1, fp) != 1)
-            goto seek_error;
+            goto error;
     }
 
     fclose(fp);
-    return img;
+    return 0;
 
-seek_error:
-    perror("Error happened on the file:");
 error:
     fclose(fp);
-    return NULL;
+    return errno;
 }
-
 
 int write_bmp(struct image *img, char *file)
 {
@@ -128,11 +131,8 @@ int write_bmp(struct image *img, char *file)
     int i;
     
     /* open the file */
-    if ((fp = fopen(file,"w")) == NULL) {
-        printf("Error opening file %s.\n", file);
-        perror("");
-        return 1;
-    }
+    if ((fp = fopen(file,"w")) == NULL)
+        return errno;
 
     hdr.id[0] = 'B';
     hdr.id[1] = 'M';
@@ -146,7 +146,6 @@ int write_bmp(struct image *img, char *file)
     if (fwrite(&hdr, sizeof(hdr), 1, fp) != 1)
         goto write_error;
     
-
     infohdr.hdrsize = sizeof(infohdr);
     infohdr.width = img->width;
     infohdr.height = img->height;
@@ -175,21 +174,23 @@ int write_bmp(struct image *img, char *file)
     return 0;
 
 write_error:
-    perror("Error happened on the file:");
     fclose(fp);
-    return -1;
+    return errno;
 }
-
-/**************************************************************************
- *  Main                                                                  *
- *    Draws opaque and transparent bitmaps                                *
- **************************************************************************/
 
 int main(int argc, char *argv[])
 {
-    struct image *img = load_bmp(argv[1]);
+    struct image *img;
 
-    write_bmp(img, argv[2]);
+    if (load_bmp(argv[1], &img)) {
+        perror("Error calling load_bmp");
+        return 1;
+    }
+
+    if (write_bmp(img, argv[2])) {
+        perror("Error calling write_bmp");
+        return 1;
+    }
     
     return 0;
 }
