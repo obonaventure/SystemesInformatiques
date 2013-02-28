@@ -14,6 +14,11 @@ struct image {
     int     hor_res; /* horizontal resolution - DO NOT MODIFY */
     int     ver_res; /* vertical resolution - DO NOT MODIFY */
 
+    /* pixels is an array of size image->width * image->height and represents
+     * the RGB-values of each pixel. Starting from the bottom left pixel, going
+     * to the right until the bottom right pixel and moving row by row from the
+     * bottom to the top.
+     */
     struct pixel *pixels;
 };
 
