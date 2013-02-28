@@ -2,24 +2,23 @@
 #define BITMAP_H
 
 struct pixel {
-    unsigned char b; /* Bleu */
-    unsigned char g; /* Vert */
-    unsigned char r; /* Rouge */
+	unsigned char b; /* Bleu */
+	unsigned char g; /* Vert */
+	unsigned char r; /* Rouge */
 } __attribute__((packed));
 
 struct image {
-    int     width;   /* Largeur en pixels */
-    int     height;  /* Hauteur en pixels */
+	int	 width;   /* Largeur en pixels */
+	int	 height;  /* Hauteur en pixels */
 
-    int     hor_res; /* Résolution horizontale - Ne pas modifier */
-    int     ver_res; /* Résolution verticale - Ne pas modifier */
+	int	 hor_res; /* Résolution horizontale - Ne pas modifier */
+	int	 ver_res; /* Résolution verticale - Ne pas modifier */
 
-    /* pixels is an array of size image->width * image->height and represents
-     * the RGB-values of each pixel. Starting from the bottom left pixel, going
-     * to the right until the bottom right pixel and moving row by row from the
-     * bottom to the top.
-     */
-    struct pixel *pixels;
+	/* pixel est un tableu de taille width * height et représente les composantes
+	 * RGB de tous les pixels. Le pixel (0,0) est le pixel en bas à gauche et 
+	 * le pixel (width-1, height-1) est celui en haut à droite.
+	 */
+	struct pixel *pixels;
 };
 
 /* Charge le bitmap spécifié par 'file' dans la nouvelle image 'res_image'.

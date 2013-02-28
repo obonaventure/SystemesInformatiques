@@ -31,15 +31,15 @@ filter_t filter_grayscale;
  * (chaque element a une valeur entre 0 et 255) de taille 
  * 6x5:
  *
- *    1  2  5  2  0  3
- *       -------
- *    3 |2  5  1| 6  0       0.0*2 + 0.2*5 + 0.0*1 +
- *      |       |
- *    4 |3  6  2| 1  4   ->  0.2*3 + 0.2*6 + 0.2*2 +   ->  3.2
- *      |       |
- *    0 |4  0  3| 4  2       0.0*4 + 0.2*0 + 0.0*3
- *       -------
- *    9  6  5  0  3  9
+ *	1  2  5  2  0  3
+ *	   -------
+ *	3 |2  5  1| 6  0	   0.0*2 + 0.2*5 + 0.0*1 +
+ *	  |	   |
+ *	4 |3  6  2| 1  4   ->  0.2*3 + 0.2*6 + 0.2*2 +   ->  3.2
+ *	  |	   |
+ *	0 |4  0  3| 4  2	   0.0*4 + 0.2*0 + 0.0*3
+ *	   -------
+ *	9  6  5  0  3  9
  * 
  * La nouvelle valeur du pixel (3, 4) devient round(3.2) = 3.
  *
@@ -48,7 +48,7 @@ filter_t filter_grayscale;
  * la valeur du pixel central sera utilisé pour les valeurs des pixels
  * en dehors des limites de l'image. C'est-à-dire, la nouvelle valeur
  * du pixel (0, 0) dans l'image précédente sera:
- *    0.2 * 0 + 0.2 * 9 + 0.2 * 6 + 0.2 * 9 + 0.2 * 9 = 6.6 -> 7
+ *	0.2 * 0 + 0.2 * 9 + 0.2 * 6 + 0.2 * 9 + 0.2 * 9 = 6.6 -> 7
  */
 filter_t filter_blur;
 
