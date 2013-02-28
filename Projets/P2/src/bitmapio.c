@@ -181,20 +181,3 @@ write_error:
     fclose(fp);
     return errno;
 }
-
-int main(int argc, char *argv[])
-{
-    struct image *img = NULL;
-
-    if (load_bmp(argv[1], &img)) {
-        perror("Error calling load_bmp");
-        return 1;
-    }
-
-    if (write_bmp(img, argv[2])) {
-        perror("Error calling write_bmp");
-        return 1;
-    }
-    
-    return 0;
-}
