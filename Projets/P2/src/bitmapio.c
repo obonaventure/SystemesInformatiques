@@ -74,19 +74,23 @@ int load_bmp(char *file, struct image **res_image)
     if (fread(&infohdr, sizeof(infohdr), 1, fp) != 1)
         goto error;
 
-    if (infohdr.num_colors == 0) {
-        /* This means, the number of colors in the color-pallette is 2**bits_per_pixel */
-        infohdr.num_colors = power(2, infohdr.bits_per_pixel);
-    }
-
     if (infohdr.color_planes != 1 || infohdr.bits_per_pixel != 24 ||
         infohdr.compression != 0 || infohdr.num_colors != 0 ||
         infohdr.important_colors != 0) {
         printf("The bmp image is not in a supported format!\n");
         printf("The supported format requires: colorplanes == 0, 24 bits per "
                "pixel, no compression, num-colors == 0 and important-colors == 0\n");
+        printf("But we got: colorplanes %u bits per pixel %u compression %u "
+               "num-colors %u important-colors %u\n", infohdr.color_planes,
+               infohdr.bits_per_pixel, infohdr.compression, infohdr.num_colors,
+               infohdr.important_colors);
         errno = -EAGAIN;
         goto error;
+    }
+
+    if (infohdr.num_colors == 0) {
+        /* This means, the number of colors in the color-pallette is 2**bits_per_pixel */
+        infohdr.num_colors = power(2, infohdr.bits_per_pixel);
     }
 
     img->width = infohdr.width;
@@ -180,7 +184,7 @@ write_error:
 
 int main(int argc, char *argv[])
 {
-    struct image *img;
+    struct image *img = NULL;
 
     if (load_bmp(argv[1], &img)) {
         perror("Error calling load_bmp");
