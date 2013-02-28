@@ -1,8 +1,11 @@
+#include "bitmap.h"
 
-typedef struct image *(filter_t)(struct image *);
-
-/* Ne fait rien */
-filter_t filter_identity;
+/* Signature de fonction pour les filtres.
+ * Chaque filtre prend une image en argument et
+ * lui applique une opération. Retourne 0 en cas
+ * de succès, -1 sinon.
+ */
+typedef int(filter_t)(struct image *);
 
 /* Retire la composante rouge de l'image */
 filter_t filter_red;
@@ -18,13 +21,15 @@ filter_t filter_blue;
  */
 filter_t filter_grayscale;
 
-/* Ajouter du flou gaussien dans l'image en utilisant la
+/* Ajoute de flou gaussien dans l'image en utilisant la
  * matrice carrée de taille 3 comme matrice de poids:
  *   0.0  0.2  0.0
  *   0.2  0.2  0.2
  *   0.0  0.2  0.0
  *
- * Si on considère la composante rouge de l'image suivante:
+ * Si on considère la composante rouge de l'image suivante
+ * (chaque element a une valeur entre 0 et 255) de taille 
+ * 6x5:
  *
  *    1  2  5  2  0  3
  *       -------
@@ -36,7 +41,14 @@ filter_t filter_grayscale;
  *       -------
  *    9  6  5  0  3  9
  * 
- * La nouvelle valeur du pixel 6 devient round(3.2) = 3.
+ * La nouvelle valeur du pixel (3, 4) devient round(3.2) = 3.
+ *
+ * Lorsque les élements de la matrice se retrouvent en dehors
+ * de l'image (c'est-à-dire pour les pixels à la bordure de l'image),
+ * la valeur du pixel central sera utilisé pour les valeurs des pixels
+ * en dehors des limites de l'image. C'est-à-dire, la nouvelle valeur
+ * du pixel (0, 0) dans l'image précédente sera:
+ *    0.2 * 0 + 0.2 * 9 + 0.2 * 6 + 0.2 * 9 + 0.2 * 9 = 6.6 -> 7
  */
 filter_t filter_blur;
 

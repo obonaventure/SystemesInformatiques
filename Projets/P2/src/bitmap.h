@@ -2,35 +2,34 @@
 #define BITMAP_H
 
 struct pixel {
-    unsigned char b; /* Blue */
-    unsigned char g; /* Green */
-    unsigned char r; /* Red */
-};
+    unsigned char b; /* Bleu */
+    unsigned char g; /* Vert */
+    unsigned char r; /* Rouge */
+} __attribute__((packed));
 
 struct image {
-    int     width;   /* Width in pixels */
-    int     height;  /* Height in pixels */
+    int     width;   /* Largeur en pixels */
+    int     height;  /* Hauteur en pixels */
 
-    int     hor_res; /* horizontal resolution - DO NOT MODIFY */
-    int     ver_res; /* vertical resolution - DO NOT MODIFY */
+    int     hor_res; /* Résolution horizontale - Ne pas modifier */
+    int     ver_res; /* Résolution verticale - Ne pas modifier */
 
     struct pixel *pixels;
 };
 
-/* Loads the bitmap file specified by 'file' into the newly allocated image
- * 'res_image'.
+/* Charge le bitmap spécifié par 'file' dans la nouvelle image 'res_image'.
  *
- * Upon successfull return, *res_image points a newly allocated memory region,
- * containting the bitmap. 0 is returned by the function.
- *
- * Upon error a non-zero value is returned and errno is set appropriatly.
+ * Si la fonction retourne 0 (succès), *res_image pointe vers une nouvelle
+ * zone mémoire allouée contenant le bitmap. Si la fonction retourne une
+ * une valeur différente de zero, une erreur s'est produite et la valeur 
+ * errno est mis à jour.
  */
 int load_bmp(char *file, struct image **res_image);
 
-/* Writes the bitmap specified by 'img' to the file whose name is 'file'.
+/* Ecrit le bitmap spécifié par 'img' dans le fichier nomé 'file'.
  *
- * Upon success, 0 is returned. A non-zero value otherwise and errno is set
- * accordingly.
+ * Si l'écriture est réussie, 0 est renvoyé. Lors d'une erreur, une valeur
+ * différente de zero est renvoyée et errno est mis à jour.
  */
 int write_bmp(struct image *img, char *file);
 

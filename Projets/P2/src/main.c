@@ -1,6 +1,9 @@
 #include "bitmap.h"
 #include "filter.h"
 
+/* Exemple d'utilisation des fonctions fournies.
+ * Vous devez impérativement changer le code ci-dessous.
+ */
 int main(int argc, char *argv[])
 {
     struct image *img;
@@ -10,7 +13,10 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    img = filter_green(img);
+    if (!filter_green(img)) {
+        perror("Error calling filter_green");
+        return 1;
+    }
 
     if (write_bmp(img, argv[2])) {
         perror("Error calling write_bmp");
