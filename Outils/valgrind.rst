@@ -31,9 +31,10 @@ On vous encourage à lancer `valgrind(1)`_ sur votre projet pour vérifier que v
 	* http://www.cprogramming.com/debugging/valgrind.html
 	* http://valgrind.org
 
+.. _helgrind-ref:
 
 Détecter les deadlocks avec ``valgrind``
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `valgrind(1)`_ contient des outils qui vont au-delà des simples tests de l'allocation de la mémoire. Notamment l'outil ``helgrind`` permet de détecter des deadlocks. Utilisez ``helgrind`` sur le petit programme :download:`/Outils/src/thread_crash.c` en faisant:
 
