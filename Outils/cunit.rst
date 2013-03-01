@@ -34,7 +34,7 @@ d'éviter les erreurs de compilation. Pour cela, il faut spécifier à la compil
 également aller chercher des fichiers d'entête dans le dossier ``$HOME/local/include`` en plus des chemins classiques tels que ``/usr/include`` et
 ``/usr/local/include``.
 
-A la liaison, il faut lui spécifier où se trouve la librairie dynamique afin de résoudre les symboles. Pour cela, il faut passer l'argument ``-lcunit`` pour
+Lors de l'édition des liens avec le linker, il faut spécifier où se trouve la librairie dynamique afin de résoudre les symboles. Pour cela, il faut passer l'argument ``-lcunit`` pour
 effectuer la liaison avec la librairie CUnit ainsi que lui spécifier ``-L$HOME/local/lib`` afin qu'il cherche également des librairies dans le dossier
 ``$HOME/local/lib``.
 
