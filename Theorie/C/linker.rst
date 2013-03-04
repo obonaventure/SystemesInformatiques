@@ -180,7 +180,7 @@ Pour les variables globales, la situation est différente. Si une variable est d
 
 La qualificateur ``static`` peut aussi précéder des déclarations de fonctions. Dans ce cas, il indique que la fonction ne doit pas être visible en dehors du module dans lequel elle est définie. Sans le qualificateur ``static``, une fonction déclarée dans un module est accessible depuis n'importe quel autre module.
 
-Afin d'illustrer l'utilisation de ``static`` et ``extern``, considérons le programme ``prog.c`` ci-dessous qui inclus le module ``module.c`` et également le module ``min.c`` présenté plus haut.
+Afin d'illustrer l'utilisation de ``static`` et ``extern``, considérons le programme ``prog.c`` ci-dessous qui inclut le module ``module.c`` et également le module ``min.c`` présenté plus haut.
 
 .. literalinclude:: /Theorie/C/S5-src/module.h
    :encoding: iso-8859-1
