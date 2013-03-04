@@ -222,7 +222,7 @@ Il existe une variante de chacune de ces instructions pour chaque type de donné
 	movl 	$0, %eax            ; %eax=0
 	incl    %eax                ; %eax++
 	
-L'architecture [IA32]_ supporté également des instructions arithmétiques et logiques prenant chacune deux arguments.
+L'architecture [IA32]_ supporte également des instructions arithmétiques et logiques prenant chacune deux arguments.
 
  - ``add`` permet d'additionner deux nombres entiers. ``add`` prend comme arguments une source et une destination et place dans la destination la somme de ses deux arguments.
  - ``sub`` permet de soustraire le premier argument du second et stocke le résultat dans le second 
