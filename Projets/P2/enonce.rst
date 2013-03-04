@@ -1,4 +1,4 @@
- .. -*- coding: utf-8 -*-
+.. -*- coding: utf-8 -*-
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
@@ -27,7 +27,7 @@ l'intensité de la couleur rouge de chaque pixel à 0.
 
 
 Programme attendu
-+++++++++++++++++
+-----------------
 
 
 On vous demande d'implémenter des filtres parallélisé sur les images bitmap.
@@ -55,10 +55,10 @@ L'option ''-t'' permet de spécifier le nombre de threads par filtre. Donc, il y
 Les arguments ''input-folder'' et ''output-folder'' fournissent au programme le dossier où les fichiers bitmap se trouvent et le dossier vide ''output-folder'' dans lequel il faut écrire les images.
 
 
-API fourni
-++++++++++
+API fournie
+-----------
 
-Nous vous fournissons un API pour lire un fichier bitmap et écrire l'image dans le format bitmap.
+Nous vous fournissons une API pour lire un fichier bitmap et écrire l'image dans le format bitmap.
 
      .. code-block:: c
 
@@ -74,7 +74,7 @@ Nous vous fournissons un API pour lire un fichier bitmap et écrire l'image dans
 
 
 Consignes
-+++++++++
+---------
 
 Le projet est à soumettre pour le XXX DATE XXX via le SVN du deuxième projet. Vous devez donc vous inscrire ensemble avec votre binôme sur le SVN ''SINF1252_2013_P2'' sur le
 site `<https://scm.info.ucl.ac.be/cgi-bin/inscription.sh>`_.
