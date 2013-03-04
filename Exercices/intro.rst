@@ -106,3 +106,26 @@ Séance tutorée
 
 
 
+Sixième semaine
+---------------
+
+La matière de cette semaine porte sur la communication entre les threads. Elle est décrite dans la section  :
+
+ - :ref:`comthreads` 
+
+.. only:: html
+
+   `QCM6 </static/_static/Mission-6-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-6
+
+
+
+
