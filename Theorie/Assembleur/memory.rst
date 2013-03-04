@@ -107,7 +107,7 @@ Pour comprendre le fonctionnement d'un microprocesseur, la solution la plus effi
 
 Cette architecture recouvre un grand nombre de variantes qui ont leur spécificités propre. Une descriptions détaillée de cette architecture est disponible dans [IA32]_. Nous nous limiterons à un très petit sous-ensemble de cette architecture dans le cadre de ce cours. Une analyse complète de l'architecture [IA32]_ occupe plusieurs centaines de pages dans des livres de référence [BryantOHallaron2011]_ [Hyde2010]_.
 
-L'architecture [IA32]_ est supportée par différents types de processeurs. Certains utilisent des registres et des bus de données de 32. D'autres, plus récents utilisent des registres de 64 bits. Il y a des différences importantes entre ces deux architectures. Comme les processeurs récents supportent à la fois les modes 32 bits et 64 bits, nous nous limiterons à l'architecture 32 bits.
+L'architecture [IA32]_ est supportée par différents types de processeurs. Certains utilisent des registres et des bus de données de 32 bits. D'autres, plus récents utilisent des registres de 64 bits. Il y a des différences importantes entre ces deux architectures. Comme les processeurs récents supportent à la fois les modes 32 bits et 64 bits, nous nous limiterons à l'architecture 32 bits.
 
 Un des éléments importants d'un processeur tel que ceux de l'architecture [IA32]_ sont ses registres. Un processeur [IA32]_ dispose de huit registres génériques.  Ceux-ci ont été baptisés ``EAX``, ``EBX``, ``ECX``, ``EDX``, ``EBP``, ``ESI``, ``EDI`` et ``ESP``. Ces registres peuvent stocker des données sous forme binaire. Dans l'architecture [IA32]_, ils ont une taille de 32 bits. Cela implique que chaque registre peut contenir un nombre ou une adresse puisque les entiers (``int`` en C) et les adresses (pointeurs ``*`` en C sur [IA32]_) sont tous les deux encodés sur 32 bits dans l'architecture [IA32]_. Cette capacité à stocker des données ou des adresses à l'intérieur d'un même registre est un des points clés de la flexibilité des microprocesseurs.
 
@@ -134,7 +134,7 @@ Dans les sections qui suivent, nous analysons quelques instructions de l'archite
 Les instructions ``mov``
 ------------------------
 
-Les instructions de la famille ``mov`` [#fmov]_ permettent de déplacer des données entre registres ou depuis la mémoire vers un registre ou enfin d'un registre vers une zone mémoire. Ces instructions sont essentielles car elle permettent au processeur de récupérer les données qui sont stockées en mémoire mais aussi de sauvegarder en mémoire le résultat d'un calcul effectué par le processeur. Une instruction ``mov`` contient toujours deux arguments. Le premier spécifie la donnée à déplacer ou son adresse et la seconde l'endroit où il faut sauvegarder cette donnée ou la valeur stockée à cette adresse.
+Les instructions de la famille ``mov`` [#fmov]_ permettent de déplacer des données entre registres ou depuis la mémoire vers un registre ou enfin d'un registre vers une zone mémoire. Ces instructions sont essentielles car elles permettent au processeur de récupérer les données qui sont stockées en mémoire mais aussi de sauvegarder en mémoire le résultat d'un calcul effectué par le processeur. Une instruction ``mov`` contient toujours deux arguments. Le premier spécifie la donnée à déplacer ou son adresse et la seconde l'endroit où il faut sauvegarder cette donnée ou la valeur stockée à cette adresse.
 
 .. code-block:: nasm
 
