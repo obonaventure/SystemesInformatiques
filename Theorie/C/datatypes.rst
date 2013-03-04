@@ -435,9 +435,9 @@ différentes façons reprises ci-dessous.
 Lorsque la taille de la chaîne de caractères n'est pas indiquée à
 l'initialisation (c'est-à-dire dans les trois premières lignes
 ci-dessus), le compilateur C la calcule et alloue un tableau
-permettant de stocker la chaîne de caractères suivi du caractère ``\0``
+permettant de stocker la chaîne de caractères suivie du caractère ``\0``
 qui par convention termine `toujours` les chaînes de caractères en C.
-En mémoire, la chaîne de caractères ``name3`` occupe donc cinq
+En mémoire, la chaîne de caractères correspondant à ``name3`` occupe donc cinq
 octets. Les quatre premiers contiennent les caractères `U`, `n`, `i`
 et `x` et le cinquième le caractère ``\0``. Il est important de bien se
 rappeler cette particularité du langage C car comme nous le verrons
@@ -653,7 +653,7 @@ La même sortie est produite avec le fragment de programme suivant qui utilise u
    :start-after: ///EEE
    :end-before: ///FFF
 
-Ce fragment de programme est l'occasion de réfléchir sur la façon dont le C évalue les expressions qui contiennent des pointeurs. La première est l'assignation ``ptr=tab``. Lorsque ``tab`` est déclaré pas la ligne ``unsigned int tab[3]``, le compilateur considère que ``tab`` est une constante qui contiendra toujours l'adresse du premier élément du tableau. Il faut noter que puisque ``tab`` est considéré comme une constante, il est interdit d'en modifier la valeur en utilisant une assignation comme ``tab=tab+1``. Le pointeur ``ptr``, par contre correspond à une zone mémoire qui contient une adresse. Il est tout à fait possible d'en modifier la valeur. Ainsi, l'assignation ``ptr=tab``  (ou ``ptr=&(tab[0])``) place dans ``ptr`` l'adresse du premier élément du tableau. Les pointeurs peuvent aussi être modifiés en utilisant des expressions arithmétiques. 
+Ce fragment de programme est l'occasion de réfléchir sur la façon dont le C évalue les expressions qui contiennent des pointeurs. La première est l'assignation ``ptr=tab``. Lorsque ``tab`` est déclaré par la ligne ``unsigned int tab[3]``, le compilateur considère que ``tab`` est une constante qui contiendra toujours l'adresse du premier élément du tableau. Il faut noter que puisque ``tab`` est considéré comme une constante, il est interdit d'en modifier la valeur en utilisant une assignation comme ``tab=tab+1``. Le pointeur ``ptr``, par contre correspond à une zone mémoire qui contient une adresse. Il est tout à fait possible d'en modifier la valeur. Ainsi, l'assignation ``ptr=tab``  (ou ``ptr=&(tab[0])``) place dans ``ptr`` l'adresse du premier élément du tableau. Les pointeurs peuvent aussi être modifiés en utilisant des expressions arithmétiques. 
 
 .. code-block:: c
 
