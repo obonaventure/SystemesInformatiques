@@ -10,8 +10,7 @@ CUnit: librairie de tests
 `CUnit <http://cunit.sourceforge.net>`_ est une librairie de tests unitaires en C. Cette librairie doit être utilisée dans le cadre de ce projet. Un petit
 exemple de test est déjà disponible dans l'archive fournie dans le projet :ref:`projet1`.
 
-CUnit n'est pas installé par défaut sur les machines des salles. Vous devez donc l'installer par vous-même. Le reste de cette section a pour but de vous
-aider dans l'installation de celle-ci.
+CUnit n'est pas installé par défaut sur les machines des salles. Vous devez donc l'installer par vous-même. Le reste de cette section a pour but de vous aider dans l'installation de celle-ci.
 
 La première étape consiste à récupérer les sources de CUnit sur `<http://sourceforge.net/projects/cunit/files/>`_. Les sources se trouvent dans une archive
 ``CUnit-*-src.tar.bz2`` et la dernière version devrait se nommer ``CUnit-2.1.2-src.tar.bz2``. Une fois l'archive téléchargée, ouvrez un terminal et placez-vous dans le dossier où se trouve celle-ci. Exécutez:
