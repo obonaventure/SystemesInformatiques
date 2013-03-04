@@ -7,7 +7,7 @@ Exercices
 =========
 
 
-#. Ecrivez en petit programme qui vous permet de montrer quelles varaibles sont accessibles à différents threads. Les variables à montrer sont:
+#. Ecrivez un petit programme qui vous permet de montrer quelles varaibles sont accessibles à différents threads. Les variables à montrer sont:
 
 	* variable globale statique
 	* variable globale
