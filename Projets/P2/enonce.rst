@@ -82,3 +82,11 @@ Vous devez fournir sur le SVN dans votre dossier de groupe:
 	- Le code source de votre projet (pas de binaires) ainsi qu'un ``Makefile`` (lorsque l'on tape ``make`` un binaire ``filter`` doit être généré.). Vous devez compiler votre programme avec les options *-Wall* et *-Werror* de gcc.
 	- Un rapport de *4 pages maximum* qui décrit vos choix architecturaux ainsi que les problèmes rencontrés. Le rapport doit être nommé *rapport.pdf* et présent dans votre dossier de groupe.
 
+Les critères de cotations sont les suivants (liste non-exhaustive):
+
+	- Création et gestion des threads;
+	- Synchronisation des threads;
+	- Gestion de la mémoire;
+	- Implémentation des filtres;
+	- Respect des consignes.
+
