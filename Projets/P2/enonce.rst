@@ -26,7 +26,7 @@ Programme attendu
 
 On vous demande d'implémenter des filtres parallélisés sur les images bitmap.
 Votre programme reçoit en argument un dossier contenant des fichiers bitmap,
-une liste de filtres à appliquer et le nombre de threads utilisés par filtre.
+une liste de filtres à appliquer et le nombre de threads utilisés par filtre. Votre programme doit se baser sur le code présent dans l'archive :download:`/Projets/P2/projet-2.tar.gz`.
 
 Plus en détails, votre programme doit supporter la ligne de commande suivante:
 
