@@ -67,7 +67,7 @@ Nous vous fournissons une API pour lire un fichier bitmap et écrire l'image dan
 
 ''write_bmp'' écrit l'image ''img'' dans le fichier dont le chemin est spécifié par ''file''. :download:`/Projets/P2/src/bitmap.h` fournit plus d'informations.
 
-Pour pouvoir tester votre programme, nous avons mis à votre disposition un ensemble d'images sur :download:`http://sinf1252.info.ucl.ac.be/data/images.tar.gz`.
+Pour pouvoir tester votre programme, nous avons mis à votre disposition un ensemble d'images sur `<http://sinf1252.info.ucl.ac.be/data/images.tar.gz>`_
 
 Séance intermédiaire
 --------------------
