@@ -77,12 +77,12 @@ Afin d'au mieux vous aider dans vos choix de désign, nous organisons une séanc
 Consignes
 ---------
 
-Le projet est à soumettre pour le  via le SVN du deuxième projet. Vous devez donc vous inscrire ensemble avec votre binôme sur le SVN ''SINF1252_2013_P2'' sur le
+Le projet est à soumettre pour le 17 avril à 12h00 via le SVN du deuxième projet. Vous devez donc vous inscrire ensemble avec votre binôme sur le SVN ''SINF1252_2013_P2'' sur le
 site `<https://scm.info.ucl.ac.be/cgi-bin/inscription.sh>`_.
 Vous devez fournir sur le SVN dans votre dossier de groupe:
 
 	- Le code source de votre projet (pas de binaires) ainsi qu'un ``Makefile`` (lorsque l'on tape ``make`` un binaire ``filter`` doit être généré.). Vous devez compiler votre programme avec les options *-Wall* et *-Werror* de gcc.
-	- Un rapport de *4 pages maximum* qui décrit vos choix architecturaux ainsi que les problèmes rencontrés. Le rapport doit être nommé *rapport.pdf* et présent dans votre dossier de groupe.
+	- Un rapport de *4 pages maximum* (12pt) qui décrit vos choix architecturaux ainsi que les problèmes rencontrés. Le rapport doit être nommé *rapport.pdf* et présent dans votre dossier de groupe.
 
 Les critères de cotations sont les suivants (liste non-exhaustive):
 
