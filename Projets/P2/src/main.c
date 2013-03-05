@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "bitmap.h"
 #include "filter.h"
 
@@ -13,7 +14,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	if (!filter_green(img)) {
+	if (filter_green(img)) {
 		perror("Error calling filter_green");
 		return 1;
 	}
