@@ -67,6 +67,8 @@ Nous vous fournissons une API pour lire un fichier bitmap et écrire l'image dan
 
 ''write_bmp'' écrit l'image ''img'' dans le fichier dont le chemin est spécifié par ''file''. :download:`/Projets/P2/src/bitmap.h` fournit plus d'informations.
 
+Pour pouvoir tester votre programme, nous avons mis à votre disposition un ensemble d'images sur :download:`http://sinf1252.info.ucl.ac.be/data/images.tar.gz`.
+
 Séance intermédiaire
 --------------------
 
@@ -84,6 +86,7 @@ Vous devez fournir sur le SVN dans votre dossier de groupe:
 
 Les critères de cotations sont les suivants (liste non-exhaustive):
 
+        - Votre impémentation doît fonctionner dans les salles informatiques du département;
 	- Création et gestion des threads;
 	- Synchronisation des threads;
 	- Gestion de la mémoire;
