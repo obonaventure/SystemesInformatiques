@@ -89,6 +89,7 @@ Projets
    :maxdepth: 2
 
    Projets/P1/projet-1
+   Projets/P2/enonce
 
 ******
 Outils

@@ -24,7 +24,7 @@ struct bitmap_info_header {
     u_int32_t   important_colors;
 } __attribute__((packed));
 
-u_int32_t power(a, b)
+static u_int32_t power(a, b)
 {
     int i;
     int res = 1;
@@ -41,7 +41,6 @@ int load_bmp(char *file, struct image **res_image)
     struct bitmap_info_header infohdr;
     struct image *img;
     int num_pixels;
-    int i;
 
     if (!res_image) {
         printf("**image pointer to pointer is not initialized!!!\n");
@@ -107,16 +106,8 @@ int load_bmp(char *file, struct image **res_image)
     if (!img->pixels)
         goto error;
 
-    for (i = 0; i < num_pixels; i++) {
-        if (fread(&img->pixels[i].b, 1, 1, fp) != 1)
-            goto error;
-        
-        if (fread(&img->pixels[i].g, 1, 1, fp) != 1)
-            goto error;
-        
-        if (fread(&img->pixels[i].r, 1, 1, fp) != 1)
-            goto error;
-    }
+    if (fread(&img->pixels[0], 3, num_pixels, fp) != num_pixels)
+        goto error;
 
     fclose(fp);
     return 0;
@@ -132,7 +123,6 @@ int write_bmp(struct image *img, char *file)
     struct bitmap_file_header hdr;
     struct bitmap_info_header infohdr;
     int num_pixels = img->width * img->height;
-    int i;
     
     /* open the file */
     if ((fp = fopen(file,"w")) == NULL)
@@ -163,16 +153,8 @@ int write_bmp(struct image *img, char *file)
     if (fwrite(&infohdr, sizeof(infohdr), 1, fp) != 1)
         goto write_error;
 
-    for (i = 0; i < num_pixels; i++) {
-        if (fwrite(&img->pixels[i].b, 1, 1, fp) != 1)
-            goto write_error;
-
-        if (fwrite(&img->pixels[i].g, 1, 1, fp) != 1)
-            goto write_error;
-
-        if (fwrite(&img->pixels[i].r, 1, 1, fp) != 1)
-            goto write_error;
-    }
+    if (fwrite(&img->pixels[0], 3, num_pixels, fp) != num_pixels)
+        goto write_error;
 
     fclose(fp);
     return 0;
