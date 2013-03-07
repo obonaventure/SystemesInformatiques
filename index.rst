@@ -105,6 +105,7 @@ Outils
    Outils/processus
    Outils/valgrind
    Outils/gdb
+   Outils/gprof
 
 *******
 Annexes
