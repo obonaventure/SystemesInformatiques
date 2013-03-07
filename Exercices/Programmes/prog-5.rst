@@ -13,9 +13,9 @@ Exercices
 
 #. Avec les threads POSIX, comment peut-on passer plusieurs arguments à la fonction démarrée par `pthread_create(3)`_ ? Ecrivez un petit exemple en C qui permet de passer un entier et un caractère à cette fonction.
 
-#. Ecrivez un code qui permet de récupérer un tableau d'entier d'un thread. Exercice disponible sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/41>`_.
+#. Ecrivez un code qui permet de récupérer un tableau d'entiers d'un thread. Exercice disponible sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/41>`_.
 
-#. Essayez de lancer un grand nombre de threads d'exécution sur votre machine. Quel est le nombre maximum de threads que `pthread_create(3)`_ vous autorise de lancer ?
+#. Essayez de lancer un grand nombre de threads d'exécution sur votre machine. Quel est le nombre maximum de threads que `pthread_create(3)`_ vous autorise à lancer ?
 
 #. Quelle différence voyez-vous entre `pthread_exit(3)`_ et `exit(3)`_ ?
 
@@ -37,14 +37,14 @@ Exercices
  
 #. Résolvez des sudokus. Exercice disponible sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/42>`_.
 
-Mini-projet: mesure de performance
+Mini-projet: Mesure de performance
 ==================================
 
-On vous demande de transformer un code monothreadé en un code multithreadé. Vous devez vous baser sur le code présent dans l'archive: :download:`/Exercices/Programmes/src/prog-5-measure/prog-5-measure.tar.gz`. Le programme permet de chiffer ou déchiffrer des mots de passes passés en argument au programme. Ce dernier prend plusieurs arguments additionels:
+On vous demande de transformer un code monothreadé en un code multithreadé. Vous devez vous baser sur le code présent dans l'archive: :download:`/Exercices/Programmes/src/prog-5-measure/prog-5-measure.tar.gz`. Le programme permet de chiffrer ou déchiffrer des mots de passe passés en argument au programme. Ce dernier prend plusieurs arguments additionels:
 
     * ``-p`` définit le mot de passe à utiliser
     * ``-n`` définit le nombre de fois que chaque mot de passe est chiffré/déchiffré
-    * ``-d`` définit que le programme doit déchiffrer les mots de passes (par défaut il chiffre)
+    * ``-d`` définit que le programme doit déchiffrer les mots de passes (il chiffre par défaut)
 
 Un exemple d'utilisation du programme est le suivant:
 
@@ -55,9 +55,9 @@ Un exemple d'utilisation du programme est le suivant:
         $ ./crypt -p toto -n 10000 -d CAC7EF483F90C988 0F5766990DFA0914
         test Bonjour!
 
-Vous devez donc vous baser sur le code existant afin de paralléliser le chiffrement/déchiffrement des mots de passes. Vous ne devez pas nécéssairement afficher les mots de passes (ou chiffrés) dans l'ordre. Vous devez cependant ajouter un argument ``-t`` au programme qui définit le nombre de thread que le programme exécutera en parallèle. 
+Vous devez donc vous baser sur le code existant afin de paralléliser le chiffrement/déchiffrement des mots de passe. Vous ne devez pas nécessairement afficher les mots de passe (ou chiffrés) dans l'ordre. Vous devez cependant ajouter un argument ``-t`` au programme qui définit le nombre de threads que le programme exécutera en parallèle. 
 
-On vous demande également d'évaluer l'impact des arguments ``-t`` et ``-n`` sur l'exécution du programme. Pensez à executer votre programme avec un argument ``-n`` suffisamment grand si vous voulez évaluer l'impact de ``-t``. On vous demande plus spécifiquement de générer un graphique qui montre pour différente valeur le temps de calcul. Vous pouvez utiliser `time(1)`_ afin de récuperer le temps d'exécution d'un programme:
+On vous demande également d'évaluer l'impact des arguments ``-t`` et ``-n`` sur l'exécution du programme. Pensez à exécuter votre programme avec un argument ``-n`` suffisamment grand si vous voulez évaluer l'impact de ``-t``. On vous demande plus spécifiquement de générer un graphique qui montre pour différentes valeurs le temps de calcul. Vous pouvez utiliser `time(1)`_ afin de récupérer le temps d'exécution d'un programme:
 
     .. code-block:: c
         
