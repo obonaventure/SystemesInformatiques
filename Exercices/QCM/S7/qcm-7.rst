@@ -15,6 +15,7 @@
 Septième semaine
 ================
 
+
 Question. Utilisation des sémaphores
 ------------------------------------
 
@@ -357,9 +358,6 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
 
     Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_inti(3)`_ et non à ``0`` comme dans cet exemple. En outre, l'accès à la section critique doit être précédée par un appel à `sem_wait(3)`_  et suivie par un appel à `sem_post(3)`_ et non l'inverse comme dans cet exemple.
 
-
-Question. Producteurs consommateurs
------------------------------------
 
 
 Question. Fonctions 'thread-safe'
