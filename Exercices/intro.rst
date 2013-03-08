@@ -129,3 +129,26 @@ Séance tutorée
 
 
 
+Septième semaine
+----------------
+
+La matière de cette semaine porte sur l'utilisation des sémaphores et quelques compléments sur les threads. Elle est décrite dans la section  :
+
+ - :ref:`coordinationthreads` 
+
+.. only:: html
+
+   `QCM7 </static/_static/Mission-7-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-7
+
+
+
+
