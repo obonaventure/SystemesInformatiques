@@ -16,8 +16,8 @@ Septième semaine
 ================
 
 
-Question. Utilisation des sémaphores
-------------------------------------
+Question 1. Utilisation des sémaphores
+--------------------------------------
 
 Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Après son utilisation, il doit être détruit. Parmi les séquences d'instructions ci-dessous, une seule initialise correctement un sémaphore à la valeur 1. Laquelle ?
 
@@ -121,8 +121,8 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
 
 
 
-Question. Exclusion mutuelle
-----------------------------
+Question 2. Exclusion mutuelle
+------------------------------
 
 Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des problèmes d'exclusion mutuelle. Parmi les extraits de programmes ci-dessous, une seule est une solution correcte au problème de l'exclusion mutuelle en utilisant des sémaphores. Laquelle ?
 
@@ -360,8 +360,8 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
 
 
 
-Question. Fonctions 'thread-safe'
----------------------------------
+Question 3. Fonctions 'thread-safe'
+-----------------------------------
 
 La plupart des fonctions de la librairie standard sont des fonctions thread-safe, c'est-à-dire des fonctions que l'on peut utiliser dans plusieurs threads distincts sans risquer de problèmes d'accès concurrent. Cependant, certains fonctions, souvent parmi les plus anciennes, ne sont pas thread safe. Parmi les fonctions ci-dessous, une seule est thread-safe. Laquelle ?
 
