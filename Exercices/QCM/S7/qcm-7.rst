@@ -371,13 +371,13 @@ La plupart des fonctions de la librairie standard sont des fonctions thread-safe
 
    .. comment::
 
-      Les fonctions qui ne sont pas thread-safe sont listées dans `pthread(7)`_.
+      Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
 
 - `strsep(3)`_
 
    .. comment::
 
-      Les fonctions qui ne sont pas thread-safe sont listées dans `pthread(7)`_.
+      Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
 
 .. class:: negative
 
@@ -385,37 +385,37 @@ La plupart des fonctions de la librairie standard sont des fonctions thread-safe
 
    .. comment::
 
-      Les fonctions qui ne sont pas thread-safe sont listées dans `pthread(7)`_.
+      Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
 
 - `getopt(3)`_
 
    .. comment::
 
-      Les fonctions qui ne sont pas thread-safe sont listées dans `pthread(7)`_.
+      Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
 
 - `asctime(3)`_
 
    .. comment::
 
-      Les fonctions qui ne sont pas thread-safe sont listées dans `pthread(7)`_.
+      Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
 
 - `strtok(3)`_
 
    .. comment::
 
-      Les fonctions qui ne sont pas thread-safe sont listées dans `pthread(7)`_.
+      Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
  
 - `strerror(3)`_
 
    .. comment::
 
-      Les fonctions qui ne sont pas thread-safe sont listées dans `pthread(7)`_.
+      Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
 
 - `getopt(3)`_
 
    .. comment::
 
-      Les fonctions qui ne sont pas thread-safe sont listées dans `pthread(7)`_.
+      Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
 
 
 
