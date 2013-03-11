@@ -72,7 +72,7 @@ Pour pouvoir tester votre programme, nous avons mis à votre disposition un ense
 Séance intermédiaire
 --------------------
 
-Afin d'au mieux vous aider dans vos choix de désign, nous organisons une séance intermédiaire *obligatoire*. Pour cela nous vous demandons d'écrire un petit rapport de *2 pages maximum* qui doit être présent sur le SVN du projet dans le votre dossier de groupe et doit se nommer *prerapport.pdf*. Ce pré-rapport doit être fourni avant le 14 mars à 12h00 et doit contenir la solution que vous comptez implémenter. Une discussion de maximum 15 minutes aura alors lieu avec les assistants du cours et sera organisée les15 et 18 mars. Un doodle sera envoyé via la mailing liste du cours afin que chaque groupe puisse sélectionner un slot horaire qui leur convient.
+Afin d'au mieux vous aider dans vos choix de désign, nous organisons une séance intermédiaire *obligatoire*. Pour cela nous vous demandons d'écrire un petit rapport de *2 pages maximum* qui doit être présent sur le SVN du projet dans le votre dossier de groupe et doit se nommer *prerapport.pdf*. Ce pré-rapport doit être fourni avant le 14 mars à 23h55 et doit contenir la solution que vous comptez implémenter. Une discussion de maximum 10 minutes aura alors lieu avec les assistants du cours et sera organisée le 18 mars. Vous devez vous inscrire en indiquant votre numéro de groupe (du SVN) pour le projet (voir section suivante) sur le doodle: `<http://doodle.com/fskwhh22u56xxn5wikvyxc8f>`_.
 
 Consignes
 ---------
