@@ -7,7 +7,7 @@ Exercices
 =========
 
 
-#. Ecrivez un petit programme qui vous permet de montrer quelles varaibles sont accessibles à différents threads. Les variables à montrer sont:
+#. Ecrivez un petit programme qui vous permet de montrer quelles variables sont accessibles à différents threads. Les variables à montrer sont:
 
 	* variable globale statique
 	* variable globale
@@ -98,10 +98,10 @@ Exercices
 #. D'après vous (essayez d'expérimenter), que se passe-t-il si:
 
 	* un thread exécute deux fois `pthread_mutex_lock(3posix)`_ sur le même mutex d'affilée ?
-	* une thread exécute deux fois d'affilée `pthread_mutex_unlock(3posix)`_
+	* un thread exécute deux fois d'affilée `pthread_mutex_unlock(3posix)`_
 
 
-#. Dans la partie théorie, nous avons vu comment assurer qu'un seul thread peut accéder à une zone critique à la fois. On vous propose deux solutions (dont une déjà vue dans la partie théorie):
+#. Dans la partie théorie, nous avons vu comment s'assurer qu'un seul thread peut accéder à une zone critique à la fois. On vous propose deux solutions (dont une déjà vue dans la partie théorie):
 
 	.. code-block:: c
 
@@ -119,7 +119,7 @@ Exercices
 
 	Discuter les avantages et inconvénients des ces deux solutions. (Regardez la man page de `pthread_mutex_trylock(3posix)`_)
 
-#. L'outil ``helgrind`` (décrit dans la section :ref:`helgrind-ref`) permet de trouver des deadlocks ou autres problème. Exécutez-le sur le petit programme suivant :download:`/Exercices/Programmes/src/pthread-philo.c` et analysez ce qu'il affiche.
+#. L'outil ``helgrind`` (décrit dans la section :ref:`helgrind-ref`) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`/Exercices/Programmes/src/pthread-philo.c` et analysez ce qu'il affiche.
 
 #. Faites l'exercice sur les vecteurs thread-safe sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/45>`_.
 
