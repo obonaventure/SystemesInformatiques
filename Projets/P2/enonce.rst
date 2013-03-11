@@ -77,7 +77,7 @@ Afin d'au mieux vous aider dans vos choix de désign, nous organisons une séanc
 Consignes
 ---------
 
-Le projet est à soumettre pour le 17 avril à 12h00 via le SVN du deuxième projet. Vous devez donc vous inscrire ensemble avec votre binôme sur le SVN ''SINF1252_2013_P2'' sur le
+Le projet est à soumettre pour le 17 avril à 12h00 via le SVN du deuxième projet. Vous devez donc vous inscrire ensemble avec votre binôme sur le SVN ''SINF1252_2013_PROJET_2'' sur le
 site `<https://scm.info.ucl.ac.be/cgi-bin/inscription.sh>`_.
 Vous devez fournir sur le SVN dans votre dossier de groupe:
 
