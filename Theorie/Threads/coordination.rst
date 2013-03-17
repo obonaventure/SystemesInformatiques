@@ -20,8 +20,8 @@ Tout comme pour les :term:`mutex`, la queue associée à un sémaphore permet de
 Une implémentation des sémaphores se compose en général de quatre fonctions :
 
  - une fonction d'initialisation qui permet de créer le sémaphore et de lui attribuer une valeur initiale nulle ou positive. 
- - une fonction permettant de détruire un sémaphore et de libérer les ressources qui y sont associées.
- - une fonction ``post`` qui est utilisée par les threads pour modifier la valeur du sémaphore. Si il n'y a pas de thread en attente dans la queue associée au sémaphore, sa valeur est incrémentée d'une unité. Sinon, un des threads en attente est libéré et passe à l'état `Ready`.
+ - une fonction permettant de détruire un sémaphore et de libérer les ressources qui lui sont associées.
+ - une fonction ``post`` qui est utilisée par les threads pour modifier la valeur du sémaphore. S'il n'y a pas de thread en attente dans la queue associée au sémaphore, sa valeur est incrémentée d'une unité. Sinon, un des threads en attente est libéré et passe à l'état `Ready`.
  - une fonction ``wait`` qui est utilisée par les threads pour tester la valeur d'un sémaphore. Si la valeur du sémaphore est positive, elle est décrémentée d'une unité et la fonction réussit. Si le sémaphore a une valeur nulle, le thread est bloqué jusqu'à ce qu'un autre thread le débloque en appelant la fonction ``post``.
 
 .. [Dijkstra1965b]_
@@ -32,7 +32,7 @@ Les sémaphores sont utilisés pour résoudre de nombreux problèmes de coordina
 Sémaphores POSIX
 ----------------
 
-La libraire POSIX comprend une implémentation des sémaphores [#fSysV]_ qui expose plusieurs fonctions aux utilisateurs. La page de manuel `sem_overview(7)`_ présente de façon sommaire les fonctions de la librairie relatives aux sémaphores. Les quatre principales sont les suivantes :
+La librairie POSIX comprend une implémentation des sémaphores [#fSysV]_ qui expose plusieurs fonctions aux utilisateurs. La page de manuel `sem_overview(7)`_ présente de façon sommaire les fonctions de la librairie relatives aux sémaphores. Les quatre principales sont les suivantes :
 
 .. code-block:: c
 
@@ -45,11 +45,11 @@ La libraire POSIX comprend une implémentation des sémaphores [#fSysV]_ qui exp
 
 Le fichier `semaphore.h`_ contient les différentes définitions de structures qui sont nécessaires au bon fonctionnement des sémaphores ainsi que les signatures des fonctions de l'API. Un sémaphore est représenté par une structure de données de type ``sem_t``. Toutes les fonctions de manipulation des sémaphores prennent comme argument un pointeur vers le sémaphore concerné.
 
-Pour pouvoir utiliser un sémaphore, il faut d'abord l'initialiser. Cela se fait en utilisant la fonction `sem_init(3)`_ qui prend comme argument un pointeur vers le sémaphore à initialiser. Nous n'utiliserons pas le second argument dans ce chapitre. Le troisième argument est la valeur initiale, positive ou nulle du sémaphore.
+Pour pouvoir utiliser un sémaphore, il faut d'abord l'initialiser. Cela se fait en utilisant la fonction `sem_init(3)`_ qui prend comme argument un pointeur vers le sémaphore à initialiser. Nous n'utiliserons pas le second argument dans ce chapitre. Le troisième argument est la valeur initiale, positive ou nulle, du sémaphore.
 
 La fonction `sem_destroy(3)`_ permet de libérer un sémaphore qui a été initialisé avec `sem_init(3)`_. Les sémaphores consomment des ressources qui peuvent être limitées dans certains environnements. Il est important de détruire proprement les sémaphores dès qu'ils ne sont plus nécessaires.
 
-Les deux principales fonctions de manipulation des sémaphores sont `sem_wait(3)`_ et `sem_post(3)`_. Certains auteurs utilisent ``down`` ou ``P`` à la place de `sem_wait(3)`_  et ``up`` ou ``V`` à la place de `sem_post(3)`_ [Downey2008]_. Schématiquement, l'opération ``sem_wait`` peut s'implémenter en utilisant le pseudocode suivant :
+Les deux principales fonctions de manipulation des sémaphores sont `sem_wait(3)`_ et `sem_post(3)`_. Certains auteurs utilisent ``down`` ou ``P`` à la place de `sem_wait(3)`_  et ``up`` ou ``V`` à la place de `sem_post(3)`_ [Downey2008]_. Schématiquement, l'opération ``sem_wait`` peut s'implémenter en utilisant le pseudo-code suivant :
 
 .. code-block:: c
 
@@ -78,7 +78,7 @@ La fonction `sem_post(3)`_ quant à elle peut schématiquement s'implémenter co
     }
   }
   
-Ces deux opérations sont bien entendu des opérations qui ne peuvent s'exécuter simultanément. Leur implémentation réelle comprend des sections critiques qui doivent être construites avec soin. Le pseudocode ci-dessus ignore ces sections critiques. Des détails complémentaires sur l'implémentation des sémaphores peuvent être obtenus dans un textbook sur les systèmes d'exploitation [Stallings2011]_ [Tanenbaum+2009]_ .
+Ces deux opérations sont bien entendu des opérations qui ne peuvent s'exécuter simultanément. Leur implémentation réelle comprend des sections critiques qui doivent être construites avec soin. Le pseudo-code ci-dessus ignore ces sections critiques. Des détails complémentaires sur l'implémentation des sémaphores peuvent être obtenus dans un textbook sur les systèmes d'exploitation [Stallings2011]_ [Tanenbaum+2009]_ .
 
 La meilleure façon de comprendre leur utilisation est d'analyser des problèmes classiques de coordination qui peuvent être résolus en utilisant des sémaphores.
 
@@ -104,7 +104,7 @@ Les sémaphores permettent de résoudre de nombreux problèmes classiques. Le pr
 
    sem_destroy(&semaphore); 
 
-Les sémaphores peuvent être utilisés pour d'autres types de synchronisation. Par exemple, considérons une application découpée en threads dans laquelle la fonction ``after`` ne peut jamais être exécutée avant la fin de l'exécution de la fonction ``before``. Ce problème de coordination peut facilement être résolu en utilisant un sémaphore qui est initialisé à la valeur ``0``. La fonction ``after`` doit démarrer par un appel à `sem_wait(3)`_ sur ce sémaphore tandis que la fonction ``before`` elle doit se terminer par un appel à la fonction `sem_post(3)`_ sur ce sémaphore. De cette façon, si le thread qui exécute la fonction ``after`` est trop rapide, il sera bloqué sur l'appel à `sem_wait(3)`_. Si il arrive à cette fonction après la fin de la fonction ``before`` dans l'autre thread, il pourra passer sans être bloqué. Le programme ci-dessous illustre cette utilisation des sémaphores POSIX.
+Les sémaphores peuvent être utilisés pour d'autres types de synchronisation. Par exemple, considérons une application découpée en threads dans laquelle la fonction ``after`` ne peut jamais être exécutée avant la fin de l'exécution de la fonction ``before``. Ce problème de coordination peut facilement être résolu en utilisant un sémaphore qui est initialisé à la valeur ``0``. La fonction ``after`` doit démarrer par un appel à `sem_wait(3)`_ sur ce sémaphore tandis que la fonction ``before`` doit se terminer par un appel à la fonction `sem_post(3)`_ sur ce sémaphore. De cette façon, si le thread qui exécute la fonction ``after`` est trop rapide, il sera bloqué sur l'appel à `sem_wait(3)`_. S'il arrive à cette fonction après la fin de la fonction ``before`` dans l'autre thread, il pourra passer sans être bloqué. Le programme ci-dessous illustre cette utilisation des sémaphores POSIX.
 
 .. literalinclude:: /Theorie/Threads/S7-src/pthread-sem-before.c
    :encoding: iso-8859-1
@@ -113,7 +113,7 @@ Les sémaphores peuvent être utilisés pour d'autres types de synchronisation. 
    :end-before: ///BBB
 
 
-Si conceptuellement un sémaphore initialisé à la valeur ``1`` est généralement utilisé comme un :term:`mutex`, il y a une différence importante entre les implémentations des sémaphores et des :term:`mutex`. Un sémaphore est conçu pour être manipulé par différents threads et il est très possible qu'un thread exécute `sem_wait(3)`_ et qu'un autre exécute `sem_post(3)`_. Pour les mutex, certaines implémentations supposent que c'est le même thread qui exécute `pthread_mutex_lock(3posix)`_ et `pthread_mutex_unlock(3posix)`_. Lorsque ces opérations doivent être effectuées dans des threads différents, il est préférable d'utiliser des sémaphores à la place de mutex.
+Si conceptuellement un sémaphore initialisé à la valeur ``1`` est généralement utilisé comme un :term:`mutex`, il y a une différence importante entre les implémentations des sémaphores et des :term:`mutex`. Un sémaphore est conçu pour être manipulé par différents threads et il est fort possible qu'un thread exécute `sem_wait(3)`_ et qu'un autre exécute `sem_post(3)`_. Pour les mutex, certaines implémentations supposent que le même thread exécute `pthread_mutex_lock(3posix)`_ et `pthread_mutex_unlock(3posix)`_. Lorsque ces opérations doivent être effectuées dans des threads différents, il est préférable d'utiliser des sémaphores à la place de mutex.
 
 
 Problème du rendez-vous
@@ -160,20 +160,20 @@ La variable ``count`` permet de compter le nombre de threads qui ont atteint le 
 
    seconde_phase();
 
-Le pseudocode ci-dessus présente une solution permettant de résoudre ce problème du rendez-vous. Le sémaphore étant initialisé à ``0``, le premier thread qui aura terminé la première phase sera bloqué sur ``sem_wait(&rendezvous);``. Les ``N-1`` premiers threads qui auront terminé leur première phase seront tous bloqués à cet endroit. Lorsque le dernier thread finira sa première phase, il incrémentera ``count`` puis exécutera ``sem_post(&rendezvous);`` ce qui libèrera un premier thread. Le dernier thread sera ensuite bloqué sur ``sem_wait(&rendezvous);`` mais il ne restera pas bloqué longtemps car chaque fois qu'un thread parvient à passer ``sem_wait(&rendezvous);``, il exécute immédiatement ``sem_post(&rendezvous);`` ce qui permet de libérer un autre thread en cascade.
+Le pseudo-code ci-dessus présente une solution permettant de résoudre ce problème du rendez-vous. Le sémaphore étant initialisé à ``0``, le premier thread qui aura terminé la première phase sera bloqué sur ``sem_wait(&rendezvous);``. Les ``N-1`` premiers threads qui auront terminé leur première phase seront tous bloqués à cet endroit. Lorsque le dernier thread finira sa première phase, il incrémentera ``count`` puis exécutera ``sem_post(&rendezvous);`` ce qui libèrera un premier thread. Le dernier thread sera ensuite bloqué sur ``sem_wait(&rendezvous);`` mais il ne restera pas bloqué longtemps car chaque fois qu'un thread parvient à passer ``sem_wait(&rendezvous);``, il exécute immédiatement ``sem_post(&rendezvous);`` ce qui permet de libérer un autre thread en cascade.
 
-Cette solution permet de résoudre le problème du rendez-vous avec un nombre fixe de threads. Certaines implémentations de la librairie threads POSIX implémentent une barrière qui peut s'utiliser de la même façon que la solution ci-dessus. Une barrière est une structure de données de type ``pthread_barrier_t``. Elle s'initialise en utilisant la fonction `pthread_barrier_init(3posix)`_ qui prend trois arguments : un pointeur vers une barrière, des attributs optionnels et le nombre de threads qui doivent avoir atteint la barrière pour que celle-ci s'ouvre. La fonction `pthread_barrier_destroy(3posix)`_ permet de détruire une barrière. Enfin, la fonction `pthread_barrier_wait(3posix)`_ qui prend comme argument un pointeur vers une barrière.
+Cette solution permet de résoudre le problème du rendez-vous avec un nombre fixe de threads. Certaines implémentations de la librairie des threads POSIX comprennent une barrière qui peut s'utiliser de la même façon que la solution ci-dessus. Une barrière est une structure de données de type ``pthread_barrier_t``. Elle s'initialise en utilisant la fonction `pthread_barrier_init(3posix)`_ qui prend trois arguments : un pointeur vers une barrière, des attributs optionnels et le nombre de threads qui doivent avoir atteint la barrière pour que celle-ci s'ouvre. La fonction `pthread_barrier_destroy(3posix)`_ permet de détruire une barrière. Enfin, la fonction `pthread_barrier_wait(3posix)`_ qui prend comme argument un pointeur vers une barrière bloque le thread correspondant à celle-ci tant que le nombre de threads requis pour passer la barrière n'a pas été atteint.
 
 
 Problème des producteurs-consommateurs
 --------------------------------------
 
-Le problème des producteurs consommateurs est un problème extrêmement fréquent et important dans les applications découpées en plusieurs threads. Il est courant de structurer une telle application, notamment si elle réalise de longs calculs en deux types de threads :
+Le problème des producteurs-consommateurs est un problème extrêmement fréquent et important dans les applications découpées en plusieurs threads. Il est courant de structurer une telle application, notamment si elle réalise de longs calculs, en deux types de threads :
 
- - les `producteurs`. Ce sont des threads qui produisent des données et placent le résultat de leurs calculs dans une zone mémoire accessible aux consommateurs.
- - les `consommateurs`. Ce sont des threads qui utilisent les valeurs calculées par les producteurs. 
+ - les `producteurs` : Ce sont des threads qui produisent des données et placent le résultat de leurs calculs dans une zone mémoire accessible aux consommateurs.
+ - les `consommateurs` : Ce sont des threads qui utilisent les valeurs calculées par les producteurs. 
 
-Ces deux types de threads communiquent en utilisant un buffer qui a une capacité limité à `N` slots comme illustré dans la figure ci-dessous.
+Ces deux types de threads communiquent en utilisant un buffer qui a une capacité limitée à `N` slots comme illustré dans la figure ci-dessous.
 
 .. figure:: /Theorie/Threads/figures/figures-S7-001-c.png
    :align: center
@@ -185,7 +185,7 @@ La difficulté du problème est de trouver une solution qui permet aux producteu
 
 Le buffer étant partagé entre les producteurs et les consommateurs, il doit nécessairement être protégé par un :term:`mutex`. Les producteurs doivent pouvoir ajouter de l'information dans le buffer partagé tant qu'il y a au moins un slot de libre dans le buffer. Un producteur ne doit être bloqué que si tout le buffer est rempli. Inversement, les consommateurs doivent être bloqués uniquement si le buffer est entièrement vide. Dès qu'une donnée est ajoutée dans le buffer, un consommateur doit être réveillé pour traiter cette donnée.
 
-Ce problème peut être résolu en utilisant deux sémaphores et un mutex. L'accès au buffer, que ce soit par les consommateurs ou les producteurs est une section critique. Cet accès doit donc être protégé par l'utilisation d'un mutex. La solution au problème des producteurs-consommateurs utilise deux sémaphores. Le premier, baptisé ``empty`` dans l'exemple ci-dessous, sert à compter le nombre de slots qui sont vides dans le buffer partagé. Ce sémaphore doit être initialisé à la taille du buffer puisqu'initialement celui-ci est vide. Le second sémaphore est baptisé ``full`` dans le pseudocode ci-dessous. Sa valeur représente le nombre de slots du buffer qui sont occupés. Il doit être initialisé à la valeur ``0``.
+Ce problème peut être résolu en utilisant deux sémaphores et un mutex. L'accès au buffer, que ce soit par les consommateurs ou les producteurs est une section critique. Cet accès doit donc être protégé par l'utilisation d'un mutex. Quant aux sémaphores, le premier, baptisé ``empty`` dans l'exemple ci-dessous, sert à compter le nombre de slots qui sont vides dans le buffer partagé. Ce sémaphore doit être initialisé à la taille du buffer puisqu'initialement celui-ci est vide. Le second sémaphore est baptisé ``full`` dans le pseudo-code ci-dessous. Sa valeur représente le nombre de slots du buffer qui sont occupés. Il doit être initialisé à la valeur ``0``.
 
 .. code-block:: c
 
@@ -199,7 +199,7 @@ Ce problème peut être résolu en utilisant deux sémaphores et un mutex. L'acc
    sem_init(&empty, 0 , N);  // buffer vide
    sem_init(&full, 0 , 0);   // buffer vide
 
-Le fonctionnement général d'un producteur est le suivant. Tout d'abord, le producteur est mis en attente sur le sémaphore ``empty``. Il ne pourra passer que si il y a au moins un slot du buffer qui est non-vide. Lorsque la ligne ``sem_wait(&empty);`` s'est exécutée, le producteur s'approprie le ``mutex`` et modifie le buffer de façon à insérer l'élément produit (dans ce cas un entier). Il libère ensuite le ``mutex`` pour sortir de sa section critique
+Le fonctionnement général d'un producteur est le suivant. Tout d'abord, le producteur est mis en attente sur le sémaphore ``empty``. Il ne pourra passer que si il y a au moins un slot du buffer qui est non-vide. Lorsque la ligne ``sem_wait(&empty);`` réussit, le producteur s'approprie le ``mutex`` et modifie le buffer de façon à insérer l'élément produit (dans ce cas un entier). Il libère ensuite le ``mutex`` pour sortir de sa section critique.
 
 .. code-block:: c
 
@@ -220,7 +220,7 @@ Le fonctionnement général d'un producteur est le suivant. Tout d'abord, le pro
    }
 
 
-Le consommateur quant à lui essaye d'abord de prendre le sémaphore ``full``. Si celui-ci est positif, cela indique la présence d'au moins un élément dans le buffer partagé. Ensuite il entre dans la section critique protégée par le ``mutex`` et récupère la donnée se trouvant dans le buffer. Ensuite, il incrémente la valeur du sémaphore ``empty`` de façon à indiquer à un producteur qu'un nouveau slot est disponible dans le buffer.
+Le consommateur quant à lui essaie d'abord de prendre le sémaphore ``full``. Si celui-ci est positif, cela indique la présence d'au moins un élément dans le buffer partagé. Ensuite, il entre dans la section critique protégée par le ``mutex`` et récupère la donnée se trouvant dans le buffer. Puis, il incrémente la valeur du sémaphore ``empty`` de façon à indiquer à un producteur qu'un nouveau slot est disponible dans le buffer.
 
 .. code-block:: c
 
@@ -248,7 +248,7 @@ Problème des readers-writers
 Le :term:`problème des readers-writers` est un peu différent du précédent. Il permet de modéliser un problème qui survient lorsque des threads doivent accéder à une base de données [Courtois+1971]_. Les threads sont généralement de deux types.
 
  - les lecteurs (`readers`) sont des threads qui lisent une structure de données (ou une base de données) mais ne la modifient pas. Comme ces threads se contentent de lire de l'information en mémoire, rien ne s'oppose à ce que plusieurs `readers` s'exécutent simultanément. 
- - les écrivains (`writers`). Ce sont des threads qui modifient une structure de données (ou une base de données). Pendant qu'un `writer` manipule la structure de données, il ne peut y avoir aucun autre `writer` ni de `reader` qui accède à cette structure de données. Sinon, la concurrence des opérations de lectures et d'écritures donnerait un résultat incorrect.
+ - les écrivains (`writers`). Ce sont des threads qui modifient une structure de données (ou une base de données). Pendant qu'un `writer` manipule la structure de données, il ne peut y avoir aucun autre `writer` ni de `reader` qui accède à cette structure de données. Sinon, la concurrence des opérations de lecture et d'écriture donnerait un résultat incorrect.
 
 Une première solution à ce problème est d'utiliser un mutex et un sémaphore [Courtois+1971]_. 
 
@@ -278,7 +278,7 @@ La solution utilise une variable partagée : ``readcount``. L'accès à cette va
  }
 
 
-Le sémaphore ``db`` sert à assurer l'exclusion mutuelle entre les `writers` pour l'accès à la base de données. Le fonctionnement des `readers` est plus intéressant. Pour éviter un conflit entre les `writers` et les `readers`, il est nécessaire d'empêcher aux `readers` d'accéder à la base de données pendant qu'un `writer` la modifie. Cela peut se faire en utilisant l'entier `readcount` qui permet de compter le nombre de `readers` qui manipulent la base de données. Cette variable est testée et modifiée par tous les `readers`, elle doit donc être protégée par un :term:`mutex`. Intuitivement, lorsque le premier `reader` veut accéder à la base de données (``readcount==0``), il essaye de décrémenter le sémaphore ``db``. Si ce sémaphore est libre, le `reader` accède à la base de données. Sinon, il bloque sur ``sem_wait(&db);`` et comme il possède ``mutex``, tous les autres `readers` sont bloqués sur ``pthread_mutex_lock(&mutex);``. Dès que le premier `reader` est débloqué, il autorise en cascade l'accès à tous les autres `readers` qui sont en attente en libérant ``pthread_mutex_unlock(&mutex);``. Lorsqu'un `reader` arrête d'utiliser la base de données, il vérifie si il était le dernier `reader`. Si c'est le cas, il libère le sémaphore ``db`` de façon à permettre à un `writer` d'y accéder. Sinon, il décrémente simplement la variable ``readcount`` pour tenir à jour le nombre de `readers` qui sont actuellement en train d'accéder à la base de données.
+Le sémaphore ``db`` sert à assurer l'exclusion mutuelle entre les `writers` pour l'accès à la base de données. Le fonctionnement des `readers` est plus intéressant. Pour éviter un conflit entre les `writers` et les `readers`, il est nécessaire d'empêcher aux `readers` d'accéder à la base de données pendant qu'un `writer` la modifie. Cela peut se faire en utilisant l'entier `readcount` qui permet de compter le nombre de `readers` qui manipulent la base de données. Cette variable est testée et modifiée par tous les `readers`, elle doit donc être protégée par un :term:`mutex`. Intuitivement, lorsque le premier `reader` veut accéder à la base de données (``readcount==0``), il essaye de décrémenter le sémaphore ``db``. Si ce sémaphore est libre, le `reader` accède à la base de données. Sinon, il bloque sur ``sem_wait(&db);`` et comme il possède ``mutex``, tous les autres `readers` sont bloqués sur ``pthread_mutex_lock(&mutex);``. Dès que le premier `reader` est débloqué, il autorise en cascade l'accès à tous les autres `readers` qui sont en attente en libérant ``pthread_mutex_unlock(&mutex);``. Lorsqu'un `reader` arrête d'utiliser la base de données, il vérifie s'il était le dernier `reader`. Si c'est le cas, il libère le sémaphore ``db`` de façon à permettre à un `writer` d'y accéder. Sinon, il décrémente simplement la variable ``readcount`` pour tenir à jour le nombre de `readers` qui sont actuellement en train d'accéder à la base de données.
 
 
 .. code-block:: c
@@ -308,11 +308,11 @@ Le sémaphore ``db`` sert à assurer l'exclusion mutuelle entre les `writers` po
    }
   }
 
-.. Cette solution est un exemple atypique de l'utilisation de :term:`mutex` puisque le :term:`mutex` ``db`` peut être réservé par un thread `reader` et libérer par un tout autre thread. D'habitude, c'est généralement le même thread qui exécute `pthread_mutex_lock(3)`_ et `pthread_mutex_unlock(3)`_ pour un mutex donné.
+.. Cette solution est un exemple atypique de l'utilisation de :term:`mutex` puisque le :term:`mutex` ``db`` peut être réservé par un thread `reader` et libéré par un tout autre thread. D'habitude, c'est généralement le même thread qui exécute `pthread_mutex_lock(3)`_ et `pthread_mutex_unlock(3)`_ pour un mutex donné.
 
-Cette solution fonctionne et garantit qu'il n'y aura jamais qu'un seul `writer` qui accède à la base de données. Malheureusement, elle souffre d'un inconvénient majeur lorsqu'il y a de nombreux `readers`. Dans ce cas, il est très possible qu'il y aie en permanence des `readers` qui accèdent à la base de données et que les `writers` soient toujours empêchés d'y accéder. En effet, dès que le premier `reader` a effectué ``sem_wait(&db);``, aucun autre `reader` ne devra exécuter cette opération tant qu'il restera au moins un `reader` accédant à la la base de données. Les `writers` par contre resteront bloqués sur l'exécution de ``sem_wait(&db);``.
+Cette solution fonctionne et garantit qu'il n'y aura jamais qu'un seul `writer` qui accède à la base de données. Malheureusement, elle souffre d'un inconvénient majeur lorsqu'il y a de nombreux `readers`. Dans ce cas, il est tout à fait possible qu'il y ait en permanence des `readers` qui accèdent à la base de données et que les `writers` soient toujours empêchés d'y accéder. En effet, dès que le premier `reader` a effectué ``sem_wait(&db);``, aucun autre `reader` ne devra exécuter cette opération tant qu'il restera au moins un `reader` accédant à la base de données. Les `writers` par contre resteront bloqués sur l'exécution de ``sem_wait(&db);``.
 
-En utilisant des sémaphores à la place des :term:`mutex`, il est possible de contourner ce problème. Cependant, cela nécessite d'utiliser plusieurs sémaphores. Intuitivement, l'idée de la solution est de donner priorité aux `writers` par rapport aux `readers`. Dès qu'un `writer` est prêt à accéder à la base de données, il faut laisser empêcher de nouveaux `readers` d'y accéder tout en permettant aux `readers` présents de terminer leur lecture.
+En utilisant des sémaphores à la place des :term:`mutex`, il est possible de contourner ce problème. Cependant, cela nécessite d'utiliser plusieurs sémaphores. Intuitivement, l'idée de la solution est de donner priorité aux `writers` par rapport aux `readers`. Dès qu'un `writer` est prêt à accéder à la base de données, il faut empêcher de nouveaux `readers` d'y accéder tout en permettant aux `readers` présents de terminer leur lecture.
 
 Cette solution utilise trois mutex, deux sémaphores et deux variables partagées : ``readcount`` et ``writecount``. Ces deux variables servent respectivement à compter le nombre de `readers` qui accèdent à la base de données et le nombre de `writers` qui veulent y accéder. Le sémaphore ``wsem`` est utilisé pour bloquer les `writers` tandis que le sémaphore ``rsem`` sert à bloquer les `readers`. Le mutex ``z`` a un rôle particulier qui sera plus clair lorsque le code des `readers` aura été présenté. Les deux sémaphores sont initialisés à la valeur ``1``.
  
@@ -331,7 +331,7 @@ Cette solution utilise trois mutex, deux sémaphores et deux variables partagée
   sem_init(&rsem, 0, 1);
 
 
-Un `writer` utilise la variable ``writecount`` pour compter le nombre de `writers` qui veulent accéder à la base de données. Cette variable est protégée par ``mutex_writecount``. Le sémaphore ``wsem`` est utilisé pour garantir qu'i n'y a qu'un seul `writer` qui peut accéder à un moment donné à la base de données. Cette utilisation est similaire à celle du sémaphore ``db`` dans la solution précédente.
+Un `writer` utilise la variable ``writecount`` pour compter le nombre de `writers` qui veulent accéder à la base de données. Cette variable est protégée par ``mutex_writecount``. Le sémaphore ``wsem`` est utilisé pour garantir qu'il n'y a qu'un seul `writer` qui peut accéder à un moment donné à la base de données. Cette utilisation est similaire à celle du sémaphore ``db`` dans la solution précédente.
 
 .. code-block:: c
 
@@ -365,7 +365,7 @@ Un `writer` utilise la variable ``writecount`` pour compter le nombre de `writer
     }
 
 
-Pour comprendre le reste du fonctionnement des `writers`, il faut analyser en parallèle le fonctionnement des `readers` car les deux types de threads interagissent de façon importante. Un `reader` utilise la variable ``readcount`` protégée par le ``mutex_readcount`` pour compter le nombre de `readers` en attente. Un `reader` utilise deux sémaphores. Le premier est ``wsem`` qui joue un rôle similaire au sémaphore ``db`` de la solution précédente. Le premier `reader` qui veut accéder à la base de données (``readcount==1``) effectue ``sem_wait(&wsem)`` pour garantir qu'il n'y aura pas de `writer` qui accède à la base de données pendant qu'il y lit. Lorsque le dernier `reader` n'a plus besoin d'accéder à la base de données (``readcount==0``), il libère les `writers` qui étaient potentiellement en attente en exécutant ``sem_post(&wsem)``. 
+Pour comprendre le reste du fonctionnement des `writers`, il faut analyser en parallèle le fonctionnement des `readers` car les deux types de threads interagissent de façon importante. Un `reader` utilise la variable ``readcount`` protégée par le ``mutex_readcount`` pour compter le nombre de `readers` en attente. Un `reader` utilise deux sémaphores. Le premier est ``wsem`` qui joue un rôle similaire au sémaphore ``db`` de la solution précédente. Le premier `reader` qui veut accéder à la base de données (``readcount==1``) effectue ``sem_wait(&wsem)`` pour garantir qu'il n'y aura pas de `writer` qui accède à la base de données pendant qu'il s'y trouve. Lorsque le dernier `reader` n'a plus besoin d'accéder à la base de données (``readcount==0``), il libère les `writers` qui étaient potentiellement en attente en exécutant ``sem_post(&wsem)``. 
 
 Le sémaphore ``rsem`` répond à un autre besoin. Il permet de bloquer les `readers` en attente lorsqu'un `writer` veut accéder à la base de données. En effet, le premier `writer` qui veut accéder à la base de données exécute ``sem_wait(&rsem)``. Cela a pour effet de bloquer les nouveaux `readers` qui voudraient accéder à la base de données sur ``sem_wait(&rsem)``. Ils ne seront débloqués que lorsque le dernier `writer` (``writecount==0``) quittera la base de données et exécutera ``sem_post(&rsem)``. Lorsqu'aucun writer n'accède à la base de données, les readers peuvent facilement exécuter ``sem_wait(&rsem)`` qui sera rapidement suivi de ``sem_post(&rsem)``.
 
@@ -408,7 +408,7 @@ Pour comprendre l'utilité du mutex ``z``, il faut imaginer une solution dans la
 
 .. note:: Read-Write locks
 
- Certaines implémentations de la libraire threads POSIX contiennent des  Read-Write locks. Ceux-ci constituent une API de plus haut niveau qui s'appuie sur des sémaphores pour résoudre le problème des Readers-Writers. Les fonctions de création et de suppression de ces locks sont : `pthread_rwlock_init(3posix)`_, `pthread_rwlock_destroy(3posix)`_. Les fonctions `pthread_rwlock_rdlock(3posix)`_ et `pthread_rwlock_unlock(3posix)`_ sont réservées aux readers tandis que les fonctions `pthread_rwlock_wrlock(3posix)`_ et `pthread_rwlock_unlock(3posix)`_ sont utilisables par les writers. Des exemples d'utilisation de ces Read-Write locks peuvent être obtenus dans [Gove2011]_.
+ Certaines implémentations de la librairie des threads POSIX contiennent des `Read-Write locks`. Ceux-ci constituent une API de plus haut niveau qui s'appuie sur des sémaphores pour résoudre le :term:`problème des readers-writers`. Les fonctions de création et de suppression de ces locks sont : `pthread_rwlock_init(3posix)`_, `pthread_rwlock_destroy(3posix)`_. Les fonctions `pthread_rwlock_rdlock(3posix)`_ et `pthread_rwlock_unlock(3posix)`_ sont réservées aux readers tandis que les fonctions `pthread_rwlock_wrlock(3posix)`_ et `pthread_rwlock_unlock(3posix)`_ sont utilisables par les writers. Des exemples d'utilisation de ces `Read-Write locks` peuvent être obtenus dans [Gove2011]_.
 
 
 Compléments sur les threads POSIX
