@@ -354,7 +354,7 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
       // reste non fourni
     }
 
-  .. class:: comment
+ .. class:: comment
 
     Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple. En outre, l'accès à la section critique doit être précédée par un appel à `sem_wait(3)`_  et suivie par un appel à `sem_post(3)`_ et non l'inverse comme dans cet exemple.
 
@@ -363,7 +363,7 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
 Question 3. Fonctions 'thread-safe'
 -----------------------------------
 
-La plupart des fonctions de la librairie standard sont des fonctions thread-safe, c'est-à-dire des fonctions que l'on peut utiliser dans plusieurs threads distincts sans risquer de problèmes d'accès concurrent. Cependant, certains fonctions, souvent parmi les plus anciennes, ne sont pas thread safe. Parmi les fonctions ci-dessous, une seule est thread-safe. Laquelle ?
+La plupart des fonctions de la librairie standard sont des fonctions thread-safe, c'est-à-dire des fonctions que l'on peut utiliser dans plusieurs threads distincts sans risquer de problèmes d'accès concurrent. Cependant, certaines fonctions, souvent parmi les plus anciennes, ne sont pas thread-safe. Parmi les fonctions ci-dessous, une seule est thread-safe. Laquelle ?
 
 .. class:: positive
 
