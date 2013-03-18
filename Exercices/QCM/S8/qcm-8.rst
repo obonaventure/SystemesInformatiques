@@ -17,7 +17,7 @@ Huitième semaine
 
 La matière couverte cette semaine couvre les processus. Elle est décrite dans les sections suivantes des notes :
 
-
+ - :ref:`processus` 
 
 Question 1. `fork(2)`_ 
 -----------------------

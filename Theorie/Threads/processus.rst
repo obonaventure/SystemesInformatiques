@@ -2,6 +2,8 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+.. _processus:
+
 
 Les processus
 =============
@@ -183,7 +185,6 @@ Ces opérations sont importantes pour comprendre le fonctionnement d'un système
 
 .. Ces opérations sont réalisées en utilisant des appels systèmes. Lors de son exécution un programme exécute non seulement des instructions qui ont été compilées sur base du code source du programme, mais aussi des fonctions faisant partie d'une des librairies standard du système. Certaines librairies contiennent des fonctions indépendantes, comme la librairie mathématique, d'autres font appel au système d'exploitation directement ou indirectement. font partie du programme, ce sont les peut faire appels à trois petits de fonctions prin Dans les chapitres précédents, nous avons développé des programmes qui d'abord utilisaient des fonctions faisant partie Jusque maintenant, nous
 
-.. todo:: expliquer appel système, passage en mode protégé, table des appels systèmes, exécution de code du kernel, différence par rapport à une fonction de la librairie telle que max, endroit pour placer les paramètres de l'appel système
 
 .. index:: fork
 
@@ -192,7 +193,7 @@ Création d'un processus
 
 Pour comprendre le fonctionnement de Unix, il est utile d'analyser plus en détails toutes les opérations qui sont effectuées à chaque fois que l'on lance un programme depuis un shell tel que `bash(1)`_. Considérons l'exécution de la commande ``/bin/true`` depuis le shell.
 
-Schématiquement, l'exécution de ce programme se déroule comme suit. Le shell va d'abord localiser l'exécutable ``/bin/true`` qui est stocké dans le système de fichiers. Ensuite, il va créer un processus et y exécuter l'exécutable. Le shell va ensuite attendre la fin de l'exécution du programme ``true`` et récupérer sa valeur de retour (retournée par `exit(2)`_) pour ensuite poursuivre son exécution. 
+Schématiquement, l'exécution de ce programme se déroule comme suit. Le shell va d'abord localiser [#fpath]_ l'exécutable ``/bin/true`` qui est stocké dans le système de fichiers. Ensuite, il va créer un processus et y exécuter l'exécutable. Le shell va ensuite attendre la fin de l'exécution du programme ``true`` et récupérer sa valeur de retour (retournée par `exit(2)`_) pour ensuite poursuivre son exécution. 
 
 
 .. todo:: figure à ajouter plus tard pour illustrer ce fonctionnement
@@ -624,16 +625,13 @@ Certains des entrées dans ``/proc`` sont des fichiers, d'autres sont des réper
 
 Nous aurons l'occasion de présenter ultérieurement d'autres éléments utiles se trouvant dans ``/proc``. Une description plus détaillée est disponible dans la page de manuel `proc(5)`_ et des livres de référence tels que [Kerrisk2010]_.
 
-.. Threads et processus
 
-
-.. Il est important de comparer le fonctionnement des processus avec le fonctionnement des threads que nous avons abordé précédemment. Considérons un processus qui crée
-
-.. todo:: Olivier
 
 .. rubric:: Footnotes
 
 .. [#fdynamic] Dans certains cas, on parle également de librairies dynamiques car ces librairies sont chargées dynamiquement à l'exécution du programme. 
+
+.. [#fpath] La variable d'environnement ``PATH`` contient la liste des répertoires que le shell parcoure afin de localiser un exécutable à lancer lorsque l'utilisateur ne fournit par le chemin complet de l'exécutable à lancer.
 
 .. [#fsyscall] En pratique, il correspond une fonction de la librairie à chaque appel système. Cette fonction a le même nom que l'appel système et les mêmes arguments et fait appel à `syscall(2)`_ pour l'exécution de l'appel système. 
 
