@@ -151,4 +151,26 @@ Séance tutorée
 
 
 
+Huitième semaine
+----------------
+
+La matière de cette semaine porte sur le fonctionnement des processus. Elle est décrite dans la section  :
+
+ - :ref:`processus` 
+
+.. only:: html
+
+   `QCM8 </static/_static/Mission-8-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-8
+
+
+
 
