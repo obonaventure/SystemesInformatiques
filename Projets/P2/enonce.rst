@@ -49,6 +49,12 @@ L'option ''-t'' permet de spécifier le nombre de threads par filtre. Il y a don
 
 Les arguments ''input-folder'' et ''output-folder'' fournissent au programme respectivement le dossier où les fichiers bitmap se trouvent et le dans lequel il faut écrire les images. Chaque image à la sortie aura le même nom et extension qu'à l'entrée.
 
+Voici un exemple d'utilisation du programme:
+
+    .. code-block:: console
+
+        $ ./filter -f red,blur,green -t 2,4,2 images/ out_images/
+
 
 API fournie
 -----------
