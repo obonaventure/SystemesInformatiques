@@ -37,7 +37,7 @@ L'appel système `fork(2)`_ permet de créer une copie du processus courant. Un 
     }
     else {
       if(pid!=0) {
-	printf("Running in %d\n",pid);
+          printf("Running in %d\n",pid);
       }
     }
   }
@@ -142,7 +142,7 @@ Parmi les extraits de programme ci-dessous, lequel est un appel correct à `exec
 
    .. class:: comment
 
-      Les deuxième et troisième arguments à `execve(2)`_ doivent être de type ``char *``.
+      Les deuxième et troisième arguments à `execve(2)`_ doivent être de type ``char *arg[]``.
 
 -
    .. code-block:: c 
@@ -165,7 +165,7 @@ Parmi les extraits de programme ci-dessous, lequel est un appel correct à `exec
 
    .. class:: comment
 
-      Les deuxième et troisième arguments à `execve(2)`_ doivent être de type ``char *``.
+      Les deuxième et troisième arguments à `execve(2)`_ doivent être de type ``char *arg[]``.
 
 -
    .. code-block:: c 
