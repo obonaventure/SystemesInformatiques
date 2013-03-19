@@ -59,22 +59,20 @@ Consultez les pages de manuel pour déterminer comment le système d'exploitatio
 
 8. Compilez le programme :download:`/S8/src/fork-zombie.c`. Ce programme crée un processus mais le processus père attend une minute pour récupérer sa valeur de retour. Lancez ce programme en tâche de fond (voir section outils) et utilisez `ps(1)`_ ou consultez ``/proc/`` 
 
-9. Comment feriez-vous pour implémenter la commande ``rtime``. Cette commande est un exécutable qui peut être lancé depuis le shell. Elle prend comme argument le nom d'un fichier exécutable et les arguments à passer à cet exécutable. Elle exécute cet exécutable et affiche sur :term:`stdout` le temps total d'exécution.
+9. La librairie standard comprend une fonction `system(3posix)`_ qui permet l'exécution d'une commande du shell. Ainsi, la ligne ``system("for f in {1..3} ; do echo $f ; done")`` va provoquer un appel au shell `bash(1)`_ qui va exécuter la commande passé en argument et donc afficher trois lignes contenant chacune un nombre sur la sortie standard. Quels sont les appels système utilisées par une implémentation de cette fonction `system(3posix)`_ ? 
 
-10. La librairie standard comprend une fonction `system(3posix)`_ qui permet l'exécution d'une commande du shell. Ainsi, la ligne ``system("for f in {1..3} ; do echo $f ; done")`` va provoquer un appel au shell `bash(1)`_ qui va exécuter la commande passé en argument et donc afficher trois lignes contenant chacune un nombre sur la sortie standard. Quels sont les appels système utilisées par une implémentation de cette fonction `system(3posix)`_ ? 
-
-11. Quelles différences et similitudes voyez-vous entre :
+10. Quelles différences et similitudes voyez-vous entre :
  
     - `pthread_create(3)`_ et `fork(2)`_
     - `pthread_join(3)`_ et `waitpid(2)`_
 
 
-12. La commande `strace(1)`_ permet de tracer tous les appels système faits par un programme. Recompilez un programme d'exemple et essayer d'identifier les principaux appels systèmes qui sont utilisés par ce programme. Les paramètres ``-c``, ``-t`` et ``-e`` peuvent être utiles pour explorer le comportement d'un programme et avoir une idée des appels systèmes qu'il effectue.
+11. La commande `strace(1)`_ permet de tracer tous les appels système faits par un programme. Recompilez un programme d'exemple et essayer d'identifier les principaux appels systèmes qui sont utilisés par ce programme. Les paramètres ``-c``, ``-t`` et ``-e`` peuvent être utiles pour explorer le comportement d'un programme et avoir une idée des appels systèmes qu'il effectue.
 
-13. La commande `pstree(1)`_ permet de visualiser sous forme d'arbre l'ensemble des processus actifs sur un ordinateur Linux. Exécutez `pstree(1)`_ et identifiez quels sont les processus qui sont les ancêtres de votre commande.
+12. La commande `pstree(1)`_ permet de visualiser sous forme d'arbre l'ensemble des processus actifs sur un ordinateur Linux. Exécutez `pstree(1)`_ et identifiez quels sont les processus qui sont les ancêtres de votre commande.
 
-14. Un shell tel que `bash(1)`_ permet à l'utilisateur de lancer plusieurs programmes simultanément. Par exemple, il est possible de lancer un programme en background (ou tâche de fond en français) en le suffixant avec le caractère ``&``. On peut faire de même en tapant `Ctrl-Z` (les touches `Ctrl` et `Z` simultanément) pendant qu'un programme s'exécute. Cela peut être utile pour taper une commande pour par exemple voir l'état du système pendant l'exécution du programme. Il est possible de revenir à l'exécution du programme via la commande `fg(1)`. La commande `jobs(1posix)`_ permet de lister les processus qui sont actuellement exécutés par le shell en tâche de fond. La section `JOB CONTROL` du manuel de `bash(1)`_ fournit plus d'informations à ce sujet. 
+13. Un shell tel que `bash(1)`_ permet à l'utilisateur de lancer plusieurs programmes simultanément. Par exemple, il est possible de lancer un programme en background (ou tâche de fond en français) en le suffixant avec le caractère ``&``. On peut faire de même en tapant `Ctrl-Z` (les touches `Ctrl` et `Z` simultanément) pendant qu'un programme s'exécute. Cela peut être utile pour taper une commande pour par exemple voir l'état du système pendant l'exécution du programme. Il est possible de revenir à l'exécution du programme via la commande `fg(1)`. La commande `jobs(1posix)`_ permet de lister les processus qui sont actuellement exécutés par le shell en tâche de fond. La section `JOB CONTROL` du manuel de `bash(1)`_ fournit plus d'informations à ce sujet. 
 
-15. Le répertoire ``/proc`` contient une image de la table des processus maintenue par le :term:`kernel` et d'autres structures de données maintenues par le :term:`kernel`. Compilez le programme :download:`/Exercices/Programmes/src/fork-pthread.c` qui lance un processus fils puis crée un thread à l'intérieur du processus père. Lancez ce programme en background via `bash(1)`_ et observez les entrées relatives au père, au fils et au thread créé par le processus père dans ``/proc``.
+14. Le répertoire ``/proc`` contient une image de la table des processus maintenue par le :term:`kernel` et d'autres structures de données maintenues par le :term:`kernel`. Compilez le programme :download:`/Exercices/Programmes/src/fork-pthread.c` qui lance un processus fils puis crée un thread à l'intérieur du processus père. Lancez ce programme en background via `bash(1)`_ et observez les entrées relatives au père, au fils et au thread créé par le processus père dans ``/proc``.
 
 
