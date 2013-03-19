@@ -49,7 +49,7 @@ Exercices
      // ...
    }
 
-Consultez les pages de manuel pour déterminer comment le système d'exploitation peut se protéger contre de telles `fork bomb <http://en.wikipedia.org/wiki/Fork_bomb>`_.
+  Consultez les pages de manuel pour déterminer comment le système d'exploitation peut se protéger contre de telles `fork bomb <http://en.wikipedia.org/wiki/Fork_bomb>`_.
 
 7. Comparez les performances de la création et la terminaison de threads et de processus en compilant et exécutant sur un ordinateur non chargé les programmes :download:`/Exercices/Programmes/src/fork-perf.c` et :download:`/Exercices/Programmes/src/pthread-perf.c`. Utilisez la commande `time(1posix)`_ pour mesurer le temps d'exécution de chacun des ces programmes qui créent 100000 processus ou threads. Expliquez vos résultats.
 
@@ -57,7 +57,7 @@ Consultez les pages de manuel pour déterminer comment le système d'exploitatio
     
     Essayez de discuter avec les étudiants des avantages et inconvénients des threads et des processus pour voir dans quels cas un processus est plus utile qu'un thread. A ce stade, ils n'ont vu aucun mécanisme de partage entre processus et ils n'ont pas encore vu les fichiers. Le seul avantage des processus est que si le père crashe son fils ne crashe pas nécessairement, alors que dans les threads un crash provoque le crash de tous les threads du processus.
 
-8. Compilez le programme :download:`/S8/src/fork-zombie.c`. Ce programme crée un processus mais le processus père attend une minute pour récupérer sa valeur de retour. Lancez ce programme en tâche de fond (voir section outils) et utilisez `ps(1)`_ ou consultez ``/proc/`` 
+8. Compilez le programme :download:`/Exercices/Programmes/src/fork-zombie.c`. Ce programme crée un processus mais le processus père attend une minute pour récupérer sa valeur de retour. Lancez ce programme en tâche de fond (voir section outils) et utilisez `ps(1)`_ ou consultez ``/proc/``
 
 9. La librairie standard comprend une fonction `system(3posix)`_ qui permet l'exécution d'une commande du shell. Ainsi, la ligne ``system("for f in {1..3} ; do echo $f ; done")`` va provoquer un appel au shell `bash(1)`_ qui va exécuter la commande passé en argument et donc afficher trois lignes contenant chacune un nombre sur la sortie standard. Quels sont les appels système utilisées par une implémentation de cette fonction `system(3posix)`_ ? 
 
