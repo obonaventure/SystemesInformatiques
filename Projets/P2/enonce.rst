@@ -40,10 +40,10 @@ La liste des filtres est la suivante:
     * ''red'' Filtre, qui enlève la composante 'rouge' de l'image.
     * ''green'' Filtre, qui enlève la composante 'vert' de l'image (déjà fourni).
     * ''blue'' Filtre, qui enlève la composante 'bleu' de l'image.
-    * ''grayscale'' Filtre, qui transforme l'image en niveau de gris. Le niveau du gris est calculée en mettant chaque couleur primaire du pixel égale à la moyenne des trois couleurs primaires.
+    * ''grayscale'' Filtre, qui transforme l'image en niveau de gris. Le niveau du gris est calculé en mettant chaque couleur primaire du pixel égale à la moyenne des trois couleurs primaires.
     * ''blur'' Filtre, qui ajoute un flou gaussien dans l'image. Voyez :download:`/Projets/P2/src/filter.h` pour plus d'informations sur ce filtre.
 
-Nous vous demandons également de définir et d'implémenter vous même un filtre. Ce filtre sera évaluer en fonction de son originalité. Vous pouvez bien sûr vous baser sur des filtres déjà existant. Il est cependant interdit de copier/coller d'un code existant.
+Nous vous demandons également de définir et d'implémenter vous-mêmes un filtre. Ce filtre sera évalué en fonction de son originalité. Vous pouvez bien sûr vous baser sur des filtres déjà existants. Il est cependant interdit de copier/coller un code existant.
 
 L'option ''-t'' permet de spécifier le nombre de threads par filtre. Il y a donc toujours ''numThreads1'' threads pour le filtre ''filter1''. L'option ''-t'' doit avoir autant d'arguments que l'option ''-f''.
 
@@ -59,7 +59,7 @@ Nous vous fournissons une API pour lire un fichier bitmap et écrire l'image dan
 
         int load_bmp(char *file, struct image **res_image);
 
-''load_bmp'' charge l'image donnée par ''file'' et alloue une structure ''struct image'' qui représente tout l'image entière. Regardez :download:`/Projets/P2/src/bitmap.h` pour plus d'informations.
+''load_bmp'' charge l'image donnée par ''file'' et alloue une structure ''struct image'' qui représente l'image entière. Regardez :download:`/Projets/P2/src/bitmap.h` pour plus d'informations.
 
      .. code-block:: c
 
@@ -84,7 +84,7 @@ Vous devez fournir sur le SVN dans votre dossier de groupe:
 	- Le code source de votre projet (pas de binaires) ainsi qu'un ``Makefile`` (lorsque l'on tape ``make`` un binaire ``filter`` doit être généré.). Vous devez compiler votre programme avec les options *-Wall* et *-Werror* de gcc.
 	- Un rapport de *4 pages maximum* (12pt) qui décrit vos choix architecturaux ainsi que les problèmes rencontrés. Le rapport doit être nommé *rapport.pdf* et présent dans votre dossier de groupe.
 
-Les critères de cotations sont les suivants (liste non-exhaustive):
+Les critères de cotation sont les suivants (liste non-exhaustive):
 
         - Votre impémentation doît fonctionner dans les salles informatiques du département;
 	- Création et gestion des threads;
