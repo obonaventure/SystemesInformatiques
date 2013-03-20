@@ -142,7 +142,8 @@ Les instructions de la famille ``mov`` [#fmov]_ permettent de déplacer des donn
 
 Il existe une instruction de la famille ``mov`` qui correspond à chaque type de donnée pouvant être déplacé. L'instruction ``movb`` est utilisée pour déplacer un byte, ``movw`` pour déplacer un mot de 16 bits et ``movl`` lorsqu'il faut déplacer un mot de 32 bits.
 
-En pratique, il y a plusieurs façons de spécifier chaque argument d'une instruction ``mov``. Certains auteurs utilisent le terme :term:`mode d'adressage` pour représenter ces différents types d'arguments même si il ne s'agit pas toujours d'adresses. Le premier mode est le mode `registre`. La source et la destination d'une opération ``mov`` peuvent être un nom de registre. Ceux-ci sont en général préfixés avec le caractère ``%``. Ainsi, ``%eax`` correspond au registre ``EAX``. La première instruction ci-dessous déplace le mot de 32 bits stocké dans le registre ``%eax`` vers le registre ``%ebx``. La seconde instruction elle n'a aucun effet puisqu'elle déplace la contenu du registre ``%ecx`` vers ce même registre.
+En pratique, il y a plusieurs façons de spécifier chaque argument d'une instruction ``mov``. Certains auteurs utilisent le terme :term:`mode d'adressage` pour représenter ces différents types d'arguments même si il ne s'agit pas toujours d'adresses. Le premier mode est le mode `registre`. La source et la destination d'une opération ``mov`` peuvent être un nom de registre. Ceux-ci sont en général préfixés avec le caractère ``%``. Ainsi, ``%eax`` correspond au registre ``EAX``. La première instruction ci-dessous déplace le mot de 32 bits stocké dans le registre ``%eax`` vers le registre ``%ebx``. La seconde instruction elle n'a aucun effet puisqu'elle déplace le contenu du registre ``%ecx`` vers ce même registre.
+
 
 .. code-block:: nasm
 
@@ -269,7 +270,7 @@ Dans le code assembleur, les noms de variables tels que ``g`` ou ``j`` correspon
 
 .. code-block:: nasm
 
-	movl	g, %eax  ; g=%eax
+	movl	g, %eax  ; %eax=g
 	xorl	j, %eax  ; %eax=g^j
 	movl	%eax, l  ; l=%eax
 	movl	j, %eax  ; %eax=j
@@ -610,7 +611,7 @@ La compilation de ce programme produit le code assembleur suivant pour les proc�
 
 La seule différence par rapport au programme précédent est que la procédure ``p`` descend le sommet de la pile de 12 unités au début de son exécution et l'augmente de 12 unités à la fin. Ces manipulations sont nécessaires pour respecter une convention de l'architecture [IA32]_ qui veut que les adresses de retour des procédures soient alignées sur des blocs de 16 bytes.
 
-Considérons maintenant une procédure qui prend un argument. Pour qu'une telle procédure puisse utiliser un argument, il faut que la procédure appelante puisse placer sa valeur à un endroit où la procédure appelée peut facilement y accéder. Dans l'architecture [IA32]_, c'est la pile qui joue ce rôle et permet la passage des arguments. En C, les arguments sont passés par valeur et ce sera donc les valeurs des arguments qui seront placées sur la pile. A titre d'exemple, considérons une procédure simple qui prend deux arguments entiers.
+Considérons maintenant une procédure qui prend un argument. Pour qu'une telle procédure puisse utiliser un argument, il faut que la procédure appelante puisse placer sa valeur à un endroit où la procédure appelée peut facilement y accéder. Dans l'architecture [IA32]_, c'est la pile qui joue ce rôle et permet le passage des arguments. En C, les arguments sont passés par valeur et ce sera donc les valeurs des arguments qui seront placées sur la pile. A titre d'exemple, considérons une procédure simple qui prend deux arguments entiers.
 
 .. literalinclude:: /Theorie/Assembleur/src/fct.c
    :encoding: iso-8859-1

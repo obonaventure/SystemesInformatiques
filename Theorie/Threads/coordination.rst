@@ -119,7 +119,7 @@ Si conceptuellement un sémaphore initialisé à la valeur ``1`` est généralem
 Problème du rendez-vous
 -----------------------
 
-Le problème du rendez-vous [Downey2008]_ est un problème assez courant dans les applications multithreadées. Considérons une application découpée en `N` threads. Chacun de ces threads travaillent en deux phases. Durant la première phase, tous les threads sont indépendants et peuvent s'exécuter simultanément. Cependant, un thread ne peut démarrer sa seconde phase que si tous les `N` threads ont terminé leur première phase. L'organisation de chaque thread est donc :
+Le problème du rendez-vous [Downey2008]_ est un problème assez courant dans les applications multithreadées. Considérons une application découpée en `N` threads. Chacun de ces threads travaille en deux phases. Durant la première phase, tous les threads sont indépendants et peuvent s'exécuter simultanément. Cependant, un thread ne peut démarrer sa seconde phase que si tous les `N` threads ont terminé leur première phase. L'organisation de chaque thread est donc :
 
 .. code-block:: c
 
@@ -162,7 +162,7 @@ La variable ``count`` permet de compter le nombre de threads qui ont atteint le 
 
 Le pseudocode ci-dessus présente une solution permettant de résoudre ce problème du rendez-vous. Le sémaphore étant initialisé à ``0``, le premier thread qui aura terminé la première phase sera bloqué sur ``sem_wait(&rendezvous);``. Les ``N-1`` premiers threads qui auront terminé leur première phase seront tous bloqués à cet endroit. Lorsque le dernier thread finira sa première phase, il incrémentera ``count`` puis exécutera ``sem_post(&rendezvous);`` ce qui libèrera un premier thread. Le dernier thread sera ensuite bloqué sur ``sem_wait(&rendezvous);`` mais il ne restera pas bloqué longtemps car chaque fois qu'un thread parvient à passer ``sem_wait(&rendezvous);``, il exécute immédiatement ``sem_post(&rendezvous);`` ce qui permet de libérer un autre thread en cascade.
 
-Cette solution permet de résoudre le problème du rendez-vous avec un nombre fixe de threads. Certains implémentations de la librairie threads POSIX implémentent une barrière qui peut s'utiliser de la même façon que la solution ci-dessus. Une barrière est une structure de données de type ``pthread_barrier_t``. Elle s'initialise en utilisant la fonction `pthread_barrier_init(3posix)`_ qui prend trois arguments : un pointeur vers une barrière, des attributs optionnels et le nombre de threads qui doivent avoir atteint la barrière pour que celle-ci s'ouvre. La fonction `pthread_barrier_destroy(3posix)`_ permet de détruire une barrière. Enfin, la fonction `pthread_barrier_wait(3posix)`_ qui prend comme argument un pointeur vers une barrière.
+Cette solution permet de résoudre le problème du rendez-vous avec un nombre fixe de threads. Certaines implémentations de la librairie threads POSIX implémentent une barrière qui peut s'utiliser de la même façon que la solution ci-dessus. Une barrière est une structure de données de type ``pthread_barrier_t``. Elle s'initialise en utilisant la fonction `pthread_barrier_init(3posix)`_ qui prend trois arguments : un pointeur vers une barrière, des attributs optionnels et le nombre de threads qui doivent avoir atteint la barrière pour que celle-ci s'ouvre. La fonction `pthread_barrier_destroy(3posix)`_ permet de détruire une barrière. Enfin, la fonction `pthread_barrier_wait(3posix)`_ qui prend comme argument un pointeur vers une barrière.
 
 
 Problème des producteurs-consommateurs
@@ -199,7 +199,7 @@ Ce problème peut être résolu en utilisant deux sémaphores et un mutex. L'acc
    sem_init(&empty, 0 , N);  // buffer vide
    sem_init(&full, 0 , 0);   // buffer vide
 
-Le fonctionnement général d'un producteur est le suivant. Tout d'abord, le producteur est mis en attente sur le sémaphore ``empty``. Il ne pourra passer que si il y a au moins un slot du buffer qui est non-vide. Lorsque la ligne ``sem_wait(&empty);`` réussi, le producteur s'approprie le ``mutex`` et modifie le buffer de façon à insérer l'élément produit (dans ce cas un entier). Il libère ensuite le ``mutex`` pour sortir de sa section critique
+Le fonctionnement général d'un producteur est le suivant. Tout d'abord, le producteur est mis en attente sur le sémaphore ``empty``. Il ne pourra passer que si il y a au moins un slot du buffer qui est non-vide. Lorsque la ligne ``sem_wait(&empty);`` s'est exécutée, le producteur s'approprie le ``mutex`` et modifie le buffer de façon à insérer l'élément produit (dans ce cas un entier). Il libère ensuite le ``mutex`` pour sortir de sa section critique
 
 .. code-block:: c
 

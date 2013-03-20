@@ -69,7 +69,7 @@ Exercices
         }
       }
 
-   Que pensez-vous de sa solution (en supposant que le consommateur n'aie pas été modifié) ? 
+   Que pensez-vous de sa solution (en supposant que le producteur n'aie pas été modifié) ? 
  
    .. only:: staff
   

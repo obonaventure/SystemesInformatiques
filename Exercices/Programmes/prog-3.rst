@@ -16,7 +16,7 @@ Questions
 		
 			Non. La zone mémoire est initialisée directement après.
 
-#.  Le prototype de la fonction ``push`` du programme de manipulation d'une pile :download:`/Theorie/C/S3-src/stack.c`,  est ``void push(struct node_t *)``. Serait-il possible d'écrire une function push ayant comme prototype ``void push(struct node_t)`` ? Qu'est-ce qui changerait dans ce cas ?
+#.  Le prototype de la fonction ``push`` du programme de manipulation d'une pile :download:`/Theorie/C/S3-src/stack.c`,  est ``void push(struct fraction_t *)``. Serait-il possible d'écrire une function push ayant comme prototype ``void push(struct fraction_t)`` ? Qu'est-ce qui changerait dans ce cas ?
 
 	.. only:: staff 
 
