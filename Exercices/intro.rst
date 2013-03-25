@@ -174,3 +174,28 @@ Séance tutorée
 
 
 
+Neuvième semaine
+----------------
+
+La matière de cette semaine porte sur l'utilisation du système de fichiers et les ``pipe``. Elle est décrite dans les sections  :
+
+ - :ref:`utilisateurs` 
+ - :ref:`fichiers` 
+ - :ref:`pipes` 
+
+.. only:: html
+
+   `QCM9 </static/_static/Mission-9-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-9
+
+
+
+

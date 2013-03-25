@@ -68,8 +68,18 @@ Systèmes Multiprocesseurs
    Theorie/Threads/coordination
    Theorie/Threads/processus
 
+Fichiers
+********
+
+.. toctree::
+   :maxdepth: 2
+
+   Theorie/Fichiers/fichiers
+   Theorie/Fichiers/fichiers-signaux
 
 
+Mémoire virtuelle
+*****************
 
 *********
 Exercices
