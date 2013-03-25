@@ -7,8 +7,8 @@ Exercices
 =========
 
 
-#. Expliquez pourquoi la fonction `sem_wait(3)`_ doit prendre comme argument un 
-   pointeur vers une structure ``sem_t`` et non une structure ``sem_t``
+#. Expliquez pourquoi la fonction `sem_wait(3)`_ doit prendre comme argument ``sem_t *``, un 
+   pointeur vers une structure ``sem_t``, et non une structure ``sem_t``.
    
    .. only:: staff
        Parceque la valeur du sémaphore doit être modifiée par la fonction ou la queue associée au sémaphore
@@ -23,7 +23,7 @@ Exercices
 #. La librairie POSIX contient également une fonction `sem_timedwait(3)`_. Quel intérêt voyez-vous à cette fonction ? Dans quel cas pourrait-elle servir en pratique ?
  
    .. only:: staff
-      en pratique cela permet d'éviter de rester bloquer longtemps, mais cela ne remplace pas une solution correcte qui évite les deadlocks. A priori, ce n'est pas une fonction à utiliser dans le code qu'ils rendent.
+      en pratique cela permet d'éviter de rester bloqué longtemps, mais cela ne remplace pas une solution correcte qui évite les deadlocks. A priori, ce n'est pas une fonction à utiliser dans le code qu'ils rendent.
 
 
 #. Un étudiant propose d'implémenter le producteur du problème des producteurs-consommateurs comme ci-dessous :
@@ -49,7 +49,7 @@ Exercices
 
    .. only:: staff
   
-      On a inversé les lock dans le producteur. Cela peut causer un deadlock puisque le producteur ayant pris mutex, si empty est bloquant, ce qui est le cas lorsque le buffer est vide, le producteur empêchera tout consommateur d'accéder au buffer et donc le système sera en deadlock
+      On a inversé les locks dans le producteur. Cela peut causer un deadlock puisque le producteur ayant pris mutex, si empty est bloquant, ce qui est le cas lorsque le buffer est vide, le producteur empêchera tout consommateur d'accéder au buffer et donc le système sera en deadlock
 
 #. Un étudiant propose d'implémenter le consommateur du problème des producteurs-consommateurs comme ci-dessous :
 
@@ -69,7 +69,7 @@ Exercices
         }
       }
 
-   Que pensez-vous de sa solution (en supposant que le producteur n'aie pas été modifié) ? 
+   Que pensez-vous de sa solution (en supposant que le producteur n'a pas été modifié) ? 
  
    .. only:: staff
   
