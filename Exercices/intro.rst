@@ -181,7 +181,7 @@ La matière de cette semaine porte sur l'utilisation du système de fichiers et 
 
  - :ref:`utilisateurs` 
  - :ref:`fichiers` 
- - :ref:`pipes` 
+ - :ref:`pipe` 
 
 .. only:: html
 

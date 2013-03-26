@@ -89,11 +89,13 @@ Exercices
  
      A forcer l'écriture des données sur le disque
 
-14. Le programme :download:`/Exercices/Programmes/src/writeperf.c` permet de tester les performances des écritures dans write sur un système de fichiers. Compilez-le et exécutez le avec différents tailles de buffers passés à `write(2)`_. Mesurez le temps d'exécution avec la commande `time(1)`_ et comparez le temps qu'il faut pour écrire 100MB en blocs de 1 MB ou en blocs de 1 KB. Faites de même en activant la synchronisation avec le paramètre ``-s``. 
+14. Le programme :download:`/Exercices/Programmes/src/writeperf.c` permet de tester les performances des écritures dans write sur un système de fichiers. Compilez-le et exécutez le avec différents tailles de buffers passés à `write(2)`_. Mesurez le temps d'exécution avec la commande `time(1posix)`_ et comparez le temps qu'il faut pour écrire 100MB en blocs de 1 MB ou en blocs de 1 KB. Faites de même en activant la synchronisation avec le paramètre ``-s``. 
  
   .. only:: staff
  
      Les performances décroissent car il y a plus d'appels système qui sont effectués. sync force l'écriture et bypasse le buffer. Il est utile de mentionner l'existence de ce buffer 
+
+15. Effectuez l'exercice sur la manipulation de fichiers sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/59>`_.
 
 .. 17. `tee(1)`_ est un utilitaire qui permet de recopier son entrée standard vers un ou plusieurs fichiers et également vers sa sortie standard. Il peut être utile pour par exemple inspecter des données échangées entre deux processus à travers un :term:`pipe`. Quels sont les appels systèmes exécutés par `tee(1)`_ lors de l'exécution de la commande ``cat /tmp/t | tee /tmp/tee.out | grep "sinf1252" ``
 
