@@ -19,7 +19,7 @@ struct image {
 	 * le pixel (width-1, height-1) est celui en haut à droite.
 	 */
 	struct pixel *pixels;
-};
+} __attribute__((packed));
 
 /* Charge le bitmap spécifié par 'file' dans la nouvelle image 'res_image'.
  *

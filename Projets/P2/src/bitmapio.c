@@ -41,6 +41,8 @@ int load_bmp(char *file, struct image **res_image)
     struct bitmap_info_header infohdr;
     struct image *img;
     int num_pixels;
+    int j;
+
 
     if (!res_image) {
         printf("**image pointer to pointer is not initialized!!!\n");
@@ -101,13 +103,19 @@ int load_bmp(char *file, struct image **res_image)
     if (fseek(fp, infohdr.hdrsize - sizeof(infohdr), SEEK_CUR))
         goto error;
 
-    num_pixels = img->width*img->height;
+    num_pixels = img->width * img->height;
     img->pixels = (struct pixel *) malloc(sizeof(struct pixel)*num_pixels);
+
     if (!img->pixels)
         goto error;
 
-    if (fread(&img->pixels[0], 3, num_pixels, fp) != num_pixels)
-        goto error;
+    for (j = 0; j < img->height; j++) {
+        if (fread(&img->pixels[j*img->width], 3, img->width, fp) != img->width)
+            goto error;
+
+        if (fseek(fp, 4 - (img->width * 3) % 4, SEEK_CUR))
+            goto error;
+    }
 
     fclose(fp);
     return 0;
@@ -123,6 +131,9 @@ int write_bmp(struct image *img, char *file)
     struct bitmap_file_header hdr;
     struct bitmap_info_header infohdr;
     int num_pixels = img->width * img->height;
+    int j;
+    struct pixel padding = {0,0,0};
+
     
     /* open the file */
     if ((fp = fopen(file,"w")) == NULL)
@@ -148,13 +159,20 @@ int write_bmp(struct image *img, char *file)
     infohdr.compression = 0;
     infohdr.bitmap_size = num_pixels * 3;
     infohdr.num_colors = 0;
+    infohdr.hor_res = img->hor_res;
+    infohdr.ver_res = img->ver_res;
     infohdr.important_colors = 0;
 
     if (fwrite(&infohdr, sizeof(infohdr), 1, fp) != 1)
         goto write_error;
 
-    if (fwrite(&img->pixels[0], 3, num_pixels, fp) != num_pixels)
-        goto write_error;
+    for (j = 0; j < img->height; j++) {
+        if (fwrite(&img->pixels[j*img->width], 3, img->width, fp) != img->width)
+            goto write_error;
+
+        if (fwrite(&padding, 1, 4 - (img->width * 3) % 4, fp) != 4 - (img->width * 3) % 4)
+            goto write_error;
+    }
 
     fclose(fp);
     return 0;
