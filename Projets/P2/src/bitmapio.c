@@ -41,11 +41,11 @@ int load_bmp(char *file, struct image **res_image)
     struct bitmap_info_header infohdr;
     struct image *img;
     int num_pixels;
-    int j;
+    int j, pad;
 
 
     if (!res_image) {
-        printf("**image pointer to pointer is not initialized!!!\n");
+        printf("**res_image pointer to pointer is not initialized!!!\n");
         errno = -EAGAIN;
         return -EAGAIN;
     }
@@ -89,10 +89,9 @@ int load_bmp(char *file, struct image **res_image)
         goto error;
     }
 
-    if (infohdr.num_colors == 0) {
+    if (infohdr.num_colors == 0)
         /* This means, the number of colors in the color-pallette is 2**bits_per_pixel */
         infohdr.num_colors = power(2, infohdr.bits_per_pixel);
-    }
 
     img->width = infohdr.width;
     img->height = infohdr.height;
@@ -109,11 +108,12 @@ int load_bmp(char *file, struct image **res_image)
     if (!img->pixels)
         goto error;
 
+    pad = (4 - (img->width * 3) % 4) % 4;
     for (j = 0; j < img->height; j++) {
         if (fread(&img->pixels[j*img->width], 3, img->width, fp) != img->width)
             goto error;
 
-        if (fseek(fp, 4 - (img->width * 3) % 4, SEEK_CUR))
+        if (fseek(fp, pad, SEEK_CUR))
             goto error;
     }
 
@@ -131,7 +131,7 @@ int write_bmp(struct image *img, char *file)
     struct bitmap_file_header hdr;
     struct bitmap_info_header infohdr;
     int num_pixels = img->width * img->height;
-    int j;
+    int j, pad;
     struct pixel padding = {0,0,0};
 
     
@@ -166,11 +166,12 @@ int write_bmp(struct image *img, char *file)
     if (fwrite(&infohdr, sizeof(infohdr), 1, fp) != 1)
         goto write_error;
 
+    pad = (4 - (img->width * 3) % 4) % 4;
     for (j = 0; j < img->height; j++) {
         if (fwrite(&img->pixels[j*img->width], 3, img->width, fp) != img->width)
             goto write_error;
 
-        if (fwrite(&padding, 1, 4 - (img->width * 3) % 4, fp) != 4 - (img->width * 3) % 4)
+        if (fwrite(&padding, 1, pad, fp) != pad)
             goto write_error;
     }
 
