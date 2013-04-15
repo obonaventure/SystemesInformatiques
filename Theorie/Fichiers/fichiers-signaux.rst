@@ -214,10 +214,10 @@ La fonction ``sigfpe_handler`` traite bien le signal ``SIGPFE`` reçu, mais apr�
 
     if(*endptr=='\0') {
       int resultat=n/(int) val;  
+      printf("%d/%d=%d\n",n,(int) val,resultat);
+      goto fin:
   erreur:
       printf("%d/%d=NaN\n",n,(int) val);
-      goto fin:
-      printf("%d/%d=%d\n",n,(int) val,resultat);
   fin:
     }
     else {
@@ -242,7 +242,7 @@ En C, ce genre de construction n'est pas possible car l'étiquette d'un ``goto``
      void longjmp(jmp_buf env, int val);
 
 
-La fonction `setjmp(3)`_ est équivalente à la déclaration d'une étiquette. Elle prend comme argument un ``jmp_buf``. Cette structure de données, définie dans `setjmp.h`_ permet de sauvegarder l'environnement d'exécution, c'est-à-dire les valeurs des registres y compris ``%eip`` et ``%esp`` au moment où elle est exécutée. Lorsque `setjmp(2)`_ est exécutée dans le flot normal des instructions du programme, elle retourne la valeur ``0``. La fonction `longjmp(3)`_ prend deux arguments. Le premier est une structure de type ``jmp_buf`` et le second un entier. Le ``jmp_buf`` est l'environnement d'exécution qu'il faut restaurer lors de l'exécution de `longjmp(3)`_ et le second argument la valeur de retour que doit avoir la fonction `setjmp(3)`_ correspondante après l'exécution de `longjmp(3)`_. 
+La fonction `setjmp(3)`_ est équivalente à la déclaration d'une étiquette. Elle prend comme argument un ``jmp_buf``. Cette structure de données, définie dans `setjmp.h`_ permet de sauvegarder l'environnement d'exécution, c'est-à-dire les valeurs des registres y compris ``%eip`` et ``%esp`` au moment où elle est exécutée. Lorsque `setjmp(3)`_ est exécutée dans le flot normal des instructions du programme, elle retourne la valeur ``0``. La fonction `longjmp(3)`_ prend deux arguments. Le premier est une structure de type ``jmp_buf`` et le second un entier. Le ``jmp_buf`` est l'environnement d'exécution qu'il faut restaurer lors de l'exécution de `longjmp(3)`_ et le second argument la valeur de retour que doit avoir la fonction `setjmp(3)`_ correspondante après l'exécution de `longjmp(3)`_. 
 
 Le programme ci-dessous illustre l'utilisation de `setjmp(3)`_ et `longjmp(3)`_.
 
