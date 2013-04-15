@@ -11,18 +11,21 @@ Exercices
    pointeur vers une structure ``sem_t``, et non une structure ``sem_t``.
    
    .. only:: staff
+
        Parceque la valeur du sémaphore doit être modifiée par la fonction ou la queue associée au sémaphore
 
 
 #. Dans quels cas la fonction `sem_init(3)`_ risque-t-elle de retourner une erreur ?
   
    .. only:: staff 
+
       valeur initiale trop grande
 
 
 #. La librairie POSIX contient également une fonction `sem_timedwait(3)`_. Quel intérêt voyez-vous à cette fonction ? Dans quel cas pourrait-elle servir en pratique ?
  
    .. only:: staff
+
       en pratique cela permet d'éviter de rester bloqué longtemps, mais cela ne remplace pas une solution correcte qui évite les deadlocks. A priori, ce n'est pas une fonction à utiliser dans le code qu'ils rendent.
 
 
