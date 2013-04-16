@@ -196,6 +196,22 @@ Séance tutorée
    
    Programmes/prog-9
 
+Dixième semaine
+---------------
+
+La matière de cette semaine porte sur les signaux, les sémaphores nommés et le partage de fichiers :
+
+ - :ref:`signaux`
+ - :ref:`semname`
+ - :ref:`fileshare`
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-10
 
 
 

@@ -14,6 +14,7 @@ Les sémaphores que nous avons utilisés pour coordonner plusieurs threads sont 
 
 Enfin, des processus liés ou non doivent parfois accéder aux mêmes fichiers. Ces accès concurrents, si ils ne sont pas correctement coordonnés, peuvent conduire à des corruptions de fichiers. Nous présenterons les mécanismes de locking qui sont utilisés dans Unix et Linux pour coordonner l'accès à des fichiers.
 
+.. _signaux:
 
 Signaux
 =======
@@ -328,6 +329,7 @@ L'appel système `alarm(3posix)`_ s'appuie sur `setitimer(2)`_, mais les deux ty
  Le noyau du système d'exploitation maintient pour chaque processus une structure de données contenant la liste des signaux qui sont ignorés, ont été reçus et les pointeurs vers les fonctions de traitement pour chaque signal. Cette structure de données est associée à chaque processus. La création de threads ne modifie pas cette structure de données et lorsqu'un signal est délivré à un processus utilisant des threads, c'est généralement le thread principal qui recevra et devra traiter le signal. Lors de l'exécution de `fork(2)`_, la structure de données relative aux signaux du processus père est copiée dans le processus fils. Après `fork(2)`_, les deux processus peuvent évoluer séparément et le fils peut par exemple modifier la façon dont il traite un signal sans que cela n'affecte le processus père. Lors de l'exécution de `execve(2)`_, la structure de données relative aux signaux est réinitialisée avec les traitements par défaut pour chacun des signaux. 
 
 
+ .. _semname:
 
 Sémaphores nommés
 =================
@@ -389,6 +391,7 @@ Les permissions du fichier virtuel représentent les permissions associées au s
 
 Il est important de noter que les sémaphores nommés sont une ressource généralement limitée. Lorsqu'il a été créé, un sémaphore nommé utilise des ressources du système jusqu'à ce qu'il soit explicitement supprimé avec `sem_unlink(3)`_. Il est très important de toujours bien effacer les sémaphores nommés dès qu'ils ne sont plus nécessaires. Sans cela, l'espace réservé pour ces sémaphores risque d'être rempli et d'empêcher la création de nouveaux sémaphores par d'autres processus.
 
+.. _fileshare:
 
 Partage de fichiers
 ===================
