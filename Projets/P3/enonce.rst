@@ -66,7 +66,7 @@ Les binaires vont se trouver dans le dossier ``src``.
 Consignes
 ---------
 
-Le projet est à soumettre pour le jeudi 16 mai à 23h55 via le SVN du troisième projet. Vous devez donc vous inscrire ensemble avec votre binôme sur le SVN ''SINF1252_2013_PROJET_3'' sur le
+Le projet est à soumettre pour le jeudi 16 mai à 23h55 via le SVN du troisième projet. Vous devez donc vous inscrire ensemble avec votre binôme sur le SVN ''SINF1252_2013_P3'' sur le
 site `<https://scm.info.ucl.ac.be/cgi-bin/inscription.sh>`_.
 Vous devez fournir sur le SVN dans votre dossier de groupe:
 
