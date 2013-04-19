@@ -100,6 +100,7 @@ Projets
 
    Projets/P1/projet-1
    Projets/P2/enonce
+   Projets/P3/enonce
 
 ******
 Outils

@@ -7,12 +7,12 @@ Implémentation d'un encodeur et extension de l'outil `cat(1)`_
 
 Le monde de l'informatique est fortement influencé par la mentalité "Open Source". Par exemple, les systèmes GNU/Linux sont basés sur ce genre d'outils. Le but de l'open source est d'ouvrir l'accès au code source des programmes et permettre à tout le monde de le modifier par rapport à ses besoins.
 
-Pour ce dernier projet on vous demande d'étendre la librairie open source: *GNU core utilities* ou ``coreutils``. Le package ``coreutils`` contient tout les programmes nécessaire à la gestion de votre système, comme `kill(1)`_, `cp(1)`_, `tail(1)`_, et beaucoup d'autres.
+Pour ce dernier projet du cours SINF1252 on vous demande d'étendre la librairie open source: *GNU core utilities* ou ``coreutils``. Le package ``coreutils`` contient tout les programmes nécessaire à la gestion de votre système, comme `kill(1)`_, `cp(1)`_, `tail(1)`_, et beaucoup d'autres.
 
 Programme attendu
 -----------------
 
-On vous demande d'implémenter un compresseur de fichier dans la librairie ``coreutils`` ainsi qu'étendre l'outil `cat(1)`_ (qui fait partie de ``coreutils``) pour qu'il puisse lire ce type de fichiers. De plus, on vous demande de modifier `cat(1)`_ pour qu'il utilise des fichier mappé en mémoire (`mmap(2)`_). On vous demande également d'utiliser `mmap(2)`_ dans votre encodeur.
+On vous demande d'implémenter un outil de compression de fichier dans la librairie ``coreutils`` ainsi qu'étendre l'outil `cat(1)`_ (qui fait partie de ``coreutils``) pour qu'il puisse lire ce type de fichiers. De plus, on vous demande de modifier `cat(1)`_ pour qu'il utilise des fichier mappé en mémoire (`mmap(2)`_). On vous demande également d'utiliser `mmap(2)`_ dans votre encodeur.
 
 L'encodeur est donc un nouveau binaire que vous devriez intégrer dans le package ``coreutils``. Son utilisation est défini comme suit:
 
