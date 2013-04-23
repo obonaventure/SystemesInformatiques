@@ -46,20 +46,42 @@ Exercices
 
 #. Un ordinateur dispose de 32 GBytes de mémoire RAM. Il utilise des adresses virtuelles de 64 bits et des pages de 4 KBytes. Combien de lignes doit contenir sa table des pages ? 
 
-#. L'appel système `shmget(2)`_ supporte également le drapeau ``IPC_EXCL`` en plus du drapeau ``IPC_CREAT``. Expliquez à quoi ce drapeau peut servir et dans quel cas il peut être utile.
 
-#. Un processus père ouvre un segment de mémoire partagée avec l'appel système ``shmget(key, 4096, IPC_CREAT | S_IRUSR | S_IWUSR )``. Un de ses processus fils peut-il exécuter ``shmget(key, 4096, S_IRUSR  )`` ? Si oui, ce processus peut-il ensuite attacher cette page en utilisant :
- 
- - ``shmat(shm_id, NULL, SHM_RDONLY)``
- - ``shmat(shm_id, NULL, SHM_RDONLY)``
- 
-#. Lorsque l'on utilise l'appel système `shmat(2)`_ avec ``NULL`` come deuxième argument, le système d'exploitation choisit l'adresse à laquelle le segment de mémoire va être attaché. Cela pose des difficultés si l'on veut stocker des pointeurs en mémoire partagée. Un étudiant propose de d'abord allouer la zone mémoire avec `malloc(3)`_ et d'ensuite attacher le segment de mémoire à cet endroit. Il a réalisé un test avec un processus père et son fils et les deux segments de mémoire partagée se retrouvent à la même adresse. Il en conclut que cela permet de résoudre le problème. Qu'en pensez-vous ?
+#. Comparez les performances du programme :download:`/Theorie/MemoireVirtuelle/src/cp2.c` avec l'utilitaire `cp(1)`_ standard de Linux.
 
-#. Deux processus utilisent un segment de mémoire partagée et doivent se partager une liste chaînée. Comment implémenteriez-vous cette liste simplement chaînée de façon à ce qu'elle puisse être utilisée dans cette mémoire partagée. On supposera que le segment de mémoire partagé est toujours plus grand que la zone mémoire nécessaire au stockage de la liste.
+#. Un programme construit en mémoire un gros tableau contenant 10 millions d'entiers. Initialisez ce tableau avec des entiers ayant des valeurs croissante. Pour sauvegarder le fichier sur disque, trois solutions s'offrent à vous :
 
-#. Le livre [Kerrisk2010]_ contient de nombreux exemples de programmes permettant de manipuler les segments de mémoire partagée [#fex]_. Compilez les programmes ``svshm_create``,  ``svshm_attach`` et ``svshm_rm`` pour créer, attacher et supprimer un segment de mémoire partagée. Les commandes `ipcs(1)`_ et `ipcrm(1)`_ permettent de visualiser et supprimer les segments de mémoire partagée. Pensez à utiliser ces commandes pour vérifier que vous n'avez pas laissé de segment de mémoire partagée qui traine.
+ - écrire directement les entiers sur disque sous forme binaire en utilisant l'appel système `write(2)`_ en passant un pointeur vers chaque entier à cet appel système
+ - écrire les entiers sur disque source forme d'un fichier texte avec un entier par ligne
+ - écrire les entiers directement sur disque, mais en utilisant `mmap(2)`_ plutôt que `write(2)`_
+
+Dans les salles informatiques, vous pouvez stocker les données dans trois répertoires qui risquent d'avoir des performances différentes :
+
+ - votre répertoire de login qui est accessible depuis un serveur de fichiers
+ - le répertoire ``/tmp`` qui sous Linux est en général stocké directement en mémoire RAM
+ - un clé USB 
+
+Ecrivez un programme qui permet de comparer les performances de ces trois méthodes permettant d'écrire sur disque sur les trois dispositifs de stockage. Quelle est la solution la plus rapide et pourquoi (pensez à utiliser `fsync(2)`_ ou `msync(2)`_ pour forcer le système à écrire vos données sur disque à la fin de l'exécution de votre programme).
+
+#. Ecrivez un programme similaire au précédent mais qui permet de comparer les performances en lecture. Utilisez `fscanf(3)`_ par exemple pour lire les données du fichier texte.
+
+
+#. subversion (`svn(1)`_) est un outil permettant de générer intelligemment les projets informatiques dans lesquels plusieurs développeurs participent à l'écriture du code source. Il existe de nombreux livres et sites web concernant subversion. Cet exercice a pour objectif de vous présenter un workflow classique utilisant subversion [#svn]_. Pour réaliser cet exercice, vous avez besoin d'un répertoire partagé géré par subversion tel que celui du dernier projet.
+
+ - `svn(1)`_ supporte de nombreuses sous-commandes. Pour accéder au manuel relatif à une de ces sous-commandes, il faut utiliser ``svn help commande``
+ - Créez un répertoire de test que vous pourrez supprimer par après, ``mkdir test``
+ - Ajoutez ce répertoire à votre repository subversion ``svn add test``
+ - Envoyez cette modification sur le serveur en utilisant ``svn commit -m "Ajout du répertoire de test"``. L'argument ``-m`` permet de spécifier un commentaire à votre ``commit``. Prenez l'habitude d'expliquer en une ou quelques lignes la modification que vous avez fait, cela vous permettra de revenir plus facilement en arrière si nécessaire.
+ - Créez un fichier texte nommé ``test.txt`` dans votre répertoire. Ce fichier contiendra une ligne de ``aaaaa`` et une deuxième ligne de ``bbbbbb``. Ajoutez ce fichier avec ``svn add``  puis faites le ``svn commit`` 
+ - Depuis un autre compte étudiant, faites ``svn up`` pour charger ce nouveau répertoire et le fichier le contenant.
+ - Un étudiant utilisant le répertoire modifie la première ligne du fichier et la remplace par ``aaXaa``. En même temps, l'autre étudiant modifie la deuxième ligne du fichier et la remplace par ``bbbYbbb``. Une fois ces modifications faites, utilisez ``svn commit`` pour pousser la modification sur le serveur.  
+ - Faites ``svn log test.txt`` pour voir la liste des modifications faites sur ce fichier
+ - Utilisez ``svn diff test.txt`` pour voir la différence entre votre version du fichier et celle du serveur
+ - Essayez maintenant de faire des modifications à la même ligne du fichier, par exemple en ajoutant chacun une ligne supplémentaire. Ce faisant, vous allez créer un conflit. Utilisez ``svn merge`` pour résoudre ce conflit.
+
+
 
 
 .. rubric:: Footnotes
 
-.. [#fex] Voir notamment http://www.man7.org/tlpi/code/online/all_files_by_chapter.html (chapitre 48) ou http://www.man7.org/tlpi/code/index.html
+[#snv] L'exercice utilise la ligne de commande `svn(1)`_. Il existe également des clients graphiques pour subversion, comme par exemple http://tortoisesvn.tigris.org/
