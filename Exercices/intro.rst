@@ -214,4 +214,24 @@ Séance tutorée
    Programmes/prog-10
 
 
+Onzième semaine
+---------------
+
+La matière de cette semaine porte sur la mémoire virtuelle et les fichiers mappés en mémoire : 
+
+ - :ref:`vmem`
+ - :ref:`fctvmem`
+ - :ref:`stockage`
+ - :ref:`remplacement`
+ - :ref:`mmap`
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-11
+
+
 
