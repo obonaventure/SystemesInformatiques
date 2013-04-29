@@ -384,6 +384,7 @@ A titre d'exemple d'utilisation de `mmap(2)`_ et `munmap(2)`_, le programme ci-d
 
 
 
+.. _shmem:
 
 Mémoire partagée
 ----------------
@@ -537,6 +538,7 @@ Un exemple d'un tel fichier `maps` est présenté ci-dessous. Il contient une ca
 
 L'exemple ci-dessus présente la carte de mémoire d'un processus qui utilise trois librairies partagées. Le segment de mémoire partagée se trouve aux adresses virtuelles  ``7f7c57e60000-7f7c57e61000``. Il est accessible en lecture et en écriture.
 
+.. _forkmem:
 
 Implémentation de `fork(2)`_
 ----------------------------
@@ -550,6 +552,8 @@ Malheureusement, cette solution ne fonctionne pas pour les pages contenant les d
 Sur un système qui utilise :term:`copy-on-write`, l'appel système `fork(2)`_ est implémenté comme suit. Lors de l'exécution de `fork(2)`_, le noyau copie toutes les entrées de la table des pages du processus père vers la table des pages du processus fils. Ce faisant, le noyau modifie également les permissions de toutes les pages utilisées par le processus père. Les pages correspondant au segment de code sont toutes marquées en lecture seule. Les pages correspondant aux données globales, heap et stack sont marquées avec un statut spécial (:term:`copy-on-write`). Celui-ci autorise les accès en lecture à la page sans restriction. Si un processus tente un accès en écriture sur une de ces pages, le :term:`MMU` interrompt l'exécution du processus et force l'exécution d'une routine d'interruption du noyau. Celle-ci analyse la tentative d'accès à la mémoire qui a échoué. Si la page était en lecture seule (par exemple une page du segment de code), un signal ``SIGSEGV`` est envoyé au processus concerné. Si par contre la page était marquée :term:`copy-on-write`, alors le noyau alloue une nouvelle page physique et y recopie la page où la tentative d'accès a eu lieu. La table des pages du processus qui a fait la tentative d'accès est modifiée pour pointer vers la nouvelle page avec une permission en lecture et en écriture. La permission de l'entrée de la table des pages de l'autre processus est également modifiée de façon à autoriser les écritures et les lectures. Les deux processus disposent donc maintenant d'une copie différente de cette page et ils peuvent la modifier à leur guise. Cette technique de :term:`copy-on-write` permet de ne copier que les pages qui sont modifiées par le processus père ou le processus fils. C'est un gain de temps appréciable par rapport à la copie complète de toutes les pages.
 
 Dans le pseudo fichier ``/proc/PID/maps`` présenté avant, le bit `p` indique que les pages correspondantes sont en `copy-on-write`.
+
+.. _vmstat:
 
 Interactions entre les processus et la mémoire
 ----------------------------------------------
@@ -617,6 +621,8 @@ Lorsqu'elle est utilisée, la commande `vmstat(8)`_ retourne de l'information su
  - la dernière colonne (``cpu``) fournit des statistiques sur l'utilisation du cpu
 
 Enfin, notons que l'appel système `getrusage(2)`_ peut être utilisé par un processus pour obtenir de l'information sur son utilisation des ressources du système et notamment les opérations de transfert de pages entre le mémoire RAM et les dispositifs de stockage.
+
+.. _execvmem:
 
 `execve(2)`_ et la mémoire virtuelle
 ------------------------------------

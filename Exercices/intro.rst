@@ -235,3 +235,23 @@ Séance tutorée
 
 
 
+Douzième semaine
+----------------
+
+La matière de cette semaine porte sur les utilisation avancées de la mémoire virtuelle : 
+
+ - :ref:`shmem`
+ - :ref:`forkmem`
+ - :ref:`vmstat`
+ - :ref:`execvmem`
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-12
+
+
+
