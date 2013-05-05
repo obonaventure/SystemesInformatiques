@@ -6,8 +6,8 @@
 
   <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
-  <script type="text/javascript" src="js/rst-form.js"></script
-  <script type="text/javascript">$nmbr_prop = 4</script> 
+  <script type="text/javascript" src="js/rst-form.js"></script>
+  <script type="text/javascript" src="js/prettify.js"></script>
   <script type="text/javascript">$nmbr_prop = 4</script> 
 
 

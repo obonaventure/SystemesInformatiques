@@ -18,7 +18,7 @@ Un Makefile est composé d'un ensemble de règles de la forme:
 			...
 			[command]
 
-Chaque règle commence par une ligne de dépendance qui défini une ou plusieurs cibles (``target``) suivies par le caractère ``:`` et éventuellement une liste de composants (``components``) dont dépend la cible. Une cible ou un composant peut-être un ficher ou un simple label.
+Chaque règle commence par une ligne de dépendance qui défini une ou plusieurs cibles (``target``) suivies par le caractère ``:`` et éventuellement une liste de composants (``components``) dont dépend la cible. Une cible ou un composant peut être un ficher ou un simple label.
 
 Il est important de se rendre compte que l'espacement derrière les ``command``
 doit impérativement commencer par une *tabulation*.

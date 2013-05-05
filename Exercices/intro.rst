@@ -106,3 +106,152 @@ Séance tutorée
 
 
 
+Sixième semaine
+---------------
+
+La matière de cette semaine porte sur la communication entre les threads. Elle est décrite dans la section  :
+
+ - :ref:`comthreads` 
+
+.. only:: html
+
+   `QCM6 </static/_static/Mission-6-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-6
+
+
+
+
+Septième semaine
+----------------
+
+La matière de cette semaine porte sur l'utilisation des sémaphores et quelques compléments sur les threads. Elle est décrite dans la section  :
+
+ - :ref:`coordinationthreads` 
+
+.. only:: html
+
+   `QCM7 </static/_static/Mission-7-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-7
+
+
+
+Huitième semaine
+----------------
+
+La matière de cette semaine porte sur le fonctionnement des processus. Elle est décrite dans la section  :
+
+ - :ref:`processus` 
+
+.. only:: html
+
+   `QCM8 </static/_static/Mission-8-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-8
+
+
+
+
+Neuvième semaine
+----------------
+
+La matière de cette semaine porte sur l'utilisation du système de fichiers et les ``pipe``. Elle est décrite dans les sections  :
+
+ - :ref:`utilisateurs` 
+ - :ref:`fichiers` 
+ - :ref:`pipe` 
+
+.. only:: html
+
+   `QCM9 </static/_static/Mission-9-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   Programmes/prog-9
+
+Dixième semaine
+---------------
+
+La matière de cette semaine porte sur les signaux, les sémaphores nommés et le partage de fichiers :
+
+ - :ref:`signaux`
+ - :ref:`semname`
+ - :ref:`fileshare`
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-10
+
+
+Onzième semaine
+---------------
+
+La matière de cette semaine porte sur la mémoire virtuelle et les fichiers mappés en mémoire : 
+
+ - :ref:`vmem`
+ - :ref:`fctvmem`
+ - :ref:`stockage`
+ - :ref:`remplacement`
+ - :ref:`mmap`
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-11
+
+
+
+Douzième semaine
+----------------
+
+La matière de cette semaine porte sur les utilisation avancées de la mémoire virtuelle : 
+
+ - :ref:`shmem`
+ - :ref:`forkmem`
+ - :ref:`vmstat`
+ - :ref:`execvmem`
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-12
+
+
+

@@ -2,6 +2,7 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+.. _comthreads:
 
 Communication entre threads
 ===========================
@@ -356,7 +357,7 @@ Avec cette instruction atomique, il est possible de résoudre le problème de l'
                            ; après exécution, %eax contient la donnée qui était
 			   ; dans lock et lock la valeur 1 
      testl   %eax, %eax    ; met le flag ZF à vrai si %eax contient 0  
-     jnz     enter         ; retour à enter: si ZF est vrai
+     jnz     enter         ; retour à enter: si ZF n'est pas vrai
      ret                     
   
   leave:
@@ -367,7 +368,7 @@ Avec cette instruction atomique, il est possible de résoudre le problème de l'
 Pour bien comprendre le fonctionnement de cette solution, il faut analyser les instructions qui composent chaque routine en assembleur. La routine ``leave`` est la plus simple. Elle place la valeur ``0`` à l'adresse ``lock``. Elle utilise une instruction atomique de façon à garantir que cet accès en mémoire se fait séquentiellement. Lorsque ``lock`` vaut ``0``, cela indique qu'aucun thread ne se trouve en section critique. Si ``lock`` contient la valeur ``1``, cela indique qu'un thread est actuellement dans sa section critique et qu'aucun autre thread ne peut y entrer. Pour entrer en section critique, un thread doit d'abord exécuter la routine ``enter``. Cette routine initialise d'abord le registre ``%eax`` à la valeur ``1``. Ensuite, l'instruction ``xchgl`` est utilisée pour échanger le contenu de ``%eax`` avec la zone mémoire ``lock``. Après l'exécution de cette instruction atomique, l'adresse ``lock`` contiendra nécessairement la valeur ``1``. Par contre, le registre ``%eax`` contiendra la valeur qui se trouvait à l'adresse ``lock`` avant l'exécution de ``xchgl``. C'est en testant cette valeur que le thread pourra déterminer si il peut entrer en section critique ou non. Deux cas sont possibles :
 
  a. ``%eax==0`` après exécution de l'instruction ``xchgl  %eax, (lock)``. Dans ce cas, le thread peut accéder à sa section critique. En effet, cela indique qu'avant l'exécution de cette instruction l'adresse ``lock`` contenait la valeur ``0``. Cette valeur indique que la section critique était libre avant l'exécution de l'instruction ``xchgl  %eax, (lock)``. En outre, cette instruction a placé la valeur ``1`` à l'adresse ``lock``, ce qui indique qu'un thread exécute actuellement sa section critique. Si un autre thread exécute l'instruction ``xchgl  %eax, (lock)`` à cet instant, il récupèrera la valeur ``1`` dans ``%eax`` et ne pourra donc pas entre en section critique. Si deux threads exécutent simultanément et sur des processeurs différents l'instruction ``xchgl  %eax, (lock)``, la coordination des accès mémoires entre les processeurs garantit que ces accès mémoires seront séquentiels. Le thread qui bénéficiera du premier accès à la mémoire sera celui qui récupèrera la valeur ``0`` dans ``%eax`` et pourra entrer dans sa section critique. Le ou les autres threads récupéreront la valeur ``1`` dans ``%eax`` et boucleront.  
- b. ``%eax==1`` après exécution de l'instruction ``xchgl %eax, (lock)``. Dans ce cas, le thread ne peut entrer en section critique et il entame une boucle active durant laquelle il va continuellement exécuter la boucle ``enter:movl ... jnz enter``. 
+ b. ``%eax==1`` après exécution de l'instruction ``xchgl %eax, (lock)``. Dans ce cas, le thread ne peut entrer en section critique et il entame une boucle active durant laquelle il va continuellement exécuter la boucle ``enter: movl ... jnz enter``. 
  
 
 .. todo:: inversion de priorité ?
@@ -427,7 +428,7 @@ Le fonction ``lock``  vérifie de savoir si le :term:`mutex` est libre. Dans ce 
 
 La fonction ``unlock`` vérifie d'abord l'état de la queue associée au :term:`mutex`. Si la queue est vide, cela indique qu'aucun thread n'est en attente. Dans ce cas, la valeur du :term:`mutex` est mise à `unlocked` et la fonction se termine. Sinon, un des threads en attente dans la queue associée au :term:`mutex` est choisi et marqué comme prêt à s'exécuter. Cela indique implicitement que l'appel à ``lock`` fait par ce thread réussi et qu'il peut accéder à la ressource.
 
-Le code présenté ci-dessous n'est qu'une illustration du fonctionnement des opérations ``lock`` et ``unlock``. Pour que ces opérations fonctionnement correctement, il faut bien entendu que les modifications aux valeurs du :term:`mutex` et à la queue qui y est associée se fassent en garantissant qu'un seul thread exécute l'un de ces opérations sur un :term:`mutex` à un instant donné. En pratique, les implémentations de ``lock`` et ``unlock`` utilisent des instructions atomiques telles que celles qui ont été présentées dans la section précédente pour garantir cette propriété.
+Le code présenté ci-dessous n'est qu'une illustration du fonctionnement des opérations ``lock`` et ``unlock``. Pour que ces opérations fonctionnent correctement, il faut bien entendu que les modifications aux valeurs du :term:`mutex` et à la queue qui y est associée se fassent en garantissant qu'un seul thread exécute l'une de ces opérations sur un :term:`mutex` à un instant donné. En pratique, les implémentations de ``lock`` et ``unlock`` utilisent des instructions atomiques telles que celles qui ont été présentées dans la section précédente pour garantir cette propriété.
 
 Les :term:`mutex` sont fréquemment utilisés pour protéger l'accès à une zone de mémoire partagée. Ainsi, si la variable globale `g` est utilisée en écriture et en lecture par deux threads, celle-ci devra être protégée par un :term:`mutex`. Toute modification de cette variable devra être entourée par des appels à `lock` et `unlock`.
 
@@ -440,7 +441,7 @@ L'exemple ci-dessous reprend le programme dans lequel une variable globale est i
    :language: c
    :start-after: ///AAA
 
-Il est utile de regarder un peu plus en détails les différentes fonctions utilisées par ce programme. Tout d'abord, la ressource partagée est ici la variable :term:`global`. Dans l'ensemble du programme, l'accès à cette variable est protégé par le :term:`mutex` ``mutex_global``. Celui-ci est représenté par une structure de données de type ``pthread_mutex_t``.
+Il est utile de regarder un peu plus en détails les différentes fonctions utilisées par ce programme. Tout d'abord, la ressource partagée est ici la variable ``global``. Dans l'ensemble du programme, l'accès à cette variable est protégé par le :term:`mutex` ``mutex_global``. Celui-ci est représenté par une structure de données de type ``pthread_mutex_t``.
 
 Avant de pouvoir utiliser un :term:`mutex`, il est nécessaire de l'initialiser. Cette initialisation est effectuée par la fonction `pthread_mutex_init(3posix)`_ qui prend deux arguments [#fstaticinit]_. Le premier est un pointeur vers une structure ``pthread_mutex_t`` et le second un pointeur vers une structure ``pthread_mutexattr_t`` contenant les attributs de ce :term:`mutex`. Tout comme lors de la création d'un thread, ces attributs permettent de spécifier des paramètres à la création du :term:`mutex`. Ces attributs peuvent être manipulés en utilisant les fonctions `pthread_mutexattr_gettype(3posix)`_ et `pthread_mutexattr_settype(3posix)`_. Dans le cadre de ces notes, nous utiliserons exclusivement les attributs par défaut et créerons toujours un :term:`mutex` en passant ``NULL`` comme second argument à la fonction `pthread_mutex_init(3posix)`_. 
 

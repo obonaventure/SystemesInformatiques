@@ -59,7 +59,7 @@ Il est utile d'analyser en détails les arguments de la fonction de comparaison 
 
 .. todo:: restrict
 
-Le second type de pointeurs que nous n'avons pas encore abordé en détails sont les pointeurs vers des pointeurs. En fait, nous les avons utilisés sans vraiment le savoir dans la fonction ``main``. En effet, le second argument de cette fonction est un tableau de pointeurs qui pointent chacun vers des chaînes de caractères différentes. La notation ``char *argv[]`` est équivalente à la notation ``char **argv``. ``**argv`` est donc un pointeur vers une zone qui contient des pointeurs vers des chaînes de caractères. Ce pointeur vers un pointeur doit être utilisé avec précaution. ``argv[0]`` est un pointeur vers une chaîne de caractères. La construction ``&(argv[0])`` permet donc d'obtenir un pointeur vers un pointeur vers une chaîne de caractères, ce qui correspond bien à la déclaration ``char **``. Ensuite, l'utilisation de ``*p`` pourrait surprendre. ``*p`` est un pointeur vers une chaîne de caractères. Il peut donc être comparé à ``NULLL`` qui est aussi un pointeur, incrémenté et la chaîne de caractères qu'il référencie peut être affichée par `printf(3)`_. 
+Le second type de pointeurs que nous n'avons pas encore abordé en détails sont les pointeurs vers des pointeurs. En fait, nous les avons utilisés sans vraiment le savoir dans la fonction ``main``. En effet, le second argument de cette fonction est un tableau de pointeurs qui pointent chacun vers des chaînes de caractères différentes. La notation ``char *argv[]`` est équivalente à la notation ``char **argv``. ``**argv`` est donc un pointeur vers une zone qui contient des pointeurs vers des chaînes de caractères. Ce pointeur vers un pointeur doit être utilisé avec précaution. ``argv[0]`` est un pointeur vers une chaîne de caractères. La construction ``&(argv[0])`` permet donc d'obtenir un pointeur vers un pointeur vers une chaîne de caractères, ce qui correspond bien à la déclaration ``char **``. Ensuite, l'utilisation de ``*p`` pourrait surprendre. ``*p`` est un pointeur vers une chaîne de caractères. Il peut donc être comparé à ``NULL`` qui est aussi un pointeur, incrémenté et la chaîne de caractères qu'il référencie peut être affichée par `printf(3)`_. 
 
 .. literalinclude:: /Theorie/C/S5-src/ptrptr.c
    :encoding: iso-8859-1
@@ -180,7 +180,7 @@ Pour les variables globales, la situation est différente. Si une variable est d
 
 La qualificateur ``static`` peut aussi précéder des déclarations de fonctions. Dans ce cas, il indique que la fonction ne doit pas être visible en dehors du module dans lequel elle est définie. Sans le qualificateur ``static``, une fonction déclarée dans un module est accessible depuis n'importe quel autre module.
 
-Afin d'illustrer l'utilisation de ``static`` et ``extern``, considérons le programme ``prog.c`` ci-dessous qui inclus le module ``module.c`` et également le module ``min.c`` présenté plus haut.
+Afin d'illustrer l'utilisation de ``static`` et ``extern``, considérons le programme ``prog.c`` ci-dessous qui inclut le module ``module.c`` et également le module ``min.c`` présenté plus haut.
 
 .. literalinclude:: /Theorie/C/S5-src/module.h
    :encoding: iso-8859-1

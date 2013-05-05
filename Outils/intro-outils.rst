@@ -30,7 +30,7 @@ Dans de nombreux projets informatiques, il est nécessaire d'utiliser des outils
  - `mercurial <http://mercurial.selenic.com/>`_
 
 
-`subversion`_ (ou abrégé `svn(1)`_) est un logiciel qui permet à plusieurs utilisateurs de travailler sur les mêmes documents de type texte. `Subversion`_ est fréquemment utilisé pour gérer du code source développé de façon collaborative, mais il peut aussi gérer à gérer n'importe quel ensemble de fichiers (de préférence textes) manipulés par plusieurs personnes. 
+`subversion`_ (ou abrégé `svn(1)`_) est un logiciel qui permet à plusieurs utilisateurs de travailler sur les mêmes documents de type texte. `Subversion`_ est fréquemment utilisé pour gérer du code source développé de façon collaborative, mais il peut aussi servir à gérer n'importe quel ensemble de fichiers (de préférence textes) manipulés par plusieurs personnes. 
 
 .. Dans le cadre du cours SINF1252 vous devez vous inscrire à subversion dans le projet ``SINF1252_2012`` en suivant le lien et les instructions sur http://wiki.student.info.ucl.ac.be/index.php/Svn
 

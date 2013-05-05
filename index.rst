@@ -68,7 +68,23 @@ Systèmes Multiprocesseurs
    Theorie/Threads/coordination
    Theorie/Threads/processus
 
+Fichiers
+********
 
+.. toctree::
+   :maxdepth: 2
+
+   Theorie/Fichiers/fichiers
+   Theorie/Fichiers/fichiers-signaux
+
+
+Mémoire virtuelle
+*****************
+
+.. toctree::
+   :maxdepth: 2
+
+   Theorie/MemoireVirtuelle/vmem
 
 
 *********
@@ -89,6 +105,8 @@ Projets
    :maxdepth: 2
 
    Projets/P1/projet-1
+   Projets/P2/enonce
+   Projets/P3/enonce
 
 ******
 Outils
@@ -104,6 +122,7 @@ Outils
    Outils/processus
    Outils/valgrind
    Outils/gdb
+   Outils/gprof
 
 *******
 Annexes

@@ -107,7 +107,7 @@ Pour comprendre le fonctionnement d'un microprocesseur, la solution la plus effi
 
 Cette architecture recouvre un grand nombre de variantes qui ont leur spécificités propre. Une descriptions détaillée de cette architecture est disponible dans [IA32]_. Nous nous limiterons à un très petit sous-ensemble de cette architecture dans le cadre de ce cours. Une analyse complète de l'architecture [IA32]_ occupe plusieurs centaines de pages dans des livres de référence [BryantOHallaron2011]_ [Hyde2010]_.
 
-L'architecture [IA32]_ est supportée par différents types de processeurs. Certains utilisent des registres et des bus de données de 32. D'autres, plus récents utilisent des registres de 64 bits. Il y a des différences importantes entre ces deux architectures. Comme les processeurs récents supportent à la fois les modes 32 bits et 64 bits, nous nous limiterons à l'architecture 32 bits.
+L'architecture [IA32]_ est supportée par différents types de processeurs. Certains utilisent des registres et des bus de données de 32 bits. D'autres, plus récents utilisent des registres de 64 bits. Il y a des différences importantes entre ces deux architectures. Comme les processeurs récents supportent à la fois les modes 32 bits et 64 bits, nous nous limiterons à l'architecture 32 bits.
 
 Un des éléments importants d'un processeur tel que ceux de l'architecture [IA32]_ sont ses registres. Un processeur [IA32]_ dispose de huit registres génériques.  Ceux-ci ont été baptisés ``EAX``, ``EBX``, ``ECX``, ``EDX``, ``EBP``, ``ESI``, ``EDI`` et ``ESP``. Ces registres peuvent stocker des données sous forme binaire. Dans l'architecture [IA32]_, ils ont une taille de 32 bits. Cela implique que chaque registre peut contenir un nombre ou une adresse puisque les entiers (``int`` en C) et les adresses (pointeurs ``*`` en C sur [IA32]_) sont tous les deux encodés sur 32 bits dans l'architecture [IA32]_. Cette capacité à stocker des données ou des adresses à l'intérieur d'un même registre est un des points clés de la flexibilité des microprocesseurs.
 
@@ -134,7 +134,7 @@ Dans les sections qui suivent, nous analysons quelques instructions de l'archite
 Les instructions ``mov``
 ------------------------
 
-Les instructions de la famille ``mov`` [#fmov]_ permettent de déplacer des données entre registres ou depuis la mémoire vers un registre ou enfin d'un registre vers une zone mémoire. Ces instructions sont essentielles car elle permettent au processeur de récupérer les données qui sont stockées en mémoire mais aussi de sauvegarder en mémoire le résultat d'un calcul effectué par le processeur. Une instruction ``mov`` contient toujours deux arguments. Le premier spécifie la donnée à déplacer ou son adresse et la seconde l'endroit où il faut sauvegarder cette donnée ou la valeur stockée à cette adresse.
+Les instructions de la famille ``mov`` [#fmov]_ permettent de déplacer des données entre registres ou depuis la mémoire vers un registre ou enfin d'un registre vers une zone mémoire. Ces instructions sont essentielles car elles permettent au processeur de récupérer les données qui sont stockées en mémoire mais aussi de sauvegarder en mémoire le résultat d'un calcul effectué par le processeur. Une instruction ``mov`` contient toujours deux arguments. Le premier spécifie la donnée à déplacer ou son adresse et la seconde l'endroit où il faut sauvegarder cette donnée ou la valeur stockée à cette adresse.
 
 .. code-block:: nasm
 
@@ -142,7 +142,8 @@ Les instructions de la famille ``mov`` [#fmov]_ permettent de déplacer des donn
 
 Il existe une instruction de la famille ``mov`` qui correspond à chaque type de donnée pouvant être déplacé. L'instruction ``movb`` est utilisée pour déplacer un byte, ``movw`` pour déplacer un mot de 16 bits et ``movl`` lorsqu'il faut déplacer un mot de 32 bits.
 
-En pratique, il y a plusieurs façons de spécifier chaque argument d'une instruction ``mov``. Certains auteurs utilisent le terme :term:`mode d'adressage` pour représenter ces différents types d'arguments même si il ne s'agit pas toujours d'adresses. Le premier mode est le mode `registre`. La source et la destination d'une opération ``mov`` peuvent être un nom de registre. Ceux-ci sont en général préfixés avec le caractère ``%``. Ainsi, ``%eax`` correspond au registre ``EAX``. La première instruction ci-dessous déplace le mot de 32 bits stocké dans le registre ``%eax`` vers le registre ``%ebx``. La seconde instruction elle n'a aucun effet puisqu'elle déplace la contenu du registre ``%ecx`` vers ce même registre.
+En pratique, il y a plusieurs façons de spécifier chaque argument d'une instruction ``mov``. Certains auteurs utilisent le terme :term:`mode d'adressage` pour représenter ces différents types d'arguments même si il ne s'agit pas toujours d'adresses. Le premier mode est le mode `registre`. La source et la destination d'une opération ``mov`` peuvent être un nom de registre. Ceux-ci sont en général préfixés avec le caractère ``%``. Ainsi, ``%eax`` correspond au registre ``EAX``. La première instruction ci-dessous déplace le mot de 32 bits stocké dans le registre ``%eax`` vers le registre ``%ebx``. La seconde instruction elle n'a aucun effet puisqu'elle déplace le contenu du registre ``%ecx`` vers ce même registre.
+
 
 .. code-block:: nasm
 
@@ -222,7 +223,7 @@ Il existe une variante de chacune de ces instructions pour chaque type de donné
 	movl 	$0, %eax            ; %eax=0
 	incl    %eax                ; %eax++
 	
-L'architecture [IA32]_ supporté également des instructions arithmétiques et logiques prenant chacune deux arguments.
+L'architecture [IA32]_ supporte également des instructions arithmétiques et logiques prenant chacune deux arguments.
 
  - ``add`` permet d'additionner deux nombres entiers. ``add`` prend comme arguments une source et une destination et place dans la destination la somme de ses deux arguments.
  - ``sub`` permet de soustraire le premier argument du second et stocke le résultat dans le second 
@@ -269,7 +270,7 @@ Dans le code assembleur, les noms de variables tels que ``g`` ou ``j`` correspon
 
 .. code-block:: nasm
 
-	movl	g, %eax  ; g=%eax
+	movl	g, %eax  ; %eax=g
 	xorl	j, %eax  ; %eax=g^j
 	movl	%eax, l  ; l=%eax
 	movl	j, %eax  ; %eax=j
@@ -279,7 +280,7 @@ Dans le code assembleur, les noms de variables tels que ``g`` ou ``j`` correspon
 	shll	$6, %eax ; %eax=%eax << 6
 	movl	%eax, g  ; g=%eax
  
-Les opérations arithmétiques telles que la multiplication ou la division sont plus complexes que les opérations qui ont été présentées ci-dessus. En toute généralité, la multiplication entre deux nombres de 32 bits peut donner un résultat sur 64 bits qui ne pourra pas donc être stocké entièrement dans un registre. De la même manière, une division entière retourne un quotient et un reste qui sont tous les deux sur 32 bits. L'utilisation des instructions de division et de multiplication nécessite de prendre ces problèmes en compte. Nous ne les aborderons pas dans ce cours. Des détails complémentaires sont disponibles dans [IA32]_ et [BryantOHallaron2011]_ notamment.
+Les opérations arithmétiques telles que la multiplication ou la division sont plus complexes que les opérations qui ont été présentées ci-dessus. En toute généralité, la multiplication entre deux nombres de 32 bits peut donner un résultat sur 64 bits qui ne pourra donc pas être stocké entièrement dans un registre. De la même manière, une division entière retourne un quotient et un reste qui sont tous les deux sur 32 bits. L'utilisation des instructions de division et de multiplication nécessite de prendre ces problèmes en compte. Nous ne les aborderons pas dans ce cours. Des détails complémentaires sont disponibles dans [IA32]_ et [BryantOHallaron2011]_ notamment.
 
 
 Les instructions de comparaison
@@ -610,7 +611,7 @@ La compilation de ce programme produit le code assembleur suivant pour les proc�
 
 La seule différence par rapport au programme précédent est que la procédure ``p`` descend le sommet de la pile de 12 unités au début de son exécution et l'augmente de 12 unités à la fin. Ces manipulations sont nécessaires pour respecter une convention de l'architecture [IA32]_ qui veut que les adresses de retour des procédures soient alignées sur des blocs de 16 bytes.
 
-Considérons maintenant une procédure qui prend un argument. Pour qu'une telle procédure puisse utiliser un argument, il faut que la procédure appelante puisse placer sa valeur à un endroit où la procédure appelée peut facilement y accéder. Dans l'architecture [IA32]_, c'est la pile qui joue ce rôle et permet la passage des arguments. En C, les arguments sont passés par valeur et ce sera donc les valeurs des arguments qui seront placées sur la pile. A titre d'exemple, considérons une procédure simple qui prend deux arguments entiers.
+Considérons maintenant une procédure qui prend un argument. Pour qu'une telle procédure puisse utiliser un argument, il faut que la procédure appelante puisse placer sa valeur à un endroit où la procédure appelée peut facilement y accéder. Dans l'architecture [IA32]_, c'est la pile qui joue ce rôle et permet le passage des arguments. En C, les arguments sont passés par valeur et ce sera donc les valeurs des arguments qui seront placées sur la pile. A titre d'exemple, considérons une procédure simple qui prend deux arguments entiers.
 
 .. literalinclude:: /Theorie/Assembleur/src/fct.c
    :encoding: iso-8859-1
