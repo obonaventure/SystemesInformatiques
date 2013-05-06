@@ -40,7 +40,7 @@ Exercices
       09047000-09107000 rw-p 09047000 00:00 0          [heap]
       bffaa000-bffbf000 rw-p bffe9000 00:00 0          [stack]
   
-   En supposant que la mémoire RAM était initialement vide et que le processus a été chargée à partir de l'adresse ``0x00000000`` en mémoire physique, construisez la table des pages de ce processus si il utilise des pages de 4 KBytes.
+   En supposant que la mémoire RAM était initialement vide et que le processus a été chargé à partir de l'adresse ``0x00000000`` en mémoire physique, construisez la table des pages de ce processus si il utilise des pages de 4 KBytes.
  
 #. Un ordinateur utilise de la mémoire virtuelle avec des adresses virtuelles sur 32 bits et des adresses physique sur 26 bits. Sa mémoire virtuelle est découpée en pages de 4 KBytes. Si chaque entrée de la table des pages occupe 32 bits, quelle est la zone mémoire occupée par la table des pages ? Le nombre de lignes dans la table des pages varie-t-il si les adresses physiques passent à 32 bits ou 36 bits ?
 
@@ -51,7 +51,7 @@ Exercices
 #. Un programme construit en mémoire un gros tableau contenant 10 millions d'entiers. Initialisez ce tableau avec des entiers ayant des valeurs croissante. Pour sauvegarder le fichier sur disque, trois solutions s'offrent à vous :
 
    - écrire directement les entiers sur disque sous forme binaire en utilisant l'appel système `write(2)`_ en passant un pointeur vers chaque entier à cet appel système
-   - écrire les entiers sur disque source forme d'un fichier texte avec un entier par ligne
+   - écrire les entiers sur disque sous forme d'un fichier texte avec un entier par ligne
    - écrire les entiers directement sur disque, mais en utilisant `mmap(2)`_ plutôt que `write(2)`_
 
    Dans les salles informatiques, vous pouvez stocker les données dans trois répertoires qui risquent d'avoir des performances différentes :
