@@ -238,7 +238,7 @@ Séance tutorée
 Douzième semaine
 ----------------
 
-La matière de cette semaine porte sur les utilisation avancées de la mémoire virtuelle : 
+La matière de cette semaine porte sur les utilisations avancées de la mémoire virtuelle : 
 
  - :ref:`shmem`
  - :ref:`forkmem`
