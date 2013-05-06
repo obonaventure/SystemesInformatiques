@@ -18,7 +18,6 @@ void error(int err, char *msg) {
 }
 
 ///AAA
-#define NTHREADS 4
 #define SIZE 100
 
 pthread_t mythread;
