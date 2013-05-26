@@ -238,7 +238,6 @@ Il existe plusieurs appels systèmes et fonctions de la librairie standard qui p
  - l'appel système `stat(2)`_ permet de récupérer les méta-données qui sont associées à un fichier ou un répertoire. La commande `stat(1)`_ fournit des fonctionnalités similaires depuis le shell.
  - les appels systèmes `chmod(2)`_ et `chown(2)`_ permettent de modifier respectivement le mode (i.e. les permissions), le propriétaire et le groupe associés à un fichier. Les commandes `chmod(1)`_, `chown(1)`_ et `chgrp(1)`_ permettent de faire de même depuis le shell.
  - l'appel système `utime(2)`_ permet de modifier les timestamps associés à un fichier/répertoire. Cet appel système est utilisé par la commande `touch(1)`_ 
- - l'appel système `utime(2)`_ permet de modifier les timestamps associés à une fichier/répertoire. Cet appel système est utilisé par la commande `touch(1)`_
  - l'appel système `rename(2)`_ permet de changer le nom d'un fichier ou d'un répertoire. Il est utilisé notamment par la commande `rename(1)`_
  - l'appel système `mkdir(2)`_ permet de créer un répertoire alors que l'appel système `rmdir(2)`_ permet d'en supprimer un
  - les fonctions de la librairie `opendir(3)`_, `closedir(3)`_, et `readdir(3)`_ permettent de consulter le contenu de répertoires.
@@ -262,7 +261,7 @@ Cette structure comprend le numéro d'inode contenu dans ses deux premiers membr
 
 L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
 
-.. literalinclude:: /Theorie/Fichiers/src/read.c
+.. literalinclude:: /Theorie/Fichiers/src/readdir.c
    :encoding: iso-8859-1
    :language: c
    :start-after: ///AAA
@@ -295,8 +294,8 @@ Les appels système `link(2)`_ et `unlink(2)`_ sont un peu particulier et mérit
    $ ln a/test.txt a/test2.txt
    $ ls -li a
    total 16
-   9624126 -rw-r--r--  3 obo  stafinfo  5 24 mar 21:14 test.txt
-   9624126 -rw-r--r--  3 obo  stafinfo  5 24 mar 21:14 test2.txt
+   9624126 -rw-r--r--  2 obo  stafinfo  5 24 mar 21:14 test.txt
+   9624126 -rw-r--r--  2 obo  stafinfo  5 24 mar 21:14 test2.txt
    $ ln a/test.txt b/test3.txt
    $ stat --format "inode=%i nlinks=%h" b/test3.txt
    $ inode=9624126 nlinks=3
