@@ -209,11 +209,11 @@ Le fonctionnement général d'un producteur est le suivant. Tout d'abord, le pro
      int item;
      while(true)
      {   
-       item=produce(item);
+       item=produce();
        sem_wait(&empty); // attente d'un slot libre
        pthread_mutex_lock(&mutex);
         // section critique
-        insert_item();
+        insert_item(item);
        pthread_mutex_unlock(&mutex);
        sem_post(&full); // il y a un slot rempli en plus
      }
@@ -233,7 +233,7 @@ Le consommateur quant à lui essaie d'abord de prendre le sémaphore ``full``. S
      sem_wait(&full); // attente d'un slot rempli
      pthread_mutex_lock(&mutex);
       // section critique
-      item=remove(item);
+      item=remove();
      pthread_mutex_unlock(&mutex);
      sem_post(&empty); // il y a un slot libre en plus
    }    
