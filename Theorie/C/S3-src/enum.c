@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
   bit_t bit=BITRESET;
   day jour=monday;
   if(jour==saturday||jour==sunday)
-    printf("Congé\n");
+    printf("CongÃ©\n");
   ///DDD
   printf("jour: %d\n",jour);
   printf("sizeof(day) %ld\n",sizeof(day));

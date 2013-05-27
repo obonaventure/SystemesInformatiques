@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
   err=gettimeofday(&tvEnd, NULL);
   if(err!=0)
     exit(EXIT_FAILURE);
-  printf("Durée de sum : %ld microsecondes\n",timeval_diff(&tvEnd, &tvStart));
+  printf("DurÃ©e de sum : %ld microsecondes\n",timeval_diff(&tvEnd, &tvStart));
 
   err=gettimeofday(&tvStart, NULL);
   if(err!=0)
@@ -67,6 +67,6 @@ int main(int argc, char *argv[]) {
   if(err!=0)
     exit(EXIT_FAILURE);
 
-  printf("Durée de sumptr : %ld microsecondes\n",timeval_diff(&tvEnd, &tvStart));
+  printf("DurÃ©e de sumptr : %ld microsecondes\n",timeval_diff(&tvEnd, &tvStart));
 }
 

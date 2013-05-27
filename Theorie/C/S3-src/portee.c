@@ -1,7 +1,7 @@
 /**************************************
  * portee.c
  *
- * Programme d'exemple pour la portée de
+ * Programme d'exemple pour la portÃ©e de
  * variables
  **************************************/
 

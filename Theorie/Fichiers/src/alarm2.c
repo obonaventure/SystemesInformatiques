@@ -25,24 +25,24 @@ int main (int argc, char *argv[])  {
     perror("signal");
     exit(EXIT_FAILURE);
   }
-  // sigalrm interrompt les appels système
+  // sigalrm interrompt les appels systÃ¨me
   if(siginterrupt(SIGALRM,true)<0) {
     perror("siginterrupt");
     exit(EXIT_FAILURE);
   }
   int r=0;
   if(sigsetjmp(env,1)==0) {
-    // sig_handler n'a pas encore été appelé
+    // sig_handler n'a pas encore Ã©tÃ© appelÃ©
     alarm(5);
     r=read(STDIN_FILENO,&c,1);
   }
   else {
-    // sig_handler a déjà été exécuté
-    // le délai a déjà expiré, inutile de faire read
+    // sig_handler a dÃ©jÃ  Ã©tÃ© exÃ©cutÃ©
+    // le dÃ©lai a dÃ©jÃ  expirÃ©, inutile de faire read
   }
-  alarm(0); // arrêt du timer
+  alarm(0); // arrÃªt du timer
   if((r==1)&&(c=='\n')) {
-    printf("Gagné \n");
+    printf("GagnÃ© \n");
     exit(EXIT_SUCCESS);
   }
   else {

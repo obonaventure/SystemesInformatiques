@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     sum+=mesures[i];
     free(vector);
   }
-  printf("Durée moyenne : %ld \n",sum/LOOP);
+  printf("DurÃ©e moyenne : %ld \n",sum/LOOP);
 
   return(EXIT_SUCCESS);
 }

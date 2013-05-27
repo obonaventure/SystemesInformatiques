@@ -22,7 +22,7 @@ struct result {
 };
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -80,7 +80,7 @@ int main (int argc, char *argv[])  {
     //if(p!=NULL) {
     //struct result r;
       //      r=(struct result) p;
-      //printf("Trouvé pour %d : x=%ld, y=%ld, z=%ld\n",i+2,r[i].x,r[i].y, r[i].z);
+      //printf("TrouvÃ© pour %d : x=%ld, y=%ld, z=%ld\n",i+2,r[i].x,r[i].y, r[i].z);
   }
 
 

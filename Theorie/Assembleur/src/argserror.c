@@ -2,7 +2,7 @@
  * argserror.c
  *
  * Programme d'exemple d'appel de fonction
- * avec un nombre erroné d'arguments
+ * avec un nombre erronÃ© d'arguments
  *
  **************************************/
 

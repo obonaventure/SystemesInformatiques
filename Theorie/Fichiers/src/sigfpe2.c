@@ -42,7 +42,7 @@ int main (int argc, char *argv[])  {
 }
 
 static void sigfpe_handler(int signum) {
-  char *msg="Signal SIGFPE reçu \n";
+  char *msg="Signal SIGFPE reÃ§u \n";
   write(STDOUT_FILENO,msg,strlen(msg));
 
 }

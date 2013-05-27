@@ -32,7 +32,7 @@ void *writer( void *arg)
     pthread_rwlock_wrunlock(&lock);
   }
   // ...
-  printf ("Writer %d terminé\n",gettid());
+  printf ("Writer %d terminÃ©\n",gettid());
   return(NULL);
 
 
@@ -47,7 +47,7 @@ void* reader ( void* arg )
     pthread_rwlock_rdunlock(&lock);
   }
   // ...
-  printf ("Reader %d terminé\n",gettid());
+  printf ("Reader %d terminÃ©\n",gettid());
   return(NULL);
 }
 

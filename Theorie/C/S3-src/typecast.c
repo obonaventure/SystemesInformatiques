@@ -2,7 +2,7 @@
  * typecast.c
  *
  * Programme d'exemple de conversion entre
- * types de données
+ * types de donnÃ©es
  *
  **************************************/
 

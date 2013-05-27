@@ -1,8 +1,8 @@
 /**************************************
  * concat.c
  *
- * Programme d'exemple pour concaténer
- * deux chaînes de caractères
+ * Programme d'exemple pour concatÃ©ner
+ * deux chaÃ®nes de caractÃ¨res
  *
  **************************************/
 

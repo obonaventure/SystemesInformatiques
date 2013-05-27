@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 void e1() {
-  printf("Exécution de la fonction e1\n");
+  printf("ExÃ©cution de la fonction e1\n");
 }
 
 int main (int argc, char *argv[])  {

@@ -1,3 +1,3 @@
 Valeur du pointeur string avant malloc : 0x7fff5fbfe1d8
-Valeur du pointeur string après malloc : 0x100100080
-Valeur du pointeur string après free: 0x100100080
+Valeur du pointeur string aprÃ¨s malloc : 0x100100080
+Valeur du pointeur string aprÃ¨s free: 0x100100080

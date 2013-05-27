@@ -1,8 +1,8 @@
 /**************************************
  * stack.c
  *
- * Programme d'exemple implémentant un stack comme structure
- * chaînée
+ * Programme d'exemple implÃ©mentant un stack comme structure
+ * chaÃ®nÃ©e
  *
  **************************************/
 
@@ -23,7 +23,7 @@ typedef struct node_t
 
 struct node_t *stack; // sommet de la pile
 
-// ajoute un élément au sommet de la pile
+// ajoute un Ã©lÃ©ment au sommet de la pile
 void push(struct fraction_t *f)
 {
   struct node_t *n;
@@ -34,7 +34,7 @@ void push(struct fraction_t *f)
   n->next = stack;
   stack = n;
 }
-// retire l'élément au sommet de la pile
+// retire l'Ã©lÃ©ment au sommet de la pile
 struct fraction_t * pop()
 {
   if(stack==NULL)

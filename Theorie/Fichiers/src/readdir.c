@@ -2,7 +2,7 @@
  * readdir.c
  *
  * Programme d'exemple d'utilisation de
- * répertoires
+ * rÃ©pertoires
  *
  *************************************/
 ///AAA

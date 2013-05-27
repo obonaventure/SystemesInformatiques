@@ -22,7 +22,7 @@ int main (int argc, char *argv[])  {
     perror("signal");
     exit(EXIT_FAILURE);
   }
-  // sigalrm interrompt les appels système
+  // sigalrm interrompt les appels systÃ¨me
   if(siginterrupt(SIGALRM,true)<0) {
     perror("siginterrupt");
     exit(EXIT_FAILURE);
@@ -31,7 +31,7 @@ int main (int argc, char *argv[])  {
   int r=read(STDIN_FILENO,&c,1);
   if((r==1)&&(c=='\n')) {
     alarm(0); // reset timer
-    printf("Gagné \n");
+    printf("GagnÃ© \n");
     exit(EXIT_SUCCESS);
   }
   printf("Perdu !\n");
@@ -39,7 +39,7 @@ int main (int argc, char *argv[])  {
 }
 
 static void sig_handler(int signum) {
-  // rien à faire, read sera interrompu
+  // rien Ã  faire, read sera interrompu
 }
 
 ///BBB

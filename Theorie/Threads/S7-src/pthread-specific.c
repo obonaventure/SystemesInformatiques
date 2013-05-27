@@ -2,8 +2,8 @@
  * pthread-specific.c
  *
  * Programme d'exemple de pthread qui utilise une
- * zone mémoire pour stocker des données
- * spécifiques au thread
+ * zone mÃ©moire pour stocker des donnÃ©es
+ * spÃ©cifiques au thread
  **************************************/
 
 #include <pthread.h>
@@ -13,7 +13,7 @@
 #include <errno.h>
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 

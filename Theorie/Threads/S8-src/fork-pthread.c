@@ -37,7 +37,7 @@ int main (int argc, char *argv[])  {
   int status;
   pthread_t thread;
   int slept=DELAY;
-  printf("père : %d\n",getpid());
+  printf("pÃ¨re : %d\n",getpid());
   fflush(stdout);
   pid=fork();
   if (pid==-1) {
@@ -52,7 +52,7 @@ int main (int argc, char *argv[])  {
     return(EXIT_SUCCESS);
   }
   else {
-    // père
+    // pÃ¨re
     err=pthread_create(&(thread),NULL,&func,NULL);
     if(err!=0) {
       perror("pthread_create");

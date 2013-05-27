@@ -1,7 +1,7 @@
 /***********************************************
  * strlen.c
  *
- * Initialisation de chaînes de caractères
+ * Initialisation de chaÃ®nes de caractÃ¨res
  *
  ***********************************************/
 
@@ -13,7 +13,7 @@
 
 int length(char str[]) {
   int i=0;
-  while(str[i]!=0) { // '\0' et 0 sont égaux
+  while(str[i]!=0) { // '\0' et 0 sont Ã©gaux
     i++;
   }
   return(i);

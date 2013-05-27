@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
   for(int i=0;i<LEN-1;i++) {
     *(str+i)='A';
   }
-  *(str+LEN)='\0';  // fin de chaîne
+  *(str+LEN)='\0';  // fin de chaÃ®ne
   return(EXIT_SUCCESS);
 }
 

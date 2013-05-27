@@ -12,11 +12,11 @@ struct vector_t {
   int size;
   float *v;
 };
-// initialise le vecteur à la valeur du réel
+// initialise le vecteur Ã  la valeur du rÃ©el
 struct vector_t * init(int, float) ;
-// récupère le nième élément
+// rÃ©cupÃ¨re le niÃ¨me Ã©lÃ©ment
 float get(struct vector_t *, int) ;
-// fixe la valeur du nième élément
+// fixe la valeur du niÃ¨me Ã©lÃ©ment
 void set(struct vector_t *, int , float);
 // supprime un vecteur
 void destroy(struct vector_t *);

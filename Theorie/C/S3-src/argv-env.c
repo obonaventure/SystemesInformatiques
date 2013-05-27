@@ -15,7 +15,7 @@ void print_var(char *var) {
   if(val!=NULL)
     printf("La variable %s a la valeur : %s\n",var,val);
   else
-    printf("La variable %s n'a pas été assignée\n",var);
+    printf("La variable %s n'a pas Ã©tÃ© assignÃ©e\n",var);
 }
 
 int main(int argc, char *argv[]) {

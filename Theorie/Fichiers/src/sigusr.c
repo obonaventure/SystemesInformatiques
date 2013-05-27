@@ -35,7 +35,7 @@ int main (int argc, char *argv[])  {
   }
 
   printf("Fin du processus\n");
-  printf("Reçu %d SIGUSR1 et %d SIGUSR2\n",n_sigusr1,n_sigusr2);
+  printf("ReÃ§u %d SIGUSR1 et %d SIGUSR2\n",n_sigusr1,n_sigusr2);
   return(EXIT_SUCCESS);
 }
 
@@ -49,7 +49,7 @@ static void sig_handler(int signum) {
       n_sigusr2++;
     }
     else {
-      char *msg="Reçu signal inattendu\n";
+      char *msg="ReÃ§u signal inattendu\n";
       write(STDERR_FILENO,msg,strlen(msg));
       _exit(EXIT_FAILURE);
     }

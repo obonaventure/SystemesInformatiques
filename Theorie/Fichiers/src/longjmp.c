@@ -13,19 +13,19 @@ jmp_buf label;
 
 void f() {
 
-  printf("Début fonction f\n");
+  printf("DÃ©but fonction f\n");
   if(setjmp(label)==0) {
-    printf("Exécution normale \n");
+    printf("ExÃ©cution normale \n");
   }
   else {
-    printf("Exécution après longjmp \n");
+    printf("ExÃ©cution aprÃ¨s longjmp \n");
   }
 }
 
 void g() {
-  printf("Début fonction g\n");
+  printf("DÃ©but fonction g\n");
   longjmp(label,1);
-  printf("Ne sera jamais affiché\n");
+  printf("Ne sera jamais affichÃ©\n");
 }
 
 int main (int argc, char *argv[])  {

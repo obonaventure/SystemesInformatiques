@@ -1,7 +1,7 @@
 /**************************************
  * pthread-perf.c
  *
- * Programme d'exemple pour calculer le coût
+ * Programme d'exemple pour calculer le coÃ»t
  * de pthread
  *
  *************************************/

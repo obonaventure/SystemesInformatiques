@@ -15,7 +15,7 @@ int times(int i, int j) {
   printf("\t[times(%d,%d)] : return(%d)\n",i,j,m);
   return m;
 }
-// calcul récursif de factorielle
+// calcul rÃ©cursif de factorielle
 // n>0
 int fact(int n) {
   printf("[fact(%d)]: Valeur de n:%d, adresse: %p\n",n,n,&n);
@@ -24,7 +24,7 @@ int fact(int n) {
     printf("[fact(%d)]: return(1)\n",n);
     return(n);
   }
-  printf("[fact(%d)]: appel à fact(%d)\n",n,n-1);
+  printf("[fact(%d)]: appel Ã  fact(%d)\n",n,n-1);
   f=fact(n-1);
   printf("[fact(%d)]: calcul de times(%d,%d)\n",n,n,f);
   f=times(n,f);
@@ -35,9 +35,9 @@ int fact(int n) {
 void compute() {
   int nombre=3;
   int f;
-  printf("La fonction fact est à l'adresse : %p\n",fact);
-  printf("La fonction times est à l'adresse : %p\n",times);
-  printf("La variable nombre vaut %d et est à l'adresse %p\n",nombre,&nombre);
+  printf("La fonction fact est Ã  l'adresse : %p\n",fact);
+  printf("La fonction times est Ã  l'adresse : %p\n",times);
+  printf("La variable nombre vaut %d et est Ã  l'adresse %p\n",nombre,&nombre);
   f=fact(nombre);
   printf("La factorielle de %d vaut %d\n",nombre,f);
 }
@@ -65,12 +65,12 @@ int main(int argc, char *argv[]) {
 
   int f=1252; // variable locale
 
-  printf("La variable nombre est à l'adresse : %p\n",(void *) &nombre);
-  printf("Le tableau msg est à l'adresse : %p\n",(void *)msg);
-  printf("La variable locale f est à l'adresse : %p\n",(void *) &f);
+  printf("La variable nombre est Ã  l'adresse : %p\n",(void *) &nombre);
+  printf("Le tableau msg est Ã  l'adresse : %p\n",(void *)msg);
+  printf("La variable locale f est Ã  l'adresse : %p\n",(void *) &f);
 
-  printf("La fonction main est à l'adresse : %p\n",main);
-  printf("La fonction max est à l'adresse : %p\n",max);
+  printf("La fonction main est Ã  l'adresse : %p\n",main);
+  printf("La fonction max est Ã  l'adresse : %p\n",max);
 
   /// ...
   ///BBB

@@ -36,7 +36,7 @@ int main (int argc, char *argv[])  {
 
   pid=fork();
   if (pid==-1) {
-    // erreur à l'exécution de fork
+    // erreur Ã  l'exÃ©cution de fork
     perror("fork");
     exit(EXIT_FAILURE);
   }
@@ -47,7 +47,7 @@ int main (int argc, char *argv[])  {
     return(EXIT_SUCCESS);
   }
   else {
-    // processus père
+    // processus pÃ¨re
     output('P');
     printf("\n");
     sleep(1);

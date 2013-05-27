@@ -1,7 +1,7 @@
 $./fork-manyexec /bin/true /bin/false /bin/none
-Exécution de la commande /bin/true [pid=14217]
-La commande /bin/true [14217] s'est terminée correctement
-Exécution de la commande /bin/false [pid=14218]
-La commande /bin/false [14218] a retourné 1
-Exécution de la commande /bin/none [pid=14219]
-La commande /bin/none n'a pu être exécutée
+ExÃ©cution de la commande /bin/true [pid=14217]
+La commande /bin/true [14217] s'est terminÃ©e correctement
+ExÃ©cution de la commande /bin/false [pid=14218]
+La commande /bin/false [14218] a retournÃ© 1
+ExÃ©cution de la commande /bin/none [pid=14219]
+La commande /bin/none n'a pu Ãªtre exÃ©cutÃ©e

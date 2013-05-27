@@ -19,12 +19,12 @@ int main(int argc, char *argv[]) {
    char *s;        // pointeur vers un char
 
    ptr_i=&i;
-   printf("valeur de i : %d, valeur pointée par ptr_i : %d\n",i,*ptr_i);
+   printf("valeur de i : %d, valeur pointÃ©e par ptr_i : %d\n",i,*ptr_i);
    *ptr_i=*(ptr_i)+1252;
-   printf("valeur de i : %d, valeur pointée par ptr_i : %d\n",i,*ptr_i);
+   printf("valeur de i : %d, valeur pointÃ©e par ptr_i : %d\n",i,*ptr_i);
    s=str;
    for(i=0;i<strlen(str);i++){
-     printf("valeur de str[%d] : %c, valeur pointée par *(s+%d) : %c\n",i,str[i],i,*(s+i));
+     printf("valeur de str[%d] : %c, valeur pointÃ©e par *(s+%d) : %c\n",i,str[i],i,*(s+i));
    }
 
 

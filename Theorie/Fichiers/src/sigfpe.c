@@ -14,7 +14,7 @@ int main (int argc, char *argv[])  {
   int zero=0;
   printf("Calcul de : %d/%d\n",n,zero);
   fflush(stdout);
-  printf("Résultat : %d\n",n/zero);
+  printf("RÃ©sultat : %d\n",n/zero);
 
   return(EXIT_SUCCESS);
 }

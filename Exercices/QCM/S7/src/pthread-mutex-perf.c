@@ -2,7 +2,7 @@
  * pthread-mutex.c
  *
  * Programme d'exemple de pthread avec
- * utilisation de mutex pour éviter une
+ * utilisation de mutex pour Ã©viter une
  * violation de section critique
  *
  **************************************/
@@ -22,14 +22,14 @@ long timeval_diff(struct timeval *t2, struct timeval *t1)
 }
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
 void usage() {
     printf("Usage : %s percent nthreads\n\n",argv[0]);
     printf("        percent: 0-100 pourcentage de temps en section critique\n");
-    printf("        nthreads : nombre de threads à lancer\n");
+    printf("        nthreads : nombre de threads Ã  lancer\n");
 }
 ///AAA
 #include <pthread.h>

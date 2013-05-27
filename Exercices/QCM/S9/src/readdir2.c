@@ -2,7 +2,7 @@
  * readdir.c
  *
  * Programme d'exemple d'utilisation de
- * répertoires
+ * rÃ©pertoires
  *
  *************************************/
 ///AAA
@@ -18,7 +18,7 @@ void exit_on_error(char *s) {
 
 /*
  * name!=NULL
- * retourne le nombre de fichiers dans le répertoire name
+ * retourne le nombre de fichiers dans le rÃ©pertoire name
  * et -1 en cas d'erreur
  */
 

@@ -46,7 +46,7 @@ int main (int argc, char *argv[])  {
 }
 
 static void sigfpe_handler(int signum) {
-  // ignorer la donnée et passer à la suivante
+  // ignorer la donnÃ©e et passer Ã  la suivante
   siglongjmp(buf,1);
 }
 

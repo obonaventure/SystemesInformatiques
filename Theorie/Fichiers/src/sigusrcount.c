@@ -23,11 +23,11 @@ int main (int argc, char *argv[])  {
   }
   int duree=60;
   while(duree>0) {
-    printf("Exécution de sleep(%d)\n",duree);
+    printf("ExÃ©cution de sleep(%d)\n",duree);
     duree=sleep(duree);
   }
   printf("Fin du processus\n");
-  printf("Reçu %d SIGUSR1 \n",n_sigusr1);
+  printf("ReÃ§u %d SIGUSR1 \n",n_sigusr1);
   return(EXIT_SUCCESS);
 }
 

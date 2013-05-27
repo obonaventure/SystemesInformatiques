@@ -1,7 +1,7 @@
 /**************************************
  * fork-perf.c
  *
- * Programme d'exemple pour calculer le coût
+ * Programme d'exemple pour calculer le coÃ»t
  * de fork
  *
  *************************************/
@@ -21,7 +21,7 @@ int main (int argc, char *argv[])  {
   for(int i=0;i<N;i++) {
     pid=fork();
     if (pid==-1) {
-      // erreur à l'exécution de fork
+      // erreur Ã  l'exÃ©cution de fork
       perror("fork");
       exit(EXIT_FAILURE);
     }

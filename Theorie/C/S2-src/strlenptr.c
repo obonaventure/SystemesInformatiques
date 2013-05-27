@@ -1,7 +1,7 @@
 /***********************************************
  * strlen.c
  *
- * Calcul de longueur de chaînes avec pointeurs
+ * Calcul de longueur de chaÃ®nes avec pointeurs
  *
  ***********************************************/
 

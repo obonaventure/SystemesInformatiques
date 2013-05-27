@@ -2,7 +2,7 @@
  * fork-zombie.c
  *
  * Programme d'exemple d'utilisation de
- * fork qui crée un zombie
+ * fork qui crÃ©e un zombie
  *
  *************************************/
 ///AAA
@@ -29,7 +29,7 @@ int main (int argc, char *argv[])  {
     case 'p':
       priority=(int) strtol(optarg, &endptr, 10);
       if( (priority < 0) || (priority >20) ) {
-	printf("La priorité doit être comprise entre 0 et 20\n");
+	printf("La prioritÃ© doit Ãªtre comprise entre 0 et 20\n");
       }
       return(EXIT_FAILURE);
       break;
@@ -42,7 +42,7 @@ int main (int argc, char *argv[])  {
   pid=fork();
 
   if (pid==-1) {
-    // erreur à l'exécution de fork
+    // erreur Ã  l'exÃ©cution de fork
     perror("fork");
     exit(EXIT_FAILURE);
   }
@@ -53,14 +53,14 @@ int main (int argc, char *argv[])  {
     return(EXIT_SUCCESS);
   }
   else {
-    // processus père
+    // processus pÃ¨re
     sleep(50);
     err=wait(NULL);
     if(err!=0) {
       perror("fork");
       exit(EXIT_FAILURE);
     }
-    printf("Fin du processus père [%d]\n",getpid());
+    printf("Fin du processus pÃ¨re [%d]\n",getpid());
     return(EXIT_SUCCESS);
   }
 }

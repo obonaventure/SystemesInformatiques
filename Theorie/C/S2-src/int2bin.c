@@ -1,7 +1,7 @@
 /**********************************************
  * int2bin
  *
- * Conversion d'entier non signé en binaire
+ * Conversion d'entier non signÃ© en binaire
  *
  ***********************************************/
 
@@ -19,7 +19,7 @@ void print_bin(int num) {
     str[i] = n & 1 ? '1' : '0';
     n >>= 1;
   }
-  printf("La valeur de %d en hexadécimal est %x  et en binaire : %s\n",num,num,str);
+  printf("La valeur de %d en hexadÃ©cimal est %x  et en binaire : %s\n",num,num,str);
 
 }
 
@@ -33,4 +33,4 @@ int main(int argc, char *argv[]) {
   return(EXIT_SUCCESS);
 }
 
-// inspiré de http://stackoverflow.com/questions/111928/is-there-a-printf-converter-to-print-in-binary-format
+// inspirÃ© de http://stackoverflow.com/questions/111928/is-there-a-printf-converter-to-print-in-binary-format

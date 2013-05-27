@@ -18,10 +18,10 @@ int main(int argc, char *argv[]) {
   int i;
 
   str_ptr=&c;
-  printf("c vaut %c et est stocké à l'adresse : %p\n",c,&c);
+  printf("c vaut %c et est stockÃ© Ã  l'adresse : %p\n",c,&c);
   printf("*str_ptr vaut %p et pointe vers %c\n",str_ptr,*(str_ptr));
-  str_ptr=str; // équivaut à  str_ptr=&(str[0]);
-  printf("après str_ptr=str[];\n");
+  str_ptr=str; // Ã©quivaut Ã   str_ptr=&(str[0]);
+  printf("aprÃ¨s str_ptr=str[];\n");
   printf("*str_ptr vaut %p et pointe vers %c\n",str_ptr,*(str_ptr));
   printf("Contenu du tableau\n");
   for(i=0;i<strlen(str);i++) {

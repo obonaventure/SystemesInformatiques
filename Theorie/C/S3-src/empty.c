@@ -2,7 +2,7 @@
  * static.c
  *
  * Programme d'exemple de variables static
-éé
+Ã©Ã©
  *
  **************************************/
 

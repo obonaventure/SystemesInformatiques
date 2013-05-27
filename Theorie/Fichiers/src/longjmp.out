@@ -1,4 +1,4 @@
-Début fonction f
-Exécution normale
-Début fonction g
-Exécution après longjmp
+DÃ©but fonction f
+ExÃ©cution normale
+DÃ©but fonction g
+ExÃ©cution aprÃ¨s longjmp

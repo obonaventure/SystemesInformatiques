@@ -2,7 +2,7 @@
  * pthread-mutex.c
  *
  * Programme d'exemple de pthread avec
- * utilisation de mutex pour éviter une
+ * utilisation de mutex pour Ã©viter une
  * violation de section critique
  *
  **************************************/
@@ -15,7 +15,7 @@
 
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 

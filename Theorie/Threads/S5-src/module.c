@@ -8,7 +8,7 @@
 static float min(float, float);
 
 int num1=0;  // accessible hors de module.c
-extern int num2; // définie dans un autre module
+extern int num2; // dÃ©finie dans un autre module
 static int num3=1252; // accessible uniquement dans ce module
 
 float vmin(int n, float *ptr) {

@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
   printf("Avant qsort\n\n");
   print_array();
   qsort(array,SIZE,sizeof(double),cmp);
-  printf("Après qsort\n\n");
+  printf("AprÃ¨s qsort\n\n");
   print_array();
 
   return(EXIT_SUCCESS);

@@ -11,7 +11,7 @@
 
 ///AAA
 
-// structure pour stocker une coordonnée 3D
+// structure pour stocker une coordonnÃ©e 3D
 struct coord {
   int x;
   int y;
@@ -30,7 +30,7 @@ struct fraction {
 struct fraction demi={1,2};
 struct fraction f;
 
-// structure pour représenter un étudiant
+// structure pour reprÃ©senter un Ã©tudiant
 struct student {
   int matricule;
   char prenom[20];

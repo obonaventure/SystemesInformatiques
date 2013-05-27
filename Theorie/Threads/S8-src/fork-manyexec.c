@@ -20,7 +20,7 @@ int main (int argc, char *argv[])  {
   pid_t pid;
 
   for(int i=1;i<argc;i++) {
-    // création du fils
+    // crÃ©ation du fils
     pid=fork();
     if (pid==-1) {
       perror("fork");
@@ -28,7 +28,7 @@ int main (int argc, char *argv[])  {
     }
     if (pid==0) {
       // fils
-      printf ("Exécution de la commande %s [pid=%d]\n",argv[i],getpid());
+      printf ("ExÃ©cution de la commande %s [pid=%d]\n",argv[i],getpid());
       fflush(stdout);
       char *arguments[2];
       arguments[0]=basename(argv[i]);
@@ -38,7 +38,7 @@ int main (int argc, char *argv[])  {
 	return(127);
     } // fils
     else {
-      // processus père
+      // processus pÃ¨re
       int fils=waitpid(pid,&status,0);
       if(fils==-1) {
 	perror("wait");
@@ -46,19 +46,19 @@ int main (int argc, char *argv[])  {
       }
       if(WIFEXITED(status)) {
 	if(WEXITSTATUS(status)==0)
-	  printf("La commande %s [%d] s'est terminée correctement\n",argv[i],fils);
+	  printf("La commande %s [%d] s'est terminÃ©e correctement\n",argv[i],fils);
 	else
 	  if (WEXITSTATUS(status)==127)
-	    printf("La commande %s n'a pu être exécutée\n",argv[i]);
+	    printf("La commande %s n'a pu Ãªtre exÃ©cutÃ©e\n",argv[i]);
 	  else
-	    printf("La commande %s [%d] a retourné %d\n",argv[i],fils,WEXITSTATUS(status));
+	    printf("La commande %s [%d] a retournÃ© %d\n",argv[i],fils,WEXITSTATUS(status));
       }
       else {
 	if( WIFSIGNALED(status))
-	  printf("La commande %s [%d] ne s'est pas terminée correctement\n",argv[i],fils);
+	  printf("La commande %s [%d] ne s'est pas terminÃ©e correctement\n",argv[i],fils);
       }
       fflush(stdout);
-    } // père
+    } // pÃ¨re
   } // for loop
   return(EXIT_SUCCESS);
 }

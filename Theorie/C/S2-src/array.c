@@ -16,7 +16,7 @@ float matriceR[N][2*N];
 
 ///BBB
 
-// calcule la somme des éléments d'un tableau
+// calcule la somme des Ã©lÃ©ments d'un tableau
 int sum(int v[]) {
   ///CCC
   int i;
@@ -28,7 +28,7 @@ int sum(int v[]) {
   return sum;
 }
 
-// calcule la somme des éléments d'un tableau
+// calcule la somme des Ã©lÃ©ments d'un tableau
 int sum2(int size, int v[size]) {
   int i;
   int sum=0;
@@ -41,7 +41,7 @@ int sum2(int size, int v[size]) {
 #include <float.h>
 
 // retourne le maximum d'un matrice
-// carrée de NxN élément
+// carrÃ©e de NxN Ã©lÃ©ment
 float max() {
   ///EEE
   #define L 2
@@ -60,7 +60,7 @@ float max() {
 }
 
 // retourne le maximum d'un matrice
-// carrée de NxN élément
+// carrÃ©e de NxN Ã©lÃ©ment
 float max2(int size, float mat[size][size]) {
   int i,j;
   float m=0.0; // corrige MINFLOAT

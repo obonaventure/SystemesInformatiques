@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
       else
 	*(vector+i)=j;
     }
-    printf("Nombre d'entiers non initialisés à zéro : %d\n",count);
+    printf("Nombre d'entiers non initialisÃ©s Ã  zÃ©ro : %d\n",count);
     free(vector);
   }
   return(EXIT_SUCCESS);

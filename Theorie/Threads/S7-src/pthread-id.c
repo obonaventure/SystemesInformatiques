@@ -2,8 +2,8 @@
  * pthread-specific.c
  *
  * Programme d'exemple de pthread qui utilise une
- * zone mémoire pour stocker des données
- * spécifiques au thread
+ * zone mÃ©moire pour stocker des donnÃ©es
+ * spÃ©cifiques au thread
  **************************************/
 
 #include <pthread.h>
@@ -22,7 +22,7 @@ struct result {
 };
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -40,7 +40,7 @@ void g();
 
 void *f1( void* param) {
 
-  printf("f1 a calculé %d"
+  printf("f1 a calculÃ© %d"
   return(NULL);
 }
 
@@ -87,7 +87,7 @@ int main (int argc, char *argv[])  {
     //if(p!=NULL) {
     //struct result r;
       //      r=(struct result) p;
-      //printf("Trouvé pour %d : x=%ld, y=%ld, z=%ld\n",i+2,r[i].x,r[i].y, r[i].z);
+      //printf("TrouvÃ© pour %d : x=%ld, y=%ld, z=%ld\n",i+2,r[i].x,r[i].y, r[i].z);
   }
 
 

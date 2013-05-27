@@ -1,4 +1,4 @@
-// arithmétique des pointeurs
+// arithmÃ©tique des pointeurs
 #include <stdio.h>
 
 int main() {
