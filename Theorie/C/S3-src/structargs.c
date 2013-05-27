@@ -1,6 +1,6 @@
 /**************************************
  * structargs.c
- * 
+ *
  * exemple de structures comme arguments
  *
  **************************************/
@@ -35,7 +35,7 @@ int sumptr(struct large_t *s1, struct large_t *s2) {
 }
 
 int main(int argc, char *argv[]) {
-  struct timeval tvStart, tvEnd; 
+  struct timeval tvStart, tvEnd;
   int err;
   int n;
   struct large_t one={1,"one"};
@@ -49,9 +49,9 @@ int main(int argc, char *argv[]) {
   err=gettimeofday(&tvStart, NULL);
   if(err!=0)
     exit(EXIT_FAILURE);
-  
+
   err=sum(one,two);
-  
+
   err=gettimeofday(&tvEnd, NULL);
   if(err!=0)
     exit(EXIT_FAILURE);
@@ -60,9 +60,9 @@ int main(int argc, char *argv[]) {
   err=gettimeofday(&tvStart, NULL);
   if(err!=0)
     exit(EXIT_FAILURE);
-  
+
   err=sumptr(&one,&two);
-  
+
   err=gettimeofday(&tvEnd, NULL);
   if(err!=0)
     exit(EXIT_FAILURE);

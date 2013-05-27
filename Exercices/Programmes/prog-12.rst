@@ -8,10 +8,10 @@ Exercices
 #. L'appel système `shmget(2)`_ supporte également le drapeau ``IPC_EXCL`` en plus du drapeau ``IPC_CREAT``. Expliquez à quoi ce drapeau peut servir et dans quel cas il peut être utile.
 
 #. Un processus père ouvre un segment de mémoire partagée avec l'appel système ``shmget(key, 4096, IPC_CREAT | S_IRUSR | S_IWUSR )``. Un de ses processus fils peut-il exécuter ``shmget(key, 4096, S_IRUSR  )`` ? Si oui, ce processus peut-il ensuite attacher cette page en utilisant :
- 
+
  - ``shmat(shm_id, NULL, SHM_RDONLY)``
  - ``shmat(shm_id, NULL, SHM_RDONLY)``
- 
+
 #. Lorsque l'on utilise l'appel système `shmat(2)`_ avec ``NULL`` come deuxième argument, le système d'exploitation choisit l'adresse à laquelle le segment de mémoire va être attaché. Cela pose des difficultés si l'on veut stocker des pointeurs en mémoire partagée. Un étudiant propose de d'abord allouer la zone mémoire avec `malloc(3)`_ et d'ensuite attacher le segment de mémoire à cet endroit. Il a réalisé un test avec un processus père et son fils et les deux segments de mémoire partagée se retrouvent à la même adresse. Il en conclut que cela permet de résoudre le problème. Qu'en pensez-vous ?
 
 #. Deux processus utilisent un segment de mémoire partagée et doivent se partager une liste chaînée. Comment implémenteriez-vous cette liste simplement chaînée de façon à ce qu'elle puisse être utilisée dans cette mémoire partagée. On supposera que le segment de mémoire partagé est toujours plus grand que la zone mémoire nécessaire au stockage de la liste.

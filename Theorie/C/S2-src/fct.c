@@ -1,6 +1,6 @@
 /***********************************************
  * fct.c
- * 
+ *
  * Programme d'exemple d'utilisation de fonctions
  *
  ***********************************************/
@@ -64,6 +64,6 @@ int main(int argc, char *argv[]) {
   int j;
 
   f();
-   
+
    return(EXIT_SUCCESS);
 }

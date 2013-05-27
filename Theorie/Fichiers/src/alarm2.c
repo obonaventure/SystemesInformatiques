@@ -1,7 +1,7 @@
 /**************************************
  * alarm.c
- * 
- * Programme d'exemple d'utilisation des 
+ *
+ * Programme d'exemple d'utilisation des
  * signaux SIGUSR
  *
  *************************************/
@@ -25,8 +25,8 @@ int main (int argc, char *argv[])  {
     perror("signal");
     exit(EXIT_FAILURE);
   }
-  // sigalrm interrompt les appels système  
-  if(siginterrupt(SIGALRM,true)<0) { 
+  // sigalrm interrompt les appels système
+  if(siginterrupt(SIGALRM,true)<0) {
     perror("siginterrupt");
     exit(EXIT_FAILURE);
   }

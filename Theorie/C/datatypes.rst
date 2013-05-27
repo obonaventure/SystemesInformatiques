@@ -7,7 +7,7 @@ Types de données
 ================
 
 Durant la première semaine, nous avons abordé quelques types de
-données de base dont les ``int`` et les ``char``. Pour utiliser ces types de données à bon escient, il est important de comprendre en détails la façon dont ils sont supportés par le compilateur et leurs limitations. Celles-ci dépendent souvent de leur représentation en mémoire et durant cette semaine nous allons commencer à analyser de façon plus détaillée comment la mémoire d'un ordinateur est structurée. 
+données de base dont les ``int`` et les ``char``. Pour utiliser ces types de données à bon escient, il est important de comprendre en détails la façon dont ils sont supportés par le compilateur et leurs limitations. Celles-ci dépendent souvent de leur représentation en mémoire et durant cette semaine nous allons commencer à analyser de façon plus détaillée comment la mémoire d'un ordinateur est structurée.
 
 
 
@@ -18,10 +18,10 @@ Toutes les données stockées sur un ordinateur sont représentées sous la form
 Ces séquences de bits peuvent d'abord permettre de représenter des
 nombres entiers. Un système informatique peut travailler avec deux
 types de nombres entiers :
- 
+
  - les nombres entiers signés (``int`` notamment en C)
  - les nombres entiers non-signés (``unsigned int`` notamment en C)
-   
+
 Par convention, une séquence de n bits, :math:`b_i` peut représenter le nombre
 entier  :math:`\sum_{i=0}^{n-1} b_i \times 2^i`. Le bit le plus à gauche
 de la séquence est appelé par convention le :term:`bit de poids fort`
@@ -50,7 +50,7 @@ binaire      octal  hexadécimal  décimal
 1100         14     C            12
 1101         15     D            13
 1110         16     E            14
-1111         17     F            15 
+1111         17     F            15
 =======      =====  ===========  =======
 
 .. todo cafe, deadbeef adresses ipv6    http://www.qa.com/about-qa/blogs/2011/november/ipv6-the-return-of-badbeef-and-5adcafe/
@@ -70,7 +70,7 @@ notation octale est parfois utilisée et est supportée par les
 compilateurs C. Elle utilise un chiffre pour représenter trois bits
 consécutifs. A titre
 d'exemple, voici quelques conversions de nombres en notation
-décimale vers les notations hexadécimales et binaires. 
+décimale vers les notations hexadécimales et binaires.
 
  - L'entier décimal ``123`` s'écrit ``0x7b`` en notation hexadécimale
    et ``0b000000000000000000000000001111011`` en notation binaire
@@ -108,7 +108,7 @@ contrairement à la notation hexadécimale qui fait partie du langage.
  Ainsi, le fragment de code ci-dessous affichera à l'écran le message
  ``65 et 53 sont différents`` car le compilateur C interprète la ligne
  ``j=065;`` comme contenant un entier en notation octale et non décimale.
- 
+
  .. literalinclude:: /Theorie/C/S2-src/octal.c
     :encoding: iso-8859-1
     :language: c
@@ -143,9 +143,9 @@ Les systèmes informatiques doivent également manipuler des nombres
 entiers négatifs. Cela se fait en utilisant des nombres dits
 signés. Au niveau binaire, il y a plusieurs approches possibles pour
 représenter des nombres signés. La première est de réserver le bit de poids fort dans la représentation du nombre pour stocker le signe et stocker la
-valeur absolue du nombre dans les bits de poids faible. 
+valeur absolue du nombre dans les bits de poids faible.
 Mathématiquement, un nombre de `n` bits utilisant cette notation
-pourrait se convertir via la formule 
+pourrait se convertir via la formule
 :math:`(-1)^{b_{n-1}} \times \sum_{i=0}^{n-2} b_i \times 2^i`.
 
 En pratique, cette notation est rarement utilisée pour les nombres
@@ -155,32 +155,32 @@ qu'elle utilise deux séquences de bits différentes pour représenter la
 valeur zéro (``00...0`` et ``10...0``). La représentation la plus courante pour les
 nombres entiers signés est la notation en `complément à 2`. Avec cette
 notation, une séquence de `n` bits correspond au nombre entier
-:math:`-(b_{n-1})\times 2^{n-1} + \sum_{i=0}^{n-2} b_i \times 2^i`. 
+:math:`-(b_{n-1})\times 2^{n-1} + \sum_{i=0}^{n-2} b_i \times 2^i`.
 Avec cette notation, le nombre négatif de 4 bits le plus petit
 correspond à la valeur ``-8``. En notation en complément à deux, il
-n'y a qu'une seule représentation pour le nombre zéro, la séquence 
+n'y a qu'une seule représentation pour le nombre zéro, la séquence
 dont tous les bits valent ``0``. Par contre, il existe toujours
 un nombre entier négatif qui n'a pas d'équivalent positif.
 
 =======      =============
 binaire      décimal signé
 =======      =============
-0000         0 
+0000         0
 0001         1
 0010         2
-0011         3  
-0100         4  
-0101         5  
-0110         6  
-0111         7  
-1000         -8 
-1001         -7 
-1010         -6 
-1011         -5 
-1100         -4 
-1101         -3 
-1110         -2 
-1111         -1 
+0011         3
+0100         4
+0101         5
+0110         6
+0111         7
+1000         -8
+1001         -7
+1010         -6
+1011         -5
+1100         -4
+1101         -3
+1110         -2
+1111         -1
 =======      =============
 
 En C, les types de données utilisés pour représenter des entiers sont
@@ -204,12 +204,12 @@ pour chaque type. La table ci-dessous reprend à titre d'exemple
 l'information relative aux types ``short`` (16 bits) et ``unsigned
 int`` (32 bits).
 
-================= ====          =======            =========== 
+================= ====          =======            ===========
 Type              Bits          Minimum            Maximum
-================= ====          =======            =========== 
-``short``         16            -32768             32767     
+================= ====          =======            ===========
+``short``         16            -32768             32767
 ``unsigned int``  32            0                  4294967295
-================= ====          =======            =========== 
+================= ====          =======            ===========
 
 .. todo:: ajouter les noms des constantes
 
@@ -251,7 +251,7 @@ Lorsqu'il est exécuté, ce programme affiche la sortie suivante.
 .. literalinclude:: /Theorie/C/S2-src/short.out
    :encoding: iso-8859-1
    :language: console
- 
+
 Il est important de noter que le langage C ne contient aucun mécanisme
 d'exception qui permettrait au programmeur de détecter ce problème à
 l'exécution. Lorsqu'un programmeur choisit une représentation pour
@@ -260,7 +260,7 @@ l'utilisation qui sera faite de cet entier et les limitations qui
 découlent du nombre de bits utilisés pour représenter le nombre en
 mémoire. Si dans de nombreuses applications ces limitations ne sont
 pas pénalisantes, il existe des applications critiques où un calcul
-erroné peut avoir des conséquences énormes [Bashar1997]_. 
+erroné peut avoir des conséquences énormes [Bashar1997]_.
 
 Nombres réels
 -------------
@@ -284,7 +284,7 @@ est décomposée en trois parties [#fexemple]_ :
 .. figure:: /Theorie/C/svg/Float_example.png
    :align: center
    :scale: 100
-   
+
    Exemple de nombre en virgule flottante (simple précision) (source : wikipedia)
 
 En simple (resp. double) précision, `8` (resp. `11`) bits sont utilisés pour
@@ -375,7 +375,7 @@ considéré en C comme correspondant à un entier. Cela implique qu'il
 est possible de faire des manipulations numériques sur les
 caractères. A titre d'exemple, une fonction `toupper(3)`_ permettant
 de transformer un caractère représentant une minuscule dans le
-caractère représentant la majuscule correspondante peut s'écrire : 
+caractère représentant la majuscule correspondante peut s'écrire :
 
 .. literalinclude:: /Theorie/C/S2-src/toupper.c
    :language: c
@@ -416,11 +416,11 @@ défini via `setlocale(3)`_  (voir `locale(7)`_).
 
 Dans la suite du cours, nous supposerons qu'un caractère
 est toujours représentable en utilisant le type ``char`` permettant de
-stocker un octet. 
+stocker un octet.
 
 En C, les chaînes de caractères sont représentées sous la forme d'un
 tableau de caractères. Une chaîne de caractères peut s'initialiser de
-différentes façons reprises ci-dessous. 
+différentes façons reprises ci-dessous.
 
 .. code-block:: c
 
@@ -514,15 +514,15 @@ bits qui dépend en général de l'architecture du microprocesseur. Les
 valeurs les plus courantes aujourd'hui sont `32` et `64`. Par
 convention, les adresses sont représentées sous la forme d'entiers
 non-signés. Sur la plupart des architectures de processeurs, une
-adresse correspond à une zone mémoire permettant de stocker un octet. 
+adresse correspond à une zone mémoire permettant de stocker un octet.
 Lorsque nous utiliserons une représentation graphique de la mémoire,
 nous placerons toujours les adresses numériquement basses en bas de la
-figure et elles croîtront vers le haut. 
+figure et elles croîtront vers le haut.
 
 Considérons l'initialisation ci-dessous et supposons qu'elle est
 stockée dans une mémoire où les adresses sont encodées sur `3`
 bits. Une telle mémoire dispose de huit slots permettant chacun de
-stocker un octet. 
+stocker un octet.
 
 .. code-block:: c
 
@@ -555,7 +555,7 @@ informations reprises dans la table ci-dessous.
 
 En langage C, l'expression ``&var`` permet de récupérer l'adresse à
 laquelle une variable a été stockée. Appliquée à l'exemple ci-dessus,
-l'expression ``&(name[0])`` retournerait la valeur ``0b000`` tandis que 
+l'expression ``&(name[0])`` retournerait la valeur ``0b000`` tandis que
 ``&c`` retournerait la valeur ``0b101``.
 
 L'expression ``&`` peut s'utiliser avec n'importe quel type de
@@ -588,7 +588,7 @@ déclaration de celui-ci.
    int *ptr_i;     // pointeur vers un entier
    char c='Z';      // caractère
    char *ptr_c;    // pointeur vers un char
-   
+
 
 Grâce aux pointeurs, il est possible non seulement d'accéder à
 l'adresse où une donnée est stockée, mais aussi d'accéder à la valeur
@@ -653,7 +653,7 @@ La même sortie est produite avec le fragment de programme suivant qui utilise u
    :start-after: ///EEE
    :end-before: ///FFF
 
-Ce fragment de programme est l'occasion de réfléchir sur la façon dont le C évalue les expressions qui contiennent des pointeurs. La première est l'assignation ``ptr=tab``. Lorsque ``tab`` est déclaré par la ligne ``unsigned int tab[3]``, le compilateur considère que ``tab`` est une constante qui contiendra toujours l'adresse du premier élément du tableau. Il faut noter que puisque ``tab`` est considéré comme une constante, il est interdit d'en modifier la valeur en utilisant une assignation comme ``tab=tab+1``. Le pointeur ``ptr``, par contre correspond à une zone mémoire qui contient une adresse. Il est tout à fait possible d'en modifier la valeur. Ainsi, l'assignation ``ptr=tab``  (ou ``ptr=&(tab[0])``) place dans ``ptr`` l'adresse du premier élément du tableau. Les pointeurs peuvent aussi être modifiés en utilisant des expressions arithmétiques. 
+Ce fragment de programme est l'occasion de réfléchir sur la façon dont le C évalue les expressions qui contiennent des pointeurs. La première est l'assignation ``ptr=tab``. Lorsque ``tab`` est déclaré par la ligne ``unsigned int tab[3]``, le compilateur considère que ``tab`` est une constante qui contiendra toujours l'adresse du premier élément du tableau. Il faut noter que puisque ``tab`` est considéré comme une constante, il est interdit d'en modifier la valeur en utilisant une assignation comme ``tab=tab+1``. Le pointeur ``ptr``, par contre correspond à une zone mémoire qui contient une adresse. Il est tout à fait possible d'en modifier la valeur. Ainsi, l'assignation ``ptr=tab``  (ou ``ptr=&(tab[0])``) place dans ``ptr`` l'adresse du premier élément du tableau. Les pointeurs peuvent aussi être modifiés en utilisant des expressions arithmétiques.
 
 .. code-block:: c
 
@@ -663,7 +663,7 @@ Ce fragment de programme est l'occasion de réfléchir sur la façon dont le C �
 
 Après l'exécution de la première ligne, ``ptr`` va contenir l'adresse de l'élément ``1`` du tableau ``tab`` (c'est-à-dire ``&(tab[1])``). Ce résultat peut surprendre car si l'élément ``tab[0]`` se trouve à l'adresse ``0x7fff5fbff750`` c'est cette adresse qui est stocké dans la zone mémoire correspondant au pointeur ``ptr``. On pourrait donc s'attendre à ce que l'expression ``ptr+1`` retourne plutôt la valeur ``0x7fff5fbff751``. Il n'est en rien. En C, lorsque l'on utilise des calculs qui font intervenir des pointeurs, le compilateur prend en compte le type du pointeur qui est utilisé. Comme ``ptr`` est de type ``unsigned int*``, il pointe toujours vers une zone mémoire permettant de stocker un entier non-signé sur 32 bits. L'expression ``ptr+1`` revient en fait à calculer la valeur ``ptr+sizeof(unsigned int)`` et donc ``ptr+1`` correspondra à l'adresse ``0x7fff5fbff754``. Pour la même raison, l'exécution de la deuxième ligne placera l'adresse ``0x7fff5fbff758`` dans ``ptr``. Enfin, la dernière ligne calculera ``0x7fff5fbff758-2*sizeof(unsigned int)`` ce qui correspond à ``0x7fff5fbff750``.
 
-Il est intéressant pour terminer cette première discussion de l'arithmétique des pointeurs, de considérer l'exécution du fragment de code ci-dessous. 
+Il est intéressant pour terminer cette première discussion de l'arithmétique des pointeurs, de considérer l'exécution du fragment de code ci-dessous.
 
 .. literalinclude:: /Theorie/C/src/ptr_arith.c
    :encoding: iso-8859-1
@@ -727,7 +727,7 @@ Un système de type Unix maintient différentes structures qui sont associées �
 
 Cette structure est utilisée par des appels système tels que `gettimeofday(2)`_ pour notamment récupérer l'heure courante ou les appels de manipulation de timers tels que `getitimer(2)`_ / `setitimer(2)`_. Elle est aussi utilisée par la fonction `time(3posix)`_ de la librairie standard et est très utile pour mesurer les performances d'un programme.
 
-Les structures sont également fréquemment utilisées pour représenter des formats de données spéciaux sur disque comme le format des répertoires [#fdirent]_ ou les formats de paquets qui sont échangés sur le réseau [#freseau]_. 
+Les structures sont également fréquemment utilisées pour représenter des formats de données spéciaux sur disque comme le format des répertoires [#fdirent]_ ou les formats de paquets qui sont échangés sur le réseau [#freseau]_.
 
 La définition de ``struct timeval`` utilise une fonctionnalité fréquemment utilisée du C : la possibilité de définir des alias pour des noms de type de données existants. Cela se fait en utilisant l'opérateur ``typedef``. En C, il est possible de renommer des types de données existants. Ainsi, l'exemple ci-dessous utilise ``typedef`` pour définir l'alias ``Entier`` pour le type ``int`` et l'alias ``Fraction`` pour la structure ``struct fraction``.
 
@@ -744,14 +744,14 @@ Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeabl
 
  Le renommage de types de données a des avantages et des inconvénients dont il faut être conscient pour pouvoir l'utiliser à bon escient. L'utilisation de ``typedef`` peut faciliter la lecture et la portabilité de certains programmes. Lorsqu'un ``typedef`` est associé à une structure, cela facilite la déclaration de variables de ce type et permet le cas échéant de modifier la structure de données ultérieurement sans pour autant devoir modifier l'ensemble du programme. Cependant, contrairement aux langages orientés objet, des méthodes ne sont pas directement associées aux structures et la modification d'une structure oblige souvent à vérifier toutes les fonctions qui utilisent cette structure. L'utilisation de ``typedef`` permet de clarifier le rôle de certains types de données ou valeurs de retour de fonctions. A titre d'exemple, l'appel système `read(2)`_ qui permet notamment de lire des données dans un fichier retourne le nombre d'octets qui ont été lus après chaque appel. Cette valeur de retour est de type ``ssize_t``. L'utilisation de ces types permet au compilateur de vérifier que les bons types de données sont utilisés lors des appels de fonctions.
 
- ``typedef`` est souvent utilisé pour avoir des identifiants de type de données plus court. Par exemple, il est très courant d'abrévier les types ``unsigned`` comme ci-dessous. 
+ ``typedef`` est souvent utilisé pour avoir des identifiants de type de données plus court. Par exemple, il est très courant d'abrévier les types ``unsigned`` comme ci-dessous.
 
   .. literalinclude:: /Theorie/C/S2-src/typedef.c
      :encoding: iso-8859-1
      :language: c
      :start-after: ///EEE
      :end-before: ///FFF
- 
+
  Soyez prudent si vous utilisez des ``typedef`` pour redéfinir des pointeurs. En C, il est tout à fait valide d'écrire les lignes suivantes.
 
   .. literalinclude:: /Theorie/C/S2-src/typedef.c
@@ -761,7 +761,7 @@ Les types ``Entier`` et ``int`` peuvent être utilisés de façon interchangeabl
      :end-before: ///DDD
 
  Malheureusement, il y a un risque dans un grand programme que le développeur oublie que ces types de données correspondent à des pointeurs qui doivent être manipulés avec soin. Le `Linux kernel Coding guide <http://www.kernel.org/doc/Documentation/CodingStyle>`_ contient une discussion intéressante sur l'utilisation des ``typedef``.
- 
+
 
 Les pointeurs sont fréquemment utilisés lors de la manipulation de structures. Lorsqu'un pointeur pointe vers une structure, il est utile de pouvoir accéder facilement aux éléments de la structure. Le langage C supporte deux notations pour représenter ces accès aux éléments d'une structure. La première notation est ``(*ptr).elem``  où ``ptr`` est un pointeur et ``elem`` l'identifiant d'un des éléments de la structure pointée par ``ptr``. Cette notation est en pratique assez peu utilisée. La notation la plus fréquente est ``ptr->elem`` dans laquelle ``ptr`` et ``->elem`` sont respectivement un pointeur et un identifiant d'élément. L'exemple ci-dessous illustre l'initialisation de deux fractions en utilisant ces notations.
 
@@ -809,7 +809,7 @@ Lors de l'exécution de la fonction ``f``, le programme ci-dessus affiche à la 
    :encoding: iso-8859-1
    :language: console
 
-Cet exemple illustre aussi une contrainte imposée par le langage C sur l'ordre de définition des fonctions. Pour que les fonctions ``times_two`` et ``timestwo`` puissent être utilisées à l'intérieur de la fonction ``f``, il faut qu'elles aient été préalablement définies. Dans l'exemple ci-dessus, cela s'est fait en plaçant la définition des deux fonctions avant leur utilisation. C'est une règle de bonne pratique utilisable pour de petits programmes composés de quelques fonctions. Pour des programmes plus larges, il est préférable de placer au début du code source la signature des fonctions qui y sont définies. La signature d'une fonction comprend le type de valeur de retour de la fonction, son nom et les types de ses arguments. Généralement, ces déclarations sont regroupées à l'intérieur d'un :term:`fichier header` dont le nom se termine par ``.h``.  
+Cet exemple illustre aussi une contrainte imposée par le langage C sur l'ordre de définition des fonctions. Pour que les fonctions ``times_two`` et ``timestwo`` puissent être utilisées à l'intérieur de la fonction ``f``, il faut qu'elles aient été préalablement définies. Dans l'exemple ci-dessus, cela s'est fait en plaçant la définition des deux fonctions avant leur utilisation. C'est une règle de bonne pratique utilisable pour de petits programmes composés de quelques fonctions. Pour des programmes plus larges, il est préférable de placer au début du code source la signature des fonctions qui y sont définies. La signature d'une fonction comprend le type de valeur de retour de la fonction, son nom et les types de ses arguments. Généralement, ces déclarations sont regroupées à l'intérieur d'un :term:`fichier header` dont le nom se termine par ``.h``.
 
 .. literalinclude:: /Theorie/C/S2-src/fct.h
    :encoding: iso-8859-1
@@ -825,9 +825,9 @@ Les fonctions peuvent évidemment recevoir également des tableaux comme argumen
    :start-after: ///AAA
    :end-before: ///BBB
 
-Tout comme cette fonction peut accéder au ième caractère de la chaîne passée en argument, elle peut également et sans aucune restriction modifier chacun des caractères de cette chaîne. Par contre, comme le pointeur vers la chaîne de caractères est passé par valeur, la fonction ne peut pas modifier la zone mémoire qui est pointée par l'argument. 
+Tout comme cette fonction peut accéder au ième caractère de la chaîne passée en argument, elle peut également et sans aucune restriction modifier chacun des caractères de cette chaîne. Par contre, comme le pointeur vers la chaîne de caractères est passé par valeur, la fonction ne peut pas modifier la zone mémoire qui est pointée par l'argument.
 
-Un autre exemple de fonctions qui manipulent les tableaux sont des fonctions mathématiques qui traitent des vecteurs par exemple. 
+Un autre exemple de fonctions qui manipulent les tableaux sont des fonctions mathématiques qui traitent des vecteurs par exemple.
 
 .. literalinclude:: /Theorie/C/S2-src/fctargs.c
    :encoding: iso-8859-1
@@ -846,7 +846,7 @@ Ces deux fonctions peuvent être utilisées par le fragment de code ci-dessous :
 
 
 .. note:: Attention à la permissivité du compilateur C
- 
+
  Certains langages comme Java sont fortement typés et le compilateur contient de nombreuses vérifications, notamment sur les types de données utilisés, qui permettent d'éviter un grand nombre d'erreurs. Le langage C est lui nettement plus libéral. Les premiers compilateurs C étaient très permissifs notamment sur les types de données passés en arguments. Ainsi, un ancien compilateur C accepterait probablement sans broncher les appels suivants :
 
   .. literalinclude:: /Theorie/C/S2-src/fctargs.c
@@ -861,7 +861,7 @@ Ces deux fonctions peuvent être utilisées par le fragment de code ci-dessous :
 
      warning: passing argument 1 of ‘plusun’ makes integer from pointer without a cast
      warning: passing argument 2 of ‘plusun’ makes pointer from integer without a cast
-     
+
  De nombreux programmeurs débutants ignorent souvent les warnings émis par le compilateur et se contentent d'avoir un programme compilable. C'est la source de nombreuses erreurs et de nombreux problèmes. Dans l'exemple ci-dessus, l'exécution de l'appel ``plusun(vecteur,N)`` provoquera une tentative d'accès à la mémoire dans une zone qui n'est pas allouée au processus. Dans ce cas, la tentative d'accès est bloquée par le système et provoque l'arrêt immédiat du programme sur une :term:`segmentation fault`. Dans d'autres cas, des erreurs plus subtiles mais du même type ont provoqué des problèmes graves de sécurité dans des programmes écrits en langage C. Nous y reviendrons ultérieurement.
 
 Pour terminer, mentionnons que les fonctions écrites en C peuvent utiliser des structures et des pointeurs vers des structures comme arguments. Elles peuvent aussi retourner des structures comme résultat. Ceci est illustré par deux variantes de fonctions permettant d'initialiser une fraction et de déterminer si deux fractions sont égales [#fegal]_
@@ -886,65 +886,65 @@ Les fonctions ``initptr`` et ``equalptr`` utilisent toutes les deux des pointeur
 Les expressions de manipulation de bits
 ---------------------------------------
 
-La plupart des langages de programmation sont spécialisés dans la manipulation des types de données classiques comme les entiers, les réels et les chaînes de caractères. Comme nous l'avons vu, le langage C permet de traiter ces types de données. En outre, il permet au programmeur de pouvoir facilement manipuler les bits qui se trouvent en mémoire. Pour cela, le langage C définit des expressions qui correspondent à la plupart des opérations de manipulation de bits que l'on retrouve dans les langages d'assemblage. Les premières opérations sont les opérations logiques. 
+La plupart des langages de programmation sont spécialisés dans la manipulation des types de données classiques comme les entiers, les réels et les chaînes de caractères. Comme nous l'avons vu, le langage C permet de traiter ces types de données. En outre, il permet au programmeur de pouvoir facilement manipuler les bits qui se trouvent en mémoire. Pour cela, le langage C définit des expressions qui correspondent à la plupart des opérations de manipulation de bits que l'on retrouve dans les langages d'assemblage. Les premières opérations sont les opérations logiques.
 
-La première opération logique est la négation :term:`négation` (:term:`NOT` en anglais). Elle prend comme argument un bit et retourne le bit inverse. Comme toutes les opérations logiques, elle peut se définir simplement sous la forme d'une table de vérité.  Dans des formules mathématiques, la négation est souvent représentée sous la forme :math:`\neg{A}`. 
+La première opération logique est la négation :term:`négation` (:term:`NOT` en anglais). Elle prend comme argument un bit et retourne le bit inverse. Comme toutes les opérations logiques, elle peut se définir simplement sous la forme d'une table de vérité.  Dans des formules mathématiques, la négation est souvent représentée sous la forme :math:`\neg{A}`.
 
-===   ===========  
+===   ===========
 A     NOT(A)
-===   ===========  
+===   ===========
 0     1
 1     0
-===   ===========  
+===   ===========
 
-La deuxième opération est la :term:`conjonction logique` (:term:`AND` en anglais). Cette opération prend deux arguments binaires et retourne un résultat binaire.  Dans des formules mathématiques, la conjonction logique est souvent représentée sous la forme :math:`A \wedge B`. 
+La deuxième opération est la :term:`conjonction logique` (:term:`AND` en anglais). Cette opération prend deux arguments binaires et retourne un résultat binaire.  Dans des formules mathématiques, la conjonction logique est souvent représentée sous la forme :math:`A \wedge B`.
 Elle se définit par la table de vérité suivante :
 
-===   ===    ============    
+===   ===    ============
 A     B      A AND B
-===   ===    ============  
+===   ===    ============
 0     0      0
 0     1	     0
 1     0	     0
 1     1	     1
-===   ===    ============  
+===   ===    ============
 
-La troisième opération est la :term:`disjonction logique` (:term:`OR` en anglais). Cette opération prend deux arguments binaires.  Dans des formules mathématiques, la disjonction logique est souvent représentée sous la forme :math:`A \vee B`. 
+La troisième opération est la :term:`disjonction logique` (:term:`OR` en anglais). Cette opération prend deux arguments binaires.  Dans des formules mathématiques, la disjonction logique est souvent représentée sous la forme :math:`A \vee B`.
 Elle se définit par la table de vérité suivante.
 
-===   ===    ===========    
+===   ===    ===========
 A     B      A OR B
-===   ===    ===========  
+===   ===    ===========
 0     0      0
 0     1	     1
 1     0	     1
 1     1	     1
-===   ===    ===========  
+===   ===    ===========
 
-Enfin, une dernière opération logique intéressante est le :term:`ou exclusif` (:term:`XOR` en anglais). Celle-ci se définit par la table de vérité ci-dessous. Cette opération est parfois représentée mathématiquement comme :math:`A \oplus B`. 
+Enfin, une dernière opération logique intéressante est le :term:`ou exclusif` (:term:`XOR` en anglais). Celle-ci se définit par la table de vérité ci-dessous. Cette opération est parfois représentée mathématiquement comme :math:`A \oplus B`.
 
-===   ===    ============  
+===   ===    ============
 A     B      A XOR B
-===   ===    ============  
+===   ===    ============
 0     0      0
 0     1	     1
 1     0	     1
 1     1	     0
-===   ===    ============  
+===   ===    ============
 
 Ces opérations peuvent être combinées entre elles. Pour des raisons technologiques, les circuits logiques implémentent plutôt les opérations NAND (qui équivaut à AND suivi de NOT) ou NOR (qui équivaut à OR suivi de NOT). Il est également important de mentionner les lois formulées par De Morgan qui peuvent se résumer par les équations suivantes :
 
  - :math:`\neg{(A \wedge B)}=\neg{A} \vee \neg{B}`
  - :math:`\neg{(A \vee B)}=\neg{A} \wedge \neg{B}`
 
-Ces opérations binaires peuvent s'étendre à des séquences de bits. Voici quelques exemples qui permettent d'illustrer ces opérations sur des octets. 
+Ces opérations binaires peuvent s'étendre à des séquences de bits. Voici quelques exemples qui permettent d'illustrer ces opérations sur des octets.
 
 .. literalinclude:: /Theorie/C/S2-src/exprbin.out
    :encoding: iso-8859-1
    :language: console
 
 
-En C, ces expressions logiques s'utilisent comme dans le fragment de code suivant. En général, elles s'utilisent sur des representations non signées, souvent des ``unsigned char`` ou des ``unsigned int``. 
+En C, ces expressions logiques s'utilisent comme dans le fragment de code suivant. En général, elles s'utilisent sur des representations non signées, souvent des ``unsigned char`` ou des ``unsigned int``.
 
 .. literalinclude:: /Theorie/C/S2-src/exprbin.c
    :encoding: iso-8859-1
@@ -970,9 +970,9 @@ L'opération XOR joue un rôle important dans certaines applications. La plupart
 
 .. note:: Ne pas confondre expressions logiques et opérateurs binaires
 
- En C, les symboles utilisés pour les expressions logiques (``||`` et ``&&``) sont très proches de ceux utilisés pour représenter les opérateurs binaires (`|` et `&`). Il arrive parfois qu'un développeur confonde ``&`` avec ``&&``. Malheureusement, le compilateur ne peut pas détecter une telle erreur car dans les deux cas le résultat attendu est généralement du même type. 
+ En C, les symboles utilisés pour les expressions logiques (``||`` et ``&&``) sont très proches de ceux utilisés pour représenter les opérateurs binaires (`|` et `&`). Il arrive parfois qu'un développeur confonde ``&`` avec ``&&``. Malheureusement, le compilateur ne peut pas détecter une telle erreur car dans les deux cas le résultat attendu est généralement du même type.
 
-  .. code-block:: console 
+  .. code-block:: console
 
      0b0100 & 0b0101 = 0b0100
      0b0100 && 0b0101 = 0b0001
@@ -991,14 +991,14 @@ Ces opérations de décalage permettent différentes manipulations de bits. A ti
 .. literalinclude:: /Theorie/C/S2-src/exprbin.c
    :encoding: iso-8859-1
    :language: c
-   :start-after: ///EEE   
+   :start-after: ///EEE
    :end-before: ///FFF
 
 
 .. rubric:: Footnotes
 
 
-.. [#fexposant] En pratique, le format binaire contient :math:`127+exp` en simple précision et non l'exposant `exp`. Ce choix facilite certaines comparaisons entre nombres représentés en virgule flottante. Une discussion détaillée de la représentation binaire des nombres en virgule flottante sort du cadre de ce cours dédié aux systèmes informatiques. Une bonne référence à ce sujet est [Goldberg1991]_. 
+.. [#fexposant] En pratique, le format binaire contient :math:`127+exp` en simple précision et non l'exposant `exp`. Ce choix facilite certaines comparaisons entre nombres représentés en virgule flottante. Une discussion détaillée de la représentation binaire des nombres en virgule flottante sort du cadre de ce cours dédié aux systèmes informatiques. Une bonne référence à ce sujet est [Goldberg1991]_.
 
 .. [#fexemple] Source : http://en.wikipedia.org/wiki/Single-precision_floating-point_format
 
@@ -1008,7 +1008,7 @@ Ces opérations de décalage permettent différentes manipulations de bits. A ti
 
 .. [#fdirent] Voir notamment `fs(5)`_ pour des exemples relatifs aux systèmes de fichiers. Une analyse détaillée des systèmes de fichiers sort du cadre de ce cours.
 
-.. [#freseau] Parmi les exemples simples, on peut citer la structure ``struct ipv6hdr`` qui correspond à l'entête IPv6 et est définie dans `linux/ipv6.h`_ 
+.. [#freseau] Parmi les exemples simples, on peut citer la structure ``struct ipv6hdr`` qui correspond à l'entête IPv6 et est définie dans `linux/ipv6.h`_
 
 .. [#fegal] Cette définition de l'égalité entre fractions suppose que les fractions à comparer sont sous forme irréductible. Le lecteur est invité à écrire la fonction générale permettant de tester l'égalité entre fractions réductibles.
 

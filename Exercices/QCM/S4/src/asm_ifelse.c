@@ -27,7 +27,7 @@ void f3() // incorrect
   if(a>=b)
     b++;
   else
-    a++; 
+    a++;
 
 }
 
@@ -61,7 +61,7 @@ void f6() // incorrect
 
 int main() {
 
- 
+
 
 }
 

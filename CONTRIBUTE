@@ -67,7 +67,7 @@ Voir si c'est faisable de faire une production sphinx dédiée. Si oui, include l'
     :encoding: utf-8
     :lines: 1,3,5-10,20-
 
-Il est aussi possible d'utiliser les options 
+Il est aussi possible d'utiliser les options
 start-after and end-before  qui prennent comme argument un string pour indiquer le texte qui est inclus. Cela permet d'avoir une construction du style.
 
    programme
@@ -77,5 +77,5 @@ start-after and end-before  qui prennent comme argument un string pour indiquer 
    ///BBB
    à affiché dans deuxième partie
 
-Cela permet d'avoir du code C qui fonctionne et que l'on peut tester et dont on n'affiche qu'une partie dans le livre.	
+Cela permet d'avoir du code C qui fonctionne et que l'on peut tester et dont on n'affiche qu'une partie dans le livre.
 

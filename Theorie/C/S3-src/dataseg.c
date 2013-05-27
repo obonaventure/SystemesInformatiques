@@ -1,6 +1,6 @@
 /**************************************
  * initvar.c
- * 
+ *
  * Programme d'exemple sur le segment
  * de données
  *

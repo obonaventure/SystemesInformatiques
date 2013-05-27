@@ -15,9 +15,9 @@ Les systèmes d'exploitation de type Unix sont multitâches et multi-utilisateur
   obo      16353  0.0  0.0 110184  1136 pts/1    R+   11:43   0:00 ps u
 
 
-Dans cet exemple, l'utilisateur ``obo`` possède actuellement deux processus. Le premier est l'interpréteur de commande `bash(1)`_ et le second le processus `ps(1)`_. L'interpréteur de commande a ``16272`` comme :term:`pid` tandis que le :term:`pid` de `ps(1)`_ est 16353. 
+Dans cet exemple, l'utilisateur ``obo`` possède actuellement deux processus. Le premier est l'interpréteur de commande `bash(1)`_ et le second le processus `ps(1)`_. L'interpréteur de commande a ``16272`` comme :term:`pid` tandis que le :term:`pid` de `ps(1)`_ est 16353.
 
-`ps(1)`_ n'est pas la seule commande permettant de consulter la table des processus. Parmi les autres commandes utiles, on peut mentionner `top(1)`_ qui permet de visualiser les processus qui s'exécutent actuellement et le temps CPU qu'ils consomment ou `pstree(1)`_ qui présente les processus sous la forme d'un arbre. Sous Linux, le répertoire ``/proc``, qui est documenté dans `proc(5)`_ contient de nombreux pseudos fichiers avec énormément d'informations relatives aux processus qui sont en cours d'exécution. Parcourir le répertoire ``/proc`` et visualiser avec ``less(1)`` les fichiers qui s'y trouvent est une autre façon de consulter la table des processus sous Linux. 
+`ps(1)`_ n'est pas la seule commande permettant de consulter la table des processus. Parmi les autres commandes utiles, on peut mentionner `top(1)`_ qui permet de visualiser les processus qui s'exécutent actuellement et le temps CPU qu'ils consomment ou `pstree(1)`_ qui présente les processus sous la forme d'un arbre. Sous Linux, le répertoire ``/proc``, qui est documenté dans `proc(5)`_ contient de nombreux pseudos fichiers avec énormément d'informations relatives aux processus qui sont en cours d'exécution. Parcourir le répertoire ``/proc`` et visualiser avec ``less(1)`` les fichiers qui s'y trouvent est une autre façon de consulter la table des processus sous Linux.
 
 Pour comprendre le fonctionnement des processus, il est intéressant d'expérimenter avec le processus ci-dessous. Celui-ci utilise l'appel système `getpid(2)`_ pour récupérer son :term:`pid`, l'affiche et utilise la fonction `sleep(3)`_ de la librairie pour se mettre en veille pendant trente secondes avant de se terminer.
 
@@ -26,7 +26,7 @@ Pour comprendre le fonctionnement des processus, il est intéressant d'expérime
    :language: c
    :start-after: ///AAA
 
-Ce programme peut être compilé avec `gcc(1)`_ pour produire un exécutable. 
+Ce programme peut être compilé avec `gcc(1)`_ pour produire un exécutable.
 
 .. code-block:: console
 
@@ -73,11 +73,11 @@ L'interpréteur de commande `bash(1)`_ permet lancer plusieurs processus en tâc
  [1]-  Done                    ./getpid
  [2]+  Done                    ./getpid
 
-Ces deux instances partagent la même sortie standard. En pratique, lorsque l'on lance un processus en tâche de fond, il est préférable de rediriger sa sortie et son erreur standard. Lorsque l'on développe de premiers programmes en C, il arrive que celui-ci se lance dans une boucle infinie. Deux techniques sont possibles pour interrompre un tel processus qui consomme inutilement les ressources de la machine et peut dans certains cas la surcharger fortement. 
+Ces deux instances partagent la même sortie standard. En pratique, lorsque l'on lance un processus en tâche de fond, il est préférable de rediriger sa sortie et son erreur standard. Lorsque l'on développe de premiers programmes en C, il arrive que celui-ci se lance dans une boucle infinie. Deux techniques sont possibles pour interrompre un tel processus qui consomme inutilement les ressources de la machine et peut dans certains cas la surcharger fortement.
 
 Si le programme a été lancé depuis un shell, il suffit généralement de taper sur `Ctrl-C` pour interrompre son exécution, comme dans l'exemple ci-dessous.
 
-.. code-block:: console 
+.. code-block:: console
 
    $ ./getpid
    Processus : 11281

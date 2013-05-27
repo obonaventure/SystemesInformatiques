@@ -17,11 +17,11 @@ Lorsque un programme a été décomposé en plusieurs threads, ceux-ci ne sont e
    Organisation de la mémoire après la création d'un thread POSIX
 
 
-Le programme principal et le thread qu'il a créé partagent trois zones de la mémoire : le :term:`segment text` qui comprend l'ensemble des instructions qui composent le programme, le :term:`segment de données` qui comprend toutes les données statiques, initialisées ou non et enfin le :term:`heap`. Autant le programme principal que son thread peuvent accéder à n'importe quelle information se trouvant en mémoire dans ces zones. Par contre, le programme principal et le thread qu'il vient de créer ont chacun leur propre contexte et leur propre pile. 
+Le programme principal et le thread qu'il a créé partagent trois zones de la mémoire : le :term:`segment text` qui comprend l'ensemble des instructions qui composent le programme, le :term:`segment de données` qui comprend toutes les données statiques, initialisées ou non et enfin le :term:`heap`. Autant le programme principal que son thread peuvent accéder à n'importe quelle information se trouvant en mémoire dans ces zones. Par contre, le programme principal et le thread qu'il vient de créer ont chacun leur propre contexte et leur propre pile.
 
 La première façon pour un processus de communiquer avec un thread qu'il a lancé est d'utiliser les arguments de la fonction de démarrage du thread et la valeur retournée par le thread que le processus principal peut récupérer via l'appel à `pthread_join(3posix)`_. C'est un canal de communication très limité qui ne permet pas d'échange d'information pendant l'exécution du thread.
 
-Il est cependant assez facile pour un processus de partager de l'information avec ses threads ou même de partager de l'information entre plusieurs threads. En effet, tous les threads d'un processus ont accès aux mêmes variables globales et au même :term:`heap`. Il est donc tout à fait possible pour n'importe quel thread de modifier la valeur d'une variable globale. Deux threads qui réalisent un calcul peuvent donc stocker des résultats intermédiaires dans une variable globale ou un tableau global. Il en va de même pour l'utilisation d'une zone de mémoire allouée par `malloc(3)`_. Chaque thread qui dispose d'un pointeur vers cette zone mémoire peut en lire le contenu ou en modifier la valeur. 
+Il est cependant assez facile pour un processus de partager de l'information avec ses threads ou même de partager de l'information entre plusieurs threads. En effet, tous les threads d'un processus ont accès aux mêmes variables globales et au même :term:`heap`. Il est donc tout à fait possible pour n'importe quel thread de modifier la valeur d'une variable globale. Deux threads qui réalisent un calcul peuvent donc stocker des résultats intermédiaires dans une variable globale ou un tableau global. Il en va de même pour l'utilisation d'une zone de mémoire allouée par `malloc(3)`_. Chaque thread qui dispose d'un pointeur vers cette zone mémoire peut en lire le contenu ou en modifier la valeur.
 
 Malheureusement, permettre à tous les threads de lire et d'écrire simultanément en mémoire peut être une source de problèmes. C'est une des difficultés majeures de l'utilisation de threads. Pour s'en convaincre, considérerons l'exemple ci-dessous [#fexemple]_.
 
@@ -48,12 +48,12 @@ Dans cet exemple, la variable ``global`` est incrémentée ``1000000`` de fois p
     pthread_t thread[NTHREADS];
     int err;
     for(int i=0;i<NTHREADS;i++) {
-     err=pthread_create(&(thread[i]),NULL,&func,NULL); 
+     err=pthread_create(&(thread[i]),NULL,&func,NULL);
      if(err!=0)
        error(err,"pthread_create");
     }
-    /*...*/ 
-    for(int i=NTHREADS-1;i>=0;i--) { 
+    /*...*/
+    for(int i=NTHREADS-1;i>=0;i--) {
       err=pthread_join(thread[i],NULL);
       if(err!=0)
         error(err,"pthread_join");
@@ -61,11 +61,11 @@ Dans cet exemple, la variable ``global`` est incrémentée ``1000000`` de fois p
     printf("global: %ld\n",global);
     return(EXIT_SUCCESS);
   }
- 
+
 Ce programme lance alors 4 threads d'exécution qui incrémentent chacun un million de fois la variable ``global``. Celle-ci étant initialisée à ``0``, la valeur affichée par `printf(3)`_ à la fin de l'exécution doit donc être ``4000000``. L'exécution du programme ne confirme malheureusement pas cette attente.
 
 .. code-block:: console
-  
+
   $ for i in {1..5}; do ./pthread-test;  done
   global: 3408577
   global: 3175353
@@ -74,16 +74,16 @@ Ce programme lance alors 4 threads d'exécution qui incrémentent chacun un mill
   global: 2118713
 
 
-Non seulement la valeur attendue (``4000000``) n'est pas atteinte, mais en plus la valeur change d'une exécution du programme à la suivante. C'est une illustration du problème majeur de la découpe d'un programme en threads. Pour bien comprendre le problème, il est utile d'analyser en détails les opérations effectuées par deux threads qui exécutent la ligne ``global=increment(global);``. 
+Non seulement la valeur attendue (``4000000``) n'est pas atteinte, mais en plus la valeur change d'une exécution du programme à la suivante. C'est une illustration du problème majeur de la découpe d'un programme en threads. Pour bien comprendre le problème, il est utile d'analyser en détails les opérations effectuées par deux threads qui exécutent la ligne ``global=increment(global);``.
 
-La variable ``global`` est stockée dans une zone mémoire qui est accessibles aux deux threads. Appelons-les `T1` et `T2`. L'exécution de cette ligne par un thread nécessite l'exécution de plusieurs instructions en assembleur. Tout d'abord, il faut charger la valeur de la variable ``global`` depuis la mémoire vers un registre. Ensuite, il faut placer cette valeur sur la pile du thread puis appeler la fonction ``increment``. Cette fonction récupère son argument sur la pile du thread, la place dans un registre, incrémente le contenu du registre et sauvegarde le résultat dans le registre ``%eax``. Le résultat est retourné dans la fonction ``func`` et la variable globale peut enfin être mise à jour. 
+La variable ``global`` est stockée dans une zone mémoire qui est accessibles aux deux threads. Appelons-les `T1` et `T2`. L'exécution de cette ligne par un thread nécessite l'exécution de plusieurs instructions en assembleur. Tout d'abord, il faut charger la valeur de la variable ``global`` depuis la mémoire vers un registre. Ensuite, il faut placer cette valeur sur la pile du thread puis appeler la fonction ``increment``. Cette fonction récupère son argument sur la pile du thread, la place dans un registre, incrémente le contenu du registre et sauvegarde le résultat dans le registre ``%eax``. Le résultat est retourné dans la fonction ``func`` et la variable globale peut enfin être mise à jour.
 
-Malheureusement les difficultés surviennent lorsque deux threads exécutent en même temps la ligne ``global=increment(global);``. Supposons qu'à cet instant, la valeur de la variable ``global`` est ``1252``. Le premier thread charge une copie de cette variable sur sa pile. Le second fait de même. Les deux threads ont donc chacun passé la valeur ``1252`` comme argument à la fonction ``increment``. Celle-ci s'exécute et retourne la valeur ``1253`` que chaque thread va récupérer dans ``%eax``. Chaque thread va ensuite transférer cette valeur dans la zone mémoire correspondant à la variable ``global``. Si les deux threads exécutent l'instruction assembleur correspondante exactement au même moment, les deux écritures en mémoire seront sérialisées par les processeurs sans que l'on ne puisse a priori déterminer quelle écriture se fera en premier [McKenney2005]_. Alors que les deux threads ont chacun exécuté un appel à la fonction ``increment``, la valeur de la variable n'a finalement été incrémentée qu'une seule fois même si cette valeur a été transférée deux fois en mémoire. Ce problème se reproduit fréquemment. C'est pour cette raison que la valeur de la variable ``global`` n'est pas modifiée comme attendu. 
+Malheureusement les difficultés surviennent lorsque deux threads exécutent en même temps la ligne ``global=increment(global);``. Supposons qu'à cet instant, la valeur de la variable ``global`` est ``1252``. Le premier thread charge une copie de cette variable sur sa pile. Le second fait de même. Les deux threads ont donc chacun passé la valeur ``1252`` comme argument à la fonction ``increment``. Celle-ci s'exécute et retourne la valeur ``1253`` que chaque thread va récupérer dans ``%eax``. Chaque thread va ensuite transférer cette valeur dans la zone mémoire correspondant à la variable ``global``. Si les deux threads exécutent l'instruction assembleur correspondante exactement au même moment, les deux écritures en mémoire seront sérialisées par les processeurs sans que l'on ne puisse a priori déterminer quelle écriture se fera en premier [McKenney2005]_. Alors que les deux threads ont chacun exécuté un appel à la fonction ``increment``, la valeur de la variable n'a finalement été incrémentée qu'une seule fois même si cette valeur a été transférée deux fois en mémoire. Ce problème se reproduit fréquemment. C'est pour cette raison que la valeur de la variable ``global`` n'est pas modifiée comme attendu.
 
 .. note:: Contrôler la pile d'un thread POSIX
 
  La taille de la pile d'un thread POSIX est l'un des attributs qui peuvent être modifiés lors de l'appel à `pthread_create(3)`_  pour créer un nouveau thread. Cet attribut peut être fixé en utilisant la fonction `pthread_attr_setstackaddr(3posix)`_ comme illustré dans l'exemple ci-dessous [#fpthreadc] (où ``thread_first`` est la fonction qui sera appelée à la création du thread). En général, la valeur par défaut choisie par le système suffit, sauf lorsque le programmeur sait qu'un thread devra par exemple allouer un grand tableau auquel il sera le seul à avoir accès. Ce tableau sera alors alloué sur la pile qui devra être suffisamment grande pour le contenir.
- 
+
  .. literalinclude:: /Theorie/Threads/S6-src/pthread.c
     :encoding: iso-8859-1
     :language: c
@@ -133,7 +133,7 @@ En outre, une solution au problème de l':term:`exclusion mutuelle` doit satisfa
  a. La solution doit considérer tous les threads de la même façon et ne peut faire aucune hypothèse sur la priorité relative des différents threads.
  b. La solution ne peut faire aucune hypothèse sur la vitesse relative ou absolue d'exécution des différents threads. Elle doit rester valide quelle que soit la vitesse d'exécution non nulle de chaque thread.
  c. La solution doit permettre à un thread de s'arrêter en dehors de sa section critique sans que cela n'invalide la contrainte d'exclusion mutuelle
- d. Si un ou plusieurs threads souhaitent entamer leur section critique, aucun de ces threads ne doit pouvoir être empêché indéfiniment d'accéder à sa section critique. 
+ d. Si un ou plusieurs threads souhaitent entamer leur section critique, aucun de ces threads ne doit pouvoir être empêché indéfiniment d'accéder à sa section critique.
 
 La troisième contrainte implique que la terminaison ou le crash d'un des threads ne doit pas avoir d'impact sur le fonctionnement du programme complet et le respect de la contrainte d'exclusion mutuelle pour la section critique.
 
@@ -145,16 +145,16 @@ Exclusion mutuelle sur monoprocesseurs
 
 Même si les threads sont très utiles dans des ordinateurs multiprocesseurs, ils ont été inventés et utilisés d'abord sur des processeurs capables d'exécuter un seul thread d'exécution à la fois. Sur un tel processeur, les threads d'exécution sont entrelacés plutôt que d'être exécutés réellement simultanément. Cet entrelacement est réalisé par le système d'exploitation.
 
-Les systèmes d'exploitation de la famille Unix permettent d'exécuter plusieurs programmes `en même temps` sur un ordinateur, même si il est équipé d'un processeur qui n'est capable que d'exécuter un thread à la fois. Cette fonctionnalité est souvent appelée le :term:`multitâche` (ou :term:`multitasking` en anglais). Cette exécution simultanée de plusieurs programmes n'est en pratique qu'une illusion puisque le processeur ne peut qu'exécuter qu'une séquence d'instructions à la fois. 
+Les systèmes d'exploitation de la famille Unix permettent d'exécuter plusieurs programmes `en même temps` sur un ordinateur, même si il est équipé d'un processeur qui n'est capable que d'exécuter un thread à la fois. Cette fonctionnalité est souvent appelée le :term:`multitâche` (ou :term:`multitasking` en anglais). Cette exécution simultanée de plusieurs programmes n'est en pratique qu'une illusion puisque le processeur ne peut qu'exécuter qu'une séquence d'instructions à la fois.
 
 Pour donner cette illusion, un système d'exploitation multitâche tel que Unix exécute régulièrement des changements de contexte entre threads. Le :term:`contexte` d'un thread est composé de l'ensemble des contenus des registres qui sont nécessaires à son exécution (y compris le contenu des registres spéciaux tels que ``%esp``, ``%eip`` ou ``%eflags``). Ces registres définissent l'état du thread du point de vue du processeur. Pour passer de l'exécution du thread `T1` à l'exécution du thread `T2`, le système d'exploitation doit initier un :term:`changement de contexte`. Pour réaliser ce changement de contexte, le système d'exploitation initie le transfert du contenu des registres utilisés par le thread `T1` vers une zone mémoire lui appartenant. Il transfère ensuite depuis une autre zone mémoire lui appartenant le contexte du thread `T2`. Si ce changement de contexte est effectué fréquemment, il peut donner l'illusion à l'utilisateur que plusieurs threads ou programmes s'exécutent simultanément.
 
 Sur un système Unix, il y a deux types d'événements qui peuvent provoquer un changement de contexte.
 
  1. Le hardware génère une :term:`interruption`
- 2. Un thread exécute un :term:`appel système bloquant` 
+ 2. Un thread exécute un :term:`appel système bloquant`
 
-Ces deux types d'événements sont fréquents et il est important de bien comprendre comment ils sont traités par le système d'exploitation. 
+Ces deux types d'événements sont fréquents et il est important de bien comprendre comment ils sont traités par le système d'exploitation.
 
 Une :term:`interruption` est un signal électronique qui est généré par un dispositifs connectés au microprocesseur. De nombreux dispositifs d'entrées-sorties comme les cartes réseau ou les contrôleurs de disque peuvent générer une interruption lorsqu'une information a été lue ou reçue et doit être traitée par le processeur. En outre, chaque ordinateur dispose d'une horloge temps réel qui génère des interruptions à une fréquence déterminée par le système d'exploitation mais qui est généralement comprise entre quelques dizaines et quelques milliers de `Hz`. Ces interruptions nécessitent un traitement rapide de la part du système d'exploitation. Pour cela, le processeur vérifie, à la fin de l'exécution de `chaque` instruction si un signal d'interruption [#finterrupts]_ est présent. Si c'est le cas, le processeur sauvegarde en mémoire le contexte du thread en cours d'exécution et lance une routine de traitement d'interruption faisant partie du système d'exploitation. Cette routine analyse l'interruption présente et lance les fonctions du système d'exploitation nécessaires à son traitement. Dans le cas d'une lecture sur disque, par exemple, la routine de traitement d'interruption permettra d'aller chercher la donnée lue sur le contrôleur de disques.
 
@@ -166,7 +166,7 @@ Ces interactions entre les threads et le système d'exploitation sont importante
    :align: center
    :scale: 80
 
-   Etats d'un thread d'exécution 
+   Etats d'un thread d'exécution
 
 Lorsqu'un thread est créé avec la fonction `pthread_create(3)`_, il est placé dans l'état `Ready`. Dans cet état, les instructions du thread ne s'exécutent sur aucun processeur mais il est prêt à être exécuté dès qu'un processeur se libèrera. Le deuxième état pour un thread est l'état `Running`. Dans cet état, le thread est exécuté sur un des processeurs du système. Le dernier état est l'état `Blocked`. Un thread est dans l'état `Blocked` lorsqu'il a exécuté un appel système bloquant et que le système d'exploitation attend l'information permettant de retourner le résultat de l'appel système. Pendant ce temps, les instructions du thread ne s'exécutent sur aucun processeur.
 
@@ -183,19 +183,19 @@ Connaissant ces bases du fonctionnement des schedulers, il est utile d'analyser 
 
 .. note:: Un thread peut demander de passer la main.
 
- Dans la plupart de nos exemples, les threads cherchent en permanence à exécuter des instructions. Ce n'est pas nécessairement le cas de tous les threads d'un programme. Par exemple, une application de calcul scientifique pourrait être découpée en `N+1` threads. Les `N` premiers threads réalisent le calcul tandis que le dernier calcule des statistiques. Ce dernier thread ne doit pas consommer de ressources et être en compétition pour le processeur avec les autres threads. La librairie thread POSIX contient la fonction `pthread_yield(3)`_ qui peut être utilisée par un thread pour indiquer explicitement qu'il peut être remplacé par un autre thread. Si un thread ne doit s'exécuter qu'à intervalles réguliers, il est préférable d'utiliser des appels à `sleep(3)`_ ou `usleep(3)`_. Ces fonctions de la librarie permettent de demander au système d'exploitation de bloquer le thread pendant un temps au moins égal à l'argument de la fonction. 
+ Dans la plupart de nos exemples, les threads cherchent en permanence à exécuter des instructions. Ce n'est pas nécessairement le cas de tous les threads d'un programme. Par exemple, une application de calcul scientifique pourrait être découpée en `N+1` threads. Les `N` premiers threads réalisent le calcul tandis que le dernier calcule des statistiques. Ce dernier thread ne doit pas consommer de ressources et être en compétition pour le processeur avec les autres threads. La librairie thread POSIX contient la fonction `pthread_yield(3)`_ qui peut être utilisée par un thread pour indiquer explicitement qu'il peut être remplacé par un autre thread. Si un thread ne doit s'exécuter qu'à intervalles réguliers, il est préférable d'utiliser des appels à `sleep(3)`_ ou `usleep(3)`_. Ces fonctions de la librarie permettent de demander au système d'exploitation de bloquer le thread pendant un temps au moins égal à l'argument de la fonction.
 
 Sur une machine monoprocesseur, tous les threads s'exécutent sur le même processeur. Une violation de section critique peut se produire lorsque le scheduler décide de réaliser un changement de contexte alors qu'un thread se trouve dans sa section critique. Si la section critique d'un thread ne contient ni d'appel système bloquant ni d'appel à `pthread_yield(3)`_, ce changement de contexte ne pourra se produire que si une interruption survient. Une solution pour résoudre le problème de l'exclusion mutuelle sur un ordinateur monoprocesseur pourrait donc être la suivante :
 
 .. code-block:: c
-  
+
    disable_interrupts();
    // début section critique
    // ...
    // fin section critique
    enable_interrupts();
 
-Cette solution est possible, mais elle souffre de plusieurs inconvénients majeurs. Tout d'abord, une désactivation des interruptions perturbe le fonctionnement du système puisque sans interruptions, la plupart des opérations d'entrées-sorties et l'horloge sont inutilisables. Une telle désactivation ne peut être que très courte, par exemple pour modifier une ou quelques variables en mémoire. Ensuite, la désactivation des interruptions, comme d'autres opérations relatives au fonctionnement du matériel, est une opération privilégiée sur un microprocesseur. Elle ne peut être réalisée que par le système d'exploitation. Il faudrait donc imaginer un appel système qui permettrait à un thread de demander au système d'exploitation de désactiver les interruptions. Si un tel appel système existait, le premier programme qui exécuterait ``disable_interrupts();`` sans le faire suivre de ``enable_interrupts();`` quelques instants après pourrait rendre la machine complètement inutilisable puisque sans interruption plus aucune opération d'entrée-sortie n'est possible et qu'en plus le scheduler ne peut plus être activé par l'interruption d'horloge. Pour toutes ces raisons, la désactivation des interruptions n'est pas un mécanisme utilisable par les threads pour résoudre le problème de l'exclusion mutuelle [#fdisable]_. 
+Cette solution est possible, mais elle souffre de plusieurs inconvénients majeurs. Tout d'abord, une désactivation des interruptions perturbe le fonctionnement du système puisque sans interruptions, la plupart des opérations d'entrées-sorties et l'horloge sont inutilisables. Une telle désactivation ne peut être que très courte, par exemple pour modifier une ou quelques variables en mémoire. Ensuite, la désactivation des interruptions, comme d'autres opérations relatives au fonctionnement du matériel, est une opération privilégiée sur un microprocesseur. Elle ne peut être réalisée que par le système d'exploitation. Il faudrait donc imaginer un appel système qui permettrait à un thread de demander au système d'exploitation de désactiver les interruptions. Si un tel appel système existait, le premier programme qui exécuterait ``disable_interrupts();`` sans le faire suivre de ``enable_interrupts();`` quelques instants après pourrait rendre la machine complètement inutilisable puisque sans interruption plus aucune opération d'entrée-sortie n'est possible et qu'en plus le scheduler ne peut plus être activé par l'interruption d'horloge. Pour toutes ces raisons, la désactivation des interruptions n'est pas un mécanisme utilisable par les threads pour résoudre le problème de l'exclusion mutuelle [#fdisable]_.
 
 
 
@@ -223,7 +223,7 @@ Une première solution permettant de coordonner deux threads en utilisant des va
   section_critique();
   turn=1;
   // ...
-  
+
   // thread 2
   while (turn!=1)
   { /* loop */ }
@@ -248,7 +248,7 @@ Le premier thread peut s'écrire comme suit. Il comprend une boucle ``while`` qu
 .. code-block:: c
 
    // Thread A
-   while (flag[B]==true) 
+   while (flag[B]==true)
    { /* loop */ }
    flag[A]=true;
    section_critique();
@@ -276,7 +276,7 @@ Une alternative pour éviter le problème de violation de l'exclusion mutuelle p
 
    // Thread A
    flag[A]=true;
-   while (flag[B]==true) 
+   while (flag[B]==true)
    { /* loop */ }
    section_critique();
    flag[A]=false;
@@ -284,7 +284,7 @@ Une alternative pour éviter le problème de violation de l'exclusion mutuelle p
 
 Le thread ``B`` peut s'implémenter de façon similaire. Analysons le fonctionnement de cette solution sur un ordinateur monoprocesseur. Un scénario possible est le suivant. Le thread ``A`` exécute la ligne permettant d'assigner son drapeau, ``flag[A]=true;``. Après cette assignation, le scheduler interrompt ce thread et démarre le thread ``B``. Celui-ci exécute ``flag[B]=true;`` puis démarre sa boucle ``while``. Vu le contenu du drapeau ``flag[A]``, celle-ci va s'exécuter en permanence. Après quelque temps, le scheduler repasse la main au thread ``A`` qui va lui aussi entamer sa boucle ``while``. Comme ``flag[B]`` a été mis à ``true`` par le thread ``B``, le thread ``A`` entame également sa boucle ``while``. A partir de cet instant, les deux threads vont exécuter leur boucle ``while`` qui protège l'accès à la section critique. Malheureusement, comme chaque thread exécute sa boucle ``while`` aucun des threads ne va modifier son drapeau de façon à permettre à l'autre thread de sortir de sa boucle. Cette situation perdurera indéfiniment. Dans la littérature, cette situation est baptisée un :term:`livelock`. Un :term:`livelock` est une situation dans laquelle plusieurs threads exécutent une séquence d'instructions (dans ce cas les instructions relatives aux boucles ``while``) sans qu'aucun thread ne puisse réaliser de progrès. Un :term:`livelock` est un problème extrêmement gênant puisque lorsqu'il survient les threads concernés continuent à utiliser le processeur mais n'exécutent aucune instruction utile. Il peut être très difficile à diagnostiquer et il est important de réfléchir à la structure du programme et aux techniques de coordination entre les threads qui sont utilisées afin de garantir qu'aucun :term:`livelock` ne pourra se produire.
 
-L'algorithme de Peterson [Peterson1981]_ combine les deux idées présentées plus tôt. Il utilise une variable ``turn`` qui est testée et modifiée par les deux threads comme dans la première solution et un tableau ``flag[]`` comme la seconde. Les drapeaux du tableau sont initialisés à ``false`` et la variable ``turn`` peut prendre la valeur ``A`` ou ``B``.  
+L'algorithme de Peterson [Peterson1981]_ combine les deux idées présentées plus tôt. Il utilise une variable ``turn`` qui est testée et modifiée par les deux threads comme dans la première solution et un tableau ``flag[]`` comme la seconde. Les drapeaux du tableau sont initialisés à ``false`` et la variable ``turn`` peut prendre la valeur ``A`` ou ``B``.
 
 .. code-block:: c
 
@@ -322,7 +322,7 @@ Le thread ``B`` s'implémente de façon similaire.
 
 Pour vérifier si cette solution répond bien au problème de l'exclusion mutuelle, il nous faut d'abord vérifier qu'il ne peut y avoir de violation de la section critique. Pour qu'une violation de section critique soit possible, il faudrait que les deux threads soient sortis de leur boucle ``while``. Examinons le cas où le thread ``B`` se trouve en section critique. Dans ce cas, ``flag[B]`` a la valeur ``true``. Si le thread ``A`` veut entrer en section critique, il va d'abord devoir exécuter ``flag[A]=true;`` et ensuite ``turn=B;``. Comme le thread ``B`` ne modifie ni ``flag[A]`` ni ``turn`` dans sa section critique, thread ``A`` va devoir exécuter sa boucle ``while`` jusqu'à ce que le thread ``B`` sorte de sa section critique et exécute ``flag[B]=false;``. Il ne peut donc pas y avoir de violation de la section critique.
 
-Il nous faut également montrer que l'algorithme de Peterson ne peut pas causer de :term:`livelock`. Pour qu'un tel :term:`livelock` soit possible, il faudrait que les boucles ``while((flag[A]==true)&&(turn==A)) {};``  et ``while((flag[B]==true)&&(turn==B)) {};`` puissent s'exécuter en permanence en même temps. Comme la variable ``turn`` ne peut prendre que la valeur ``A`` ou la valeur ``B``, il est impossible que les deux conditions de boucle soient simultanément vraies. 
+Il nous faut également montrer que l'algorithme de Peterson ne peut pas causer de :term:`livelock`. Pour qu'un tel :term:`livelock` soit possible, il faudrait que les boucles ``while((flag[A]==true)&&(turn==A)) {};``  et ``while((flag[B]==true)&&(turn==B)) {};`` puissent s'exécuter en permanence en même temps. Comme la variable ``turn`` ne peut prendre que la valeur ``A`` ou la valeur ``B``, il est impossible que les deux conditions de boucle soient simultanément vraies.
 
 Enfin, considérons l'impact de l'arrêt d'un des deux threads. Si thread ``A`` s'arrête hors de sa section critique, ``flag[A]`` a la valeur ``false`` et le thread ``B`` pourra toujours accéder à sa section critique.
 
@@ -330,13 +330,13 @@ Enfin, considérons l'impact de l'arrêt d'un des deux threads. Si thread ``A`` 
 Utilisation d'instruction atomique
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sur les ordinateurs actuels, il devient difficile d'utiliser l'algorithme de Peterson tel qu'il a été décrit et ce pour deux raisons. Tout d'abord, les compilateurs C sont capables d'optimiser le code qu'ils génèrent. Pour cela, ils analysent le programme à compiler et peuvent supprimer des instructions qui leur semblent être inutiles. Dans le cas de l'algorithme de Peterson, le compilateur pourrait très bien considérer que la boucle ``while`` est inutile puisque les variables ``turn`` et ``flag`` ont été initialisées juste avant d'entrer dans la boucle. 
+Sur les ordinateurs actuels, il devient difficile d'utiliser l'algorithme de Peterson tel qu'il a été décrit et ce pour deux raisons. Tout d'abord, les compilateurs C sont capables d'optimiser le code qu'ils génèrent. Pour cela, ils analysent le programme à compiler et peuvent supprimer des instructions qui leur semblent être inutiles. Dans le cas de l'algorithme de Peterson, le compilateur pourrait très bien considérer que la boucle ``while`` est inutile puisque les variables ``turn`` et ``flag`` ont été initialisées juste avant d'entrer dans la boucle.
 
 La deuxième raison est que sur un ordinateur multiprocesseur, chaque processeur peut réordonner les accès à la mémoire automatiquement afin d'en optimiser les performances [McKenney2005]_. Cela a comme conséquence que certaines lectures et écritures en mémoires peuvent se faire dans un autre ordre que celui indiqué dans le programme sur certaines architectures de processeurs. Si dans l'algorithme de Peterson le thread ``A`` lit la valeur de ``flag[B]`` alors que l'écriture en mémoire pour ``flag[A]`` n'a pas encore été effectuée, une violation de la section critique est possible. En effet, dans ce cas les deux threads peuvent tous les deux passer leur boucle ``while`` avant que la mise à jour de leur drapeau n'aie été faite effectivement en mémoire.
 
 Pour résoudre ce problème, les architectes de microprocesseurs ont proposé l'utilisation d'opérations atomiques. Une :term:`opération atomique` est une opération qui lorsqu'elle est exécutée sur un processeur ne peut pas être interrompue par l'arrivée d'une interruption. Ces opérations permettent généralement de manipuler en même temps un registre et une adresse en mémoire. En plus de leur caractère interruptible, l'exécution de ces instructions atomiques par un ou plusieurs processeur implique une coordination des processeurs pour l'accès à la zone mémoire référencée dans l'instruction. Via un mécanisme qui sort du cadre de ces notes, tous les accès à la mémoire faits par ces instructions sont ordonnés par les processeurs de façon à ce qu'ils soient toujours réalisés séquentiellement.
 
-Plusieurs types d'instructions atomiques sont supportés par différentes architectures de processeurs. A titre d'exemple, considérons l'instruction atomique ``xchg`` qui est supportée par les processeurs [IA32]_. Cette instruction permet d'échanger, de façon atomique, le contenu d'un registre avec une zone de la mémoire. Elle prend deux arguments, un registre et une adresse en mémoire. Ainsi, l'instruction ``xchgl %eax,(var)`` est équivalente aux trois instructions suivantes, en supposant le registre ``%ebx`` initialement vide. La première sauvegarde dans ``%ebx`` le contenu de la mémoire à l'adresse ``var``. La deuxième copie le contenu du registre ``%eax`` à cette adresse mémoire et la dernière transfère le contenu de ``%ebx`` dans ``%eax`` de façon à terminer l'échange de valeurs. 
+Plusieurs types d'instructions atomiques sont supportés par différentes architectures de processeurs. A titre d'exemple, considérons l'instruction atomique ``xchg`` qui est supportée par les processeurs [IA32]_. Cette instruction permet d'échanger, de façon atomique, le contenu d'un registre avec une zone de la mémoire. Elle prend deux arguments, un registre et une adresse en mémoire. Ainsi, l'instruction ``xchgl %eax,(var)`` est équivalente aux trois instructions suivantes, en supposant le registre ``%ebx`` initialement vide. La première sauvegarde dans ``%ebx`` le contenu de la mémoire à l'adresse ``var``. La deuxième copie le contenu du registre ``%eax`` à cette adresse mémoire et la dernière transfère le contenu de ``%ebx`` dans ``%eax`` de façon à terminer l'échange de valeurs.
 
 .. code-block:: nasm
 
@@ -347,29 +347,29 @@ Plusieurs types d'instructions atomiques sont supportés par différentes archit
 Avec cette instruction atomique, il est possible de résoudre le problème de l'exclusion mutuelle en utilisant une zone mémoire, baptisée ``lock`` dans l'exemple. Cette zone mémoire contiendra la valeur ``1`` ou ``0``. Cette zone mémoire est initialisée à ``0``. Lorsqu'un thread veut accéder à sa section critique, il exécute les instructions à partir de l'étiquette ``enter:``. Pour sortir de section critique, il suffit d'exécuter les instructions à partir de l'étiquette ``leave:``.
 
 .. code-block:: nasm
- 
-  lock:                    ; étiquette, variable 
-	.long	0          ; initialisée à 0     
- 
+
+  lock:                    ; étiquette, variable
+	.long	0          ; initialisée à 0
+
   enter:
      movl    $1, %eax      ; %eax=1
      xchgl   %eax, (lock)  ; instruction atomique, échange (lock) et %eax
                            ; après exécution, %eax contient la donnée qui était
-			   ; dans lock et lock la valeur 1 
-     testl   %eax, %eax    ; met le flag ZF à vrai si %eax contient 0  
+			   ; dans lock et lock la valeur 1
+     testl   %eax, %eax    ; met le flag ZF à vrai si %eax contient 0
      jnz     enter         ; retour à enter: si ZF n'est pas vrai
-     ret                     
-  
+     ret
+
   leave:
      mov     $0, %eax      ; %eax=0
-     xchgl   %eax, (lock)  ; instruction atomique 
-     ret                     
+     xchgl   %eax, (lock)  ; instruction atomique
+     ret
 
 Pour bien comprendre le fonctionnement de cette solution, il faut analyser les instructions qui composent chaque routine en assembleur. La routine ``leave`` est la plus simple. Elle place la valeur ``0`` à l'adresse ``lock``. Elle utilise une instruction atomique de façon à garantir que cet accès en mémoire se fait séquentiellement. Lorsque ``lock`` vaut ``0``, cela indique qu'aucun thread ne se trouve en section critique. Si ``lock`` contient la valeur ``1``, cela indique qu'un thread est actuellement dans sa section critique et qu'aucun autre thread ne peut y entrer. Pour entrer en section critique, un thread doit d'abord exécuter la routine ``enter``. Cette routine initialise d'abord le registre ``%eax`` à la valeur ``1``. Ensuite, l'instruction ``xchgl`` est utilisée pour échanger le contenu de ``%eax`` avec la zone mémoire ``lock``. Après l'exécution de cette instruction atomique, l'adresse ``lock`` contiendra nécessairement la valeur ``1``. Par contre, le registre ``%eax`` contiendra la valeur qui se trouvait à l'adresse ``lock`` avant l'exécution de ``xchgl``. C'est en testant cette valeur que le thread pourra déterminer si il peut entrer en section critique ou non. Deux cas sont possibles :
 
- a. ``%eax==0`` après exécution de l'instruction ``xchgl  %eax, (lock)``. Dans ce cas, le thread peut accéder à sa section critique. En effet, cela indique qu'avant l'exécution de cette instruction l'adresse ``lock`` contenait la valeur ``0``. Cette valeur indique que la section critique était libre avant l'exécution de l'instruction ``xchgl  %eax, (lock)``. En outre, cette instruction a placé la valeur ``1`` à l'adresse ``lock``, ce qui indique qu'un thread exécute actuellement sa section critique. Si un autre thread exécute l'instruction ``xchgl  %eax, (lock)`` à cet instant, il récupèrera la valeur ``1`` dans ``%eax`` et ne pourra donc pas entre en section critique. Si deux threads exécutent simultanément et sur des processeurs différents l'instruction ``xchgl  %eax, (lock)``, la coordination des accès mémoires entre les processeurs garantit que ces accès mémoires seront séquentiels. Le thread qui bénéficiera du premier accès à la mémoire sera celui qui récupèrera la valeur ``0`` dans ``%eax`` et pourra entrer dans sa section critique. Le ou les autres threads récupéreront la valeur ``1`` dans ``%eax`` et boucleront.  
- b. ``%eax==1`` après exécution de l'instruction ``xchgl %eax, (lock)``. Dans ce cas, le thread ne peut entrer en section critique et il entame une boucle active durant laquelle il va continuellement exécuter la boucle ``enter: movl ... jnz enter``. 
- 
+ a. ``%eax==0`` après exécution de l'instruction ``xchgl  %eax, (lock)``. Dans ce cas, le thread peut accéder à sa section critique. En effet, cela indique qu'avant l'exécution de cette instruction l'adresse ``lock`` contenait la valeur ``0``. Cette valeur indique que la section critique était libre avant l'exécution de l'instruction ``xchgl  %eax, (lock)``. En outre, cette instruction a placé la valeur ``1`` à l'adresse ``lock``, ce qui indique qu'un thread exécute actuellement sa section critique. Si un autre thread exécute l'instruction ``xchgl  %eax, (lock)`` à cet instant, il récupèrera la valeur ``1`` dans ``%eax`` et ne pourra donc pas entre en section critique. Si deux threads exécutent simultanément et sur des processeurs différents l'instruction ``xchgl  %eax, (lock)``, la coordination des accès mémoires entre les processeurs garantit que ces accès mémoires seront séquentiels. Le thread qui bénéficiera du premier accès à la mémoire sera celui qui récupèrera la valeur ``0`` dans ``%eax`` et pourra entrer dans sa section critique. Le ou les autres threads récupéreront la valeur ``1`` dans ``%eax`` et boucleront.
+ b. ``%eax==1`` après exécution de l'instruction ``xchgl %eax, (lock)``. Dans ce cas, le thread ne peut entrer en section critique et il entame une boucle active durant laquelle il va continuellement exécuter la boucle ``enter: movl ... jnz enter``.
+
 
 .. todo:: inversion de priorité ?
 
@@ -379,17 +379,17 @@ En pratique, rares sont les programmes qui coordonnent leurs threads en utilisan
 Coordination par Mutex
 ^^^^^^^^^^^^^^^^^^^^^^
 
-L'algorithme de Peterson et l'utilisation d'instructions atomiques sont des mécanismes de base permettant de résoudre le problème de l'exclusion mutuelle. Ils sont utilisés par des fonctions de la libraire POSIX threads. Il est préférable pour des raisons de portabilité et de prise en compte de spécificités matérielles de certaines processeurs d'utiliser les fonctions de la librairie POSIX threads plutôt que de redévelopper soi-même ces primitives de coordination entre threads. 
+L'algorithme de Peterson et l'utilisation d'instructions atomiques sont des mécanismes de base permettant de résoudre le problème de l'exclusion mutuelle. Ils sont utilisés par des fonctions de la libraire POSIX threads. Il est préférable pour des raisons de portabilité et de prise en compte de spécificités matérielles de certaines processeurs d'utiliser les fonctions de la librairie POSIX threads plutôt que de redévelopper soi-même ces primitives de coordination entre threads.
 
 Le premier mécanisme de coordination entre threads dans la librairie POSIX sont les :term:`mutex`. Un :term:`mutex` (abréviation de `mutual exclusion`) est une structure de données qui permet de contrôler l'accès à une ressource. Un :term:`mutex` qui contrôle une ressource peut se trouver dans deux états :
 
  - `libre` (ou `unlocked` en anglais). Cet état indique que la ressource est libre et peut être utilisée sans risquer de provoquer une violation d'exclusion mutuelle.
  - `réservée` (ou `locked` en anglais). Cet état indique que la ressource associée est actuellement utilisée et qu'elle ne peut pas être utilisée par un autre thread.
 
-Un :term:`mutex` est toujours associé à une ressource. Cette ressource peut être une variable globale comme dans les exemples précédents, mais cela peut aussi être une structure de données plus complexe, une base de données, un fichier, ... Un mutex s'utilise par l'intermédiaire de deux fonctions de base. La fonction `lock` permet à un thread d'acquérir l'usage exclusif d'une ressource. Si la resource est libre, elle est marquée comme réservée et le thread y accède directement. Si la ressource est occupée, le thread est bloqué par le système d'exploitation jusqu'à ce qu'elle ne devienne libre. A ce moment, le thread pourra poursuivre son exécution et utilisera la ressource avec la certitude qu'aucun autre thread ne pourra faire de même. Lorsque le thread a terminé d'utiliser la ressource associée au mutex, il appelle la fonction `unlock`. Cette fonction vérifie d'abord si un ou plusieurs autres threads sont en attente pour cette ressource (c'est-à-dire qu'ils ont appelé la fonction `lock` mais celle-ci n'a pas encore réussi). Si c'est le cas, un (et un seul) thread est choisi parmi les threads en attente et celui-ci accède à la ressource. Il est important de noter qu'un programme ne peut faire aucune hypothèse sur l'ordre dans lequel les threads qui sont en attente sur un :term:`mutex` pourront accéder à la ressource partagée. Le programme doit être conçu en faisant l'hypothèse que si plusieurs threads sont bloqués sur un appel à `lock` pour un mutex, le thread qui sera libéré est choisi aléatoirement. 
+Un :term:`mutex` est toujours associé à une ressource. Cette ressource peut être une variable globale comme dans les exemples précédents, mais cela peut aussi être une structure de données plus complexe, une base de données, un fichier, ... Un mutex s'utilise par l'intermédiaire de deux fonctions de base. La fonction `lock` permet à un thread d'acquérir l'usage exclusif d'une ressource. Si la resource est libre, elle est marquée comme réservée et le thread y accède directement. Si la ressource est occupée, le thread est bloqué par le système d'exploitation jusqu'à ce qu'elle ne devienne libre. A ce moment, le thread pourra poursuivre son exécution et utilisera la ressource avec la certitude qu'aucun autre thread ne pourra faire de même. Lorsque le thread a terminé d'utiliser la ressource associée au mutex, il appelle la fonction `unlock`. Cette fonction vérifie d'abord si un ou plusieurs autres threads sont en attente pour cette ressource (c'est-à-dire qu'ils ont appelé la fonction `lock` mais celle-ci n'a pas encore réussi). Si c'est le cas, un (et un seul) thread est choisi parmi les threads en attente et celui-ci accède à la ressource. Il est important de noter qu'un programme ne peut faire aucune hypothèse sur l'ordre dans lequel les threads qui sont en attente sur un :term:`mutex` pourront accéder à la ressource partagée. Le programme doit être conçu en faisant l'hypothèse que si plusieurs threads sont bloqués sur un appel à `lock` pour un mutex, le thread qui sera libéré est choisi aléatoirement.
 
 Sans entrer dans des détails qui relèvent du fonctionnement internes des systèmes d'exploitation, on peut schématiquement représenter un :term:`mutex` comme étant une structure de données qui contient deux informations :
- 
+
  - la valeur actuelle du :term:`mutex` ( `locked` ou `unlocked`)
  - une queue contenant l'ensemble des threads qui sont bloqués en attente du mutex
 
@@ -443,11 +443,11 @@ L'exemple ci-dessous reprend le programme dans lequel une variable globale est i
 
 Il est utile de regarder un peu plus en détails les différentes fonctions utilisées par ce programme. Tout d'abord, la ressource partagée est ici la variable ``global``. Dans l'ensemble du programme, l'accès à cette variable est protégé par le :term:`mutex` ``mutex_global``. Celui-ci est représenté par une structure de données de type ``pthread_mutex_t``.
 
-Avant de pouvoir utiliser un :term:`mutex`, il est nécessaire de l'initialiser. Cette initialisation est effectuée par la fonction `pthread_mutex_init(3posix)`_ qui prend deux arguments [#fstaticinit]_. Le premier est un pointeur vers une structure ``pthread_mutex_t`` et le second un pointeur vers une structure ``pthread_mutexattr_t`` contenant les attributs de ce :term:`mutex`. Tout comme lors de la création d'un thread, ces attributs permettent de spécifier des paramètres à la création du :term:`mutex`. Ces attributs peuvent être manipulés en utilisant les fonctions `pthread_mutexattr_gettype(3posix)`_ et `pthread_mutexattr_settype(3posix)`_. Dans le cadre de ces notes, nous utiliserons exclusivement les attributs par défaut et créerons toujours un :term:`mutex` en passant ``NULL`` comme second argument à la fonction `pthread_mutex_init(3posix)`_. 
+Avant de pouvoir utiliser un :term:`mutex`, il est nécessaire de l'initialiser. Cette initialisation est effectuée par la fonction `pthread_mutex_init(3posix)`_ qui prend deux arguments [#fstaticinit]_. Le premier est un pointeur vers une structure ``pthread_mutex_t`` et le second un pointeur vers une structure ``pthread_mutexattr_t`` contenant les attributs de ce :term:`mutex`. Tout comme lors de la création d'un thread, ces attributs permettent de spécifier des paramètres à la création du :term:`mutex`. Ces attributs peuvent être manipulés en utilisant les fonctions `pthread_mutexattr_gettype(3posix)`_ et `pthread_mutexattr_settype(3posix)`_. Dans le cadre de ces notes, nous utiliserons exclusivement les attributs par défaut et créerons toujours un :term:`mutex` en passant ``NULL`` comme second argument à la fonction `pthread_mutex_init(3posix)`_.
 
-Lorsqu'un :term:`mutex` POSIX est initialisé, la ressource qui lui est associée est considérée comme libre. L'accès à la ressource doit se faire en précédant tout accès à la ressource par un appel à la fonction `pthread_mutex_lock(3posix)`_. En fonction des attributs spécifiés à la création du :term:`mutex`, il peut y avoir de très rares cas où la fonction retourne une valeur non nulle. Dans ce cas, le type d'erreur est indiqué via :term:`errno`. Lorsque le thread n'a plus besoin de la ressource protégée par le mutex, il doit appeler la fonction `pthread_mutex_unlock(3posix)`_ pour libérer la ressource protégée. 
+Lorsqu'un :term:`mutex` POSIX est initialisé, la ressource qui lui est associée est considérée comme libre. L'accès à la ressource doit se faire en précédant tout accès à la ressource par un appel à la fonction `pthread_mutex_lock(3posix)`_. En fonction des attributs spécifiés à la création du :term:`mutex`, il peut y avoir de très rares cas où la fonction retourne une valeur non nulle. Dans ce cas, le type d'erreur est indiqué via :term:`errno`. Lorsque le thread n'a plus besoin de la ressource protégée par le mutex, il doit appeler la fonction `pthread_mutex_unlock(3posix)`_ pour libérer la ressource protégée.
 
-`pthread_mutex_lock(3posix)`_ et `pthread_mutex_unlock(3posix)`_  sont toujours utilisés en couple. `pthread_mutex_lock(3posix)`_ doit toujours précéder l'accès à la ressource partagée et `pthread_mutex_unlock(3posix)`_ doit être appelé dès que l'accès exclusif à la ressource partagée n'est plus nécessaire. 
+`pthread_mutex_lock(3posix)`_ et `pthread_mutex_unlock(3posix)`_  sont toujours utilisés en couple. `pthread_mutex_lock(3posix)`_ doit toujours précéder l'accès à la ressource partagée et `pthread_mutex_unlock(3posix)`_ doit être appelé dès que l'accès exclusif à la ressource partagée n'est plus nécessaire.
 
 .. todo:: L'identification de la section critique d'un programme est un des problèmes de design les plus importants
 
@@ -461,9 +461,9 @@ L'utilisation des mutex permet de résoudre correctement le problème de l'exclu
 
 Pour montrer que cette solution répond bien au problème de l'exclusion mutuelle, il faut montrer qu'elle respecte la propriété de sureté et la propriété de vivacité. Pour la propriété de sureté, c'est par construction des :term:`mutex` et parce que chaque thread exécute `pthread_mutex_lock(3posix)`_ avant d'entrer en section critique et `pthread_mutex_unlock(3posix)`_ dès qu'il en sort. Considérons le cas de deux threads qui sont en concurrence pour accéder à cette section critique. Le premier exécute `pthread_mutex_lock(3posix)`_. Il accède à sa section critique. A partir de cet instant, le second thread sera bloqué dès qu'il exécute l'appel à `pthread_mutex_lock(3posix)`_. Il restera bloqué dans l'exécution de cette fonction jusqu'à ce que le premier thread sorte de sa section critique et exécute `pthread_mutex_unlock(3posix)`_. A ce moment, le premier thread n'est plus dans sa section critique et le système peut laisser le second y entrer en terminant l'exécution de l'appel à `pthread_mutex_lock(3posix)`_. Si un troisième thread essaye à ce moment d'entrer dans la section critique, il sera bloqué sur son appel à `pthread_mutex_lock(3posix)`_.
 
-Pour montrer que la propriété de vivacité est bien respectée, il faut montrer qu'un thread ne sera pas empêché éternellement d'entrer dans sa section critique. Un thread peut être empêché d'entrer dans sa section critique en étant bloqué sur l'appel à `pthread_mutex_lock(3posix)`_. Comme chaque thread exécute `pthread_mutex_unlock(3posix)`_ dès qu'il sort de sa section critique, le thread en attente finira par être exécuté. Pour qu'un thread utilisant le code ci-dessus ne puisse jamais entrer en section critique, il faudrait qu'il y aie en permanence plusieurs threads en attente sur `pthread_mutex_unlock(3posix)`_ et que notre thread ne soit jamais sélectionné par le système lorsque le thread précédent termine sa section critique. 
+Pour montrer que la propriété de vivacité est bien respectée, il faut montrer qu'un thread ne sera pas empêché éternellement d'entrer dans sa section critique. Un thread peut être empêché d'entrer dans sa section critique en étant bloqué sur l'appel à `pthread_mutex_lock(3posix)`_. Comme chaque thread exécute `pthread_mutex_unlock(3posix)`_ dès qu'il sort de sa section critique, le thread en attente finira par être exécuté. Pour qu'un thread utilisant le code ci-dessus ne puisse jamais entrer en section critique, il faudrait qu'il y aie en permanence plusieurs threads en attente sur `pthread_mutex_unlock(3posix)`_ et que notre thread ne soit jamais sélectionné par le système lorsque le thread précédent termine sa section critique.
 
-.. .. note:: spinlock versus mutex 
+.. .. note:: spinlock versus mutex
 
 .. ??? Todo ???
 
@@ -489,7 +489,7 @@ Ce problème de la vie courante peut se modéliser en utilisant un programme C a
    :start-after: ///AAA
    :end-before: ///BBB
 
-Malheureusement, cette solution ne permet pas de résoudre le problème des philosophes. En effet, la première exécution du programme (:download:`/Theorie/Threads/S6-src/pthread-philo.c`) indique à l'écran que les philosophes se partagent les baguettes puis après une fraction de seconde le programme s'arrête en affichant une sortie qui se termine : 
+Malheureusement, cette solution ne permet pas de résoudre le problème des philosophes. En effet, la première exécution du programme (:download:`/Theorie/Threads/S6-src/pthread-philo.c`) indique à l'écran que les philosophes se partagent les baguettes puis après une fraction de seconde le programme s'arrête en affichant une sortie qui se termine :
 
 .. code-block:: console
 
@@ -500,7 +500,7 @@ Malheureusement, cette solution ne permet pas de résoudre le problème des phil
    Philosophe [2] possède baguette gauche [2]
    Philosophe [1] possède baguette guache [1]
 
-Ce blocage de programme est un autre problème majeur auquel il faut faire attention lorsque l'on découpe un programme en plusieurs threads d'exécution. Il porte le nom de :term:`deadlock` que l'on peut traduire en français pas étreinte fatale. Un programme est en situation de deadlock lorsque tous ses threads d'exécution sont bloqués et qu'aucun d'entre eux ne peux être débloqué sans exécuter d'instructions d'un des threads bloqués. Dans ce cas particulier, le programme est bloqué parce que le ``philosophe[0]`` a pu réserver la ``baguette[0]``. Malheureusement, en même temps le ``philosophe[2]`` a obtenu ``baguette[2]`` et ``philosophe[0]`` est donc bloqué sur la ligne ``pthread_mutex_lock(&baguette[right]);``. Entre temps, le  ``philosophe[1]`` a pu exécuter la ligne ``pthread_mutex_lock(&baguette[left]);`` et a obtenu ``baguette[1]``. Dans cet état, tous les threads sont bloqués sur la ligne ``pthread_mutex_lock(&baguette[right]);`` et plus aucun progrès n'est possible. 
+Ce blocage de programme est un autre problème majeur auquel il faut faire attention lorsque l'on découpe un programme en plusieurs threads d'exécution. Il porte le nom de :term:`deadlock` que l'on peut traduire en français pas étreinte fatale. Un programme est en situation de deadlock lorsque tous ses threads d'exécution sont bloqués et qu'aucun d'entre eux ne peux être débloqué sans exécuter d'instructions d'un des threads bloqués. Dans ce cas particulier, le programme est bloqué parce que le ``philosophe[0]`` a pu réserver la ``baguette[0]``. Malheureusement, en même temps le ``philosophe[2]`` a obtenu ``baguette[2]`` et ``philosophe[0]`` est donc bloqué sur la ligne ``pthread_mutex_lock(&baguette[right]);``. Entre temps, le  ``philosophe[1]`` a pu exécuter la ligne ``pthread_mutex_lock(&baguette[left]);`` et a obtenu ``baguette[1]``. Dans cet état, tous les threads sont bloqués sur la ligne ``pthread_mutex_lock(&baguette[right]);`` et plus aucun progrès n'est possible.
 
 .. todo:: conditions deadlock .. comment:: A deadlock situation can arise only if all of the following conditions hold simultaneously in a system:[1] Mutual Exclusion: At least one resource must be non-shareable.[1] Only one process can use the resource at any given instant of time. Hold and Wait or Resource Holding: A process is currently holding at least one resource and requesting additional resources which are being held by other processes. No Preemption: The operating system must not de-allocate resources once they have been allocated; they must be released by the holding process voluntarily. Circular Wait: A process must be waiting for a resource which is being held by another process, which in turn is waiting for the first process to release the resource. In general, there is a set of waiting processes, P = {P1, P2, ..., PN}, such that P1 is waiting for a resource held by P2, P2 is waiting for a resource held by P3 and so on till PN is waiting for a resource held by P1.[1][7] These four conditions are known as the Coffman conditions from their first description in a 1971 article by Edward G. Coffman, Jr.[7] Unfulfillment of any of these conditions is enough to preclude a deadlock from occurring.
 
@@ -523,10 +523,10 @@ Malheureusement, cette solution ne résout pas le problème du deadlock. La seul
    Philosophe [1] possède baguette droite [0]
 
 
-Pour comprendre l'origine du deadlock, il faut analyser plus en détails le fonctionnement du programme et l'ordre dans lequel les appels à `pthread_mutex_lock(3posix)`_ sont effectués. Trois mutex sont utilisés dans le programme des philosophes : ``baguette[0]``, ``baguette[1]`` et ``baguette[2]``. De façon imagée, chaque philosophe s'approprie d'abord la baguette se trouvant à sa gauche et ensuite la baguette se trouvant à sa droite. 
+Pour comprendre l'origine du deadlock, il faut analyser plus en détails le fonctionnement du programme et l'ordre dans lequel les appels à `pthread_mutex_lock(3posix)`_ sont effectués. Trois mutex sont utilisés dans le programme des philosophes : ``baguette[0]``, ``baguette[1]`` et ``baguette[2]``. De façon imagée, chaque philosophe s'approprie d'abord la baguette se trouvant à sa gauche et ensuite la baguette se trouvant à sa droite.
 
 ==================    ================   ===============
-Philosophe            premier mutex      second mutex 
+Philosophe            premier mutex      second mutex
 ==================    ================   ===============
 ``philosophe[0]``     ``baguette[2]``    ``baguette[0]``
 ``philosophe[1]``     ``baguette[0]``    ``baguette[1]``
@@ -538,7 +538,7 @@ L'origine du deadlock dans cette solution au problème des philosophes est l'ord
 Il est cependant possible de résoudre le problème en forçant les threads à s'approprier les mutex qu'ils utilisent dans le même ordre. Considérons le tableau ci-dessous dans lequel ``philosophe[0]`` s'approprie d'abord le mutex ``baguette[0]`` et ensuite le mutex ``baguette[2]``.
 
 ==================    ================   ===============
-Philosophe            premier mutex      second mutex 
+Philosophe            premier mutex      second mutex
 ==================    ================   ===============
 ``philosophe[0]``     ``baguette[0]``    ``baguette[2]``
 ``philosophe[1]``     ``baguette[0]``    ``baguette[1]``
@@ -562,16 +562,16 @@ Une implémentation possible de l'ordre présenté dans la table ci-dessus est r
    :encoding: iso-8859-1
    :language: c
    :start-after: ///AAA
-   :end-before: ///BBB 
+   :end-before: ///BBB
 
 
-Ce problème des philosophes est à l'origine d'une règle de bonne pratique essentielle pour tout programme découpé en threads dans lequel certains threads doivent acquérir plusieurs mutex. Pour éviter les deadlocks, il est nécessaire d'ordonnancer tous les mutex utilisés par le programme dans un ordre strict. Lorsqu'un thread doit réserver plusieurs mutex en même temps, il doit *toujours* effectuer ses appels à `pthread_mutex_lock(3posix)`_ dans l'ordre choisi pour les mutex. Si cet ordre n'est pas respecté par un des threads, un deadlock peut se produire. 
+Ce problème des philosophes est à l'origine d'une règle de bonne pratique essentielle pour tout programme découpé en threads dans lequel certains threads doivent acquérir plusieurs mutex. Pour éviter les deadlocks, il est nécessaire d'ordonnancer tous les mutex utilisés par le programme dans un ordre strict. Lorsqu'un thread doit réserver plusieurs mutex en même temps, il doit *toujours* effectuer ses appels à `pthread_mutex_lock(3posix)`_ dans l'ordre choisi pour les mutex. Si cet ordre n'est pas respecté par un des threads, un deadlock peut se produire.
 
 
 .. todo:: expliquer
 
 
-.. Il est intéressant d'examiner ce qu'il s'est passé durant cette exécution. Les trois philosophes ont été lancés rapidement. Lorsque ``philosophe[0]`` mange, il utilise les mutex ``baguette[0]`` et ``baguette[2]``. Le ``philosophe[1]`` lui utilise les baguettes ``baguette[1]`` et ``baguette[0]``, ... Le premier cas intéressant est lorsque les trois philosophes pensent en même temps. Dès qu'ils se décident de manger, ils sont en compétition pour l'accès aux baguettes. Manifestement, c'est ``philosophe[0]`` qui parvient à exécuter ses deux appels ``pthread_mutex_lock(&baguette[left]);`` et ``pthread_mutex_lock(&baguette[right]);``. A ce moment, ``philosophe[2]`` avait déjà exécuté l'appel ` 
+.. Il est intéressant d'examiner ce qu'il s'est passé durant cette exécution. Les trois philosophes ont été lancés rapidement. Lorsque ``philosophe[0]`` mange, il utilise les mutex ``baguette[0]`` et ``baguette[2]``. Le ``philosophe[1]`` lui utilise les baguettes ``baguette[1]`` et ``baguette[0]``, ... Le premier cas intéressant est lorsque les trois philosophes pensent en même temps. Dès qu'ils se décident de manger, ils sont en compétition pour l'accès aux baguettes. Manifestement, c'est ``philosophe[0]`` qui parvient à exécuter ses deux appels ``pthread_mutex_lock(&baguette[left]);`` et ``pthread_mutex_lock(&baguette[right]);``. A ce moment, ``philosophe[2]`` avait déjà exécuté l'appel `
 
 
 
@@ -589,7 +589,7 @@ Ce problème des philosophes est à l'origine d'une règle de bonne pratique ess
 
 .. [#fdisable] Certains systèmes d'exploitation utilisent une désactivation parfois partielle des interruptions pour résoudre des problèmes d'exclusion mutuelle qui portent sur quelques instructions à l'intérieur du système d'exploitation lui-même. Il faut cependant noter qu'une désactivation des interruptions peut être particulièrement couteuse en termes de performances dans un environnement multiprocesseurs.
 
-.. [#fstaticinit] Linux supporte également la macro ``PTHREAD_MUTEX_INITIALIZER`` qui permet d'initialiser directement un ``pthread_mutex_t`` déclaré comme variable globale. Dans cet exemple, la déclaration aurait été : ``pthread_mutex_t global_mutex=PTHREAD_MUTEX_INITIALIZER;`` et l'appel à `pthread_mutex_init(3posix)`_ aurait été inutile. Comme il s'agit d'une extension spécifique à Linux, il est préférable de ne pas l'utiliser pour garantir la portabilité du code. 
+.. [#fstaticinit] Linux supporte également la macro ``PTHREAD_MUTEX_INITIALIZER`` qui permet d'initialiser directement un ``pthread_mutex_t`` déclaré comme variable globale. Dans cet exemple, la déclaration aurait été : ``pthread_mutex_t global_mutex=PTHREAD_MUTEX_INITIALIZER;`` et l'appel à `pthread_mutex_init(3posix)`_ aurait été inutile. Comme il s'agit d'une extension spécifique à Linux, il est préférable de ne pas l'utiliser pour garantir la portabilité du code.
 
 .. [#fphilo] Le programme complet est :download:`/Theorie/Threads/S6-src/pthread-philo.c`
 

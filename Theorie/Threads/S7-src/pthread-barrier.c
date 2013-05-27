@@ -1,6 +1,6 @@
 /**************************************
  * pthread-barrier.c
- * 
+ *
  * Programme d'exemple de barrières
  *
  **************************************/
@@ -49,7 +49,7 @@ int main (int argc, char *argv[])  {
       error(err,"pthread_barrier_init");
   }
   for(int i=0;i<NTHREADS;i++) {
-    err=pthread_create(&(thread[i]),NULL,func[i],NULL); 
+    err=pthread_create(&(thread[i]),NULL,func[i],NULL);
     if(err!=0) {
       error(err,"pthread_create");
     }

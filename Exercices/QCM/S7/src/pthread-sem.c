@@ -1,6 +1,6 @@
 /**************************************
  * pthread-semt.c
- * 
+ *
  * Programme d'exemple de sémaphores
  *
  **************************************/
@@ -40,9 +40,9 @@ int main (int argc, char *argv[])  {
   int err;
 
   sem_init(&semaphore, 0,1);
-  
+
   for(int i=0;i<NTHREADS;i++) {
-    err=pthread_create(&(thread[i]),NULL,&inc,NULL); 
+    err=pthread_create(&(thread[i]),NULL,&inc,NULL);
     if(err!=0) {
       error(err,"pthread_create");
     }

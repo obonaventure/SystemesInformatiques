@@ -61,7 +61,7 @@ void f6() // incorrect
 
 int main() {
 
- 
+
 
 }
 

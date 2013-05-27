@@ -16,7 +16,7 @@ Première semaine
    `QCM1 </static/_static/Mission-1-qcm.html>`_
 
 Séance tutorée
-^^^^^^^^^^^^^^ 
+^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1
@@ -34,17 +34,17 @@ La matière couverte cette semaine correspond à la section relative aux `types 
   `QCM2 </static/_static/Mission-2-qcm.html>`_
 
 Séance tutorée
-^^^^^^^^^^^^^^ 
+^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 2
-   
+
    Programmes/prog-2
 
 Troisième semaine
 -----------------
 
-La matière couverte cette semaine correspond aux section relative à l'`organisation de la mémoire <http://sinf1252.info.ucl.ac.be/Theorie/C/malloc/#organisation-de-la-memoire>`_ 
+La matière couverte cette semaine correspond aux section relative à l'`organisation de la mémoire <http://sinf1252.info.ucl.ac.be/Theorie/C/malloc/#organisation-de-la-memoire>`_
 
 .. only:: html
 
@@ -56,7 +56,7 @@ Séance tutorée
 
 .. toctree::
    :maxdepth: 2
-   
+
    Programmes/prog-3
 
 
@@ -67,7 +67,7 @@ Quatrième semaine
 La matière couverte cette semaine correspond aux sections :
 
  - :ref:`ordinateurs`
- - :ref:`ia32` 
+ - :ref:`ia32`
 
 .. only:: html
 
@@ -79,7 +79,7 @@ Séance tutorée
 
 .. toctree::
    :maxdepth: 2
-   
+
    Programmes/prog-4
 
 Cinquième semaine
@@ -87,7 +87,7 @@ Cinquième semaine
 
 La matière couverte cette semaine correspond aux sections :
 
- - :ref:`complementsC` 
+ - :ref:`complementsC`
  - :ref:`threads`
 
 
@@ -101,7 +101,7 @@ Séance tutorée
 
 .. toctree::
    :maxdepth: 2
-   
+
    Programmes/prog-5
 
 
@@ -111,7 +111,7 @@ Sixième semaine
 
 La matière de cette semaine porte sur la communication entre les threads. Elle est décrite dans la section  :
 
- - :ref:`comthreads` 
+ - :ref:`comthreads`
 
 .. only:: html
 
@@ -123,7 +123,7 @@ Séance tutorée
 
 .. toctree::
    :maxdepth: 2
-   
+
    Programmes/prog-6
 
 
@@ -134,7 +134,7 @@ Septième semaine
 
 La matière de cette semaine porte sur l'utilisation des sémaphores et quelques compléments sur les threads. Elle est décrite dans la section  :
 
- - :ref:`coordinationthreads` 
+ - :ref:`coordinationthreads`
 
 .. only:: html
 
@@ -146,7 +146,7 @@ Séance tutorée
 
 .. toctree::
    :maxdepth: 2
-   
+
    Programmes/prog-7
 
 
@@ -156,7 +156,7 @@ Huitième semaine
 
 La matière de cette semaine porte sur le fonctionnement des processus. Elle est décrite dans la section  :
 
- - :ref:`processus` 
+ - :ref:`processus`
 
 .. only:: html
 
@@ -168,7 +168,7 @@ Séance tutorée
 
 .. toctree::
    :maxdepth: 2
-   
+
    Programmes/prog-8
 
 
@@ -179,9 +179,9 @@ Neuvième semaine
 
 La matière de cette semaine porte sur l'utilisation du système de fichiers et les ``pipe``. Elle est décrite dans les sections  :
 
- - :ref:`utilisateurs` 
- - :ref:`fichiers` 
- - :ref:`pipe` 
+ - :ref:`utilisateurs`
+ - :ref:`fichiers`
+ - :ref:`pipe`
 
 .. only:: html
 
@@ -193,7 +193,7 @@ Séance tutorée
 
 .. toctree::
    :maxdepth: 2
-   
+
    Programmes/prog-9
 
 Dixième semaine
@@ -217,7 +217,7 @@ Séance tutorée
 Onzième semaine
 ---------------
 
-La matière de cette semaine porte sur la mémoire virtuelle et les fichiers mappés en mémoire : 
+La matière de cette semaine porte sur la mémoire virtuelle et les fichiers mappés en mémoire :
 
  - :ref:`vmem`
  - :ref:`fctvmem`
@@ -238,7 +238,7 @@ Séance tutorée
 Douzième semaine
 ----------------
 
-La matière de cette semaine porte sur les utilisations avancées de la mémoire virtuelle : 
+La matière de cette semaine porte sur les utilisations avancées de la mémoire virtuelle :
 
  - :ref:`shmem`
  - :ref:`forkmem`

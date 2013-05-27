@@ -1,7 +1,7 @@
 /**************************************
  * atexit.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * atexit
  *
  *************************************/
@@ -14,7 +14,7 @@ void e1() {
 }
 
 int main (int argc, char *argv[])  {
-  
+
   int err;
   err=atexit(e1);
   if(err==-1) {

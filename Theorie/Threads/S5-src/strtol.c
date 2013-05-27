@@ -1,6 +1,6 @@
 /**************************************
  * strtol.c
- * 
+ *
  * Programme d'exemple d'utilisation de strtol
  *
  **************************************/
@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-  
+
   char *p, *s;
   long li;
   s = "1252";

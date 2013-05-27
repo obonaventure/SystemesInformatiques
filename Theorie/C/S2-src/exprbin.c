@@ -1,6 +1,6 @@
 /***********************************************
  * exprbin.c
- * 
+ *
  * Programme d'exemple d'utilisation d'expressions
  * binaires
  *
@@ -25,7 +25,7 @@ void int2bin(unsigned int num, char *str)
     else
       str[i]='0';
     num = num >> 1;
-  }    
+  }
 }
 ///FFF
 
@@ -40,7 +40,7 @@ void char2bin(unsigned char num, char *str)
     else
       str[i]='0';
     num = num >> 1;
-  }    
+  }
 }
 
 

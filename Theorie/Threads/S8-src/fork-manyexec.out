@@ -1,4 +1,4 @@
-$./fork-manyexec /bin/true /bin/false /bin/none 
+$./fork-manyexec /bin/true /bin/false /bin/none
 Exécution de la commande /bin/true [pid=14217]
 La commande /bin/true [14217] s'est terminée correctement
 Exécution de la commande /bin/false [pid=14218]

@@ -23,14 +23,14 @@ void f3()
 {
   a=b+a;
   b=b++;
-  c=a-b; 
+  c=a-b;
 }
 
 void f4()
 {
   c=b+a;
   b=b++;
-  a=a-b; 
+  a=a-b;
 }
 
 void f5()
@@ -38,7 +38,7 @@ void f5()
 
   b=b+a;
   a=b++;
-  c=b-a; 
+  c=b-a;
 
 }
 
@@ -47,7 +47,7 @@ void f5()
 
 int main() {
 
- 
+
 
 }
 

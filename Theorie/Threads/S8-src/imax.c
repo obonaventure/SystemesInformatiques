@@ -1,7 +1,7 @@
 /**************************************
  * imax.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * librairie
  *
  *************************************/

@@ -1,6 +1,6 @@
 /**************************************
  * pthread-args.c
- * 
+ *
  * Programme d'exemple de pthread utilisant les
  * arguments et retournant une valeur
  *
@@ -55,7 +55,7 @@ void *fermat (void * param) {
 	}
       }
     }
-  }   
+  }
   return(NULL);
 }
 
@@ -64,17 +64,17 @@ int main (int argc, char *argv[])  {
   int err;
 
   for(int i=0;i<NTHREADS;i++) {
-    err=pthread_create(&(threads[i]),NULL,&fermat,(void *)(long) i+2); 
+    err=pthread_create(&(threads[i]),NULL,&fermat,(void *)(long) i+2);
     if(err!=0)
       error(err,"pthread_create");
   }
-  
+
 
 
   for(int i=0;i<NTHREADS;i++) {
     void *p;
     err=pthread_join(threads[i],(void **)&(p));
-		     
+
     if(err!=0)
       error(err,"pthread_create");
     //if(p!=NULL) {
@@ -82,7 +82,7 @@ int main (int argc, char *argv[])  {
       //      r=(struct result) p;
       //printf("Trouvé pour %d : x=%ld, y=%ld, z=%ld\n",i+2,r[i].x,r[i].y, r[i].z);
   }
-    
+
 
   return(EXIT_SUCCESS);
 }

@@ -28,7 +28,7 @@ filter_t filter_grayscale;
  *   0.0  0.2  0.0
  *
  * Si on considère la composante rouge de l'image suivante
- * (chaque element a une valeur entre 0 et 255) de taille 
+ * (chaque element a une valeur entre 0 et 255) de taille
  * 6x5:
  *
  *	1  2  5  2  0  3
@@ -40,7 +40,7 @@ filter_t filter_grayscale;
  *	0 |4  0  3| 4  2	   0.0*4 + 0.2*0 + 0.0*3
  *	   -------
  *	9  6  5  0  3  9
- * 
+ *
  * La nouvelle valeur du pixel (3, 4) devient round(3.2) = 3.
  *
  * Lorsque les élements de la matrice se retrouvent en dehors

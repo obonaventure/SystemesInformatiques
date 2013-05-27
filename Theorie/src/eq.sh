@@ -6,6 +6,6 @@ if [ $# -ne 2 ]; then
 fi
 if [ $1 -eq $2 ]; then
 	echo "Nombres égaux"
-else 
+else
 	echo "Nombres différents"
-fi 
+fi

@@ -1,7 +1,7 @@
 /**************************************
  * pthread-philo2.c
- * 
- * Programme d'exemple de pthread avec 
+ *
+ * Programme d'exemple de pthread avec
  * philosophes qui dinent et mutex
  *
  **************************************/

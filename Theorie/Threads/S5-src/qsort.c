@@ -1,6 +1,6 @@
 /**************************************
  * qosrt.c
- * 
+ *
  * Programme d'exemple d'utilisation de qsort
  *
  **************************************/
@@ -12,7 +12,7 @@
 double array[SIZE]= { 1.0, 7.32, -3.43, 8.7, 9.99 };
 
 void print_array() {
-  for(int i=0;i<SIZE;i++) 
+  for(int i=0;i<SIZE;i++)
     printf("array[i]:%f\n",array[i]);
 }
 
@@ -29,7 +29,7 @@ int cmp(const void *ptr1, const void *ptr2) {
 }
 
 int main(int argc, char *argv[]) {
- 
+
   printf("Avant qsort\n\n");
   print_array();
   qsort(array,SIZE,sizeof(double),cmp);

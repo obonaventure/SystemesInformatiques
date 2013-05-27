@@ -1,6 +1,6 @@
 /**************************************
  * sigfpe.c
- * 
+ *
  * Programme d'exemple de signal sigfpe
  * fichiers
  *
@@ -22,7 +22,7 @@ int main (int argc, char *argv[])  {
     perror("signal");
     exit(EXIT_FAILURE);
   }
-  
+
   for(int i=1;i<argc;i++) {
     char *endptr;
     int r;
@@ -31,7 +31,7 @@ int main (int argc, char *argv[])  {
     if(*endptr=='\0') {
       r=sigsetjmp(buf,1);
       if(r==0) {
-	int resultat=n/(int) val;  
+	int resultat=n/(int) val;
 	printf("%d/%d=%d\n",n,(int) val,resultat);
       }
       else {

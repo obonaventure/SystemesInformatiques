@@ -18,7 +18,7 @@ float vmin(int n, float *ptr) {
     m=min(m,*p);
     p++;
   }
-  return m; 
+  return m;
 }
 
 static float min(float a, float b) {

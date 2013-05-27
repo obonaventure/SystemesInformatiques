@@ -1,6 +1,6 @@
 /***********************************************
  * arrayvar.c
- * 
+ *
  * Programme d'exemple d'utilisation de tableaux
  * de taille non prédéfinie à la compilation
  *

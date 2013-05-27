@@ -8,17 +8,17 @@
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
   <script type="text/javascript" src="js/rst-form.js"></script>
   <script type="text/javascript" src="js/prettify.js"></script>
-  <script type="text/javascript">$nmbr_prop = 3</script> 
+  <script type="text/javascript">$nmbr_prop = 3</script>
 
 
 ===============
-Sixième Semaine 
+Sixième Semaine
 ===============
 
 Cette semaine porte sur la communication et la synchronisation entre threads. Plus précisément, la matière est décrite dans les deux sections suivantes :
 
 
-.. - :ref:`complementsC` 
+.. - :ref:`complementsC`
 
 - `Communication entre threads <http://sinf1252.info.ucl.ac.be/Theorie/Threads/threads2/>`_
 - `Coordination entre threads <http://sinf1252.info.ucl.ac.be/Theorie/Threads/threads2/#coordination-entre-threads>`_
@@ -47,8 +47,8 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
       while ( in2 &&  (last==1)) {};
       section_critique();
       in1=false;
-      // ...    
-     }    
+      // ...
+     }
      // thread2
      while (true) {
       in2 = true;
@@ -57,7 +57,7 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
       section_critique();
       in2=false;
       // ...
-     } 
+     }
 
 -
  .. code-block:: c
@@ -73,8 +73,8 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
       while ( in2 &&  (last==1)) {};
       section_critique();
       in1=false;
-      // ...    
-     }    
+      // ...
+     }
      // thread2
      while (true) {
       in2 = true;
@@ -83,7 +83,7 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
       section_critique();
       in2=false;
       // ...
-     } 
+     }
 
 .. class:: negative
 
@@ -101,8 +101,8 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
       while ( in1 &&  (last==1)) {};
       section_critique();
       in1=false;
-      // ...    
-     }    
+      // ...
+     }
      // thread2
      while (true) {
       in2 = true;
@@ -111,11 +111,11 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
       section_critique();
       in2=false;
       // ...
-     } 
+     }
 
  .. class:: comment
 
-    Cette solution ne fonctionne pas. Si un des deux threads est seul, il n'entrera jamais en section critique. 
+    Cette solution ne fonctionne pas. Si un des deux threads est seul, il n'entrera jamais en section critique.
 
 -
  .. code-block:: c
@@ -131,8 +131,8 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
       while ( in2 &&  (last==2)) {};
       section_critique();
       in1=false;
-      // ...    
-     }    
+      // ...
+     }
      // thread2
      while (true) {
       in2 = true;
@@ -141,7 +141,7 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
       section_critique();
       in2=false;
       // ...
-     } 
+     }
 
  .. class:: comment
 
@@ -161,8 +161,8 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
       while ( in2 &&  (last==1)) {};
       section_critique();
       in1=false;
-      // ...    
-     }    
+      // ...
+     }
      // thread2
      while (true) {
       last = 2;
@@ -171,7 +171,7 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
       section_critique();
       in2=false;
       // ...
-     } 
+     }
 
  .. class:: comment
 
@@ -193,7 +193,7 @@ Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la str
    err= pthread_mutexattr_init(&attr);
    if(err!=0)
      error(err,"pthread_mutexattr_init");
-   
+
    err=pthread_mutex_init( &mutex, &attr);
    if(err!=0)
      error(err,"pthread_mutex_init");
@@ -207,7 +207,7 @@ Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la str
  .. code-block:: c
 
    pthread_mutex_t mutex;
-   
+
    err=pthread_mutex_init( &mutex, NULL);
    if(err!=0)
      error(err,"pthread_mutex_init");
@@ -227,7 +227,7 @@ Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la str
    err= pthread_mutexattr_init(attr);
    if(err!=0)
      error(err,"pthread_mutexattr_init");
-   
+
    err=pthread_mutex_init(mutex, attr);
    if(err!=0)
      error(err,"pthread_mutex_init");
@@ -247,7 +247,7 @@ Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la str
    err= pthread_mutexattr_init(&attr);
    if(err!=0)
      error(err,"pthread_mutexattr_init");
-   
+
    err=pthread_mutex_init(&mutex, attr);
    if(err!=0)
      error(err,"pthread_mutex_init");
@@ -266,7 +266,7 @@ Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la str
    err= pthread_mutexattr_init(attr);
    if(err!=0)
      error(err,"pthread_attr_init");
-   
+
    err=pthread_mutex_init(mutex, attr);
    if(err!=0)
      error(err,"pthread_mutex_init");
@@ -292,13 +292,13 @@ Un programme utilisant plusieurs threads doit mettre à jour une variable global
      err=pthread_mutex_lock(mutex);
      if(err!=0)
        error(err,"pthread_mutex_lock");
-     
-     // mise à jour de la variable globale 
+
+     // mise à jour de la variable globale
 
      err=pthread_mutex_unlock(mutex);
      if(err!=0)
        error(err,"pthread_mutex_unlock");
- 
+
      }
 
 
@@ -312,18 +312,18 @@ Un programme utilisant plusieurs threads doit mettre à jour une variable global
      err=pthread_mutex_unlock(mutex);
      if(err!=0)
        error(err,"pthread_mutex_unlock");
-     
-     // mise à jour de la variable globale 
+
+     // mise à jour de la variable globale
 
      err=pthread_mutex_lock(mutex);
      if(err!=0)
        error(err,"pthread_mutex_lock");
- 
+
      }
 
   .. class:: comment
 
-     Ce code est incorrect. Un mutex s'utilise en faisant d'abord ``pthread_mutex_lock`` et ensuite ``pthread_mutex_unlock``. 
+     Ce code est incorrect. Un mutex s'utilise en faisant d'abord ``pthread_mutex_lock`` et ensuite ``pthread_mutex_unlock``.
 
 -
   .. code-block:: c
@@ -333,13 +333,13 @@ Un programme utilisant plusieurs threads doit mettre à jour une variable global
      err=pthread_mutex_lock(mutex);
      if(err!=0)
        error(err,"pthread_mutex_lock");
-     
-     // mise à jour de la variable globale 
+
+     // mise à jour de la variable globale
 
      err=pthread_mutex_unlock(mutex);
      if(err!=0)
        error(err,"pthread_mutex_unlock");
- 
+
      }
 
   .. class:: comment
@@ -356,13 +356,13 @@ Un programme utilisant plusieurs threads doit mettre à jour une variable global
      err=pthread_mutex_lock(&mutex);
      if(err!=0)
        error(err,"pthread_mutex_lock");
-     
-     // mise à jour de la variable globale 
+
+     // mise à jour de la variable globale
 
      err=pthread_mutex_unlock(&mutex);
      if(err!=0)
        error(err,"pthread_mutex_unlock");
- 
+
      }
 
   .. class:: comment
@@ -413,7 +413,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
 
 .. class:: positive
 
-- 
+-
   .. code-block:: c
 
      // thread A
@@ -427,7 +427,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
      update(&a,&c,&x,&z);
 
 
-- 
+-
   .. code-block:: c
 
      // thread A
@@ -443,7 +443,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
 
 .. class:: negative
 
-- 
+-
   .. code-block:: c
 
      // thread A
@@ -461,7 +461,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
      Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fasse chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``z``  puis à ``x`` dans le thread A et à ``x`` puis à ``z`` dans le thread B est une source de deadlocks potentiels.
 
 
-- 
+-
   .. code-block:: c
 
      // thread A
@@ -478,7 +478,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
 
      Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fasse chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``z``  puis à ``x`` dans le thread B et à ``x`` puis à ``z`` dans le thread A est une source de deadlocks potentiels.
 
-- 
+-
   .. code-block:: c
 
      // thread A

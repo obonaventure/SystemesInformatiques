@@ -1,6 +1,6 @@
 /**************************************
  * concat.c
- * 
+ *
  * Programme d'exemple pour concaténer
  * deux chaînes de caractères
  *
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
   }
   printf("\n");
   for(int i=0;i<SIZE;i++) {
-    for(int j=0;j<SIZE;j++) { 
+    for(int j=0;j<SIZE;j++) {
       printf("m[%d,%d]=%d ",i,j,*(m+(i*SIZE)+j));
     }
     printf("\n");

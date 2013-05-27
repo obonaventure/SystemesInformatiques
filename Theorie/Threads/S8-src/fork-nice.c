@@ -1,7 +1,7 @@
 /**************************************
  * fork-zombie.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * fork qui crée un zombie
  *
  *************************************/
@@ -15,7 +15,7 @@
 void usage() {
   printf("Usage : \n");
   printf("prog -p num\navec num entier \n");
-  
+
 }
 
 int main (int argc, char *argv[])  {

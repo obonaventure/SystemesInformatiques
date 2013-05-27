@@ -1,6 +1,6 @@
 /***********************************************
  * strlen.c
- * 
+ *
  * Calcul de longueur de chaînes avec pointeurs
  *
  ***********************************************/
@@ -13,7 +13,7 @@
 
 int length(char *s) {
   int i=0;
-  while(*(s+i)!='\0') { 
+  while(*(s+i)!='\0') {
     i++;
   }
   return(i);

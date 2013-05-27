@@ -1,6 +1,6 @@
 /**************************************
  * pthread.c
- * 
+ *
  * Programme d'exemple de pthread
  *
  **************************************/
@@ -44,7 +44,7 @@ int main (int argc, char *argv[])  {
   err= pthread_attr_getstacksize(&attr_first,&stacksize);
   if(err!=0)
     error(err,"pthread_attr_getstacksize");
-  
+
   printf("Taille par défaut du stack : %ld\n",stacksize);
 
   stacksize=65536;
@@ -53,7 +53,7 @@ int main (int argc, char *argv[])  {
   if(err!=0)
     error(err,"pthread_attr_setstacksize");
 
-  err=pthread_create(&first,&attr_first,&thread_first,NULL); 
+  err=pthread_create(&first,&attr_first,&thread_first,NULL);
   if(err!=0)
     error(err,"pthread_create");
   ///BBB

@@ -1,7 +1,7 @@
 /**************************************
  * mincore.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * mincore
  *
  *************************************/
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
     printf("\n");
   }
   free(mincore_vec);
-  free(mem); 
+  free(mem);
   return (EXIT_SUCCESS);
 }
 

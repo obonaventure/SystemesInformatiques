@@ -1,8 +1,8 @@
 /**************************************
  * pthread-sem-before.c
- * 
+ *
  * Programme d'exemple de sémaphores
- * La fonction after ne peut s'exécuter 
+ * La fonction after ne peut s'exécuter
  * q'après la fonction before
  **************************************/
 
@@ -49,7 +49,7 @@ int main (int argc, char *argv[])  {
       error(err,"sem_init");
   }
   for(int i=0;i<NTHREADS;i++) {
-    err=pthread_create(&(thread[i]),NULL,func[i],NULL); 
+    err=pthread_create(&(thread[i]),NULL,func[i],NULL);
     if(err!=0) {
       error(err,"pthread_create");
     }

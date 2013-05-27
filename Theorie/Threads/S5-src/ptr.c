@@ -1,6 +1,6 @@
 /**************************************
  * ptr.c
- * 
+ *
  * Programme d'exemple pour les pointeurs
  *
  **************************************/
@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
-  
+
   int a=1252;
   int b=1;
   int *p=&a;

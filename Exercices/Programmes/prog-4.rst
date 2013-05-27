@@ -46,7 +46,7 @@ Exercices
 				movl $1,%eax
 				ret
 
-#. Considérons une fraction de la mémoire représentée dans le tableau ci-dessous. 
+#. Considérons une fraction de la mémoire représentée dans le tableau ci-dessous.
 
 	==========   ========
 	Adresse      Valeur
@@ -72,7 +72,7 @@ Exercices
 		.. note::
 
 			La valeur de retour étant dans %eax, il n'y a aucun problème à l'ignorer, elle sera juste écrasée à la première utilisation de %eax
- 
+
 
 
 #. Trois exercices se trouvent sur Pythia. Un exercice sur la `Comparaison de Fractions <http://pythia.info.ucl.ac.be/module/10/problem/37>`_, l'implémentation d'une `Stack <http://pythia.info.ucl.ac.be/module/10/problem/38>`_ et finalement l'implémentation de `strsep <http://pythia.info.ucl.ac.be/module/10/problem/39>`_.

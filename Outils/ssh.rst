@@ -4,13 +4,13 @@
 
 
 .. _ssh:
-	
+
 SSH
 ---
 
 `ssh(1)`_ est un outil qui permet de se connecter depuis l'Internet à la console d'une autre machine et donc d'y exécuter des commandes. Dans l'infrastructure INGI vous pouvez vous connecter via ssh aux différents machines des salles en utilisant votre login et mot de passe INGI. Pour savoir les noms de machines, visitez le `student-wiki <http://wiki.student.info.ucl.ac.be/index.php/Mat%E9riel>`_.
 
-Depuis l'extérieur vous devez passer via ``sirius.info.ucl.ac.be`` pour ensuite pouvoir vous connecter sur les machines des salles. 
+Depuis l'extérieur vous devez passer via ``sirius.info.ucl.ac.be`` pour ensuite pouvoir vous connecter sur les machines des salles.
 
 Quelques exemples d'utilisation de `ssh(1)`_ qui vous seront utiles:
 

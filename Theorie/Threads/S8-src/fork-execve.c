@@ -1,7 +1,7 @@
 /**************************************
  * fork-execve.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * fork et execve
  *
  *************************************/
@@ -26,7 +26,7 @@ int main (int argc, char *argv[])  {
   }
   // pas d'erreur
   if (pid==0) {
-    // fils 
+    // fils
     char *arguments[]={"expr", "1", "+", "2", NULL};
     char *environnement[]={"PATH=/bin:/usr/bin",NULL};
     int err=execve("/usr/bin/expr", arguments, environnement);

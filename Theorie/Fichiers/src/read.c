@@ -1,7 +1,7 @@
 /**************************************
  * read.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * fichiers
  *
  *************************************/
@@ -39,7 +39,7 @@ int main (int argc, char *argv[])  {
     perror("open");
     exit(EXIT_FAILURE);
   }
-  if( write(fd, (void *) s, strlen(s)) == -1 ) 
+  if( write(fd, (void *) s, strlen(s)) == -1 )
     exit_on_error("write s");
   if (write(fd, (void *) &n, sizeof(int )) == -1)
     exit_on_error("write n");
@@ -83,8 +83,8 @@ int main (int argc, char *argv[])  {
   if(err==-1){
    perror("close");
     exit(EXIT_FAILURE);
-  } 
-     
+  }
+
   return(EXIT_SUCCESS);
 }
 ///BBB

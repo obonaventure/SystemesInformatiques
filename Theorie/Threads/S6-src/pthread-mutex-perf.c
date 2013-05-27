@@ -1,8 +1,8 @@
 /**************************************
  * pthread-mutex.c
- * 
- * Programme d'exemple de pthread avec 
- * utilisation de mutex pour éviter une 
+ *
+ * Programme d'exemple de pthread avec
+ * utilisation de mutex pour éviter une
  * violation de section critique
  *
  **************************************/
@@ -34,7 +34,7 @@ void error(int err, char *msg) {
 
 int percent; // pourcentage de temps en section critique
 int nthreads; // nombre de threads
-pthread_mutex_t mutex; 
+pthread_mutex_t mutex;
 
 void critique() {
   long j=0;
@@ -65,7 +65,7 @@ void *func(void * param) {
 
 int main (int argc, char *argv[])  {
   int err;
-  struct timeval tvStart, tvEnd; 
+  struct timeval tvStart, tvEnd;
   long mesures[N];
 
   if(argc!=3)
@@ -74,7 +74,7 @@ int main (int argc, char *argv[])  {
   char *endptr;
   percent=strtol(argv[1],&endptr,10);
   nthreads=strtol(argv[2],&endptr,10);
-  
+
   pthread_t thread[nthreads];
 
   err=pthread_mutex_init( &mutex, NULL);
@@ -85,14 +85,14 @@ int main (int argc, char *argv[])  {
 
     err=gettimeofday(&tvStart, NULL);
     if(err!=0)
-      exit(EXIT_FAILURE);  
-    
+      exit(EXIT_FAILURE);
+
     for(int i=0;i<nthreads;i++) {
-      err=pthread_create(&(thread[i]),NULL,&func,NULL); 
+      err=pthread_create(&(thread[i]),NULL,&func,NULL);
       if(err!=0)
 	error(err,"pthread_create");
     }
-    
+
     for(int i=nthreads-1;i>=0;i--) {
       err=pthread_join(thread[i],NULL);
       if(err!=0)
@@ -101,12 +101,12 @@ int main (int argc, char *argv[])  {
     err=gettimeofday(&tvEnd, NULL);
     if(err!=0)
       exit(EXIT_FAILURE);
-    
+
     mesures[i]=timeval_diff(&tvEnd, &tvStart);
     sum+=mesures[i];
-    
+
   }
-  printf("%d, %d, %ld\n",nthreads,percent,sum/N); 
+  printf("%d, %d, %ld\n",nthreads,percent,sum/N);
 
   err=pthread_mutex_destroy(&mutex);
   if(err!=0)

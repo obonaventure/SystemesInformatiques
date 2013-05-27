@@ -10,7 +10,7 @@ pixel a une couleur bien spécifique qui est définie par 3 couleurs primaires:
 le rouge, le vert et le bleu. Ces 3 couleurs primaires permettent de représenter, en les additionnants, un grand nombre de couleurs.
 
 Le format bitmap est un format de fichier pour stocker l'information sur les pixels
-d'une image. C'est un format très simple qui utilise le format RGB pour chaque pixel. 
+d'une image. C'est un format très simple qui utilise le format RGB pour chaque pixel.
 Dans ce format, l'intensité de chacune des couleurs primaires d'un pixel est exprimé par un
 entier sur 8 bits. Ces couleurs ont donc une valeur entre 0 et 255 avec 0 étant l'intensité
 la plus faible (le noir) et 255 l'intensité la plus forte (le blanc).

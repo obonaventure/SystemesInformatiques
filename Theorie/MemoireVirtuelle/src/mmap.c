@@ -1,7 +1,7 @@
 /**************************************
  * mmap.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * mincore
  *
  *************************************/
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
     int fd;
     struct stat file_stat;
     void *file_mmap;
-    
+
     create_file(100,"sinf1252.dat");
 
     fd = open("sinf1252.dat",O_RDONLY);
@@ -50,15 +50,15 @@ int main(int argc, char *argv[]) {
     if (fstat(fd, &file_stat)<0) {
       perror("fstat");
       exit(EXIT_FAILURE);
-    } 
-    // fichier est un vecteur d'entiers  
+    }
+    // fichier est un vecteur d'entiers
     file_mmap = mmap((void *) 0, file_stat.st_size, PROT_READ, MAP_FILE, fd, 0);
     if(file_mmap==NULL) {
       perror("mmap");
       exit(EXIT_FAILURE);
     }
     printf("%p mmap\n",file_mmap);
-    float * vector=(float *) file_mmap; 
+    float * vector=(float *) file_mmap;
     float min=FLT_MAX;
     for(int i=0;i<file_stat.st_size/sizeof(float);i++) {
       if (*vector<min) {

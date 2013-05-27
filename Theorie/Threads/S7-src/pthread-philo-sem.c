@@ -1,7 +1,7 @@
 /**************************************
  * pthread-philo-sem.c
- * 
- * Programme d'exemple de pthread avec 
+ *
+ * Programme d'exemple de pthread avec
  * philosophes qui dinent et sémaphores
  *
  **************************************/
@@ -32,16 +32,16 @@ void* philosophe ( void* arg )
   int left = *id;
   int right = (left + 1) % PHILOSOPHES;
   while(true) {
-    printf("Philosophe [%d] pense\n",*id);    
+    printf("Philosophe [%d] pense\n",*id);
     sem_wait(&baguette[left]);
-    printf("Philosophe [%d] possède baguette gauche [%d]\n",*id,left);    
+    printf("Philosophe [%d] possède baguette gauche [%d]\n",*id,left);
     sem_wait(&baguette[right]);
-    printf("Philosophe [%d] possède baguette droite [%d]\n",*id,right);    
+    printf("Philosophe [%d] possède baguette droite [%d]\n",*id,right);
     mange(*id);
     sem_post(&baguette[left]);
-    printf("Philosophe [%d] a libéré baguette gauche [%d]\n",*id,left);    
+    printf("Philosophe [%d] a libéré baguette gauche [%d]\n",*id,left);
     sem_post(&baguette[right]);
-    printf("Philosophe [%d] a libéré baguette droite [%d]\n",*id,right);    
+    printf("Philosophe [%d] a libéré baguette droite [%d]\n",*id,right);
   }
   return (NULL);
 }

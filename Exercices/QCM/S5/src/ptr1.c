@@ -26,20 +26,20 @@ void f4() // incorrect
 void f5() // incorrect
 {
   int b=a;
-  ptr=&(b); 
+  ptr=&(b);
 
 }
 
 void f6() // incorrect
 {
-  ptr=&a+1; 
+  ptr=&a+1;
 }
 
 
 
 int main() {
 
- 
+
 
 }
 

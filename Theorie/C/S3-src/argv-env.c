@@ -1,6 +1,6 @@
 /**************************************
  * arg-env.c
- * 
+ *
  * Arguments et variables d'environnement
  *
  **************************************/
@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
   char *old_path=getenv("PATH");
 
   print_var("PATH");
-  
+
   if(unsetenv("PATH")!=0) {
     fprintf(stderr,"Erreur unsetenv\n");
     exit(EXIT_FAILURE);

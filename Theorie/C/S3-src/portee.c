@@ -1,6 +1,6 @@
 /**************************************
  * portee.c
- * 
+ *
  * Programme d'exemple pour la portée de
  * variables
  **************************************/
@@ -8,9 +8,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-///AAA 
+///AAA
 
-int g1; 
+int g1;
 int g2=1;
 
 void f(int i) {

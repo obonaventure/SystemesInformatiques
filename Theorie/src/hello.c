@@ -1,6 +1,6 @@
 /**************************************
  * Hello.c
- * 
+ *
  * Programme affichant sur la sortie
  * standard le message "Hello, world!"
  *

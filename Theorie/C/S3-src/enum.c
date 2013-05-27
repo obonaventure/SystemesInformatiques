@@ -1,6 +1,6 @@
 /**************************************
  * enum.c
- * 
+ *
  * Programme d'exemple de enum
  *
  **************************************/
@@ -15,7 +15,7 @@ typedef enum  {
    } day;
 
 // jeu de carte
-typedef enum { 
+typedef enum {
   coeur, carreau, trefle, pique
 } carte;
 

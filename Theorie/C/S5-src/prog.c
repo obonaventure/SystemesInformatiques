@@ -1,6 +1,6 @@
 /**************************************
  * prog
- * 
+ *
  * Programme d'exemple pour le linker
  *
  **************************************/
@@ -21,7 +21,7 @@ void f() {
   static int n=0;
   int loc=2;
   if(n==0)
-    printf("n est à  l'adresse %p et loc à l'adresse %p\n",&n,&loc); 
+    printf("n est à  l'adresse %p et loc à l'adresse %p\n",&n,&loc);
   printf("f, n=%d\n",n);
   n++;
 }

@@ -4,10 +4,10 @@
 int count1(char *s, char c) {
   int i=0;
   int count=0;
-  while(*(s+i)!='\0') { 
+  while(*(s+i)!='\0') {
     if(*(s+i)==c) {
        count++;
-    }    
+    }
     i++;
   }
   return(count);
@@ -16,10 +16,10 @@ int count1(char *s, char c) {
 
 int count2(char *s, char c) {
   int count=0;
-  while(*(s)!='\0') { 
+  while(*(s)!='\0') {
     if(*(s)==c) {
        count++;
-    }    
+    }
     s++;
   }
   return(count);
@@ -36,7 +36,7 @@ int main() {
 
   printf("%s -> %d\n",s1,count2(s1,'a'));
   printf("%s -> %d\n",s2,count2(s2,'a'));
-  
+
 
 }
 

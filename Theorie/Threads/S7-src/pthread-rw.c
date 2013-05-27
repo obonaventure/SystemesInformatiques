@@ -1,7 +1,7 @@
 /**************************************
  * pthread-rw.c
- * 
- * Programme d'exemple de pthread avec 
+ *
+ * Programme d'exemple de pthread avec
  * readers-writers lock
  *
  **************************************/
@@ -35,7 +35,7 @@ void *writer( void *arg)
   printf ("Writer %d terminé\n",gettid());
   return(NULL);
 
-  
+
 }
 void* reader ( void* arg )
 {
@@ -55,7 +55,7 @@ void* reader ( void* arg )
 int main ( int argc, char *argv[])
 {
    int i;
-   
+
    srand(getpid());
 
    pthread_rwlock_init(&lock, 0);

@@ -1,7 +1,7 @@
 /**************************************
  * ptrptr.c
- * 
- * Programme d'exemple pour les pointeurs 
+ *
+ * Programme d'exemple pour les pointeurs
  * vers des pointeurs
  *
  **************************************/

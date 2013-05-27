@@ -1,6 +1,6 @@
 /**************************************
  * errno.c
- * 
+ *
  * Programme d'exemple pour errno
  *
  **************************************/
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   if(setenv("PATH=","/usr/bin",1)!=0) {
     fprintf(stderr,"Erreur : errno=%d %s\n",errno,strerror(errno));
    }
-  
+
 
 }
 

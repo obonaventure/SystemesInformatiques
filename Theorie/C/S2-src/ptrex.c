@@ -1,6 +1,6 @@
 /***********************************************
  * ptrex.c
- * 
+ *
  * Programme d'exemple d'utilisation de pointeurs
  *
  ***********************************************/
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
    int *ptr_i;     // pointeur vers un entier
    char str[]="Unix";
    char *s;        // pointeur vers un char
-   
+
    ptr_i=&i;
    printf("valeur de i : %d, valeur pointée par ptr_i : %d\n",i,*ptr_i);
    *ptr_i=*(ptr_i)+1252;

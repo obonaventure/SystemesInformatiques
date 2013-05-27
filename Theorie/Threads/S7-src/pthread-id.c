@@ -1,8 +1,8 @@
 /**************************************
  * pthread-specific.c
- * 
+ *
  * Programme d'exemple de pthread qui utilise une
- * zone mémoire pour stocker des données 
+ * zone mémoire pour stocker des données
  * spécifiques au thread
  **************************************/
 
@@ -39,7 +39,7 @@ long power(long i, long j) {
 void g();
 
 void *f1( void* param) {
-  
+
   printf("f1 a calculé %d"
   return(NULL);
 }
@@ -63,7 +63,7 @@ void *fermat (void * param) {
 	}
       }
     }
-  }   
+  }
   return(NULL);
 }
 
@@ -71,17 +71,17 @@ int main (int argc, char *argv[])  {
   pthread_t threads[NTHREADS];
   int err;
 
-  err=pthread_create(&(threads[i]),NULL,&fermat,(void *)(long) i+2); 
+  err=pthread_create(&(threads[i]),NULL,&fermat,(void *)(long) i+2);
   if(err!=0)
     error(err,"pthread_create");
-  
-  
+
+
 
 
   for(int i=0;i<NTHREADS;i++) {
     void *p;
     err=pthread_join(threads[i],(void **)&(p));
-		     
+
     if(err!=0)
       error(err,"pthread_create");
     //if(p!=NULL) {
@@ -89,7 +89,7 @@ int main (int argc, char *argv[])  {
       //      r=(struct result) p;
       //printf("Trouvé pour %d : x=%ld, y=%ld, z=%ld\n",i+2,r[i].x,r[i].y, r[i].z);
   }
-    
+
 
   return(EXIT_SUCCESS);
 }

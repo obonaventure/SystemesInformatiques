@@ -1,7 +1,7 @@
 /**************************************
  * fork.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * fork
  *
  *************************************/
@@ -27,14 +27,14 @@ void output(char c) {
 }
 
 int main (int argc, char *argv[])  {
-  
+
   if(argc > 1) {
     setbuf(stdout,NULL);
   }
 
   pid_t pid;
 
-  pid=fork();  
+  pid=fork();
   if (pid==-1) {
     // erreur à l'exécution de fork
     perror("fork");

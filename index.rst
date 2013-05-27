@@ -45,7 +45,7 @@ Langage C
 
 .. toctree::
    :maxdepth: 2
- 
+
    Theorie/C/intro-C
    Theorie/C/datatypes
    Theorie/C/malloc
@@ -133,4 +133,4 @@ Annexes
 
    bib
    glossaire
-   
+

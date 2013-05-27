@@ -1,6 +1,6 @@
 /**************************************
  * pthread-neg.c
- * 
+ *
  * Programme d'exemple de pthread utilisant les
  * arguments et retournant une valeur
  *
@@ -36,14 +36,14 @@ void launch(void ){
   for(int i=0;i<SIZE;i++) {
     v[i]=1;
   }
-  int err=pthread_create(&(mythread),NULL,&f,(void *) v); 
+  int err=pthread_create(&(mythread),NULL,&f,(void *) v);
   if(err!=0)
-    error(err,"pthread_create");  
+    error(err,"pthread_create");
 }
 
 
 int main (int argc, char *argv[])  {
-  
+
   launch();
   // ...
   return(EXIT_SUCCESS);

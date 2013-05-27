@@ -1,7 +1,7 @@
 /**************************************
  * fork-pipe.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * pipe en combinaison avec fork
  *
  *************************************/
@@ -70,7 +70,7 @@ int main (int argc, char *argv[])  {
     }
     if( close(fd[1])==-1)
       exit_on_error("close(fd[1])");
-    
+
     int fils=waitpid(pid,&status,0);
     if(fils==-1) {
       perror("wait");

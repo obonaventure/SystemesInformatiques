@@ -1,6 +1,6 @@
 /**************************************
  * static.c
- * 
+ *
  * Programme d'exemple de variables static
 יי
  *

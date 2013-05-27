@@ -43,7 +43,7 @@ Cette application qui supporte plusieurs niveaux de debugging utilise pourtant t
 Ce n'est pas la seule utilisation des pointeurs vers des fonctions. Il y a notamment la fonction de la librairie `qsort(3)`_ qui permet de trier un tableau contenant n'importe quel type d'information. Cette fonction prend plusieurs arguments :
 
 .. code-block:: c
-  
+
   void qsort(void *base, size_t nel, size_t width,
              int (*compar)(const void *, const void *));
 
@@ -59,7 +59,7 @@ Il est utile d'analyser en détails les arguments de la fonction de comparaison 
 
 .. todo:: restrict
 
-Le second type de pointeurs que nous n'avons pas encore abordé en détails sont les pointeurs vers des pointeurs. En fait, nous les avons utilisés sans vraiment le savoir dans la fonction ``main``. En effet, le second argument de cette fonction est un tableau de pointeurs qui pointent chacun vers des chaînes de caractères différentes. La notation ``char *argv[]`` est équivalente à la notation ``char **argv``. ``**argv`` est donc un pointeur vers une zone qui contient des pointeurs vers des chaînes de caractères. Ce pointeur vers un pointeur doit être utilisé avec précaution. ``argv[0]`` est un pointeur vers une chaîne de caractères. La construction ``&(argv[0])`` permet donc d'obtenir un pointeur vers un pointeur vers une chaîne de caractères, ce qui correspond bien à la déclaration ``char **``. Ensuite, l'utilisation de ``*p`` pourrait surprendre. ``*p`` est un pointeur vers une chaîne de caractères. Il peut donc être comparé à ``NULL`` qui est aussi un pointeur, incrémenté et la chaîne de caractères qu'il référencie peut être affichée par `printf(3)`_. 
+Le second type de pointeurs que nous n'avons pas encore abordé en détails sont les pointeurs vers des pointeurs. En fait, nous les avons utilisés sans vraiment le savoir dans la fonction ``main``. En effet, le second argument de cette fonction est un tableau de pointeurs qui pointent chacun vers des chaînes de caractères différentes. La notation ``char *argv[]`` est équivalente à la notation ``char **argv``. ``**argv`` est donc un pointeur vers une zone qui contient des pointeurs vers des chaînes de caractères. Ce pointeur vers un pointeur doit être utilisé avec précaution. ``argv[0]`` est un pointeur vers une chaîne de caractères. La construction ``&(argv[0])`` permet donc d'obtenir un pointeur vers un pointeur vers une chaîne de caractères, ce qui correspond bien à la déclaration ``char **``. Ensuite, l'utilisation de ``*p`` pourrait surprendre. ``*p`` est un pointeur vers une chaîne de caractères. Il peut donc être comparé à ``NULL`` qui est aussi un pointeur, incrémenté et la chaîne de caractères qu'il référencie peut être affichée par `printf(3)`_.
 
 .. literalinclude:: /Theorie/C/S5-src/ptrptr.c
    :encoding: iso-8859-1
@@ -67,7 +67,7 @@ Le second type de pointeurs que nous n'avons pas encore abordé en détails sont
    :start-after: ///AAA
    :end-before: ///BBB
 
-En pratique, ces pointeurs vers des pointeurs se retrouveront lorsque l'on doit manipuler des structures multidimensionnelles, mais aussi lorsqu'il faut qu'une fonction puisse modifier une adresse qu'elle a reçue en argument. 
+En pratique, ces pointeurs vers des pointeurs se retrouveront lorsque l'on doit manipuler des structures multidimensionnelles, mais aussi lorsqu'il faut qu'une fonction puisse modifier une adresse qu'elle a reçue en argument.
 
 .. C'est notamment le cas lorsqu'il faut mettre à jour une structure chaînée. Lorsque nous avons construit une structure chaînée permettant de manipuler une pile, les fonctions ``push`` et ``pop`` récupéraient le sommet de la pile dans une variable globale. Cet aspect sera couvert par un des exercices.
 
@@ -95,7 +95,7 @@ Lors de son exécution, ce programme affiche la sortie suivante.
    :encoding: iso-8859-1
    :language: console
 
-L'appel à `strtol(3)`_ prend trois arguments. Tout d'abord un pointeur vers la chaîne de caractères à convertir. Ensuite l'adresse d'un pointeur vers une chaîne de caractères. Enfin la base de conversion. La première chaîne de caractères est correcte. Elle est convertie directement. La seconde par contre contient un caractère erroné. Lors de son exécution, `strtol(3)`_ va détecter la présence du caractère ``m`` et placera un pointeur vers ce caractère dans ``*p``. Pour que la fonction `strtol(3)`_ puisse retourner un pointeur de cette façon, il est nécessaire que son second argument soit de type ``char **``. Si le second argument était de type ``char *``, la fonction `strtol(3)`_ recevrait l'adresse d'une zone mémoire contenant un caractère. Comme le langage C utilise la passage par valeur, `strtol(3)`_ pourrait modifier la caractère pointé par ce pointeur mais pas son adresse. En utilisant un second argument de type ``char **``, `strtol(3)`_ a la possibilité de modifier la valeur pointée par ce pointeur. 
+L'appel à `strtol(3)`_ prend trois arguments. Tout d'abord un pointeur vers la chaîne de caractères à convertir. Ensuite l'adresse d'un pointeur vers une chaîne de caractères. Enfin la base de conversion. La première chaîne de caractères est correcte. Elle est convertie directement. La seconde par contre contient un caractère erroné. Lors de son exécution, `strtol(3)`_ va détecter la présence du caractère ``m`` et placera un pointeur vers ce caractère dans ``*p``. Pour que la fonction `strtol(3)`_ puisse retourner un pointeur de cette façon, il est nécessaire que son second argument soit de type ``char **``. Si le second argument était de type ``char *``, la fonction `strtol(3)`_ recevrait l'adresse d'une zone mémoire contenant un caractère. Comme le langage C utilise la passage par valeur, `strtol(3)`_ pourrait modifier la caractère pointé par ce pointeur mais pas son adresse. En utilisant un second argument de type ``char **``, `strtol(3)`_ a la possibilité de modifier la valeur pointée par ce pointeur.
 
 Une implémentation partielle de `strtol(3)`_ pourrait être la suivante.
 
@@ -105,7 +105,7 @@ Une implémentation partielle de `strtol(3)`_ pourrait être la suivante.
    :start-after: ///AAA
    :end-before: ///BBB
 
-Cette partie de code utilise la fonction `isdigit(3)`_ pour vérifier si les caractères présents dans la chaîne de caractères sont des chiffres. Sinon, elle fixe via son second argument la valeur du pointeur vers le caractère en erreur. Cela est réalisé par l'expression ``*endptr=(char *)(str+i);``. Il faut noter que ``*endptr`` est bien une zone mémoire pointée par le pointeur ``endptr`` reçu comme second argument. Cette valeur peut donc être modifiée. 
+Cette partie de code utilise la fonction `isdigit(3)`_ pour vérifier si les caractères présents dans la chaîne de caractères sont des chiffres. Sinon, elle fixe via son second argument la valeur du pointeur vers le caractère en erreur. Cela est réalisé par l'expression ``*endptr=(char *)(str+i);``. Il faut noter que ``*endptr`` est bien une zone mémoire pointée par le pointeur ``endptr`` reçu comme second argument. Cette valeur peut donc être modifiée.
 
 Il existe d'autres fonctions de la librairie standard qui utilisent des pointeurs vers des pointeurs comme arguments dont notamment `strsep(3)`_ et `strtok_r(3)`_.
 
@@ -118,16 +118,16 @@ Il existe d'autres fonctions de la librairie standard qui utilisent des pointeur
 De grands programmes en C
 -------------------------
 
-Lorsque l'on développe de grands programmes en C, il est préférable de découper le programme en modules. Chaque module contient des fonctions qui traitent d'un même type de problème et sont fortement couplées. A titre d'exemple, un module ``stack`` pourrait regrouper différentes fonctions de manipulation d'une pile. Un autre module pourrait regrouper les fonctions relatives au dialogue avec l'utilisateur, un autre les fonctions de gestion des fichiers, ... 
+Lorsque l'on développe de grands programmes en C, il est préférable de découper le programme en modules. Chaque module contient des fonctions qui traitent d'un même type de problème et sont fortement couplées. A titre d'exemple, un module ``stack`` pourrait regrouper différentes fonctions de manipulation d'une pile. Un autre module pourrait regrouper les fonctions relatives au dialogue avec l'utilisateur, un autre les fonctions de gestion des fichiers, ...
 
-Pour comprendre l'utilisation de ces modules, considérons d'abord un programme trivial composé de deux modules. Le premier module est celui qui contient la fonction ``main``. Tout programme C doit contenir une fonction ``main`` pour pouvoir être exécuté. C'est en général l'interface avec l'utilisateur. Le second module contient une fonction générique qui est utilisée par le module principal. 
+Pour comprendre l'utilisation de ces modules, considérons d'abord un programme trivial composé de deux modules. Le premier module est celui qui contient la fonction ``main``. Tout programme C doit contenir une fonction ``main`` pour pouvoir être exécuté. C'est en général l'interface avec l'utilisateur. Le second module contient une fonction générique qui est utilisée par le module principal.
 
 .. literalinclude:: /Theorie/C/S5-src/main.c
    :encoding: iso-8859-1
    :language: c
 
 Un module d'un programme C est en général décomposé en deux parties. Tout d'abord, le fichier :term:`fichier header` contient les définitions de certaines constantes et les signatures des fonctions exportées par ce module. Ce fichier est en quelque sorte un résumé du module, ou plus précisément de son interface externe. Il doit être inclus dans tout fichier qui utilise les fonctions du module correspondant. Dans un tel fichier :term:`fichier header`, on retrouve généralement trois types d'informations :
- 
+
  - les signatures des fonctions qui sont définies dans le module. En général, seules les fonctions qui sont destinées à être utilisées par des modules extérieures sont reprises dans le :term:`fichier header`
  - les constantes qui sont utilisées à l'intérieur du module et doivent être visibles en dehors de celui-ci, notamment par les modules qui utilisent les fonctions du module. Ces constantes peuvent être définies en utilisant des directives ``#define`` du préprocesseur
  - les variables globales qui sont utilisées par les fonctions du module et doivent être accessibles en dehors de celui-ci
@@ -138,7 +138,7 @@ Un module d'un programme C est en général décomposé en deux parties. Tout d'
 
 .. note:: Un :term:`fichier header` ne doit être inclus qu'une seule fois
 
- L'exemple de :term:`fichier header` ci-dessus illustre une convention courante dans l'écriture de ces fichiers. Parfois, il est nécessaire d'inclure un :term:`fichier header` dans un autre fichier header. Suite à cela, il est possible que les mêmes définitions d'un :term:`fichier header` soient incluses deux fois ou plus dans le même module. Cela peut causer des erreurs de compilation qui risquent de perturber certains programmeurs. Une règle de bonne pratique pour éviter ce problème est d'inclure le contenu du :term:`fichier header` de façon conditionnelle comme présenté ci-dessus. Une constante, dans ce cas ``_MIN_H_``, est définie pour le :term:`fichier header` concerné. Cette constante est définie dans la première ligne effective du :term:`fichier header`. Celui-ci n'est inclus dans un module que si cette constante n'a pas été préalablement définie. Si cette constante est connue par le préprocesseur, cela indique qu'un autre :term:`fichier header` a déjà inclus les définitions de ce fichier et qu'elles ne doivent pas être incluses une seconde fois. 
+ L'exemple de :term:`fichier header` ci-dessus illustre une convention courante dans l'écriture de ces fichiers. Parfois, il est nécessaire d'inclure un :term:`fichier header` dans un autre fichier header. Suite à cela, il est possible que les mêmes définitions d'un :term:`fichier header` soient incluses deux fois ou plus dans le même module. Cela peut causer des erreurs de compilation qui risquent de perturber certains programmeurs. Une règle de bonne pratique pour éviter ce problème est d'inclure le contenu du :term:`fichier header` de façon conditionnelle comme présenté ci-dessus. Une constante, dans ce cas ``_MIN_H_``, est définie pour le :term:`fichier header` concerné. Cette constante est définie dans la première ligne effective du :term:`fichier header`. Celui-ci n'est inclus dans un module que si cette constante n'a pas été préalablement définie. Si cette constante est connue par le préprocesseur, cela indique qu'un autre :term:`fichier header` a déjà inclus les définitions de ce fichier et qu'elles ne doivent pas être incluses une seconde fois.
 
 .. literalinclude:: /Theorie/C/S5-src/min.c
    :encoding: iso-8859-1
@@ -146,7 +146,7 @@ Un module d'un programme C est en général décomposé en deux parties. Tout d'
 
 .. note:: Localisation des fichiers header
 
- Un programmeur C peut utiliser deux types de fichiers header. Il y a tout d'abord les fichiers headers standards qui sont fournis avec le système. Ce sont ceux que nous avons utilisé jusque maintenant. Ces headers standards se reconnaissent car ils sont entourés des caractères ``<`` et ``>`` dans la directive ``#include``. Ceux-ci se trouvent dans des répertoires connus par le compilateur, normalement ``/usr/include``. Les fichiers headers qui accompagnent un module se trouvent eux généralement dans le même répertoire que le module. Dans l'exemple ci-dessus, le header ``min.h`` est inclus via la directive ``#include "min.h"``. Lorsque le préprocesseur rencontre une telle directive, il cherche le fichier dans le répertoire courant. Il est possible de spécifier des répertoires qui contiennent des fichiers headers via l'argument ``-I`` de `gcc(1)`_  ou en utilisant les variables d'environnement ``GCC_INCLUDE_DIR`` ou ``CPATH``. 
+ Un programmeur C peut utiliser deux types de fichiers header. Il y a tout d'abord les fichiers headers standards qui sont fournis avec le système. Ce sont ceux que nous avons utilisé jusque maintenant. Ces headers standards se reconnaissent car ils sont entourés des caractères ``<`` et ``>`` dans la directive ``#include``. Ceux-ci se trouvent dans des répertoires connus par le compilateur, normalement ``/usr/include``. Les fichiers headers qui accompagnent un module se trouvent eux généralement dans le même répertoire que le module. Dans l'exemple ci-dessus, le header ``min.h`` est inclus via la directive ``#include "min.h"``. Lorsque le préprocesseur rencontre une telle directive, il cherche le fichier dans le répertoire courant. Il est possible de spécifier des répertoires qui contiennent des fichiers headers via l'argument ``-I`` de `gcc(1)`_  ou en utilisant les variables d'environnement ``GCC_INCLUDE_DIR`` ou ``CPATH``.
 
 Lorsque l'on doit compiler un programme qui fait appel à plusieurs modules, quelle que soit sa taille, il est préférable d'utiliser `make(1)`_ pour automatiser sa compilation. Le fichier ci-dessous est un exemple minimaliste de :term:`Makefile` utilisable pour un tel projet.
 
@@ -164,7 +164,7 @@ La figure ci-dessous représente graphiquement les différentes étapes de compi
    :align: center
    :scale: 60
 
-   Etapes de compilation 
+   Etapes de compilation
 
 
 Lorsque plusieurs modules, potentiellement développés par des programmeurs qui ne se sont pas concertés, doivent être intégrés dans un grand programme, il y a des risques de conflits entre des variables et fonctions qui pourraient être définies dans plusieurs modules différents. Ainsi, deux modules pourraient définir la fonction ``int min(int, int)`` ou la variable globale ``float dist``. Le langage C intègre des facilités qui permettent d'éviter ou de contrôler ces problèmes.
@@ -190,8 +190,8 @@ Afin d'illustrer l'utilisation de ``static`` et ``extern``, considérons le prog
    :encoding: iso-8859-1
    :language: c
 
-Ce module contient deux fonctions, ``vmin`` et ``min``. ``vmin`` est déclarée sans qualificatif. Elle est donc accessible depuis n'importe quel module. Sa signature est reprise dans le :term:`fichier header` ``module.h``. La fonction ``min`` par contre est déclarée avec le qualificatif ``static``. Cela implique qu'elle n'est utilisable qu'à l'intérieur de ce module et invisible de tout autre module. La variable globale ``num1`` est accessible depuis n'importe quel module. La variable ``num2`` également, mais elle est initialisée dans un autre module. Enfin, la variable ``num3`` n'est accessible qu'à l'intérieur de ce module. 
- 
+Ce module contient deux fonctions, ``vmin`` et ``min``. ``vmin`` est déclarée sans qualificatif. Elle est donc accessible depuis n'importe quel module. Sa signature est reprise dans le :term:`fichier header` ``module.h``. La fonction ``min`` par contre est déclarée avec le qualificatif ``static``. Cela implique qu'elle n'est utilisable qu'à l'intérieur de ce module et invisible de tout autre module. La variable globale ``num1`` est accessible depuis n'importe quel module. La variable ``num2`` également, mais elle est initialisée dans un autre module. Enfin, la variable ``num3`` n'est accessible qu'à l'intérieur de ce module.
+
 .. literalinclude:: /Theorie/C/S5-src/prog.c
    :encoding: iso-8859-1
    :language: c
@@ -211,9 +211,9 @@ Le dernier point à mentionner concernant cet exemple est relatif à la fonction
 Traitement des erreurs
 ----------------------
 
-Certaines fonctions de la librairie et certains appels systèmes réussissent toujours. C'est le cas par exemple pour `getpid(2)`_. D'autres fonctions peuvent échouer et il est important de tester la valeur de retour de chaque fonction/appel système utilisé pour pouvoir réagir correctement à toute erreur. Pour certaines fonctions ou appels systèmes, il est parfois nécessaire de fournir à l'utilisateur plus d'information sur l'erreur qui s'est produite. La valeur de retour utilisée pour la plupart des fonctions de la libraire et appels système (souvent un ``int`` ou un pointeur), ne permet pas de fournir de l'information précise sur l'erreur qui s'est produite. 
+Certaines fonctions de la librairie et certains appels systèmes réussissent toujours. C'est le cas par exemple pour `getpid(2)`_. D'autres fonctions peuvent échouer et il est important de tester la valeur de retour de chaque fonction/appel système utilisé pour pouvoir réagir correctement à toute erreur. Pour certaines fonctions ou appels systèmes, il est parfois nécessaire de fournir à l'utilisateur plus d'information sur l'erreur qui s'est produite. La valeur de retour utilisée pour la plupart des fonctions de la libraire et appels système (souvent un ``int`` ou un pointeur), ne permet pas de fournir de l'information précise sur l'erreur qui s'est produite.
 
-Les systèmes Unix utilisent la variable globale :term:`errno` pour résoudre ce problème et permettre à une fonction de la librairie ou un appel système qui a échoué de donner plus de détails sur les raisons de l'échec. Cette variable globale est définie dans `errno.h`_ qui doit être inclus par tout programme voulant tester ces codes d'erreur. Cette variable est de type ``int`` et `errno.h` contient les définitions des constantes correspondants aux cas d'erreurs possibles. Il faut noter que la librairie standard fournit également les fonctions `perror(3)`_  et `strerror(3)`_ qui facilitent l'écriture de messages d'erreur compréhensibles pour l'utilisateur. 
+Les systèmes Unix utilisent la variable globale :term:`errno` pour résoudre ce problème et permettre à une fonction de la librairie ou un appel système qui a échoué de donner plus de détails sur les raisons de l'échec. Cette variable globale est définie dans `errno.h`_ qui doit être inclus par tout programme voulant tester ces codes d'erreur. Cette variable est de type ``int`` et `errno.h` contient les définitions des constantes correspondants aux cas d'erreurs possibles. Il faut noter que la librairie standard fournit également les fonctions `perror(3)`_  et `strerror(3)`_ qui facilitent l'écriture de messages d'erreur compréhensibles pour l'utilisateur.
 
 A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher un message d'erreur plus parlant lors d'appels erronés à la fonction `setenv(3)`_.
 
@@ -225,10 +225,10 @@ A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher 
 .. note:: La valeur de ``errno`` n'indique pas la réussite ou l'échec d'une fonction
 
  Il faut noter que la variable ``errno`` n'est modifiée par les fonctions de la librairie ou les appels systèmes que si l'appel échoue. Si l'appel réussit, la valeur de ``errno`` n'est pas modifiée. Cela implique qu'il ne faut surtout pas tester la valeur de ``errno`` pour déterminer si une fonction de la librairie a échoué ou réussi. Il ne faut surtout par utiliser le pattern suivant :
- 
+
   .. code-block:: c
 
-   setenv("PATH","/usr/bin",1); 
+   setenv("PATH","/usr/bin",1);
    if(errno!=0) {
      fprintf(stderr,"Erreur : errno=%d %s\n",errno,strerror(errno);
    }
@@ -237,7 +237,7 @@ A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher 
 
   .. code-block:: c
 
-   err=setenv("PATH","/usr/bin",1); 
+   err=setenv("PATH","/usr/bin",1);
    if(err!=0) {
      fprintf(stderr,"Erreur : errno=%d %s\n",errno,strerror(errno));
    }

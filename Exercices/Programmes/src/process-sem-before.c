@@ -1,8 +1,8 @@
 /**************************************
  * process-sem-before.c
- * 
+ *
  * Programme d'exemple de sémaphores
- * La fonction after ne peut s'exécuter 
+ * La fonction after ne peut s'exécuter
  * qu'après la fonction before
  **************************************/
 

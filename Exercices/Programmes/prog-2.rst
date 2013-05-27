@@ -59,7 +59,7 @@ Mini-Projets
         * `strcasecmp(3)`_
 
    Le mini-projet est à soumettre via le gestionnaire de code partagé Subversion (SVN). Vous devez vous inscrire à subversion dans le projet ``SINF1252_2013`` en suivant le lien et les instructions sur `<http://wiki.student.info.ucl.ac.be/index.php/Svn>`_. Regardez la section :ref:`svn` pour une explication sur subversion.
-   
+
    Sur le SVN, soumettez votre code dans le dossier ``Projet_S2``. Vous devrez créer un fichier ``string.c`` contenant la définition des fonctions et un fichier ``string.h`` avec les `déclarations <http://en.wikipedia.org/wiki/Declaration_(computer_programming)>`_ des fonctions. Vous devez aussi fournir un Makefile (cfr :ref:`make`) qui permettra à votre tuteur de recompiler facilement votre programme en tapant ``make``. Pensez à implémenter quelques tests pour vos fonctions dans la fonction ``main`` et ne placez pas l'exécutable sur le svn.
 
 

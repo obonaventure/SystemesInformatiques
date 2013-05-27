@@ -1,6 +1,6 @@
 /**************************************
  * sumn.c
- * 
+ *
  * Programme d'exemple pour un calcul récursif
  * de la somme des n premiers nombres impairs
  *

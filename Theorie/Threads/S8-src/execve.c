@@ -1,6 +1,6 @@
 /**************************************
  * execve.c
- * 
+ *
  * Programme d'exemple pour execve
  *
  *************************************/
@@ -25,6 +25,6 @@ int main (int argc, char *argv[])  {
   // jamais atteint
   printf("Ce message ne sera jamais affiché\n");
   return(EXIT_SUCCESS);
-    
+
 }
 

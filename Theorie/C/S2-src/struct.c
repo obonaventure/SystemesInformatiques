@@ -1,6 +1,6 @@
 /***********************************************
  * struct.c
- * 
+ *
  * Programme d'exemple de structures
  *
  ***********************************************/
@@ -54,7 +54,7 @@ int equal(struct fraction f1, struct fraction f2) {
 	   (f1.denominator==f2.denominator) );
 }
 
-int equalptr(struct fraction *f1, 
+int equalptr(struct fraction *f1,
 	     struct fraction *f2) {
   return ( (f1->numerator==f2->numerator) &&
 	   (f1->denominator==f2->denominator) );

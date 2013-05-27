@@ -2,7 +2,7 @@
 
 
 
-.. _intel : http://www.intel.com 
+.. _intel : http://www.intel.com
 .. _python : http://www.python.org
 .. _perl : http://www.perl.org
 .. _subversion : http://subversion.apache.org/

@@ -1,7 +1,7 @@
 /**************************************
  * argserror.c
- * 
- * Programme d'exemple d'appel de fonction 
+ *
+ * Programme d'exemple d'appel de fonction
  * avec un nombre erroné d'arguments
  *
  **************************************/
@@ -19,6 +19,6 @@ int main(int argc, char *argv[]) {
 
   g=f(3,0);
   // g=f(5,6,7);
-  
+
   return(EXIT_SUCCESS);
 }

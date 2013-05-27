@@ -1,6 +1,6 @@
 /**************************************
  * printf.c
- * 
+ *
  * Exemples d'utilisation de printfProgramme qui a réussi
  *
  **************************************/
@@ -24,6 +24,6 @@ int main( int argc, char *argv[] ) {
   for(i=0; str[i]!='\0';i++) {
     printf("%c\n",str[i]);
   }
-  ///BBB    
+  ///BBB
   return(EXIT_SUCCESS);
 }

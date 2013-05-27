@@ -1,7 +1,7 @@
 /**************************************
  * cmdline.c
- * 
- * Programme affichant ses arguments 
+ *
+ * Programme affichant ses arguments
  * sur la sortie standard
  *
  **************************************/

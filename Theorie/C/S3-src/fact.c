@@ -1,6 +1,6 @@
 /**************************************
  * fact.c
- * 
+ *
  * Programme de calcul de factorielle
  *
  **************************************/
@@ -37,7 +37,7 @@ void compute() {
   int f;
   printf("La fonction fact est à l'adresse : %p\n",fact);
   printf("La fonction times est à l'adresse : %p\n",times);
-  printf("La variable nombre vaut %d et est à l'adresse %p\n",nombre,&nombre); 
+  printf("La variable nombre vaut %d et est à l'adresse %p\n",nombre,&nombre);
   f=fact(nombre);
   printf("La factorielle de %d vaut %d\n",nombre,f);
 }
@@ -64,7 +64,7 @@ int max(int i, int j) {
 int main(int argc, char *argv[]) {
 
   int f=1252; // variable locale
- 
+
   printf("La variable nombre est à l'adresse : %p\n",(void *) &nombre);
   printf("Le tableau msg est à l'adresse : %p\n",(void *)msg);
   printf("La variable locale f est à l'adresse : %p\n",(void *) &f);

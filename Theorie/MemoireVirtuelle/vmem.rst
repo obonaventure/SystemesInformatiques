@@ -17,7 +17,7 @@ Le modèle d'interaction entre le processeur et la mémoire que nous avons utili
 
 Ce modèle correspond au fonctionnement de processeurs simples tels que ceux que l'on trouve sur des systèmes embarqués comme une machine à lessiver. Malheureusement, il ne permet pas d'expliquer et de comprendre le fonctionnement des ordinateurs actuels. Pour s'en convaincre, il suffit de réfléchir à quelques problèmes liés à l'utilisation de la mémoire sur un ordinateur fonctionnant sous Unix.
 
-Le premier problème est lié à l'organisation d'un processus en mémoire. Sous Unix, le bas de la mémoire est réservé au code, le milieu au heap et le haut au stack. Le modèle simple d'organisation de la mémoire ne permet pas facilement de comprendre comment un tel processus peut pouvoir utiliser la mémoire sur un processeur 64 bits qui est placé dans un ordinateur qui ne dispose que de 4 GBytes de mémoire. Avec une telle quantité de mémoire, le sommet de la pile devrait se trouver à une adresse proche de :math:`2^{32}` et non :math:`2^{64}`. 
+Le premier problème est lié à l'organisation d'un processus en mémoire. Sous Unix, le bas de la mémoire est réservé au code, le milieu au heap et le haut au stack. Le modèle simple d'organisation de la mémoire ne permet pas facilement de comprendre comment un tel processus peut pouvoir utiliser la mémoire sur un processeur 64 bits qui est placé dans un ordinateur qui ne dispose que de 4 GBytes de mémoire. Avec une telle quantité de mémoire, le sommet de la pile devrait se trouver à une adresse proche de :math:`2^{32}` et non :math:`2^{64}`.
 
 Un deuxième problème est lié à l'utilisation de plusieurs processus simultanément en mémoire. Lorsque deux processus s'exécutent, ils utilisent nécessairement la même mémoire physique. Si un processus utilise l'adresse `x` et y place des instructions ou des données, cette adresse ne peut pas être utilisée par un autre processus. Physiquement, ces deux processus doivent utiliser des zones mémoires distinctes. Pourtant, le programme ci-dessous affiche les adresses de ``argc``, de la fonction ``main`` et de la fonction ``printf`` de la librairie standard puis effectue ``sleep(20);``. Lors de l'exécution de deux instances de ce programmes simultanément, on observe ceci sur la sortie standard.
 
@@ -45,11 +45,11 @@ Manifestement, les deux programmes utilisent exactement les mêmes adresses en m
 La mémoire virtuelle
 --------------------
 
-.. Avec la :term:`mémoire virtuelle`, deux types d'adresses sont utilisées sur le système : les adresses virtuelles et les adresses réelles ou physiques. 
+.. Avec la :term:`mémoire virtuelle`, deux types d'adresses sont utilisées sur le système : les adresses virtuelles et les adresses réelles ou physiques.
 
 .. Une :term:`adresse virtuelle` est une adresse qui est utilisée à l'intérieur d'un programme. Les adresses des variables ou des fonctions de notre programme d'exemple ci-dessous sont des adresses virtuelles. Une :term:`adresse physique` est l'adresse qui utilisée au niveau des puces de mémoire RAM pour les opérations d'écriture et de lecture. Ce sont les adresses physiques qui sont échangées sur le bus auquel la mémoire est connectée. Pour que les programmes puissent accéder aux instructions et données qui se trouvent en mémoire, il est nécessaire de pouvoir traduire les adresses virtuelles en adresses physiques. C'est le rôle du :term:`MMU` ou :term:`Memory Management Unit`. Historiquement, le :term:`MMU` était implémenté sous la forme d'un chip séparé qui était placé entre le processeur (qui utilisait alors des adresses virtuelles) et la mémoire (qui utilise elle toujours des adresses physiques). Aujourd'hui, le :term:`MMU` est généralement intégré au processeur pour des raisons de performances, mais conceptuellement son rôle reste essentiel comme nous allons le voir.
 
- 
+
 Le rôle principal du :term:`MMU` est de traduire toute adresse virtuelle en une adresse physique. Avant d'expliquer comment le :term:`MMU` peut être implémenté en pratique, il est utile de passer en revue plusieurs avantages de l'utilisation des adresses virtuelles.
 
 
@@ -86,9 +86,9 @@ Avant d'analyser comment la mémoire virtuelle peut être utilisée par les proc
 
 Au niveau de l'adressage, la mémoire RAM permet d'adresser des octets et supporte des lectures et des écritures à n'importe quelle adresse. La mémoire RAM permet au processeur d'écrire et de lire des octets ou des mots à une position déterminée en mémoire
 
-Un dispositif de stockage (disque dur, CD/DVD, ...) quant à lui contient un ensemble de secteurs. Chaque secteur peut être identifié par une adresse, comprenant par exemple le numéro du plateau, le numéro de la piste et le numéro du secteur sur la piste. Sur un tel dispositif, le secteur est l'unité de transfert de l'information. Cela implique que la moindre lecture/écriture sur un dispositif de stockage nécessite la lecture/écriture d'au moins 512 octets, même pour modifier un seul bit. Enfin, la dernière différence importante entre ces deux technologies est leur temps d'accès. Au niveau des mémoires RAM, les temps d'accès sont de l'ordre de quelques dizaines de nanosecondes. Pour un dispositif de stockage, les temps d'accès peuvent être de quelques dizaines de microsecondes pour un dispositif de type :term:`Solid State Drive` ou :term:`SSD` et jusqu'à quelques dizaines de millisecondes pour un disque dur. Les tableaux ci-dessous présentent les caractéristiques techniques de deux dispositifs de stockage [#fintel]_  [#fseagate]_ à titre d'exemple. 
+Un dispositif de stockage (disque dur, CD/DVD, ...) quant à lui contient un ensemble de secteurs. Chaque secteur peut être identifié par une adresse, comprenant par exemple le numéro du plateau, le numéro de la piste et le numéro du secteur sur la piste. Sur un tel dispositif, le secteur est l'unité de transfert de l'information. Cela implique que la moindre lecture/écriture sur un dispositif de stockage nécessite la lecture/écriture d'au moins 512 octets, même pour modifier un seul bit. Enfin, la dernière différence importante entre ces deux technologies est leur temps d'accès. Au niveau des mémoires RAM, les temps d'accès sont de l'ordre de quelques dizaines de nanosecondes. Pour un dispositif de stockage, les temps d'accès peuvent être de quelques dizaines de microsecondes pour un dispositif de type :term:`Solid State Drive` ou :term:`SSD` et jusqu'à quelques dizaines de millisecondes pour un disque dur. Les tableaux ci-dessous présentent les caractéristiques techniques de deux dispositifs de stockage [#fintel]_  [#fseagate]_ à titre d'exemple.
 
-La mémoire virtuelle utilise elle une unité intermédiaire qui est la :term:`page`. Une :term:`page` est une zone de mémoire contigüe. La taille des pages dépend de l'architecture du processeur et/ou du système d'exploitation utilisé. Une taille courante est de 4096 octets. 
+La mémoire virtuelle utilise elle une unité intermédiaire qui est la :term:`page`. Une :term:`page` est une zone de mémoire contigüe. La taille des pages dépend de l'architecture du processeur et/ou du système d'exploitation utilisé. Une taille courante est de 4096 octets.
 
 
 .. code-block:: c
@@ -96,7 +96,7 @@ La mémoire virtuelle utilise elle une unité intermédiaire qui est la :term:`p
    #include <unistd.h>
    int sz = getpagesize();
 
-Lorsqu'un programme est chargé en mémoire, par exemple lors de l'exécution de l'appel système `execve(2)`_, il est automatiquement découpé en pages. Grâce à la mémoire virtuelle, ces pages peuvent être stockée dans n'importe quelle zone de la mémoire RAM. La seule contrainte est que tous les octets qui font partie de la même page soient stockés à des adresses qui sont contigües. Cette contrainte permet de structurer les adresses virtuelles en deux parties comme représenté dans la figure ci-dessous. Une :term:`adresse virtuelle` est donc un ensemble de bits. Les bits de poids fort servent à identifier la :term:`page` dans laquelle une donnée est stockée. Les bits de poids faible (12 lorsque l'on utilise des pages de 4 KBytes), identifient la position de la donnée par rapport au début de la page. 
+Lorsqu'un programme est chargé en mémoire, par exemple lors de l'exécution de l'appel système `execve(2)`_, il est automatiquement découpé en pages. Grâce à la mémoire virtuelle, ces pages peuvent être stockée dans n'importe quelle zone de la mémoire RAM. La seule contrainte est que tous les octets qui font partie de la même page soient stockés à des adresses qui sont contigües. Cette contrainte permet de structurer les adresses virtuelles en deux parties comme représenté dans la figure ci-dessous. Une :term:`adresse virtuelle` est donc un ensemble de bits. Les bits de poids fort servent à identifier la :term:`page` dans laquelle une donnée est stockée. Les bits de poids faible (12 lorsque l'on utilise des pages de 4 KBytes), identifient la position de la donnée par rapport au début de la page.
 
 
 .. figure:: /Theorie/MemoireVirtuelle/fig/addrvirtuelle.png
@@ -119,12 +119,12 @@ Grâce à cette table des pages, il est possible de traduire directement les adr
    :align: center
    :scale: 60
 
-   Traduction d'adresses avec une table des pages 
+   Traduction d'adresses avec une table des pages
 
-La table des pages permet de traduire les adresses virtuelles en adresses physiques. Ce faisant, elle introduit un mécanisme d'indirection entre les adresses (virtuelles) qui sont utilisées par les programmes et les adresses (réelles) qui sont utilisées par le hardware. Ce mécanisme d'indirection a de nombreuses applications comme nous le verrons par la suite. 
+La table des pages permet de traduire les adresses virtuelles en adresses physiques. Ce faisant, elle introduit un mécanisme d'indirection entre les adresses (virtuelles) qui sont utilisées par les programmes et les adresses (réelles) qui sont utilisées par le hardware. Ce mécanisme d'indirection a de nombreuses applications comme nous le verrons par la suite.
 
 
-Un point important à mentionner concernant l'utilisation d'un mécanisme de traduction des adresses est qu'il permet de  découpler le choix de la taille des adresses (virtuelles) utilisées par les programmes des contraintes matérielles qui sont liées directement aux mémoires RAM utilisées. En pratique, il est très possible d'avoir des systèmes informatiques dans lesquels les adresses virtuelles sont plus longues, plus courtes ou ont la même longueur que les adresses physiques. Sur un ordinateur 32 bits actuel équipé de 4 GBytes de mémoire, il est naturel d'utiliser des adresses virtuelles de 32 bits et des adresses physiques de 32 bits également pour pouvoir accéder à l'ensemble de la mémoire. Dans ce cas, la mémoire virtuelle permet d'accéder à toute la mémoire physique. Aujourd'hui, il existe des serveurs 64 bits. Ceux-ci utilisent des adresses virtuelles de 64 bits, mais aucun ordinateur ne contient :term:`2^64` bytes de mémoire. Par exemple, un serveur disposant de 128 GBytes de mémoire physique pourrait se contenter d'utiliser des adresses physiques de 37 bits. Dans ce cas, la mémoire virtuelle donne l'illusion qu'il est possible d'accéder à plus de mémoire que celle qui est réellement disponible. D'un autre côté, il est aussi possible de construire des serveurs qui utilisent des adresses virtuelles de 32 bits, mais disposent de plus de 4 GBytes de mémoire RAM. Dans ce cas, les adresses physiques pourront être plus longues que les adresses réelles. Quelles que soient les longueurs respectives des adresses virtuelles et physiques, la table des pages, sous le contrôle du système d'exploitation, permettra de réaliser efficacement les traductions entre les adresses virtuelles et les adresses physiques. 
+Un point important à mentionner concernant l'utilisation d'un mécanisme de traduction des adresses est qu'il permet de  découpler le choix de la taille des adresses (virtuelles) utilisées par les programmes des contraintes matérielles qui sont liées directement aux mémoires RAM utilisées. En pratique, il est très possible d'avoir des systèmes informatiques dans lesquels les adresses virtuelles sont plus longues, plus courtes ou ont la même longueur que les adresses physiques. Sur un ordinateur 32 bits actuel équipé de 4 GBytes de mémoire, il est naturel d'utiliser des adresses virtuelles de 32 bits et des adresses physiques de 32 bits également pour pouvoir accéder à l'ensemble de la mémoire. Dans ce cas, la mémoire virtuelle permet d'accéder à toute la mémoire physique. Aujourd'hui, il existe des serveurs 64 bits. Ceux-ci utilisent des adresses virtuelles de 64 bits, mais aucun ordinateur ne contient :term:`2^64` bytes de mémoire. Par exemple, un serveur disposant de 128 GBytes de mémoire physique pourrait se contenter d'utiliser des adresses physiques de 37 bits. Dans ce cas, la mémoire virtuelle donne l'illusion qu'il est possible d'accéder à plus de mémoire que celle qui est réellement disponible. D'un autre côté, il est aussi possible de construire des serveurs qui utilisent des adresses virtuelles de 32 bits, mais disposent de plus de 4 GBytes de mémoire RAM. Dans ce cas, les adresses physiques pourront être plus longues que les adresses réelles. Quelles que soient les longueurs respectives des adresses virtuelles et physiques, la table des pages, sous le contrôle du système d'exploitation, permettra de réaliser efficacement les traductions entre les adresses virtuelles et les adresses physiques.
 
 Pour bien comprendre la traduction des adresses virtuelles en utilisant la table des pages, considérons un système imaginaire qui utilise des adresses virtuelles encodées sur 7 bits et des adresses physiques qui sont elles encodées sur 6 bits. La table des pages correspondante est reprise dans le tableau ci-dessous. Comme dans la figure précédente, la ligne du bas du tableau est relative à la page `0`.
 
@@ -134,8 +134,8 @@ Validité     Adresse
 true         00
 false	     -
 true         11
-false	     - 
-false	     - 
+false	     -
+false	     -
 false	     -
 true         01
 true         10
@@ -145,7 +145,7 @@ true         10
 
 Si on analyse la table des pages ci-dessus, on peut remarquer que la page contenant les adresses virtuelles les plus hautes se trouve dans la zone mémoire avec les adresses physiques les plus basses. Inversement, la page qui est en mémoire RAM à l'adresse la plus élevée correspond à des adresses virtuelles qui se trouvent au milieu de l'espace d'adressage. Ce découplage entre l'adresse virtuelle et la localisation physique de la page en mémoire est un des avantages importants de la mémoire virtuelle.
 
-La mémoire virtuelle a aussi un rôle important à jouer lorsque plusieurs processus s'exécutent simultanément. 
+La mémoire virtuelle a aussi un rôle important à jouer lorsque plusieurs processus s'exécutent simultanément.
 Comme indiqué ci-dessus, l'adresse de la table des pages est stockée dans un des registre du processeur. L'utilisation de ce registre permet d'avoir une table des pages pour chaque processus. Pour cela, il suffit qu'une zone de mémoire RAM soit réservée pour chaque processus et que le système d'exploitation y stocke la table des pages du processus. Lors d'un changement de contexte, le système d'exploitation modifie le registre de table des pages de façon à ce qu'il pointe vers la table des pages du processus qui s'exécute. Ce mécanisme est particulièrement utile et efficace.
 
 A titre d'exemple, considérons un système imaginaire utilisant des adresses virtuelles sur 6 bits et des adresses physiques sur 8 bits. Deux processus s'exécutent sur ce système et ils utilisent chacun trois pages, deux pages dans le bas de l'espace d'adressage virtuel qui correspondent à leur segment de code et une page dans le haut de l'espace d'adressage virtuel qui correspond à leur pile. Le premier tableau ci-dessous présente la table des pages du processus ``P1``.
@@ -174,7 +174,7 @@ Lorsque le processus ``P1`` s'exécute, c'est sa table des pages qui est utilis�
 
 .. note:: Performance de la mémoire virtuelle
 
-   Grâce à son mécanisme d'indirection entre les adresses virtuelles et les adresses physiques, la mémoire virtuelle permet de nombreuses applications comme nous le verrons dans les sections qui suivent. Cependant, la mémoire virtuelle peut avoir un impact important au niveau des performances des accès à une donnée en mémoire. Pour cela, il est intéressant d'analyser en détails ce qu'il se passe lors de chaque accès à la mémoire. Pour accéder à une donnée en mémoire, le :term:`MMU` doit d'abord consulter la table des pages pour traduire l'adresse virtuelle en une adresse physique correspondante. Ce n'est qu'après avoir obtenu cette adresse physique que le processeur peut effectuer l'accès à la mémoire RAM. En pratique, l'utilisation d'une table des pages a comme conséquence de doubler le temps d'accès à une donnée en mémoire. Lorsque la mémoire virtuelle a été inventée, ce doublement du temps d'accès à la mémoire n'était pas une limitation car les mémoires RAM étaient nettement plus rapides que les processeurs. Aujourd'hui, la situation est complètement inversée puisque les processeurs sont déjà fortement ralentis par les temps d'accès à la mémoire RAM. Doubler ce temps d'accès aurait un impact négatif sur les performances des processeurs. Pour faire face à ce problème, les processeurs actuels disposent tous d'un :term:`Translation Lookaside Buffer` (:term:`TLB`). Ce :term:`TLB` est en fait une sorte de :term:`mémoire cache` qui permet de stocker dans une mémoire rapide se trouvant sur le processeur certaines lignes de la :term:`table des pages`. Les détails de gestion du :term:`TLB` sortent du cadre de ce cours [HennessyPatterson]_. Grâce à l'utilisation du :term:`TLB`, la plupart des traductions des adresses virtuelles en adresses physique peuvent être obtenus sans devoir directement consulter la table des pages. 
+   Grâce à son mécanisme d'indirection entre les adresses virtuelles et les adresses physiques, la mémoire virtuelle permet de nombreuses applications comme nous le verrons dans les sections qui suivent. Cependant, la mémoire virtuelle peut avoir un impact important au niveau des performances des accès à une donnée en mémoire. Pour cela, il est intéressant d'analyser en détails ce qu'il se passe lors de chaque accès à la mémoire. Pour accéder à une donnée en mémoire, le :term:`MMU` doit d'abord consulter la table des pages pour traduire l'adresse virtuelle en une adresse physique correspondante. Ce n'est qu'après avoir obtenu cette adresse physique que le processeur peut effectuer l'accès à la mémoire RAM. En pratique, l'utilisation d'une table des pages a comme conséquence de doubler le temps d'accès à une donnée en mémoire. Lorsque la mémoire virtuelle a été inventée, ce doublement du temps d'accès à la mémoire n'était pas une limitation car les mémoires RAM étaient nettement plus rapides que les processeurs. Aujourd'hui, la situation est complètement inversée puisque les processeurs sont déjà fortement ralentis par les temps d'accès à la mémoire RAM. Doubler ce temps d'accès aurait un impact négatif sur les performances des processeurs. Pour faire face à ce problème, les processeurs actuels disposent tous d'un :term:`Translation Lookaside Buffer` (:term:`TLB`). Ce :term:`TLB` est en fait une sorte de :term:`mémoire cache` qui permet de stocker dans une mémoire rapide se trouvant sur le processeur certaines lignes de la :term:`table des pages`. Les détails de gestion du :term:`TLB` sortent du cadre de ce cours [HennessyPatterson]_. Grâce à l'utilisation du :term:`TLB`, la plupart des traductions des adresses virtuelles en adresses physique peuvent être obtenus sans devoir directement consulter la table des pages.
 
 
 La table des pages d'un processus contrôle les adresses physiques auxquelles le processus a accès. Pour garantir la sécurité d'un système informatique, il faut bien entendu éviter qu'un processus ne puisse modifier lui-même et sans contrôle sa table des pages. Toutes les manipulations de la table des pages ou du registre de table des pages se font sous le contrôle du système d'exploitation. La modification du registre de table des pages est une opération privilégiée qui ne peut être exécutée que par le système d'exploitation.
@@ -187,14 +187,14 @@ En termes de sécurité, une entrée de la table des pages contient également d
 
 Ces bits de protection sont généralement fixés par le système d'exploitation. Par exemple, le segment code qui ne contient que des instructions à exécuter pourra être stocké dans des pages avec les bits `R` et `X` mais pas le bit `W` pour éviter que le processus ne modifie les instructions qu'il exécute. Le stack par contre sera placé dans des pages avec les bits `R` et `W` mais pas le bit `X`. Cette technique est utilisée dans les systèmes d'exploitation récents pour éviter qu'un problème de buffer overflow sur le stack ne conduise à l'exécution d'instructions qui ne font pas partie du processus. Le heap peut utiliser les mêmes bits de protection. Enfin, les pages qui n'ont pas été allouées au processus, notamment celles se trouvant entre le heap et le stack auront toutes leurs bits de protection mis à faux. Cela permet au processeur de détecter les accès à de la mémoire qui n'a pas été allouée au processus. Un tel accès provoquera la génération d'une `segmentation fault` et l'envoi du signal correspondant.
 
-Même si ces bits de protection sont contrôlés par le système d'exploitation, il est parfois utile à un processus de modifier les bits de permissions qui sont associés à certaines de ses pages. Cela peut se faire via l'appel système `mprotect(2)`_. 
+Même si ces bits de protection sont contrôlés par le système d'exploitation, il est parfois utile à un processus de modifier les bits de permissions qui sont associés à certaines de ses pages. Cela peut se faire via l'appel système `mprotect(2)`_.
 
 .. code-block:: c
 
    #include <sys/mman.h>
 
    int mprotect(const void *addr, size_t len, int prot);
- 
+
 Cette appel système prend trois arguments. Le première est un pointeur vers le début de la zone mémoire dont il faut modifier les bits de protection. Le second est la longueur de la zone mémoire concernée et le dernier la protection souhaitée. Celle-ci est spécifiée en utilisant les constantes ``PROT_NONE``, ``PROT_READ``, ``PROT_WRITE`` et ``PROT_EXEC`` qui peuvent être combinées en utilisant une disjonction logique. La protection demandée ne peut pas être plus libérale que la protection qui est déjà fixée par le système d'exploitation. Dans ce cas, le système d'exploitation génère un signal ``SIGSEGV``.
 
 
@@ -206,7 +206,7 @@ Utilisation des dispositifs de stockage
 ---------------------------------------
 
 La mémoire virtuelle permet non seulement à des pages d'un processus d'être placées à différents endroits de la mémoire, mais aussi elle permet de combiner la mémoire RAM et les dispositifs de stockage de façon transparente pour les processus.
-.. La section précédente a montré qu'il était possible de mettre en correspondance des fichiers ou des portions de fichiers avec des zones de mémoires dans un processus. En pratique, les interactions entre les dispositifs de stockage et la mémoire sont encore plus fortes que cela puisque 
+.. La section précédente a montré qu'il était possible de mettre en correspondance des fichiers ou des portions de fichiers avec des zones de mémoires dans un processus. En pratique, les interactions entre les dispositifs de stockage et la mémoire sont encore plus fortes que cela puisque
 Une partie des pages qui composent la mémoire virtuelle peut être stockée sur un dispositif de stockage (disque dur, SSD, ...). En pratique, la mémoire RAM peut jouer le rôle d'une sorte de mémoire cache pour la mémoire virtuelle. Les pages qui sont le plus fréquemment utilisées sont placées en mémoire RAM par le système d'exploitation et les pages les moins utilisées sont elles placées sur un dispositif de stockage et ramenées en mémoire RAM lorsqu'elle sont utilisées par le processeur.
 
 Pour bien comprendre cette utilisation de la mémoire virtuelle, il nous faut revenir à la table des pages. Celle-ci comprend autant d'entrées qu'il y a de pages dans l'espace d'adressage d'un processus. Nous avons vu qu'une entrée de cette table pouvait être structurée comme dans la figure ci-dessous.
@@ -217,14 +217,14 @@ Pour bien comprendre cette utilisation de la mémoire virtuelle, il nous faut re
 
    Entrée de la table des pages
 
-Le bit de validité indique si la page est présente en mémoire RAM ou non. Lorsque la page est présente en mémoire RAM, les bits de poids faible de l'entrée de la table des pages contiennent l'adresse physique de la page en mémoire RAM. Lorsque le bit de validité a comme valeur `faux`, cela signifie que la page n'existe pas (elle n'a jamais été créée) ou qu'elle est actuellement stockée sur un dispositif de stockage. Si la page n'existe pas, aucun de ses bits de permission n'aura comme valeur `vrai` et tout accès à cette page provoquera une `segmentation fault`. Si par contre la page existe mais se trouve sur un dispositif de stockage, alors l'information de localisation pointera vers une structure de données qui est maintenue par le système d'exploitation et contient la localisation physique de la donnée sur un dispositif de stockage. 
+Le bit de validité indique si la page est présente en mémoire RAM ou non. Lorsque la page est présente en mémoire RAM, les bits de poids faible de l'entrée de la table des pages contiennent l'adresse physique de la page en mémoire RAM. Lorsque le bit de validité a comme valeur `faux`, cela signifie que la page n'existe pas (elle n'a jamais été créée) ou qu'elle est actuellement stockée sur un dispositif de stockage. Si la page n'existe pas, aucun de ses bits de permission n'aura comme valeur `vrai` et tout accès à cette page provoquera une `segmentation fault`. Si par contre la page existe mais se trouve sur un dispositif de stockage, alors l'information de localisation pointera vers une structure de données qui est maintenue par le système d'exploitation et contient la localisation physique de la donnée sur un dispositif de stockage.
 
 Schématiquement, ces informations de localisation des pages peuvent être de deux types. Lorsqu'un dispositif de stockage, ou une partition d'un tel dispositif, est dédié au stockage de pages de la mémoire virtuelle, alors la localisation d'une page est composée de l'identifiant du dispositif et du numéro du secteur sur le dispositif. Ce sera le cas lorsque par exemple une :term:`partition de swap` est utilisée. Sous Linux, le fichier ``/proc/swaps`` contient la liste des partitions de swap qui sont utilisées pour stocker les pages de la mémoire virtuelle avec leur, type, leur taille et leur utilisation. Une telle partition de swap peut être créée avec l'utilitaire `mkswap(8)`_. Elle est activée en exécutant la commande `swapon(8)`_. Celle-ci est généralement lancée automatiquement lors du démarrage du système.
 
 
 .. code-block:: console
-   
-   $ cat /proc/swaps 
+
+   $ cat /proc/swaps
    Filename		Type		Size	Used	Priority
    /dev/sda3            partition	8193140	444948	-1
 
@@ -246,16 +246,16 @@ Les processus utilisent des adresses virtuelles pour représenter les positions 
 
 Considérons une opération de lecture faite par le CPU. Pour réaliser cette opération, le CPU fournit l'adresse virtuelle au :term:`MMU`. Celui-ci va consulter le :term:`TLB` pour traduire l'adresse virtuelle demandée. Cette traduction peut nécessiter différentes opérations. Supposons que l'entrée de la table des pages demandées se trouve dans le :term:`TLB`.
 
-  - Si le :term:`bit de validité` de la page est `vrai`, la page demandée se situe en mémoire RAM. Dans ce cas, le :term:`MMU` vérifie via les bits de permissions si l'accès demandé (dans ce cas une lecture, mais un raisonnement similaire est valable pour une écriture ou le chargement d'une instruction) est valide. 
+  - Si le :term:`bit de validité` de la page est `vrai`, la page demandée se situe en mémoire RAM. Dans ce cas, le :term:`MMU` vérifie via les bits de permissions si l'accès demandé (dans ce cas une lecture, mais un raisonnement similaire est valable pour une écriture ou le chargement d'une instruction) est valide.
 
-   - Si l'accès est autorisé, le :term:`MMU` retourne l'adresse réelle et le processeur accède aux données. 
+   - Si l'accès est autorisé, le :term:`MMU` retourne l'adresse réelle et le processeur accède aux données.
    - Si l'accès n'est pas autorisé, le processeur génère une interruption. Le processus ayant tenté d'accéder à une zone de mémoire ne faisant pas partie de son espace d'adressage virtuel, c'est au système d'exploitation de réagir. Celui-ci enverra un signal segmentation fault, ``SIGSEGV``, au processus qui a tenté cet accès.
 
   - Si le :term:`bit de validité` de la page est `faux`, la page demandée ne se trouve pas en mémoire RAM. Deux cas de figure sont possibles :
 
      - les bits de permission ne permettent aucun accès à la page. Dans ce cas, la page n'existe pas et le :term:`MMU` va générer une interruption qui va provoquer l'exécution d'une routine de traitement d'interruption du système d'exploitation. Lors du traitement de cette opération, le noyau va envoyer un signal segmentation fault au processus qui a tenté cet accès.
 
-     - les bits de permission permettent l'accès à la page. On parle dans ce cas de :term:`page fault`, c'est-à-dire qu'une page nécessaire à l'exécution du processus n'est pas disponible en mémoire RAM. Vu les temps d'accès et la complexité d'accéder à une page sur un disque dur (via une partition, un fichier de swap ou un fichier normal), le :term:`MMU` ne peut pas accéder directement à la donnée sur le disque dur. Le :term:`MMU` va donc générer une interruption qui va forcer l'exécution d'une routine de traitement d'interruption par le noyau. Cette routine va identifier la page manquante et préparer son transfert du disque dur vers la mémoire. Ce transfert peut durer plusieurs dizaines de millisecondes, ce qui est un temps très long par rapport à l'exécution d'instructions par le processeur. Tant que cette page n'est pas disponible en mémoire RAM, le processus ne peut continuer son exécution. Il passe dans l'état bloqué et le noyau effectue un changement de contexte pour exécuter un autre processus. Lorsque la page manquante aura été rapatriée depuis le disque dur en mémoire RAM, le noyau pourra relancer le processus qu'il avait bloqué afin de retenter l'accès mémoire qui vient d'échouer. 
+     - les bits de permission permettent l'accès à la page. On parle dans ce cas de :term:`page fault`, c'est-à-dire qu'une page nécessaire à l'exécution du processus n'est pas disponible en mémoire RAM. Vu les temps d'accès et la complexité d'accéder à une page sur un disque dur (via une partition, un fichier de swap ou un fichier normal), le :term:`MMU` ne peut pas accéder directement à la donnée sur le disque dur. Le :term:`MMU` va donc générer une interruption qui va forcer l'exécution d'une routine de traitement d'interruption par le noyau. Cette routine va identifier la page manquante et préparer son transfert du disque dur vers la mémoire. Ce transfert peut durer plusieurs dizaines de millisecondes, ce qui est un temps très long par rapport à l'exécution d'instructions par le processeur. Tant que cette page n'est pas disponible en mémoire RAM, le processus ne peut continuer son exécution. Il passe dans l'état bloqué et le noyau effectue un changement de contexte pour exécuter un autre processus. Lorsque la page manquante aura été rapatriée depuis le disque dur en mémoire RAM, le noyau pourra relancer le processus qu'il avait bloqué afin de retenter l'accès mémoire qui vient d'échouer.
 
 Durant son exécution, un système doit pouvoir gérer des pages qui se trouvent en mémoire RAM et des pages qui sont stockées sur le disque dur. Lorsque la mémoire RAM en entièrement remplies de pages, il peut être nécessaire d'y libérer de l'espace mémoire et déplaçant des pages vers un des dispositifs de stockage. C'est le rôle des algorithmes de remplacement de pages.
 
@@ -270,7 +270,7 @@ Lorsque la mémoire RAM est remplie et qu'il faut ramener une page depuis un dis
 
 Une première stratégie de remplacement de pages pourrait être de sauvegarder les identifiants des pages dans une :term:`file FIFO`. Chaque fois qu'une page est créée par le noyau, son identifiant est placé à la fin de la :term:`file FIFO`. Lorsque la mémoire est pleine et qu'une page doit être retirée de la mémoire RAM, le noyau pourrait choisir la page dont l'identifiant se trouve en tête de la :term:`file FIFO`. Cette stratégie a l'avantage d'être simple à implémenter, mais remettre sur disque la page la plus anciennement créée n'est pas toujours la solution la plus efficace du point de vue des performances. En effet, cette page peut très bien être une des pages les plus utilisées par le processeur. Si elle est remise sur le disque, elle risque de devoir être récupérée peu de temps après.
 
-Au niveau des performances, la meilleure stratégie de remplacement de pages serait de sauvegarder sur le disque dur les pages qui seront utilisées par le processeur d'ici le plus de temps possible. Malheureusement, cette stratégie nécessite de prévoir le futur, une fonctionnalité qui n'existe pas dans les systèmes d'exploitation actuels... Une solution alternative serait de comptabiliser les accès aux différentes pages et de sauvegarder sur disque les pages qui ont été les moins utilisées. Cette solution est séduisante d'une point de vue théorique car en disposant de statistiques sur l'utilisation des pages, le système d'exploitation devrait pouvoir être capable de mieux prédire les pages qui seront nécessaires dans le futur et les conserver en mémoire RAM. Du point de vue de l'implémentation par contre, cette solution est loin d'être réaliste. En effet, pour maintenir un compteur du nombre d'accès à une page, il faut consommer de la mémoire supplémentaire dans chaque entrée de la table des pages. Mais il faut aussi que le :term:`TLB` puisse incrémenter ce compteur lors de chaque accès à une de ces entrées. Cela augmente inutilement la complexité du :term:`TLB`. 
+Au niveau des performances, la meilleure stratégie de remplacement de pages serait de sauvegarder sur le disque dur les pages qui seront utilisées par le processeur d'ici le plus de temps possible. Malheureusement, cette stratégie nécessite de prévoir le futur, une fonctionnalité qui n'existe pas dans les systèmes d'exploitation actuels... Une solution alternative serait de comptabiliser les accès aux différentes pages et de sauvegarder sur disque les pages qui ont été les moins utilisées. Cette solution est séduisante d'une point de vue théorique car en disposant de statistiques sur l'utilisation des pages, le système d'exploitation devrait pouvoir être capable de mieux prédire les pages qui seront nécessaires dans le futur et les conserver en mémoire RAM. Du point de vue de l'implémentation par contre, cette solution est loin d'être réaliste. En effet, pour maintenir un compteur du nombre d'accès à une page, il faut consommer de la mémoire supplémentaire dans chaque entrée de la table des pages. Mais il faut aussi que le :term:`TLB` puisse incrémenter ce compteur lors de chaque accès à une de ces entrées. Cela augmente inutilement la complexité du :term:`TLB`.
 
 Stocker dans le :term:`TLB` l'instant du dernier accès à une page de façon à pouvoir déterminer quelles sont les pages auxquelles le système a accédé depuis le plus longtemps est une autre solution séduisante d'un point de vue théorique. Du point de vue de l'implémentation, c'est loin d'être facilement réalisable. Tout d'abord, pour que cet instant soit utile, il faut probablement disposer d'une résolution d'une milliseconde voire mieux. Une telle résolution consommera au moins quelques dizaines de bits dans chaque entrée de la table des pages. En outre, le :term:`TLB` devra pouvoir mettre à jour cette information lors de chaque accès.
 
@@ -287,7 +287,7 @@ Face à ces difficultés d'implémentation, la plupart des stratégies de rempla
 Outre les bits de validité et de permission, une entrée de la table des pages contient les bits de contrôle suivants :
 
  - le :term:`bit de référence` est mis à vrai par le :term:`MMU` dans le :term:`TLB` à chaque accès à une donnée se trouvant dans la page correspondante, que cet accès soit en lecture ou en écriture
- - le :term:`bit de modification` ou :term:`dirty bit` est mis à vrai par le :term:`MMU` chaque fois qu'une opération d'écriture est réalisée dans cette page. 
+ - le :term:`bit de modification` ou :term:`dirty bit` est mis à vrai par le :term:`MMU` chaque fois qu'une opération d'écriture est réalisée dans cette page.
 
 Ces deux bits sont mis à jour par le :term:`MMU` à l'intérieur du :term:`TLB`. Lorsqu'une entrée de la table des pages est retirée du :term:`TLB` pour être remise en mémoire, que ce soit à l'occasion d'un changement de contexte ou parce que le :term:`TLB` est plein, les valeurs de ces deux bits sont recopiées dans l'entrée correspondante de la table des pages. En somme, le :term:`TLB` fonctionne comme une cache en :term:`write-back` pour ces deux bits de contrôle.
 
@@ -305,7 +305,7 @@ Une autre stratégie est de combiner le :term:`bit de référence` et le :term:`
 
  4. La dernière classe comprend les pages dont les bits de référence et de modification ont comme valeur `vrai`. Ces pages ont étés utilisées récemment et il faut les transférer vers le disque avant de les retirer de la mémoire RAM.
 
-Si l'algorithme de remplacement de pages doit retirer des pages de la mémoire RAM, il commencera par retirer des pages de la première classe, et ensuite de la deuxième, ... 
+Si l'algorithme de remplacement de pages doit retirer des pages de la mémoire RAM, il commencera par retirer des pages de la première classe, et ensuite de la deuxième, ...
 
 Des algorithmes plus performants ont été proposés et sont utilisés en pratique. Une description détaillée de ces algorithmes sort du cadre de ce cours d'introduction mais peut être trouvée dans un livre consacré aux systèmes d'exploitation comme [Tanenbaum+2009]_.
 
@@ -345,7 +345,7 @@ Lorsqu'un processus Unix veut lire ou écrire des données dans un fichier, il u
               int fd, off_t offset);
 
 
-L'appel système `mmap(2)`_ prend six arguments, c'est un des appels système qui utilise le plus d'arguments. Il permet de rendre accessible une portion d'un fichier via la mémoire d'un processus. Le cinquième argument est le descripteur du fichier qui doit être mappé. Celui-ci doit avoir été préalablement ouvert avec l'appel système `open(2)`_. Le sixième argument spécifie l'offset à partir duquel le fichier doit être mappé, ``0`` correspondant au début du fichier. Le premier argument est l'adresse à laquelle la première page du fichier doit être mappée. Généralement, cet argument est mis à ``NULL`` de façon à laisser le noyau choisir l'adresse la plus appropriée. Si cette adresse est spécifiée, elle doit être un multiple de la taille des pages. Le deuxième argument est la longueur de la zone du fichier qui doit être mappée en mémoire. Le troisième argument contient des drapeaux qui spécifient les permissions d'accès aux données mappées. Cet argument peut soit être ``PROT_NONE``, ce qui indique que la page est inaccessible soit une permission classique : 
+L'appel système `mmap(2)`_ prend six arguments, c'est un des appels système qui utilise le plus d'arguments. Il permet de rendre accessible une portion d'un fichier via la mémoire d'un processus. Le cinquième argument est le descripteur du fichier qui doit être mappé. Celui-ci doit avoir été préalablement ouvert avec l'appel système `open(2)`_. Le sixième argument spécifie l'offset à partir duquel le fichier doit être mappé, ``0`` correspondant au début du fichier. Le premier argument est l'adresse à laquelle la première page du fichier doit être mappée. Généralement, cet argument est mis à ``NULL`` de façon à laisser le noyau choisir l'adresse la plus appropriée. Si cette adresse est spécifiée, elle doit être un multiple de la taille des pages. Le deuxième argument est la longueur de la zone du fichier qui doit être mappée en mémoire. Le troisième argument contient des drapeaux qui spécifient les permissions d'accès aux données mappées. Cet argument peut soit être ``PROT_NONE``, ce qui indique que la page est inaccessible soit une permission classique :
 
  - ``PROT_EXEC``, les pages mappées contiennent des instructions qui peuvent être exécutées
  - ``PROT_READ``, les pages mappées contiennent des données qui peuvent être lues
@@ -360,15 +360,15 @@ Ces deux drapeaux peuvent dans certains cas particuliers être combinés avec d'
 
 Lorsque `mmap(2)`_ réussit, il retourne l'adresse du début de la zone mappée en mémoire. En cas d'erreur, la constante ``MAP_FAILED`` est retournée et ``errno`` est mis à jour en conséquence.
 
-L'appel système `msync(2)`_ permet de forcer l'écriture sur disque d'une zone mappée en mémoire. Le premier argument est l'adresse du début de la zone qui doit être écrite sur disque. Le deuxième argument est la longueur de la zone qui doit être écrite sur le disque. Enfin, le dernier contient un drapeau qui spécifie comment les pages correspondantes doivent être écrites sur le disque. La drapeau ``MS_SYNC`` indique que l'appel `msync(2)`_ doit bloquer tant que les données n'ont pas été écrites. Le drapeau ``MS_ASYNC`` indique au noyau que l'écriture doit être démarrée, mais l'appel système peut se terminer avant que toutes les pages modifiées aient été écrites sur disque. 
+L'appel système `msync(2)`_ permet de forcer l'écriture sur disque d'une zone mappée en mémoire. Le premier argument est l'adresse du début de la zone qui doit être écrite sur disque. Le deuxième argument est la longueur de la zone qui doit être écrite sur le disque. Enfin, le dernier contient un drapeau qui spécifie comment les pages correspondantes doivent être écrites sur le disque. La drapeau ``MS_SYNC`` indique que l'appel `msync(2)`_ doit bloquer tant que les données n'ont pas été écrites. Le drapeau ``MS_ASYNC`` indique au noyau que l'écriture doit être démarrée, mais l'appel système peut se terminer avant que toutes les pages modifiées aient été écrites sur disque.
 
 .. code-block:: c
 
    #include <sys/mman.h>
-   int msync(void *addr, size_t length, int flags);  
+   int msync(void *addr, size_t length, int flags);
 
 
-Lorsqu'un processus a fini d'utiliser un fichier mappé en mémoire, il doit d'abord supprimer le mapping en utilisant l'appel système `munmap(2)`_. Cet appel système prend deux arguments. Le premier doit être un multiple de la taille d'une page [#ftaillepage]_. Le second est la taille de la zone pour laquelle le mapping doit être retiré. 
+Lorsqu'un processus a fini d'utiliser un fichier mappé en mémoire, il doit d'abord supprimer le mapping en utilisant l'appel système `munmap(2)`_. Cet appel système prend deux arguments. Le premier doit être un multiple de la taille d'une page [#ftaillepage]_. Le second est la taille de la zone pour laquelle le mapping doit être retiré.
 
 .. code-block:: c
 
@@ -377,7 +377,7 @@ Lorsqu'un processus a fini d'utiliser un fichier mappé en mémoire, il doit d'a
    int munmap(void *addr, size_t length);
 
 
-A titre d'exemple d'utilisation de `mmap(2)`_ et `munmap(2)`_, le programme ci-dessous implémente l'équivalent de la commande `cp(1)`_. Il prend comme arguments deux noms de fichiers et copie le contenu du premier dans le second. La copie se fait en mappant le premier fichier entièrement en mémoire et en utilisant la fonction `memcpy(3)`_ pour réaliser la copie. Cette solution fonctionne avec de petits fichiers. Avec de gros fichiers, elle n'est pas très efficace car tout le fichier doit être mappé en mémoire. 
+A titre d'exemple d'utilisation de `mmap(2)`_ et `munmap(2)`_, le programme ci-dessous implémente l'équivalent de la commande `cp(1)`_. Il prend comme arguments deux noms de fichiers et copie le contenu du premier dans le second. La copie se fait en mappant le premier fichier entièrement en mémoire et en utilisant la fonction `memcpy(3)`_ pour réaliser la copie. Cette solution fonctionne avec de petits fichiers. Avec de gros fichiers, elle n'est pas très efficace car tout le fichier doit être mappé en mémoire.
 
 .. literalinclude:: /Theorie/MemoireVirtuelle/src/cp2.c
    :encoding: iso-8859-1
@@ -405,22 +405,22 @@ Revenons aux threads POSIX. Lorsqu'un processus crée un nouveau thread d'exécu
 
 En exploitant intelligemment la table des pages, il est également possible de permettre à deux processus distincts d'avoir accès à la même zone de mémoire physique. Si deux processus peuvent accéder simultanément à la même zone de mémoire, ils peuvent l'utiliser pour communiquer plus efficacement qu'en utilisant des pipes par exemple. Cette technique porte le nom de :term:`mémoire partagée`. Elle nécessite une modification de la table des pages des processus qui veulent partager une même zone mémoire. Pour comprendre le fonctionnement de cette :term:`mémoire partagée`, considérons le cas de deux processus : `P1` et `P2` qui veulent pouvoir utiliser une page commune en mémoire. Pour cela, plusieurs interactions entre les processus et le système d'exploitation sont nécessaires comme nous allons le voir.
 
-Avant de permettre à deux processus d'accéder à la même page en mémoire physique, il faut d'abord se poser la question de l'origine de cette page physique. Deux solutions sont possibles. La première est de prendre cette page parmi les pages qui appartiennent à l'un des processus, par exemple `P1`. Lorsque la page est partagée, le système d'exploitation peut modifier la table des pages du processus `P2` de façon à lui permettre d'y accéder. La seconde est que le noyau du système d'exploitation fournisse une nouvelle page qui pourra être partagée. Cette page "appartient" au noyau mais celui-ci la rend accessible aux processus `P1` et `P2` en modifiant leurs tables des pages. Linux utilise la seconde technique. Elle a l'avantage de permettre un meilleur contrôle par le système d'exploitation du partage de pages entre différents processus. De plus, lorsqu'une zone de mémoire partagée a été créée via le système d'exploitation, elle survit à la terminaison de ce processus. Une mémoire partagée créée par un processus peut donc être utilisée par d'autres processus. 
+Avant de permettre à deux processus d'accéder à la même page en mémoire physique, il faut d'abord se poser la question de l'origine de cette page physique. Deux solutions sont possibles. La première est de prendre cette page parmi les pages qui appartiennent à l'un des processus, par exemple `P1`. Lorsque la page est partagée, le système d'exploitation peut modifier la table des pages du processus `P2` de façon à lui permettre d'y accéder. La seconde est que le noyau du système d'exploitation fournisse une nouvelle page qui pourra être partagée. Cette page "appartient" au noyau mais celui-ci la rend accessible aux processus `P1` et `P2` en modifiant leurs tables des pages. Linux utilise la seconde technique. Elle a l'avantage de permettre un meilleur contrôle par le système d'exploitation du partage de pages entre différents processus. De plus, lorsqu'une zone de mémoire partagée a été créée via le système d'exploitation, elle survit à la terminaison de ce processus. Une mémoire partagée créée par un processus peut donc être utilisée par d'autres processus.
 
 Sous Linux, la mémoire partagée peut s'utiliser via les appels système `shmget(2)`_, `shmat(2)`_ et `shmdt(2)`_. L'appel système `shmget(2)`_ permet de créer un segment de mémoire partagée. Le premier argument de  `shmget(2)`_ est une clé qui identifie le segment de mémoire partagée. Cette clé est en pratique encodée sous la forme d'un entier qui identifie le segment de mémoire partagée. Elle sert d'identifiant du segment de mémoire partagée dans le noyau. Un processus doit connaître la clé qui identifie un segment de mémoire partagée pour pouvoir y accéder. Le deuxième argument de `shmget(2)`_ est la taille du segment. En pratique, celle-ci sera arrondie au multiple entier supérieur de la taille d'une page. Enfin, le troisième argument sont des drapeaux qui contrôlent la création du segment et les permissions qui y sont associées.
 
 .. code-block:: c
 
-   #include <sys/ipc.h> 
+   #include <sys/ipc.h>
    #include <sys/shm.h>
-   int shmget(key_t key, size_t size, int shmflg); 
+   int shmget(key_t key, size_t size, int shmflg);
 
 L'appel système `shmget(2)`_ retourne un entier qui identifie le segment de mémoire partagée à l'intérieur du processus si il réussit et ``-1`` sinon. Il peut être utilisée de deux façons. Un processus peut appeler `shmget(2)`_ pour créer un nouveau segment de mémoire partagée. Pour cela, il choisit une clé unique qui identifie ce segment et utilise le drapeau ``IPC_CREAT``. Celui-ci peut être combiné avec les drapeaux qui sont supportés par l'appel système `open(2)`_. Ainsi, le fragment de code ci-dessous permet de créer une page de mémoire partagée qui a ``1252`` comme identifiant et est accessible en lecture et en écriture par tous les processus qui appartiennent au même utilisateur ou au même groupe que le processus courant. Si cet appel à `shmget(2)`_ réussit, le segment de mémoire est initialisé à la valeur 0.
 
 .. code-block:: c
-    
+
    key_t key=1252;
-   int shm_id = shmget(key, 4096, IPC_CREAT | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP ); 
+   int shm_id = shmget(key, 4096, IPC_CREAT | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP );
    if (shm_id == -1) {
      perror("shmget");
      exit(EXIT_FAILURE);
@@ -442,13 +442,13 @@ Il est important de noter que si l'appel à `shmget(2)`_ réussit, cela indique 
 
    int shmdt(const void *shmaddr);
 
-L'appel système `shmdt(2)`_ permet de détacher un segment de mémoire qui avait été attaché en utilisant `shmat(2)`_. L'argument passé à `shmdt(2)`_ doit être l'adresse d'un segment de mémoire attaché préalablement par `shmat(2)`_. Lorsqu'un processus se termine, tous les segments auxquels il était attaché sont détachés lors de l'appel à `_exit(2)`_. Cela n'empêche pas un programme de détacher correctement tous les segments de mémoire qu'il utilise avant de se terminer. 
+L'appel système `shmdt(2)`_ permet de détacher un segment de mémoire qui avait été attaché en utilisant `shmat(2)`_. L'argument passé à `shmdt(2)`_ doit être l'adresse d'un segment de mémoire attaché préalablement par `shmat(2)`_. Lorsqu'un processus se termine, tous les segments auxquels il était attaché sont détachés lors de l'appel à `_exit(2)`_. Cela n'empêche pas un programme de détacher correctement tous les segments de mémoire qu'il utilise avant de se terminer.
 
-Le fragment de code ci-dessous présente comment un segment de mémoire peut être attaché et détaché après avoir été créé avec `shmget(2)`_. 
+Le fragment de code ci-dessous présente comment un segment de mémoire peut être attaché et détaché après avoir été créé avec `shmget(2)`_.
 
 .. code-block:: c
 
-   void * addr = shmat(shm_id, NULL, 0); 
+   void * addr = shmat(shm_id, NULL, 0);
    if (addr == (void *) -1) {
      perror("shmat");
      exit(EXIT_FAILURE);
@@ -457,15 +457,15 @@ Le fragment de code ci-dessous présente comment un segment de mémoire peut êt
    if(shmdt(addr)==-1) {
      perror("shmdt");
      exit(EXIT_FAILURE);
-   } 
+   }
 
 .. note:: Attention aux pointeurs en mémoire partagée
 
-  Lorsque deux processus partagent le même segment de mémoire partagée, ils ont tous les deux accès directement à la mémoire. Il est ainsi possible de stocker dans cette mémoire un tableau de nombres ou de caractères. Chacun des processus pourra facilement accéder aux données stockées dans le tableau. Il faut cependant être vigilant lorsque l'on veut stocker une structure de données utilisant des pointeurs dans un segment de mémoire partagée. Considérons une liste simplement chaînée. Cette liste peut être implémentée en utilisant une structure contenant la donnée stockée dans l'élément de la liste (par exemple un entier) et un pointeur vers l'élément suivant dans la liste (et ``NULL`` en fin de liste). Imaginons que les deux processus ont attaché le segment de mémoire destiné à contenir la liste avec l'appel `shmat(2)`_ présenté ci-dessus et que l'adresse retournée par `shmat(2)`_ est celle qui correspond au premier élément de la liste. Comme le système d'exploitation choisit l'adresse à laquelle le segment de mémoire partagée est stocké dans chaque processus, l'appel à `shmat(2)`_ retourne potentiellement une adresse différente dans les deux processus. Si ils peuvent tous les deux accéder au premier élément de la liste, il n'en sera pas de même pour le second élément. En effet, si cet élément a été créé par le premier processus, le pointeur contiendra l'adresse du second élément dans l'espace d'adressage virtuel du premier processus. Cette adresse ne correspondra en général pas à celle du second élément dans l'espace d'adressage du second processus. Pour cette raison, il est préférable de ne pas utiliser de pointeurs dans un segment de mémoire partagé. 
+  Lorsque deux processus partagent le même segment de mémoire partagée, ils ont tous les deux accès directement à la mémoire. Il est ainsi possible de stocker dans cette mémoire un tableau de nombres ou de caractères. Chacun des processus pourra facilement accéder aux données stockées dans le tableau. Il faut cependant être vigilant lorsque l'on veut stocker une structure de données utilisant des pointeurs dans un segment de mémoire partagée. Considérons une liste simplement chaînée. Cette liste peut être implémentée en utilisant une structure contenant la donnée stockée dans l'élément de la liste (par exemple un entier) et un pointeur vers l'élément suivant dans la liste (et ``NULL`` en fin de liste). Imaginons que les deux processus ont attaché le segment de mémoire destiné à contenir la liste avec l'appel `shmat(2)`_ présenté ci-dessus et que l'adresse retournée par `shmat(2)`_ est celle qui correspond au premier élément de la liste. Comme le système d'exploitation choisit l'adresse à laquelle le segment de mémoire partagée est stocké dans chaque processus, l'appel à `shmat(2)`_ retourne potentiellement une adresse différente dans les deux processus. Si ils peuvent tous les deux accéder au premier élément de la liste, il n'en sera pas de même pour le second élément. En effet, si cet élément a été créé par le premier processus, le pointeur contiendra l'adresse du second élément dans l'espace d'adressage virtuel du premier processus. Cette adresse ne correspondra en général pas à celle du second élément dans l'espace d'adressage du second processus. Pour cette raison, il est préférable de ne pas utiliser de pointeurs dans un segment de mémoire partagé.
 
 .. todo:: exercice, comment implémenter cette liste chaînée
 
-Comme les segments de mémoire partagée sont gérés par le noyau du système d'exploitation, ils persistent après la terminaison du processus qui les a créé. C'est intéressant lorsque l'on veut utiliser des segments de mémoire partagée pour la communication entre plusieurs processus dont certains peuvent se crasher. Malheureusement, le nombre de segments de mémoire partagée qui peuvent être utilisés sur un système Unix est borné. Lorsque la limite fixée par la configuration du noyau est atteinte, il n'est plus possible de créer de nouveau segment de mémoire partagée. Sous Linux ces limites sont visibles dans les fichiers ``/proc/sys/kernel/shmni`` (nombre maximum d'identifiants de segments de mémoire partagée) et ``/proc/sys/kernel/shmall`` (taille totale maximale de la mémoire partagée) ou via `shmctl(2)`_. Cet appel système permet de réaliser de nombreuses fonctions de contrôle de la mémoire partagée et notamment la destruction de segments de mémoire partagée qui ont été créés par `shmget(2)`_. `shmctl(2)`_ s'appuie sur les structures de données qui sont maintenues par le noyau pour les segments de mémoire partagée. Lorsqu'un segment de mémoire partagée est crée, le noyau lui associe une structure de type ``shmid_ds``. 
+Comme les segments de mémoire partagée sont gérés par le noyau du système d'exploitation, ils persistent après la terminaison du processus qui les a créé. C'est intéressant lorsque l'on veut utiliser des segments de mémoire partagée pour la communication entre plusieurs processus dont certains peuvent se crasher. Malheureusement, le nombre de segments de mémoire partagée qui peuvent être utilisés sur un système Unix est borné. Lorsque la limite fixée par la configuration du noyau est atteinte, il n'est plus possible de créer de nouveau segment de mémoire partagée. Sous Linux ces limites sont visibles dans les fichiers ``/proc/sys/kernel/shmni`` (nombre maximum d'identifiants de segments de mémoire partagée) et ``/proc/sys/kernel/shmall`` (taille totale maximale de la mémoire partagée) ou via `shmctl(2)`_. Cet appel système permet de réaliser de nombreuses fonctions de contrôle de la mémoire partagée et notamment la destruction de segments de mémoire partagée qui ont été créés par `shmget(2)`_. `shmctl(2)`_ s'appuie sur les structures de données qui sont maintenues par le noyau pour les segments de mémoire partagée. Lorsqu'un segment de mémoire partagée est crée, le noyau lui associe une structure de type ``shmid_ds``.
 
 .. code-block:: c
 
@@ -484,10 +484,10 @@ Ce descripteur de segment de mémoire partagée, décrit dans `shmctl(2)`_ conti
 
 .. code-block:: c
 
-    #include <sys/ipc.h> 
+    #include <sys/ipc.h>
     #include <sys/shm.h>
 
-    int shmctl(int shmid, int cmd, struct shmid_ds *buf);  
+    int shmctl(int shmid, int cmd, struct shmid_ds *buf);
 
 Le segment de mémoire partagée qui a été créé dans les exemples précédents peut être supprimé avec le fragment de code ci-dessous.
 
@@ -498,7 +498,7 @@ Le segment de mémoire partagée qui a été créé dans les exemples précéden
        exit(EXIT_FAILURE);
     }
 
-En pratique, comme le noyau ne détruit un segment de mémoire partagée que lorsqu'il n'y a plus de processus qui y est attaché, il peut être utile de détruire le segment de mémoire partagée juste après avoir effectué l'appel `shmat(2)`_. C'est ce que l'on fera par exemple si un processus père utilise un segment de mémoire partagée pour communiquer avec son processus fils. 
+En pratique, comme le noyau ne détruit un segment de mémoire partagée que lorsqu'il n'y a plus de processus qui y est attaché, il peut être utile de détruire le segment de mémoire partagée juste après avoir effectué l'appel `shmat(2)`_. C'est ce que l'on fera par exemple si un processus père utilise un segment de mémoire partagée pour communiquer avec son processus fils.
 
 
 La mémoire partagée est utilisée non seulement pour permettre la communication entre processus, mais également avec les librairies partagées. Celles-ci sont chargées automatiquement lors de l'exécution d'un processus qui les utilise. Les instructions qui font partie de ces librairies partagées sont chargées dans la même zone mémoire que celle qui est utilisée pour la mémoire partagée. Sous Linux, cette zone mémoire est située entre le heap et le stack comme illustré dans la figure ci-dessous.
@@ -507,34 +507,34 @@ La mémoire partagée est utilisée non seulement pour permettre la communicatio
    :align: center
    :scale: 60
 
-   Organisation en mémoire d'un processus 
+   Organisation en mémoire d'un processus
 
 
 Lorsqu'il exécute un processus, le noyau maintient dans les structures de données qui sont relatives à ce processus la liste des segments de mémoire partagée et des librairies partagées qu'il utilise. Sous Linux, cette information est visible via le pseudo-système de fichiers ``/proc``. Le fichier ``/proc/PID/maps`` représente de façon textuelle la table des segments de mémoire qui sont partagés dans le processus ``PID``.
 
 
-Un exemple d'un tel fichier `maps` est présenté ci-dessous. Il contient une carte de l'ensemble des pages qui appartiennent à un processus. Le fichier comprend six colonnes. La première est la zone de mémoire virtuelle. La seconde sont les bits de permission avec `r` pour la permission de lecture, `w` pour l'écriture et `x` pour l'exécution. Le dernier bit de permission est à la valeur `p` lorsque la page est en :term:`copy-on-write` et `s` lorsqu'il s'agit d'un segment de mémoire partagé. Les trois dernières colonnes sont relatives au stockage des pages sur le disque. 
+Un exemple d'un tel fichier `maps` est présenté ci-dessous. Il contient une carte de l'ensemble des pages qui appartiennent à un processus. Le fichier comprend six colonnes. La première est la zone de mémoire virtuelle. La seconde sont les bits de permission avec `r` pour la permission de lecture, `w` pour l'écriture et `x` pour l'exécution. Le dernier bit de permission est à la valeur `p` lorsque la page est en :term:`copy-on-write` et `s` lorsqu'il s'agit d'un segment de mémoire partagé. Les trois dernières colonnes sont relatives au stockage des pages sur le disque.
 
 .. code-block:: console
 
-   00400000-00402000 r-xp 00000000 00:1a 49485798      /tmp/a.out   
-   00602000-00603000 rw-p 00002000 00:1a 49485798      /tmp/a.out       
+   00400000-00402000 r-xp 00000000 00:1a 49485798      /tmp/a.out
+   00602000-00603000 rw-p 00002000 00:1a 49485798      /tmp/a.out
    3d3f200000-3d3f220000 r-xp 00000000 08:01 268543    /lib64/ld-2.12.so
    3d3f41f000-3d3f420000 r--p 0001f000 08:01 268543    /lib64/ld-2.12.so
    3d3f420000-3d3f421000 rw-p 00020000 08:01 268543    /lib64/ld-2.12.so
-   3d3f421000-3d3f422000 rw-p 00000000 00:00 0 
+   3d3f421000-3d3f422000 rw-p 00000000 00:00 0
    3d3f600000-3d3f786000 r-xp 00000000 08:01 269510    /lib64/libc-2.12.so
    3d3f786000-3d3f986000 ---p 00186000 08:01 269510    /lib64/libc-2.12.so
    3d3f986000-3d3f98a000 r--p 00186000 08:01 269510    /lib64/libc-2.12.so
    3d3f98a000-3d3f98b000 rw-p 0018a000 08:01 269510    /lib64/libc-2.12.so
-   3d3f98b000-3d3f990000 rw-p 00000000 00:00 0 
+   3d3f98b000-3d3f990000 rw-p 00000000 00:00 0
    3d3fa00000-3d3fa83000 r-xp 00000000 08:01 269516    /lib64/libm-2.12.so
    3d3fa83000-3d3fc82000 ---p 00083000 08:01 269516    /lib64/libm-2.12.so
    3d3fc82000-3d3fc83000 r--p 00082000 08:01 269516    /lib64/libm-2.12.so
    3d3fc83000-3d3fc84000 rw-p 00083000 08:01 269516    /lib64/libm-2.12.so
-   7f7c57e42000-7f7c57e45000 rw-p 00000000 00:00 0 
-   7f7c57e60000-7f7c57e61000 rw-s 00000000 00:04 66355276 /SYSV00000000 
-   7f7c57e61000-7f7c57e63000 rw-p 00000000 00:00 0 
+   7f7c57e42000-7f7c57e45000 rw-p 00000000 00:00 0
+   7f7c57e60000-7f7c57e61000 rw-s 00000000 00:04 66355276 /SYSV00000000
+   7f7c57e61000-7f7c57e63000 rw-p 00000000 00:00 0
    7fffc479c000-7fffc47b1000 rw-p 00000000 00:00 0            [stack]
 
 
@@ -545,9 +545,9 @@ L'exemple ci-dessus présente la carte de mémoire d'un processus qui utilise tr
 Implémentation de `fork(2)`_
 ----------------------------
 
-La mémoire partagée jour un rôle clé dans l'exécution efficace des appels systèmes `fork(2)`_ et `execve(2)`_. Considérons d'abord `fork(2)`_. Cet appel est fondamental sur un système Unix. Au fil des années, les développeurs de Unix et de Linux ont cherché à optimiser ses performances. Une implémentation naïve de l'appel système `fork(2)`_ est de copier physiquement toutes les pages utilisées en mémoire RAM par le processus père. Ensuite, le noyau peut créer une table des pages pour le processus fils qui pointe vers les copies des pages du processus père. De cette façon, le processus père et le processus fils utilisent exactement les mêmes instructions. Ils peuvent donc poursuivre leur exécution à partir des mêmes données en mémoire. Mais chaque processus pourra faire les modifications qu'il souhaite aux données stockées en mémoire. Cette implémentation était utilisée par les premières versions de Unix, mais elle est peu efficace, notamment pour les processus qui consomment beaucoup de mémoire et le shell qui généralement exécute `fork(2)`_ et suivi par  `execve(2)`_. Dans ce scénario, copier l'entièreté de la mémoire du processus père est un gaspillage de ressources. 
+La mémoire partagée jour un rôle clé dans l'exécution efficace des appels systèmes `fork(2)`_ et `execve(2)`_. Considérons d'abord `fork(2)`_. Cet appel est fondamental sur un système Unix. Au fil des années, les développeurs de Unix et de Linux ont cherché à optimiser ses performances. Une implémentation naïve de l'appel système `fork(2)`_ est de copier physiquement toutes les pages utilisées en mémoire RAM par le processus père. Ensuite, le noyau peut créer une table des pages pour le processus fils qui pointe vers les copies des pages du processus père. De cette façon, le processus père et le processus fils utilisent exactement les mêmes instructions. Ils peuvent donc poursuivre leur exécution à partir des mêmes données en mémoire. Mais chaque processus pourra faire les modifications qu'il souhaite aux données stockées en mémoire. Cette implémentation était utilisée par les premières versions de Unix, mais elle est peu efficace, notamment pour les processus qui consomment beaucoup de mémoire et le shell qui généralement exécute `fork(2)`_ et suivi par  `execve(2)`_. Dans ce scénario, copier l'entièreté de la mémoire du processus père est un gaspillage de ressources.
 
-La mémoire virtuelle permet d'optimiser l'appel système `fork(2)`_ et de le rendre nettement plus rapide. Lors de la création d'un processus fils, le noyau du système d'exploitation commence par créer une table des pages pour le processus fils. En initialisant cette table avec les mêmes entrées que celles du processus père, le noyau permet aux deux processus d'accéder aux mêmes instructions et aux mêmes données. Pour les instructions se trouvant dans le segment code et dont les entrées de la table des pages sont généralement en `read-only`, cette solution fonctionne correctement. Le processus père et le processus fils peuvent exécuter exactement les mêmes instructions tout en n'utilisant qu'une seule copie de ces instructions en mémoire. 
+La mémoire virtuelle permet d'optimiser l'appel système `fork(2)`_ et de le rendre nettement plus rapide. Lors de la création d'un processus fils, le noyau du système d'exploitation commence par créer une table des pages pour le processus fils. En initialisant cette table avec les mêmes entrées que celles du processus père, le noyau permet aux deux processus d'accéder aux mêmes instructions et aux mêmes données. Pour les instructions se trouvant dans le segment code et dont les entrées de la table des pages sont généralement en `read-only`, cette solution fonctionne correctement. Le processus père et le processus fils peuvent exécuter exactement les mêmes instructions tout en n'utilisant qu'une seule copie de ces instructions en mémoire.
 
 Malheureusement, cette solution ne fonctionne plus pour les pages contenant les données globales, le stack et le heap. En effet, ces pages doivent pouvoir être modifiées de façon indépendante par le processus père et le processus fils. C'est notamment le cas pour la zone mémoire qui contient la valeur de retour de l'appel système `fork(2)`_. Par définition, cette zone mémoire doit contenir une valeur différente dans le processus père et le processus fils. Pour éviter ce problème, le noyau pourrait copier physiquement les pages contenant les variables globales, le heap et le stack. Cela permettrait, notamment dans le cas de l'exécution de `fork(2)`_ par le shell d'améliorer les performances de `fork(2)`_ sans pour autant compromettre la sémantique de cet appel système. Il existe cependant une alternative à cette copie physique. Il s'agit de la technique du :term:`copy-on-write`.
 
@@ -564,7 +564,7 @@ La mémoire virtuelle est gérée par le système d'exploitation. La plupart des
 
 .. code-block:: c
 
-   #include <unistd.h> 
+   #include <unistd.h>
    #include <sys/mman.h>
    int mincore(void *addr, size_t length, unsigned char *vec);
 
@@ -572,7 +572,7 @@ L'appel système `mincore(2)`_ permet à un processus d'obtenir de l'information
 
   - ``MINCORE_INCORE`` indique que la page est en mémoire RAM
   - ``MINCORE_REFERENCED`` indique que la page a été référencée
-  - ``MINCORE_MODIFIED`` indique que la page a été modifiée 
+  - ``MINCORE_MODIFIED`` indique que la page a été modifiée
 
 Un exemple d'utilisation de `mincore(2)`_ est repris dans le programme :download:`/Theorie/MemoireVirtuelle/src/mincore.c` ci-dessous.
 
@@ -598,7 +598,7 @@ L'appel système `mlock(2)`_ permet de forcer un ensemble de pages à rester en 
 
 Ces appels systèmes doivent être utilisés avec précautions. En forçant certaines de ses pages à rester en mémoire, un processus perturbe le bon fonctionnement de la mémoire virtuelle, ce qui risque de perturber les performances globales du système. En pratique, en dehors d'applications cryptographiques et de processus avec des exigences temps réel qui sortent du cadre de ce cours, il n'y a pas d'intérêt à utiliser ces appels système.
 
-L'utilisation de la mémoire influence fortement les performances des processus. Plusieurs utilitaires sous Linux permettent de mesurer la charge d'un système. Certains offrent une interface graphique. D'autres, comme `top(1)`_ ou `vmstat(8)`_ s'utilisent directement depuis un terminal. La commande `vmstat(8)`_ permet de suivre l'évolution de la charge du système et de la mémoire virtuelle. 
+L'utilisation de la mémoire influence fortement les performances des processus. Plusieurs utilitaires sous Linux permettent de mesurer la charge d'un système. Certains offrent une interface graphique. D'autres, comme `top(1)`_ ou `vmstat(8)`_ s'utilisent directement depuis un terminal. La commande `vmstat(8)`_ permet de suivre l'évolution de la charge du système et de la mémoire virtuelle.
 
 .. code-block:: console
 
@@ -635,10 +635,10 @@ La sortie ci-dessous présente le contenu de ``/proc/PID/maps`` lors de l'exécu
 
 .. code-block:: console
 
-   $ cat /proc/29039/maps 
+   $ cat /proc/29039/maps
    00400000-004ab000 r-xp 00000000 00:19 49479785                           /etinfo/users2/obo/sinf1252/SINF1252/2012/S12/src/cp2.exe
    006ab000-006ac000 rw-p 000ab000 00:19 49479785                           /etinfo/users2/obo/sinf1252/SINF1252/2012/S12/src/cp2.exe
-   006ac000-006af000 rw-p 00000000 00:00 0 
+   006ac000-006af000 rw-p 00000000 00:00 0
    00bc7000-00bea000 rw-p 00000000 00:00 0                                  [heap]
    7fc43d5e4000-7fc43d6a4000 rw-s 00000000 00:19 51380745                   /etinfo/users2/obo/sinf1252/SINF1252/2012/S12/src/t
    7fc43d6a4000-7fc43d764000 r--s 00000000 00:19 49479785                   /etinfo/users2/obo/sinf1252/SINF1252/2012/S12/src/cp2.exe
@@ -650,7 +650,7 @@ La sortie ci-dessous présente le contenu de ``/proc/PID/maps`` lors de l'exécu
 
 .. rubric:: Footnotes
 
-.. todo: faire exemple avec un processus père qui fait fork puis le fils accède à 100, 1000 pages (qui seront copiées), montrer l'évolution du temps d'accès à ces pages 
+.. todo: faire exemple avec un processus père qui fait fork puis le fils accède à 100, 1000 pages (qui seront copiées), montrer l'évolution du temps d'accès à ces pages
 
 
 .. [#fmmu] En pratique, les adresses sur le disque dur ne sont pas stockées dans le :term:`MMU` mais dans une table maintenue par le système d'exploitation. C'est le noyau qui est responsable des transferts entre le dispositif de stockage et la mémoire RAM.

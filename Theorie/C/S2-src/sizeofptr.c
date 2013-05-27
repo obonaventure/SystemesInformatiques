@@ -1,6 +1,6 @@
 /**********************************************
  * sizeofptr
- * 
+ *
  * Programme d'exemple d'utilisation de sizeof
  *
  ***********************************************/
@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[]) {
 
- 
+
   printf("Type\t\t\tTaille\n");
   printf("\n");
   printf("char *\t\t\t%ld octet(s)\n",sizeof(char *));

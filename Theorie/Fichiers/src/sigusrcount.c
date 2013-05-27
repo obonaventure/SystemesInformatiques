@@ -1,7 +1,7 @@
 /**************************************
  * sigusrcount.c
- * 
- * Programme d'exemple d'utilisation des 
+ *
+ * Programme d'exemple d'utilisation des
  * signaux SIGUSR
  *
  *************************************/

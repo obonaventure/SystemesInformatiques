@@ -1,6 +1,6 @@
 /**************************************
  * pthread-test.c
- * 
+ *
  * Programme d'exemple de pthread avec condition de course
  *
  **************************************/
@@ -38,7 +38,7 @@ int main (int argc, char *argv[])  {
   int err;
 
   for(int i=0;i<NTHREADS;i++) {
-    err=pthread_create(&(thread[i]),NULL,&func,NULL); 
+    err=pthread_create(&(thread[i]),NULL,&func,NULL);
     if(err!=0)
       error(err,"pthread_create");
   }

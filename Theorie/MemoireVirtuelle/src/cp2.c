@@ -1,18 +1,18 @@
 /**************************************
  * cp2.c
- * 
+ *
  * copie de fichier avec mmap
  *
  *************************************/
 ///AAA
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <sys/mman.h> 
+#include <sys/mman.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <string.h> 
+#include <string.h>
 
 int main (int argc, char *argv[]) {
  int file1, file2;
@@ -45,7 +45,7 @@ int main (int argc, char *argv[]) {
    perror("lseek");
    exit(EXIT_FAILURE);
  }
- 
+
  // écriture en fin de fichier
  if (write (file2, &dummy, sizeof(char)) != 1) {
    perror("write");
@@ -88,4 +88,4 @@ int main (int argc, char *argv[]) {
    exit(EXIT_FAILURE);
  }
  return(EXIT_SUCCESS);
-} 
+}

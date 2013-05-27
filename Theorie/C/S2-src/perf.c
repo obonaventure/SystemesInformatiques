@@ -1,6 +1,6 @@
 /***********************************************
  * perf.c
- * 
+ *
  * Mesure de temps de calcul via gettimeofday
  *
  ***********************************************/
@@ -27,7 +27,7 @@ void compute(int n) {
 
 int main(int argc, char *argv[])
 {
-  struct timeval tvStart, tvEnd; 
+  struct timeval tvStart, tvEnd;
   int err;
   int num; // number of operations for compute
   if(argc!=2)
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     exit(EXIT_FAILURE);
 
   printf("Duration : %ld microseconds\n", timeval_diff(&tvEnd, &tvStart));
-  
+
   return(EXIT_SUCCESS);
 }
 

@@ -1,6 +1,6 @@
 /***********************************************
  * fctargs.c
- * 
+ *
  * Programme d'exemple d'utilisation de fonctions
  * montre l'importance de traiter les arguments en
  * ordre
@@ -37,7 +37,7 @@ void print_vecteur(int size, int*v) {
   }
   printf("%d}",v[size-1]);
 }
-///DDD  
+///DDD
 
 void wrong() {
   int vecteur[N]={1,2,3,4,5};

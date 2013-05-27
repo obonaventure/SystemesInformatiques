@@ -1,6 +1,6 @@
 /**************************************
  * fork-pthread.c
- * 
+ *
  * Programme d'exemple pour voir le contenu de /proc
  *
  *************************************/
@@ -53,7 +53,7 @@ int main (int argc, char *argv[])  {
   }
   else {
     // père
-    err=pthread_create(&(thread),NULL,&func,NULL); 
+    err=pthread_create(&(thread),NULL,&func,NULL);
     if(err!=0) {
       perror("pthread_create");
       exit(EXIT_FAILURE);

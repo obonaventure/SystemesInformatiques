@@ -1,6 +1,6 @@
 /**************************************
  * vector.c
- * 
+ *
  * Programme de manipulation de vecteurs
  *
  **************************************/
@@ -48,7 +48,7 @@ void destroy(struct vector_t *v) {
 }
 
 int main(int argc, char *argv[]) {
-   
+
   struct vector_t *v1=init(10,2.0);
   printf("v1[%d]=%f\n",3,get(v1,3));
   set(v1,3,17.0);

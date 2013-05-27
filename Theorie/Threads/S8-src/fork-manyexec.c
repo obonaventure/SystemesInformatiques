@@ -1,7 +1,7 @@
 /**************************************
  * fork-manyexec.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * fork et execve
  *
  *************************************/
@@ -29,12 +29,12 @@ int main (int argc, char *argv[])  {
     if (pid==0) {
       // fils
       printf ("Exécution de la commande %s [pid=%d]\n",argv[i],getpid());
-      fflush(stdout);  
+      fflush(stdout);
       char *arguments[2];
       arguments[0]=basename(argv[i]);
       arguments[1]=NULL;
       int err=execve(argv[i], arguments, environ);
-      if(err!=0) 
+      if(err!=0)
 	return(127);
     } // fils
     else {
@@ -54,7 +54,7 @@ int main (int argc, char *argv[])  {
 	    printf("La commande %s [%d] a retourné %d\n",argv[i],fils,WEXITSTATUS(status));
       }
       else {
-	if( WIFSIGNALED(status)) 
+	if( WIFSIGNALED(status))
 	  printf("La commande %s [%d] ne s'est pas terminée correctement\n",argv[i],fils);
       }
       fflush(stdout);

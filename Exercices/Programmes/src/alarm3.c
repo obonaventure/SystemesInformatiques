@@ -1,6 +1,6 @@
 /**************************************
  * alarm3.c
- * 
+ *
  * Programme d'exemple de lecture avec temps
  * limité via alarm
  *
@@ -25,8 +25,8 @@ int main (int argc, char *argv[])  {
     perror("signal");
     exit(EXIT_FAILURE);
   }
-  // sigalrm interrompt les appels système  
-  if(siginterrupt(SIGALRM,true)<0) { 
+  // sigalrm interrompt les appels système
+  if(siginterrupt(SIGALRM,true)<0) {
     perror("siginterrupt");
     exit(EXIT_FAILURE);
   }

@@ -1,7 +1,7 @@
 /**************************************
  * var.c
- * 
- * Programme d'exemple pour localiser 
+ *
+ * Programme d'exemple pour localiser
  * les variables en mémoire
  *
  **************************************/
@@ -43,7 +43,7 @@ int while_loop(void) {
 }
 
 int main(int argc, char *argv[]) {
-  
+
   int local_int=1;
   float local_float=1.0;
   char local_char='c';

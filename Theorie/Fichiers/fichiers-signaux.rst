@@ -21,12 +21,12 @@ Signaux
 
 L'envoi et la réception de signaux est le mécanisme de communication entre processus le plus primitif sous Unix. Un :term:`signal` est une forme d'interruption logicielle [StevensRago2008]. Comme nous l'avons vu précédemment, un microprocesseur utilise les interruptions pour permettre au système d'exploitation de réagir aux événements imprévus qui surviennent. Un :term:`signal` Unix est un mécanisme qui permet à un processus de réagir de façon asynchrone à un événement qui s'est produit. Certains de ces événements sont directement liés au fonctionnement du matériel. D'autres sont provoqués par le processus lui-même ou un autre processus s'exécutant sur le système.
 
-Pour être capable d'utiliser les signaux à bon escient, il est important de bien comprendre comment ceux-ci sont implémentés dans le système d'exploitation. 
+Pour être capable d'utiliser les signaux à bon escient, il est important de bien comprendre comment ceux-ci sont implémentés dans le système d'exploitation.
 
-Il existe deux types de signaux. 
+Il existe deux types de signaux.
 
  - Un :term:`signal synchrone` est un :term:`signal` qui a été directement causé par l'exécution d'une instruction du processus. Un exemple typique de :term:`signal synchrone` est le signal ``SIGFPE`` qui est généré par le système d'exploitation lorsqu'un processus provoque une exception lors du calcul d'expressions mathématiques. C'est le cas notamment lors d'une division par zéro. La sortie ci-dessous illustre ce qu'il se produit lors de l'exécution du programme :download:`/Theorie/Fichiers/src/sigfpe.c`.
-  
+
    .. code-block:: console
 
       $ ./sigfpe
@@ -46,8 +46,8 @@ Avant d'analyser en détails le fonctionnement des appels systèmes `signal(2)`_
  - ``SIGBUS``. Ce signal correspond à une erreur au niveau matériel.  Par défaut, la réception de ce signal provoque la terminaison du processus.
  - ``SIGSEGV``. Ce signal correspond à une erreur dans l'accès à la mémoire, typiquement une tentative d'accès en dehors de la zone mémoire allouée au processus. Par défaut, la réception de ce signal provoque la terminaison du processus.
  - ``SIGFPE``. Ce signal correspond à une erreur au niveau de l'utilisation des fonctions mathématiques, notamment en virgule flottante mais pas seulement.  Par défaut, la réception de ce signal provoque la terminaison du processus.
- - ``SIGTERM``. Ce signal est le signal utilisé par défaut par la commande `kill(1)`_ pour demander la fin d'un processus. Par défaut, le réception de ce signal provoque la terminaison du processus. 
- - ``SIGKILL``. Ce signal permet de forcer la fin d'un processus. Alors qu'un processus peut définir un handler pour le signal ``SIGTERM``, il n'est pas possible d'en définir un pour ``SIGKILL``. Ce signal est le seul qui ne peut être traité et ignoré par un processus. 
+ - ``SIGTERM``. Ce signal est le signal utilisé par défaut par la commande `kill(1)`_ pour demander la fin d'un processus. Par défaut, le réception de ce signal provoque la terminaison du processus.
+ - ``SIGKILL``. Ce signal permet de forcer la fin d'un processus. Alors qu'un processus peut définir un handler pour le signal ``SIGTERM``, il n'est pas possible d'en définir un pour ``SIGKILL``. Ce signal est le seul qui ne peut être traité et ignoré par un processus.
  - ``SIGUSR1`` et ``SIGUSR2`` sont deux signaux qui peuvent être utilisés par des processus sans conditions particulières. Par défaut, la réception d'un tel signal provoque la terminaison du processus.
  - ``SIGCHLD``. Ce signal indique qu'un processus fils s'est arrêté ou a fini son exécution. Par défaut ce signal est ignoré.
  - ``SIGHUP``. Aux débuts de Unix, ce signal servait à indiquer que la connexion avec le terminal avait été rompue. Aujourd'hui, il est parfois utilisé par des processus serveurs qui rechargent leur fichier de configuration lorsqu'ils reçoivent ce signal.
@@ -62,7 +62,7 @@ Une description détaillée des différents signaux sous Unix et Linux peut se t
 Envoi de signaux
 ----------------
 
-Un processus peut envoyer un signal à un autre processus en utilisant l'appel système `kill(2)`_. 
+Un processus peut envoyer un signal à un autre processus en utilisant l'appel système `kill(2)`_.
 
 .. code-block:: c
 
@@ -75,7 +75,7 @@ Cet appel système prend deux arguments. Le second est toujours le numéro du si
 
  - ``pid>0``. Dans ce cas, le signal est délivré au processus ayant comme identifiant ``pid``.
  - ``pid==0``. Dans ce cas, le signal est délivré à tous les processus qui font partie du même groupe de processus [#fpgrp]_ que le processus qui exécute l'appel système `kill(2)`_.
- - ``pid==-1``. Dans ce cas, le signal est délivré à tous les processus pour lesquels le processus qui exécute `kill(2)`_ a les permissions suffisantes pour leur envoyer un signal. 
+ - ``pid==-1``. Dans ce cas, le signal est délivré à tous les processus pour lesquels le processus qui exécute `kill(2)`_ a les permissions suffisantes pour leur envoyer un signal.
  - ``pid<-1``. Dans ce cas, le signal est délivré à tous les processus qui font partie du groupe ``abs(pid)``.
 
 Par défaut, un processus ne peut envoyer un signal qu'à un processus qui s'exécute avec les mêmes permissions que le processus qui exécute l'appel système `kill(2)`_.
@@ -90,7 +90,7 @@ Pour des raisons historiques, il existe deux appels système permettant à un pr
    #include <signal.h>
    typedef void (*sighandler_t)(int);
 
-   sighandler_t signal(int signum, sighandler_t handler);  
+   sighandler_t signal(int signum, sighandler_t handler);
 
 .. index:: SIG_DLF, SIG_IGN
 
@@ -104,11 +104,11 @@ L'exemple ci-dessous est un programme simple qui compte le nombre de signaux ``S
    :start-after: ///AAA
    :end-before: ///BBB
 
-Lors de son exécution, ce programme affiche : 
+Lors de son exécution, ce programme affiche :
 
 .. code-block:: console
 
-   $ ./sigusr &	
+   $ ./sigusr &
    [1] 45602
    $ kill -s SIGUSR1 45602
    $ kill -s SIGUSR2 45602
@@ -121,25 +121,25 @@ Lors de son exécution, ce programme affiche :
 
 Il est intéressant d'analyser le code source du programme ci-dessus. Commençons d'abord par une lecture rapide pour comprendre la logique du programme sans s'attarder sur les détails. La fonction ``main`` utilise l'appel système `signal(2)`_ pour enregistrer un handler pour les signaux ``SIGUSR1`` et ``SIGUSR2``. La fonction ``sig_handler`` sera exécutée dès réception d'un de ces signaux. Cette fonction prend comme argument le numéro du signal reçu. Cela permet, de traiter plusieurs signaux dans la même fonction. Ensuite, la boucle ``while`` est une boucle active qui ne se terminera que lorsque la somme des variables ``n_sigusr1`` et ``n_sigusr2`` sera égale à 5. Ces deux variables sont modifiées uniquement dans la fonction ``sig_handler``. Elles permettent de compter le nombre de signaux de chaque type qui ont été reçus.
 
-Une lecture plus attentive du code ci-dessus révèle plusieurs points importants auxquels il faut être attentif lorsque l'on utilise les signaux. 
+Une lecture plus attentive du code ci-dessus révèle plusieurs points importants auxquels il faut être attentif lorsque l'on utilise les signaux.
 
-Tout d'abord, lorsqu'un processus comprend une (ou plusieurs) fonction(s) de traitement de signaux, il y a plusieurs séquences d'instructions qui peuvent être exécutées par le processus. La première est la suite d'instructions du processus lui-même qui démarre à la fonction ``main``. Dès qu'un signal est reçu, cette séquence d'instructions est interrompue pour exécuter la séquence d'instructions de la fonction de traitement du signal. Ce n'est que lorsque cette fonction se termine que la séquence principale peut reprendre son exécution à l'endroit où elle a été interrompue. 
+Tout d'abord, lorsqu'un processus comprend une (ou plusieurs) fonction(s) de traitement de signaux, il y a plusieurs séquences d'instructions qui peuvent être exécutées par le processus. La première est la suite d'instructions du processus lui-même qui démarre à la fonction ``main``. Dès qu'un signal est reçu, cette séquence d'instructions est interrompue pour exécuter la séquence d'instructions de la fonction de traitement du signal. Ce n'est que lorsque cette fonction se termine que la séquence principale peut reprendre son exécution à l'endroit où elle a été interrompue.
 
 L'existence de deux ou plusieurs séquences d'instructions peut avoir des conséquences importantes sur le bon fonctionnement du programme et peut poser de nombreuses difficultés d'implémentation. En effet, une fonction de traitement de signal doit pouvoir être exécutée à n'importe quel moment. Elle peut donc démarrer à n'importe quel endroit de la séquence d'instructions du processus. Si le processus et une fonction de traitement de signal accèdent à la même variable, il y a un risque que celle-ci soit modifiée par la fonction de traitement du signal pendant qu'elle est utilisée dans le processus. Si l'on n'y prend garde, ces accès venant de différentes séquences d'instructions peuvent poser des problèmes similaires à ceux posés par l'utilisation de threads. Une routine de traitement de signal est cependant moins générale qu'un thread et les techniques utilisables dans les threads ne sont pas applicables aux fonctions de traitement des signaux. En effet, quand la fonction de traitement de signal démarre, il est impossible de bloquer son exécution sur un mutex pour revenir au processus principal. Celle-ci doit s'exécuter jusqu'à sa dernière instruction.
 
 .. index:: sig_atomic_t
 
-Lorsque l'on écrit une routine de traitement de signal, plusieurs précautions importantes doivent être prises. Tout d'abord, une fonction de traitement de signal doit manipuler les variables avec précautions. Comme elle est potentiellement exécutée depuis n'importe quel endroit du code, elle ne peut pas s'appuyer sur le stack. Elle ne peut utiliser que des variables globales pour influencer le processus principal. Comme ces variables peuvent être utilisées à la fois dans le processus et la routine de traitement de signal, il est important de les déclarer en utilisant le mot-clé ``volatile``. Cela force le compilateur à recharger la valeur de la variable de la mémoire à chaque fois que celle-ci est utilisée. Mais cela ne suffit pas car il est possible que le processus exécute l'instruction de chargement de la valeur de la variable puis qu'un signal lui soit délivré, ce qui provoquera l'exécution de la fonction de traitement du signal. Lorsque celle-ci se terminera le processus poursuivra son exécution sans recharger la valeur de la variable potentiellement modifiée par la fonction de traitement du signal. Face à ce problème, il est préférable d'utiliser uniquement des variables de types ``sig_atomic_t`` dans les fonctions de traitement de signaux. Ce type permet de stocker un entier. Lorsque ce type est utilisé, le compilateur garantit que tous les accès à la variable se feront de façon atomique sans accès concurrent possible entre le processus et la fonction de traitement des signaux. 
+Lorsque l'on écrit une routine de traitement de signal, plusieurs précautions importantes doivent être prises. Tout d'abord, une fonction de traitement de signal doit manipuler les variables avec précautions. Comme elle est potentiellement exécutée depuis n'importe quel endroit du code, elle ne peut pas s'appuyer sur le stack. Elle ne peut utiliser que des variables globales pour influencer le processus principal. Comme ces variables peuvent être utilisées à la fois dans le processus et la routine de traitement de signal, il est important de les déclarer en utilisant le mot-clé ``volatile``. Cela force le compilateur à recharger la valeur de la variable de la mémoire à chaque fois que celle-ci est utilisée. Mais cela ne suffit pas car il est possible que le processus exécute l'instruction de chargement de la valeur de la variable puis qu'un signal lui soit délivré, ce qui provoquera l'exécution de la fonction de traitement du signal. Lorsque celle-ci se terminera le processus poursuivra son exécution sans recharger la valeur de la variable potentiellement modifiée par la fonction de traitement du signal. Face à ce problème, il est préférable d'utiliser uniquement des variables de types ``sig_atomic_t`` dans les fonctions de traitement de signaux. Ce type permet de stocker un entier. Lorsque ce type est utilisé, le compilateur garantit que tous les accès à la variable se feront de façon atomique sans accès concurrent possible entre le processus et la fonction de traitement des signaux.
 
 L'utilisation de ``sig_atomic_t`` n'est pas la seule précaution à prendre lorsque l'on écrit une fonction de traitement des signaux. Il faut également faire attention aux fonctions de la librairie et aux appels systèmes que l'on utilise. Sachant qu'un signal peut être reçu à n'importe quel moment, il est possible qu'un processus reçoive un signal et exécute une fonction de traitement du signal pendant l'exécution de la fonction ``fct`` de la librairie standard. Si la fonction de traitement du signal utilise également la fonction ``fct``, il y a un risque d'interférence entre l'exécution de ces deux fonctions. Ce sera le cas notamment si la fonction utilise un buffer statique ou modifie la variable ``errno``. Dans ces cas, la fonction de traitement du signal risque de modifier une valeur ou une zone mémoire qui a déjà été modifiée par le processus principal et cela donnera un résultat incohérent. Pour éviter ces problèmes, il ne faut utiliser que des fonctions "réentrantes" à l'intérieur des fonctions de traitement des signaux. Des fonctions comme `printf(3)`_, `scanf(3)`_ ne sont pas réentrantes et ne doivent pas être utilisées dans une section de traitement des signaux. La (courte) liste des fonctions qui peuvent être utilisées sans risque est disponible dans la section `2.4 de l'Open Group Base Specification <http://pubs.opengroup.org/onlinepubs/009695399/functions/xsh_chap02_04.html>`_
 
 Ces restrictions sur les instructions qui peuvent être utilisées dans une fonction de traitement des signaux ne sont pas les seules qui affectent l'utilisation des signaux. Ceux-ci souffrent d'autres limitations.
 
-Pour bien les comprendre, il est utile d'analyser comment ceux-ci sont supportés par le noyau. Il y a deux stratégies possibles pour implémenter les signaux sous Unix. La première stratégie est de considérer qu'un signal est un message qui est envoyé depuis le noyau ou un processus à un autre processus. Pour traiter ces messages, le noyau contient une queue qui stocke tous les signaux destinés à un processus donné. Avec cette stratégie d'implémentation, l'appel système `kill(2)`_ génère un message et le place dans la queue associée au processus destination.  Le noyau stocke pour chaque processus un tableau de pointeurs vers les fonctions de traitement de chacun des signaux. Ce tableau est modifié par l'appel système `signal(2)`_. Chaque fois que le noyau réactive un processus, il vérifie si la queue associée à ce processus contient un ou plusieurs messages concernant des signaux. Si un message est présent, le noyau appelle la fonction de traitement du signal correspondant. Lorsque la fonction se termine, l'exécution du processus reprend à l'instruction qui avait été interrompue. 
+Pour bien les comprendre, il est utile d'analyser comment ceux-ci sont supportés par le noyau. Il y a deux stratégies possibles pour implémenter les signaux sous Unix. La première stratégie est de considérer qu'un signal est un message qui est envoyé depuis le noyau ou un processus à un autre processus. Pour traiter ces messages, le noyau contient une queue qui stocke tous les signaux destinés à un processus donné. Avec cette stratégie d'implémentation, l'appel système `kill(2)`_ génère un message et le place dans la queue associée au processus destination.  Le noyau stocke pour chaque processus un tableau de pointeurs vers les fonctions de traitement de chacun des signaux. Ce tableau est modifié par l'appel système `signal(2)`_. Chaque fois que le noyau réactive un processus, il vérifie si la queue associée à ce processus contient un ou plusieurs messages concernant des signaux. Si un message est présent, le noyau appelle la fonction de traitement du signal correspondant. Lorsque la fonction se termine, l'exécution du processus reprend à l'instruction qui avait été interrompue.
 
-La seconde stratégie est de représenter l'ensemble des signaux qu'un processus peut recevoir sous la forme de drapeaux binaires. En pratique, il y a un drapeau par signal. Avec cette stratégie d'implémentation, l'appel système `kill(2)`_ modifie le drapeau correspondant du processus destination du signal (sauf si ce signal est ignoré par le processus, dans ce cas le drapeau n'est pas modifié). L'appel système `signal(2)`_ modifie également le tableau contenant les fonctions de traitement des signaux associé au processus. Chaque fois que le noyau réactive un processus, que ce soit après un changement de contexte ou après l'exécution d'un appel système, il vérifie les drapeaux relatifs aux signaux du processus. Si un des drapeaux est vrai, le noyau appelle la fonction de traitement associée à ce signal. 
+La seconde stratégie est de représenter l'ensemble des signaux qu'un processus peut recevoir sous la forme de drapeaux binaires. En pratique, il y a un drapeau par signal. Avec cette stratégie d'implémentation, l'appel système `kill(2)`_ modifie le drapeau correspondant du processus destination du signal (sauf si ce signal est ignoré par le processus, dans ce cas le drapeau n'est pas modifié). L'appel système `signal(2)`_ modifie également le tableau contenant les fonctions de traitement des signaux associé au processus. Chaque fois que le noyau réactive un processus, que ce soit après un changement de contexte ou après l'exécution d'un appel système, il vérifie les drapeaux relatifs aux signaux du processus. Si un des drapeaux est vrai, le noyau appelle la fonction de traitement associée à ce signal.
 
-La plupart des variantes de Unix, y compris Linux, utilisent la seconde stratégie d'implémentation pour les signaux. L'avantage principal de l'utilisation de drapeaux pour représenter les signaux reçus par un processus est qu'il suffit d'un bit par signal qui peut être reçu par le processus. La première stratégie nécessite de maintenir une queue par processus et la taille de cette queue varie en fonction du nombre de signaux reçus. Par contre, l'utilisation de drapeaux a un inconvénient majeur : il n'y a pas de garantie sur la délivrance des signaux. Lorsqu'un processus reçoit un signal, cela signifie qu'il y a au moins un signal de ce type qui a été envoyé au processus, mais il est très possible que plus d'un signal ont été envoyés au processus. 
+La plupart des variantes de Unix, y compris Linux, utilisent la seconde stratégie d'implémentation pour les signaux. L'avantage principal de l'utilisation de drapeaux pour représenter les signaux reçus par un processus est qu'il suffit d'un bit par signal qui peut être reçu par le processus. La première stratégie nécessite de maintenir une queue par processus et la taille de cette queue varie en fonction du nombre de signaux reçus. Par contre, l'utilisation de drapeaux a un inconvénient majeur : il n'y a pas de garantie sur la délivrance des signaux. Lorsqu'un processus reçoit un signal, cela signifie qu'il y a au moins un signal de ce type qui a été envoyé au processus, mais il est très possible que plus d'un signal ont été envoyés au processus.
 
 Pour illustrer ce problème, considérons le programme ci-dessous qui compte simplement le nombre de signaux ``SIGUSR1`` reçus.
 
@@ -149,7 +149,7 @@ Pour illustrer ce problème, considérons le programme ci-dessous qui compte sim
    :start-after: ///AAA
    :end-before: ///BBB
 
-Depuis un shell, il est possible d'envoyer plusieurs fois le signal ``SIGUSR1`` rapidement avec le script :download:`/Theorie/Fichiers/src/nkill.sh`. Ce script prend deux arguments : le nombre de signaux à envoyer et le processus destination. 
+Depuis un shell, il est possible d'envoyer plusieurs fois le signal ``SIGUSR1`` rapidement avec le script :download:`/Theorie/Fichiers/src/nkill.sh`. Ce script prend deux arguments : le nombre de signaux à envoyer et le processus destination.
 
 .. literalinclude:: /Theorie/Fichiers/src/nkill.sh
    :encoding: iso-8859-1
@@ -170,7 +170,7 @@ La sortie ci-dessous présente une exécution de ce script avec le processus :do
    $ ./nkill.sh 10 47845
    Exécution de sleep(31)
    $ Fin du processus
-   Reçu 3 SIGUSR1 
+   Reçu 3 SIGUSR1
 
 
 Il y a plusieurs points intéressants à noter concernant l'exécution de ce programme. Tout d'abord, même si 30 signaux ``SIGUSR1`` ont été générés, seuls 3 de ces signaux ont effectivement étés reçus. Les signaux ne sont manifestement pas fiables sous Unix et cela peut s'expliquer de deux façons. Premièrement, les signaux sont implémentés sous la forme de bitmaps. La réception d'un signal modifie simplement la valeur d'un bit dans le bitmap du processus. En outre, durant l'exécution de la fonction qui traite le signal ``SIGUSR1``, ce signal est bloqué par le système d'exploitation pour éviter qu'un nouveau signal n'arrive pendant que le premier est traité.
@@ -181,7 +181,7 @@ Nous terminons cette section en analysant deux cas pratiques d'utilisation des s
 
 Traitement de signaux asynchrones
 ---------------------------------
- 
+
 Le programme ci-dessous prend en arguments en ligne de commande une séquence d'entiers et divise la valeur ``1252`` par chaque entier passé en argument. Il enregistre la fonction ``sigfpe_handler`` comme fonction de traitement du signal ``SIGFPE``.
 
 
@@ -204,7 +204,7 @@ Lors de son exécution, ce programme affiche la sortie ci-dessous :
     Traitement de argv[3]=aa
     Argument incorrect : aa
     Traitement de argv[4]=0
-    Signal SIGFPE reçu 
+    Signal SIGFPE reçu
     Signal SIGFPE reçu
     ...
 
@@ -214,7 +214,7 @@ La fonction ``sigfpe_handler`` traite bien le signal ``SIGPFE`` reçu, mais apr�
 .. code-block:: c
 
     if(*endptr=='\0') {
-      int resultat=n/(int) val;  
+      int resultat=n/(int) val;
       printf("%d/%d=%d\n",n,(int) val,resultat);
       goto fin:
   erreur:
@@ -225,7 +225,7 @@ La fonction ``sigfpe_handler`` traite bien le signal ``SIGPFE`` reçu, mais apr�
       printf("Argument incorrect : %s\n",argv[i]);
      }
   // ...
-  
+
   static void sigfpe_handler(int signum) {
    goto erreur:
   }
@@ -243,7 +243,7 @@ En C, ce genre de construction n'est pas possible car l'étiquette d'un ``goto``
      void longjmp(jmp_buf env, int val);
 
 
-La fonction `setjmp(3)`_ est équivalente à la déclaration d'une étiquette. Elle prend comme argument un ``jmp_buf``. Cette structure de données, définie dans `setjmp.h`_ permet de sauvegarder l'environnement d'exécution, c'est-à-dire les valeurs des registres y compris ``%eip`` et ``%esp`` au moment où elle est exécutée. Lorsque `setjmp(3)`_ est exécutée dans le flot normal des instructions du programme, elle retourne la valeur ``0``. La fonction `longjmp(3)`_ prend deux arguments. Le premier est une structure de type ``jmp_buf`` et le second un entier. Le ``jmp_buf`` est l'environnement d'exécution qu'il faut restaurer lors de l'exécution de `longjmp(3)`_ et le second argument la valeur de retour que doit avoir la fonction `setjmp(3)`_ correspondante après l'exécution de `longjmp(3)`_. 
+La fonction `setjmp(3)`_ est équivalente à la déclaration d'une étiquette. Elle prend comme argument un ``jmp_buf``. Cette structure de données, définie dans `setjmp.h`_ permet de sauvegarder l'environnement d'exécution, c'est-à-dire les valeurs des registres y compris ``%eip`` et ``%esp`` au moment où elle est exécutée. Lorsque `setjmp(3)`_ est exécutée dans le flot normal des instructions du programme, elle retourne la valeur ``0``. La fonction `longjmp(3)`_ prend deux arguments. Le premier est une structure de type ``jmp_buf`` et le second un entier. Le ``jmp_buf`` est l'environnement d'exécution qu'il faut restaurer lors de l'exécution de `longjmp(3)`_ et le second argument la valeur de retour que doit avoir la fonction `setjmp(3)`_ correspondante après l'exécution de `longjmp(3)`_.
 
 Le programme ci-dessous illustre l'utilisation de `setjmp(3)`_ et `longjmp(3)`_.
 
@@ -262,7 +262,7 @@ Le programme débute en exécutant la fonction ``f``. Dans cette exécution, la 
 Avec les fonctions `setjmp(3)`_ et `longjmp(3)`_, il est presque possible d'implémenter le traitement attendu pour le signal ``SIGFPE``. Il reste un problème à résoudre. Lorsque la routine de traitement du signal ``SIGFPE`` s'exécute, ce signal est bloqué par le système d'exploitation jusqu'à ce que cette fonction se termine. Si elle effectue un `longjmp(3)`_, elle ne se terminera jamais et le signal continuera à être bloqué. Pour éviter ce problème, il faut utiliser les fonctions `sigsetjmp(3)`_ et `siglongjmp(3)`_. Ces fonctions sauvegardent dans une structure de données ``sigjmp_buf`` non seulement l'environnement d'exécution mais aussi la liste des signaux qui sont actuellement bloqués. Lorsque `siglongjmp(3)`_ s'exécute, l'environnement et  la liste des signaux bloqués sont restaurés.
 
 Le programme ci-dessous présente l'utilisation de `sigsetjmp(3)`_ et `siglongjmp(3)`_.
- 
+
 .. literalinclude:: /Theorie/Fichiers/src/sigfpe3.c
    :encoding: iso-8859-1
    :language: c
@@ -303,7 +303,7 @@ Parfois il est nécessaire dans un programme de limiter le temps d'attente pour 
    :start-after: ///AAA
    :end-before: ///BBB
 
-Ce programme utilise `alarm(3posix)`_ pour limiter la durée d'un appel système `read(2)`_. Pour ce faire, il enregistre d'abord une fonction pour traiter le signal ``SIGALRM``. Cette fonction est vide dans l'exemple, son exécution permet juste d'interrompre l'appel système `read(2)`_. Par défaut, lorsqu'un signal survient durant l'exécution d'un appel système, celui-ci est automatiquement redémarré par le système d'exploitation pour éviter à l'application de devoir traiter tous les cas possibles d'interruption d'appels système. La fonction `siginterrupt(3)`_ permet de modifier ce comportement par défaut et nous l'utilisons pour forcer l'interruption d'appels systèmes lorsque le signal ``SIGALRM`` est reçu. L'appel à ``alarm(0)`` permet de désactiver l'alarme qui était en cours. 
+Ce programme utilise `alarm(3posix)`_ pour limiter la durée d'un appel système `read(2)`_. Pour ce faire, il enregistre d'abord une fonction pour traiter le signal ``SIGALRM``. Cette fonction est vide dans l'exemple, son exécution permet juste d'interrompre l'appel système `read(2)`_. Par défaut, lorsqu'un signal survient durant l'exécution d'un appel système, celui-ci est automatiquement redémarré par le système d'exploitation pour éviter à l'application de devoir traiter tous les cas possibles d'interruption d'appels système. La fonction `siginterrupt(3)`_ permet de modifier ce comportement par défaut et nous l'utilisons pour forcer l'interruption d'appels systèmes lorsque le signal ``SIGALRM`` est reçu. L'appel à ``alarm(0)`` permet de désactiver l'alarme qui était en cours.
 
 Lors de son exécution, ce programme affiche la sortie suivante.
 
@@ -326,7 +326,7 @@ L'appel système `alarm(3posix)`_ s'appuie sur `setitimer(2)`_, mais les deux ty
 
 .. note:: Signaux, threads, `fork(2)`_ et `execve(2)`_
 
- Le noyau du système d'exploitation maintient pour chaque processus une structure de données contenant la liste des signaux qui sont ignorés, ont été reçus et les pointeurs vers les fonctions de traitement pour chaque signal. Cette structure de données est associée à chaque processus. La création de threads ne modifie pas cette structure de données et lorsqu'un signal est délivré à un processus utilisant des threads, c'est généralement le thread principal qui recevra et devra traiter le signal. Lors de l'exécution de `fork(2)`_, la structure de données relative aux signaux du processus père est copiée dans le processus fils. Après `fork(2)`_, les deux processus peuvent évoluer séparément et le fils peut par exemple modifier la façon dont il traite un signal sans que cela n'affecte le processus père. Lors de l'exécution de `execve(2)`_, la structure de données relative aux signaux est réinitialisée avec les traitements par défaut pour chacun des signaux. 
+ Le noyau du système d'exploitation maintient pour chaque processus une structure de données contenant la liste des signaux qui sont ignorés, ont été reçus et les pointeurs vers les fonctions de traitement pour chaque signal. Cette structure de données est associée à chaque processus. La création de threads ne modifie pas cette structure de données et lorsqu'un signal est délivré à un processus utilisant des threads, c'est généralement le thread principal qui recevra et devra traiter le signal. Lors de l'exécution de `fork(2)`_, la structure de données relative aux signaux du processus père est copiée dans le processus fils. Après `fork(2)`_, les deux processus peuvent évoluer séparément et le fils peut par exemple modifier la façon dont il traite un signal sans que cela n'affecte le processus père. Lors de l'exécution de `execve(2)`_, la structure de données relative aux signaux est réinitialisée avec les traitements par défaut pour chacun des signaux.
 
 
  .. _semname:
@@ -343,7 +343,7 @@ Nous avons présenté les sémaphores lors de l'étude du fonctionnement des thr
    #include <semaphore.h>
 
    sem_t *sem_open(const char *name, int oflag);
-   sem_t *sem_open(const char *name, int oflag, 
+   sem_t *sem_open(const char *name, int oflag,
                    mode_t mode, unsigned int value);
    int sem_close(sem_t *sem);
    int sem_unlink(const char *name);
@@ -384,7 +384,7 @@ Les permissions du fichier virtuel représentent les permissions associées au s
 
    $ ./process-sem-before &
    [1] 5222
-   $ ./process-sem-after 
+   $ ./process-sem-after
    before done, pid=5222
    after done, pid=5223
    [1]+  Done                    ./process-sem-before
@@ -396,12 +396,12 @@ Il est important de noter que les sémaphores nommés sont une ressource génér
 Partage de fichiers
 ===================
 
-Les fichiers sont l'un des principaux moyens de communication entre processus. L'avantage majeur des fichiers est leur persistence. Les données sauvegardées dans un fichier persistent sur le système de fichiers après la fin du processus qui les a écrites. L'inconvénient majeur de l'utilisation de fichiers par rapport à d'autres techniques de communication entre processus est la relative lenteur des dispositifs de stockage en comparaison avec les accès à la mémoire. Face à cette lenteur des dispositifs de stockage, la majorité des systèmes d'exploitation utilisent des buffers qui servent de tampons entre les processus et les dispositifs de stockage. Lorsqu'un processus écrit une donnée sur un dispositif de stockage, celle-ci est d'abord écrite dans un buffer géré par le système d'exploitation et le processus peut poursuivre son exécution sans devoir attendre l'exécution compléte de l'écriture sur le dispositif de stockage. La taille de ces buffers varie généralement dynamiquement en fonction de la charge du système. Les données peuvent y rester entre quelques fractions de seconde et quelques dizaines de secondes. Un processus peut contrôler l'utilisation de ce buffer en utilisant l'appel système `fsync(2)`_. Celui-ci permet de forcer l'écriture sur le dispositif de stockage des données du fichier identifié par le descripteur de fichiers passé en argument. L'appel système `sync(2)`_ force quant à lui l'écriture de toutes les données actuellement stockées dans les buffers du noyau sur les dispositifs de stockage. Cet appel système est notamment utilisé par un processus système  qui l'exécute toutes les trente secondes afin d'éviter que des données ne restent trop longtemps dans les buffers du noyau. 
+Les fichiers sont l'un des principaux moyens de communication entre processus. L'avantage majeur des fichiers est leur persistence. Les données sauvegardées dans un fichier persistent sur le système de fichiers après la fin du processus qui les a écrites. L'inconvénient majeur de l'utilisation de fichiers par rapport à d'autres techniques de communication entre processus est la relative lenteur des dispositifs de stockage en comparaison avec les accès à la mémoire. Face à cette lenteur des dispositifs de stockage, la majorité des systèmes d'exploitation utilisent des buffers qui servent de tampons entre les processus et les dispositifs de stockage. Lorsqu'un processus écrit une donnée sur un dispositif de stockage, celle-ci est d'abord écrite dans un buffer géré par le système d'exploitation et le processus peut poursuivre son exécution sans devoir attendre l'exécution compléte de l'écriture sur le dispositif de stockage. La taille de ces buffers varie généralement dynamiquement en fonction de la charge du système. Les données peuvent y rester entre quelques fractions de seconde et quelques dizaines de secondes. Un processus peut contrôler l'utilisation de ce buffer en utilisant l'appel système `fsync(2)`_. Celui-ci permet de forcer l'écriture sur le dispositif de stockage des données du fichier identifié par le descripteur de fichiers passé en argument. L'appel système `sync(2)`_ force quant à lui l'écriture de toutes les données actuellement stockées dans les buffers du noyau sur les dispositifs de stockage. Cet appel système est notamment utilisé par un processus système  qui l'exécute toutes les trente secondes afin d'éviter que des données ne restent trop longtemps dans les buffers du noyau.
 
 .. index:: open file object
 
 L'utilisation d'un même fichier par plusieurs processus est une des plus anciennes techniques de communication entre processus. Pour comprendre son fonctionnement, il est utile d'analyser les structures de données qui sont maintenues par le noyau du système d'exploitation pour chaque fichier et chaque processus. Comme nous l'avons présenté dans le chapitre précédent, le système de fichiers utilise des inodes pour stocker les méta-données et la liste des blocs de chaque fichier. Lorsqu'un processus ouvre un fichier, le noyau du système d'exploitation lui associe le premier descripteur de fichier libre dans la table des descripteurs de fichiers du processus. Ce descripteur de fichier pointe alors vers une structure maintenue par le noyau qui est souvent appelée un :term:`open file object`. Un :term:`open file object` contient toutes les informations qui sont nécessaires au noyau pour pouvoir effectuer les opérations de manipulation d'un fichier ouvert par un processus. Parmi celles-ci, on trouve notamment :
- 
+
  - le mode dans lequel le fichier a été ouvert (lecture seule, écriture, lecture/écriture). Ce mode est initialisé à l'ouverture du fichier. Le noyau vérifie le mode lors de l'exécution des appels système `read(2)`_ et `write(2)`_ mais pas les permissions du fichier sur le système de fichiers.
  - l'offset pointer qui est la tête de lecture/écriture dans le fichier
  - une référence vers le fichier sur le système de fichiers. Dans un système de fichiers Unix, il s'agit généralement du numéro de l':term:`inode` du fichier ou d'un pointeur vers une structure contenant cet :term:`inode` et des informations comme le dispositif de stockage sur lequel il est stocké.
@@ -410,7 +410,7 @@ L'utilisation d'un même fichier par plusieurs processus est une des plus ancien
 A titre d'exemple, considérons l'exécution de la commande suivante depuis le shell :
 
 .. code-block:: console
-  
+
    $ cat < /tmp/t > /tmp/out
 
 Lors de son exécution, deux open file objects sont créés dans le noyau. Le premier est relatif au fichier ``/tmp/t`` qui est associé au descripteur ``stdin``. Le second est lié au fichier ``/tmp/out`` et est associé au descripteur ``stdout``. Ces open-file objects sont représentés graphiquement dans la figure ci-dessous.
@@ -457,12 +457,12 @@ Considérons d'abord un processus père et un processus fils qui doivent lire de
 
 Ce n'est pas le seul problème qui se pose lorsque plusieurs processus manipulent un même fichier. Considérons un logiciel de base de données qui comprend des processus qui lisent dans des fichiers qui constituent la base de données et d'autres qui modifient le contenu de ces fichiers. Ces opérations d'écritures et de lectures dans des fichiers partagés risquent de provoquer des problèmes d'accès concurrent similaires aux problèmes que nous avons dû traiter lorsque plusieurs threads se partagent une même mémoire. Pour réguler ces accès à des fichiers, Unix et Linux supportent des verrous (locks en anglais) que l'on peut associer à des fichiers. A première vue, un :term:`lock` peut être comparé à un :term:`mutex`. Un :term:`lock` permet à un processus d'obtenir l'accès exclusif à un fichier ou une partie de fichier tout comme un :term:`mutex` est utilisé pour réguler les accès à une variable. En théorie, il existe deux techniques d'utilisation de locks qui peuvent être utilisées sur un système Unix :
 
- - :term:`mandatory locking`. Dans ce cas, les processus placent des locks sur certains fichiers ou zones de fichiers et le système d'exploitation vérifie qu'aucun accès fait aux fichiers avec les appels système standards ne viole ces locks. 
+ - :term:`mandatory locking`. Dans ce cas, les processus placent des locks sur certains fichiers ou zones de fichiers et le système d'exploitation vérifie qu'aucun accès fait aux fichiers avec les appels système standards ne viole ces locks.
  - :term:`advisory locking`. Dans ce cas, les processus doivent vérifier eux-mêmes que les accès qu'ils effectuent ne violent pas les locks qui ont été associés aux différents fichiers.
 
 Certains systèmes Unix supportent les deux stratégies de locking, mais la plupart ne supportent que l':term:`advisory locking`. L':term:`advisory locking` est la stratégie la plus facile à implémenter dans le système d'exploitation. C'est aussi celle qui donne les meilleures performances. Nous limitons notre description à l':term:`advisory locking`. Le :term:`mandatory locking` nécessite un support spécifique du système de fichiers qui sort du cadre de ce cours.
 
-Deux appels système sont utilisés pour manipuler les locks qui peuvent être associés aux fichiers : `flock(2)`_ et `fcntl(2)`_. `flock(2)`_ est la solution la plus simple. Cet appel système permet d'associer un verrou à un fichier complet. 
+Deux appels système sont utilisés pour manipuler les locks qui peuvent être associés aux fichiers : `flock(2)`_ et `fcntl(2)`_. `flock(2)`_ est la solution la plus simple. Cet appel système permet d'associer un verrou à un fichier complet.
 
 .. code-block:: c
 
@@ -472,7 +472,7 @@ Deux appels système sont utilisés pour manipuler les locks qui peuvent être a
 
 Il prend comme argument un descripteur de fichier et une opération. Deux types de locks sont supportés. Un lock est dit partagé (shared lock, ``operation==LOCK_SH``) lorsque plusieurs processus peuvent posséder un même lock vers un fichier. Un lock est dit exclusif (exclusive lock, ``operation==LOCK_EX``) lorsqu'un seul processus peut posséder un lock vers un fichier à un moment donné. Il faut noter que les locks sont associés aux fichiers (et donc indirectement aux inodes) et non aux descripteurs de fichiers. Pour retirer un lock associé à un fichier, il faut utiliser ``LOCK_UN`` comme second argument à l'appel `flock(2)`_.
 
-  
+
 
 L'appel système `fcntl(2)`_ et la fonction `lockf(3)`_ sont nettement plus flexibles. Ils permettent de placer des locks sur une partie d'un fichier. `lockf(3)`_ prend trois arguments : un descripteur de fichiers, une commande et un entier qui indique la longueur de la section du fichier à associer au lock.
 
@@ -528,7 +528,7 @@ Sous Linux, le système de fichiers virtuel ``/proc`` fournit une interface perm
 
 .. code-block:: console
 
-   cat /proc/locks 
+   cat /proc/locks
    1: POSIX  ADVISORY  WRITE 12367 00:17:20628657 0 0
    2: POSIX  ADVISORY  WRITE 12367 00:17:7996086 0 0
    3: POSIX  ADVISORY  WRITE 12367 00:17:24084665 0 0
@@ -555,7 +555,7 @@ Dans ce fichier, la première colonne indique le type de lock (``POSIX`` pour un
 .. [#fpgrp] Chaque processus appartient à groupe de processus. Ce groupe de processus peut être récupéré via l'appel système `getpgrp(2)`_. Par défaut, lorsqu'un processus est créé, il appartient au même groupe de processus que son processus père, mais il est possible de changer de groupe de
  processus en utilisant l'appel système `setpgid(2)`_. En pratique, les groupes de processus sont surtout utilisés par le shell. Lorsqu'un utilisateur exécute une commande combinée telle que ``cat /tmp/t | ./a.out``, il souhaite pouvoir l'arrêter en tapant sur `Ctrl-C` si nécessaire. Pour cela, il faut pouvoir délivrer le signal ``SIGINT`` aux processus ``cat`` et ``a.out``.
 
-.. [#flent] Les autres appels système lents sont `open(2)`_, `write(2)`_, `sendto(2)`_, `recvfrom(2)`_, `sendmsg(2)`_, `recvmsg(2)`_,  `wait(2)`_  `ioctl(2)`_. 
+.. [#flent] Les autres appels système lents sont `open(2)`_, `write(2)`_, `sendto(2)`_, `recvfrom(2)`_, `sendmsg(2)`_, `recvmsg(2)`_,  `wait(2)`_  `ioctl(2)`_.
 
 .. [#frestart] L'appel système `sigaction(2)`_ permet notamment de spécifier pour chaque signal si un appel système interrompu par ce signal doit être automatiquement redémarré lorsque le signal survient ou non.
 

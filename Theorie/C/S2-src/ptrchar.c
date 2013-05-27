@@ -1,6 +1,6 @@
 /***********************************************
  * ptrchar
- * 
+ *
  * Programme d'exemple d'utilisation de pointeurs
  *
  ***********************************************/
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
   printf("c vaut %c et est stocké à l'adresse : %p\n",c,&c);
   printf("*str_ptr vaut %p et pointe vers %c\n",str_ptr,*(str_ptr));
   str_ptr=str; // équivaut à  str_ptr=&(str[0]);
-  printf("après str_ptr=str[];\n"); 
+  printf("après str_ptr=str[];\n");
   printf("*str_ptr vaut %p et pointe vers %c\n",str_ptr,*(str_ptr));
   printf("Contenu du tableau\n");
   for(i=0;i<strlen(str);i++) {

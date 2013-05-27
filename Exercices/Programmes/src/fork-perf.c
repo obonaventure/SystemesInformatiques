@@ -1,7 +1,7 @@
 /**************************************
  * fork-perf.c
- * 
- * Programme d'exemple pour calculer le coût 
+ *
+ * Programme d'exemple pour calculer le coût
  * de fork
  *
  *************************************/
@@ -42,6 +42,6 @@ int main (int argc, char *argv[])  {
     }
   }
   return(EXIT_SUCCESS);
-    
+
 }
 
