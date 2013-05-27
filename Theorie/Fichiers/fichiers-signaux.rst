@@ -179,7 +179,7 @@ Un deuxième point important à relever est l'utilisation de `sleep(3)`_. Par d�
 
 Nous terminons cette section en analysant deux cas pratiques d'utilisation des signaux. Le premier est relatif aux signaux synchrones et nous développons une fonction de traitement du signal ``SIGFPE`` pour éviter qu'un programme ne s'arrête suite à une division par zéro. Ensuite, nous utilisons `alarm(3posix)`_ pour implémenter un temporisateur simple.
 
-Traitement de signaux asynchrones
+Traitement de signaux synchrones
 ---------------------------------
  
 Le programme ci-dessous prend en arguments en ligne de commande une séquence d'entiers et divise la valeur ``1252`` par chaque entier passé en argument. Il enregistre la fonction ``sigfpe_handler`` comme fonction de traitement du signal ``SIGFPE``.
