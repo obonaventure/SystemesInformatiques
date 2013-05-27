@@ -201,7 +201,7 @@ Les valeurs de ces bits sont représentés pas les symboles ``rwx`` dans l'outpu
 
  Ces bits de permissions sont généralement spécifiés soit sous la forme d'une disjonction logique ou sous forme numérique. A titre d'exemple, un fichier qui peut être lu et écrit uniquement pas son propriétaire aura comme permissions ``00600`` ou ``S_IRUSR|S_IWUSR``.
 
- Le nibble de poids fort des bits de permission sert à encoder des permissions particulières relatives aux fichiers et répertoires. Par exemple, lorsque la permission ``S_ISUID (04000)`` est associée à un exécutable, elle indique que celui-ci doit s'exécuter avec les permissions du propriétaire de l'exécutable et pas les permissions de l'utilisateur. Cette permission spéciale est utilisée par des programmes comme `passwd(1)`_ qui doivent disposer des permissions de l'administrateur système pour s'exécuter correctement (`passwd(1)`_ doit modifier le fichier `passwd(5)`_ qui appartient à l'administrateur système).
+ Le :term:`nibble` de poids fort des bits de permission sert à encoder des permissions particulières relatives aux fichiers et répertoires. Par exemple, lorsque la permission ``S_ISUID (04000)`` est associée à un exécutable, elle indique que celui-ci doit s'exécuter avec les permissions du propriétaire de l'exécutable et pas les permissions de l'utilisateur. Cette permission spéciale est utilisée par des programmes comme `passwd(1)`_ qui doivent disposer des permissions de l'administrateur système pour s'exécuter correctement (`passwd(1)`_ doit modifier le fichier `passwd(5)`_ qui appartient à l'administrateur système).
 
 
 Les exemples ci-dessous présentent le contenu partiel d'un répertoire avec en première colonne le numéro de l'inode associé à chaque fichier/répertoire.

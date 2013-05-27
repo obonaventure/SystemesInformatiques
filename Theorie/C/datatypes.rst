@@ -28,7 +28,7 @@ de la séquence est appelé par convention le :term:`bit de poids fort`
 tandis que celui qui se trouve le plus à droite est appelé le
 :term:`bit de poids faible`. A titre d'exemple, la suite de bits
 ``0101`` correspond à l'entier non signé représentant la valeur
-cinq. Le bit de poids fort (resp. faible) de ce nibble est ``0``
+cinq. Le bit de poids fort (resp. faible) de ce :term:`nibble` est ``0``
 (resp. ``1``). La table ci-dessous reprend les différentes valeurs décimales
 correspondant à toutes les séquences de quatre bits consécutifs.
 
