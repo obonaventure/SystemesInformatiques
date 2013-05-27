@@ -138,7 +138,7 @@ Lorsque le système d'exploitation exécute un programme C compilé, il démarre
 .. literalinclude:: src/cmdline.c
    :language: c
 
-Par convention, en C le premier argument (se trouvant à l'indice ``0`` du tableau ``*argv``) est le nom du programme qui a été exécuté par l'utilisateur. Une exécution de ce programme est illustrée ci-dessous.
+Par convention, en C le premier argument (se trouvant à l'indice ``0`` du tableau ``argv``) est le nom du programme qui a été exécuté par l'utilisateur. Une exécution de ce programme est illustrée ci-dessous.
 
 .. literalinclude:: src/cmdline.out
         :language: console
