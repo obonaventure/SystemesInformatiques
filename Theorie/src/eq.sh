@@ -9,3 +9,4 @@ if [ $1 -eq $2 ]; then
 else
 	echo "Nombres différents"
 fi
+exit 0
