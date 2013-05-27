@@ -120,8 +120,8 @@ Au niveau des constructions syntaxiques, on retrouve les mêmes boucles et tests
 
  - test ``if (condition)  { ... } else { ... }``
  - boucle ``while (condition) { ... }``
- - boucle ``do { ... } while (condition)``
- - boucle ``for``
+ - boucle ``do { ... } while (condition);``
+ - boucle ``for (init; condition; incr) { ... }``
 
 En Java, les conditions sont des expressions qui doivent retourner un résultat de type ``boolean``. C est beaucoup plus permissif puisqu'une condition est une expression qui retourne un nombre entier.
 
