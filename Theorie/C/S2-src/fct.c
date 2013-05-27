@@ -13,7 +13,7 @@
 
 ///AAA
 void usage() {
-  printf("Usage : ... \n");
+  printf("Usage : ...\n");
 }
 ///BBB
 

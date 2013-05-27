@@ -49,8 +49,8 @@ int main(int argc, char *argv[]) {
       matrix[i][j]=1;
     }
   }
-  printf("%d \n",sum());
-  printf("%d \n",sum2());
+  printf("%d\n",sum());
+  printf("%d\n",sum2());
 
    return(EXIT_SUCCESS);
 }

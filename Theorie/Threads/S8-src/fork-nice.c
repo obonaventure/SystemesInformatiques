@@ -13,8 +13,8 @@
 #include <sys/types.h>
 
 void usage() {
-  printf("Usage : \n");
-  printf("prog -p num\navec num entier \n");
+  printf("Usage :\n");
+  printf("prog -p num\navec num entier\n");
 
 }
 

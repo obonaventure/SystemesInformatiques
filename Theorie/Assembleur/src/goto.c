@@ -29,10 +29,10 @@ int main(int argc, char *argv[]) {
 	goto suite;
       }
     }
-  printf("aucune valeur supérieure à %d \n",MVAL,v);
+  printf("aucune valeur supérieure à %d\n",MVAL,v);
   goto fin;
  suite:
-  printf("première valeur supérieure à %d : %d \n",MVAL,v);
+  printf("première valeur supérieure à %d : %d\n",MVAL,v);
  fin:
   return(EXIT_SUCCESS);
   ///BBB

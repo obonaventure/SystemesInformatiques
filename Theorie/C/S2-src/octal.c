@@ -16,9 +16,9 @@ int main(int argc, char *argv[]) {
   i=65;   // décimal
   j=065;  // octal !!!
   if(i==j)
-    printf("%d et %d sont égaux \n",i,j);
+    printf("%d et %d sont égaux\n",i,j);
   else
-    printf("%d et %d sont différents \n",i,j);
+    printf("%d et %d sont différents\n",i,j);
 
    ///BBB
    return(EXIT_SUCCESS);

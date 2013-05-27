@@ -27,7 +27,7 @@ int main (int argc, char *argv[])  {
     duree=sleep(duree);
   }
   printf("Fin du processus\n");
-  printf("Reçu %d SIGUSR1 \n",n_sigusr1);
+  printf("Reçu %d SIGUSR1\n",n_sigusr1);
   return(EXIT_SUCCESS);
 }
 
