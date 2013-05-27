@@ -22,11 +22,11 @@ char msg[MSG_LEN]; // initialisé par le compilateur
 int main(int argc, char *argv[]) {
   int i;
   printf("g est à l'adresse %p et initialisée à %d\n",&g,g);
-  printf("msg est à l'a dresse %p contient les caractères :",msg);
+  printf("msg est à l'adresse %p contient les caractères :",msg);
   for(i=0;i<MSG_LEN;i++)
-    printf("%x ",msg[i]);
+    printf(" %x",msg[i]);
   printf("\n");
-  printf("Cours est à l'adresse %p et contient : %s \n",&cours,cours);
+  printf("Cours est à l'adresse %p et contient : %s\n",&cours,cours);
   return(EXIT_SUCCESS);
 }
 ///BBB

@@ -16,7 +16,7 @@ static void sig_handler(int);
 
 int main (int argc, char *argv[])  {
   char c;
-  printf("Tapez return en moins de 5 secondes ! \n");
+  printf("Tapez return en moins de 5 secondes !\n");
   fflush(stdout);
   if(signal(SIGALRM,sig_handler)==SIG_ERR) {
     perror("signal");
@@ -31,7 +31,7 @@ int main (int argc, char *argv[])  {
   int r=read(STDIN_FILENO,&c,1);
   if((r==1)&&(c=='\n')) {
     alarm(0); // reset timer
-    printf("Gagné \n");
+    printf("Gagné\n");
     exit(EXIT_SUCCESS);
   }
   printf("Perdu !\n");

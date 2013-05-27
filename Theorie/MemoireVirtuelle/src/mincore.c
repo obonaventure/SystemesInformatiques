@@ -46,15 +46,15 @@ int main(int argc, char *argv[]) {
   }
 
   for (page_index = 0; page_index < SIZE/page_size; page_index++) {
-    printf("%lu : ", (unsigned long)page_index);
+    printf("%lu :", (unsigned long)page_index);
     if (mincore_vec[page_index]&MINCORE_INCORE) {
-      printf("incore ");
+      printf(" incore");
     }
     if (mincore_vec[page_index]&MINCORE_REFERENCED) {
-      printf("referenced_by_us ");
+      printf(" referenced_by_us");
     }
     if (mincore_vec[page_index]&MINCORE_MODIFIED) {
-      printf("modified_by_us ");
+      printf(" modified_by_us");
     }
     printf("\n");
   }

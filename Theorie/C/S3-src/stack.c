@@ -57,10 +57,10 @@ void display()
   t = stack;
   while(t!=NULL) {
     if(t->data!=NULL) {
-      printf("Item at addr %p  :  Fraction %d/%d   Next %p \n",t,t->data->num,t->data->den,t->next);
+      printf("Item at addr %p  :  Fraction %d/%d   Next %p\n",t,t->data->num,t->data->den,t->next);
     }
     else {
-      printf("Bas du stack %p  \n",t);
+      printf("Bas du stack %p\n",t);
     }
     t=t->next;
   }

@@ -15,10 +15,10 @@ void f() {
 
   printf("Début fonction f\n");
   if(setjmp(label)==0) {
-    printf("Exécution normale \n");
+    printf("Exécution normale\n");
   }
   else {
-    printf("Exécution après longjmp \n");
+    printf("Exécution après longjmp\n");
   }
 }
 
