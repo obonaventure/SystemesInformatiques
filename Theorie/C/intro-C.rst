@@ -114,7 +114,7 @@ En Java, les chaînes de caractères sont représentées grâce à l'objet ``Str
    :end-before: ///BBB
 
 
-L'exemple ci-dessus illustre l'utilisation d'un tableau de caractères pour stocker une chaîne de caractères. Lors de son exécution, ce fragment de code affiche ``String: java`` sur la sortie standard. Le caractère spécial ``\n`` indique un passage à la ligne. `printf(3)`_  supporte d'autres caractères spéciaux qui sont décrits dans sa page de manuel.
+L'exemple ci-dessus illustre l'utilisation d'un tableau de caractères pour stocker une chaîne de caractères. Lors de son exécution, ce fragment de code affiche ``String : java`` sur la sortie standard. Le caractère spécial ``\n`` indique un passage à la ligne. `printf(3)`_  supporte d'autres caractères spéciaux qui sont décrits dans sa page de manuel.
 
 Au niveau des constructions syntaxiques, on retrouve les mêmes boucles et tests en C et en Java :
 
