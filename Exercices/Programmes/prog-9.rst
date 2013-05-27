@@ -50,7 +50,7 @@ Exercices
 
       fork, fermer stdout, ouvrir test.txt - par défaut il aura le premier fd libre, c-a-d celui de stdout qui vient d'être fermé et ensuite exécution avec execve
 
-9. Dans un shell, on exécute la commande ``./a.out < in.txt > out.txt``. Quelles sont les appels système qui doivent être exécutés par le shell pour lancer cet exécutable comme demandé par l'utilisateur ?
+9. Dans un shell, on exécute la commande ``./a.out < in.txt > out.txt``. Quelles sont les appels systèmes qui doivent être exécutés par le shell pour lancer cet exécutable comme demandé par l'utilisateur ?
 
  .. only:: staff
 
@@ -61,7 +61,7 @@ Exercices
     open(out.txt,O_WRONLY)
     execve (qui préserver les descripteurs ouverts)
 
-10. Dans un shell, on exécute la commande ``cat < in.txt | grep sinf1252``. Quelles sont les appels système qui doivent être exécutés par le shell pour lancer cette commande comme demandé par l'utilisateur ?
+10. Dans un shell, on exécute la commande ``cat < in.txt | grep sinf1252``. Quelles sont les appels systèmes qui doivent être exécutés par le shell pour lancer cette commande comme demandé par l'utilisateur ?
 
  .. only:: staff
 
@@ -93,7 +93,7 @@ Exercices
 
   .. only:: staff
 
-     Les performances décroissent car il y a plus d'appels système qui sont effectués. sync force l'écriture et bypasse le buffer. Il est utile de mentionner l'existence de ce buffer
+     Les performances décroissent car il y a plus d'appels systèmes qui sont effectués. sync force l'écriture et bypasse le buffer. Il est utile de mentionner l'existence de ce buffer
 
 15. Effectuez l'exercice sur la manipulation de fichiers sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/59>`_.
 

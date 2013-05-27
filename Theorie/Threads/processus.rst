@@ -138,7 +138,7 @@ Outre l'utilisation de fonctions de librairies, les programmes doivent interagir
 
 L'exécution d'un appel système comprend les mêmes étapes avec une différence importante c'est que le flux d'exécution des instructions doit passer du programme utilisateur au noyau du système d'exploitation. Pour comprendre le fonctionnement et l'exécution d'un appel système, il est utile d'analyser les six points mentionnés ci-dessus.
 
-Le premier problème à résoudre pour exécuter un appel système est de pouvoir placer les arguments de l'appel système dans un endroit auquel le :term:`kernel` pourra facilement accéder. Il existe de nombreux appels systèmes avec différents arguments. La liste complète des appels système est reprise dans la page de manuel `syscalls(2)`_. La table ci-dessous illustre quelques appels système et leurs arguments.
+Le premier problème à résoudre pour exécuter un appel système est de pouvoir placer les arguments de l'appel système dans un endroit auquel le :term:`kernel` pourra facilement accéder. Il existe de nombreux appels systèmes avec différents arguments. La liste complète des appels systèmes est reprise dans la page de manuel `syscalls(2)`_. La table ci-dessous illustre quelques appels systèmes et leurs arguments.
 
 ==============            =====================
 Appel système             Arguments
@@ -164,7 +164,7 @@ Les transitions entre les modes protégé et utilisateur sont importantes car el
 
 L'appel système peut donc s'exécuter en utilisant les arguments qui se trouvent dans les différents registres. Lorsque l'appel système se termine, le résultat est placé dans le registre ``%eax`` et une instruction spéciale permet de retourner en mode protégé et d'exécuter dans le processus appelant l'instruction qui suit celle qui a provoqué l'exécution de l'appel système. Si l'appel système a échoué, le :term:`kernel` doit aussi mettre à jour le contenu de ``errno`` avant de retourner au processus appelant.
 
-Ces opérations sont importantes pour comprendre le fonctionnement d'un système informatique et la différence entre un appel système et une fonction de la librairie. En pratique, la librairie cache cette complexité au programmeur en lui permettant d'utiliser des fonctions de plus haut niveau [#fsyscall]_ . Cependant, il faut être conscient que ces fonctions s'appuient elles-même sur des appels système pour s'exécuter. Ainsi par exemple, la fonction `printf(3)`_ utilise l'appel système `write(2)`_ pour écrire sur la sortie standard. La commande `strace(1)`_ permet de tracer l'ensemble des appels systèmes faits par un processus. A titre d'exemple, voici les appels systèmes effectués par le programme ``imath`` présenté plus haut.
+Ces opérations sont importantes pour comprendre le fonctionnement d'un système informatique et la différence entre un appel système et une fonction de la librairie. En pratique, la librairie cache cette complexité au programmeur en lui permettant d'utiliser des fonctions de plus haut niveau [#fsyscall]_ . Cependant, il faut être conscient que ces fonctions s'appuient elles-même sur des appels systèmes pour s'exécuter. Ainsi par exemple, la fonction `printf(3)`_ utilise l'appel système `write(2)`_ pour écrire sur la sortie standard. La commande `strace(1)`_ permet de tracer l'ensemble des appels systèmes faits par un processus. A titre d'exemple, voici les appels systèmes effectués par le programme ``imath`` présenté plus haut.
 
 .. code-block:: console
 
@@ -272,7 +272,7 @@ Lors de son exécution, il affiche les lignes suivantes sur :term:`stdout`.
 
 A première vue, on pourrait penser qu'il n'y a pas de problèmes d'accès concurrents à :term:`stdout` puisque la sortie produite par ce programme semble claire. Cependant, la fonction ``output`` utilisée par le père et le fils pour afficher les caractères ``P`` et ``f`` devrait permettre aux deux processus d'afficher des caractères ``P`` et ``f`` avec une certaine alternance. Il n'en est rien et la sortie standard semble indiquer que le processus père a affiché tous les caractères ``P`` simultanément. Ce n'est pas possible si l'on regarde le code source de la fonction ``output``.
 
-L'utilitaire `strace(1)`_ qui permet de tracer tous les appels systèmes effectués par un processus nous permet d'analyser comment le processus père et le processus fils écrivent sur :term:`stdout`. Lorsqu'ils utilisent les fonctions `printf(3)`_ et `putchar(3)`_ de la librairie standard, ils utilisent des fonctions qui finalement utilisent l'appel système `write(2)`_ qui est le seul permettant d'écrire sur un flux tel que :term:`stdout`. L'exécution de `strace(1)`_ montre que chaque processus effectue deux appels système `write(2)`_. Le premier correspond à l'appel à `printf(3)`_ et le second à tous les appels à `putchar(3)`_ fait par le processus.
+L'utilitaire `strace(1)`_ qui permet de tracer tous les appels systèmes effectués par un processus nous permet d'analyser comment le processus père et le processus fils écrivent sur :term:`stdout`. Lorsqu'ils utilisent les fonctions `printf(3)`_ et `putchar(3)`_ de la librairie standard, ils utilisent des fonctions qui finalement utilisent l'appel système `write(2)`_ qui est le seul permettant d'écrire sur un flux tel que :term:`stdout`. L'exécution de `strace(1)`_ montre que chaque processus effectue deux appels systèmes `write(2)`_. Le premier correspond à l'appel à `printf(3)`_ et le second à tous les appels à `putchar(3)`_ fait par le processus.
 
 .. code-block:: console
 
@@ -598,7 +598,7 @@ Certains des entrées dans ``/proc`` sont des fichiers, d'autres sont des réper
       Pid:	18557
       PPid:	18556
 
- - ``limits`` est un fichier texte contenant les limites actuelles imposées par le système sur le processus. Ces limites peuvent être modifiées en utilisant `ulimit(1)` à l'intérieur de `bash(1)`_ ou via les appels système `getrlimit(2)`_/`setrlimit(2)`_.
+ - ``limits`` est un fichier texte contenant les limites actuelles imposées par le système sur le processus. Ces limites peuvent être modifiées en utilisant `ulimit(1)` à l'intérieur de `bash(1)`_ ou via les appels systèmes `getrlimit(2)`_/`setrlimit(2)`_.
 
    .. code-block:: console
 

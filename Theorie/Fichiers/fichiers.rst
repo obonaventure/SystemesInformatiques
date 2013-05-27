@@ -283,7 +283,7 @@ La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce réperto
   Cette fonction prend comme arguments le pointeur ``entry`` vers un buffer propre à l'appelant qui permet de stocker le résultat de `readdir_r(3)`_.
 
 
-Les appels système `link(2)`_ et `unlink(2)`_ sont un peu particulier et méritent une description plus détaillée. Sous Unix, un :term:`inode` est associé à chaque fichier mais l':term:`inode` ne contient pas le nom de fichier parmi les méta-données qu'il stocke. Par contre, chaque :term:`inode` contient un compteur (``nlinks``) du nombre de liens vers un fichier. Cela permet d'avoir une seule copie d'un fichier qui est accessible depuis plusieurs répertoires. Pour comprendre cette utilisation des liens sur un système de fichiers Unix, considérons le scénario suivant.
+Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particulier et méritent une description plus détaillée. Sous Unix, un :term:`inode` est associé à chaque fichier mais l':term:`inode` ne contient pas le nom de fichier parmi les méta-données qu'il stocke. Par contre, chaque :term:`inode` contient un compteur (``nlinks``) du nombre de liens vers un fichier. Cela permet d'avoir une seule copie d'un fichier qui est accessible depuis plusieurs répertoires. Pour comprendre cette utilisation des liens sur un système de fichiers Unix, considérons le scénario suivant.
 
 .. code-block:: console
 
@@ -335,7 +335,7 @@ Une description détaillée du fonctionnement de ces appels systèmes et fonctio
 Utilisation des fichiers
 ------------------------
 
-Si quelques processus manipulent le système de fichiers et parcourent les répertoires, les processus qui utilisent des données sauvegardées dans des fichiers sont encore plus nombreux. Un système Unix offre deux possibilités d'écrire et de lire dans un fichier. La première utilise directement les appels systèmes `open(2)`_, `read(2)`_/ `write(2)`_ et `close(2)`_. La seconde s'appuie sur les fonctions `fopen(3)`_, `fread(3)`_/ `fwrite(3)`_ et `fclose(3)`_ de la librairie `stdio(3)`_. Seuls les appels système sont traités dans ce cours. Des détails complémentaires sur les fonctions de la libraire peuvent être obtenus dans [Kerrisk2010]_, [Mitchell+2001]_ ou [StevensRago2008]_.
+Si quelques processus manipulent le système de fichiers et parcourent les répertoires, les processus qui utilisent des données sauvegardées dans des fichiers sont encore plus nombreux. Un système Unix offre deux possibilités d'écrire et de lire dans un fichier. La première utilise directement les appels systèmes `open(2)`_, `read(2)`_/ `write(2)`_ et `close(2)`_. La seconde s'appuie sur les fonctions `fopen(3)`_, `fread(3)`_/ `fwrite(3)`_ et `fclose(3)`_ de la librairie `stdio(3)`_. Seuls les appels systèmes sont traités dans ce cours. Des détails complémentaires sur les fonctions de la libraire peuvent être obtenus dans [Kerrisk2010]_, [Mitchell+2001]_ ou [StevensRago2008]_.
 
 Du point de vue des appels systèmes de manipulation des fichiers, un fichier est une séquence d'octets. Avant qu'un processus ne puisse écrire ou lire dans un fichier, il doit d'abord demander au système d'exploitation l'autorisation d'accéder au fichier. Cela se fait en utilisant l'appel système `open(2)`_.
 
@@ -390,7 +390,7 @@ Tout processus doit correctement fermer tous les fichiers qu'il a utilisé. Par 
 
 Lorsqu'un fichier a été ouvert, le noyau du système d'exploitation maintient outre les références vers l':term:`inode` du fichier un :term:`offset pointer`. Cet :term:`offset pointer` est la position actuelle de la tête de lecture/écriture du fichier. Lorsqu'un fichier est ouvert, son :term:`offset pointer` est positionné au premier octet du fichier, sauf si le drapeau ``O_APPEND`` a été spécifié lors de l'ouverture du fichier, dans ce cas l':term:`offset pointer` est positionné juste après le dernier octet du fichier de façon à ce qu'une écriture s'ajoute à la suite du fichier.
 
-Les deux appels système permettant de lire et d'écrire dans un fichier sont respectivement `read(2)`_ et `write(2)`_.
+Les deux appels systèmes permettant de lire et d'écrire dans un fichier sont respectivement `read(2)`_ et `write(2)`_.
 
 .. code-block:: c
 
@@ -483,7 +483,7 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 
 .. note:: Duplication de descripteurs de fichiers
 
- Dans certains cas il est utile de pouvoir dupliquer un descripteur de fichier. C'est possible avec les appels système `dup(2)`_ et `dup2(2)`_. L'appel système `dup(2)`_ prend comme argument un descripteur de fichier et retourne le plus petit descripteur de fichier libre. Lorsqu'un descripteur de fichier a été dupliqué avec `dup(2)`_ les deux descripteurs de fichiers partagent le même :term:`offset pointer` et les mêmes modes d'accès au fichier.
+ Dans certains cas il est utile de pouvoir dupliquer un descripteur de fichier. C'est possible avec les appels systèmes `dup(2)`_ et `dup2(2)`_. L'appel système `dup(2)`_ prend comme argument un descripteur de fichier et retourne le plus petit descripteur de fichier libre. Lorsqu'un descripteur de fichier a été dupliqué avec `dup(2)`_ les deux descripteurs de fichiers partagent le même :term:`offset pointer` et les mêmes modes d'accès au fichier.
 
 
 .. _pipe:
@@ -491,7 +491,7 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 Les pipes
 ---------
 
-Les appels système de manipulation des fichiers permettent d'accéder à des données sur des dispositifs de stockage, mais ils peuvent aussi être utilisés pour échanger des informations entre processus. Les systèmes d'exploitation de la famille Unix supportent plusieurs mécanismes permettant à des processus de communiquer. Le plus simple est le :term:`pipe`. Un :term:`pipe` est un flux de bytes unidirectionnel qui relie deux processus qui ont un ancêtre commun. L'un des processus peut écrire sur le :term:`pipe` et le second peut lire sur le :term:`pipe`. Un :term:`pipe` est créé en utilisant l'appel système `pipe(2)`_.
+Les appels systèmes de manipulation des fichiers permettent d'accéder à des données sur des dispositifs de stockage, mais ils peuvent aussi être utilisés pour échanger des informations entre processus. Les systèmes d'exploitation de la famille Unix supportent plusieurs mécanismes permettant à des processus de communiquer. Le plus simple est le :term:`pipe`. Un :term:`pipe` est un flux de bytes unidirectionnel qui relie deux processus qui ont un ancêtre commun. L'un des processus peut écrire sur le :term:`pipe` et le second peut lire sur le :term:`pipe`. Un :term:`pipe` est créé en utilisant l'appel système `pipe(2)`_.
 
 
 .. todo:: dessin de pipe

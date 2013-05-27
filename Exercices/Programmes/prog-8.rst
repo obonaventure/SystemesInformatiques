@@ -59,7 +59,7 @@ Exercices
 
 8. Compilez le programme :download:`/Exercices/Programmes/src/fork-zombie.c`. Ce programme crée un processus mais le processus père attend une minute pour récupérer sa valeur de retour. Lancez ce programme en tâche de fond (voir section outils) et utilisez `ps(1)`_ ou consultez ``/proc/``
 
-9. La librairie standard comprend une fonction `system(3posix)`_ qui permet l'exécution d'une commande du shell. Ainsi, la ligne ``system("for f in {1..3} ; do echo $f ; done")`` va provoquer un appel au shell `bash(1)`_ qui va exécuter la commande passé en argument et donc afficher trois lignes contenant chacune un nombre sur la sortie standard. Quels sont les appels système utilisées par une implémentation de cette fonction `system(3posix)`_ ?
+9. La librairie standard comprend une fonction `system(3posix)`_ qui permet l'exécution d'une commande du shell. Ainsi, la ligne ``system("for f in {1..3} ; do echo $f ; done")`` va provoquer un appel au shell `bash(1)`_ qui va exécuter la commande passé en argument et donc afficher trois lignes contenant chacune un nombre sur la sortie standard. Quels sont les appels systèmes utilisées par une implémentation de cette fonction `system(3posix)`_ ?
 
 10. Quelles différences et similitudes voyez-vous entre :
 
@@ -67,7 +67,7 @@ Exercices
     - `pthread_join(3)`_ et `waitpid(2)`_
 
 
-11. La commande `strace(1)`_ permet de tracer tous les appels système faits par un programme. Recompilez un programme d'exemple et essayer d'identifier les principaux appels systèmes qui sont utilisés par ce programme. Les paramètres ``-c``, ``-t`` et ``-e`` peuvent être utiles pour explorer le comportement d'un programme et avoir une idée des appels systèmes qu'il effectue.
+11. La commande `strace(1)`_ permet de tracer tous les appels systèmes faits par un programme. Recompilez un programme d'exemple et essayer d'identifier les principaux appels systèmes qui sont utilisés par ce programme. Les paramètres ``-c``, ``-t`` et ``-e`` peuvent être utiles pour explorer le comportement d'un programme et avoir une idée des appels systèmes qu'il effectue.
 
 12. La commande `pstree(1)`_ permet de visualiser sous forme d'arbre l'ensemble des processus actifs sur un ordinateur Linux. Exécutez `pstree(1)`_ et identifiez quels sont les processus qui sont les ancêtres de votre commande.
 

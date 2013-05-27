@@ -725,7 +725,7 @@ Un système de type Unix maintient différentes structures qui sont associées �
              suseconds_t  tv_usec;  /* and microseconds */
      };
 
-Cette structure est utilisée par des appels système tels que `gettimeofday(2)`_ pour notamment récupérer l'heure courante ou les appels de manipulation de timers tels que `getitimer(2)`_ / `setitimer(2)`_. Elle est aussi utilisée par la fonction `time(3posix)`_ de la librairie standard et est très utile pour mesurer les performances d'un programme.
+Cette structure est utilisée par des appels systèmes tels que `gettimeofday(2)`_ pour notamment récupérer l'heure courante ou les appels de manipulation de timers tels que `getitimer(2)`_ / `setitimer(2)`_. Elle est aussi utilisée par la fonction `time(3posix)`_ de la librairie standard et est très utile pour mesurer les performances d'un programme.
 
 Les structures sont également fréquemment utilisées pour représenter des formats de données spéciaux sur disque comme le format des répertoires [#fdirent]_ ou les formats de paquets qui sont échangés sur le réseau [#freseau]_.
 
