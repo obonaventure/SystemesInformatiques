@@ -308,7 +308,7 @@ A titre d'illustration, voici quelques expressions logiques en C et leur implém
 
   r=(h>1);
   r=(j==0);
-  r=g<h;
+  r=g<=h;
   r=(j==h);
 
 
