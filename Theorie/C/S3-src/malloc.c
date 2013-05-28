@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     error("malloc(fract_vect)");
 
   free(string);
-  printf("Valeur du pointeur string après free: %p\n",string);
+  printf("Valeur du pointeur string après free   : %p\n",string);
   string=NULL;
   free(vector);
   vector=NULL;
