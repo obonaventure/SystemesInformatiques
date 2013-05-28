@@ -95,7 +95,7 @@ Pour qu'un processeur puisse exécuter cette séquence d'instructions, il faut n
 
     - aux registres de données pour stocker les résultats de chacune des instructions
     - au registre ``%esp`` directement ou indirectement via les instructions ``push`` et ``pop`` qui permettent de manipuler la pile
-    - au registre ``%eix`` qui contient l'adresse de l'instruction en cours d'exécution
+    - au registre ``%eip`` qui contient l'adresse de l'instruction en cours d'exécution
     - au registre ``eflags`` qui contient l'ensemble des drapeaux
 
 Un processeur multithreadé a la capacité d'exécuter plusieurs programmes simultanément. En pratique, ce processeur disposera de plusieurs copies des registres. Chacun de ces blocs de registres pourra être utilisé pour exécuter ces programmes simultanément à raison d'un thread d'exécution par bloc de registres. Chaque thread d'exécution va correspondre à une séquence différente d'instructions qui va modifier son propre bloc de registres. C'est grâce à cette capacité d'exécuter plusieurs threads d'exécution simultanément que les performances en :term:`MIPS` des microprocesseurs ont pu continuer à croitre alors que leur fréquence d'horloge stagnait.
