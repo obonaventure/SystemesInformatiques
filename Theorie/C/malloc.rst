@@ -237,7 +237,7 @@ Ce programme alloue trois zones mémoires. Le pointeur vers la première est sau
 
 Dans cette sortie, on remarque que l'appel à fonction `free(3)`_ libère la zone mémoire, mais ne modifie pas la valeur du pointeur correspondant. Le programmeur doit explicitement remettre le pointeur d'une zone mémoire libérée à ``NULL``.
 
-Un autre exemple d'utilisation de `malloc(3)`_ est la fonction ``duplicate`` ci-dessous qui permet de retourner une copie d'une chaîne de caractères. Il est important de noter qu'en C la fonction `strlen(3)`_ retourne la longueur de la chaîne de caractères passée en argument sans prendre en compte le caractère ``\0`` qui marque sa fin. C'est la raison pour laquelle `malloc(3)`_ doit réserver un bloc de mémoire en plus. Même si généralement les ``char`` occupent un octet en mémoire, il est préférable d'utiliser explicitement ``sizeof(char)`` lors du calcul de l'espace mémoire necessaire pour un type de données.
+Un autre exemple d'utilisation de `malloc(3)`_ est la fonction ``duplicate`` ci-dessous qui permet de retourner une copie d'une chaîne de caractères. Il est important de noter qu'en C la fonction `strlen(3)`_ retourne la longueur de la chaîne de caractères passée en argument sans prendre en compte le caractère ``\0`` qui marque sa fin. C'est la raison pour laquelle `malloc(3)`_ doit réserver un bloc de mémoire en plus. Même si généralement les ``char`` occupent un octet en mémoire, il est préférable d'utiliser explicitement ``sizeof(char)`` lors du calcul de l'espace mémoire nécessaire pour un type de données.
 
 
 .. literalinclude:: /Theorie/C/S3-src/strcpy.c
