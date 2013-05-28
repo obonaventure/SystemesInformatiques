@@ -289,7 +289,7 @@ Les instructions de comparaison
 Outre les opérations arithmétiques, un processeur doit être capable de réaliser des comparaisons. Ces comparaisons sont nécessaires pour implémenter des tests tels que ``if (condition) { ... } else { ... }``. Sur les processeurs [IA32]_, les comparaisons utilisent des drapeaux qui sont mis à jour par le processeur après l'exécution de certaines instructions. Ceux-ci sont regroupés dans le registre ``eflags``. Les principaux drapeaux sont :
 
  - `ZF` (Zero Flag) : ce drapeau indique si le résultat de la dernière opération était zéro
- - `SF` (Sign Flag): indique si le résultat de la dernière instruction était négatif
+ - `SF` (Sign Flag) : indique si le résultat de la dernière instruction était négatif
  - `CF` (Carry Flag) : indique si le résultat de la dernière instruction arithmétique non signée nécessitait plus de 32 bits pour être stocké
  - `OF` (Overflow Flag) : indique si le résultat de la dernière instruction arithmétique signée a provoqué un dépassement de capacité
 
