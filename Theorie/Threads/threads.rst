@@ -153,7 +153,7 @@ Le premier argument de `pthread_join(3)`_ est la structure ``pthread_t`` corresp
 L'exemple ci-dessous illustre une utilisation simple des fonctions `pthread_create(3)`_, `pthread_join(3)`_ et `pthread_exit(3)`_.
 
 .. literalinclude:: /Theorie/Threads/S5-src/pthread.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
@@ -162,7 +162,7 @@ Dans ce programme, la fonction ``main`` lance deux threads. Le premier exécute 
 Afin d'illustrer la possibilité de passer des arguments à un thread et d'en récupérer la valeur de retour, considérons l'exemple ci-dessous.
 
 .. literalinclude:: /Theorie/Threads/S5-src/pthread-neg.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 

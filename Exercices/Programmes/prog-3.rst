@@ -117,7 +117,7 @@ Questions
 Implémentez ces fonctions sans jamais utiliser la notation des tableaux en C (``[`` et ``]``).
 
  .. literalinclude:: /Exercices/Programmes/src/vector.c
-    :encoding: iso-8859-1
+    :encoding: utf-8
     :language: c
     :start-after: ///AAA
     :end-before: ///BBB

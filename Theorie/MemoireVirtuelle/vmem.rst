@@ -380,7 +380,7 @@ Lorsqu'un processus a fini d'utiliser un fichier mappé en mémoire, il doit d'a
 A titre d'exemple d'utilisation de `mmap(2)`_ et `munmap(2)`_, le programme ci-dessous implémente l'équivalent de la commande `cp(1)`_. Il prend comme arguments deux noms de fichiers et copie le contenu du premier dans le second. La copie se fait en mappant le premier fichier entièrement en mémoire et en utilisant la fonction `memcpy(3)`_ pour réaliser la copie. Cette solution fonctionne avec de petits fichiers. Avec de gros fichiers, elle n'est pas très efficace car tout le fichier doit être mappé en mémoire.
 
 .. literalinclude:: /Theorie/MemoireVirtuelle/src/cp2.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
@@ -577,7 +577,7 @@ L'appel système `mincore(2)`_ permet à un processus d'obtenir de l'information
 Un exemple d'utilisation de `mincore(2)`_ est repris dans le programme :download:`/Theorie/MemoireVirtuelle/src/mincore.c` ci-dessous.
 
 .. literalinclude:: /Theorie/MemoireVirtuelle/src/mincore.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 

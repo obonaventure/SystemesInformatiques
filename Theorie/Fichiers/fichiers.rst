@@ -263,7 +263,7 @@ Cette structure comprend le numéro d'inode contenu dans ses deux premiers membr
 L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
 
 .. literalinclude:: /Theorie/Fichiers/src/read.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -404,7 +404,7 @@ Ces deux appels systèmes prennent trois arguments. Le premier est le `descripte
 Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'écrire des séquences contigües d'octets. Lorsque l'on écrit ou lit des chaînes de caractères dans lesquels chaque caractère est représenté sous la forme d'un byte, il est possible d'utiliser `read(2)`_ et `write(2)`_ pour lire et écrire d'autres types de données que des octets comme le montre l'exemple ci-dessous.
 
 .. literalinclude:: /Theorie/Fichiers/src/read.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -412,7 +412,7 @@ Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'
 Lors de son exécution, ce programme affiche la sortie ci-dessous.
 
 .. literalinclude:: /Theorie/Fichiers/src/read.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
 
 
@@ -507,7 +507,7 @@ Les appels systèmes de manipulation des fichiers permettent d'accéder à des d
 Cet appel système prend comme argument un tableau permettant de stocker deux descripteurs de fichiers. Ces deux descripteurs de fichiers sont utilisés pour respectivement lire et écire sur le :term:`pipe`. ``fd[0]`` est le descripteur de fichier sur lequel les opérations de lecture seront effectuées tandis que les opérations d'écriture se feront sur ``fd[1]``. Chaque fois qu'une donnée est écrite sur ``fd[1]`` avec l'appel système ``write(fd[1],...)``, elle devient disponible sur le descripteur de fichiers ``fd[0]`` et peut être lue avec ``read(fd[0],...)``. Même si il est possible de créer un :term:`pipe` dans un processus unique, `pipe(2)`_ s'utilise en général entre un père et son fils. Le programme ci-dessous illustre cette utilisation de pipes pour permettre à un processus père d'échanger de l'information avec son processus fils.
 
 .. literalinclude:: /Theorie/Fichiers/src/fork-pipe.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB

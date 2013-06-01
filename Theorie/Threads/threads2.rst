@@ -85,7 +85,7 @@ Malheureusement les difficultés surviennent lorsque deux threads exécutent en 
  La taille de la pile d'un thread POSIX est l'un des attributs qui peuvent être modifiés lors de l'appel à `pthread_create(3)`_  pour créer un nouveau thread. Cet attribut peut être fixé en utilisant la fonction `pthread_attr_setstackaddr(3posix)`_ comme illustré dans l'exemple ci-dessous [#fpthreadc]_ (où ``thread_first`` est la fonction qui sera appelée à la création du thread). En général, la valeur par défaut choisie par le système suffit, sauf lorsque le programmeur sait qu'un thread devra par exemple allouer un grand tableau auquel il sera le seul à avoir accès. Ce tableau sera alors alloué sur la pile qui devra être suffisamment grande pour le contenir.
 
  .. literalinclude:: /Theorie/Threads/S6-src/pthread.c
-    :encoding: iso-8859-1
+    :encoding: utf-8
     :language: c
     :start-after: ///AAA
     :end-before: ///BBB
@@ -96,7 +96,7 @@ Ce problème d'accès concurrent à une zone de mémoire par plusieurs threads e
 Le fragment de code ci-dessus présente une autre illustration d'une section critique. Dans cet exemple, la fonction ``main`` (non présentée), créée deux threads. Le premier exécute la fonction ``inc`` qui incrémente la variable ``global``. Le second exécute la fonction ``is_even`` qui teste la valeur de cette variable et compte le nombre de fois qu'elle est paire. Après la terminaison des deux threads, le programme affiche le contenu des variables ``global`` et ``even``.
 
 .. literalinclude:: /Theorie/Threads/S6-src/pthread-test-if.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -437,7 +437,7 @@ En C, cela se fait en utilisant les fonctions `pthread_mutex_lock(3posix)`_ et `
 L'exemple ci-dessous reprend le programme dans lequel une variable globale est incrémentée par plusieurs threads.
 
 .. literalinclude:: /Theorie/Threads/S6-src/pthread-mutex.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
@@ -484,7 +484,7 @@ Dans le :term:`problème des philosophes`, un ensemble de philosophes doivent se
 Ce problème de la vie courante peut se modéliser en utilisant un programme C avec les threads POSIX. Chaque baguette est une ressource partagée qui ne peut être utilisée que par un philosophe à la fois. Elle peut donc être modélisée par un :term:`mutex`. Chaque philosophe est modélisé par un thread qui pense puis ensuite appelle `pthread_mutex_lock(3posix)`_ pour obtenir chacune de ses baguettes. Le philosophe peut ensuite manger puis il libère ses baguettes en appelant `pthread_mutex_unlock(3posix)`_. L'extrait [#fphilo]_ ci-dessous comprend les fonctions utilisées par chacun des threads.
 
 .. literalinclude:: /Theorie/Threads/S6-src/pthread-philo.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -559,7 +559,7 @@ La solution présentée empêche tout deadlock puisqu'à tout moment il n'y a au
 Une implémentation possible de l'ordre présenté dans la table ci-dessus est reprise dans le programme :download:`/Theorie/Threads/S6-src/pthread-philo2.c` qui comprend la fonction ``philosophe`` suivante.
 
 .. literalinclude:: /Theorie/Threads/S6-src/pthread-philo2.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB

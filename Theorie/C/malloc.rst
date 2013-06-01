@@ -33,7 +33,7 @@ Dans un fichier donné, il ne peut évidemment pas y avoir deux variables global
 Le programme :download:`/Theorie/C/S3-src/portee.c` illustre la façon dont le compilateur C gère la portée de différentes variables.
 
 .. literalinclude:: /Theorie/C/S3-src/portee.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -43,7 +43,7 @@ Ce programme contient deux variables qui ont une portée globale : ``g1`` et ``g
 Lorsqu'un identifiant de variable locale est utilisé à plusieurs endroits dans un fichier, c'est la définition la plus proche qui est utilisée. L'exécution du programme ci-dessus illustre cette utilisation des variables globales et locales.
 
 .. literalinclude:: /Theorie/C/S3-src/portee.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
 
 .. note:: Utilisation des variables
@@ -53,7 +53,7 @@ Lorsqu'un identifiant de variable locale est utilisé à plusieurs endroits dans
 Les versions récentes de C [C99]_ permettent également de définir des variables dont la valeur sera constante durant toute l'exécution du programme. Ces déclarations de ces constants sont préfixées par le mot-clé ``const`` qui joue le même rôle que le mot clé ``final`` en Java.
 
 .. literalinclude:: /Theorie/C/S3-src/const.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -68,7 +68,7 @@ Unions et énumérations
 Les structures que nous avons présentées précédemment permettent de combiner plusieurs données de types primitifs différents entre elles. Outre ces structures (``struct``), le langage C supporte également les ``enum`` et les ``union``. Le mot-clé ``enum`` est utilisé pour définir un type énuméré, c'est-à-dire un type de donnée qui permet de stocker un nombre fixe de valeurs. Quelques exemples classiques sont repris dans le fragment de programme ci-dessous :
 
 .. literalinclude:: /Theorie/C/S3-src/enum.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -76,7 +76,7 @@ Les structures que nous avons présentées précédemment permettent de combiner
 Le premier ``enum`` permet de définir le type de données ``day`` qui contient une valeur énumérée pour chaque jour de la semaine. L'utilisation d'un type énuméré rend le code plus lisible que simplement l'utilisation de constantes définies via le préprocesseur.
 
 .. literalinclude:: /Theorie/C/S3-src/enum.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///CCC
    :end-before: ///DDD
@@ -86,7 +86,7 @@ En pratique, lors de la définition d'un type énuméré, le compilateur C assoc
 Outre les structures, le langage C supporte également les unions. Alors qu'une structure permet de stocker plusieurs données dans une même zone mémoire, une ``union`` permet de réserver une zone mémoire pour stocker une données parmi plusieurs types possibles. Une ``union`` est parfois utilisée pour minimiser la quantité de mémoire utilisée pour une structure de données qui peut contenir des données de plusieurs types. Pour bien comprendre la différence entre une ``union`` et une ``struct``, considérons l'exemple ci-dessous.
 
 .. literalinclude:: /Theorie/C/S3-src/union.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -95,7 +95,7 @@ Outre les structures, le langage C supporte également les unions. Alors qu'une 
 Une union, ``u`` et une structure, ``s`` sont déclarées dans ce fragment de programme.
 
 .. literalinclude:: /Theorie/C/S3-src/union.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///CCC
    :end-before: ///DDD
@@ -104,7 +104,7 @@ La structure ``s`` peut contenir à la fois un entier et un caractère. Par cont
 Le compilateur C alloue la taille pour l'``union`` de façon à ce qu'elle puisse contenir le type de donnée se trouvant dans l'``union`` nécessitant le plus de mémoire. Si les unions sont utiles dans certains cas très particulier, il faut faire très attention à leur utilisation. Lorsqu'une ``union`` est utilisée, le compilateur C fait encore moins de vérifications sur les types de données et le code ci-dessous est considéré comme valide par le compilateur :
 
 .. literalinclude:: /Theorie/C/S3-src/union.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///EEE
    :end-before: ///FFF
@@ -112,7 +112,7 @@ Le compilateur C alloue la taille pour l'``union`` de façon à ce qu'elle puiss
 Lors de son exécution, la zone mémoire correspondant à l'union ``u`` sera simplement interprétée comme contenant un ``char``, même si on vient d'y stocker un entier. En pratique, lorsqu'une ``union`` est vraiment nécessaire pour des raisons d'économie de mémoire, on l'encapsulera dans une ``struct`` en utilisant un type énuméré qui permet de spécifier le type de données qui est présent dans l'``union``.
 
 .. literalinclude:: /Theorie/C/S3-src/union.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///BBB
    :end-before: ///XXX
@@ -120,7 +120,7 @@ Lors de son exécution, la zone mémoire correspondant à l'union ``u`` sera sim
 Le programmeur pourra alors utiliser cette structure en indiquant explicitement le type de données qui y est actuellement stocké comme suit.
 
 .. literalinclude:: /Theorie/C/S3-src/union.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///FFF
    :end-before: ///GGG
@@ -149,7 +149,7 @@ Le segment des données initialisées
 La deuxième zone, baptisée :term:`segment des données initialisées`, contient l'ensemble des données et chaînes de caractères qui sont utilisées dans le programme. Ce segment contient deux types de données. Tout d'abord, il comprend l'ensemble des variables globales. Celles-ci sont soit initialisées explicitement par le programme ou alors initialisées à zéro par le compilateur. Ensuite, les constantes et les chaînes de caractères utilisées par le programme.
 
 .. literalinclude:: /Theorie/C/S3-src/dataseg.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -159,7 +159,7 @@ Dans le programme ci-dessus, la variable ``g_init``, la constante ``un`` et les 
 L'exécution de ce programme produit la sortie standard suivante.
 
 .. literalinclude:: /Theorie/C/S3-src/dataseg.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
 
 
@@ -177,7 +177,7 @@ La troisième zone est le :term:`segment des données non-initialisées`. réser
  En C, par défaut les variables globales qui ne sont pas explicitement initialisées dans un programme sont initialisées à la valeur zéro par le compilateur. Plus précisément, la zone mémoire qui correspond à chaque variable globale non-explicitement initialisée contiendra des bits valant 0. Pour les variables locales, le langage C n'impose aucune initialisation par défaut au compilateur. Par souci de performance et sachant qu'un programmeur ne devrait jamais utiliser de variable locale non explicitement initialisée, le compilateur C n'initialise pas par défaut la valeur de ces variables. Cela peut avoir des conséquences ennuyeuses comme le montre l'exemple ci-dessous.
 
  .. literalinclude:: /Theorie/C/S3-src/initvar.c
-    :encoding: iso-8859-1
+    :encoding: utf-8
     :language: c
     :start-after: ///AAA
     :end-before: ///BBB
@@ -185,13 +185,13 @@ La troisième zone est le :term:`segment des données non-initialisées`. réser
   Cet extrait de programme contient deux fonctions erronées. La seconde, baptisée ``read(void)`` déclare un tableau local et retourne la somme des éléments de ce tableau sans l'initialiser. En Java, une telle utilisation d'un tableau non-initialisé serait détectée par le compilateur. En C, elle est malheureusement valide (mais fortement découragée évidemment). La première fonction, ``init(void)`` se contente d'initialiser un tableau local mais ne retourne aucun résultat. Cette fonction ne sert a priori à rien puisqu'elle n'a aucun effet sur les variables globales et ne retourne aucun résultat. L'exécution de ces fonctions via le fragment de code ci-dessous donne cependant un résultat interpellant.
 
  .. literalinclude:: /Theorie/C/S3-src/initvar.c
-    :encoding: iso-8859-1
+    :encoding: utf-8
     :language: c
     :start-after: ///CCC
     :end-before: ///DDD
 
  .. literalinclude:: /Theorie/C/S3-src/initvar.out
-    :encoding: iso-8859-1
+    :encoding: utf-8
     :language: console
 
 
@@ -213,7 +213,7 @@ La fonction `malloc(3)`_ prend comme argument la taille (en bytes) de la zone m�
  Comme le langage Java, le langage C supporte des conversions implicites et explicites entre les différents types de données. Ces conversions sont possibles entre les types primitifs et les pointeurs. Nous les rencontrerons régulièrement, par exemple lorsqu'il faut récupérer un pointeur alloué par `malloc(3)`_ ou le résultat de ``sizeof``. Contrairement au compilateur Java, le compilateur C n'émet pas toujours de message de :term:`warning` lors de l'utilisation de  typecast qui risque d'engendrer une perte de précision. Ce problème est illustré par l'exemple suivant avec les nombres.
 
   .. literalinclude:: /Theorie/C/S3-src/typecast.c
-     :encoding: iso-8859-1
+     :encoding: utf-8
      :language: c
      :start-after: ///AAA
      :end-before: ///BBB
@@ -224,7 +224,7 @@ La fonction de la librairie `free(3)`_ est le pendant de `malloc(3)`_. Elle perm
 Le programme ci-dessous illustre l'utilisation de `malloc(3)`_ et `free(3)`_.
 
 .. literalinclude:: /Theorie/C/S3-src/malloc.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -232,7 +232,7 @@ Le programme ci-dessous illustre l'utilisation de `malloc(3)`_ et `free(3)`_.
 Ce programme alloue trois zones mémoires. Le pointeur vers la première est sauvé dans le pointeur ``string``. Elle est destinée à contenir une chaîne de ``size`` caractères (avec un caractère supplémentaire pour stocker le caractère ``\0`` de fin de chaîne. Il y a deux points à remarquer concernant cette allocation. Tout d'abord, le pointeur retourné par `malloc(3)`_ est casté en un ``char *``. Cela indique au compilateur que ``string`` va bien contenir un pointeur vers une chaîne de caractères. Ce cast explicite rend le programme plus clair. Ensuite, la valeur de retour de `malloc(3)`_  est systématiquement testée. `malloc(3)`_ peut en effet retourner ``NULL`` lorsque la mémoire est remplie. Cela a peu de chance d'arriver dans un programme de test tel que celui-ci, mais tester les valeurs de retour des fonctions de la librairie est une bonne habitude à prendre lorsque l'on programme sous Unix. Le second pointeur, ``vector`` pointe vers une zone destiné à contenir un tableau d'entiers. Le dernier pointeur, ``fract_vect`` pointe vers une zone qui pourra stocker un tableau de ``Fraction``. Lors de son exécution, le programme affiche la sortie suivante.
 
 .. literalinclude:: /Theorie/C/S3-src/malloc.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
 
 Dans cette sortie, on remarque que l'appel à fonction `free(3)`_ libère la zone mémoire, mais ne modifie pas la valeur du pointeur correspondant. Le programmeur doit explicitement remettre le pointeur d'une zone mémoire libérée à ``NULL``.
@@ -241,7 +241,7 @@ Un autre exemple d'utilisation de `malloc(3)`_ est la fonction ``duplicate`` ci-
 
 
 .. literalinclude:: /Theorie/C/S3-src/strcpy.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -250,7 +250,7 @@ Un autre exemple d'utilisation de `malloc(3)`_ est la fonction ``duplicate`` ci-
 
 
 .. literalinclude:: /Theorie/C/S3-src/stack.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -259,7 +259,7 @@ Un autre exemple d'utilisation de `malloc(3)`_ est la fonction ``duplicate`` ci-
 Ces fonctions peuvent être utilisées pour empiler et dépiler des fractions sur une pile comme dans l'exemple ci-dessous. La fonction ``display`` permet d'afficher sur :term:`stdout` le contenu de la pile.
 
 .. literalinclude:: /Theorie/C/S3-src/stack.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///BBB
    :end-before: ///CCC
@@ -267,7 +267,7 @@ Ces fonctions peuvent être utilisées pour empiler et dépiler des fractions su
 Lors de son exécution le programme :download:`/Theorie/C/S3-src/stack.c` présenté ci-dessus affiche les lignes suivantes sur sa sortie standard.
 
 .. literalinclude:: /Theorie/C/S3-src/stack.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
 
 
@@ -279,7 +279,7 @@ Le tas (ou :term:`heap`) joue un rôle très important dans les programmes C. Le
  Un programmeur débutant qui expérimente avec `malloc(3)`_ pourrait écrire le code ci-dessous et conclure que comme celui-ci s'exécuté correctement, il n'est pas nécessaire d'utiliser `free(3)`_. Lors de l'exécution d'un programme, le système d'exploitation réserve de la mémoire pour les différents segments du programme et ajuste si nécessaire cette allocation durant l'exécution du programme. Lorsque le programme se termine, via ``return`` dans la fonction ``main`` ou par un appel explicite à `exit(2)`_, le système d'exploitation libère tous les segments utilisés par le programme, le text, les données, le tas et la pile. Cela implique que le système d'exploitation effectue un appel implicite à `free(3)`_ à la terminaison d'un programme.
 
  .. literalinclude:: /Theorie/C/S3-src/nofree.c
-    :encoding: iso-8859-1
+    :encoding: utf-8
     :language: c
     :start-after: ///AAA
 
@@ -289,14 +289,14 @@ Le tas (ou :term:`heap`) joue un rôle très important dans les programmes C. Le
 `malloc(3)` est la fonction d'allocation de mémoire la plus fréquemment utilisée [#fothermalloc]_. La librairie standard contient cependant d'autres fonctions permettant l'allocation et la réallocation de mémoire. `calloc(3)`_ est nettement moins utilisée que `malloc(3)`_. Elle a pourtant un avantage majeur par rapport à `malloc(3)`_ puisqu'elle initialise à zéro la zone de mémoire allouée. `malloc(3)`_ se contente d'allouer la zone de mémoire mais n'effectue aucune initialisation. Cela permet à `malloc(3)`_ d'être plus rapide, mais le programmeur ne doit jamais oublier qu'il ne peut pas utiliser `malloc(3)`_ sans initialiser la zone mémoire allouée. Cela peut s'observer en pratique avec le programme ci-dessous. Il alloue une zone mémoire pour ``v1``, l'initialise puis la libère. Ensuite, le programme alloue une nouvelle zone mémoire pour ``v2`` et y retrouve les valeurs qu'il avait stocké pour ``v1`` précédemment. En pratique, n'importe quelle valeur pourrait se trouver dans la zone retournée par `malloc(3)`.
 
 .. literalinclude:: /Theorie/C/S3-src/mallocinit.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
 L'exécution du programme ci-dessus affiche le résultat suivant sur la sortie standard. Ceci illustre bien que la fonction `malloc(3)`_ n'initialise pas  les zones de mémoire qu'elle alloue.
 
 .. literalinclude:: /Theorie/C/S3-src/mallocinit.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
 
 Lors de l'exécution du programme, on remarque que la première zone mémoire retournée par `malloc(3)`_ a été initialisée à zéro. C'est souvent le cas en pratique pour des raisons de sécurité, mais ce serait une erreur de faire cette hypothèse dans un programme. Si la zone de mémoire doit être initialisée, la mémoire doit être allouée par `calloc(3)`_ ou via une initialisation explicite ou en utilisant des fonctions telles que `bzero(3)`_ ou `memset(3)`_.
@@ -320,7 +320,7 @@ La librairie standard contient plusieurs fonctions qui permettent de manipuler l
 Le programme ci-dessous illustre brièvement l'utilisation de `getenv(3)`_, `unsetenv(3)`_ et `setenv(3)`_. Outre ces fonctions, il existe également `clearenv(3)`_ qui permet d'effacer complètement toutes les variables d'environnement du programme courant et `putenv(3)`_ qui était utilisé avant `setenv(3)`_.
 
 .. literalinclude:: /Theorie/C/S3-src/argv-env.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
@@ -331,7 +331,7 @@ La pile (ou stack)
 La :term:`pile` ou :term:`stack` en anglais est la dernière zone de mémoire utilisée par un processus. C'est une zone très importante car c'est dans cette zone que le processus va stocker l'ensemble des variables locales mais également les valeurs de retour de toutes les fonctions qui sont appelées. Cette zone est gérée comme une pile, d'où son nom. Pour comprendre son fonctionnement, nous utiliserons le programme :download:`/Theorie/C/S3-src/fact.c` qui permet de calculer une factorielle de façon récursive.
 
 .. literalinclude:: /Theorie/C/S3-src/fact.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///BBB
    :end-before: ///AAA
@@ -340,7 +340,7 @@ Lors de l'exécution de la fonction ``compute()``, le programme ci-dessus produi
 
 
 .. literalinclude:: /Theorie/C/S3-src/fact.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
    :start-after: ///FACT
 
@@ -353,7 +353,7 @@ La pile joue un rôle essentiel lors de l'exécution de programmes en C puisque 
 En outre, comme le langage C utilise le passage par valeur, les valeurs des arguments d'une fonction sont copiés sur la pile avant de démarrer l'exécution de cette fonction. Lorsque la fonction prend comme argument un entier, cette copie prend un temps très faible. Par contre, lorsque la fonction prend comme argument une ou plusieurs structures de grand taille, celles-ci doivent être entièrement copiées sur la pile. A titre d'exemple, le programme ci-dessous définit une très grande structure contenant un entier et une zone permettant de stocker un million de caractères. Lors de l'appel à la fonction ``sum``, les structures ``one`` et ``two`` sont entièrement copiées sur la pile. Comme chaque structure occupe plus d'un million d'octets, cela prend plusieurs centaines de microsecondes. Cette copie est nécessaire pour respecter le passage par valeur des structures à la fonction ``sum``. Celle-ci ne peut pas modifier le contenu des structures qui lui sont passées en argument. Par comparaison, lors de l'appel à ``sumptr``, seules les adresses de ces deux structures sont copiées sur la pile. Un appel à ``sumptr`` prend moins d'une microseconde, mais bien entendu la fonction ``sumptr`` a accès via les pointeurs passés en argument à toute la zone de mémoire qui leur est associée.
 
 .. literalinclude:: /Theorie/C/S3-src/structargs.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -364,7 +364,7 @@ Certaines variantes de Unix et certains compilateurs permettent l'allocation de 
 Les versions récentes du C et notamment [C99]_ permettent d'allouer de façon dynamique un tableau sur la pile. Cette fonctionnalité peut être utile dans certains cas, mais elle peut aussi être la source de nombreuses erreurs et difficultés. Pour bien comprendre ce problème, considérons à nouveau la fonction ``duplicate`` qui a été définie précédemment en utilisant `malloc(3)`_  et des pointeurs.
 
 .. literalinclude:: /Theorie/C/S3-src/strcpy.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -373,7 +373,7 @@ Les versions récentes du C et notamment [C99]_ permettent d'allouer de façon d
 Un étudiant pourrait vouloir éviter d'utiliser `malloc(3)`_ et écrire plutôt la fonction suivante.
 
 .. literalinclude:: /Theorie/C/S3-src/strcpy.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///BBB
    :end-before: ///CCC

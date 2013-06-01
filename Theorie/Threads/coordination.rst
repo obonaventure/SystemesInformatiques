@@ -107,7 +107,7 @@ Les sémaphores permettent de résoudre de nombreux problèmes classiques. Le pr
 Les sémaphores peuvent être utilisés pour d'autres types de synchronisation. Par exemple, considérons une application découpée en threads dans laquelle la fonction ``after`` ne peut jamais être exécutée avant la fin de l'exécution de la fonction ``before``. Ce problème de coordination peut facilement être résolu en utilisant un sémaphore qui est initialisé à la valeur ``0``. La fonction ``after`` doit démarrer par un appel à `sem_wait(3)`_ sur ce sémaphore tandis que la fonction ``before`` doit se terminer par un appel à la fonction `sem_post(3)`_ sur ce sémaphore. De cette façon, si le thread qui exécute la fonction ``after`` est trop rapide, il sera bloqué sur l'appel à `sem_wait(3)`_. S'il arrive à cette fonction après la fin de la fonction ``before`` dans l'autre thread, il pourra passer sans être bloqué. Le programme ci-dessous illustre cette utilisation des sémaphores POSIX.
 
 .. literalinclude:: /Theorie/Threads/S7-src/pthread-sem-before.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -474,7 +474,7 @@ Une deuxième solution serait d'avoir un tableau global qui contiendrait des poi
 Pour résoudre ce problème, deux solutions sont possibles. La première combine une extension au langage C qui est supportée par `gcc(1)`_ avec la librairie threads POSIX. il s'agit du qualificatif ``__thread`` qui peut être utilisé avant une déclaration de variable. Lorsqu'il est utilisé dans la déclaration d'une variable globale, il indique au compilateur et à la libraire POSIX qu'une copie de cette variable doit être créée pour chaque thread. Cette variable est initialisée au démarrage du thread et est utilisable uniquement à l'intérieur de ce thread. Le programme ci-dessous illustre cette utilisation du qualificatif ``__thread``.
 
 .. literalinclude:: /Theorie/Threads/S7-src/pthread-specific.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -482,7 +482,7 @@ Pour résoudre ce problème, deux solutions sont possibles. La première combine
 Lors de son exécution, ce programme affiche la sortie suivante sur :term:`stdout`. Cette sortie illustre bien que les variables dont la déclaration est précédée du qualificatif ``__thread`` sont utilisables uniquement à l'intérieur d'un thread.
 
 .. literalinclude:: /Theorie/Threads/S7-src/pthread-specific.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
 
 
@@ -495,7 +495,7 @@ Il faut noter que la fonction `pthread_key_create(3posix)`_ associe en pratique 
 L'exemple ci-dessous illustre l'utilisation de cette API. Elle est nettement plus lourde à utiliser que le qualificatif ``__thread``. Dans ce code, chaque thread démarre par la fonction ``f``. Celle-ci crée une variable spécifique de type ``int`` qui joue le même rôle que la variable ``__thread int count;`` dans l'exemple précédent. La fonction ``g`` qui est appelée sans argument peut accéder à la zone mémoire créée en appelant ``pthread_getspecific(count)``. Elle peut ensuite exécuter ses calculs en utilisant le pointeur ``count_ptr``. Avant de se terminer, la fonction ``f`` libère la zone mémoire qui avait été allouée par `malloc(3)`_. Une alternative à l'appel explicite à `free(3)`_ aurait été de passer ``free`` comme second argument à `pthread_key_create(3posix)`_ lors de la création de la clé ``count``. En effet, ce second argument est la fonction à appeler à la fin du thread pour libérer la mémoire correspondant à cette clé.
 
 .. literalinclude:: /Theorie/Threads/S7-src/pthread-specific2.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -512,7 +512,7 @@ Pour comprendre le problème, il est intéressant de comparer plusieurs impléme
 
 
 .. literalinclude:: /Theorie/Threads/S7-src/reentrant.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB

@@ -22,14 +22,14 @@ Exercices
 #. Un étudiant souhaite passer un tableau d'entiers comme argument à un thread et écrit le code suivant. Qu'en pensez-vous ?
 
    .. literalinclude:: /Exercices/Programmes/src/pthread-array.c
-      :encoding: iso-8859-1
+      :encoding: utf-8
       :language: c
       :start-after: ///AAA
 
 #. Considérons le programme de test des threads POSIX ci-dessous. Ce programme utilise 4 threads qui incrémentent chacun un million de fois une variable globale.
 
    .. literalinclude:: /Exercices/Programmes/src/pthread-test.c
-      :encoding: iso-8859-1
+      :encoding: utf-8
       :language: c
       :start-after: ///AAA
 

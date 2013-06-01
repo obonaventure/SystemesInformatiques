@@ -20,7 +20,7 @@ Exercices
 #. Un programmeur propose deux fonctions différentes pour calculer la somme des éléments d'un tableau à deux dimensions. Intégrez ces fonctions dans un programme afin d'en mesurer les performances avec `gettimeofday(2)`_. Quelle est la variante la plus rapide et pourquoi ?
 
 	.. literalinclude:: src/sumarray.c
-		:encoding: iso-8859-1
+		:encoding: utf-8
 		:language: c
 		:start-after: ///AAA
 		:end-before: ///BBB

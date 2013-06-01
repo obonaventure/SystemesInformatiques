@@ -345,7 +345,7 @@ Les instructions de saut
 Les instructions de saut sont des instructions de base pour tous les processeurs. Elles permettent de modifier la valeur du compteur de programme ``%eip`` de façon à modifier l'ordre d'exécution des instructions. Elles sont nécessaires pour implémenter les tests, les boucles et les appels de fonction. Les premiers langages de programmation et des langages tels que BASIC ou FORTRAN disposent d'une construction similaire avec l'instruction ``goto``. Cependant, l'utilisation de l'instruction ``goto`` dans des programmes de haut niveau rend souvent le code difficile à lire et de nombreux langages de programmation n'ont plus de ``goto`` [Dijkstra1968]_. Contrairement à Java, le C contient une instruction ``goto``, mais son utilisation est fortement découragée. En C, l'instruction ``goto`` prend comme argument une étiquette (label en anglais). Lors de l'exécution d'un ``goto``, le programme saute directement à l'exécution de l'instruction qui suit le label indiqué. Ceci est illustré dans l'exemple ci-dessous :
 
 .. literalinclude:: /Theorie/Assembleur/src/goto.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -548,7 +548,7 @@ Les fonctions et les procédures sont essentielles dans tout langage de programm
 Une procédure est un ensemble d'instructions qui peuvent être appelées depuis n'importe quel endroit du programme. Généralement, une procédure est appelée depuis plusieurs endroits différents d'un programme. Pour comprendre l'implémentation des procédures, nous allons considérer des procédures de complexité croissante. Nos premières procédures ne prennent aucun argument. En C, elles peuvent s'écrire sous la forme de fonctions ``void`` comme suit.
 
 .. literalinclude:: /Theorie/Assembleur/src/proc.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
@@ -588,7 +588,7 @@ Dans ce code assembleur, on retrouve dans le bas du code la déclaration des deu
 Considérons une petite variante de notre programme C dans lequel une procédure ``p`` appelle une procédure ``q``.
 
 .. literalinclude:: /Theorie/Assembleur/src/proc2.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
@@ -614,7 +614,7 @@ La seule différence par rapport au programme précédent est que la procédure 
 Considérons maintenant une procédure qui prend un argument. Pour qu'une telle procédure puisse utiliser un argument, il faut que la procédure appelante puisse placer sa valeur à un endroit où la procédure appelée peut facilement y accéder. Dans l'architecture [IA32]_, c'est la pile qui joue ce rôle et permet le passage des arguments. En C, les arguments sont passés par valeur et ce sera donc les valeurs des arguments qui seront placées sur la pile. A titre d'exemple, considérons une procédure simple qui prend deux arguments entiers.
 
 .. literalinclude:: /Theorie/Assembleur/src/fct.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
@@ -658,7 +658,7 @@ Le passage des arguments de la fonction ``init`` depuis la fonction ``main`` se 
 La différence entre une procédure et une fonction est qu'une fonction retourne un résultat. Considérons le programme suivant et les fonctions triviales ``int init()`` et ``int sum(int, int)``. Pour que de telles fonctions puissent s'exécuter et retourner un résultat, il faut que la procédure appelante puisse savoir où aller chercher le résultat après exécution de l'instruction ``ret``.
 
 .. literalinclude:: /Theorie/Assembleur/src/fct2.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
@@ -705,7 +705,7 @@ La compilation du programme C ci-dessus en assembleur produit le code suivant. D
 Pour terminer notre exploration de la compilation de fonctions C en assembleur, considérons une fonction récursive. Par simplicité, nous utilisons la fonction ``sumn`` qui calcule de façon récursive la somme des n premiers entiers.
 
 .. literalinclude:: /Theorie/Assembleur/src/sumn.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB

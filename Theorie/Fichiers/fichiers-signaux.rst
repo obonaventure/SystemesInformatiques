@@ -99,7 +99,7 @@ Le premier argument de l'appel système `signal(2)`_ est généralement spécifi
 L'exemple ci-dessous est un programme simple qui compte le nombre de signaux ``SIGUSR1`` et ``SIGUSR2`` qu'il reçoit et se termine dès qu'il a reçu cinq signaux.
 
 .. literalinclude:: /Theorie/Fichiers/src/sigusr.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -144,7 +144,7 @@ La plupart des variantes de Unix, y compris Linux, utilisent la seconde stratég
 Pour illustrer ce problème, considérons le programme ci-dessous qui compte simplement le nombre de signaux ``SIGUSR1`` reçus.
 
 .. literalinclude:: /Theorie/Fichiers/src/sigusrcount.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -152,7 +152,7 @@ Pour illustrer ce problème, considérons le programme ci-dessous qui compte sim
 Depuis un shell, il est possible d'envoyer plusieurs fois le signal ``SIGUSR1`` rapidement avec le script :download:`/Theorie/Fichiers/src/nkill.sh`. Ce script prend deux arguments : le nombre de signaux à envoyer et le processus destination.
 
 .. literalinclude:: /Theorie/Fichiers/src/nkill.sh
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
 
 
@@ -186,7 +186,7 @@ Le programme ci-dessous prend en arguments en ligne de commande une séquence d'
 
 
 .. literalinclude:: /Theorie/Fichiers/src/sigfpe2.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -248,7 +248,7 @@ La fonction `setjmp(3)`_ est équivalente à la déclaration d'une étiquette. E
 Le programme ci-dessous illustre l'utilisation de `setjmp(3)`_ et `longjmp(3)`_.
 
 .. literalinclude:: /Theorie/Fichiers/src/longjmp.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -256,7 +256,7 @@ Le programme ci-dessous illustre l'utilisation de `setjmp(3)`_ et `longjmp(3)`_.
 Le programme débute en exécutant la fonction ``f``. Dans cette exécution, la fonction `setjmp(3)`_ retourne la valeur ``0``. Ensuite, la fonction ``main`` appelle la fonction ``g`` qui elle exécute ``longjmp(label,1)``. Cela provoque un retour à la fonction ``f`` à l'endroit de l'exécution de ``setjmp(label)`` qui cette fois-ci va retourner la valeur ``1``. Lors de son exécution, le programme ci-dessus affiche :
 
 .. literalinclude:: /Theorie/Fichiers/src/longjmp.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
 
 Avec les fonctions `setjmp(3)`_ et `longjmp(3)`_, il est presque possible d'implémenter le traitement attendu pour le signal ``SIGFPE``. Il reste un problème à résoudre. Lorsque la routine de traitement du signal ``SIGFPE`` s'exécute, ce signal est bloqué par le système d'exploitation jusqu'à ce que cette fonction se termine. Si elle effectue un `longjmp(3)`_, elle ne se terminera jamais et le signal continuera à être bloqué. Pour éviter ce problème, il faut utiliser les fonctions `sigsetjmp(3)`_ et `siglongjmp(3)`_. Ces fonctions sauvegardent dans une structure de données ``sigjmp_buf`` non seulement l'environnement d'exécution mais aussi la liste des signaux qui sont actuellement bloqués. Lorsque `siglongjmp(3)`_ s'exécute, l'environnement et  la liste des signaux bloqués sont restaurés.
@@ -264,7 +264,7 @@ Avec les fonctions `setjmp(3)`_ et `longjmp(3)`_, il est presque possible d'impl
 Le programme ci-dessous présente l'utilisation de `sigsetjmp(3)`_ et `siglongjmp(3)`_.
 
 .. literalinclude:: /Theorie/Fichiers/src/sigfpe3.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -298,7 +298,7 @@ Temporisateurs
 Parfois il est nécessaire dans un programme de limiter le temps d'attente pour réaliser une opération. Un exemple simple est lorsqu'un programme attend l'entrée d'un paramètre via l'entrée standard mais peut remplacer ce paramètre par une valeur par défaut si celui-ci n'est pas entré endéans quelques secondes. Lorsqu'un programme attend une information via l'entrée standard, il exécute l'appel système `read(2)`_ directement ou via des fonctions de la librairie comme `fgets(3)`_ ou `getchar(3)`_. Par défaut, celui-ci est bloquant, cela signifie qu'il ne se terminera que lorsqu'une donnée aura été lue. Si `read(2)`_ est utilisé seul, il n'est pas possible de borner le temps d'attente du programme et d'interrompre l'appel à `read(2)`_ après quelques secondes. Pour obtenir ce résultat, une possibilité est d'utiliser un signal. En effet, `read(2)`_ est un appel système lent qui peut être interrompu par la réception d'un signal. Il y a plusieurs façons de demander qu'un signal soit généré après un certain temps. Le plus général est `setitimer(2)`_. Cet appel système permet de générer un signal ``SIGALRM`` après un certain temps ou périodiquement. L'appel système `alarm(3posix)`_ est plus ancien mais plus simple à utiliser que `setitimer(2)`_. Nous l'utilisons afin d'illustrer comment un signal peut permettre de limiter la durée d'attente d'un appel système.
 
 .. literalinclude:: /Theorie/Fichiers/src/alarm.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -309,7 +309,7 @@ Lors de son exécution, ce programme affiche la sortie suivante.
 
 
 .. literalinclude:: /Theorie/Fichiers/src/alarm.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
 
 En essayant le programme ci-dessus, on pourrait conclure qu'il fonctionne parfaitement. Il a cependant un petit défaut qui peut s'avérer genant si par exemple on utilise la même logique pour écrire une fonction ``read_time`` qui se comporte comme `read(2)`_ sauf que son dernier argument est un délai maximal. Sur un système fort chargé, il est possible qu'après l'exécution de ``alarm(5)`` le processus soit mis en attente par le système d'exploitation qui exécute d'autres processus. Lorsque l'alarme expire, la fonction de traitement de ``SIGALRM`` est exécutée puis seulement l'appel à `read(2)`_ s'effectue. Celui-ci étant bloquant, le processus restera bloqué jusqu'à ce que les données arrivent ce qui n'est pas le comportement attendu.
@@ -317,7 +317,7 @@ En essayant le programme ci-dessus, on pourrait conclure qu'il fonctionne parfai
 Pour éviter ce problème, il faut empêcher l'exécution de `read(2)`_ si le signal ``SIGALRM`` a déjà été reçu. Cela peut se réaliser en utilisant `sigsetjmp(3)`_ pour définir une étiquette avant l'exécution du bloc contenant l'appel à `alarm(3posix)`_ et l'appel à `read(2)`_. Si le signal n'est pas reçu, l'appel à `read(2)`_ s'effectue normalement. Si par contre le signal ``SIGALRM`` est reçu entre l'appel à `alarm(3posix)`_ et l'appel à `read(2)`_, alors l'exécution de `siglongjmp(3)`_ dans ``sig_handler`` empêchera l'exécution de l'appel système `read(2)`_ ce qui est bien le comportement attendu.
 
 .. literalinclude:: /Theorie/Fichiers/src/alarm2.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -357,7 +357,7 @@ A titre d'exemple, considérons un exemple simple d'utilisation de sémaphores n
 Le programme ci-dessous illustre le processus qui s'exécute en premier.
 
 .. literalinclude:: /Theorie/Fichiers/src/process-sem-before.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -366,7 +366,7 @@ Le programme ci-dessous illustre le processus qui s'exécute en premier.
 Ce processus commence par utiliser `sem_open(3)`_ pour créer un sémaphore qui porte le nom ``lsinf1252`` et est initialisé à zéro puis se met en veille pendant vingt secondes. Ensuite il exécute la fonction ``before`` qui se termine par l'exécution de ``sem_post(semaphore)``. Cet appel a pour résultat de libérer le second processus dont le code est présenté ci-dessous :
 
 .. literalinclude:: /Theorie/Fichiers/src/process-sem-after.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
