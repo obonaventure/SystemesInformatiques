@@ -199,7 +199,7 @@ Ce problème peut être résolu en utilisant deux sémaphores et un mutex. L'acc
    sem_init(&empty, 0 , N);  // buffer vide
    sem_init(&full, 0 , 0);   // buffer vide
 
-Le fonctionnement général d'un producteur est le suivant. Tout d'abord, le producteur est mis en attente sur le sémaphore ``empty``. Il ne pourra passer que si il y a au moins un slot du buffer qui est non-vide. Lorsque la ligne ``sem_wait(&empty);`` réussit, le producteur s'approprie le ``mutex`` et modifie le buffer de façon à insérer l'élément produit (dans ce cas un entier). Il libère ensuite le ``mutex`` pour sortir de sa section critique.
+Le fonctionnement général d'un producteur est le suivant. Tout d'abord, le producteur est mis en attente sur le sémaphore ``empty``. Il ne pourra passer que si il y a au moins un slot du buffer qui est vide. Lorsque la ligne ``sem_wait(&empty);`` réussit, le producteur s'approprie le ``mutex`` et modifie le buffer de façon à insérer l'élément produit (dans ce cas un entier). Il libère ensuite le ``mutex`` pour sortir de sa section critique.
 
 .. code-block:: c
 
