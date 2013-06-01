@@ -414,7 +414,7 @@ Le fonction ``lock``  vérifie de savoir si le :term:`mutex` est libre. Dans ce 
 
 .. code-block:: c
 
-   unlock(mutex s) {
+   unlock(mutex m) {
     if(m.queue is empty)
     {
       m.val=unlocked;
