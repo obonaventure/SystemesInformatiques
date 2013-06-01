@@ -109,7 +109,7 @@ L'archive contenant la librairie peut être liée en utilisant le linker à n'im
 
 .. literalinclude:: /Theorie/Threads/S8-src/Makefile-lib
    :encoding: utf-8
-   :language: console
+   :language: makefile
 
 Ce ``Makefile`` est un petit peu plus long que ceux que nous avons utilisé jusque maintenant. Il illustre une structure courante pour de nombreux fichiers ``Makefile``. La première partie définit des constantes qui sont utilisées dans le reste du ``Makefile``. Il s'agit tout d'abord du compilateur et du programme de construction de librairies qui sont utilisés. Définir ces programmes comme des constantes dans le ``Makefile`` permet de facilement en changer lorsque c'est nécessaire. Ensuite, trois constantes sont définies avec les arguments de base du compilateur et de ``ar``. A nouveau, définir ces constantes une fois pour toutes facilite leur modification. Ensuite, la première cible est la cible ``all:``. C'est la cible par défaut qui sera utilisée lorsque `make(1)`_ est appelé sans argument. Elle dépend de l'exécutable ``imath`` qui est une des cibles du ``Makefile``. La cible ``clean:`` permet d'effacer les fichiers objet et exécutables construites par le ``Makefile``. Il est utile d'avoir une telle cible lorsque l'on doit diffuser un projet en C ou le rendre dans le cadre d'un cours. Enfin, les autres cibles correspondent aux fichiers objet, à la librairie et à l'exécutable qui sont construits. La commande ``@echo`` affiche ses arguments sur la sortie standard. Enfin, la chaîne de caractères ``$(GCC)`` est remplacée par le constante définie au début du fichier. Des compléments d'information sur `make(1)`_ peuvent être obtenus dans divers documents dont `make(1)`_, [Mecklenburg+2004]_ ou [GNUMake]_.
 
