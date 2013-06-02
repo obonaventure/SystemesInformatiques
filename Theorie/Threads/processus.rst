@@ -463,7 +463,7 @@ Lorsqu'`execve(2)`_ est appelé, il vérifie d'abord ce bit de permission. Si il
 .. code-block:: console
 
    $ file fork-execve.c
-   fork-execve.c: ISO-8859 C program text
+   fork-execve.c: UTF-8 C program text
    $ file script.sh
    script.sh: Bourne-Again shell script text executable
    $ file a.out
