@@ -298,7 +298,7 @@ Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particulier et méri
    9624126 -rw-r--r--  3 obo  stafinfo  5 24 mar 21:14 test2.txt
    $ ln a/test.txt b/test3.txt
    $ stat --format "inode=%i nlinks=%h" b/test3.txt
-   $ inode=9624126 nlinks=3
+   inode=9624126 nlinks=3
    $ ls -li b
    total 8
    9624126 -rw-r--r--  3 obo  stafinfo  5 24 mar 21:14 test3.txt
