@@ -238,7 +238,6 @@ Il existe plusieurs appels systèmes et fonctions de la librairie standard qui p
  - l'appel système `stat(2)`_ permet de récupérer les méta-données qui sont associées à un fichier ou un répertoire. La commande `stat(1)`_ fournit des fonctionnalités similaires depuis le shell.
  - les appels systèmes `chmod(2)`_ et `chown(2)`_ permettent de modifier respectivement le mode (i.e. les permissions), le propriétaire et le groupe associés à un fichier. Les commandes `chmod(1)`_, `chown(1)`_ et `chgrp(1)`_ permettent de faire de même depuis le shell.
  - l'appel système `utime(2)`_ permet de modifier les timestamps associés à un fichier/répertoire. Cet appel système est utilisé par la commande `touch(1)`_
- - l'appel système `utime(2)`_ permet de modifier les timestamps associés à une fichier/répertoire. Cet appel système est utilisé par la commande `touch(1)`_
  - l'appel système `rename(2)`_ permet de changer le nom d'un fichier ou d'un répertoire. Il est utilisé notamment par la commande `rename(1)`_
  - l'appel système `mkdir(2)`_ permet de créer un répertoire alors que l'appel système `rmdir(2)`_ permet d'en supprimer un
  - les fonctions de la librairie `opendir(3)`_, `closedir(3)`_, et `readdir(3)`_ permettent de consulter le contenu de répertoires.
