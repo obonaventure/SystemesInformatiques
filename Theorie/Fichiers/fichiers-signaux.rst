@@ -310,7 +310,7 @@ Lors de son exécution, ce programme affiche la sortie suivante.
 
 .. literalinclude:: /Theorie/Fichiers/src/alarm.out
    :encoding: utf-8
-   :language: c
+   :language: console
 
 En essayant le programme ci-dessus, on pourrait conclure qu'il fonctionne parfaitement. Il a cependant un petit défaut qui peut s'avérer genant si par exemple on utilise la même logique pour écrire une fonction ``read_time`` qui se comporte comme `read(2)`_ sauf que son dernier argument est un délai maximal. Sur un système fort chargé, il est possible qu'après l'exécution de ``alarm(5)`` le processus soit mis en attente par le système d'exploitation qui exécute d'autres processus. Lorsque l'alarme expire, la fonction de traitement de ``SIGALRM`` est exécutée puis seulement l'appel à `read(2)`_ s'effectue. Celui-ci étant bloquant, le processus restera bloqué jusqu'à ce que les données arrivent ce qui n'est pas le comportement attendu.
 
