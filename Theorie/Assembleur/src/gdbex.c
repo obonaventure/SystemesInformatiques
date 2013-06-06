@@ -1,6 +1,6 @@
 /**************************************
  * gdbex.c
- * 
+ *
  * Programme d'exemple pour gdb
  *
  **************************************/
@@ -15,7 +15,7 @@ int h=0;
 int main(int argc, char *argv[]) {
 
   g=3;
-  h=g+h; 
+  h=g+h;
 
   return(EXIT_SUCCESS);
 }

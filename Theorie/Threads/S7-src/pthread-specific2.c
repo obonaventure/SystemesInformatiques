@@ -1,9 +1,9 @@
 /**************************************
  * pthread-specific.c
- * 
+ *
  * Programme d'exemple de pthread qui utilise une
- * zone mémoire pour stocker des données 
- * spécifiques au thread
+ * zone mÃ©moire pour stocker des donnÃ©es
+ * spÃ©cifiques au thread
  **************************************/
 
 #include <pthread.h>
@@ -13,7 +13,7 @@
 #include <errno.h>
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -28,21 +28,21 @@ int global_count=0;
 void g(void ) {
   void * data=pthread_getspecific(count);
   if(data==NULL)
-    error(-1,"pthread_getspecific");   
+    error(-1,"pthread_getspecific");
   int *count_ptr=(int *)data;
   for(int i=0;i<LOOP;i++) {
     *count_ptr=*(count_ptr)+1;
     global_count=global_count-1;
-  } 
+  }
 }
 
-void *f( void* param) { 
-  int err; 
+void *f( void* param) {
+  int err;
   int *int_ptr=malloc(sizeof(int));
   *int_ptr=0;
   err=pthread_setspecific(count, (void *)int_ptr);
   if(err!=0)
-    error(err,"pthread_setspecific");  
+    error(err,"pthread_setspecific");
   g();
   printf("Valeurs : count=%d, global_count=%d\n",*int_ptr, global_count);
   free(int_ptr);
@@ -58,11 +58,11 @@ int main (int argc, char *argv[])  {
     error(err,"pthread_key_create");
 
   for(int i=0;i<NTHREADS;i++) {
-    err=pthread_create(&(threads[i]),NULL,&f,NULL); 
+    err=pthread_create(&(threads[i]),NULL,&f,NULL);
     if(err!=0)
       error(err,"pthread_create");
   }
-  
+
   for(int i=0;i<NTHREADS;i++) {
     err=pthread_join(threads[i],NULL);
     if(err!=0)

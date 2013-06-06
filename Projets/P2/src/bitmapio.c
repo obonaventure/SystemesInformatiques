@@ -49,7 +49,7 @@ int load_bmp(char *file, struct image **res_image)
         errno = -EAGAIN;
         return -EAGAIN;
     }
-    
+
     img = (struct image *) malloc(sizeof(*img));
     if (!img)
         return errno;
@@ -134,7 +134,7 @@ int write_bmp(struct image *img, char *file)
     int j, pad;
     struct pixel padding = {0,0,0};
 
-    
+
     /* open the file */
     if ((fp = fopen(file,"w")) == NULL)
         return errno;
@@ -150,7 +150,7 @@ int write_bmp(struct image *img, char *file)
 
     if (fwrite(&hdr, sizeof(hdr), 1, fp) != 1)
         goto write_error;
-    
+
     infohdr.hdrsize = sizeof(infohdr);
     infohdr.width = img->width;
     infohdr.height = img->height;

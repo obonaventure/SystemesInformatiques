@@ -33,7 +33,7 @@ $(function() {
         $('li.correct input:checked').parent().prepend('<img class="checkmark" src="images/correct.png" style="display: none;"></img>');
         $('.checkmark').show();
         $('input:checked').parent().children('.comment').show('slow');
-        $('#checker').append('<div class="result">Votre score est de ' + 
+        $('#checker').append('<div class="result">Votre score est de ' +
                             $('li.correct input:checked').length + '/' +
                             $('ul.proposals').length + '</div>');
     });

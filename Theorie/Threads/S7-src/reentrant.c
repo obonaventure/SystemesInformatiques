@@ -1,6 +1,6 @@
 /**************************************
  * reentrant.c
- * 
+ *
  * Programme d'exemple de fonctions reentrantes
  *
  **************************************/
@@ -24,14 +24,14 @@ int max_vector(int n, int *v) {
     if(v[i]>max)
       max=v[i];
   }
-  return max;    
+  return max;
 }
 
 int max_global(int *v) {
     if (*v>g_max) {
       g_max=*v;
     }
-    return(g_max); 
+    return(g_max);
 }
 
 int max_static(int *v){
@@ -39,7 +39,7 @@ int max_static(int *v){
   if (*v>s_max) {
     s_max=*v;
   }
-  return(s_max); 
+  return(s_max);
 }
 
 ///BBB

@@ -1,7 +1,7 @@
 /**************************************
  * ptrptr.c
- * 
- * Programme d'exemple pour les pointeurs 
+ *
+ * Programme d'exemple pour les pointeurs
  * vers des pointeurs
  *
  **************************************/
@@ -13,9 +13,9 @@ int main(int argc, char **argv) {
 
   char **p;
   p=argv;
-  printf("Arguments : ");
+  printf("Arguments :");
   while(*p!=NULL) {
-    printf("%s ",*p);
+    printf(" %s",*p);
     p++;
   }
   printf("\n");

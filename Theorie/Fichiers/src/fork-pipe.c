@@ -1,7 +1,7 @@
 /**************************************
  * fork-pipe.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * pipe en combinaison avec fork
  *
  *************************************/
@@ -31,7 +31,7 @@ int main (int argc, char *argv[])  {
   pid=fork();
 
   if (pid==-1) {
-    // erreur à l'exécution de fork
+    // erreur Ã  l'exÃ©cution de fork
     perror("fork");
     exit(EXIT_FAILURE);
   }
@@ -46,7 +46,7 @@ int main (int argc, char *argv[])  {
     while ( !finished) {
       err=read(fd[0],(void *) &n,sizeof(int));
       if(err==sizeof(int))
-	// entier reçu
+	// entier reÃ§u
 	count++;
       else
 	if(err==0)
@@ -57,11 +57,11 @@ int main (int argc, char *argv[])  {
     }
     if(close(fd[0])==-1)
       exit_on_error("close");
-    printf("Reçu : %d entiers\n",count);
+    printf("ReÃ§u : %d entiers\n",count);
     return(EXIT_SUCCESS);
   }
   else {
-    // processus père
+    // processus pÃ¨re
     if(close(fd[0])==-1)
       exit_on_error("close");
     for(int i=0;i<100000;i++) {
@@ -70,13 +70,13 @@ int main (int argc, char *argv[])  {
     }
     if( close(fd[1])==-1)
       exit_on_error("close(fd[1])");
-    
+
     int fils=waitpid(pid,&status,0);
     if(fils==-1) {
       perror("wait");
       exit(EXIT_FAILURE);
     }
-    // fils terminé correctement
+    // fils terminÃ© correctement
   }
 }
 ///BBB

@@ -1,6 +1,6 @@
 /**************************************
  * union.c
- * 
+ *
  * Programme d'exemple de union
  *
  **************************************/
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
   // initialisation
   s.i=1252;
   s.c='A';
-  u.i=1252; 
+  u.i=1252;
   // u contient un int
   u.c='Z';
   // u contient maintenant un char (et u.i est perdu)
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
   printf("sizeof(s_t) : %ld\n",sizeof(s));
   printf("sizeof(u_t) : %ld\n",sizeof(u));
   ///EEE
-  u.i=1252; 
+  u.i=1252;
   printf("char : %c\n", u.c);
 
   ///FFF

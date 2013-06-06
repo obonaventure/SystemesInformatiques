@@ -15,7 +15,7 @@ struct image {
 	int	 ver_res; /* Résolution verticale - Ne pas modifier */
 
 	/* pixel est un tableu de taille width * height et représente les composantes
-	 * RGB de tous les pixels. Le pixel (0,0) est le pixel en bas à gauche et 
+	 * RGB de tous les pixels. Le pixel (0,0) est le pixel en bas à gauche et
 	 * le pixel (width-1, height-1) est celui en haut à droite.
 	 */
 	struct pixel *pixels;
@@ -25,7 +25,7 @@ struct image {
  *
  * Si la fonction retourne 0 (succès), *res_image pointe vers une nouvelle
  * zone mémoire allouée contenant le bitmap. Si la fonction retourne une
- * une valeur différente de zero, une erreur s'est produite et la valeur 
+ * une valeur différente de zero, une erreur s'est produite et la valeur
  * errno est mis à jour.
  */
 int load_bmp(char *file, struct image **res_image);

@@ -1,6 +1,6 @@
 /**************************************
  * execve.c
- * 
+ *
  * Programme d'exemple pour execve
  *
  *************************************/
@@ -15,16 +15,16 @@ int main (int argc, char *argv[])  {
   char *arguments[]={"expr", "1", "+", "2", NULL};
   char *environnement[]={"LANG=fr",NULL};
 
-  printf("Exécution du processus %d \n",getpid());
-  printf("Exécution de /usr/bin/expr\n");
+  printf("ExÃ©cution du processus %d\n",getpid());
+  printf("ExÃ©cution de /usr/bin/expr\n");
   int err=execve("/usr/bin/expr", arguments, environnement);
   if(err!=0) {
     perror("execve");
     exit(EXIT_FAILURE);
   }
   // jamais atteint
-  printf("Ce message ne sera jamais affiché\n");
+  printf("Ce message ne sera jamais affichÃ©\n");
   return(EXIT_SUCCESS);
-    
+
 }
 

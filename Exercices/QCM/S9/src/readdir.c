@@ -1,8 +1,8 @@
 /**************************************
  * readdir.c
- * 
- * Programme d'exemple d'utilisation de 
- * répertoires
+ *
+ * Programme d'exemple d'utilisation de
+ * rÃ©pertoires
  *
  *************************************/
 ///AAA
@@ -18,12 +18,12 @@ void exit_on_error(char *s) {
 
 /*
  * name!=NULL
- * retourne le nombre de fichiers dans le répertoire name
+ * retourne le nombre de fichiers dans le rÃ©pertoire name
  * et -1 en cas d'erreur
  */
 
 int nfiles(char * name) {
-  
+
   DIR *dirp;
   struct dirent *dp;
   dirp=malloc(sizeof(DIR));
@@ -36,7 +36,7 @@ int nfiles(char * name) {
   }
   dirp = opendir(name);
   if(dirp==NULL) {
-    return -1; 
+    return -1;
   }
   int count=0;
   while ((dp = readdir(dirp)) != NULL) {
@@ -46,7 +46,7 @@ int nfiles(char * name) {
   }
   int err = closedir(dirp);
   if(err<0) {
-    return -1; 
+    return -1;
   }
   return(count);
 }

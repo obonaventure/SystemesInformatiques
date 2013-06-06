@@ -1,8 +1,8 @@
 /**************************************
  * var.c
- * 
- * Programme d'exemple pour localiser 
- * les variables en mémoire
+ *
+ * Programme d'exemple pour localiser
+ * les variables en mÃ©moire
  *
  **************************************/
 

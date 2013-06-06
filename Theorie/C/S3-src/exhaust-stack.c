@@ -1,6 +1,6 @@
 /**************************************
  * exhaust-stack.c
- * 
+ *
  * Programme qui sature le stack
  *
  **************************************/
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
     return(EXIT_FAILURE);
   }
   printf("Softlimit %ld, hard limit %ld\n",(rlim_t) r.rlim_cur,(rlim_t)r.rlim_max);
-  printf("La somme des %d premiers entiers est : %d \n",n,sumn(n));
+  printf("La somme des %d premiers entiers est : %d\n",n,sumn(n));
 
   return(EXIT_SUCCESS);
 }

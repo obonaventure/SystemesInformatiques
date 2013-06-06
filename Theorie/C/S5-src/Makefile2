@@ -1,7 +1,7 @@
 #
 # Makefile for source code
 #
-# Builds all .c files, assuming they are all independant and runs them 
+# Builds all .c files, assuming they are all independant and runs them
 # to collect the output on stdout
 #
 # Automatically builds some of the examples to be included in the text

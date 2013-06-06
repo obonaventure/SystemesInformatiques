@@ -1,4 +1,4 @@
-// arithmétique des pointeurs
+// arithmÃ©tique des pointeurs
 #include <stdio.h>
 
 int main() {
@@ -11,7 +11,7 @@ int main() {
   tab[0]=0x01020304;
   tab[1]=0x05060708;
   tab[2]=0x090A0B0C;
-  
+
   ///BBB
 
   ///CCC
@@ -35,6 +35,6 @@ int main() {
   for(i=0; i<SIZE+1;i++) {
     printf("%X est a l'adresse %p\n",*ptr_char,ptr_char);
     ptr_char++;
-  }	
+  }
   ///HHH
 }

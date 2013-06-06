@@ -1,7 +1,7 @@
 /**************************************
  * mallocperf.c
- * 
- * Programme mesurant les performances 
+ *
+ * Programme mesurant les performances
  * de malloc
  *
  **************************************/
@@ -26,11 +26,11 @@ long timeval_diff(struct timeval *t2, struct timeval *t1)
 }
 
 int main(int argc, char *argv[]) {
-  
+
   int *vector;
   long mesures[LOOP], sum;
 
-  struct timeval tvStart, tvEnd; 
+  struct timeval tvStart, tvEnd;
   int err;
 
   vector=(int *)malloc(SIZE*sizeof(int));
@@ -40,18 +40,18 @@ int main(int argc, char *argv[]) {
     err=gettimeofday(&tvStart, NULL);
     if(err!=0)
       exit(EXIT_FAILURE);
-    
+
      vector=(int *)calloc(SIZE,sizeof(int));
      //vector=(int *)malloc(SIZE*sizeof(int));
     err=gettimeofday(&tvEnd, NULL);
     if(err!=0)
       exit(EXIT_FAILURE);
-    
+
     mesures[i]=timeval_diff(&tvEnd, &tvStart);
     sum+=mesures[i];
     free(vector);
   }
-  printf("Durée moyenne : %ld \n",sum/LOOP);
+  printf("DurÃ©e moyenne : %ld\n",sum/LOOP);
 
   return(EXIT_SUCCESS);
 }

@@ -1,6 +1,6 @@
 /***********************************************
  * foobar.c
- * 
+ *
  * Exercice
  *
  ***********************************************/
@@ -17,7 +17,7 @@ void bar(void) {
 }
 
 int main(int argc, char *argv[]) {
-  foo(); 
+  foo();
   bar();
   return(EXIT_SUCCESS);
 }

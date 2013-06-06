@@ -1,6 +1,6 @@
 /***********************************************
  * fct.c
- * 
+ *
  * Programme d'exemple d'utilisation de fonctions
  *
  ***********************************************/
@@ -13,7 +13,7 @@
 
 ///AAA
 void usage() {
-  printf("Usage : ... \n");
+  printf("Usage : ...\n");
 }
 ///BBB
 
@@ -43,9 +43,9 @@ void f(){
   int i=1252;
   printf("i:%d\n",i);
   printf("times_two(&i)=%d\n",times_two(&i));
-  printf("après times_two, i:%d\n",i);
+  printf("aprÃ¨s times_two, i:%d\n",i);
   printf("timestwo(&i)=%d\n",timestwo(&i));
-  printf("après timestwo, i:%d\n",i);
+  printf("aprÃ¨s timestwo, i:%d\n",i);
 }
 ///FFF
 
@@ -64,6 +64,6 @@ int main(int argc, char *argv[]) {
   int j;
 
   f();
-   
+
    return(EXIT_SUCCESS);
 }

@@ -1,8 +1,8 @@
 /**************************************
  * concat.c
- * 
- * Programme d'exemple pour concaténer
- * deux chaînes de caractères
+ *
+ * Programme d'exemple pour concatÃ©ner
+ * deux chaÃ®nes de caractÃ¨res
  *
  **************************************/
 
@@ -40,12 +40,12 @@ int main(int argc, char *argv[]) {
   v=init_vector(SIZE,1252);
   m=unit_matrix(SIZE);
   for(int i=0;i<SIZE;i++) {
-    printf("v[%d]=%d ",i,*(v+i));
+    printf(" v[%d]=%d",i,*(v+i));
   }
   printf("\n");
   for(int i=0;i<SIZE;i++) {
-    for(int j=0;j<SIZE;j++) { 
-      printf("m[%d,%d]=%d ",i,j,*(m+(i*SIZE)+j));
+    for(int j=0;j<SIZE;j++) {
+      printf(" m[%d,%d]=%d",i,j,*(m+(i*SIZE)+j));
     }
     printf("\n");
   }

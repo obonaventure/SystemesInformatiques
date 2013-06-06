@@ -1,8 +1,8 @@
 /**************************************
  * alarm3.c
- * 
+ *
  * Programme d'exemple de lecture avec temps
- * limité via alarm
+ * limitÃ© via alarm
  *
  *************************************/
 ///AAA
@@ -25,8 +25,8 @@ int main (int argc, char *argv[])  {
     perror("signal");
     exit(EXIT_FAILURE);
   }
-  // sigalrm interrompt les appels système  
-  if(siginterrupt(SIGALRM,true)<0) { 
+  // sigalrm interrompt les appels systÃ¨me
+  if(siginterrupt(SIGALRM,true)<0) {
     perror("siginterrupt");
     exit(EXIT_FAILURE);
   }
@@ -36,12 +36,12 @@ int main (int argc, char *argv[])  {
     r=read(STDIN_FILENO,&c,1);
   }
   else {
-    // sig_handler a déjà été exécuté
-    // le délai a déjà expiré, inutile de faire read
+    // sig_handler a dÃ©jÃ  Ã©tÃ© exÃ©cutÃ©
+    // le dÃ©lai a dÃ©jÃ  expirÃ©, inutile de faire read
   }
-  alarm(0); // arrêt du timer
+  alarm(0); // arrÃªt du timer
   if((r==1)&&(c=='\n')) {
-    printf("Gagné \n");
+    printf("GagnÃ© \n");
     exit(EXIT_SUCCESS);
   }
   else {

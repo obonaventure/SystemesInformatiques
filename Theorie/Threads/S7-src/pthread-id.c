@@ -1,9 +1,9 @@
 /**************************************
  * pthread-specific.c
- * 
+ *
  * Programme d'exemple de pthread qui utilise une
- * zone mémoire pour stocker des données 
- * spécifiques au thread
+ * zone mÃ©moire pour stocker des donnÃ©es
+ * spÃ©cifiques au thread
  **************************************/
 
 #include <pthread.h>
@@ -22,7 +22,7 @@ struct result {
 };
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -39,8 +39,8 @@ long power(long i, long j) {
 void g();
 
 void *f1( void* param) {
-  
-  printf("f1 a calculé %d"
+
+  printf("f1 a calculÃ© %d"
   return(NULL);
 }
 
@@ -63,7 +63,7 @@ void *fermat (void * param) {
 	}
       }
     }
-  }   
+  }
   return(NULL);
 }
 
@@ -71,25 +71,25 @@ int main (int argc, char *argv[])  {
   pthread_t threads[NTHREADS];
   int err;
 
-  err=pthread_create(&(threads[i]),NULL,&fermat,(void *)(long) i+2); 
+  err=pthread_create(&(threads[i]),NULL,&fermat,(void *)(long) i+2);
   if(err!=0)
     error(err,"pthread_create");
-  
-  
+
+
 
 
   for(int i=0;i<NTHREADS;i++) {
     void *p;
     err=pthread_join(threads[i],(void **)&(p));
-		     
+
     if(err!=0)
       error(err,"pthread_create");
     //if(p!=NULL) {
     //struct result r;
       //      r=(struct result) p;
-      //printf("Trouvé pour %d : x=%ld, y=%ld, z=%ld\n",i+2,r[i].x,r[i].y, r[i].z);
+      //printf("TrouvÃ© pour %d : x=%ld, y=%ld, z=%ld\n",i+2,r[i].x,r[i].y, r[i].z);
   }
-    
+
 
   return(EXIT_SUCCESS);
 }

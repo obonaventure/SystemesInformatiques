@@ -1,6 +1,6 @@
-valeur de i : 1, valeur pointée par ptr_i : 1
-valeur de i : 1253, valeur pointée par ptr_i : 1253
-valeur de str[0] : U, valeur pointée par *(s+0) : U
-valeur de str[1] : n, valeur pointée par *(s+1) : n
-valeur de str[2] : i, valeur pointée par *(s+2) : i
-valeur de str[3] : x, valeur pointée par *(s+3) : x
+valeur de i : 1, valeur pointÃ©e par ptr_i : 1
+valeur de i : 1253, valeur pointÃ©e par ptr_i : 1253
+valeur de str[0] : U, valeur pointÃ©e par *(s+0) : U
+valeur de str[1] : n, valeur pointÃ©e par *(s+1) : n
+valeur de str[2] : i, valeur pointÃ©e par *(s+2) : i
+valeur de str[3] : x, valeur pointÃ©e par *(s+3) : x

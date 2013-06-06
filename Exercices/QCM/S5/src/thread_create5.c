@@ -9,7 +9,7 @@ struct fraction {
   int denum;
 };
 
-typedef struct fraction Fraction_t; 
+typedef struct fraction Fraction_t;
 
 void error(int err, char *msg) {
   fprintf(stderr,"%s a retourne %d, message d'erreur : %s\n",msg,err,strerror(errno));
@@ -39,15 +39,15 @@ int main (int argc, char *argv[])  {
   float *r;
   int err;
 
-  err=pthread_create(&t,NULL,&mythread,&(f)); 
+  err=pthread_create(&t,NULL,&mythread,&(f));
   if(err!=0)
     error(err,"pthread_create");
 
   err=pthread_join(t,(void *) &r);
   if(err!=0)
     error(err,"pthread_join");
-  
+
   printf("%f \n",(float) (*r));
-  
+
   return(EXIT_SUCCESS);
 }

@@ -1,7 +1,7 @@
 /***********************************************
  * charaddr.c
- * 
- * Pointeurs et chaînes de caractères
+ *
+ * Pointeurs et chaÃ®nes de caractÃ¨res
  *
  ***********************************************/
 

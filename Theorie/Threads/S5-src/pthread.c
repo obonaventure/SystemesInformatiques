@@ -1,6 +1,6 @@
 /**************************************
  * pthread.c
- * 
+ *
  * Programme d'exemple de pthread
  *
  **************************************/
@@ -14,7 +14,7 @@
 int global=0;
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -33,11 +33,11 @@ int main (int argc, char *argv[])  {
   pthread_t second;
   int err;
 
-  err=pthread_create(&first,NULL,&thread_first,NULL); 
+  err=pthread_create(&first,NULL,&thread_first,NULL);
   if(err!=0)
     error(err,"pthread_create");
 
-  err=pthread_create(&second,NULL,&thread_second,NULL); 
+  err=pthread_create(&second,NULL,&thread_second,NULL);
   if(err!=0)
     error(err,"pthread_create");
 

@@ -8,7 +8,7 @@
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
   <script type="text/javascript" src="js/rst-form.js"></script>
   <script type="text/javascript" src="js/prettify.js"></script>
-  <script type="text/javascript">$nmbr_prop = 4</script> 
+  <script type="text/javascript">$nmbr_prop = 4</script>
 
 
 ================
@@ -36,36 +36,36 @@ Un seul des groupes d'affirmations ci-dessous est vrai. Lequel ?
 
 .. class:: positive
 
-- 
+-
  - l'utilisateur ``obo`` peut lire le fichier ``c``, exécuter le fichier ``b`` et modifier le contenu du fichier ``d``
 
 
-- 
+-
  - l'utilisateur ``obo`` peut lire le fichier ``a``, exécuter le fichier ``b`` et modifier le contenu du fichier ``c``
 
 
 .. class:: negative
 
-- 
+-
  - l'utilisateur ``obo`` peut lire le fichier ``e``, exécuter le fichier ``b`` et modifier le contenu du fichier ``e``
 
    .. class:: comment
 
       Le fichier ``e`` n'est pas lisible par cet utilisateur.
 
-- 
+-
  - l'utilisateur ``obo`` peut lire le fichier ``c``, exécuter le fichier ``d`` et modifier le contenu du fichier ``b``
 
    .. class:: comment
 
-      Le fichier ``b`` n'est pas modifiable par cet utilisateur. 
+      Le fichier ``b`` n'est pas modifiable par cet utilisateur.
 
-- 
+-
  - l'utilisateur ``obo`` peut lire le fichier ``c``, exécuter le fichier ``a`` et modifier le contenu du fichier ``d``
 
    .. class:: comment
 
-      Le fichier ``a`` n'est pas exécutable par cet utilisateur. 
+      Le fichier ``a`` n'est pas exécutable par cet utilisateur.
 
 
 Question 2. Fichiers et répertoires
@@ -77,10 +77,10 @@ Les permissions associées aux répertoires ont un rôle un peu différent de ce
 
    drw-------  2 obo  obo   68 23 mar 22:25 a
    dr-x------  2 obo  obo   68 23 mar 22:25 b
-   d-wx------  3 obo  obo  102 23 mar 22:27 c  
+   d-wx------  3 obo  obo  102 23 mar 22:27 c
    drwx------  3 obo  obo  102 23 mar 22:26 d
 
-Chacun de ces répertoires contient un fichier qui a comme nom ``f``. La commande `touch(1)`_ peut être utilisée pour créer un fichier vide. Ainsi, dans ce répertoire, la commande ``touch f`` va créer le fichier  ``f`` 
+Chacun de ces répertoires contient un fichier qui a comme nom ``f``. La commande `touch(1)`_ peut être utilisée pour créer un fichier vide. Ainsi, dans ce répertoire, la commande ``touch f`` va créer le fichier  ``f``
 
 .. code-block:: console
 
@@ -128,7 +128,7 @@ Dans le répertoire ci-dessus, une seule séquence de commandes fonctionne sans 
 
  .. class:: comment
 
-    Il n'est pas possible de créer un fichier dans le répertoire ``a``. 
+    Il n'est pas possible de créer un fichier dans le répertoire ``a``.
 
 -
  .. code-block:: console
@@ -139,7 +139,7 @@ Dans le répertoire ci-dessus, une seule séquence de commandes fonctionne sans 
 
  .. class:: comment
 
-    Il n'est pas possible de créer un fichier dans le répertoire ``b``. 
+    Il n'est pas possible de créer un fichier dans le répertoire ``b``.
 
 
 
@@ -154,19 +154,19 @@ La page de manuel de `chmod(1posix)`_ décrit en détails les permissions relati
 -
   - Le fichier ayant ``00467`` comme permissions est exécutable par n'importe quel utilisateur
   - Le fichier ayant ``00777`` comme permissions est lisible par son propriétaire
-  - Le fichier ayant ``00600`` ne peut être lu que par son propriétaire 
+  - Le fichier ayant ``00600`` ne peut être lu que par son propriétaire
 
 -
   - Le fichier ayant ``00647`` comme permissions est exécutable par n'importe quel utilisateur
   - Le fichier ayant ``00700`` comme permissions est lisible par son propriétaire
-  - Le fichier ayant ``00421`` comme permissions ne peut être lu que par son propriétaire 
+  - Le fichier ayant ``00421`` comme permissions ne peut être lu que par son propriétaire
 
 .. class:: negative
 
 -
   - Le fichier ayant ``00476`` comme permissions est exécutable par n'importe quel utilisateur
   - Le fichier ayant ``00747`` comme permissions est lisible par son propriétaire
-  - Le fichier ayant ``00601`` comme permissions ne peut être lu que par son propriétaire 
+  - Le fichier ayant ``00601`` comme permissions ne peut être lu que par son propriétaire
 
   .. class:: comment
 
@@ -175,7 +175,7 @@ La page de manuel de `chmod(1posix)`_ décrit en détails les permissions relati
 -
   - Le fichier ayant ``00677`` comme permissions est exécutable par n'importe quel utilisateur
   - Le fichier ayant ``00017`` comme permissions est lisible par son propriétaire
-  - Le fichier ayant ``00400`` comme permissions ne peut être lu que par son propriétaire 
+  - Le fichier ayant ``00400`` comme permissions ne peut être lu que par son propriétaire
 
   .. class:: comment
 
@@ -185,7 +185,7 @@ La page de manuel de `chmod(1posix)`_ décrit en détails les permissions relati
 -
   - Le fichier ayant ``00755`` comme permissions est exécutable par n'importe quel utilisateur
   - Le fichier ayant ``00417`` comme permissions est lisible par son propriétaire
-  - Le fichier ayant ``00222`` comme permissions ne peut être lu que par son propriétaire 
+  - Le fichier ayant ``00222`` comme permissions ne peut être lu que par son propriétaire
 
   .. class:: comment
 
@@ -195,7 +195,7 @@ La page de manuel de `chmod(1posix)`_ décrit en détails les permissions relati
 -
   - Le fichier ayant ``00666`` comme permissions est exécutable par n'importe quel utilisateur
   - Le fichier ayant ``00400`` comme permissions est modificale par son propriétaire
-  - Le fichier ayant ``00400`` comme permissions ne peut être lu que par son propriétaire 
+  - Le fichier ayant ``00400`` comme permissions ne peut être lu que par son propriétaire
 
   .. class:: comment
 
@@ -242,7 +242,7 @@ Parmi les commandes suivantes, un seul groupe permet d'obtenir les mêmes permis
     chmod 106 d
     chmod 642 e
 
- .. class:: comment 
+ .. class:: comment
 
     Relisez la page de manuel de `chmod(1)`_
 
@@ -255,7 +255,7 @@ Parmi les commandes suivantes, un seul groupe permet d'obtenir les mêmes permis
     chmod 604 d
     chmod 123 e
 
- .. class:: comment 
+ .. class:: comment
 
     Relisez la page de manuel de `chmod(1)`_
 
@@ -313,7 +313,7 @@ Le système de fichiers Unix utilise des `inode` pour stocker les meta-données 
 -
   - une copie d'un fichier incrémente la valeur du champ ``nlinks`` de son `inode`
   - une lecture dans un fichier modifie le ``atime`` associé à ce fichier
-  - il n'y a jamais deux fichiers qui ont le même `inode` 
+  - il n'y a jamais deux fichiers qui ont le même `inode`
 
   .. class:: comment
 
@@ -334,11 +334,11 @@ Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire a
 
 .. class:: positive
 
-- 
+-
  .. code-block:: c
 
     int nfiles(char * name) {
-  
+
       DIR *dirp;
       struct dirent *dp;
       dp=malloc(sizeof(struct dirent));
@@ -347,7 +347,7 @@ Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire a
       }
       dirp = opendir(name);
       if(dirp==NULL) {
-        return -1; 
+        return -1;
       }
       int count=0;
       while ((dp = readdir(dirp)) != NULL) {
@@ -357,7 +357,7 @@ Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire a
       }
       int err = closedir(dirp);
       if(err<0) {
-         return -1; 
+         return -1;
       }
       return(count);
     }
@@ -367,16 +367,16 @@ Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire a
 
 .. class:: negative
 
-- 
+-
  .. code-block:: c
 
     int nfiles(char * name) {
-  
+
       DIR *dirp;
       struct dirent *dp;
       dirp = opendir(name);
       if(dirp==NULL) {
-        return -1; 
+        return -1;
       }
       int count=0;
       while (readdir(dirp) != NULL) {
@@ -384,7 +384,7 @@ Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire a
       }
       int err = closedir(dirp);
       if(err<0) {
-         return -1; 
+         return -1;
       }
       return(count);
     }
@@ -393,25 +393,25 @@ Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire a
 
     Ce code compte toutes les entrées dans le répertoire et pas seulement le fichiers.
 
-- 
+-
  .. code-block:: c
 
      int nfiles2(char * name) {
-  
+
       DIR dirp;
       struct dirent dp;
       dirp = opendir(name);
       if(dirp==-1) {
-        return -1; 
+        return -1;
       }
       int count=0;
       while ((dp = readdir(dirp)) != -1) {
       	   count++;
       }
- 
+
       int err = closedir(dirp);
       if(err<0) {
-        return -1; 
+        return -1;
       }
       return(count);
     }
@@ -420,11 +420,11 @@ Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire a
 
     Ce code est erroné. `opendir(3)`_ retourne un pointeur et `readdir(3)`_ également.
 
-- 
+-
  .. code-block:: c
 
     int nfiles(char * name) {
-  
+
       DIR dirp;
       struct dirent dp;
       dirp = opendir(name);
@@ -436,7 +436,7 @@ Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire a
       }
       int err = closedir(dirp);
       if(err<0) {
-         return -1; 
+         return -1;
       }
       return(count);
     }
@@ -496,7 +496,7 @@ Après exécution de ces commandes, un seul des groupes d'affirmations suivant e
      Il y a deux liens (hard) vers le fichier ``b``. Le fichier ``e`` est un lien symbolique vers ce fichier et non un lien `hard`.
 
 -
-  - les fichiers ``b``, ``d`` et ``e`` ont le même `inode` 
+  - les fichiers ``b``, ``d`` et ``e`` ont le même `inode`
   - les fichiers ``a`` et ``c`` ont la même taille
   - l'`inode` correspondant au fichier ``a`` indique qu'il y a deux liens vers lui
 

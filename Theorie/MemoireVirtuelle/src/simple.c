@@ -1,6 +1,6 @@
 /**************************************
  * simple.c
- * 
+ *
  * Programme d'exemple qui affiche simplement
  * les adresses de argc, main et printf
  *

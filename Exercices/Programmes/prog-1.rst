@@ -39,7 +39,7 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 
         .. code-block:: c
 
-	        int main(int argc, const char *argv[]) 
+	        int main(int argc, const char *argv[])
                 {
                         int a = 1252;
                         printf("%d\n", a);
@@ -53,12 +53,12 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
                         ``-Werror``
                                    Make all warnings into errors.
 
-#. Recompilez le code du point `1` avec l'option ``-Werror``, que se passe-t-il ? Que faut-t-il rajouter dans le code pour qu'il compile sans erreurs ? 
+#. Recompilez le code du point `1` avec l'option ``-Werror``, que se passe-t-il ? Que faut-t-il rajouter dans le code pour qu'il compile sans erreurs ?
 
         .. only:: staff
 
                 .. note::
-                
+
                         Le programme ne compile plus. Il faut inclure ``stdio.h`` parce que C nécessite d'avoir une déclaration des fonctions.
 
 #. (bonus) comment se fait-il que ``gcc`` compilait sans problème au point `1`?
@@ -66,7 +66,7 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
         .. only:: staff
 
                 .. note::
-                
+
                         ``gcc`` crée une déclaration implicite des fonctions de la librairie C. Il n'affiche qu'un warning.
 
 #. Lorsque j'exécute le programme corrigé du point `3` dans une console, j'ai accès à plusieurs variables. L'une d'elles est ``$?`` qui permet de récupérer la valeur de retour du dernier programme exécuté. Expliquez à quoi sert cette valeur.
@@ -87,19 +87,19 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 
 #. Expliquez à quoi sert l'option ``-Wall`` de ``gcc``.
 
-        .. only:: staff 
+        .. only:: staff
 
                 .. note::
-                
+
                         ``-Wall``
                                 This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid (or modify to prevent the warning), even in conjunction with macros.
 
-#. Recompilez le code corrigé du point `3` avec les options ``-Wall`` et ``-Werror``, que se passe-t-il ? Que faut-il rajouter dans le code pour qu'il compile sans erreurs ? 
+#. Recompilez le code corrigé du point `3` avec les options ``-Wall`` et ``-Werror``, que se passe-t-il ? Que faut-il rajouter dans le code pour qu'il compile sans erreurs ?
 
-        .. only:: staff 
+        .. only:: staff
 
                 .. note::
-        
+
                         ``-Wall``: warning si une fonction ne renvoi pas de valeur. Il faut donc ajouter ``return 0;`` à la fin de la ``main``.
 
 #. Compiler le code suivant (sans les options ``-Wall`` et ``-Werror``). Expliquez ce que sont les arguments de la fonction ``main``. Expliquez ce que fait `atoi(3)`_ (voir `strtol(3)`_ pour une fonction similaire). Exécutez ensuite le code avec ou sans arguments. Qu'observez-vous ? Comment se protéger du fait qu'un utilisateur ne va pas forcément rentrer le bon nombre d'arguments ?
@@ -113,7 +113,7 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
                         printf("%d\n", a);
                 }
 
-        .. only:: staff 
+        .. only:: staff
 
                 .. note::
 
@@ -122,16 +122,16 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
                         ``atoi`` = transforme une chaine de caractère en un entier.
                         Le programme renvoi une segmentation fault lorsque l'on ne passe pas d'argument. Il faut donc utiliser ``argc`` pour tester que l'on a le bon nombre d'argument.
 
-#. Ecrivez un programme qui va itérer (avec une boucle ``for`` et une boucle ``while``) et afficher tous les arguments qui lui sont passés à la sortie standard. 
+#. Ecrivez un programme qui va itérer (avec une boucle ``for`` et une boucle ``while``) et afficher tous les arguments qui lui sont passés à la sortie standard.
 
-        .. only:: staff 
+        .. only:: staff
 
                 .. note::
-                        
+
                         .. code-block:: c
-                                
+
                                 #include <stdio.h>
-                                int main(int argc, const char *argv[]) 
+                                int main(int argc, const char *argv[])
                                 {
                                         int i;
                                         for (i = 1; i < argc; i++)
@@ -149,15 +149,15 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
                 false fonctionne
 
    Bash permet aussi de faire des ``else``. Trouvez comme faire en regardant ce `lien <http://tldp.org/LDP/abs/html/tests.html>`_.
-        .. only:: staff 
+        .. only:: staff
 
                 .. note::
-                
+
                         ``true`` retourne toujours 0:
                                 .. code-block:: c
-                                
+
                                         #include <stdlib.h>
-                                        int main(int argc, const char *argv[]) 
+                                        int main(int argc, const char *argv[])
                                         {
                                         exit(0);
                                         }
@@ -166,11 +166,11 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
                                 .. code-block:: c
 
                                         #include <stdlib.h>
-                                        int main(int argc, const char *argv[]) 
+                                        int main(int argc, const char *argv[])
                                         {
                                                 exit(1);
                                         }
-        
+
 
 3. Petits programmes
 --------------------

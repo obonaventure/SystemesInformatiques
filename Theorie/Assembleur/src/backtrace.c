@@ -22,7 +22,7 @@ char safechar(char c)
 void print_backtrace(void *from)
 {
     long *s = (long *) &s+1;
-    
+
     while ((long) s <= (long) from) {
         int i;
         printf("[%p] %20ld 0x%-16lx ", s, *s, *s);
@@ -31,7 +31,7 @@ void print_backtrace(void *from)
         printf("\n");
         s++;
     }
-    
+
 }
 
 long bar(void *p)
@@ -45,7 +45,7 @@ long foo(void *p)
     long a = 42, b;
     void *cool = p;
     b = a;
-    
+
     return b + a + bar(cool);
 }
 

@@ -1,18 +1,18 @@
 /**************************************
  * cp2.c
- * 
+ *
  * copie de fichier avec mmap
  *
  *************************************/
 ///AAA
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <sys/mman.h> 
+#include <sys/mman.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <string.h> 
+#include <string.h>
 
 int main (int argc, char *argv[]) {
  int file1, file2;
@@ -40,13 +40,13 @@ int main (int argc, char *argv[]) {
    exit(EXIT_FAILURE);
  }
 
- // le fichier destination doit avoir la même taille que le source
+ // le fichier destination doit avoir la mÃªme taille que le source
  if (lseek (file2, file_stat.st_size - 1, SEEK_SET) == -1) {
    perror("lseek");
    exit(EXIT_FAILURE);
  }
- 
- // écriture en fin de fichier
+
+ // Ã©criture en fin de fichier
  if (write (file2, &dummy, sizeof(char)) != 1) {
    perror("write");
    exit(EXIT_FAILURE);
@@ -64,10 +64,10 @@ int main (int argc, char *argv[]) {
    exit(EXIT_FAILURE);
  }
 
- // copie complète
+ // copie complÃ¨te
  memcpy (dst, src, file_stat.st_size);
 
- // libération mémoire
+ // libÃ©ration mÃ©moire
  if(munmap(src,file_stat.st_size)<0) {
    perror("munmap(src)");
    exit(EXIT_FAILURE);
@@ -88,4 +88,4 @@ int main (int argc, char *argv[]) {
    exit(EXIT_FAILURE);
  }
  return(EXIT_SUCCESS);
-} 
+}

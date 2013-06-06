@@ -1,7 +1,7 @@
 /**************************************
  * memory.c
- * 
- * Programme de manipulation de la mémoire
+ *
+ * Programme de manipulation de la mÃ©moire
  *
  **************************************/
 

@@ -40,7 +40,7 @@ void while_loop()
   while(j>0)
   {
     j=j-3;
- } 
+ }
 
 }
 

@@ -1,9 +1,9 @@
 /**************************************
  * pthread-sem-before.c
- * 
- * Programme d'exemple de sémaphores
- * La fonction after ne peut s'exécuter 
- * q'après la fonction before
+ *
+ * Programme d'exemple de sÃ©maphores
+ * La fonction after ne peut s'exÃ©cuter
+ * q'aprÃ¨s la fonction before
  **************************************/
 
 #include <pthread.h>
@@ -14,7 +14,7 @@
 #include <errno.h>
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -49,7 +49,7 @@ int main (int argc, char *argv[])  {
       error(err,"sem_init");
   }
   for(int i=0;i<NTHREADS;i++) {
-    err=pthread_create(&(thread[i]),NULL,func[i],NULL); 
+    err=pthread_create(&(thread[i]),NULL,func[i],NULL);
     if(err!=0) {
       error(err,"pthread_create");
     }

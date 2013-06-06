@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 int main(int argc, char **argv) {
-  
+
   int i=0;
 
- f0: // correct  
+ f0: // correct
   while(i<argc) {
     printf("%d %p %s\n",i,&(argv[i]),argv[i]);
     i++;
@@ -47,14 +47,14 @@ int main(int argc, char **argv) {
   /* ptr4.c:50:27: error: address expression must be an lvalue or a function
       designator
     printf("%d %p %s\n",i,&(argv+i),*(argv+i));
-  
+
 
   i=0;
   while(i<argc) {
     printf("%d %p %s\n",i,&(argv+i),*(argv+i));
     i++;
   }
-  
+
   */
   /*
 ptr4.c:61:40: warning: format specifies type 'char *' but the argument has type

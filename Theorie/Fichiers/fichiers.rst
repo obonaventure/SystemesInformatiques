@@ -201,7 +201,7 @@ Les valeurs de ces bits sont représentés pas les symboles ``rwx`` dans l'outpu
 
  Ces bits de permissions sont généralement spécifiés soit sous la forme d'une disjonction logique ou sous forme numérique. A titre d'exemple, un fichier qui peut être lu et écrit uniquement pas son propriétaire aura comme permissions ``00600`` ou ``S_IRUSR|S_IWUSR``.
 
- Le nibble de poids fort des bits de permission sert à encoder des permissions particulières relatives aux fichiers et répertoires. Par exemple, lorsque la permission ``S_ISUID (04000)`` est associée à un exécutable, elle indique que celui-ci doit s'exécuter avec les permissions du propriétaire de l'exécutable et pas les permissions de l'utilisateur. Cette permission spéciale est utilisée par des programmes comme `passwd(1)`_ qui doivent disposer des permissions de l'administrateur système pour s'exécuter correctement (`passwd(1)`_ doit modifier le fichier `passwd(5)`_ qui appartient à l'administrateur système).
+ Le :term:`nibble` de poids fort des bits de permission sert à encoder des permissions particulières relatives aux fichiers et répertoires. Par exemple, lorsque la permission ``S_ISUID (04000)`` est associée à un exécutable, elle indique que celui-ci doit s'exécuter avec les permissions du propriétaire de l'exécutable et pas les permissions de l'utilisateur. Cette permission spéciale est utilisée par des programmes comme `passwd(1)`_ qui doivent disposer des permissions de l'administrateur système pour s'exécuter correctement (`passwd(1)`_ doit modifier le fichier `passwd(5)`_ qui appartient à l'administrateur système).
 
 
 Les exemples ci-dessous présentent le contenu partiel d'un répertoire avec en première colonne le numéro de l'inode associé à chaque fichier/répertoire.
@@ -237,8 +237,7 @@ Il existe plusieurs appels systèmes et fonctions de la librairie standard qui p
 
  - l'appel système `stat(2)`_ permet de récupérer les méta-données qui sont associées à un fichier ou un répertoire. La commande `stat(1)`_ fournit des fonctionnalités similaires depuis le shell.
  - les appels systèmes `chmod(2)`_ et `chown(2)`_ permettent de modifier respectivement le mode (i.e. les permissions), le propriétaire et le groupe associés à un fichier. Les commandes `chmod(1)`_, `chown(1)`_ et `chgrp(1)`_ permettent de faire de même depuis le shell.
- - l'appel système `utime(2)`_ permet de modifier les timestamps associés à un fichier/répertoire. Cet appel système est utilisé par la commande `touch(1)`_ 
- - l'appel système `utime(2)`_ permet de modifier les timestamps associés à une fichier/répertoire. Cet appel système est utilisé par la commande `touch(1)`_
+ - l'appel système `utime(2)`_ permet de modifier les timestamps associés à un fichier/répertoire. Cet appel système est utilisé par la commande `touch(1)`_
  - l'appel système `rename(2)`_ permet de changer le nom d'un fichier ou d'un répertoire. Il est utilisé notamment par la commande `rename(1)`_
  - l'appel système `mkdir(2)`_ permet de créer un répertoire alors que l'appel système `rmdir(2)`_ permet d'en supprimer un
  - les fonctions de la librairie `opendir(3)`_, `closedir(3)`_, et `readdir(3)`_ permettent de consulter le contenu de répertoires.
@@ -263,12 +262,12 @@ Cette structure comprend le numéro d'inode contenu dans ses deux premiers membr
 L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
 
 .. literalinclude:: /Theorie/Fichiers/src/read.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
 
-La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce répertoire. A chaque appel à `readdir(3)`_, le programme appelant récupère un pointeur vers une zone mémoire contenant une structure ``dirent`` avec l'entrée suivante du répertoire ou ``NULL`` lorsque la fin du répertoire est atteinte. Si une fonction doit relire à nouveau un répertoire, cela peut se faire en utilisant `seekdir(3)`_ ou rewinddir(3)`_.
+La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce répertoire. A chaque appel à `readdir(3)`_, le programme appelant récupère un pointeur vers une zone mémoire contenant une structure ``dirent`` avec l'entrée suivante du répertoire ou ``NULL`` lorsque la fin du répertoire est atteinte. Si une fonction doit relire à nouveau un répertoire, cela peut se faire en utilisant `seekdir(3)`_ ou `rewinddir(3)`_.
 
 .. note:: `readdir(3)`_ et les threads
 
@@ -283,7 +282,7 @@ La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce réperto
   Cette fonction prend comme arguments le pointeur ``entry`` vers un buffer propre à l'appelant qui permet de stocker le résultat de `readdir_r(3)`_.
 
 
-Les appels système `link(2)`_ et `unlink(2)`_ sont un peu particulier et méritent une description plus détaillée. Sous Unix, un :term:`inode` est associé à chaque fichier mais l':term:`inode` ne contient pas le nom de fichier parmi les méta-données qu'il stocke. Par contre, chaque :term:`inode` contient un compteur (``nlinks``) du nombre de liens vers un fichier. Cela permet d'avoir une seule copie d'un fichier qui est accessible depuis plusieurs répertoires. Pour comprendre cette utilisation des liens sur un système de fichiers Unix, considérons le scénario suivant.
+Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particulier et méritent une description plus détaillée. Sous Unix, un :term:`inode` est associé à chaque fichier mais l':term:`inode` ne contient pas le nom de fichier parmi les méta-données qu'il stocke. Par contre, chaque :term:`inode` contient un compteur (``nlinks``) du nombre de liens vers un fichier. Cela permet d'avoir une seule copie d'un fichier qui est accessible depuis plusieurs répertoires. Pour comprendre cette utilisation des liens sur un système de fichiers Unix, considérons le scénario suivant.
 
 .. code-block:: console
 
@@ -299,7 +298,7 @@ Les appels système `link(2)`_ et `unlink(2)`_ sont un peu particulier et mérit
    9624126 -rw-r--r--  3 obo  stafinfo  5 24 mar 21:14 test2.txt
    $ ln a/test.txt b/test3.txt
    $ stat --format "inode=%i nlinks=%h" b/test3.txt
-   $ inode=9624126 nlinks=3
+   inode=9624126 nlinks=3
    $ ls -li b
    total 8
    9624126 -rw-r--r--  3 obo  stafinfo  5 24 mar 21:14 test3.txt
@@ -327,7 +326,7 @@ Les appels système `link(2)`_ et `unlink(2)`_ sont un peu particulier et mérit
    total 8
    9624126 -rw-r--r--  1 obo  stafinfo  16 24 mar 21:15 test3.txt
 
-Dans ce scénario, deux répertoires sont créés avec la commande `mkdir(1)`_. Ensuite, la commande `echo(1)`_ est utilisée pour créer le fichier ``test.txt`` contenant la chaîne de caractères ``test`` dans le répertoire ``a``. Ce fichier est associé à l':term:`inode` ``9624126``. La commande `ln(1)`_ permet de rendre ce fichier accessible sous un autre nom depuis le même répertoire. La sortie produite par la commande `ls(1)`_ indique que ces deux fichiers qui sont présents dans le répertoire ``a`` ont tous les deux le même ``inode``. Ils correspondent donc aux mêmes données sur le disque. A ce moment, le compteur ``nlinks`` de l':term:`inode` ``9624126`` a la valeur ``2``. La commande `ln(1)`_ peut être utilisée pour créer un lien vers un fichier qui se trouve dans un autre répertoire [#flns]_ comme le montre la création du fichier ``test3.txt`` dans le répertoire ``b``. Ces trois fichiers correspondant au même :term:`inode`, toute modification à l'un des fichiers affecte et est visible dans n'importe lequel des liens vers ce fichier. C'est ce que le voit lorsque la commande ``echo "complement" >> b/test3.txt`` est exécutée. Cette commande affecte immédiatement les trois fichiers. La commande ``rm a/test2.txt`` efface la référence du fichier sous le nom ``a/test2.txt``, mais les deux autres liens restent accessibles. Le fichier ne sera réellement effacé qu'après que le dernier lien vers l':term:`inode` correspondant aie été supprimé. La commande `rm(1)`_ utilise en pratique l'appel système `unlink(2)`_ qui en toute généralité décrémente le compteur de liens de l'inode correspondant au fichier et l'efface lorsque ce compteur atteint la valeur ``0``.
+Dans ce scénario, deux répertoires sont créés avec la commande `mkdir(1)`_. Ensuite, la commande `echo(1)`_ est utilisée pour créer le fichier ``test.txt`` contenant la chaîne de caractères ``test`` dans le répertoire ``a``. Ce fichier est associé à l':term:`inode` ``9624126``. La commande `ln(1)`_ permet de rendre ce fichier accessible sous un autre nom depuis le même répertoire. La sortie produite par la commande `ls(1)`_ indique que ces deux fichiers qui sont présents dans le répertoire ``a`` ont tous les deux le même ``inode``. Ils correspondent donc aux mêmes données sur le disque. A ce moment, le compteur ``nlinks`` de l':term:`inode` ``9624126`` a la valeur ``2``. La commande `ln(1)`_ peut être utilisée pour créer un lien vers un fichier qui se trouve dans un autre répertoire [#flns]_ comme le montre la création du fichier ``test3.txt`` dans le répertoire ``b``. Ces trois fichiers correspondant au même :term:`inode`, toute modification à l'un des fichiers affecte et est visible dans n'importe lequel des liens vers ce fichier. C'est ce que l'on voit lorsque la commande ``echo "complement" >> b/test3.txt`` est exécutée. Cette commande affecte immédiatement les trois fichiers. La commande ``rm a/test2.txt`` efface la référence du fichier sous le nom ``a/test2.txt``, mais les deux autres liens restent accessibles. Le fichier ne sera réellement effacé qu'après que le dernier lien vers l':term:`inode` correspondant aie été supprimé. La commande `rm(1)`_ utilise en pratique l'appel système `unlink(2)`_ qui en toute généralité décrémente le compteur de liens de l'inode correspondant au fichier et l'efface lorsque ce compteur atteint la valeur ``0``.
 
 Une description détaillée du fonctionnement de ces appels systèmes et fonctions de la librairie standard peut se trouver dans les livres de référence sur la programmation en C sous Unix [Kerrisk2010]_, [Mitchell+2001]_, [StevensRago2008]_.
 
@@ -335,7 +334,7 @@ Une description détaillée du fonctionnement de ces appels systèmes et fonctio
 Utilisation des fichiers
 ------------------------
 
-Si quelques processus manipulent le système de fichiers et parcourent les répertoires, les processus qui utilisent des données sauvegardées dans des fichiers sont encore plus nombreux. Un système Unix offre deux possibilités d'écrire et de lire dans un fichier. La première utilise directement les appels systèmes `open(2)`_, `read(2)`_/ `write(2)`_ et `close(2)`_. La seconde s'appuie sur les fonctions `fopen(3)`_, `fread(3)`_/ `fwrite(3)`_ et `fclose(3)`_ de la librairie `stdio(3)`_. Seuls les appels système sont traités dans ce cours. Des détails complémentaires sur les fonctions de la libraire peuvent être obtenus dans [Kerrisk2010]_, [Mitchell+2001]_ ou [StevensRago2008]_.
+Si quelques processus manipulent le système de fichiers et parcourent les répertoires, les processus qui utilisent des données sauvegardées dans des fichiers sont encore plus nombreux. Un système Unix offre deux possibilités d'écrire et de lire dans un fichier. La première utilise directement les appels systèmes `open(2)`_, `read(2)`_/ `write(2)`_ et `close(2)`_. La seconde s'appuie sur les fonctions `fopen(3)`_, `fread(3)`_/ `fwrite(3)`_ et `fclose(3)`_ de la librairie `stdio(3)`_. Seuls les appels systèmes sont traités dans ce cours. Des détails complémentaires sur les fonctions de la libraire peuvent être obtenus dans [Kerrisk2010]_, [Mitchell+2001]_ ou [StevensRago2008]_.
 
 Du point de vue des appels systèmes de manipulation des fichiers, un fichier est une séquence d'octets. Avant qu'un processus ne puisse écrire ou lire dans un fichier, il doit d'abord demander au système d'exploitation l'autorisation d'accéder au fichier. Cela se fait en utilisant l'appel système `open(2)`_.
 
@@ -390,7 +389,7 @@ Tout processus doit correctement fermer tous les fichiers qu'il a utilisé. Par 
 
 Lorsqu'un fichier a été ouvert, le noyau du système d'exploitation maintient outre les références vers l':term:`inode` du fichier un :term:`offset pointer`. Cet :term:`offset pointer` est la position actuelle de la tête de lecture/écriture du fichier. Lorsqu'un fichier est ouvert, son :term:`offset pointer` est positionné au premier octet du fichier, sauf si le drapeau ``O_APPEND`` a été spécifié lors de l'ouverture du fichier, dans ce cas l':term:`offset pointer` est positionné juste après le dernier octet du fichier de façon à ce qu'une écriture s'ajoute à la suite du fichier.
 
-Les deux appels système permettant de lire et d'écrire dans un fichier sont respectivement `read(2)`_ et `write(2)`_.
+Les deux appels systèmes permettant de lire et d'écrire dans un fichier sont respectivement `read(2)`_ et `write(2)`_.
 
 .. code-block:: c
 
@@ -404,7 +403,7 @@ Ces deux appels systèmes prennent trois arguments. Le premier est le `descripte
 Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'écrire des séquences contigües d'octets. Lorsque l'on écrit ou lit des chaînes de caractères dans lesquels chaque caractère est représenté sous la forme d'un byte, il est possible d'utiliser `read(2)`_ et `write(2)`_ pour lire et écrire d'autres types de données que des octets comme le montre l'exemple ci-dessous.
 
 .. literalinclude:: /Theorie/Fichiers/src/read.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -412,7 +411,7 @@ Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'
 Lors de son exécution, ce programme affiche la sortie ci-dessous.
 
 .. literalinclude:: /Theorie/Fichiers/src/read.out
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: console
 
 
@@ -483,7 +482,7 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 
 .. note:: Duplication de descripteurs de fichiers
 
- Dans certains cas il est utile de pouvoir dupliquer un descripteur de fichier. C'est possible avec les appels système `dup(2)`_ et `dup2(2)`_. L'appel système `dup(2)`_ prend comme argument un descripteur de fichier et retourne le plus petit descripteur de fichier libre. Lorsqu'un descripteur de fichier a été dupliqué avec `dup(2)`_ les deux descripteurs de fichiers partagent le même :term:`offset pointer` et les mêmes modes d'accès au fichier.
+ Dans certains cas il est utile de pouvoir dupliquer un descripteur de fichier. C'est possible avec les appels systèmes `dup(2)`_ et `dup2(2)`_. L'appel système `dup(2)`_ prend comme argument un descripteur de fichier et retourne le plus petit descripteur de fichier libre. Lorsqu'un descripteur de fichier a été dupliqué avec `dup(2)`_ les deux descripteurs de fichiers partagent le même :term:`offset pointer` et les mêmes modes d'accès au fichier.
 
 
 .. _pipe:
@@ -491,7 +490,7 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 Les pipes
 ---------
 
-Les appels système de manipulation des fichiers permettent d'accéder à des données sur des dispositifs de stockage, mais ils peuvent aussi être utilisés pour échanger des informations entre processus. Les systèmes d'exploitation de la famille Unix supportent plusieurs mécanismes permettant à des processus de communiquer. Le plus simple est le :term:`pipe`. Un :term:`pipe` est un flux de bytes unidirectionnel qui relie deux processus qui ont un ancêtre commun. L'un des processus peut écrire sur le :term:`pipe` et le second peut lire sur le :term:`pipe`. Un :term:`pipe` est créé en utilisant l'appel système `pipe(2)`_.
+Les appels systèmes de manipulation des fichiers permettent d'accéder à des données sur des dispositifs de stockage, mais ils peuvent aussi être utilisés pour échanger des informations entre processus. Les systèmes d'exploitation de la famille Unix supportent plusieurs mécanismes permettant à des processus de communiquer. Le plus simple est le :term:`pipe`. Un :term:`pipe` est un flux de bytes unidirectionnel qui relie deux processus qui ont un ancêtre commun. L'un des processus peut écrire sur le :term:`pipe` et le second peut lire sur le :term:`pipe`. Un :term:`pipe` est créé en utilisant l'appel système `pipe(2)`_.
 
 
 .. todo:: dessin de pipe
@@ -504,16 +503,16 @@ Les appels système de manipulation des fichiers permettent d'accéder à des do
      int pipe(int fd[2]);
 
 
-Cet appel système prend comme argument un tableau permettant de stocker deux descripteurs de fichiers. Ces deux descripteurs de fichiers sont utilisés pour respectivement lire et écire sur le :term:`pipe`. ``fd[0]`` est le descripteur de fichier sur lequel les opérations de lecture seront effectuées tandis que les opérations d'écriture se feront sur ``fd[1]``. Chaque fois qu'une donnée est écrite sur ``fd[1]`` avec l'appel système ``write(fd[1],...)``, elle devient disponible sur le descripteur de fichiers ``fd[0]`` et peut être lue avec ``read(fd[0],...)``. Même si il est possible de créer un :term:`pipe` dans un processus unique, `pipe(2)`_ s'utilise en général entre un père et son fils. Le programme ci-dessous illustre cette utilisation de pipes pour permettre à un processus père d'échanger de l'information avec son processus fils.
+Cet appel système prend comme argument un tableau permettant de stocker deux descripteurs de fichiers. Ces deux descripteurs de fichiers sont utilisés pour respectivement lire et écrire sur le :term:`pipe`. ``fd[0]`` est le descripteur de fichier sur lequel les opérations de lecture seront effectuées tandis que les opérations d'écriture se feront sur ``fd[1]``. Chaque fois qu'une donnée est écrite sur ``fd[1]`` avec l'appel système ``write(fd[1],...)``, elle devient disponible sur le descripteur de fichiers ``fd[0]`` et peut être lue avec ``read(fd[0],...)``. Même si il est possible de créer un :term:`pipe` dans un processus unique, `pipe(2)`_ s'utilise en général entre un père et son fils. Le programme ci-dessous illustre cette utilisation de pipes pour permettre à un processus père d'échanger de l'information avec son processus fils.
 
 .. literalinclude:: /Theorie/Fichiers/src/fork-pipe.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
 
 
-Dans cet exemple, le processus père crée d'abord un :term:`pipe`. Ensuite, il crée un fils avec `fork(2)`_. Comme l'exécution de `fork(2)`_ ne ferme pas les descripteurs de fichiers ouverts, le processus père et le processus fils ont accès au :term:`pipe` via ses deux descripteurs. Le développeur de ce programme a choisi que le processus père écrirait sur le :term:`pipe` tandis que le fils l'utiliserait uniquement en lecture. Le père (resp. fils) ferme donc le descripteur de fichier de lecture (resp. écriture). C'est une règle de bonne pratique qui permet souvent d'éviter des bugs. Le processus père envoie ensuite des entiers sur ``fd[1]`` puis ferme ce descripteur de fichier. Le processus fils quant à lui lit les entiers reçus sur le :term:`pipe` via ``fd[0]``. Le processus fils peut détecter la fermeture du descripteur ``fd[1]`` du :term:`pipe` par le père et analysant la valeur de retour de `read(2)`_. En effet, `read(2)`_  retourne une valeur ``0`` lorsque la dernière donnée envoyée sur le :term:`pipe` a été lue. Le fils ferme proprement le descripteur de fichier ``fd[0]`` avant de se terminer.
+Dans cet exemple, le processus père crée d'abord un :term:`pipe`. Ensuite, il crée un fils avec `fork(2)`_. Comme l'exécution de `fork(2)`_ ne ferme pas les descripteurs de fichiers ouverts, le processus père et le processus fils ont accès au :term:`pipe` via ses deux descripteurs. Le développeur de ce programme a choisi que le processus père écrirait sur le :term:`pipe` tandis que le fils l'utiliserait uniquement en lecture. Le père (resp. fils) ferme donc le descripteur de fichier d'écriture (resp. lecture). C'est une règle de bonne pratique qui permet souvent d'éviter des bugs. Le processus père envoie ensuite des entiers sur ``fd[1]`` puis ferme ce descripteur de fichier. Le processus fils quant à lui lit les entiers reçus sur le :term:`pipe` via ``fd[0]``. Le processus fils peut détecter la fermeture du descripteur ``fd[1]`` du :term:`pipe` par le père et analysant la valeur de retour de `read(2)`_. En effet, `read(2)`_  retourne une valeur ``0`` lorsque la dernière donnée envoyée sur le :term:`pipe` a été lue. Le fils ferme proprement le descripteur de fichier ``fd[0]`` avant de se terminer.
 
 En pratique, les pipes sont utilisés notamment par le shell. En effet, lorsqu'une commande telle que ``cat test.txt | grep "student"`` est exécutée, le shell relie via un :term:`pipe` la sortie standard de ``cat`` avec l'entrée standard de ``grep``.
 

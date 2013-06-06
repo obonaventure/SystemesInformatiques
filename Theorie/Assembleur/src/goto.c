@@ -1,6 +1,6 @@
 /**************************************
  * goto.c
- * 
+ *
  * Programme d'exemple pour goto
  *
  **************************************/
@@ -29,11 +29,11 @@ int main(int argc, char *argv[]) {
 	goto suite;
       }
     }
-  printf("aucune valeur supérieure à %d \n",MVAL,v);
-  goto fin;  
+  printf("aucune valeur supÃ©rieure Ã  %d\n",MVAL,v);
+  goto fin;
  suite:
-  printf("première valeur supérieure à %d : %d \n",MVAL,v); 
- fin:   
+  printf("premiÃ¨re valeur supÃ©rieure Ã  %d : %d\n",MVAL,v);
+ fin:
   return(EXIT_SUCCESS);
   ///BBB
 

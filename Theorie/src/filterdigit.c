@@ -1,6 +1,6 @@
 /**************************************
  * filterdigit.c
- * 
+ *
  * Programme qui extrait de l'entrée
  * standard les caractères représentant
  * des chiffres
@@ -19,13 +19,13 @@ void usage()
   fprintf(stderr,"Ce programme ne prend pas d'argument\n");
   exit(EXIT_FAILURE);
 }
-int main( int argc, char *argv[] ) { 
+int main( int argc, char *argv[] ) {
   char c;
 
   if (argc>1) {
     usage();
   }
-      
+
   while ((c = getchar()) != EOF) {
       if(digit(c)) {
 	  putchar(c);

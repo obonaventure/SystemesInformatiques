@@ -1,6 +1,6 @@
 /**************************************
  * ptr.c
- * 
+ *
  * Programme d'exemple pour les pointeurs
  *
  **************************************/
@@ -9,9 +9,9 @@
 #include <stdlib.h>
 
 int main(int argc, char **argv) {
-  
+
   for(char **ptr=argv;*ptr!=NULL;ptr++) {
-    printf("Pointeur : %p, chaîne:%s\n",ptr,*ptr);
+    printf("Pointeur : %p, chaÃ®ne:%s\n",ptr,*ptr);
   }
 
 }

@@ -1,6 +1,6 @@
 /**************************************
  * enum.c
- * 
+ *
  * Programme d'exemple de enum
  *
  **************************************/
@@ -15,7 +15,7 @@ typedef enum  {
    } day;
 
 // jeu de carte
-typedef enum { 
+typedef enum {
   coeur, carreau, trefle, pique
 } carte;
 
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
   bit_t bit=BITRESET;
   day jour=monday;
   if(jour==saturday||jour==sunday)
-    printf("Congé\n");
+    printf("CongÃ©\n");
   ///DDD
   printf("jour: %d\n",jour);
   printf("sizeof(day) %ld\n",sizeof(day));

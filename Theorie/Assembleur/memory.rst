@@ -27,14 +27,14 @@ La figure ci-dessous illustre les principaux éléments du modèle de von Neuman
 Les technologies utilisées pour construire les processeurs et la mémoire ont fortement évolué depuis les premiers ordinateurs, mais les principes fondamentaux restent applicables. En première approximation, on peut considérer la mémoire comme étant un dispositif qui permet de stocker des données binaires. La mémoire est découpée en blocs d'un octet. Chacun de ces blocs est identifié par une adresse, qui est elle aussi représentée sous la forme d'un nombre binaire. Une mémoire qui permet de stocker :math:`2^k` bytes de données utilisera au minimum `k` bits pour représenter l'adresse d'une zone mémoire. Ainsi, une mémoire pouvant stocker 64 millions de bytes doit utiliser au moins 26 bits d'adresse. En pratique, les processeurs des ordinateurs de bureau utilisent 32 ou 64 bits pour représenter les adresses en mémoire. D'anciens processeurs utilisaient 16 ou 20 bits d'adresse. Le nombre de bits utilisés pour représenter une adresse en mémoire limite la capacité totale de mémoire adressable par un processeur. Ainsi, un processeur qui utilise des adresses sur 32 bits n'est pas capable physiquement d'adresser plus de 4 GBytes de mémoire.
 
 En pratique, l'organisation physique d'un ordinateur actuel est plus complexe que le modèle de von Neumann. Schématiquement, on peut considérer l'organisation présentée dans la figure ci-dessous. Le processeur est directement connecté à la mémoire via un :term:`bus` de communication rapide. Ce bus permet des échanges de données et d'instructions efficaces entre la mémoire et le processeur. Outre le processeur et la mémoire, un troisième dispositif, souvent baptisé
-adaptateur de bus est connecté au bus processeur-mémoire. Cet adaptateur permet au processeur d'accéder aux dispositifs de stockage ou aux dispositifs d'entrées-sorties tels que le clavier, la souris ou les cartes réseau. En pratique, cela se réalise en connectant les différents dispositifs à un autre bus de communication (PCI, SCSI, ...) et en utilisant un adaptateur de bus qui est capable de traduire les commandes venant du processeur. 
+adaptateur de bus est connecté au bus processeur-mémoire. Cet adaptateur permet au processeur d'accéder aux dispositifs de stockage ou aux dispositifs d'entrées-sorties tels que le clavier, la souris ou les cartes réseau. En pratique, cela se réalise en connectant les différents dispositifs à un autre bus de communication (PCI, SCSI, ...) et en utilisant un adaptateur de bus qui est capable de traduire les commandes venant du processeur.
 
 .. figure:: /Theorie/Assembleur/fig/figures-memoire-002-c.png
    :align: center
 
-   Architecture d'un ordinateur actuel 
+   Architecture d'un ordinateur actuel
 
-Différentes technologies ont été mises en oeuvre pour construire les mémoires utilisées dans les ordinateurs. Aujourd'hui, les technologies les plus courantes sont les mémoires de type :term:`SRAM` et les mémoires de type :term:`DRAM`. Dans une :term:`SRAM`, l'information est stockée sous la forme d'un courant électrique qui passe ou ne passe pas à un endroit donné. L'avantage de cette technologie est que le temps d'accès à une donnée stockée en :term:`SRAM` est assez faible. Malheureusement, leur inconvénient majeur est leur grande consommation électrique qui empêche de développer des mémoires de grande capacité. Aujourd'hui, les :term:`SRAM` les plus grandes ont une capacité de seulement 12 MBytes [HennessyPatterson]_. 
+Différentes technologies ont été mises en oeuvre pour construire les mémoires utilisées dans les ordinateurs. Aujourd'hui, les technologies les plus courantes sont les mémoires de type :term:`SRAM` et les mémoires de type :term:`DRAM`. Dans une :term:`SRAM`, l'information est stockée sous la forme d'un courant électrique qui passe ou ne passe pas à un endroit donné. L'avantage de cette technologie est que le temps d'accès à une donnée stockée en :term:`SRAM` est assez faible. Malheureusement, leur inconvénient majeur est leur grande consommation électrique qui empêche de développer des mémoires de grande capacité. Aujourd'hui, les :term:`SRAM` les plus grandes ont une capacité de seulement 12 MBytes [HennessyPatterson]_.
 
 Les :term:`DRAM` sont totalement différentes des :term:`SRAM` d'un point de vue électronique. Dans une mémoire de type :term:`DRAM`, c'est la présence ou l'absence d'une charge (de quelques électrons à quelques dizaines d'électrons) dans un condensateur qui représente la valeur ``0`` ou ``1``. Il est possible de construire des :term:`DRAM` de très grande taille, jusqu'à 1 GByte par chip [HennessyPatterson]_. C'est la raison pour laquelle on retrouve très largement des mémoires de type :term:`DRAM` dans les ordinateurs. Malheureusement, leurs performances sont nettement moins bonnes que les mémoires de type :term:`SRAM`. En pratique, une mémoire :term:`DRAM` actuelle peut être vue comme étant équivalente à une grille [Drepper2007]_. Les adresses peuvent être vues comme étant composées d'un numéro de colonne et d'un numéro de ligne. Pour lire ou écrire une donnée en mémoire :term:`DRAM`, le processeur doit d'abord indiquer la ligne qu'il souhaite lire et ensuite la colonne. Ces deux opérations sont successives. Lorsque la mémoire a reçu la ligne et la colonne demandées, elle peut commencer le transfert de la donnée. En pratique, les mémoires :term:`DRAM` sont optimisées pour fournir un débit de transfert élevé, mais elles ont une latence élevée. Cela implique que dans une mémoire :term:`DRAM`, il est plus rapide de lire ou d'écrire un bloc de 128 bits successifs que quatre blocs de 32 bits à des endroits différents en mémoire. A titre d'exemple, le tableau ci-dessous, extrait de [HP]_ fournit le taux de transfert maximum de différentes technologies de :term:`DRAM`.
 
@@ -56,11 +56,11 @@ Le processeur interagit en permanence avec la mémoire, que ce soit pour charger
 
 Outre des unités de calcul, un processeur contient plusieurs registres. Un :term:`registre` est une zone de mémoire très rapide se trouvant sur le processeur. Sur les processeurs actuels, cette zone de mémoire permet de stocker un mot de 32 bits ou un long mot de 64 bits. Les premiers processeurs disposaient d'un registre unique baptisé l':term:`accumulateur`. Les processeurs actuels en contiennent généralement une ou quelques dizaines. Chaque registre est identifié par un nom ou un numéro et les instructions du processeur permettent d'accéder directement aux données se trouvant dans un registre particulier. Les registres sont les mémoires les plus rapides qui sont disponibles sur un ordinateur. Malheureusement, ils sont en nombre très limité et il est impossible de faire fonctionner un programme non trivial en utilisant uniquement des registres.
 
-Du point de vue des performances, il serait préférable de pouvoir construire un ordinateur équipé uniquement de :term:`SRAM`. Malheureusement, au niveau de la capacité et du prix, c'est impossible sauf pour de rares applications bien spécifiques qui nécessitent de hautes performances et se contentent d'une capacité limitée. Les ordinateurs actuels utilisent en même temps de la mémoire :term:`SRAM` et de la mémoire :term:`DRAM`. Avec les registres, les :term:`SRAM` et les :term:`DRAM` composent les trois premiers niveaux de la :term:`hiérarchie de mémoire`. 
+Du point de vue des performances, il serait préférable de pouvoir construire un ordinateur équipé uniquement de :term:`SRAM`. Malheureusement, au niveau de la capacité et du prix, c'est impossible sauf pour de rares applications bien spécifiques qui nécessitent de hautes performances et se contentent d'une capacité limitée. Les ordinateurs actuels utilisent en même temps de la mémoire :term:`SRAM` et de la mémoire :term:`DRAM`. Avec les registres, les :term:`SRAM` et les :term:`DRAM` composent les trois premiers niveaux de la :term:`hiérarchie de mémoire`.
 
-Le tableau ci-dessous, extrait de [BryantOHallaron2011]_ , compare les temps d'accès entre les mémoires :term:`SRAM` et les mémoires :term:`DRAM` à différentes périodes. 
+Le tableau ci-dessous, extrait de [BryantOHallaron2011]_ , compare les temps d'accès entre les mémoires :term:`SRAM` et les mémoires :term:`DRAM` à différentes périodes.
 
-======     ==========       ==========  
+======     ==========       ==========
 Année      Accès SRAM       Accès DRAM
 ======     ==========       ==========
 1980       300 ns           375 ns
@@ -70,7 +70,7 @@ Année      Accès SRAM       Accès DRAM
 2000       3 ns             60 ns
 2005	   2 ns             50 ns
 2010	   1.5 ns           40 ns
-======     ==========       ==========  
+======     ==========       ==========
 
 Cette évolution des temps d'accès doit être mise en parallèle avec l'évolution des performances des processeurs. En 1980, le processeur Intel 8080 fonctionnait avec une horloge de 1 MHz et accédait à la mémoire toutes les 1000 ns. A cette époque, la mémoire était nettement plus rapide que le processeur. En 1990, par contre, le processeur Intel 80386 accédait à la mémoire en moyenne toutes les 50 ns. Couplé à une mémoire uniquement de type DRAM, il était ralenti par cette mémoire. En 2000, le Pentium-III avait un cycle de 1.6 ns, plus rapide que les meilleures mémoires disponibles à l'époque. Il en va de même aujourd'hui où les temps de cycle sont inférieurs au temps d'accès des mémoires. Même s'il existe des solutions techniques pour mitiger ce problème, la différence de performance croissante entre la mémoire et le processeur est un des facteurs qui limitent les améliorations des performances de nombreux programmes.
 
@@ -91,19 +91,19 @@ La figure ci-dessous illustre graphiquement la hiérarchie de mémoires dans un 
 .. figure:: /Theorie/Assembleur/fig/figures-memoire-003-c.png
    :align: center
 
-   La hiérarchie de mémoires 
+   La hiérarchie de mémoires
 
 
 Pour les opérations d'écriture, la situation est plus compliquée. Si le processeur écrit l'information `x` à l'adresse `A` en mémoire, il faudrait idéalement que cette valeur soit écrite simultanément en mémoire cache et en mémoire :term:`RAM` de façon à s'assurer que la mémoire :term:`RAM` contienne toujours des données à jour. La stratégie d'écriture la plus simple est baptisée :term:`write through`. Avec cette stratégie, toute demande d'écriture venant du processeur donne lieu à une écriture en mémoire cache et une écriture en mémoire :term:`RAM`. Cette stratégie garantit qu'à tout moment la mémoire cache et la mémoire :term:`RAM` contiennent la même information. Malheureusement, d'un point de vue des performances, cette technique rabaisse les performances de la mémoire cache à celles de la mémoire :term:`RAM`. Vu la différence de performance entre les deux types de mémoires, cette stratégie n'est plus acceptable aujourd'hui. L'alternative est d'utiliser la technique du :term:`write back`. Avec cette technique, toute écriture est faite en :term:`mémoire cache` directement. Cela permet d'obtenir de très bonnes performances pour les écritures. Une donnée modifiée n'est réécrite en mémoire :term:`RAM` que lorsqu'elle doit être retirée de la mémoire cache. Cette écriture est faite automatiquement par la mémoire cache. Pour la plupart des programmes, la gestion des opérations d'écriture est transparente. Il faut cependant être attentif à la technique d'écriture utilisée lorsque plusieurs dispositifs peuvent accéder directement à la mémoire :term:`RAM` sans passer par le processeur. C'est le cas par exemple pour certaines cartes réseaux ou certains contrôleurs de disque dur. Pour des raisons de performances, ces dispositifs peuvent copier des données directement de la mémoire :term:`RAM` vers le réseau ou un disque dur. Si une écriture de type :term:`write-back` est utilisée, le système d'exploitation doit veiller à ce que les données écrites par le processeur en cache aient bien été écrites également en mémoire :term:`RAM` avant d'autoriser la carte réseau ou le contrôleur de disque à effectuer un transfert.
 
-.. C'est particulièrement important lorsque des dispositifs tels qu'une carte réseau ou un controleur de disque dur peuvent aller lire des données en mémoire. Ces dispositifs doivent trouver en mémoire :term:`RAM` la dernière donnée écrite par le processeur 
+.. C'est particulièrement important lorsque des dispositifs tels qu'une carte réseau ou un controleur de disque dur peuvent aller lire des données en mémoire. Ces dispositifs doivent trouver en mémoire :term:`RAM` la dernière donnée écrite par le processeur
 
 .. _ia32:
 
 Etude de cas : Architecture [IA32]_
 ===================================
 
-Pour comprendre le fonctionnement d'un microprocesseur, la solution la plus efficace est de considérer une architecture en particulier et de voir comment fonctionnent les processeurs qui l'implémentent. Dans cette section, nous analysons brièvement le fonctionnement des processeurs [#fintel]_ de la famille [IA32]_. 
+Pour comprendre le fonctionnement d'un microprocesseur, la solution la plus efficace est de considérer une architecture en particulier et de voir comment fonctionnent les processeurs qui l'implémentent. Dans cette section, nous analysons brièvement le fonctionnement des processeurs [#fintel]_ de la famille [IA32]_.
 
 Cette architecture recouvre un grand nombre de variantes qui ont leur spécificités propre. Une descriptions détaillée de cette architecture est disponible dans [IA32]_. Nous nous limiterons à un très petit sous-ensemble de cette architecture dans le cadre de ce cours. Une analyse complète de l'architecture [IA32]_ occupe plusieurs centaines de pages dans des livres de référence [BryantOHallaron2011]_ [Hyde2010]_.
 
@@ -183,9 +183,9 @@ Le quatrième mode d'adressage est le mode `indirect`. Plutôt que de spécifier
 .. code-block:: nasm
 
    movl $0x08, %eax    ; place la valeur 0x08 dans %eax
-   movl (%eax), %ecx   ; place la valeur se trouvant à l'adresse qui est 
+   movl (%eax), %ecx   ; place la valeur se trouvant à l'adresse qui est
                        ; dans %eax dans le registre %ecx %ecx=0xFF
-   movl 0x10, %eax     ; place la valeur se trouvant à l'adresse 0x10 dans %eax   
+   movl 0x10, %eax     ; place la valeur se trouvant à l'adresse 0x10 dans %eax
    movl %ecx, (%eax)   ; place le contenu de %ecx, c'est-à-dire 0xFF à l'adresse qui est contenue dans %eax (0x10)
 
 Le cinquième mode d'adressage est le mode avec une `base` et un `déplacement`. Ce mode peut être vu comme une extension du mode `indirect`. Il permet de lire en mémoire à une adresse qui est obtenue en additionnant un entier, positif ou négatif, à une adresse stockée dans un registre. Ce mode d'adressage joue un rôle important dans le fonctionnement de la pile comme nous le verrons d'ici peu.
@@ -222,17 +222,17 @@ Il existe une variante de chacune de ces instructions pour chaque type de donné
 	notl	%ecx                ; calcul de NOT
 	movl 	$0, %eax            ; %eax=0
 	incl    %eax                ; %eax++
-	
+
 L'architecture [IA32]_ supporte également des instructions arithmétiques et logiques prenant chacune deux arguments.
 
  - ``add`` permet d'additionner deux nombres entiers. ``add`` prend comme arguments une source et une destination et place dans la destination la somme de ses deux arguments.
- - ``sub`` permet de soustraire le premier argument du second et stocke le résultat dans le second 
+ - ``sub`` permet de soustraire le premier argument du second et stocke le résultat dans le second
  - ``mul`` permet de multiplier des nombres entiers non-signés (``imul`` est le pendant de ``mul`` pour la multiplication de nombres signés)
  - ``div`` permet la division de nombres entiers non-signés.
  - ``shl`` (resp. ``shr``) permet de réaliser un décalage logique vers la gauche (resp. droite)
  - ``xor`` calcule un ou exclusif entre ses deux arguments et sauvegarde le résultat dans le second
  - ``and`` calcule la conjonction logique entre ses deux arguments et sauvegarde le résultat dans le second
- 
+
 
 Pour illustrer le fonctionnement de ces instructions, considérons une mémoire hypothétique contenant les données suivantes. Supposons que la variable entière ``a`` est stockée à l'adresse ``0x04``, ``b`` à l'adresse ``0x08`` et ``c`` à l'adresse ``0x0C``.
 
@@ -279,7 +279,7 @@ Dans le code assembleur, les noms de variables tels que ``g`` ou ``j`` correspon
 	movl	l, %eax  ; %eax=l
 	shll	$6, %eax ; %eax=%eax << 6
 	movl	%eax, g  ; g=%eax
- 
+
 Les opérations arithmétiques telles que la multiplication ou la division sont plus complexes que les opérations qui ont été présentées ci-dessus. En toute généralité, la multiplication entre deux nombres de 32 bits peut donner un résultat sur 64 bits qui ne pourra donc pas être stocké entièrement dans un registre. De la même manière, une division entière retourne un quotient et un reste qui sont tous les deux sur 32 bits. L'utilisation des instructions de division et de multiplication nécessite de prendre ces problèmes en compte. Nous ne les aborderons pas dans ce cours. Des détails complémentaires sont disponibles dans [IA32]_ et [BryantOHallaron2011]_ notamment.
 
 
@@ -289,7 +289,7 @@ Les instructions de comparaison
 Outre les opérations arithmétiques, un processeur doit être capable de réaliser des comparaisons. Ces comparaisons sont nécessaires pour implémenter des tests tels que ``if (condition) { ... } else { ... }``. Sur les processeurs [IA32]_, les comparaisons utilisent des drapeaux qui sont mis à jour par le processeur après l'exécution de certaines instructions. Ceux-ci sont regroupés dans le registre ``eflags``. Les principaux drapeaux sont :
 
  - `ZF` (Zero Flag) : ce drapeau indique si le résultat de la dernière opération était zéro
- - `SF` (Sign Flag): indique si le résultat de la dernière instruction était négatif
+ - `SF` (Sign Flag) : indique si le résultat de la dernière instruction était négatif
  - `CF` (Carry Flag) : indique si le résultat de la dernière instruction arithmétique non signée nécessitait plus de 32 bits pour être stocké
  - `OF` (Overflow Flag) : indique si le résultat de la dernière instruction arithmétique signée a provoqué un dépassement de capacité
 
@@ -298,7 +298,7 @@ Nous utiliserons principalement les drapeaux `ZF` et `SF` dans ce chapitre. Ces 
 Ces instructions de comparaison peuvent être utilisées avec les instructions ``set`` qui permettent de fixer la valeur d'un registre en fonction des valeurs de certains drapeaux du registre ``eflags``. Chaque instruction ``set`` prend comme argument un registre. Pour des raisons historiques, ces instructions modifient uniquement les bits de poids faible du registre indiqué et non le registre complet. C'est un détail qui est lié à l'histoire de l'architecture [IA32]_.
 
  - ``sete`` met le registre argument à la valeur du drapeau `ZF`. Permet d'implémenter une égalité.
- - ``sets`` met le registre argument à la valeur du drapeau `SF` 
+ - ``sets`` met le registre argument à la valeur du drapeau `SF`
  - ``setg`` place dans le registre argument la valeur ``~SF & ~ZF`` (tout en prenant en compte les dépassements éventuels avec `OF`). Permet d'implémenter la condition ``>``.
  - ``setl`` place dans le registre argument la valeur de ``SF`` (tout en prenant en compte les dépassements éventuels avec `OF`). Permet d'implémenter notamment la condition ``<=``.
 
@@ -308,7 +308,7 @@ A titre d'illustration, voici quelques expressions logiques en C et leur implém
 
   r=(h>1);
   r=(j==0);
-  r=g<h;
+  r=g<=h;
   r=(j==h);
 
 
@@ -320,13 +320,13 @@ Le programme assembleur utilise une instruction ``cmpl`` pour effectuer la compa
 	setg	%al          ; %al est le byte de poids faible de %eax
 	movzbl	%al, %ecx    ; copie le byte dans %ecx
 	movl	%ecx, r      ; sauvegarde du résultat dans r
-                          
+
 	cmpl	$0, j	     ; comparaison
 	sete	%al          ; fixe le byte de poids faible de %eax
 	movzbl	%al, %ecx
 	movl	%ecx, r      ; sauvegarde du résultat dans r
 
-	movl	g, %ecx      
+	movl	g, %ecx
 	cmpl	h, %ecx      ; comparaison entre g et h
 	setl	%al          ; fixe le byte de poids faible de %eax
 	movzbl	%al, %ecx
@@ -342,16 +342,16 @@ Le programme assembleur utilise une instruction ``cmpl`` pour effectuer la compa
 Les instructions de saut
 ------------------------
 
-Les instructions de saut sont des instructions de base pour tous les processeurs. Elles permettent de modifier la valeur du compteur de programme ``%epi`` de façon à modifier l'ordre d'exécution des instructions. Elles sont nécessaires pour implémenter les tests, les boucles et les appels de fonction. Les premiers langages de programmation et des langages tels que BASIC ou FORTRAN disposent d'une construction similaire avec l'instruction ``goto``. Cependant, l'utilisation de l'instruction ``goto`` dans des programmes de haut niveau rend souvent le code difficile à lire et de nombreux langages de programmation n'ont plus de ``goto`` [Dijkstra1968]_. Contrairement à Java, le C contient une instruction ``goto``, mais son utilisation est fortement découragée. En C, l'instruction ``goto`` prend comme argument une étiquette (label en anglais). Lors de l'exécution d'un ``goto``, le programme saute directement à l'exécution de l'instruction qui suit le label indiqué. Ceci est illustré dans l'exemple ci-dessous :
+Les instructions de saut sont des instructions de base pour tous les processeurs. Elles permettent de modifier la valeur du compteur de programme ``%eip`` de façon à modifier l'ordre d'exécution des instructions. Elles sont nécessaires pour implémenter les tests, les boucles et les appels de fonction. Les premiers langages de programmation et des langages tels que BASIC ou FORTRAN disposent d'une construction similaire avec l'instruction ``goto``. Cependant, l'utilisation de l'instruction ``goto`` dans des programmes de haut niveau rend souvent le code difficile à lire et de nombreux langages de programmation n'ont plus de ``goto`` [Dijkstra1968]_. Contrairement à Java, le C contient une instruction ``goto``, mais son utilisation est fortement découragée. En C, l'instruction ``goto`` prend comme argument une étiquette (label en anglais). Lors de l'exécution d'un ``goto``, le programme saute directement à l'exécution de l'instruction qui suit le label indiqué. Ceci est illustré dans l'exemple ci-dessous :
 
 .. literalinclude:: /Theorie/Assembleur/src/goto.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
 
 
-Si l'utilisation ``goto`` est en pratique prohibée dans la plupart des langages de programmation, en assembleur, les instructions de saut sont inévitables. L'instruction de saut la plus simple est ``jmp``. Elle prend généralement comme argument une étiquette. Dans ce cas, l'exécution du programme après l'instruction ``jmp`` se poursuivra par l'exécution de l'instruction qui se trouve à l'adresse correspondant à l'étiquette fournie en argument. Il est également possible d'utiliser l'instruction ``jmp`` avec un registre comme argument. Ainsi, l'instruction ``jmp *%eax`` indique que l'exécution du programme doit se poursuivre par l'exécution de l'instruction se trouvant à l'adresse qui est contenue dans le registre ``%eax``. 
+Si l'utilisation ``goto`` est en pratique prohibée dans la plupart des langages de programmation, en assembleur, les instructions de saut sont inévitables. L'instruction de saut la plus simple est ``jmp``. Elle prend généralement comme argument une étiquette. Dans ce cas, l'exécution du programme après l'instruction ``jmp`` se poursuivra par l'exécution de l'instruction qui se trouve à l'adresse correspondant à l'étiquette fournie en argument. Il est également possible d'utiliser l'instruction ``jmp`` avec un registre comme argument. Ainsi, l'instruction ``jmp *%eax`` indique que l'exécution du programme doit se poursuivre par l'exécution de l'instruction se trouvant à l'adresse qui est contenue dans le registre ``%eax``.
 
 Il existe plusieurs variantes conditionnelles de l'instruction ``jmp``. Ces variantes sont exécutées uniquement si la condition correspondante est vérifiée. Les variantes les plus fréquentes sont :
 
@@ -382,10 +382,10 @@ Avant d'analyser la traduction de ce programme en assembleur, il est utile de le
 
   if(j!=0) { goto diff; }
     r=1;
-  diff: 
-    // suite  
-  
-  if(j<=g) { goto else; }   
+  diff:
+    // suite
+
+  if(j<=g) { goto else; }
     r=2;
     goto fin;
   else:
@@ -396,12 +396,12 @@ Avant d'analyser la traduction de ce programme en assembleur, il est utile de le
   if (j<g) { goto suivant; }
     r=4;
 
-Ce code C correspond assez bien au code assembleur produit par le compilateur. 
+Ce code C correspond assez bien au code assembleur produit par le compilateur.
 
 .. code-block:: nasm
 
 	cmpl	$0, j     ; j==0 ?
-	jne	.LBB2_2   ; jump si j!=0 
+	jne	.LBB2_2   ; jump si j!=0
 	movl	$1, r     ; r=1
  .LBB2_2:
 
@@ -439,20 +439,20 @@ Cette boucle peut se réécrire en utilisant des ``goto`` comme suit.
     if(j<=0) { goto fin; }
     j=j-3;
     goto debut;
-  fin:    
+  fin:
 
 On retrouve cette utilisation des instructions de saut dans la traduction en assembleur de cette boucle.
 
 .. code-block:: nasm
 
-  .LBB3_1:               
+  .LBB3_1:
 	cmpl	$0, j    ; j<=0
 	jle	.LBB3_3  ; jump si j<=0
 	movl	j, %eax
 	subl	$3, %eax
 	movl	%eax, j  ; j=j-3
-	jmp	.LBB3_1 
-  .LBB3_3:               
+	jmp	.LBB3_1
+  .LBB3_3:
 
 Les boucles ``for`` s'implémentent également en utilisant des instructions de saut.
 
@@ -474,7 +474,7 @@ La première boucle démarre par l'initialisation de la variable ``j`` à ``0``.
 	jge	.LBB4_4  ; jump si j>=10
 	movl	g, %eax  ; %eax=g
 	addl	h, %eax  ; %eax+=h
-	movl	%eax, g  ; %eax=g 
+	movl	%eax, g  ; %eax=g
 	movl	j, %eax  ; %eax=j
 	addl	$1, %eax ; %eax++
 	movl	%eax, j  ; j=%eax
@@ -482,12 +482,12 @@ La première boucle démarre par l'initialisation de la variable ``j`` à ``0``.
   .LBB4_4:
 
 	movl	$9, j    ; j=9
-  .LBB4_5: 
-	cmpl	$0, j    
+  .LBB4_5:
+	cmpl	$0, j
 	jle	.LBB4_8  ; jump si j<=0
-	movl	g, %eax  
+	movl	g, %eax
 	subl	h, %eax
-	movl	%eax, g  
+	movl	%eax, g
 	movl	j, %eax  ; %eax=j
 	subl	$1, %eax ; %eax--
 	movl	%eax, j  ; j=%eax
@@ -500,7 +500,7 @@ La seconde boucle est organisée de façon similaire.
 Manipulation de la pile
 -----------------------
 
-Les instructions ``mov`` permettent de déplacer de l'information à n'importe quel endroit de la mémoire. A côté de ces instructions de déplacement, il y a des instructions qui sont spécialisées dans la manipulation de la pile. La pile, qui dans un processus Unix est stockée dans les adresses hautes est essentielle au bon fonctionnement des programmes. Par convention dans l'architecture [IA32]_, l'adresse du sommet de la pile est toujours stockée dans le registre ``%esp``. Deux instructions spéciales permettent de rajouter et de retirer une information au sommet de la pile. 
+Les instructions ``mov`` permettent de déplacer de l'information à n'importe quel endroit de la mémoire. A côté de ces instructions de déplacement, il y a des instructions qui sont spécialisées dans la manipulation de la pile. La pile, qui dans un processus Unix est stockée dans les adresses hautes est essentielle au bon fonctionnement des programmes. Par convention dans l'architecture [IA32]_, l'adresse du sommet de la pile est toujours stockée dans le registre ``%esp``. Deux instructions spéciales permettent de rajouter et de retirer une information au sommet de la pile.
 
  - ``pushl %reg`` : place le contenu du registre ``%reg`` au sommet de la pile et décrémente dans le registre ``%esp`` l'adresse du sommet de la pile de 4 unités.
  - ``popl %reg`` : retire le mot de 32 bits se trouvant au sommet de la pile, le sauvegarde dans le registre ``%reg`` et incrémente dans le registre ``%esp`` l'adresse du sommet de la pile de 4 unités.
@@ -508,18 +508,18 @@ Les instructions ``mov`` permettent de déplacer de l'information à n'importe q
 En pratique, ces deux instructions peuvent également s'écrire en utilisant des instructions de déplacement et des instructions arithmétiques. Ainsi, ``pushl %ebx`` est équivalent à :
 
 .. code-block:: nasm
-   
+
    subl $4, %esp       ; ajoute un bloc de 32 bits au sommet de la pile
    movl %ebx, (%esp)   ; sauvegarde le contenu de %ebx au sommet
 
 Tandis que ``popl %ecx`` est équivalent à :
 
 .. code-block:: nasm
-   
+
    movl (%esp), %ecx ; sauve dans %ecx la donnée au sommet de la pile
    addl $4, %esp     ; déplace le sommet de la pile de 4 unites vers le haut
 
-Pour bien comprendre le fonctionnement de la pile, il est utile de considérer un exemple simple. Imaginons la mémoire ci-dessous et supposons qu'initialement le registre ``%esp`` contient la valeur ``0x0C`` et que les registres ``eax`` et ``%ebx`` contiennent les valeurs ``0x02``  et ``0xFF``. 
+Pour bien comprendre le fonctionnement de la pile, il est utile de considérer un exemple simple. Imaginons la mémoire ci-dessous et supposons qu'initialement le registre ``%esp`` contient la valeur ``0x0C`` et que les registres ``eax`` et ``%ebx`` contiennent les valeurs ``0x02``  et ``0xFF``.
 
  =========    ========
  Adresse      Valeur
@@ -538,7 +538,7 @@ Pour bien comprendre le fonctionnement de la pile, il est utile de considérer u
    pop %eax  ; %esp contient 0x08 et %eax 0xFF
    pop %ebx  ; %esp contient 0x0C et %ebx 0x02
    pop %eax  ; %esp contient 0x10 et %eax 0x04
-   
+
 
 Les fonctions et procédures
 ---------------------------
@@ -548,23 +548,23 @@ Les fonctions et les procédures sont essentielles dans tout langage de programm
 Une procédure est un ensemble d'instructions qui peuvent être appelées depuis n'importe quel endroit du programme. Généralement, une procédure est appelée depuis plusieurs endroits différents d'un programme. Pour comprendre l'implémentation des procédures, nous allons considérer des procédures de complexité croissante. Nos premières procédures ne prennent aucun argument. En C, elles peuvent s'écrire sous la forme de fonctions ``void`` comme suit.
 
 .. literalinclude:: /Theorie/Assembleur/src/proc.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
 Ces deux procédures utilisent et modifient des variables globales. Nous verrons plus tard comment supporter les variables locales. Lorsque la fonction ``main`` appelle la procédure ``init_g()`` ou la procédure ``increase``, il y a plusieurs opérations qui doivent être effectuées. Tout d'abord, le processeur doit transférer l'exécution du code à la première instruction de la procédure appelée. Cela se fait en associant une étiquette à chaque procédure qui correspond à l'adresse de la première instruction de cette procédure en mémoire. Une instruction de saut telle que ``jmp`` pourrait permettre de démarrer l'exécution de la procédure. Malheureusement, ce n'est pas suffisant car après son exécution la procédure doit pouvoir poursuivre son exécution à l'adresse de l'instruction qui suit celle d'où elle a été appelée. Pour cela, il est nécessaire que la procédure qui a été appelée puisse connaître l'adresse de l'instruction qui doit être exécutée à la fin de son exécution. Dans l'architecture [IA32]_, cela se fait en utilisant la pile. Vu l'importance des appels de procédure et de fonctions, l'architecture [IA32]_ contient deux instructions dédicacées pour implémenter ces appels. L'instruction ``call`` est une instruction de saut qui transfère l'exécution à l'adresse de l'étiquette passée en argument et en plus elle sauvegarde au sommet de la pile l'adresse de l'instruction qui la suit. Cette adresse est l'adresse à laquelle la procédure doit revenir après son exécution. Elle est équivalente à une instruction ``push`` suivie d'une instruction ``jmp``. L'instruction ``ret`` est également une instruction de saut. Elle suppose que l'adresse de retour se trouve au sommet de la pile, retire cette adresse de la pile et fait un saut à cette adresse. Elle est donc équivalente à une instruction ``pop`` suivie d'une instruction ``jmp``. Dans l'architecture [IA32]_, le registre ``%esp`` contient en permanence le sommet de la pile. Les instructions ``call`` et ``ret`` modifient donc la valeur de ce registre lorsqu'elles sont exécutées. En assembleur, le programme ci-dessus se traduit comme suit :
 
 .. code-block:: nasm
- 
+
   increase:                     ; étiquette de la première instruction
-	      movl	g, %eax  
+	      movl	g, %eax
 	      addl	h, %eax
 	      movl	%eax, g
 	      ret               ; retour à l'endroit qui suit l'appel
   init_g:                       ; étiquette de la première instruction
-	      movl	$1252, g 
+	      movl	$1252, g
 	      ret               ; retour à l'endroit qui suit l'appel
-  main:       
+  main:
 	      subl	$12, %esp
 	      movl	20(%esp), %eax
 	      movl	16(%esp), %ecx
@@ -577,9 +577,9 @@ Ces deux procédures utilisent et modifient des variables globales. Nous verrons
 	      addl	$12, %esp
 	      ret                ; fin de la fonction main
   g:                             ; étiquette, variable globale g
-	.long	0                ; initialisée à 0        
+	.long	0                ; initialisée à 0
   h:                             ; étiquette, variable globale g
-	.long	2                ; initialisée à 2       
+	.long	2                ; initialisée à 2
 
 
 Dans ce code assembleur, on retrouve dans le bas du code la déclaration des deux variables globales, ``g`` et ``h`` et leurs valeurs initiales.  Chaque procédure a son étiquette qui correspond à l'adresse de sa première instruction. La fonction ``main`` débute par une manipulation de la pile qui ne nous intéresse pas pour le moment. L'appel à la procédure ``init_g()`` se fait via l'instruction ``calll init_g`` qui place sur la pile l'adresse de l'étiquette ``A_init_g``. La procédure ``init_g()`` est très simple puisqu'elle comporte une instruction ``movl`` qui permet d'initialiser la variable ``g`` suivie d'une instruction ``ret``. Celle-ci retire de la pile l'adresse ``A_init_g`` qui y avait été placée par l'instruction ``call`` et poursuit l'exécution du programme à cette adresse. L'appel à la procédure ``increase`` se déroule de façon similaire.
@@ -588,7 +588,7 @@ Dans ce code assembleur, on retrouve dans le bas du code la déclaration des deu
 Considérons une petite variante de notre programme C dans lequel une procédure ``p`` appelle une procédure ``q``.
 
 .. literalinclude:: /Theorie/Assembleur/src/proc2.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
@@ -598,7 +598,7 @@ La compilation de ce programme produit le code assembleur suivant pour les proc�
 .. code-block:: nasm
 
        q:
-	       movl	$1252, g  
+	       movl	$1252, g
 	       ret                  ; retour à l'appelant
        p:
                subl	$12, %esp   ; réservation d'espace sur pile
@@ -614,7 +614,7 @@ La seule différence par rapport au programme précédent est que la procédure 
 Considérons maintenant une procédure qui prend un argument. Pour qu'une telle procédure puisse utiliser un argument, il faut que la procédure appelante puisse placer sa valeur à un endroit où la procédure appelée peut facilement y accéder. Dans l'architecture [IA32]_, c'est la pile qui joue ce rôle et permet le passage des arguments. En C, les arguments sont passés par valeur et ce sera donc les valeurs des arguments qui seront placées sur la pile. A titre d'exemple, considérons une procédure simple qui prend deux arguments entiers.
 
 .. literalinclude:: /Theorie/Assembleur/src/fct.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
@@ -622,8 +622,8 @@ Le passage des arguments de la fonction ``init`` depuis la fonction ``main`` se 
 
 .. code-block:: nasm
 
-  init: 
-	subl	$8, %esp         ; réservation d'espace sur la pile   
+  init:
+	subl	$8, %esp         ; réservation d'espace sur la pile
 	movl	16(%esp), %eax   ; récupération du second argument
 	movl	12(%esp), %ecx   ; récupération du premier argument
 	movl	%ecx, 4(%esp)    ; sauvegarde sur la pile
@@ -634,20 +634,20 @@ Le passage des arguments de la fonction ``init`` depuis la fonction ``main`` se 
 	movl	%eax, h          ; h=j
 	addl	$8, %esp         ; libération de l'espace réservé
 	ret
-  main:   
+  main:
   	pushl	%esi
 	subl	$40, %esp
 	movl	52(%esp), %eax
 	movl	48(%esp), %ecx
-	movl	$1252, %edx           
+	movl	$1252, %edx
 	movl	$1, %esi
 	movl	$0, 36(%esp)
 	movl	%ecx, 32(%esp)
-	movl	%eax, 24(%esp)   
-	movl	$1252, (%esp)    ; premier argument sur la pile     
+	movl	%eax, 24(%esp)
+	movl	$1252, (%esp)    ; premier argument sur la pile
 	movl	$1, 4(%esp)      ; deuxième argument sur la pile
-	movl	%esi, 20(%esp)        
-	movl	%edx, 16(%esp)        
+	movl	%esi, 20(%esp)
+	movl	%edx, 16(%esp)
 	calll	init             ; appel à init
 	movl	$0, %eax
 	addl	$40, %esp
@@ -655,30 +655,30 @@ Le passage des arguments de la fonction ``init`` depuis la fonction ``main`` se 
 	ret
 
 
-La différence entre une procédure et une fonction est qu'une fonction retourne un résultat. Considérons le programme suivant et les fonctions triviales ``int init()`` et ``int sum(int, int)``. Pour que de telles fonctions puissent s'exécuter et retourner un résultat, il faut que la procédure appelante puisse savoir où aller chercher le résultat après exécution de l'instruction ``ret``. 
+La différence entre une procédure et une fonction est qu'une fonction retourne un résultat. Considérons le programme suivant et les fonctions triviales ``int init()`` et ``int sum(int, int)``. Pour que de telles fonctions puissent s'exécuter et retourner un résultat, il faut que la procédure appelante puisse savoir où aller chercher le résultat après exécution de l'instruction ``ret``.
 
 .. literalinclude:: /Theorie/Assembleur/src/fct2.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
- 
+
 La compilation du programme C ci-dessus en assembleur produit le code suivant. Dans l'architecture [IA32]_, la valeur de retour d'une fonction est stockée par convention dans le registre ``%eax``. Cette convention est particulièrement visible lorsque l'on regarde les instructions générées pour la fonction ``int init()``. La fonction ``sum`` retourne également son résultat dans le registre ``%eax``.
 
 .. code-block:: nasm
 
     init:
-    	movl	$1252, %eax  
+    	movl	$1252, %eax
 	ret
     sum:
 	subl	$8, %esp           ; réservation d'espace sur la pile
 	movl	16(%esp), %eax     ; récupération du second argument
 	movl	12(%esp), %ecx	   ; récupération du premier argument
-	movl	%ecx, 4(%esp)       
+	movl	%ecx, 4(%esp)
 	movl	%eax, (%esp)
 	movl	4(%esp), %eax      ; %eax=a
 	addl	(%esp), %eax       ; %eax=a+b
 	addl	$8, %esp           ; libération de l'espace réservé
-	ret 
+	ret
     main:
 	subl	$28, %esp
 	movl	36(%esp), %eax
@@ -686,16 +686,16 @@ La compilation du programme C ci-dessus en assembleur produit le code suivant. D
 	movl	$0, 24(%esp)
 	movl	%ecx, 20(%esp)     ; sauvegarde sur la pile
 	movl	%eax, 16(%esp)	   ; sauvegarde sur la pile
-	calll	init           
-	movl	$1, %ecx           
+	calll	init
+	movl	$1, %ecx
 	movl	$2, %edx
 	movl	%eax, g
 	movl	$1, (%esp)         ; premier argument
 	movl	$2, 4(%esp)        ; second argument
-	movl	%ecx, 12(%esp)     ; sauvegarde sur la pile        
-	movl	%edx, 8(%esp)      ; sauvegarde sur la pile     
-	calll	sum                
-	movl	$0, %ecx	   
+	movl	%ecx, 12(%esp)     ; sauvegarde sur la pile
+	movl	%edx, 8(%esp)      ; sauvegarde sur la pile
+	calll	sum
+	movl	$0, %ecx
 	movl	%eax, h
 	movl	%ecx, %eax
 	addl	$28, %esp
@@ -705,7 +705,7 @@ La compilation du programme C ci-dessus en assembleur produit le code suivant. D
 Pour terminer notre exploration de la compilation de fonctions C en assembleur, considérons une fonction récursive. Par simplicité, nous utilisons la fonction ``sumn`` qui calcule de façon récursive la somme des n premiers entiers.
 
 .. literalinclude:: /Theorie/Assembleur/src/sumn.c
-   :encoding: iso-8859-1
+   :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
@@ -720,27 +720,27 @@ Lorsque cette fonction récursive est compilée, on obtient le code ci-dessous. 
 	movl	%eax, 20(%esp)   ; sauvegarde sur pile
 	cmpl	$1, 20(%esp)
 	jg	.LBB1_2          ; jump si n>1
-	movl	20(%esp), %eax   ; récupération n 
-	movl	%eax, 24(%esp)   
+	movl	20(%esp), %eax   ; récupération n
+	movl	%eax, 24(%esp)
 	jmp	.LBB1_3
    .LBB1_2:
 	movl	20(%esp), %eax
 	movl	20(%esp), %ecx
 	subl	$1, %ecx         ; %ecx=n-1
-	movl	%ecx, (%esp)     ; argument sur pile       
-	movl	%eax, 16(%esp)   
+	movl	%ecx, (%esp)     ; argument sur pile
+	movl	%eax, 16(%esp)
    recursion:
 	calll	sumn
-	movl	16(%esp), %ecx   ; récupération de n       
+	movl	16(%esp), %ecx   ; récupération de n
 	addl	%ecx, %eax       ; %eax=%eax+n
-	movl	%eax, 24(%esp)	 
+	movl	%eax, 24(%esp)
    .LBB1_3:
 	movl	24(%esp), %eax
 	addl	$28, %esp            ; libération de l'espace réservé sur la pile
 	ret
 
 
-Ce code illustre la complexité de supporter des appels récursifs en C et le coût au niveau de la gestion de la pile notamment. Ces appels récursifs doivent être réservés à des fonctions où l'appel récursif apporte une plus value claire. 
+Ce code illustre la complexité de supporter des appels récursifs en C et le coût au niveau de la gestion de la pile notamment. Ces appels récursifs doivent être réservés à des fonctions où l'appel récursif apporte une plus value claire.
 
 .. rubric:: Footnotes
 

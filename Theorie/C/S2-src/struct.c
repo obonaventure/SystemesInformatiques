@@ -1,6 +1,6 @@
 /***********************************************
  * struct.c
- * 
+ *
  * Programme d'exemple de structures
  *
  ***********************************************/
@@ -11,7 +11,7 @@
 
 ///AAA
 
-// structure pour stocker une coordonnée 3D
+// structure pour stocker une coordonnÃ©e 3D
 struct coord {
   int x;
   int y;
@@ -30,7 +30,7 @@ struct fraction {
 struct fraction demi={1,2};
 struct fraction f;
 
-// structure pour représenter un étudiant
+// structure pour reprÃ©senter un Ã©tudiant
 struct student {
   int matricule;
   char prenom[20];
@@ -54,7 +54,7 @@ int equal(struct fraction f1, struct fraction f2) {
 	   (f1.denominator==f2.denominator) );
 }
 
-int equalptr(struct fraction *f1, 
+int equalptr(struct fraction *f1,
 	     struct fraction *f2) {
   return ( (f1->numerator==f2->numerator) &&
 	   (f1->denominator==f2->denominator) );

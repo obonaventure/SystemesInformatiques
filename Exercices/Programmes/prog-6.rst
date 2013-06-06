@@ -16,9 +16,9 @@ Exercices
 	* variable locale déclarée dans une fonction
 
 	.. only:: staff
-		
+
 		.. note::
-		
+
 			.. code-block:: c
 
 			        // note : fflush n'a pas encore été vu, ne pas en parler
@@ -108,8 +108,8 @@ Exercices
 		pthread_mutex_lock(&mutex_global);
 		global=increment(global);
 		pthread_mutex_unlock(&mutex_global);
-	
-	et 
+
+	et
 
 	.. code-block:: c
 

@@ -1,6 +1,6 @@
 /**************************************
  * vector.c
- * 
+ *
  * Programme de manipulation de vecteurs
  *
  **************************************/
@@ -12,11 +12,11 @@ struct vector_t {
   int size;
   float *v;
 };
-// initialise le vecteur à la valeur du réel
+// initialise le vecteur Ã  la valeur du rÃ©el
 struct vector_t * init(int, float) ;
-// récupère le nième élément
+// rÃ©cupÃ¨re le niÃ¨me Ã©lÃ©ment
 float get(struct vector_t *, int) ;
-// fixe la valeur du nième élément
+// fixe la valeur du niÃ¨me Ã©lÃ©ment
 void set(struct vector_t *, int , float);
 // supprime un vecteur
 void destroy(struct vector_t *);
@@ -48,7 +48,7 @@ void destroy(struct vector_t *v) {
 }
 
 int main(int argc, char *argv[]) {
-   
+
   struct vector_t *v1=init(10,2.0);
   printf("v1[%d]=%f\n",3,get(v1,3));
   set(v1,3,17.0);

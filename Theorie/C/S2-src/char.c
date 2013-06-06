@@ -1,7 +1,7 @@
 /***********************************************
  * strlen.c
- * 
- * Initialisation de chaînes de caractères
+ *
+ * Initialisation de chaÃ®nes de caractÃ¨res
  *
  ***********************************************/
 
@@ -13,7 +13,7 @@
 
 int length(char str[]) {
   int i=0;
-  while(str[i]!=0) { // '\0' et 0 sont égaux
+  while(str[i]!=0) { // '\0' et 0 sont Ã©gaux
     i++;
   }
   return(i);
@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
   char name1[] = "str";
   //  char name2[] = "SINF1252";
 
-  printf("Longueur de name1 [%s] : %d \n",name1,length(name1));
+  printf("Longueur de name1 [%s] : %d\n",name1,length(name1));
   for(i=0;i<10;i++) {
     printf("%c",name1[i]);
   }

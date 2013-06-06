@@ -8,7 +8,7 @@
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
   <script type="text/javascript" src="js/rst-form.js"></script>
   <Script type="text/javascript" src="js/prettify.js"></script>
-  <script type="text/javascript">$nmbr_prop = 4</script> 
+  <script type="text/javascript">$nmbr_prop = 4</script>
 
 
 ================
@@ -17,9 +17,9 @@ Huitième semaine
 
 La matière couverte cette semaine couvre les processus. Elle est décrite dans les sections suivantes des notes :
 
- - :ref:`processus` 
+ - :ref:`processus`
 
-Question 1. `fork(2)`_ 
+Question 1. `fork(2)`_
 -----------------------
 
 L'appel système `fork(2)`_ permet de créer une copie du processus courant. Un étudiant a écrit le fragment de code ci-dessous se trouvant dans la fonction ``main``:
@@ -41,11 +41,11 @@ L'appel système `fork(2)`_ permet de créer une copie du processus courant. Un 
       }
     }
   }
-  return(EXIT_SUCCESS); 
+  return(EXIT_SUCCESS);
 
 Lors de l'exécution de ce programme, combien de processus sont créés en fonction de la valeur de ``n` ?
 
-.. class:: positive 
+.. class:: positive
 
 -  Lorsque ``n`` est initialisé à ``2``, quatre processus sont créés.
 
@@ -107,7 +107,7 @@ Parmi les extraits de programme ci-dessous, lequel est un appel correct à `exec
 
 
 -
-   .. code-block:: c 
+   .. code-block:: c
 
 
       char prog[]="echo";
@@ -145,7 +145,7 @@ Parmi les extraits de programme ci-dessous, lequel est un appel correct à `exec
       Les deuxième et troisième arguments à `execve(2)`_ doivent être de type ``char *arg[]``.
 
 -
-   .. code-block:: c 
+   .. code-block:: c
 
 
       char prog[]="echo";
@@ -168,7 +168,7 @@ Parmi les extraits de programme ci-dessous, lequel est un appel correct à `exec
       Les deuxième et troisième arguments à `execve(2)`_ doivent être de type ``char *arg[]``.
 
 -
-   .. code-block:: c 
+   .. code-block:: c
 
 
       char prog[]="echo";
@@ -231,7 +231,7 @@ L'appel système `execve(2)`_ permet d'exécuter un programme en remplaçant le 
       	exit(EXIT_FAILURE);
       }
     }
-    return(EXIT_SUCCESS);    
+    return(EXIT_SUCCESS);
    }
 
 .. class:: positive
@@ -379,7 +379,7 @@ L'appel système `waitpid(2)`_ permet à un processus d'attendre les valeurs de 
   .. class:: comment
 
      Lorsque le premier argument de `waitpid(2)`_ est un entier positif, il s'agit de l'identifiant du processus pour lequel `waitpid(2)`_ attend. Dans ce cas, `getpid(2)`_ retourne l'identifiant du processus qui existe `waitpid(2)`_ et un processus ne peut pas être un fils de lui-même.
-     
+
 Question 5. Récupération du résultat d'un processus avec `waitpid(2)`_
 ----------------------------------------------------------------------
 
@@ -387,7 +387,7 @@ Un étudiant souhaite récupérer le résultat du processus ``pid`` qu'il a cré
 
 .. class:: positive
 
-- 
+-
  .. code-block:: c
 
     int status;
@@ -395,7 +395,7 @@ Un étudiant souhaite récupérer le résultat du processus ``pid`` qu'il a cré
     if(p==-1) {
         perror("wait");
         exit(EXIT_FAILURE);
-    }	
+    }
     if(WIFEXITED(status)) {
       printf("Le processus a retourne %d\n",WEXITSTATUS(status));
     }
@@ -403,7 +403,7 @@ Un étudiant souhaite récupérer le résultat du processus ``pid`` qu'il a cré
 
 .. class:: negative
 
-- 
+-
  .. code-block:: c
 
     int status;
@@ -411,7 +411,7 @@ Un étudiant souhaite récupérer le résultat du processus ``pid`` qu'il a cré
     if(p==-1) {
         perror("wait");
         exit(EXIT_FAILURE);
-    }	
+    }
     printf("Le processus a retourne %d\n",WEXITSTATUS(status));
 
  .. class:: comment
@@ -419,7 +419,7 @@ Un étudiant souhaite récupérer le résultat du processus ``pid`` qu'il a cré
     L'appel système `waitpid(2)`_ prend comme second argument un pointeur vers un ``int`` et non un `ìnt``.
 
 
-- 
+-
  .. code-block:: c
 
     int status;
@@ -427,15 +427,15 @@ Un étudiant souhaite récupérer le résultat du processus ``pid`` qu'il a cré
     if(p==-1) {
         perror("wait");
         exit(EXIT_FAILURE);
-    }	
+    }
     printf("Le processus a retourne %d\n",p);
-    
+
  .. class:: comment
 
     La valeur de retour de `waitpid(2)`_ indique si l'appel système s'est exécuté correctement ou non. Pour récupérer le statut du processus fils ``pid``, il faut utiliser la macro ``WEXITSTATUS``.
 
 
-- 
+-
  .. code-block:: c
 
     int *status;
@@ -443,9 +443,9 @@ Un étudiant souhaite récupérer le résultat du processus ``pid`` qu'il a cré
     if(p==-1) {
         perror("wait");
         exit(EXIT_FAILURE);
-    }	
+    }
     printf("Le processus a retourne %d\n",p);
-    
+
  .. class:: comment
 
     La valeur de retour de `waitpid(2)`_ indique si l'appel système s'est exécuté correctement ou non. Pour récupérer le statut du processus fils ``pid``, il faut utiliser la macro ``WEXITSTATUS``. Le pointeur ``int * status`` doit pointer vers une zone mémoire allouée par malloc. Ici, il pointe vers ``NULL``.

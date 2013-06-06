@@ -1,7 +1,7 @@
 /**************************************
  * fork.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * fork
  *
  *************************************/
@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int g=0; // segment données
+int g=0; // segment donnÃ©es
 
 int main (int argc, char *argv[])  {
   int l=1252; // sur la pile
@@ -23,7 +23,7 @@ int main (int argc, char *argv[])  {
   pid=fork();
 
   if (pid==-1) {
-    // erreur à l'exécution de fork
+    // erreur Ã  l'exÃ©cution de fork
     perror("fork");
     exit(EXIT_FAILURE);
   }
@@ -38,9 +38,9 @@ int main (int argc, char *argv[])  {
     return(EXIT_SUCCESS);
   }
   else {
-    // processus père
+    // processus pÃ¨re
     sleep(2);
-    printf("Dans le processus père g=%d, l=%d et *m=%d\n",g,l,*m);
+    printf("Dans le processus pÃ¨re g=%d, l=%d et *m=%d\n",g,l,*m);
     free(m);
     // ...
     return(EXIT_SUCCESS);

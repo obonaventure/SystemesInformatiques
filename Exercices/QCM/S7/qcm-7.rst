@@ -8,7 +8,7 @@
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
   <script type="text/javascript" src="js/rst-form.js"></script>
   <script type="text/javascript" src="js/prettify.js"></script>
-  <script type="text/javascript">$nmbr_prop = 4</script> 
+  <script type="text/javascript">$nmbr_prop = 4</script>
 
 
 ================
@@ -29,7 +29,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
     sem_t semaphore;
 
     sem_init(&semaphore, 0,1);
-    
+
     // ...
 
     sem_destroy(&semaphore);
@@ -44,7 +44,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
        error("malloc");
 
     sem_init(semaphore, 0,1);
-    
+
     // ...
 
     sem_destroy(semaphore);
@@ -58,7 +58,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
     sem_t semaphore;
 
     sem_init(semaphore, 1,0);
-    
+
     // ...
 
     sem_destroy(semaphore);
@@ -73,7 +73,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
     sem_t semaphore;
 
     sem_init(&semaphore, 1,0);
-    
+
     // ...
 
     sem_destroy(&semaphore);
@@ -81,7 +81,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
  .. class:: comment
 
     `sem_init(3)`_ prend comme troisième argument la valeur initiale du sémaphore.
- 
+
 -
  .. code-block:: c
 
@@ -91,7 +91,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
        error("malloc");
 
     sem_init(semaphore, 1, 0);
-    
+
     // ...
 
     sem_destroy(semaphore);
@@ -110,7 +110,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
        error("malloc");
 
     sem_init(semaphore, 1, 0);
-    
+
     // ...
 
     sem_destroy(&semaphore);
@@ -128,11 +128,11 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
 
 .. class:: positive
 
-- 
+-
  .. code-block:: c
 
 
-    static sem_t semaphore; 
+    static sem_t semaphore;
     long global=0;
 
     int increment(int i) {
@@ -152,20 +152,20 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
       int err;
 
       sem_init(&semaphore, 0,1);
-  
+
       for(int i=0;i<NTHREADS;i++) {
-        err=pthread_create(&(thread[i]),NULL,&inc,NULL); 
+        err=pthread_create(&(thread[i]),NULL,&inc,NULL);
         if(err!=0)
           error(err,"pthread_create");
       }
 
       // reste non fourni
     }
-- 
+-
  .. code-block:: c
 
 
-    sem_t * semaphore; 
+    sem_t * semaphore;
     long global=0;
 
     int increment(int i) {
@@ -188,9 +188,9 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
         error("malloc");
 
       sem_init(semaphore, 0,1);
-  
+
       for(int i=0;i<NTHREADS;i++) {
-        err=pthread_create(&(thread[i]),NULL,&inc,NULL); 
+        err=pthread_create(&(thread[i]),NULL,&inc,NULL);
         if(err!=0)
           error(err,"pthread_create");
       }
@@ -200,11 +200,11 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
 
 .. class:: negative
 
-- 
+-
  .. code-block:: c
 
 
-    static sem_t semaphore; 
+    static sem_t semaphore;
     long global=0;
 
     int increment(int i) {
@@ -224,9 +224,9 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
       int err;
 
       sem_init(&semaphore, 0,0);
-  
+
       for(int i=0;i<NTHREADS;i++) {
-        err=pthread_create(&(thread[i]),NULL,&inc,NULL); 
+        err=pthread_create(&(thread[i]),NULL,&inc,NULL);
         if(err!=0)
           error(err,"pthread_create");
       }
@@ -238,11 +238,11 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
 
     Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple.
 
-- 
+-
  .. code-block:: c
 
 
-    static sem_t semaphore; 
+    static sem_t semaphore;
     long global=0;
 
     int increment(int i) {
@@ -262,9 +262,9 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
       int err;
 
       sem_init(&semaphore, 0,0);
-  
+
       for(int i=0;i<NTHREADS;i++) {
-        err=pthread_create(&(thread[i]),NULL,&inc,NULL); 
+        err=pthread_create(&(thread[i]),NULL,&inc,NULL);
         if(err!=0)
           error(err,"pthread_create");
       }
@@ -276,11 +276,11 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
 
     Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple. En outre, l'accès à la section critique doit être précédée par un appel à `sem_wait(3)`_  et suivie par un appel à `sem_post(3)`_ et non l'inverse comme dans cet exemple.
 
-- 
+-
  .. code-block:: c
 
 
-    sem_t * semaphore; 
+    sem_t * semaphore;
     long global=0;
 
     int increment(int i) {
@@ -303,9 +303,9 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
         error("malloc");
 
       sem_init(semaphore, 0,0);
-  
+
       for(int i=0;i<NTHREADS;i++) {
-        err=pthread_create(&(thread[i]),NULL,&inc,NULL); 
+        err=pthread_create(&(thread[i]),NULL,&inc,NULL);
         if(err!=0)
           error(err,"pthread_create");
       }
@@ -317,11 +317,11 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
 
     Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple.
 
-- 
+-
  .. code-block:: c
 
 
-    sem_t * semaphore; 
+    sem_t * semaphore;
     long global=0;
 
     int increment(int i) {
@@ -344,9 +344,9 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
         error("malloc");
 
       sem_init(semaphore, 0,0);
-  
+
       for(int i=0;i<NTHREADS;i++) {
-        err=pthread_create(&(thread[i]),NULL,&inc,NULL); 
+        err=pthread_create(&(thread[i]),NULL,&inc,NULL);
         if(err!=0)
           error(err,"pthread_create");
       }
@@ -404,7 +404,7 @@ La plupart des fonctions de la librairie standard sont des fonctions thread-safe
    .. class:: comment
 
       Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
- 
+
 - `strerror(3)`_
 
    .. class:: comment

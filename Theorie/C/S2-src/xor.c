@@ -1,6 +1,6 @@
 /***********************************************
  * xor.c
- * 
+ *
  * Programme d'exemple d'encryptage avec XOR
  *
  ***********************************************/
@@ -20,12 +20,12 @@ void usage(char *msg)
 int main(int argc, char*argv[])
 {
   if(argc!=2)
-    usage("ce programme prend une clé comme argument");
+    usage("ce programme prend une clÃ© comme argument");
 
   char *key=argv[1];
   char c;
   int i=0;
-  while ( ((c = getchar()) != EOF) && (i<strlen(key)) ) {    
+  while ( ((c = getchar()) != EOF) && (i<strlen(key)) ) {
     putchar(c^*(key+i));
     i++;
   }

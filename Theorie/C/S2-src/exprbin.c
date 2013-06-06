@@ -1,6 +1,6 @@
 /***********************************************
  * exprbin.c
- * 
+ *
  * Programme d'exemple d'utilisation d'expressions
  * binaires
  *
@@ -25,7 +25,7 @@ void int2bin(unsigned int num, char *str)
     else
       str[i]='0';
     num = num >> 1;
-  }    
+  }
 }
 ///FFF
 
@@ -40,7 +40,7 @@ void char2bin(unsigned char num, char *str)
     else
       str[i]='0';
     num = num >> 1;
-  }    
+  }
 }
 
 
@@ -78,15 +78,15 @@ int main(int argc, char *argv[]) {
   printf("%s ^ %s = %s\n",str1,str2,str3);
 
   ///AAA
-  r=~a; // négation bit à bit
-  r=a&b; // conjonction bit à bit
-  r=a|b; // disjonction bit à bit
-  r=a^b; // xor bit à bit
+  r=~a; // nÃ©gation bit Ã  bit
+  r=a&b; // conjonction bit Ã  bit
+  r=a|b; // disjonction bit Ã  bit
+  r=a^b; // xor bit Ã  bit
   ///BBB
 
   ///CCC
-  r=c & 0x7E;  // 0b01111110 force les bits de poids faible et fort à 0
-  r=d | 0x18;  // 0b00011000 force les bits 4 et 3 à 1
+  r=c & 0x7E;  // 0b01111110 force les bits de poids faible et fort Ã  0
+  r=d | 0x18;  // 0b00011000 force les bits 4 et 3 Ã  1
   ///DDD
 
   /*

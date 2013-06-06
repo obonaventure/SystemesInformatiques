@@ -1,9 +1,9 @@
 /**************************************
  * pthread-specific.c
- * 
+ *
  * Programme d'exemple de pthread qui utilise une
- * zone mémoire pour stocker des données 
- * spécifiques au thread
+ * zone mÃ©moire pour stocker des donnÃ©es
+ * spÃ©cifiques au thread
  **************************************/
 
 #include <pthread.h>
@@ -13,7 +13,7 @@
 #include <errno.h>
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -23,7 +23,7 @@ void error(int err, char *msg) {
 #define NTHREADS 4
 
 __thread int count=0;
-int global_count=0; 
+int global_count=0;
 
 void *f( void* param) {
   for(int i=0;i<LOOP;i++) {
@@ -40,17 +40,17 @@ int main (int argc, char *argv[])  {
 
   for(int i=0;i<NTHREADS;i++) {
     count=i;   // local au thread du programme principal
-    err=pthread_create(&(threads[i]),NULL,&f,NULL); 
+    err=pthread_create(&(threads[i]),NULL,&f,NULL);
     if(err!=0)
       error(err,"pthread_create");
   }
-  
+
   for(int i=0;i<NTHREADS;i++) {
     err=pthread_join(threads[i],NULL);
     if(err!=0)
       error(err,"pthread_create");
   }
-    
+
   return(EXIT_SUCCESS);
 }
 ///BBB

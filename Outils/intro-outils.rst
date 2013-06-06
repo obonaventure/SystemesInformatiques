@@ -23,28 +23,28 @@ De nombreux éditeurs sont utilisables pour manipuler efficacement du code sourc
 Gestionnaires de code partagé
 =============================
 
-Dans de nombreux projets informatiques, il est nécessaire d'utiliser des outils qui permettent d'organiser efficacement le partage du code source entre plusieurs développeurs. Les plus anciens gestionnaires de code sont `cvs <http://cvs.nongnu.org/>`_ ou `rcs <http://www.gnu.org/software/rcs/>`_. Ces logiciels ont été créés lorsque Unix était utilisé sur des mini-ordinateurs qui servaient tout un département. Aujourd'hui, les logiciels de gestion de code source s'utilisent en combinaison avec des serveurs Internet pour permettre un partage large du code source. Les plus connus sont : 
+Dans de nombreux projets informatiques, il est nécessaire d'utiliser des outils qui permettent d'organiser efficacement le partage du code source entre plusieurs développeurs. Les plus anciens gestionnaires de code sont `cvs <http://cvs.nongnu.org/>`_ ou `rcs <http://www.gnu.org/software/rcs/>`_. Ces logiciels ont été créés lorsque Unix était utilisé sur des mini-ordinateurs qui servaient tout un département. Aujourd'hui, les logiciels de gestion de code source s'utilisent en combinaison avec des serveurs Internet pour permettre un partage large du code source. Les plus connus sont :
 
  - `git <http://git-scm.com/>`_ développé initialement pour la gestion du code source du kernel Linux. git est aussi utilisé pour la gestion des sources de ce document depuis https://github.com/obonaventure/SystemesInformatiques
  - `subversion`_ qui est décrit ci-dessous
  - `mercurial <http://mercurial.selenic.com/>`_
 
 
-`subversion`_ (ou abrégé `svn(1)`_) est un logiciel qui permet à plusieurs utilisateurs de travailler sur les mêmes documents de type texte. `Subversion`_ est fréquemment utilisé pour gérer du code source développé de façon collaborative, mais il peut aussi servir à gérer n'importe quel ensemble de fichiers (de préférence textes) manipulés par plusieurs personnes. 
+`subversion`_ (ou abrégé `svn(1)`_) est un logiciel qui permet à plusieurs utilisateurs de travailler sur les mêmes documents de type texte. `Subversion`_ est fréquemment utilisé pour gérer du code source développé de façon collaborative, mais il peut aussi servir à gérer n'importe quel ensemble de fichiers (de préférence textes) manipulés par plusieurs personnes.
 
 .. Dans le cadre du cours SINF1252 vous devez vous inscrire à subversion dans le projet ``SINF1252_2012`` en suivant le lien et les instructions sur http://wiki.student.info.ucl.ac.be/index.php/Svn
 
 Pour commencer l'utilisation de `svn(1)`_ vous devriez faire d'abord un ``checkout`` du répertoire:
 
         .. code-block:: console
-        
+
                 $ svn checkout <url de votre répertoire>
                 Checked out revision 1.
 
 Ceci installe votre répertoire (ici, nommé ``my_rep``) dans le dossier courant. Vous pouvez vous déplacer dans le nouveau dossier et créer un nouveau dossier pour cet premier projet. Il faut explicitement ajouter ce dossier à svn avec la commande ``svn add [nom du dossier]``. Chaque fichier et dossier dont vous voulez qu'il fasse partie du contrôle de version doivent être ajoutés avec cette commande.
 
         .. code-block:: console
-        
+
                 $ cd my_rep
                 $ mkdir projet_S1
                 $ svn add projet_S1
@@ -53,7 +53,7 @@ Ceci installe votre répertoire (ici, nommé ``my_rep``) dans le dossier courant
 Ce dossier n'a pas encore été envoyé sur le serveur principal et n'est donc pas encore visible pour d'autres utilisateurs. Pour afficher l'état de votre répertoire utilisez ``svn status``. La lettre ``A`` indique que ceci est un nouveau dossier/fichier pas encore envoyé vers le serveur. ``?`` indique que les fichiers/dossiers ne font pas partie du répertoire svn (on peut les ajouter avec ``svn add``). ``M`` indique que les fichiers sont modifiés localement mais pas encore envoyés vers le serveur. Ces fichiers font partie du répertoire svn.
 
         .. code-block:: console
-        
+
                 $ svn status
                 A       projet_S1
                 $ svn commit -m "Projet S1: Initialisation"
@@ -67,7 +67,7 @@ Les autres utilisateurs de votre répertoire (c'est-à-dire dans le cadre de ce 
 Pour mettre à jour le répertoire local, on utilise la commande ``svn update``.
 
         .. code-block:: console
-        
+
                 $ svn update
                 Updating '.':
                 A       projet_S1
