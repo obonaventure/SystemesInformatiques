@@ -35,7 +35,12 @@ void print_vecteur(int size, int*v) {
   for(i=0;i<size-1;i++) {
     printf("%d,",v[i]);
   }
-  printf("%d}",v[size-1]);
+  if(size>0){
+    printf("%d}",v[size-1]);
+  }
+  else{
+    printf("}");
+  }
 }
 ///DDD  
 
