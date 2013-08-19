@@ -1,0 +1,35 @@
+digraph "git history" {
+  "master" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="master"];
+  "master" -> "245e4";
+  "hello" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="hello"];
+  "hello" -> "f4dff";
+  "hey" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="hey"];
+  "hey" -> "22931";
+  "hi" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="hi"];
+  "hi" -> "4cd75";
+  "ho" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="ho"];
+  "ho" -> "22931";
+  "v0.1" [shape="box",style="rounded,filled",color="seagreen", fillcolor="palegreen", label="v0.1"];
+  "v0.1" -> "245e4";
+  "HEAD" [shape="box",style="rounded,filled",color="lightgoldenrod3", fillcolor="khaki1", label="HEAD"];
+  "HEAD" -> "master";
+  "22931" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="22931\ng"];
+  "22931" -> "54978";
+  "f4dff" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="f4dff\nf"];
+  "f4dff" -> "88305";
+  "4cd75" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="4cd75\nMerge branch 'hello' into hi"];
+  "4cd75" -> "245e4";
+  "4cd75" -> "88305";
+  "245e4" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="245e4\ne"];
+  "245e4" -> "05e80";
+  "88305" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="88305\nd"];
+  "88305" -> "0ef13";
+  "05e80" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="05e80\nMerge branch 'hello'"];
+  "05e80" -> "b443e";
+  "05e80" -> "0ef13";
+  "0ef13" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="0ef13\nc"];
+  "0ef13" -> "54978";
+  "b443e" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="b443e\nb"];
+  "b443e" -> "54978";
+  "54978" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="54978\na"];
+}

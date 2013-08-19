@@ -1,0 +1,15 @@
+digraph "git history" {
+  "master" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="master"];
+  "master" -> "b1485";
+  "pid" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="pid"];
+  "pid" -> "b1485";
+  "universal" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="universal"];
+  "universal" -> "b1485";
+  "HEAD" [shape="box",style="rounded,filled",color="lightgoldenrod3", fillcolor="khaki1", label="HEAD"];
+  "HEAD" -> "master";
+  "b1485" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="b1485\nAdd .gitignore"];
+  "b1485" -> "bc620";
+  "bc620" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="bc620\nAdd return"];
+  "bc620" -> "76c16";
+  "76c16" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="76c16\nFirst commit"];
+}

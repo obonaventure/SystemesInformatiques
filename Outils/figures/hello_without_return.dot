@@ -1,0 +1,9 @@
+digraph "git history" {
+  "master" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="master"];
+  "master" -> "76c16";
+  "hello" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="hello"];
+  "hello" -> "76c16";
+  "HEAD" [shape="box",style="rounded,filled",color="lightgoldenrod3", fillcolor="khaki1", label="HEAD"];
+  "HEAD" -> "master";
+  "76c16" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="76c16\nFirst commit"];
+}
