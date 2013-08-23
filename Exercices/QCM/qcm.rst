@@ -8,11 +8,11 @@
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
   <script type="text/javascript" src="js/rst-form.js"></script>
   <script type="text/javascript" src="js/prettify.js"></script>
-  <script type="text/javascript">$nmbr_prop = 4</script> 
+  <script type="text/javascript">$nmbr_prop = 4</script>
 
 
 ===================
-Semaine 
+Semaine
 ===================
 
 Question

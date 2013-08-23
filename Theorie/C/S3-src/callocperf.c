@@ -1,7 +1,7 @@
 /**************************************
  * callocperf.c
- * 
- * Programme mesurant les performances 
+ *
+ * Programme mesurant les performances
  * de calloc
  *
  **************************************/
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
   for(int j=1;j<LOOP+1;j++) {
     int *vector;
     vector=(int *)calloc(size,sizeof(int));
-    
+
     int count=0;
     for(int i=0;i<size;i++) {
       if( *(vector+i)!=0)
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
       else
 	*(vector+i)=j;
     }
-    printf("Nombre d'entiers non initialisés à zéro : %d\n",count);
+    printf("Nombre d'entiers non initialisÃ©s Ã  zÃ©ro : %d\n",count);
     free(vector);
   }
   return(EXIT_SUCCESS);

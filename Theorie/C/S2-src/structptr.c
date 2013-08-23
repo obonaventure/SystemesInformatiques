@@ -1,7 +1,7 @@
 /***********************************************
  * structptr.c
- * 
- * Programme d'exemple de pointeurs vers des 
+ *
+ * Programme d'exemple de pointeurs vers des
  * structures
  *
  ***********************************************/
@@ -18,13 +18,13 @@ int main(int argc, char *argv[]) {
 
   struct fraction {
     int num;
-    int den; 
+    int den;
   } ;
 
-  ///AAA  
+  ///AAA
   struct fraction demi, quart;
-  struct fraction *demi_ptr; 
-  struct fraction *quart_ptr; 
+  struct fraction *demi_ptr;
+  struct fraction *quart_ptr;
 
   demi_ptr=&(demi);
   quart_ptr=&(quart);

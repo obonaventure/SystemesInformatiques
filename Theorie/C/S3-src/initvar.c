@@ -1,6 +1,6 @@
 /**************************************
  * initvar.c
- * 
+ *
  * Programme d'exemple sur l'initialisation
  * des variables
  *
@@ -21,7 +21,7 @@ void init(void) {
   }
 }
 
-// retourne la somme des éléments
+// retourne la somme des Ã©lÃ©ments
 // d'un tableau local
 long read(void) {
   long b[ARRAY_SIZE];
@@ -42,9 +42,9 @@ int main(int argc, char *argv[]) {
   }
 
   ///CCC
-  printf("Résultat de read() avant init(): %ld\n",read());
+  printf("RÃ©sultat de read() avant init(): %ld\n",read());
   init();
-  printf("Résultat de read() après init() : %ld\n",read());
+  printf("RÃ©sultat de read() aprÃ¨s init() : %ld\n",read());
   ///DDD
   return(EXIT_SUCCESS);
 }

@@ -1,7 +1,7 @@
 /**************************************
  * sumn.c
- * 
- * Programme d'exemple pour un calcul récursif
+ *
+ * Programme d'exemple pour un calcul rÃ©cursif
  * de la somme des n premiers entiers
  *
  **************************************/

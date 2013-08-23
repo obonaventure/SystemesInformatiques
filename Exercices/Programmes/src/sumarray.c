@@ -1,8 +1,8 @@
 /**************************************
  * sumarray.c
- * 
+ *
  * Programme d'exemple pour calculer la
- * somme des éléments d'une matrice
+ * somme des Ã©lÃ©ments d'une matrice
  *
  **************************************/
 

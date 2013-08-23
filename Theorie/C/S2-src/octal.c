@@ -1,6 +1,6 @@
 /***********************************************
  * octal
- * 
+ *
  * Exemple d'erreur avec les nombres en octal
  *
  ***********************************************/
@@ -13,12 +13,12 @@ int main(int argc, char *argv[]) {
   ///AAA
 
   int i,j;
-  i=65;   // décimal
+  i=65;   // dÃ©cimal
   j=065;  // octal !!!
   if(i==j)
-    printf("%d et %d sont égaux \n",i,j);
+    printf("%d et %d sont Ã©gaux\n",i,j);
   else
-    printf("%d et %d sont différents \n",i,j);
+    printf("%d et %d sont diffÃ©rents\n",i,j);
 
    ///BBB
    return(EXIT_SUCCESS);

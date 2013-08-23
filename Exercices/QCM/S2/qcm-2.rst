@@ -8,7 +8,7 @@
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
   <script type="text/javascript" src="js/rst-form.js"></script>
   <script type="text/javascript" src="js/prettify.js"></script>
-  <script type="text/javascript">$nmbr_prop = 3</script> 
+  <script type="text/javascript">$nmbr_prop = 3</script>
 
 
 ============================
@@ -51,15 +51,15 @@ Un seul des fragments de code ci-dessous contient des conversions de type qui so
 
     i=(int ) s;
     s=(short) uc;
-    l=(long )i; 
+    l=(long )i;
 
 -
  .. code:: c
 
     ui=(unsigned int) us;
     s=(short) c;
-    ul=(unsigned long )ui; 
-    
+    ul=(unsigned long )ui;
+
 
 .. class:: negative
 
@@ -68,7 +68,7 @@ Un seul des fragments de code ci-dessous contient des conversions de type qui so
 
     ui=(unsigned int ) s;
     us=(unsigned short) uc;
-    l=(long )i; 
+    l=(long )i;
 
  .. class:: comment
 
@@ -80,7 +80,7 @@ Un seul des fragments de code ci-dessous contient des conversions de type qui so
 
     i=(int ) us;
     us=(unsigned short) i;
-    l=(long )c; 
+    l=(long )c;
 
  .. class:: comment
 
@@ -91,9 +91,9 @@ Un seul des fragments de code ci-dessous contient des conversions de type qui so
 
     ui=(int) s;
     s=(short) c;
-    ul=(unsigned long )ui; 
+    ul=(unsigned long )ui;
 
- .. class:: comment 
+ .. class:: comment
 
     La première conversion risque de poser des problèmes.
 
@@ -231,34 +231,34 @@ Si la variable ``c`` est de type ``unsigned char`` sur 8 bits, laquelle des suit
 
 .. class:: positive
 
-- 
+-
  .. code:: c
 
-    unsigned char temp1, temp2; 
+    unsigned char temp1, temp2;
     temp1 = c & 0x0F;
     temp2 = c & 0xF0;
     temp1=temp1 << 4;
-    temp2=temp2 >> 4; 
-    c= temp2|temp1; 
+    temp2=temp2 >> 4;
+    c= temp2|temp1;
 
-- 
+-
  .. code:: c
 
-    unsigned char temp1, temp2; 
+    unsigned char temp1, temp2;
     temp1=c << 4;
-    temp2=c >> 4; 
-    c= temp2|temp1; 
+    temp2=c >> 4;
+    c= temp2|temp1;
 
 
 .. class:: negative
 
-- 
+-
  .. code:: c
 
-    unsigned char temp1, temp2; 
+    unsigned char temp1, temp2;
     temp1=c << 4;
-    temp2=c >> 4; 
-    c= temp2||temp1; 
+    temp2=c >> 4;
+    c= temp2||temp1;
 
 
  .. class:: comment
@@ -266,33 +266,33 @@ Si la variable ``c`` est de type ``unsigned char`` sur 8 bits, laquelle des suit
     Ne confondez pas l'opérateur binaire ``|`` avec la disjonction logique ``||``.
 
 
-- 
+-
  .. code:: c
 
-    unsigned char temp1, temp2; 
+    unsigned char temp1, temp2;
     temp1=4 << temp1;
-    temp2=4 >> temp2; 
-    c= temp2|temp1; 
+    temp2=4 >> temp2;
+    c= temp2|temp1;
 
 
  .. class:: comment
 
-    Cette utilisation de l'opérateur ``>>`` est incorrecte. Vous décalez de ``temp1`` bits (c'est-à-dire 0) la représentation binaire de ``4``. 
+    Cette utilisation de l'opérateur ``>>`` est incorrecte. Vous décalez de ``temp1`` bits (c'est-à-dire 0) la représentation binaire de ``4``.
 
 -
- .. code:: c 
+ .. code:: c
 
-    unsigned char temp1, temp2; 
+    unsigned char temp1, temp2;
     temp1 = c && 0x0F;
     temp2 = c && 0xF0;
     temp1=temp1 << 4;
-    temp2=temp2 >> 4; 
-    c= temp2|temp1; 
+    temp2=temp2 >> 4;
+    c= temp2|temp1;
 
 
  .. class:: comment
 
-    Ne confondez pas la l'opérateur binaire ``&`` avec la conjonction logique ``&&``. 
+    Ne confondez pas la l'opérateur binaire ``&`` avec la conjonction logique ``&&``.
 
 
 Question 6. Multiplication entière
@@ -306,17 +306,17 @@ Parmi les expressions suivantes, une seule permet de calculer ``x*7`` lorsque ``
 
 -
  .. code:: c
-   
+
     (x<<3)-x
 
 
  .. class:: comment
 
     Cette expression calcule en effet ``x<<3=x*8`` puis retire ``x``.
-       
+
 .. class:: negative
 
-- 
+-
  .. code:: c
 
     (x>>3)-x
@@ -325,8 +325,8 @@ Parmi les expressions suivantes, une seule permet de calculer ``x*7`` lorsque ``
  .. class:: comment
 
     Cette expression divise d'abord ``x`` par ``8`` puis retire x au résultat de cette division.
- 
-- 
+
+-
  .. code:: c
 
     (x<<3)+x
@@ -356,12 +356,12 @@ Parmi les expressions suivantes, une seule permet de calculer ``x*7`` lorsque ``
  .. class:: comment
 
     Cette expression divise ``x`` par :math:`2^7`
-       
+
 Question 7. Extraction de bits
 ------------------------------
 
 
-Il est parfois nécessaire en C de manipuler directement la représentation binaire d'un nombre. Si ``f`` est un nombre de type ``float`` stocké sur 32 bits, laquelle des expressions ci-dessous peut-elle être intégrée dans ce code pour afficher positif ou négatif en fonction du signe de ce nombre ? 
+Il est parfois nécessaire en C de manipuler directement la représentation binaire d'un nombre. Si ``f`` est un nombre de type ``float`` stocké sur 32 bits, laquelle des expressions ci-dessous peut-elle être intégrée dans ce code pour afficher positif ou négatif en fonction du signe de ce nombre ?
 
 .. code:: c
 
@@ -369,23 +369,23 @@ Il est parfois nécessaire en C de manipuler directement la représentation bina
      printf("positif\n");
    else
      printf("negatif\n");
-                        
+
 
 .. class:: positive
 
-- 
+-
  .. code:: c
 
     !(((unsigned int) f) & 0x80000000)
 
 -
  .. code:: c
- 
+
     !(((unsigned int) f) >> 31)
 
 .. class:: negative
 
-- 
+-
  .. code:: c
 
     !(((unsigned int) f) & 0x10000000)
@@ -396,7 +396,7 @@ Il est parfois nécessaire en C de manipuler directement la représentation bina
 
 -
  .. code:: c
- 
+
     !(((unsigned int) f) << 31)
 
  .. class:: comment
@@ -406,7 +406,7 @@ Il est parfois nécessaire en C de manipuler directement la représentation bina
 
 -
  .. code:: c
- 
+
     !(((unsigned int) f) > 31)
 
  .. class:: comment
@@ -416,12 +416,12 @@ Il est parfois nécessaire en C de manipuler directement la représentation bina
 
 -
  .. code:: c
- 
+
     !(((unsigned int) f) & 31)
 
  .. class:: comment
 
-    Cette opération masque le nombre ``f`` avec ``00000000 00000000 00000000 00011111`` 
+    Cette opération masque le nombre ``f`` avec ``00000000 00000000 00000000 00011111``
 
 
 
@@ -438,10 +438,10 @@ Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences
    int count1(char *s, char c) {
      int i=0;
      int count=0;
-     while(*(s+i)!='\0') { 
+     while(*(s+i)!='\0') {
        if(*(s+i)==c) {
           count++;
-       }    
+       }
        i++;
      }
      return(count);
@@ -453,10 +453,10 @@ Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences
 
     int count(char *s, char c) {
       int count=0;
-      while(*(s)!='\0') { 
+      while(*(s)!='\0') {
         if(*(s)==c) {
           count++;
-        }    
+        }
         s++;
       }
       return(count);
@@ -472,10 +472,10 @@ Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences
    int count1(char *s, char c) {
      int i=0;
      int count=0;
-     while(i<s.length) { 
+     while(i<s.length) {
        if(*(s+i)==c) {
           count++;
-       }    
+       }
        i++;
      }
      return(count);
@@ -491,10 +491,10 @@ Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences
    int count1(char *s, char c) {
      int i=0;
      int count=0;
-     while(*s!=`\0`) { 
+     while(*s!=`\0`) {
        if(*(s+i)==c) {
           count++;
-       }    
+       }
        i++;
      }
      return(count);
@@ -502,18 +502,18 @@ Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences
 
  .. class:: comment
 
-    La boucle ``while`` se termine-t-elle ? Quelle est sa condition d'arrêt ? 
+    La boucle ``while`` se termine-t-elle ? Quelle est sa condition d'arrêt ?
 
 -
  .. code:: c
 
     int count(char *s, char c) {
       int count=0;
-      while(*(s)!='\0') { 
+      while(*(s)!='\0') {
         s++;
         if(*(s)==c) {
           count++;
-        }    
+        }
       }
       return(count);
     }
@@ -528,10 +528,10 @@ Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences
 
     int count(char *s, char c) {
       int count=0;
-      while(s!='\0') { 
+      while(s!='\0') {
         if(s==c) {
           count++;
-        }    
+        }
         s++;
       }
       return(count);
@@ -549,7 +549,7 @@ Si ``ptr`` a été déclaré sous la forme ``int *ptr``, un seul des groupes d'a
 
 .. class:: positive
 
-- 
+-
   - l'expression ``*(ptr + 1)`` est une valeur entière
   - l'expression ``ptr[1]`` est une valeur entière
   - l'expression ``ptr`` est une adresse en mémoire
@@ -584,7 +584,7 @@ Question 10. Pointeurs et tableaux
 Considérons le tableau ``tab`` déclaré comme suit :
 
  .. code:: c
- 
+
     #define SIZE 30
     int tab[SIZE];
     int *ptr;
@@ -600,7 +600,7 @@ Dans une architecture 32 bits, un seul des groupes d'affirmations ci-dessous est
 
 
 -
-  - l'expression ``tab[0]`` correspond à la même valeur dans le tableau que ``*(tab)`` 
+  - l'expression ``tab[0]`` correspond à la même valeur dans le tableau que ``*(tab)``
   - l'assignation ``ptr=(tab+i)`` est valide et après cette assignation, ``*ptr`` retourne la même valeur que ``tab[i]`` lorsque ``0<=i<29``
 
 
@@ -615,7 +615,7 @@ Dans une architecture 32 bits, un seul des groupes d'affirmations ci-dessous est
      Lorsque ``tab`` est déclaré comme étant un tableau, il est interdit de modifier sa valeur.
 
 -
-  - l'expression ``tab[0]`` correspond à la même valeur dans le tableau que ``&(tab)`` 
+  - l'expression ``tab[0]`` correspond à la même valeur dans le tableau que ``&(tab)``
   - l'assignation ``tab=(tab+i)`` est valide et après cette assignation, ``*tab`` retourne le ième élément du tableau lorsque ``0<=i<29``
 
   .. class:: comment
@@ -647,7 +647,7 @@ Dans ce code, une seule des affirmations suivantes est vraie, laquelle ?
 .. class:: positive
 
 - l'expression ``ptr2-ptr1`` vaut ``2``
- 
+
 - les expressions ``*(ptr1-1)`` et ``*(ptr2-3)`` retournent toutes les deux la même valeur, ``10``
 
 .. class:: negative
@@ -682,7 +682,7 @@ En C, il est parfois nécessaire d'échanger le contenu de deux variables. Si ``
 
 -
  .. code:: c
- 
+
     void swap(int *i, int *j) {
       int k;
       k=*i;
@@ -695,7 +695,7 @@ En C, il est parfois nécessaire d'échanger le contenu de deux variables. Si ``
 
 -
  .. code:: c
- 
+
     void swap(int *i, int *j) {
       int k;
       k=*j;
@@ -709,7 +709,7 @@ En C, il est parfois nécessaire d'échanger le contenu de deux variables. Si ``
 
 -
  .. code:: c
- 
+
     void swap(int i, int j) {
       int k;
       k=i;
@@ -723,9 +723,9 @@ En C, il est parfois nécessaire d'échanger le contenu de deux variables. Si ``
 
     Cette fonction ne fait rien du tout d'utile.
 
--  
+-
  .. code:: c
- 
+
     void swap(int i, int j) {
       int k;
       k=i;
@@ -740,7 +740,7 @@ En C, il est parfois nécessaire d'échanger le contenu de deux variables. Si ``
 
 -
  .. code:: c
- 
+
     void swap(int i, int j) {
       int k;
       int *i_ptr=&i;
@@ -760,10 +760,10 @@ Question 13. Pointeurs et structures
 ------------------------------------
 
 
-Dans un programme de manipulation de fractions, on définit la structure suivante pour représenter une fraction entière : 
+Dans un programme de manipulation de fractions, on définit la structure suivante pour représenter une fraction entière :
 
     .. code:: c
-        
+
        struct fract_t {
             int num;
             int denum;
@@ -773,7 +773,7 @@ Dans un programme de manipulation de fractions, on définit la structure suivant
 
  .. code:: c
 
-    /* 
+    /*
      * augmente la fraction passé en argument de l'entier n et place
      * la somme calculée dans la fraction
      * Exemples

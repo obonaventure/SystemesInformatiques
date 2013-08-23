@@ -1,7 +1,7 @@
 /**************************************
  * proc2.c
- * 
- * Programme d'exemple pour les procédures
+ *
+ * Programme d'exemple pour les procÃ©dures
  *
  **************************************/
 

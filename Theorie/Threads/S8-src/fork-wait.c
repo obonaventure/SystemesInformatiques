@@ -1,7 +1,7 @@
 /**************************************
  * fork-wait.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * fork
  *
  *************************************/
@@ -20,7 +20,7 @@ int main (int argc, char *argv[])  {
   pid=fork();
 
   if (pid==-1) {
-    // erreur à l'exécution de fork
+    // erreur Ã  l'exÃ©cution de fork
     perror("fork");
     exit(EXIT_FAILURE);
   }
@@ -30,19 +30,19 @@ int main (int argc, char *argv[])  {
     return(42);
   }
   else {
-    // processus père
+    // processus pÃ¨re
     int fils=waitpid(pid,&status,0);
     if(fils==-1) {
       perror("wait");
       exit(EXIT_FAILURE);
     }
     if(WIFEXITED(status)) {
-      printf("Le fils %d s'est terminé correctement et a retourné la valeur %d\n",fils,WEXITSTATUS(status));
+      printf("Le fils %d s'est terminÃ© correctement et a retournÃ© la valeur %d\n",fils,WEXITSTATUS(status));
       return(EXIT_SUCCESS);
     }
     else {
       if( WIFSIGNALED(status)) {
-	printf("Le fils %d a été tué par le signal %d\n",fils,WTERMSIG(status));
+	printf("Le fils %d a Ã©tÃ© tuÃ© par le signal %d\n",fils,WTERMSIG(status));
       }
       return(EXIT_FAILURE);
     }

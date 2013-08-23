@@ -1,6 +1,6 @@
 /**************************************
  * pthread-test.c
- * 
+ *
  * Programme d'exemple de pthread avec condition de course
  *
  **************************************/
@@ -12,7 +12,7 @@
 #include <errno.h>
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -51,12 +51,12 @@ int main (int argc, char *argv[])  {
   pthread_t thread_even;
   int err;
 
-  err=pthread_create(&(thread_inc),NULL,&inc,NULL); 
+  err=pthread_create(&(thread_inc),NULL,&inc,NULL);
   if(err!=0) {
     error(err,"pthread_create");
   }
 
-  err=pthread_create(&(thread_even),NULL,&inc,NULL); 
+  err=pthread_create(&(thread_even),NULL,&inc,NULL);
   if(err!=0) {
     error(err,"pthread_create");
   }

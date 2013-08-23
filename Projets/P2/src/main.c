@@ -23,6 +23,6 @@ int main(int argc, char *argv[])
 		perror("Error calling write_bmp");
 		return 1;
 	}
-	
+
 	return 0;
 }

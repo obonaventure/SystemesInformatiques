@@ -1,7 +1,7 @@
 /***********************************************
  * toupper.c
- * 
- * Conversion de caractères
+ *
+ * Conversion de caractÃ¨res
  *
  ***********************************************/
 
@@ -12,7 +12,7 @@
 
 // conversion de minuscules en majuscules
 int toUpper(char c) {
-  if(c>='a' && c<='z') 
+  if(c>='a' && c<='z')
     return (c+('A'-'a'));
   else
     return (c);

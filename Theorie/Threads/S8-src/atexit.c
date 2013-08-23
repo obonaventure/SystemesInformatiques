@@ -1,7 +1,7 @@
 /**************************************
  * atexit.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * atexit
  *
  *************************************/
@@ -10,11 +10,11 @@
 #include <stdlib.h>
 
 void e1() {
-  printf("Exécution de la fonction e1\n");
+  printf("ExÃ©cution de la fonction e1\n");
 }
 
 int main (int argc, char *argv[])  {
-  
+
   int err;
   err=atexit(e1);
   if(err==-1) {

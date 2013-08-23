@@ -1,12 +1,12 @@
-$ echo "Un petit texte" | wc -c 
+$ echo "Un petit texte" | wc -c
       15
 $ echo "bbbb ccc" >> file.txt
 $ echo "aaaaa bbbbb" >> file.txt
 $ echo "bbbb ccc" >> file.txt
-$ cat file.txt 
+$ cat file.txt
 bbbb ccc
 aaaaa bbbbb
 bbbb ccc
-$ cat file.txt | sort | uniq 
+$ cat file.txt | sort | uniq
 aaaaa bbbbb
 bbbb ccc

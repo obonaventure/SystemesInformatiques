@@ -1,8 +1,8 @@
 /**************************************
  * readdir.c
- * 
- * Programme d'exemple d'utilisation de 
- * répertoires
+ *
+ * Programme d'exemple d'utilisation de
+ * rÃ©pertoires
  *
  *************************************/
 ///AAA
@@ -26,7 +26,7 @@ int main (int argc, char *argv[])  {
     exit_on_error("opendir");
   }
   while ((dp = readdir(dirp)) != NULL) {
-    printf("%s\n",dp->d_name); 
+    printf("%s\n",dp->d_name);
   }
   int err = closedir(dirp);
   if(err<0) {

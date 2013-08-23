@@ -1,8 +1,8 @@
 /**************************************
  * sumarray.c
- * 
+ *
  * Programme d'exemple pour calculer la
- * somme des éléments d'une matrice
+ * somme des Ã©lÃ©ments d'une matrice
  *
  **************************************/
 
@@ -49,8 +49,8 @@ int main(int argc, char *argv[]) {
       matrix[i][j]=1;
     }
   }
-  printf("%d \n",sum());
-  printf("%d \n",sum2());
+  printf("%d\n",sum());
+  printf("%d\n",sum2());
 
    return(EXIT_SUCCESS);
 }

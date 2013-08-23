@@ -30,7 +30,7 @@ bitstring_t *bitstring_alloc_from_int(unsigned int x);
 /* Met le n'ième bit du bitstring 'b' à la valeur de 'bit'.
  * Pour trouver le n'ième bit on compte à partir du bit de poids fort.
  *
- * 'n' est plus grand ou égal à 0 et strictement plus petit que 
+ * 'n' est plus grand ou égal à 0 et strictement plus petit que
  * bitstring_len(b)
  */
 void bitstring_set(bitstring_t *b, unsigned int n, bit_t bit);
@@ -38,7 +38,7 @@ void bitstring_set(bitstring_t *b, unsigned int n, bit_t bit);
 /* Retourne la valeur du n'ième bit du bitstring 'b'
  * Pour trouver le n'ième bit on compte à partir du bit de poids fort.
  *
- * 'n' est plus grand ou égal à 0 et strictement plus petit que 
+ * 'n' est plus grand ou égal à 0 et strictement plus petit que
  * bitstring_len(b)
  */
 bit_t bitstring_get(bitstring_t *b, int n);
@@ -61,7 +61,7 @@ void bitstring_rotate(bitstring_t *b, int n);
  */
 int bitstring_concat(bitstring_t *b1, bitstring_t *b2);
 
-/* Effectue l'opération ou exclusif entre 'b1' et 'b2' 
+/* Effectue l'opération ou exclusif entre 'b1' et 'b2'
  * (b1 ^ b2).
  *
  * Si les bitstring 'b1' et 'b2' sont de taille
@@ -75,7 +75,7 @@ int bitstring_xor(bitstring_t *b1, bitstring_t *b2, bitstring_t **res);
 /* Affiche en représentation hexadécimale le bitstring 'b' dans
  * le buffer 'buf' de taille 'len'.
  * Retourne -1 si le buffer ne peut contenir toute la representation.
- * Retourne le nombre de caractères hexadécimals (+'\0') écrits sinon. 
+ * Retourne le nombre de caractères hexadécimals (+'\0') écrits sinon.
  */
 int bitstring_print(bitstring_t *b, char *buf, size_t len);
 

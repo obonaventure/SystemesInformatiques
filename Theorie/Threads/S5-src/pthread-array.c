@@ -1,6 +1,6 @@
 /**************************************
  * pthread-neg.c
- * 
+ *
  * Programme d'exemple de pthread utilisant les
  * arguments et retournant une valeur
  *
@@ -13,7 +13,7 @@
 #include <errno.h>
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -37,14 +37,14 @@ void launch(void ){
   for(int i=0;i<SIZE;i++) {
     v[i]=1;
   }
-  int err=pthread_create(&(mythread),NULL,&f,(void *) v); 
+  int err=pthread_create(&(mythread),NULL,&f,(void *) v);
   if(err!=0)
-    error(err,"pthread_create");  
+    error(err,"pthread_create");
 }
 
 
 int main (int argc, char *argv[])  {
-  
+
   launch();
   // ...
   return(EXIT_SUCCESS);

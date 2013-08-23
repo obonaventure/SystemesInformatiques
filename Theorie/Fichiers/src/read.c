@@ -1,7 +1,7 @@
 /**************************************
  * read.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * fichiers
  *
  *************************************/
@@ -39,7 +39,7 @@ int main (int argc, char *argv[])  {
     perror("open");
     exit(EXIT_FAILURE);
   }
-  if( write(fd, (void *) s, strlen(s)) == -1 ) 
+  if( write(fd, (void *) s, strlen(s)) == -1 )
     exit_on_error("write s");
   if (write(fd, (void *) &n, sizeof(int )) == -1)
     exit_on_error("write n");
@@ -62,29 +62,29 @@ int main (int argc, char *argv[])  {
 
   if(read(fd, (void *) s2, strlen(s))==-1)
     exit_on_error("read s");
-  printf("Donnée écrite : %s, lue: %s\n",s,s2);
+  printf("DonnÃ©e Ã©crite : %s, lue: %s\n",s,s2);
 
   if(read(fd, (void *) &n2, sizeof(int))==-1)
     exit_on_error("read n");
-  printf("Donnée écrite : %d, lue: %d\n",n,n2);
+  printf("DonnÃ©e Ã©crite : %d, lue: %d\n",n,n2);
 
   if(read(fd, (void *) &ns2, sizeof(short))==-1)
     exit_on_error("read ns");
-  printf("Donnée écrite : %d, lue: %d\n",ns,ns2);
+  printf("DonnÃ©e Ã©crite : %d, lue: %d\n",ns,ns2);
 
   if(read(fd, (void *) &nl2, sizeof(long))==-1)
     exit_on_error("read nl");
-  printf("Donnée écrite : %ld, lue: %ld\n",nl,nl2);
+  printf("DonnÃ©e Ã©crite : %ld, lue: %ld\n",nl,nl2);
 
   if(read(fd, (void *) &f2, sizeof(float))==-1)
     exit_on_error("read f");
-  printf("Donnée écrite : %f, lue: %f\n",f,f2);
+  printf("DonnÃ©e Ã©crite : %f, lue: %f\n",f,f2);
   err=close(fd);
   if(err==-1){
    perror("close");
     exit(EXIT_FAILURE);
-  } 
-     
+  }
+
   return(EXIT_SUCCESS);
 }
 ///BBB

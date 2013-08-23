@@ -1,8 +1,8 @@
 /**************************************
  * pthread-mutex.c
- * 
- * Programme d'exemple de pthread avec 
- * utilisation de mutex pour éviter une 
+ *
+ * Programme d'exemple de pthread avec
+ * utilisation de mutex pour Ã©viter une
  * violation de section critique
  *
  **************************************/
@@ -15,7 +15,7 @@
 
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -24,7 +24,7 @@ void error(int err, char *msg) {
 #define NTHREADS 4
 
 long global=0;
-pthread_mutex_t mutex_global; 
+pthread_mutex_t mutex_global;
 
 int increment(int i) {
   return i+1;
@@ -47,13 +47,13 @@ void *func(void * param) {
 int main (int argc, char *argv[])  {
   pthread_t thread[NTHREADS];
   int err;
-  
+
   err=pthread_mutex_init( &mutex_global, NULL);
   if(err!=0)
       error(err,"pthread_mutex_init");
 
   for(int i=0;i<NTHREADS;i++) {
-    err=pthread_create(&(thread[i]),NULL,&func,NULL); 
+    err=pthread_create(&(thread[i]),NULL,&func,NULL);
     if(err!=0)
       error(err,"pthread_create");
   }
@@ -64,7 +64,7 @@ int main (int argc, char *argv[])  {
     if(err!=0)
       error(err,"pthread_join");
   }
-  
+
   err=pthread_mutex_destroy(&mutex_global);
   if(err!=0)
     error(err,"pthread_mutex_destroy");

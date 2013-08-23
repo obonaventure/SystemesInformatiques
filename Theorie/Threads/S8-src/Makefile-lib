@@ -2,10 +2,10 @@
 # Makefile for library imax and imath
 #
 
-GCC	= gcc 
+GCC	= gcc
 AR	= ar
 ARFLAGS = -cvq
-CFLAGS = -Wall -std=c99 -g -c 
+CFLAGS = -Wall -std=c99 -g -c
 LDFLAGS = --static -g
 
 all: imath
@@ -18,7 +18,7 @@ libimax.a: imax.o
 	@echo building libimax
 	$(AR) $(ARFLAGS) libimax.a imax.o
 
-imath.o: imath.c imax.h 
+imath.o: imath.c imax.h
 	@echo compiling imath.o
 	$(GCC) $(CFLAGS) imath.c
 

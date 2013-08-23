@@ -1,7 +1,7 @@
 /**************************************
  * writeperf.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * write - performances
  *
  *************************************/
@@ -45,10 +45,10 @@ int main (int argc, char *argv[])  {
   char **endptr=NULL;
 
   int c;
-       
+
   int syncflag=false;
   long size=10000;
-  
+
   while ((c = getopt (argc, argv, "sl:")) != -1) {
     switch (c)
       {
@@ -75,7 +75,7 @@ int main (int argc, char *argv[])  {
   if(err==-1)
     exit_on_error("unlink");
   for(void *ptr=mem;ptr<mem+TESTSIZE;ptr=ptr+size) {
-    if( write(fd, (void *) ptr, size) == -1 ) 
+    if( write(fd, (void *) ptr, size) == -1 )
       exit_on_error("write");
     if(syncflag)
       sync();
@@ -85,8 +85,8 @@ int main (int argc, char *argv[])  {
   if(err==-1){
    perror("close");
     exit(EXIT_FAILURE);
-  } 
-     
+  }
+
   return(EXIT_SUCCESS);
 }
 ///BBB

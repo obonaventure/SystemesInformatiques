@@ -1,8 +1,8 @@
 /**************************************
  * nfork.c
- * 
- * Programme lançant plusieurs copies
- * de lui même
+ *
+ * Programme lanÃ§ant plusieurs copies
+ * de lui mÃªme
  *
  *************************************/
 

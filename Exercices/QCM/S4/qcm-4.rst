@@ -8,7 +8,7 @@
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
   <script type="text/javascript" src="js/rst-form.js"></script>
   <script type="text/javascript" src="js/prettify.js"></script>
-  <script type="text/javascript">$nmbr_prop = 3</script> 
+  <script type="text/javascript">$nmbr_prop = 3</script>
 
 
 
@@ -19,7 +19,7 @@ Quatrième semaine
 Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
 
  - :ref:`ordinateurs`
- - :ref:`ia32` 
+ - :ref:`ia32`
 
 Question 1. Instruction ``mov``
 -------------------------------
@@ -43,8 +43,8 @@ Parmi les traductions en assembleur ci-dessus, une seule est correcte. Laquelle 
 -
  .. code-block:: nasm
 
-    movl    $1234, g                
-    movl    $5678, g2               
+    movl    $1234, g
+    movl    $5678, g2
     movl    g, %ecx
     movl    %ecx, s
     movl    g2, %ecx
@@ -55,8 +55,8 @@ Parmi les traductions en assembleur ci-dessus, une seule est correcte. Laquelle 
 -
  .. code-block:: nasm
 
-    movl    $1234, g                
-    movl    $5678, g2               
+    movl    $1234, g
+    movl    $5678, g2
     movl    g, %eax
     movl    %eax, s
     movl    g2, %eax
@@ -70,8 +70,8 @@ Parmi les traductions en assembleur ci-dessus, une seule est correcte. Laquelle 
 -
  .. code-block:: nasm
 
-    movl    g, $1234                
-    movl    g2, $5678               
+    movl    g, $1234
+    movl    g2, $5678
     movl    %eax, g
     movl    s, %eax
     movl    %eax, g2
@@ -86,8 +86,8 @@ Parmi les traductions en assembleur ci-dessus, une seule est correcte. Laquelle 
 -
  .. code-block:: nasm
 
-    movl    $1234, g                
-    movl    $5678, g2               
+    movl    $1234, g
+    movl    $5678, g2
     movl    g2, %eax
     movl    %edx, s
     movl    g, %eax
@@ -103,8 +103,8 @@ Parmi les traductions en assembleur ci-dessus, une seule est correcte. Laquelle 
 -
  .. code-block:: nasm
 
-    movw    $1234, g                
-    movw    $5678, g2               
+    movw    $1234, g
+    movw    $5678, g2
     movb    g2, %eax
     movb    %eax, s
     movb    g, %eax
@@ -119,8 +119,8 @@ Parmi les traductions en assembleur ci-dessus, une seule est correcte. Laquelle 
 -
  .. code-block:: nasm
 
-    movw    $1234, g                
-    movw    $5678, g2               
+    movw    $1234, g
+    movw    $5678, g2
     movb    g2, %edx
     movb    %edx, s
     movb    g, %edx
@@ -150,7 +150,7 @@ Une seule des séquences d'instructions assembleur ci-dessous est une traduction
 
 -
  .. code-block:: nasm
- 
+
         movl    a, %eax
         addl    b, %eax
         movl    %eax, a
@@ -172,7 +172,7 @@ Une seule des séquences d'instructions assembleur ci-dessous est une traduction
         movl    %eax, b
         movl    b, %eax
         subl    a, %eax
-        movl    %eax, c 
+        movl    %eax, c
 
 
 .. class:: negative
@@ -195,12 +195,12 @@ Une seule des séquences d'instructions assembleur ci-dessous est une traduction
  .. class:: comment
 
            Ceci est la traduction de  :
- 
+
            .. code-block:: c
 
        	      a=b+a;
   	      b=b++;
-  	      c=a-b; 
+  	      c=a-b;
 
 -
  .. code-block:: nasm
@@ -225,7 +225,7 @@ Une seule des séquences d'instructions assembleur ci-dessous est une traduction
 
 	  c=b+a;
   	  b=b++;
-  	  a=a-b; 
+  	  a=a-b;
 
 -
  .. code-block:: nasm
@@ -250,7 +250,7 @@ Une seule des séquences d'instructions assembleur ci-dessous est une traduction
 
             b=b+a;
   	    a=b++;
-  	    c=b-a; 
+  	    c=b-a;
 
 Question 3. Instructions conditionnelles
 ----------------------------------------
@@ -349,7 +349,7 @@ Une seule des séquences d'instructions assembleur ci-dessous est une traduction
 
 -
  .. code-block:: nasm
- 
+
     begin:
         cmpl    $4, b
         jl      end
@@ -393,7 +393,7 @@ Une seule des séquences d'instructions assembleur ci-dessous est une traduction
 Question 4. Instructions conditionnelles
 ----------------------------------------
 
-Les instructions conditionnelles sont fréquemment utilisées en langage C et en assembleur. Considérons le fragment de programme C ci-dessous : 
+Les instructions conditionnelles sont fréquemment utilisées en langage C et en assembleur. Considérons le fragment de programme C ci-dessous :
 
  .. code-block:: c
 
@@ -445,7 +445,7 @@ Une seule des séquences d'instructions en assembleur ci-dessous correspond à c
 -
  .. code-block:: nasm
 
-    if: 
+    if:
         movl    a, %eax
         cmpl    b, %eax
         jne     next
@@ -463,10 +463,10 @@ Une seule des séquences d'instructions en assembleur ci-dessous correspond à c
            if(a==b)
     	      c++;
 
-- 
+-
  .. code-block:: nasm
 
-    if: 
+    if:
         movl    a, %eax
         cmpl    b, %eax
         jle     next
@@ -501,7 +501,7 @@ Une seule des séquences d'instructions en assembleur ci-dessous correspond à c
        Ceci est l'implémentation de :
 
        .. code-block:: c
- 
+
           if(a<b)
     	    c++;
 
@@ -522,7 +522,7 @@ Une seule des séquences d'instructions en assembleur ci-dessous correspond à c
        Ceci est l'implémentation de :
 
        .. code-block:: c
- 
+
           if(a!=b)
     	    c++;
 
@@ -617,7 +617,7 @@ Parmi les séquences d'assembleur ci-dessous, une seule est une traduction corre
           if(a>=b)
    	   b++;
   	  else
-    	   a++; 
+    	   a++;
 
 -
  .. code-block:: nasm
@@ -664,7 +664,7 @@ Parmi les séquences d'assembleur ci-dessous, une seule est une traduction corre
         movl    a, %eax
         addl    $1, %eax
         movl    %eax, a
-     end:	
+     end:
 
  .. class:: comment
 
@@ -690,7 +690,7 @@ Parmi les séquences d'assembleur ci-dessous, une seule est une traduction corre
         movl    b, %eax
         addl    $1, %eax
         movl    %eax, b
-    end:	
+    end:
 
  .. class:: comment
 
@@ -742,7 +742,7 @@ Parmi les séquences d'assembleur ci-dessous, une seule est une traduction corre
 -
  .. code-block:: nasm
 
-     begin: 
+     begin:
         movl    c, %eax
         cmpl    a, %eax
         je      end
@@ -776,7 +776,7 @@ Parmi les séquences d'assembleur ci-dessous, une seule est une traduction corre
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
@@ -789,7 +789,7 @@ Parmi les séquences d'assembleur ci-dessous, une seule est une traduction corre
 -
  .. code-block:: nasm
 
-    begin: 
+    begin:
         movl    a, %eax
         addl    $1, %eax
         movl    %eax, a
@@ -803,10 +803,10 @@ Parmi les séquences d'assembleur ci-dessous, une seule est une traduction corre
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
-  
+
        do
        {
          a++;
@@ -832,7 +832,7 @@ Parmi les séquences d'assembleur ci-dessous, une seule est une traduction corre
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
@@ -882,7 +882,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit 
 
     begin:
         movl    $0, a
-    loop: 
+    loop:
         movl    c, %eax
         cmpl    a, %eax
         jle     end
@@ -892,7 +892,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit 
         movl    a, %eax
         addl    $1, %eax
         movl    %eax, a
-        jmp     loop 
+        jmp     loop
      end:
 
 .. class:: negative
@@ -904,7 +904,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit 
         movl    a, %eax
         addl    $1, %eax
         movl    %eax, a
-    loop: 
+    loop:
         movl    c, %eax
         cmpl    a, %eax
         jle     end
@@ -918,7 +918,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit 
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
@@ -946,7 +946,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit 
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
@@ -972,7 +972,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit 
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
@@ -986,7 +986,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit 
  .. code-block:: nasm
 
     begin:
-    loop:  
+    loop:
         movl    a, %eax
         cmpl    c, %eax
         jge     end
@@ -1001,14 +1001,14 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit 
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
       for(;a<c;a++) {
         a=0;
    	b=b-c;
-      }	
+      }
 
 
 Question 8. Fonctions
@@ -1019,7 +1019,7 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
 .. code-block:: c
 
 
-   int f(int i) 
+   int f(int i)
    {
      return i+a;
    }
@@ -1039,7 +1039,7 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
         ret
 
 
-    
+
 -
  .. code-block:: nasm
 
@@ -1055,14 +1055,14 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
-       int f(int i) 
+       int f(int i)
        {
          int j=a;
-  	 return j+i; 
+  	 return j+i;
        }
 
 
@@ -1083,13 +1083,13 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
        void f3(int i) // incorrect
        {
-         int j=i+a; 
+         int j=i+a;
        }
 
 -
@@ -1103,15 +1103,15 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
 
-       int f() 
+       int f()
        {
         int i;
-  	return i+a; 
+  	return i+a;
        }
 
 
@@ -1130,11 +1130,11 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
-       int f(char c) 
+       int f(char c)
        {
          return c+a;
        }
@@ -1154,13 +1154,13 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
-       char f(char c) 
+       char f(char c)
        {
-         return c+a; 
+         return c+a;
        }
 
 
@@ -1236,17 +1236,17 @@ Parmi les groupes d'instructions ci-dessous, un seul est la traduction de cette 
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
-       int max(int i, int j) { 
+       int max(int i, int j) {
         if (i<j)
    	 return j;
  	  else
     	  return i;
        }
- 
+
 
 .. class:: negative
 
@@ -1273,12 +1273,12 @@ Parmi les groupes d'instructions ci-dessous, un seul est la traduction de cette 
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
 
-       int max(int i) { 
+       int max(int i) {
          if (i<i)
     	  return i;
   	 else
@@ -1302,7 +1302,7 @@ Parmi les groupes d'instructions ci-dessous, un seul est la traduction de cette 
         jmp     label2
     label1:
         movl    (%esp), %eax
-        movl    %eax, 8(%esp) 
+        movl    %eax, 8(%esp)
     label2:
         movl    8(%esp), %eax
         addl    $12, %esp
@@ -1310,7 +1310,7 @@ Parmi les groupes d'instructions ci-dessous, un seul est la traduction de cette 
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
@@ -1349,7 +1349,7 @@ Parmi les groupes d'instructions ci-dessous, un seul est la traduction de cette 
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
@@ -1367,7 +1367,7 @@ Les fonctions récursives sont parfois utilisées en langage C. Lors de leur ex�
 
 .. code-block:: c
 
-   int f(int i) 
+   int f(int i)
    {
     return a+f(i-1);
    }
@@ -1390,9 +1390,9 @@ Parmi les séquences d'instructions assembleur ci-dessous, une seule est une tra
         movl    -4(%ebp), %ecx
         subl    $1, %ecx
         movl    %ecx, (%esp)
-        movl    %eax, -8(%ebp)      
+        movl    %eax, -8(%ebp)
         calll   f
-        movl    -8(%ebp), %ecx      
+        movl    -8(%ebp), %ecx
         addl    %eax, %ecx
         movl    %ecx, %eax
         addl    $12, %esp
@@ -1424,7 +1424,7 @@ Parmi les séquences d'instructions assembleur ci-dessous, une seule est une tra
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
@@ -1449,9 +1449,9 @@ Parmi les séquences d'instructions assembleur ci-dessous, une seule est une tra
         movl    a, %eax
         movl    -4(%ebp), %ecx
         movl    %ecx, (%esp)
-        movl    %eax, -8(%ebp)     
+        movl    %eax, -8(%ebp)
         calll   f
-        movl    -8(%ebp), %ecx     
+        movl    -8(%ebp), %ecx
         addl    %eax, %ecx
         movl    %ecx, %eax
         addl    $12, %esp
@@ -1461,7 +1461,7 @@ Parmi les séquences d'instructions assembleur ci-dessous, une seule est une tra
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
@@ -1473,7 +1473,7 @@ Parmi les séquences d'instructions assembleur ci-dessous, une seule est une tra
 -
  .. code-block:: nasm
 
-    f: 
+    f:
         pushl   %ebp
         movl    %esp, %ebp
         subl    $8, %esp
@@ -1489,13 +1489,13 @@ Parmi les séquences d'instructions assembleur ci-dessous, une seule est une tra
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
        int f(int i) // incorrect
        {
-        return f(i+a); 
+        return f(i+a);
        }
 
 -
@@ -1518,11 +1518,11 @@ Parmi les séquences d'instructions assembleur ci-dessous, une seule est une tra
 
  .. class:: comment
 
-    Ceci est la traduction de : 
+    Ceci est la traduction de :
 
     .. code-block:: c
 
-       int f(int i) 
+       int f(int i)
        {
          int j=f(i-1);
  	 return a;

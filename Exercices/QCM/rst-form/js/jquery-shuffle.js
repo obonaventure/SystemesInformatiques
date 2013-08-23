@@ -10,7 +10,7 @@
  * Shuffles an array or the children of a element container.
  * This uses the Fisher-Yates shuffle algorithm <http://jsfromhell.com/array/shuffle [v1.0]>
  */
- 
+
 (function($){
 
 	$.fn.shuffle = function() {
@@ -19,10 +19,10 @@
 			return (items.length) ? $(this).html($.shuffle(items)) : this;
 		});
 	}
-	
+
 	$.shuffle = function(arr) {
 		for(var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
 		return arr;
 	}
-	
+
 })(jQuery);

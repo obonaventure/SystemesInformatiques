@@ -1,6 +1,6 @@
 /**************************************
  * stresep.c
- * 
+ *
  * Implementation partielle de strtol
  *
  **************************************/
@@ -37,8 +37,8 @@ int main(int argc, char *argv[])
   s = "1252m";
   li = mystrtol(s,&p,10);
   if(p!=NULL) {
-    printf("Caractère erronné : %c\n",*p);
-      // p pointe vers le caractère en erreur
+    printf("CaractÃ¨re erronnÃ© : %c\n",*p);
+      // p pointe vers le caractÃ¨re en erreur
   }
   printf("Valeur convertie : %s -> %ld\n",s,li);
   return(EXIT_SUCCESS);

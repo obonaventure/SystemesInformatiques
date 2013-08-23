@@ -22,11 +22,11 @@ Glossaire
  CISC
     Complex Instruction Set Computer
 
- x86     
+ x86
     Famille de microprocesseurs développée par intel_. Le 8086 est le premier processeur de cette famille. Ses successeurs (286, 386, Pentium, Centrino, Xeon, ...) sont restés compatibles avec lui tout en introduisant chacun de nouvelles instructions et de nouvelles fonctionnalités. Aujourd'hui, plusieurs fabricants développent des processeurs qui supportent le même langage machine que les processeurs de cette famille.
 
  Unix
-    Système d'exploitation développé initialement par AT&T Bell Labs. 
+    Système d'exploitation développé initialement par AT&T Bell Labs.
 
  gcc
     Compilateur pour la langage C développé par un groupe de volontaires qui est diffusé depuis http://gcc.gnu.org gcc est utilisé dans plusieurs systèmes d'exploitation de type Unix, comme MacOS, Linux ou FreeBSD. Il existe d'autres compilateurs C. Une liste non-exhaustive est maintenue sur http://en.wikipedia.org/wiki/List_of_compilers#C_compilers
@@ -84,7 +84,7 @@ Glossaire
 
  OpenBSD
     Variante de BSD Unix disponible depuis http://www.openbsd.org
- 
+
  MacOS
     Système d'exploitation développé par Apple Inc. comprenant de nombreux composantes provenant de :term:`FreeBSD`
 
@@ -103,7 +103,7 @@ Glossaire
 
  GNU is not Unix
  GNU
-    GNU est un projet open-source de la Free Software Foundation qui a permis le développement d'un grand nombre d'utilitaires utilisés par les systèmes d'exploitation de la famille Unix actuellement. 
+    GNU est un projet open-source de la Free Software Foundation qui a permis le développement d'un grand nombre d'utilitaires utilisés par les systèmes d'exploitation de la famille Unix actuellement.
 
  GNU/Linux
      Nom générique donné à un système d'exploitation utilisant les utilitaires :term:`GNU` notamment et le noyau :term:`Linux` .
@@ -117,8 +117,8 @@ Glossaire
  Aqua
      Aqua est une interface graphique spécifique à :term:`MacOS`.
 
- pipe 
-     Mécanisme de redirection des entrées-sorties permettant de relier la sortie standard d'un programme à l'entrée standard d'un autre pour créer des pipelines de traitement. 
+ pipe
+     Mécanisme de redirection des entrées-sorties permettant de relier la sortie standard d'un programme à l'entrée standard d'un autre pour créer des pipelines de traitement.
 
  assembleur
      Programme permettant de convertir un programme écrit en langage d'assemblage dans le langage machine correspondant à un processeur donné.
@@ -128,56 +128,56 @@ Glossaire
 
  bit de poids fort
      Par convention, le bit le plus à gauche d'une séquence de n bits.
- 
+
  bit de poids faible
      Par convention, bit le plus à droite d'une séquence de n bits.
- 
+
  simple précision
      Représentation de nombre réels en virgule flottante (type ``float`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 32 bits.
- 
+
  double précision
      Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 64 bits.
- 
+
  buffer overflow
      Problème à compléter
- 
+
  garbage collector
      Algorithme permettant de libérer la mémoire qui n'est plus utilisée notamment dans des langages tels que Java
- 
+
  pointeur
      à compléter
 
  adresse
      à compléter
- 
+
  C99
      Standard international définissant le langage C [C99]_
 
  fichier header
      à compléter
- 
+
  segmentation fault
      Erreur à l'exécution à compléter
- 
+
  NOT
  négation
-     Opération binaire logique. 
+     Opération binaire logique.
 
  AND
  conjonction logique
-     Opération binaire logique. 
- 
+     Opération binaire logique.
+
  OR
  disjonction logique
-    Opération binaire logique. 
- 
+    Opération binaire logique.
+
  XOR
  ou exclusif
-    Opération binaire logique. 
- 
+    Opération binaire logique.
+
  libc
      Librairie C standard. Contient de nombreuses fonctions utilisables par les programmes écrits en langage C et décrites dans la troisième section des pages de manuel. Linux utilise la librairie GNU `glibc <http://www.gnu.org/software/libc/manual/>`_ qui contient de nombreuses extensions par rapport à la libraire standard.
- 
+
  FSF
      Free Software Foundation, http://www.fsf.org
 
@@ -221,11 +221,11 @@ Glossaire
       à compléter
 
  processus
-   Ensemble cohérent d'instructions utilisant une partie de la mémoire, initié par le système d'exploitation et exécuté sur un des processeurs du système. Le système d'exploitation libère les ressources qui lui sont allouées à la fin de son exécution. 
+   Ensemble cohérent d'instructions utilisant une partie de la mémoire, initié par le système d'exploitation et exécuté sur un des processeurs du système. Le système d'exploitation libère les ressources qui lui sont allouées à la fin de son exécution.
 
  pid
  process identifier
-      identifiant de processus. Sous Unix, chaque processus est identifié par un entier unique. Cet identifiant sert de clé d'accès à la :term:`table des processus`. Voir `getpid(2)`_ pour récupérer l'identifiant du processus courant.     
+      identifiant de processus. Sous Unix, chaque processus est identifié par un entier unique. Cet identifiant sert de clé d'accès à la :term:`table des processus`. Voir `getpid(2)`_ pour récupérer l'identifiant du processus courant.
 
  table des processus
       Table contenant les identifiants (:term:`pid`) de tous les processus qui s'exécutent à ce moment sur un système Unix. Outre les identifiants, cette table contient de nombreuses informations relatives à chaque :term:`processus`. Voir également :term:`/proc`
@@ -248,7 +248,7 @@ Glossaire
 
  DRAM
  dynamic RAM
-     Un des deux principaux types de mémoire. Dans une DRAM, l'information est mémorisée comme la présence ou l'absence de charge dans un minuscule condensateur. Les mémoires DRAM sont plus lentes que les :term:`SRAM` mais ont une plus grande capacité. 
+     Un des deux principaux types de mémoire. Dans une DRAM, l'information est mémorisée comme la présence ou l'absence de charge dans un minuscule condensateur. Les mémoires DRAM sont plus lentes que les :term:`SRAM` mais ont une plus grande capacité.
 
  RAM
  Random Access Memory
@@ -256,7 +256,7 @@ Glossaire
 
 
  registre
-     Unité de mémoire intégrée au processeur. Les registres sont utilisés comme source ou destination pour la plupart des opérations effectuées par un processeur. 
+     Unité de mémoire intégrée au processeur. Les registres sont utilisés comme source ou destination pour la plupart des opérations effectuées par un processeur.
 
  hiérarchie de mémoire
      Ensemble des mémoires utilisées sur un ordinateur. Depuis les registres jusqu'à la mémoire virtuelle en passant par la mémoire centrale et les mémoires caches.
@@ -299,16 +299,16 @@ Glossaire
 
  ligne de cache
        à compléter. Voir notamment [McKenney2005]_ et  [Drepper2007]_
- 
+
  write-back
        à compléter
- 
+
  program counter
        à compléter
 
  makefile
        à compléter
- 
+
  fichier objet
        à compléter
 
@@ -324,7 +324,7 @@ Glossaire
  kHz
        à compléter
 
- MHz   
+ MHz
     à compléter
 
  GHz
@@ -365,7 +365,7 @@ Glossaire
 
  changement de contexte
        à compléter
- 
+
  interruption
        à compléter
 
@@ -400,115 +400,115 @@ Glossaire
        à compléter
 
  problèmes des readers-writers
-       à compléter     
+       à compléter
 
  inode
-       à compléter     
+       à compléter
 
  segment de données
-       à compléter     
+       à compléter
 
  problème des readers-writers
-       à compléter     
+       à compléter
 
  thread-safe
-        à compléter     
+        à compléter
 
  loi de Amdahl
-       à compléter     
+       à compléter
 
  static library
  librairie statique
-        à compléter     
+        à compléter
 
  shared library
  librairie dynamique
  librairie partagée
-       à compléter     
+       à compléter
 
  kernel
-       à compléter     
+       à compléter
 
  mode utilisateur
-       à compléter     
+       à compléter
 
  mode protégé
-       à compléter     
+       à compléter
 
  processus père
-       à compléter     
+       à compléter
 
  processus fils
-       à compléter     
+       à compléter
 
  processus orphelin
-       à compléter     
+       à compléter
 
  processus zombie
-       à compléter     
+       à compléter
 
  filesystem
  système de fichiers
-       à compléter     
+       à compléter
 
  descripteur de fichier
-       à compléter     
+       à compléter
 
  répertoire
-       à compléter     
+       à compléter
 
  secteur
-       à compléter     
+       à compléter
 
  répertoire courant
-       à compléter     
+       à compléter
 
  offset pointer
-       à compléter     
+       à compléter
 
  little endian
-       à compléter     
+       à compléter
 
  big endian
-       à compléter     
+       à compléter
 
  lien symbolique
-       à compléter     
+       à compléter
 
  lock
-       à compléter     
+       à compléter
 
  advisory lock
  advisory locking
-       à compléter     
+       à compléter
 
  mandatory lock
  mandatory locking
        à compléter
-     
+
  open file object
-       à compléter     
+       à compléter
 
  sémaphore nommé
-       à compléter     
+       à compléter
 
  appel système lent
-       à compléter     
+       à compléter
 
  handler
-       à compléter     
+       à compléter
 
  signal synchrone
-       à compléter     
+       à compléter
 
  signal asynchrone
-       à compléter     
+       à compléter
 
  interpréteur
        à compléter
 
  MMU
- Memory Management Unit 
+ Memory Management Unit
        à compléter
 
  adresse virtuelle
@@ -542,13 +542,13 @@ Glossaire
 
  adresse physique
        à compléter
- 
+
  page fault
  défaut de page
        à compléter
 
  file FIFO
-       De "First In, First Out". Le premier élement à entrer dans la file sera le premier à en sortir. (!= LIFO, "Last In First Out") 
+       De "First In, First Out". Le premier élement à entrer dans la file sera le premier à en sortir. (!= LIFO, "Last In First Out")
 
  dirty bit
  bit de modification
@@ -566,6 +566,6 @@ Glossaire
 
 
 
- 
+
 
 

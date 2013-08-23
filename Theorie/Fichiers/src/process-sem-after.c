@@ -1,9 +1,9 @@
 /**************************************
  * process-sem-before.c
- * 
- * Programme d'exemple de sémaphores nommés
- * La fonction after ne peut s'exécuter 
- * qu'après la fonction before
+ *
+ * Programme d'exemple de sÃ©maphores nommÃ©s
+ * La fonction after ne peut s'exÃ©cuter
+ * qu'aprÃ¨s la fonction before
  **************************************/
 
 #include <pthread.h>
@@ -18,7 +18,7 @@
 #include <unistd.h>
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -38,7 +38,7 @@ void after() {
 int main (int argc, char *argv[])  {
   int err;
 
-  // semaphore a été créé par before
+  // semaphore a Ã©tÃ© crÃ©Ã© par before
   semaphore=sem_open("lsinf1252",0);
   if(semaphore==SEM_FAILED) {
       error(-1,"sem_open");

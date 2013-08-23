@@ -1,6 +1,6 @@
 /**************************************
  * strerror.c
- * 
+ *
  * Programme d'exemple strerror
  *
  **************************************/
@@ -14,7 +14,7 @@
 int main (int argc, char *argv[])  {
 
   for(int i=0; i<999;i++) {
-    printf("strerror[%d] est à l'adresse %p\n",i,strerror(i));
+    printf("strerror[%d] est Ã  l'adresse %p\n",i,strerror(i));
   };
 
   return(EXIT_SUCCESS);

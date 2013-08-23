@@ -1,7 +1,7 @@
 /**************************************
  * fork-wait.c
- * 
- * Programme d'exemple d'utilisation de 
+ *
+ * Programme d'exemple d'utilisation de
  * wait
  *
  *************************************/

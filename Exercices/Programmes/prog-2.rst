@@ -59,7 +59,7 @@ Mini-Projets
         * `strcasecmp(3)`_
 
    Le mini-projet est à soumettre via le gestionnaire de code partagé Subversion (SVN). Vous devez vous inscrire à subversion dans le projet ``SINF1252_2013`` en suivant le lien et les instructions sur `<http://wiki.student.info.ucl.ac.be/index.php/Svn>`_. Regardez la section :ref:`svn` pour une explication sur subversion.
-   
+
    Sur le SVN, soumettez votre code dans le dossier ``Projet_S2``. Vous devrez créer un fichier ``string.c`` contenant la définition des fonctions et un fichier ``string.h`` avec les `déclarations <http://en.wikipedia.org/wiki/Declaration_(computer_programming)>`_ des fonctions. Vous devez aussi fournir un Makefile (cfr :ref:`make`) qui permettra à votre tuteur de recompiler facilement votre programme en tapant ``make``. Pensez à implémenter quelques tests pour vos fonctions dans la fonction ``main`` et ne placez pas l'exécutable sur le svn.
 
 
@@ -67,7 +67,7 @@ Mini-Projets
 #. Lorsque l'on veut améliorer les performances d'un programme, il est utile de pouvoir mesurer précisément son temps d'exécution. La commande `time(1posix)`_ permet d'effectuer cette mesure depuis la ligne de commande. Parfois, on souhaite mesurer le temps de calcul une partie critique d'un code. Une façon simple pour obtenir cette mesure est d'utiliser `gettimeofday(2)`_ comme dans l'exemple ci-dessous (:download:`/Exercices/Programmes/s2_perf.c`).
 
         .. literalinclude:: /Exercices/Programmes/s2_perf.c
-                :encoding: iso-8859-1
+                :encoding: utf-8
                 :language: c
 
    Pour certaines opérations, les performances dépendent du type de données utilisé. Modifiez le programme ci-dessous de façon à utiliser un calcul plus compliqué que la simple addition et comparez sur de longues itérations (:math:`10^7` ou plus) les performances de cette opération lorsqu'elle utilise des ``int``, ``long long``, ``double`` ou ``float``. Les performances sont-elles identiques ?

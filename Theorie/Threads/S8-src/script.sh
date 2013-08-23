@@ -10,13 +10,13 @@ then
     head -1 $1 | grep "^#\!" >>/dev/null
     if [ $? ]
     then
-	echo "Script interprétable"
+	echo "Script interprÃ©table"
 	exit 0
     else
-	echo "Script non-interprétable"
+	echo "Script non-interprÃ©table"
 	exit 1
     fi
 else
-    echo "Bit x non mis dans les métadonnées"
+    echo "Bit x non mis dans les mÃ©tadonnÃ©es"
     exit 1
 fi

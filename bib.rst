@@ -41,7 +41,7 @@ Bibliographie
 
 .. [Dijkstra1968] Dijkstra, E., `Go To Statement Considered Harmful`, Communications of the ACM, 11, March 1968, http://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD215.html Voir aussi [Tribble2005]_
 
-.. [Downey2008] Downey, A., `The Little Book of Semaphores`, Second Edition, Green Tea Press, 2008, 
+.. [Downey2008] Downey, A., `The Little Book of Semaphores`, Second Edition, Green Tea Press, 2008,
 
 .. [Drepper2007] Drepper, U., `What every programmer should know about memory`, 2007, http://www.akkadia.org/drepper/cpumemory.pdf
 
@@ -105,7 +105,7 @@ Bibliographie
 
 .. [Toomey2011] Toomey, W.,  `The Strange Birth and Long Life of Unix`, IEEE Spectrum, December 2011, http://spectrum.ieee.org/computing/software/the-strange-birth-and-long-life-of-unix
 
-.. [Tribble2005] Tribble, D., `Go To Statement Considered Harmful: A Retrospective`, 2005, http://david.tribble.com/text/goto.html 
+.. [Tribble2005] Tribble, D., `Go To Statement Considered Harmful: A Retrospective`, 2005, http://david.tribble.com/text/goto.html
 
 .. [Walls2006] Walls, D., `How to Use the restrict Qualifier in C`. Sun Microsystems, 2006, http://developers.sun.com/solaris/articles/cc_restrict.html
 

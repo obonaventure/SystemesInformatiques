@@ -8,16 +8,16 @@
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
   <script type="text/javascript" src="js/rst-form.js"></script>
   <script type="text/javascript" src="js/prettify.js"></script>
-  <script type="text/javascript">$nmbr_prop = 3</script> 
+  <script type="text/javascript">$nmbr_prop = 3</script>
 
 
 =================
-Cinquième Semaine 
+Cinquième Semaine
 =================
 
 Cette semaine porte sur deux modules de théorie. Le premier est la fin du chapitre consacré aux bases du langage C :
 
- - :ref:`complementsC` 
+ - :ref:`complementsC`
 
 Le second est le début du chapitre consacré aux systèmes multiprocesseurs et l'utilisation de threads en particulier :
 
@@ -37,7 +37,7 @@ Pour comprendre le fonctionnement des pointeurs en C, il est parfois utile de se
 	       ptr=&a;
            }
 
-Parmi les séquences d'instructions en assembleur ci-dessous, une seule est la traduction de l'assignation de l'adresse de ``a`` au pointeur ``ptr``. Laquelle 
+Parmi les séquences d'instructions en assembleur ci-dessous, une seule est la traduction de l'assignation de l'adresse de ``a`` au pointeur ``ptr``. Laquelle
 
 .. class:: positive
 
@@ -58,7 +58,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule est la t
 
  .. class:: comment
 
-    Cette séquence d'instructions est la traduction de ``*ptr=a``. 
+    Cette séquence d'instructions est la traduction de ``*ptr=a``.
 
 -
  .. code-block:: nasm
@@ -68,7 +68,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule est la t
 
  .. class:: comment
 
-    Cette séquence d'instructions est la traduction de ``ptr=(int )a;``. 
+    Cette séquence d'instructions est la traduction de ``ptr=(int )a;``.
 
 -
  .. code-block:: nasm
@@ -83,7 +83,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule est la t
  .. class:: comment
 
     Cette séquence d'instructions est la traduction de :
-    
+
     .. code-block:: c
 
        int b=a;
@@ -98,7 +98,7 @@ Parmi les séquences d'instructions en assembleur ci-dessous, une seule est la t
 
  .. class:: comment
 
-    Cette séquence d'instructions est la traduction de ``ptr=&a+1;``. 
+    Cette séquence d'instructions est la traduction de ``ptr=&a+1;``.
 
 
 Question 2. Pointeurs et tableaux
@@ -122,9 +122,9 @@ Après exécution de ``ptr=&(a[0]);``, une seule des instructions ci-dessous aff
 
 -
  .. code-block:: c
- 
+
    printf("%d %d %d %d\n",*ptr,*(ptr+1),*(ptr+2),*(ptr+*(ptr+3)));
-    
+
 
 .. class:: negative
 
@@ -163,13 +163,13 @@ Après exécution de ``ptr=&(a[0]);``, une seule des instructions ci-dessous aff
 
  .. class:: comment
 
-    Cette ligne est syntaxiquement invalide. L'expression ``ptr+(ptr+3)`` est invalide. On ne peut pas additionner deux pointeurs. 
+    Cette ligne est syntaxiquement invalide. L'expression ``ptr+(ptr+3)`` est invalide. On ne peut pas additionner deux pointeurs.
 
 
 
 Question 3. Traitement de ``argv``
 ----------------------------------
- 
+
 Un programme C doit souvent pouvoir manipuler les arguments qui lui sont passés. Les variables ``argc`` et ``argv`` qui sont passées à la fonction ``main`` permettent d'accéder à ces arguments. Le fragment de programme ci-dessous affiche sur la sortie standard ses différents arguments.
 
 .. code-block:: c
@@ -243,13 +243,13 @@ A côté de la notation ``argv[i]``, il est aussi possible d'accéder à ``argv`
         printf("%d %p %s\n",i,&(ptr),*ptr);
     	i++;
     	ptr++;
-      }	
-  
+      }
+
    .. class:: comment
 
       Notez dans ce code que ``ptr`` est déclaré comme ``char *``, alors que ``argv`` est un ``char **``. Si vous tenez d'exécutez ce code, il provoquera un segmentation fault.
 
-- 
+-
    .. code-block:: c
 
       int i=0;
@@ -257,7 +257,7 @@ A côté de la notation ``argv[i]``, il est aussi possible d'accéder à ``argv`
          printf("%d %p %s\n",i,&(argv+i),*(argv+i));
     	 i++;
       }
- 
+
    .. class:: comment
 
       La compilation de ce fragment de programme provoque un warning. L'expression ``&(argv+i)`` est invalide car ``argv`` est un pointeur (de type ``char **``) et donc ``argv+i`` est également une adresse en mémoire et l'opérateur ``&`` ne peut pas s'y appliquer.
@@ -308,7 +308,7 @@ Parmi les fragments de programme ci-dessous, un seul utilisant la notation avec 
       int *ptr;
 
       ptr=&(m[0][0]);
-      printf("%p %d %d %d\n",ptr, *(ptr+4*1+2), *(ptr+4*0+5), *(ptr+2*4+2)); 
+      printf("%p %d %d %d\n",ptr, *(ptr+4*1+2), *(ptr+4*0+5), *(ptr+2*4+2));
 
 
 .. class:: negative
@@ -317,17 +317,17 @@ Parmi les fragments de programme ci-dessous, un seul utilisant la notation avec 
    .. code-block:: c
 
       int **ptr=m;
-      printf("%p %d %d %d\n",ptr, *(ptr+4*1+2), *(ptr+4*0+5), *(ptr+2*4+2)); 
+      printf("%p %d %d %d\n",ptr, *(ptr+4*1+2), *(ptr+4*0+5), *(ptr+2*4+2));
 
    .. class:: comment
 
-      La déclaration ``int **ptr=m`` est invalide. 
- 
+      La déclaration ``int **ptr=m`` est invalide.
+
 -
    .. code-block:: c
 
       int *ptr=m;
-      printf("%p %d %d %d\n",ptr, *(ptr+4*1+2), *(ptr+4*0+5), *(ptr+2*4+2)); 
+      printf("%p %d %d %d\n",ptr, *(ptr+4*1+2), *(ptr+4*0+5), *(ptr+2*4+2));
 
 
    .. class:: comment
@@ -354,7 +354,7 @@ En C, la variable ``errno`` est utilisée par le système pour fournir une indic
 
       Notez que `malloc(3)`_ retourne ``NULL`` en cas d'erreur d'allocation.
 
-- `exit(2)`_ 
+- `exit(2)`_
 
    .. class:: comment
 
@@ -402,7 +402,7 @@ La fonction `pthread_create(3)`_ permet de créer un thread. Parmi les fragments
       pthread_t t;
       int err;
       char *s;
-      err=pthread_create(&t,NULL,&(f),(void *) s); 
+      err=pthread_create(&t,NULL,&(f),(void *) s);
     }
 
 .. class:: negative
@@ -420,7 +420,7 @@ La fonction `pthread_create(3)`_ permet de créer un thread. Parmi les fragments
       pthread_t t;
       int err;
       char *s;
-      err=pthread_create(&t,NULL,&(f),(void *) &s); 
+      err=pthread_create(&t,NULL,&(f),(void *) &s);
     }
 
  .. class:: comment
@@ -428,7 +428,7 @@ La fonction `pthread_create(3)`_ permet de créer un thread. Parmi les fragments
 
     Ce fragment contient une erreur. La fonction ``f`` a la bonne signature, mais le dernier argument à `pthread_create(3)`_ doit être de type ``void *``, or ``s`` est un ``char *`` et donc ce dernier argument doit être ``(void *) s``.
 
-- 
+-
   .. code-block:: c
 
      void f(void * param) {
@@ -441,14 +441,14 @@ La fonction `pthread_create(3)`_ permet de créer un thread. Parmi les fragments
       pthread_t *t;
       int err;
       char *s;
-      err=pthread_create(t,NULL,*f,(void *) *s); 
+      err=pthread_create(t,NULL,*f,(void *) *s);
     }
 
   .. class:: comment
 
      Ce fragment contient plusieurs erreurs. La fonction ``f`` n'a pas la bonne signature (d'ailleurs ``return NULL;`` pour une fonction ``void`` est incorrect). Ensuite, l'appel à `pthread_create(3)`_ doit prendre comme premier argument l'adresse vers une structure de type ``pthread_t`` qui est stockée en mémoire. Ce n'est pas le cas ici. Les troisième et quatrième arguments sont également incorrects.
 
-- 
+-
  .. code-block:: c
 
 
@@ -462,7 +462,7 @@ La fonction `pthread_create(3)`_ permet de créer un thread. Parmi les fragments
       pthread_t t;
       int err;
       char s;
-      err=pthread_create(&t,NULL,&(f),(void *) s);  
+      err=pthread_create(&t,NULL,&(f),(void *) s);
     }
 
  .. class:: comment
@@ -483,7 +483,7 @@ Considérons un thread qui a pour objectif de convertir une fraction en un nombr
      int denum;
    };
 
-   typedef struct fraction Fraction_t; 
+   typedef struct fraction Fraction_t;
 
    float tofloat(Fraction_t t) {
      return (float) t.num/ (float) t.denum;
@@ -495,7 +495,7 @@ Parmi les programmes ci-dessous, un seul calcule correctement la valeur attendue
 
 .. class:: positive
 
-- 
+-
   .. code-block:: c
 
      void *mythread(void * param) {
@@ -506,7 +506,7 @@ Parmi les programmes ci-dessous, un seul calcule correctement la valeur attendue
      }
 
      int main (int argc, char *argv[])  {
-     
+
       pthread_t t;
       Fraction_t f;
       f.num=1;
@@ -514,10 +514,10 @@ Parmi les programmes ci-dessous, un seul calcule correctement la valeur attendue
       float *r;
       int err;
 
-      err=pthread_create(&t,NULL,&mythread,&(f)); 
+      err=pthread_create(&t,NULL,&mythread,&(f));
 
       err=pthread_join(t,(void **) &r);
-     
+
      }
 
 .. class:: negative
@@ -541,10 +541,10 @@ Parmi les programmes ci-dessous, un seul calcule correctement la valeur attendue
       float r;
       int err;
 
-      err=pthread_create(&t,NULL,&mythread,&(f)); 
+      err=pthread_create(&t,NULL,&mythread,&(f));
 
       err=pthread_join(t,(void **) &r);
-  
+
      }
 
  .. class:: comment
@@ -571,7 +571,7 @@ Parmi les programmes ci-dessous, un seul calcule correctement la valeur attendue
       float r;
       int err;
 
-      err=pthread_create(&t,NULL,&mythread,&f); 
+      err=pthread_create(&t,NULL,&mythread,&f);
       r=pthread_join(t,NULL);
 
      }
@@ -598,14 +598,14 @@ Parmi les programmes ci-dessous, un seul calcule correctement la valeur attendue
        float *r;
        int err;
 
-       err=pthread_create(&t,NULL,&mythread,&(f)); 
+       err=pthread_create(&t,NULL,&mythread,&(f));
 
        err=pthread_join(t,(void *) &r);
       }
 
  .. class:: comment
 
-    Cette variante contient deux erreurs. La première est le prototype de la fonction ``mythread``. Celle-ci doit obligatoirement être de type ``void * fct(void * param)``, il n'est pas possible d'utiliser un autre prototype. Ensuite, l'appel à `pthread_join(3)`_ est incorrect puisque le deuxième argument de `pthread_join(3)`_ doit être de type ``void **`` et non ``void *``. 
+    Cette variante contient deux erreurs. La première est le prototype de la fonction ``mythread``. Celle-ci doit obligatoirement être de type ``void * fct(void * param)``, il n'est pas possible d'utiliser un autre prototype. Ensuite, l'appel à `pthread_join(3)`_ est incorrect puisque le deuxième argument de `pthread_join(3)`_ doit être de type ``void **`` et non ``void *``.
 
 
 .. include:: ../../../links.rst

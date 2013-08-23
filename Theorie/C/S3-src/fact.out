@@ -1,16 +1,16 @@
-La variable nombre est à l'adresse : 0x100000e68
-Le tableau msg est à l'adresse : 0x1000010a0
-La variable locale f est à l'adresse : 0x7fff5fbfe1dc
-La fonction main est à l'adresse : 0x100000b6b
-La fonction max est à l'adresse : 0x100000b46
+La variable nombre est Ã  l'adresse : 0x100000e68
+Le tableau msg est Ã  l'adresse : 0x1000010a0
+La variable locale f est Ã  l'adresse : 0x7fff5fbfe1dc
+La fonction main est Ã  l'adresse : 0x100000b6b
+La fonction max est Ã  l'adresse : 0x100000b46
 ///FACT
-La fonction fact est à l'adresse : 0x100000a0f
-La fonction times est à l'adresse : 0x1000009d8
-La variable nombre vaut 3 et est à l'adresse 0x7fff5fbfe1ac
+La fonction fact est Ã  l'adresse : 0x100000a0f
+La fonction times est Ã  l'adresse : 0x1000009d8
+La variable nombre vaut 3 et est Ã  l'adresse 0x7fff5fbfe1ac
 [fact(3)]: Valeur de n:3, adresse: 0x7fff5fbfe17c
-[fact(3)]: appel à fact(2)
+[fact(3)]: appel Ã  fact(2)
 [fact(2)]: Valeur de n:2, adresse: 0x7fff5fbfe14c
-[fact(2)]: appel à fact(1)
+[fact(2)]: appel Ã  fact(1)
 [fact(1)]: Valeur de n:1, adresse: 0x7fff5fbfe11c
 [fact(1)]: return(1)
 [fact(2)]: calcul de times(2,1)

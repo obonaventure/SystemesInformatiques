@@ -1,7 +1,7 @@
 /***********************************************
  * random
- * 
- * Utilisation de nombres aléatoires
+ *
+ * Utilisation de nombres alÃ©atoires
  *
  ***********************************************/
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
    if (r%2==0)
      pair++;
  }
- printf("%d nombres pairs ont été générés\n",pair);
+ printf("%d nombres pairs ont Ã©tÃ© gÃ©nÃ©rÃ©s\n",pair);
    ///BBB
    return(EXIT_SUCCESS);
 }

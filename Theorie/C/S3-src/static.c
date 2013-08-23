@@ -1,6 +1,6 @@
 /**************************************
  * static.c
- * 
+ *
  * Programme d'exemple d'utilisation de static
  *
  **************************************/
@@ -11,7 +11,7 @@
 
 void f(int i) {
   static int sum;
-  
+
 }
 
 int main(int argc, char *argv[]) {

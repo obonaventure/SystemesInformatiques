@@ -32,7 +32,7 @@ static sudoku_t sudokus[] = {
 static void print_sudoku(sudoku_t *s)
 {
 	int i, j;
-	
+
 	for (i = 0; i < SUDOKU_DIM; ++i) {
 		if (!(i % SUDOKU_BOX))
 			printf("+-------+-------+-------+\n");
@@ -50,7 +50,7 @@ static void print_sudoku(sudoku_t *s)
 static int validate_sudoku(sudoku_t *s)
 {
 	int i, j, k, l;
-	
+
 	/* check sum of rows and columns + check that they only
 	 * contain once one number from [1, 9] */
 	for (i = 0; i < SUDOKU_DIM; ++i) {
@@ -72,7 +72,7 @@ static int validate_sudoku(sudoku_t *s)
 		if (sum_row != 45 || sum_col != 45)
 			return 0;
 	}
-	
+
 	/* check sum of boxes */
 	for (k = 0; k < SUDOKU_DIM / SUDOKU_BOX; ++k) {
 		for (l = 0; l < SUDOKU_DIM / SUDOKU_BOX; ++l) {
@@ -84,8 +84,8 @@ static int validate_sudoku(sudoku_t *s)
 				return 0;
 		}
 	}
-	
-	
+
+
 	return 1;
 }
 
@@ -94,6 +94,6 @@ int main(int argc, char *argv[])
 {
 	/* A COMPLETER */
 	print_sudoku(&sudokus[0]);
-	
+
 	return 0;
 }

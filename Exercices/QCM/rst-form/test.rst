@@ -4,7 +4,7 @@
   <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="js/jquery-shuffle.js"></script>
   <script type="text/javascript" src="js/rst-form.js"></script>
-  <script type="text/javascript">$nmbr_prop = 4</script> 
+  <script type="text/javascript">$nmbr_prop = 4</script>
 
 =================
 Questionnaire RST
@@ -28,9 +28,9 @@ obtient notamment le terme :
 - :math:`4 \times x^3`
 - :math:`5`
 - :math:`6 \times x`
-  
+
 .. class:: negative
-  
+
 - :math:`4 \times x^2`
 
   .. class:: comment
@@ -58,9 +58,9 @@ obtient notamment le terme :
 - :math:`4 \times x^3`
 - :math:`5`
 - :math:`6 \times x`
-  
+
 .. class:: negative
-  
+
 - :math:`4 \times x^2`
 
   .. class:: comment
@@ -89,9 +89,9 @@ obtient notamment le terme :
 - :math:`4 \times x^3`
 - :math:`5`
 - :math:`6 \times x`
-  
+
 .. class:: negative
-  
+
 - :math:`4 \times x^2`
 
   .. class:: comment

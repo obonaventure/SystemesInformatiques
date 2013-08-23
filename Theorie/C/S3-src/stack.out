@@ -1,9 +1,9 @@
-Bas du stack 0x100100080  
-Item at addr 0x100100090  :  Fraction 0/1   Next 0x100100080 
-Bas du stack 0x100100080  
-Item at addr 0x1001000c0  :  Fraction 1/4   Next 0x1001000b0 
-Item at addr 0x1001000b0  :  Fraction 1/3   Next 0x1001000a0 
-Item at addr 0x1001000a0  :  Fraction 1/2   Next 0x100100090 
-Item at addr 0x100100090  :  Fraction 0/1   Next 0x100100080 
-Bas du stack 0x100100080  
+Bas du stack 0x100100080
+Item at addr 0x100100090  :  Fraction 0/1   Next 0x100100080
+Bas du stack 0x100100080
+Item at addr 0x1001000c0  :  Fraction 1/4   Next 0x1001000b0
+Item at addr 0x1001000b0  :  Fraction 1/3   Next 0x1001000a0
+Item at addr 0x1001000a0  :  Fraction 1/2   Next 0x100100090
+Item at addr 0x100100090  :  Fraction 0/1   Next 0x100100080
+Bas du stack 0x100100080
 Popped : 1/4

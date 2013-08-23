@@ -45,7 +45,7 @@ void f6()
 
 int main() {
 
- 
+
 
 }
 

@@ -25,7 +25,7 @@ int f3(int i) // incorrect
 
 int f4(int i) // incorrect
 {
-  return f4(i+a); 
+  return f4(i+a);
 }
 
 int f5(int i) // incorrect
@@ -37,14 +37,14 @@ int f5(int i) // incorrect
 char f6(char c) // incorrect
 {
   return a+f6(c-1);
- 
+
 }
 
 
 
 int main() {
 
- 
+
 
 }
 

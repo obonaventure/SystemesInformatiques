@@ -1,6 +1,6 @@
 /**************************************
  * prog
- * 
+ *
  * Programme d'exemple pour le linker
  *
  **************************************/
@@ -13,7 +13,7 @@
 
 #define SIZE 4
 
-extern int num1; // définie dans un autre module
+extern int num1; // dÃ©finie dans un autre module
 int num2=1252;   // accessible depuis un autre module
 static int num3=-1; // accessible uniquement dans ce module
 
@@ -21,7 +21,7 @@ void f() {
   static int n=0;
   int loc=2;
   if(n==0)
-    printf("n est à  l'adresse %p et loc à l'adresse %p\n",&n,&loc); 
+    printf("n est Ã   l'adresse %p et loc Ã  l'adresse %p\n",&n,&loc);
   printf("f, n=%d\n",n);
   n++;
 }

@@ -1,8 +1,8 @@
 /**************************************
  * pthread-spin.c
- * 
- * Programme d'exemple de pthread avec 
- * utilisation de spinlock pour éviter une 
+ *
+ * Programme d'exemple de pthread avec
+ * utilisation de spinlock pour Ã©viter une
  * violation de section critique
  *
  **************************************/
@@ -15,7 +15,7 @@
 
 
 void error(int err, char *msg) {
-  fprintf(stderr,"%s a retourné %d, message d'erreur : %s\n",msg,err,strerror(errno));
+  fprintf(stderr,"%s a retournÃ© %d, message d'erreur : %s\n",msg,err,strerror(errno));
   exit(EXIT_FAILURE);
 }
 
@@ -44,11 +44,11 @@ void *func(void * param) {
 int main (int argc, char *argv[])  {
   pthread_t thread[NTHREADS];
   int err;
-  
+
   pthread_spin_init( &spinlock_global, 0);
-  
+
   for(int i=0;i<NTHREADS;i++) {
-    err=pthread_create(&(thread[i]),NULL,&func,NULL); 
+    err=pthread_create(&(thread[i]),NULL,&func,NULL);
     if(err!=0)
       error(err,"pthread_create");
   }

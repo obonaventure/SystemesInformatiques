@@ -1,8 +1,8 @@
 /**************************************
  * fctptr.c
- * 
- * Programme d'exemple pour les pointeurs 
- * vers des fonctions 
+ *
+ * Programme d'exemple pour les pointeurs
+ * vers des fonctions
  *
  **************************************/
 
