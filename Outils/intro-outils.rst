@@ -89,6 +89,308 @@ déjà l'utiliser de façon plus basique pour le premier projet et
 lire les parties suivantes une fois que vous voulez consolider
 votre connaissance et apprendre plus en détail comment ça fonctionne
 sans toutefois voir toutes ses possibilités.
+Toutefois, la lecture de cette partie n'est pas nécessaire pour comprendre
+les parties suivantes donc si vous voulez juste parfaire votre
+connaissance, vous pouvez la passer sans crainte.
+
+Créer un historique linéaire
+############################
+
+Un historique linéaire est un historique comme on l'imagine avec des versions
+l'une après l'autre, chaque version étant la précédente à laquelle on ajoute
+certaines modifications.
+On verra par après qu'on sait avoir un historique non-linéaire avec `Git`_
+mais ce n'est pas indispensable.
+
+Sur `Git`_, on appelle une version un *commit*.
+Pour chacun de ces commits, il a besoin du nom de l'auteur, son email
+et un titre.
+On spécifiera l'email et l'auteur une fois pour toute mais pour
+le titre, il sera différent pour chaque version.
+`Git`_ ouvrira un éditeur de texte pour que vous spécifiez ce titre.
+Pour donner votre nom, email et éditeur de texte à ouvrir pour le titre,
+exécutez les commandes suivantes en remplaçant le nom, l'email et
+l'éditeur de texte par le vôtre bien entendu
+
+.. code-block:: bash
+
+   $ git config --global user.name "Jean Dupont"
+   $ git config --global user.email jean@dupont.com
+   $ git config --global core.editor gedit
+
+Comme vous avez spécifié ``--global``, `Git`_ appliquera ces configurations
+sur tous les dépôts `Git`_ (c'est les projets pour lesquels
+vous avez un historique contrôlé par `Git`_) de votre ordinateur.
+
+Vous voilà paré à créer votre premier dépôt `Git`_.
+On va utiliser les commandes
+
+ * `git-init(3)`_ qui permet de transformer un projet en dépôt `Git`_
+   (tout est stoqué dans le dossier ``.git``);
+ * `git-diff(3)`_ qui donne les modifications des fichiers par rapport
+   à leur état dans la dernière version de l'historique maintenu par `Git`_;
+ * `git-status(3)`_ qui affiche les fichiers modifiés et ceux qui vont être
+   commités;
+ * `git-add(3)`_ qui spécifie quels fichiers doivent faire partie du prochain
+   commit;
+ * `git-commit(3)`_ qui commit les fichiers choisis;
+ * et `git-log(3)`_ qui montre tous les commits de l'historique.
+
+Voyons tout ça avec un programme exemple qui affiche en :math:`\LaTeX`
+la somme des entiers de :math:`1` à :math:`n`.
+La première version sera la suivante
+
+.. code-block:: c
+
+   #include <stdio.h>
+   #include <stdlib.h>
+
+   int main (int argc, char *argv[]) {
+     long int sum = 0, i, n = 42;
+     for (i = 1; i <= n; i++) {
+       sum += i;
+     }
+     printf("\\sum_{i=1}^{%ld} i = %ld\n", n, sum);
+     return EXIT_SUCCESS;
+   }
+
+Ça fonctionne donc comme suit
+
+.. code-block:: bash
+
+   $ gcc main.c
+   $ ./a.out
+   \sum_{i=1}^{42} i = 903
+   $ rm a.out
+
+On va faire un premier commit contenant cette version de ``main.c``
+
+.. code-block:: bash
+
+   $ git init
+   Initialized empty Git repository in /home/blegat/tmp2/.git/
+   $ git status
+   # On branch master
+   #
+   # Initial commit
+   #
+   # Untracked files:
+   #   (use "git add <file>..." to include in what will be committed)
+   #
+   #	main.c
+   nothing added to commit but untracked files present (use "git add" to track)
+   $ git add main.c
+   $ git status
+   # On branch master
+   #
+   # Initial commit
+   #
+   # Changes to be committed:
+   #   (use "git rm --cached <file>..." to unstage)
+   #
+   #	new file:   main.c
+   #
+   $ git commit -m "First commit"
+   [master (root-commit) 3d18efe] First commit
+    1 file changed, 11 insertions(+)
+    create mode 100644 main.c
+   $ git log
+   commit 3d18efe4df441ebe7eb2b8d0b78832a3861dc05f
+   Author: Benoît Legat <benoit.legat@gmail.com>
+   Date:   Sun Aug 25 15:32:42 2013 +0200
+
+       First commit
+
+Modifions maintenant le programme pour qu'il prenne la valeur de
+:math:`n` dans ``argv``
+
+.. code-block:: bash
+
+   $ gcc main.c
+   $ ./a.out 10
+   \sum_{i=1}^{10} i = 55
+   $ ./a.out 9.75
+   $ echo $?
+   1
+   $ rm a.out
+   $ git status
+   # On branch master
+   # Changes not staged for commit:
+   #   (use "git add <file>..." to update what will be committed)
+   #   (use "git checkout -- <file>..." to discard changes in working directory)
+   #
+   #	modified:   main.c
+   #
+   no changes added to commit (use "git add" and/or "git commit -a")
+   $ git diff
+   diff --git a/main.c b/main.c
+   index 86601ed..a9e4c4a 100644
+   --- a/main.c
+   +++ b/main.c
+   @@ -2,7 +2,12 @@
+    #include <stdlib.h>
+
+    int main (int argc, char *argv[]) {
+   -  long int sum = 0, i, n = 42;
+   +  long int sum = 0, i, n;
+   +  char *end = NULL;
+   +  n = strtol(argv[1], &end, 10);
+   +  if (*end != '\0') {
+   +    return EXIT_FAILURE;
+   +  }
+      for (i = 1; i <= n; i++) {
+        sum += i;
+      }
+   $ git add main.c
+   $ git commit -m "Read n from argv"
+   [master 56ce59c] Read n from argv
+    1 file changed, 6 insertions(+), 1 deletion(-)
+   $ git log
+   commit 56ce59c54726399c18b3f87ee23a45cf0d7f015d
+   Author: Benoît Legat <benoit.legat@gmail.com>
+   Date:   Sun Aug 25 15:37:51 2013 +0200
+
+       Read n from argv
+
+   commit 3d18efe4df441ebe7eb2b8d0b78832a3861dc05f
+   Author: Benoît Legat <benoit.legat@gmail.com>
+   Date:   Sun Aug 25 15:32:42 2013 +0200
+
+       First commit
+
+On va maintenant s'occupé d'un *segmentation fault* qui arrive
+quand il n'y a pas d'argument.
+
+.. code-block:: bash
+
+   $ gcc main.c
+   $ ./a.out
+   Segmentation fault (core dumped)
+
+On va simplement vérifier la valeur de ``argc`` et utiliser :math:`42` comme
+valeur par défaut
+
+.. code-block:: bash
+
+   $ git diff
+   diff --git a/main.c b/main.c
+   index a9e4c4a..e906ea1 100644
+   --- a/main.c
+   +++ b/main.c
+   @@ -2,11 +2,13 @@
+    #include <stdlib.h>
+
+    int main (int argc, char *argv[]) {
+   -  long int sum = 0, i, n;
+   +  long int sum = 0, i, n = 42;
+      char *end = NULL;
+   -  n = strtol(argv[1], &end, 10);
+   -  if (*end != '\0') {
+   -    return EXIT_FAILURE;
+   +  if (argc > 1) {
+   +    n = strtol(argv[1], &end, 10);
+   +    if (*end != '\0') {
+   +      return EXIT_FAILURE;
+   +    }
+      }
+      for (i = 1; i <= n; i++) {
+        sum += i;
+   $ git add main.c
+   $ git commit -m "Fix SIGSEV"
+   [master 7a26c63] Fix SIGSEV
+    1 file changed, 6 insertions(+), 4 deletions(-)
+   $ git log
+   commit 7a26c6338c38614ce1c4ff00ac0a6895b57f15cb
+   Author: Benoît Legat <benoit.legat@gmail.com>
+   Date:   Sun Aug 25 15:39:49 2013 +0200
+
+       Fix SIGSEV
+
+   commit 56ce59c54726399c18b3f87ee23a45cf0d7f015d
+   Author: Benoît Legat <benoit.legat@gmail.com>
+   Date:   Sun Aug 25 15:37:51 2013 +0200
+
+       Read n from argv
+
+   commit 3d18efe4df441ebe7eb2b8d0b78832a3861dc05f
+   Author: Benoît Legat <benoit.legat@gmail.com>
+   Date:   Sun Aug 25 15:32:42 2013 +0200
+
+       First commit
+
+Contribuer au syllabus
+######################
+
+`Git`_ est déjà un outil très pratique à utiliser seul mais c'est quand
+on l'utilise pour se partager du code qu'il devient vraiment indispensable.
+On se partage le code par l'intermédiaire de *remotes*.
+C'est en pratique des serveur auquels on peut avoir l'accès lecteur et/ou
+écriture.
+Dans le cas du syllabus, vous n'avez pas l'accès écriture.
+La manière que Github utilise pour règler ça c'est que vous *forkez* le
+projet principal.
+C'est à dire que vous en faites un copie indépendante à votre nom.
+À celle là vous avez l'accès écriture.
+Vous allez ensuite soumettre vos changement sur celle là puis les
+proposer à travers l'interface de Github qu'on appelle *Pull request*.
+Conventionnellement, on appelle la *remote* du dépôt principal *upstream*
+et le votre *origin*.
+
+Commencez donc par vous connecter sur Github, aller à l'
+`adresse du code du syllabus
+<https://github.com/obonaventure/SystemesInformatiques/>`_ et cliquez
+sur *Fork*.
+
+Vous pouvez maintenant obtenir le code du syllabus avec la commande
+`git-clone(3)`_
+(remplacez ``username`` par votre nom d'utilisateur sur Github)
+
+.. code-block:: bash
+
+   git clone https://github.com/username/SystemesInformatiques.git
+
+Vous pouvez alors faire les changements que vous désirer puis les committer
+comme montré à la section précédente.
+Il est utile de garder le code à jour avec *upstream*.
+Pour cela, il faut commencer par ajouter la remote
+
+.. code-block:: bash
+
+   git remote add upstream https://github.com/obonaventure/SystemesInformatiques.git
+
+À chaque fois que vous voudrez vous mettre à jour, avec `git-pull(3)`_
+
+.. code-block:: bash
+
+   git pull upstream master
+
+Une fois vos changements commités, vous pouvez les ajouter à *origin* avec
+`git-push(3)`_
+
+.. code-block:: bash
+
+   git push origin master
+
+Votre amélioration devrait normalement être visible
+`ici <https://github.com/obonaventure/SystemesInformatiques/network>`_.
+Vous pouvez maintenant aller sur Github à la page de votre fork et
+cliquer sur *Pull Requests* puis *New pull request* et expliquer
+vos changements.
+
+Si plus tard vous voulez encore modifier le syllabus,
+il vous suffira de mettre à jour le code en local
+
+.. code-block:: bash
+
+   git pull upstream master
+
+committer vos changements, les ajouter à *origin*
+
+.. code-block:: bash
+
+   git push origin master
+
+puis faire un nouveau pull request.
 
 Historique créé par Git
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -1256,7 +1558,7 @@ On a un fichier ``main.c`` contenant
 
    #include <stdio.h>
    #include <stdlib.h>
-   
+
    int main (int argc, char *argv[]) {
      int *n = (int*) malloc(sizeof(int));
      *n = 42;
@@ -1365,7 +1667,7 @@ les cas limites et committons le
    --- a/main.c
    +++ b/main.c
    @@ -3,6 +3,10 @@
-    
+
     int main (int argc, char *argv[]) {
       int *n = (int*) malloc(sizeof(int));
    +  if (*n == NULL) {
