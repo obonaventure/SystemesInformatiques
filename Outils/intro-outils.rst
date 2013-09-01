@@ -50,11 +50,18 @@ On l'utilise le plus souvent à l'aide de l'utilitaire `git(3)`_ mais il
 existe aussi des
 `applications graphiques <http://git-scm.com/downloads/guis>`_.
 
+Les différentes versions sont enregistrées dans des commits qui sont liées
+au commit constituant la version précédente.
+On sait ainsi facilement voir ce qui a changé entre deux versions
+(pas spécialement, une version et la suivante)
+et même restaurer l'état de certains fichiers à une version sauvegardée
+dans un commit.
+
 Contrairement à `subversion`_, il est décentralisé, c'est à dire que chaque
 développeur a toute l'information nécessaire pour utiliser `Git`_,
 il ne doit pas passer par un serveur où les données sont centralisées à
 chaque commande.
-Ça prend éventuellement plus d'espace disque mais comme on travaille
+Cela prend éventuellement plus d'espace disque mais comme on travaille
 avec des documents de type texte, ce n'est pas critique.
 Les avantages, par contre, sont nombreux.
 On a pas besoin d'être connecté au serveur pour l'utiliser,
@@ -79,15 +86,15 @@ qu'il a une façon assez différente de fonctionner des autres.
 Utilisation simple de Git
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On peut utiliser `Git`_ à plusieurs niveau.
+On peut utiliser `Git`_ à plusieurs niveaux.
 On peut tout à fait avoir un historique linéaire tout en profitant pleinement
 de `Git`_.
-Pour ceux donc c'est la première fois qu'ils utilisent un système de contrôle
+Pour ceux dont c'est la première fois qu'ils utilisent un système de contrôle
 de version,
 il vaut peut-être mieux commencer par ne lire que cette partie et
 déjà l'utiliser de façon plus basique pour le premier projet et
 lire les parties suivantes une fois que vous voulez consolider
-votre connaissance et apprendre plus en détail comment ça fonctionne
+votre connaissance et apprendre plus en détails comment ça fonctionne
 sans toutefois voir toutes ses possibilités.
 Toutefois, la lecture de cette partie n'est pas nécessaire pour comprendre
 les parties suivantes donc si vous voulez juste parfaire votre
@@ -97,15 +104,15 @@ Créer un historique linéaire
 ############################
 
 Un historique linéaire est un historique comme on l'imagine avec des versions
-l'une après l'autre, chaque version étant la précédente à laquelle on ajoute
+l'une après l'autre, chaque version étendant la précédente avec
 certaines modifications.
-On verra par après qu'on sait avoir un historique non-linéaire avec `Git`_
-mais ce n'est pas indispensable.
+On verra par après qu'il est possible d'avoir un historique non-linéaire
+avec `Git`_ mais ce n'est pas indispensable.
 
 Sur `Git`_, on appelle une version un *commit*.
-Pour chacun de ces commits, il a besoin du nom de l'auteur, son email
-et un titre.
-On spécifiera l'email et l'auteur une fois pour toute mais pour
+Chacun de ces commits est documenté en fournissant le nom de l'auteur,
+son email et un commentaire.
+On spécifiera l'email et l'auteur une fois pour toutes mais pour
 le titre, il sera différent pour chaque version.
 `Git`_ ouvrira un éditeur de texte pour que vous spécifiez ce titre.
 Pour donner votre nom, email et éditeur de texte à ouvrir pour le titre,
@@ -119,22 +126,22 @@ l'éditeur de texte par le vôtre bien entendu
    $ git config --global core.editor gedit
 
 Comme vous avez spécifié ``--global``, `Git`_ appliquera ces configurations
-sur tous les dépôts `Git`_ (c'est les projets pour lesquels
+sur tous les dépôts `Git`_ (ce sont les projets pour lesquels
 vous avez un historique contrôlé par `Git`_) de votre ordinateur.
 
-Vous voilà paré à créer votre premier dépôt `Git`_.
+Vous voilà paré pour créer votre premier dépôt `Git`_.
 On va utiliser les commandes
 
- * `git-init(3)`_ qui permet de transformer un projet en dépôt `Git`_
+ * `git-init(1)`_ qui permet de transformer un projet en dépôt `Git`_
    (tout est stoqué dans le dossier ``.git``);
- * `git-diff(3)`_ qui donne les modifications des fichiers par rapport
+ * `git-diff(1)`_ qui donne les modifications des fichiers par rapport
    à leur état dans la dernière version de l'historique maintenu par `Git`_;
- * `git-status(3)`_ qui affiche les fichiers modifiés et ceux qui vont être
+ * `git-status(1)`_ qui affiche les fichiers modifiés et ceux qui vont être
    commités;
- * `git-add(3)`_ qui spécifie quels fichiers doivent faire partie du prochain
+ * `git-add(1)`_ qui spécifie quels fichiers doivent faire partie du prochain
    commit;
- * `git-commit(3)`_ qui commit les fichiers choisis;
- * et `git-log(3)`_ qui montre tous les commits de l'historique.
+ * `git-commit(1)`_ qui commit les fichiers choisis;
+ * et `git-log(1)`_ qui montre tous les commits de l'historique.
 
 Voyons tout ça avec un programme exemple qui affiche en :math:`\LaTeX`
 la somme des entiers de :math:`1` à :math:`n`.
@@ -154,16 +161,22 @@ La première version sera la suivante
      return EXIT_SUCCESS;
    }
 
-Ça fonctionne donc comme suit
+Ce programme fonctionne comme suit
 
 .. code-block:: bash
 
    $ gcc main.c
    $ ./a.out
    \sum_{i=1}^{42} i = 903
-   $ rm a.out
 
-On va faire un premier commit contenant cette version de ``main.c``
+On va sauvegarder un premier commit contenant cette version de ``main.c``
+
+`git-init(1)`_ permet d'initialiser le dépôt `Git`_.
+`git-status(1)`_ analyse le contenu du répertoire.
+Il indique que le fichier ``main.c`` n'est pas suivi par `Git`_ (`untracked`).
+Ce fichier est ajouté avec la commande `git-add(1)`_.
+`git-commit(1)`_ sauvegarde cette version du code dans un commit
+dont le titre, spécifié avec l'option ``-m``, est *First commit*.
 
 .. code-block:: bash
 
@@ -202,7 +215,9 @@ On va faire un premier commit contenant cette version de ``main.c``
        First commit
 
 Modifions maintenant le programme pour qu'il prenne la valeur de
-:math:`n` dans ``argv``
+:math:`n` dans ``argv``.
+Si on compile le programme après modification, et qu'on exécute avec
+en argument :math:`10` puis :math:`9.75`, on obtient ce qui suit
 
 .. code-block:: bash
 
@@ -212,7 +227,12 @@ Modifions maintenant le programme pour qu'il prenne la valeur de
    $ ./a.out 9.75
    $ echo $?
    1
-   $ rm a.out
+
+On peut maintenant voir avec `git-status(1)`_ que le fichier ``main.c``
+a été modifié
+
+.. code-block:: bash
+
    $ git status
    # On branch master
    # Changes not staged for commit:
@@ -222,6 +242,13 @@ Modifions maintenant le programme pour qu'il prenne la valeur de
    #	modified:   main.c
    #
    no changes added to commit (use "git add" and/or "git commit -a")
+
+Avec `git-diff(1)`_, on peut voir quelles sont les lignes qui ont été
+retirées (elles commencent par un ``-``) et celles qui ont été ajoutées
+(elles commencent par un ``+``).
+
+.. code-block:: bash
+
    $ git diff
    diff --git a/main.c b/main.c
    index 86601ed..a9e4c4a 100644
@@ -241,10 +268,22 @@ Modifions maintenant le programme pour qu'il prenne la valeur de
       for (i = 1; i <= n; i++) {
         sum += i;
       }
+
+Ajoutons ``main.c`` aux modifications à mettre dans le prochain commit puis
+créons ce commit
+
+.. code-block:: bash
+
    $ git add main.c
    $ git commit -m "Read n from argv"
    [master 56ce59c] Read n from argv
     1 file changed, 6 insertions(+), 1 deletion(-)
+
+On peut maintenant voir le nouveau commit dans l'historique affiché par
+`git-log(1)`_
+
+.. code-block:: bash
+
    $ git log
    commit 56ce59c54726399c18b3f87ee23a45cf0d7f015d
    Author: Benoît Legat <benoit.legat@gmail.com>
@@ -258,7 +297,7 @@ Modifions maintenant le programme pour qu'il prenne la valeur de
 
        First commit
 
-On va maintenant s'occupé d'un *segmentation fault* qui arrive
+On va maintenant s'occuper d'un *segmentation fault* qui arrive
 quand il n'y a pas d'argument.
 
 .. code-block:: bash
@@ -267,8 +306,9 @@ quand il n'y a pas d'argument.
    $ ./a.out
    Segmentation fault (core dumped)
 
-On va simplement vérifier la valeur de ``argc`` et utiliser :math:`42` comme
-valeur par défaut
+Pour cela, on va simplement vérifier la valeur de ``argc`` et utiliser :math:`42` comme
+valeur par défaut.
+`git-diff(1)`_ nous permet de voir les changements qu'on a fait
 
 .. code-block:: bash
 
@@ -295,6 +335,9 @@ valeur par défaut
       }
       for (i = 1; i <= n; i++) {
         sum += i;
+
+On va maintenant committer ces changement dans un commit au titre *Fix SIGSEV*
+
    $ git add main.c
    $ git commit -m "Fix SIGSEV"
    [master 7a26c63] Fix SIGSEV
@@ -318,39 +361,41 @@ valeur par défaut
 
        First commit
 
+.. TODO 2 utilisateurs en même temps, conflits et merges
+
 Contribuer au syllabus
 ######################
 
 `Git`_ est déjà un outil très pratique à utiliser seul mais c'est quand
 on l'utilise pour se partager du code qu'il devient vraiment indispensable.
 On se partage le code par l'intermédiaire de *remotes*.
-C'est en pratique des serveur auquels on peut avoir l'accès lecteur et/ou
+Ce sont en pratique des serveur auquels on peut avoir l'accès lecteur et/ou
 écriture.
 Dans le cas du syllabus, vous n'avez pas l'accès écriture.
-La manière que Github utilise pour règler ça c'est que vous *forkez* le
+La manière dont Github utilise pour règler ça c'est que vous *forkez* le
 projet principal.
 C'est à dire que vous en faites un copie indépendante à votre nom.
 À celle là vous avez l'accès écriture.
 Vous allez ensuite soumettre vos changement sur celle là puis les
 proposer à travers l'interface de Github qu'on appelle *Pull request*.
 Conventionnellement, on appelle la *remote* du dépôt principal *upstream*
-et le votre *origin*.
+et la votre *origin*.
 
-Commencez donc par vous connecter sur Github, aller à l'
-`adresse du code du syllabus
+Commencez donc par vous connecter sur Github, allez à
+l'`adresse du code du syllabus
 <https://github.com/obonaventure/SystemesInformatiques/>`_ et cliquez
 sur *Fork*.
 
 Vous pouvez maintenant obtenir le code du syllabus avec la commande
-`git-clone(3)`_
+`git-clone(1)`_
 (remplacez ``username`` par votre nom d'utilisateur sur Github)
 
 .. code-block:: bash
 
    git clone https://github.com/username/SystemesInformatiques.git
 
-Vous pouvez alors faire les changements que vous désirer puis les committer
-comme montré à la section précédente.
+Vous pouvez alors faire les changements que vous désirez puis les committer
+comme expliqué à la section précédente.
 Il est utile de garder le code à jour avec *upstream*.
 Pour cela, il faut commencer par ajouter la remote
 
@@ -358,14 +403,14 @@ Pour cela, il faut commencer par ajouter la remote
 
    git remote add upstream https://github.com/obonaventure/SystemesInformatiques.git
 
-À chaque fois que vous voudrez vous mettre à jour, avec `git-pull(3)`_
+À chaque fois que vous voudrez vous mettre à jour, utilisez `git-pull(1)`_
 
 .. code-block:: bash
 
    git pull upstream master
 
 Une fois vos changements commités, vous pouvez les ajouter à *origin* avec
-`git-push(3)`_
+`git-push(1)`_
 
 .. code-block:: bash
 
@@ -395,11 +440,12 @@ puis faire un nouveau pull request.
 Historique créé par Git
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-`Git`_ crée un historique semblable à celui ci-dessous.
+`Git`_ crée un historique non-linéaire semblable à celui ci-dessous.
 C'est un exemple un peu exagéré de non-linéarité mais il est
 pédagogiquement intéressant.
 
-Ça forme un graphe orienté, c'est à dire que les arêtes ont une direction.
+Cet historique forme un graphe orienté,
+c'est à dire que les arêtes ont une direction.
 
 Les noeuds sont de 3 types,
  - en bleu, on a les commits, c'est comme un snapshot, c'est une
@@ -418,17 +464,17 @@ Les noeuds sont de 3 types,
    comme pour beaucoup d'autres systèmes de gestion de code
    partagé.
    Ils ont aussi un titre qui est affiché sur la deuxième ligne,
-   une description (optionnel), un auteur et une date;
+   une description (optionnelle), un auteur et une date;
  - en rouge, on a les branches, le nom est un peu trompeur car
    c'est juste un pointeur vers un commit.
    On pourrait tout à fait avoir un graphe non-linéaire sans
    utiliser de branches,
    c'est juste plus facile de référer les commits par le nom
    d'une branche qui y réfère plutôt que par un hash sans signification;
- - en vert, c'est les tags, c'est comme une branche mais qui
+ - en vert, ce sont les tags, un tag est comme une branche qui
    ne bouge pas, c'est à dire qu'il réfère toujours vers le même
    commit.
-   C'est utile par exemple pour spécifier les versions du projet.
+   C'est utile par exemple pour spécifier des versions d'un projet.
  - en jaune, on a ``HEAD``, c'est un pointeur vers la branche active.
 
 .. figure:: /Outils/figures/graph.png
@@ -440,7 +486,7 @@ Manipulation de l'historique à travers les commandes Git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Pour initialiser un dépôt `Git`_,
-il suffit d'utiliser la commande `git-init(3)`_
+il suffit d'utiliser la commande `git-init(1)`_
 
 .. code-block:: bash
 
@@ -455,6 +501,8 @@ Staging area
 Avant de voir comment faire des nouveau commit,
 il est impératif de comprendre ce qu'est la *staging area*.
 
+.. TODO expliquer les 3 états avant
+
 Il y a 3 états dans lequel un fichier peut-être,
  - il peut être dans le *working directory*,
    c'est à dire que c'est le fichier tel qu'il est actuellement dans le code;
@@ -464,7 +512,7 @@ Il y a 3 états dans lequel un fichier peut-être,
  - et il peut être dans le *git directory*, c'est à dire sauvegardé dans
    un commit à l'intérieur du dossier *.git*.
 
-On peut maintenant définir les 4 status qu'un fichier peut avoir
+On peut maintenant définir les 4 statuts qu'un fichier peut avoir
  - il peut être non-traqué par `Git`_, c'est à dire qu'il n'est
    ni dans le *git directory*, ni dans la *staging area*.
    C'est un fichier que le autres développeurs peuvent ne même pas être
@@ -485,15 +533,15 @@ On peut maintenant définir les 4 status qu'un fichier peut avoir
  - il peut être *staged*, c'est à dire qu'il est dans la *staging area*
 
 Par exemple, prenons un fichier non-modifié.
-Après des modifications, il a le status modifié.
-Si on le place dans la *staging area*, il acquière le status *staged*.
-Si on le modifie à nouveau, il aura le status modifié mais
-son état avec uniquement les premières modifications aura le status *staged*.
+Après des modifications, il a le statut modifié.
+Si on le place dans la *staging area*, il acquière le statut *staged*.
+Si on le modifie à nouveau, il aura le statut modifié mais
+son état avec uniquement les premières modifications aura le statut *staged*.
 
 .. TODO Add manpages for git
 
-Pour obtenir l'information sur le status de tous les fichiers,
-utilisez `git-status(3)`_
+Pour obtenir l'information sur le statut de tous les fichiers,
+utilisez `git-status(1)`_
 
 .. code-block:: bash
 
@@ -520,10 +568,10 @@ utilisez `git-status(3)`_
    #	a.out
 
 Dans la partie ``Changes to be committed``,
-on a les fichiers au status *staged*.
+on a les fichiers au statut *staged*.
 Dans la partie ``Changes not staged for commit``,
-on a les fichiers au status modifié.
-Les fichiers au status non-modifié ne sont pas affichés et ceux non-trackés
+on a les fichiers au statut modifié.
+Les fichiers au statut non-modifié ne sont pas affichés et ceux non-trackés
 sont dans la partie ``Untracked files`` sauf si on a spécifiquement demandé
 de les ignorer dans le fichier ``.gitignore``.
 En effet, on peut s'imaginer que dans un gros projet, la partie
@@ -536,7 +584,7 @@ il en prend compte pour tous ses fichiers ainsi que tous les fichiers des
 sous-dossiers.
 La syntaxe est très simple, on spécifie un fichier par ligne,
 on utilise un ``*`` pour spécifier n'importe
-quelle chaine de charactère, les commentaires commencent par un ``#``
+quelle chaine de charactères, les commentaires commencent par un ``#``
 comme en Bash et si la ligne commence par un ``!``,
 on demande de ne pas ignorer ce fichier à l'intérieur du dossier même
 si un ``.gitignore`` d'un dossier parent dit le contraire.
@@ -549,18 +597,19 @@ Dans notre exemple, ``.gitignore`` aura le contenu suivant
    # Executable
    a.out
 
-Pour faire passer un fichier du status modifié au status *staged*,
-il faut utiliser `git-add(3)`_.
+Pour faire passer un fichier du statut modifié au status *staged*,
+il faut utiliser `git-add(1)`_.
 Lorsqu'on lui donne en argument un fichier modifié, elle ajoute sa version
-avec toutes les modifications dans la *staging area*, si on lui donne
-un dossier, elle ajoute tous les fichiers au status modifié ou
-au status non-traqué qui ne sont pas ignoré par `Git`_.
+avec toutes les modifications dans la *staging area*.
+Si on lui donne un dossier,
+elle ajoute tous les fichiers au statut modifié ou
+au statut non-traqué qui ne sont pas ignoré par `Git`_.
 
 .. code-block:: bash
 
    $ git add .
 
-On peut aussi donner l'option ``-p`` à `git-add(3)`_,
+On peut aussi donner l'option ``-p`` à `git-add(1)`_,
 `Git`_ demandera alors pour chaque bloc de modification s'il faut le prendre
 en compte puis ajoutera dans la *staging area* un fichier avec toutes
 ces modifications.
@@ -569,7 +618,7 @@ qu'on ne veut pas tout committer ou qu'on veut les séparer en différents
 commits parce qu'ils font des choses différentes.
 Par exemple, si j'ai un fichier ``main.c`` dans lequel j'ai rajouté
 un ``return EXIT_SUCCESS;`` et un commentaire en début de fichier
-mais que je n'ai que envie de faire passer le ``return EXIT_SUCCESS;``
+mais que je n'ai envie que de faire passer le ``return EXIT_SUCCESS;``
 dans la *staging area*, il me suffit de faire
 
 .. code-block:: bash
@@ -597,7 +646,7 @@ dans la *staging area*, il me suffit de faire
    Stage this hunk [y,n,q,a,d,/,K,g,e,?]? y
 
 On peut aussi faire retirer des fichier de la *staging area* avec la commande
-`git-reset(3)`_.
+`git-reset(1)`_.
 ``git reset`` les retire tous,
 ``git reset main.c`` retire uniquement ``main.c`` et on a à nouveau
 l'option ``-p`` pour ne sélectionner qu'une partie.
@@ -630,10 +679,10 @@ et puis faire ``git add -p main.c`` comme tout à l'heure, soit faire
     }
    Unstage this hunk [y,n,q,a,d,/,K,g,e,?]? n
 
-Avant d'utiliser `git-add(3)`_ et `git-reset(3)`_,
+Avant d'utiliser `git-add(3)`_ et `git-reset(1)`_,
 il est utile de vérifier plus précisément ce qu'on a changé dans
-les fichiers que `git-status(3)`_ nous dit qu'on a modifié.
-C'est une des utilité de la commande `git-diff(3)`_.
+les fichiers que `git-status(1)`_ nous dit qu'on a modifié.
+C'est une des utilités de la commande `git-diff(1)`_.
 Par défaut, elle calcule les changements entre le *working directory*
 et la *staging area*, mais on peut aussi lui demander de regarder les
 changements entre deux commits.
@@ -675,22 +724,22 @@ modifié ou pas.
 
 Lorqu'on choisit de committer ce qu'il y a dans la *staging area*,
 un nouveau commit est créé avec le même état que le précédent plus les
-modifications des fichiers au status *staged*.
+modifications des fichiers au statut *staged*.
 Ce nouveau commit a une référence vers le commit précédent.
-La branche active change alors de référence et référence alors vers le nouveau
+La branche active change alors de référence et pointe alors vers le nouveau
 commit.
 Aucune autre branche ne bouge, même celle qui référençait l'ancien commit.
 On peut retenir qu'*il n'y a toujours que la branche active qui est modifée*.
 
 Un commit contient non seulement l'état de tous les fichiers à cette version
 mais aussi le nom et l'email de l'auteur, la date, un titre
-et une description (optionnel).
+et une description (optionnellle).
 `Git`_ peut trouver la date par lui même mais
 il faut l'avertir du nom et de l'email.
 Pour ne pas devoir le redire à chaque fois,
 on le stoque dans le fichier de configuration de `Git`_ ``~/.gitconfig``.
 Bien qu'on peut l'éditer manuellement, on préfère le faire à l'aide de
-la commande `git-config(3)`_
+la commande `git-config(1)`_
 
 .. code-block:: bash
 
@@ -698,14 +747,12 @@ la commande `git-config(3)`_
    $ git config --global user.email jean@dupont.com
 
 L'option ``--global`` spécifie qu'on veut que ces configurations s'applique
-pour tous nos dépôts. Sinon, `git-config(3)`_ ne modifie que le fichier
+pour tous nos dépôts. Sinon, `git-config(1)`_ ne modifie que le fichier
 ``.git/config`` à l'intérieur du *git directory*.
 
 Pour spécifier le titre,
-`git-config(3)`_ ouvrira un éditeur de texte où il vous faudra
-le spécifier.
-Pour entrer une description, laisser une ligne vide puis écrivez la.
-et puis que vous entrez un texte,
+`git-config(1)`_ ouvrira un éditeur de texte.
+Pour entrer une description, laissez une ligne vide puis écrivez la.
 L'éditeur de texte à ouvrir est déterminé par `Git`_ en fonction de la variable
 ``core.editor`` des fichiers de configurations mentionnés plus haut.
 
@@ -769,12 +816,12 @@ a changé, il fera comme si tout ``a.out`` avait changé.
 
    Historique l'ajout de .gitignore
 
-Souvent, on a envie de committer tous les fichiers au status *modifié*.
+Souvent, on a envie de committer tous les fichiers au statut *modifié*.
 Si on fait ``git add .``, on ajoutera aussi tous les fichiers non-traqués
 qui ne sont pas ignorés, c'est à dire ceux affichés par ``git status``
 en dessous de ``Untracked files``.
-Si ça pose problème, on peut utiliser l'option ``-a`` de `git-commit(3)`_
-qui inclut tous les fichiers au status *modifié* en plus que ceux dans la
+Si ça pose problème, on peut utiliser l'option ``-a`` de `git-commit(1)`_
+qui inclut tous les fichiers au statut *modifié* en plus de ceux dans la
 *staging area* pour le commit.
 On verra des exemples d'utilisation par après.
 
@@ -785,11 +832,12 @@ Lorsqu'on exécute ``git init``, une branche au nom de ``master`` est créée.
 Beaucoup de petits projets se contentent de cette branche et n'en font pas
 d'autre mais c'est passer à côté d'un des aspects les plus pratiques de `Git`_.
 
-Une utilisation classique des branches, c'est les *feature branches*,
-c'est à dire qu'on a la branche principale ``master`` qui contient un code
-de toutes les fonctionnalités terminée et quand on essaie d'ajouter une
+Une utilisation classique des branches sont les *feature branches*.
+C'est à dire qu'on a la branche principale ``master`` qui contient un code
+de toutes les fonctionnalités terminées.
+Quand on essaie d'ajouter une
 fonctionnalité (*feature* en anglais), on crée une nouvelle branche qu'on
-ne fusionne avec ``master`` que quand le code est terminé.
+ne fusionne avec ``master`` que lorsque le code est terminé.
 Ça permet de pouvoir implémenter plusieurs fonctionnalités en parallèle sans
 être gêné par l'instabilité du code créé par les fonctionnalités
 en développement.
@@ -800,18 +848,14 @@ Par exemple, supposons que vous soyez à 2 à travailler sur un projet.
 L'un travaille sur une fonctionnalité, l'autre sur une autre.
 À la base, le code sans ces deux fonctionnalités marchait mais comme
 vous êtes en train d'en implémenter une nouvelle chacun, le code ne marche
-chez aucun de vous deux.
-
-.. FIXME check géné
-
-.. TODO git-log
+chez aucun des deux développeurs.
 
 Créer une branche
 #################
 
-Pour créer une branche, on utilise la commande `git-branch(3)`_.
-`git-branch(3)`_ sert aussi à montrer la liste des branches avec un ``*``
-devant la branche active.
+Pour créer une branche, on utilise la commande `git-branch(1)`_.
+`git-branch(1)`_ sert aussi à montrer la liste des branches avec
+le caractère ``*`` devant la branche active.
 
 Par exemple, supposons qu'on veuille ajouter à notre exemple la possibilité
 de changer le message un caractère plus universel pour que le programme soit
@@ -819,8 +863,8 @@ utilisable pour tout citoyen de l'univers.
 Mais qu'on veut aussi ajouter un aspect pratique en rajoutant le pid
 du processus et du processus parent.
 
-On commencera par créé deux *feature branches*, ``pid`` et ``universal`` et
-supprimer la branche ``hello`` qui servait juste à montrer qu'elle ne bougeait
+On commencera par créer deux *feature branches*, ``pid`` et ``universal``.
+On supprime la branche ``hello`` qui servait juste à montrer qu'elle ne bougeait
 pas quand on committait car ce n'était pas la branche active.
 
 .. code-block:: bash
@@ -838,7 +882,7 @@ pas quand on committait car ce n'était pas la branche active.
      universal
 
 L'historique ressemble maintenant à la figure suivante.
-On voit que `git-branch(3)`_ ne modifie pas la branche active.
+On voit que `git-branch(1)`_ ne modifie pas la branche active.
 
 .. figure:: /Outils/figures/hello_branches.png
    :align: center
@@ -874,7 +918,7 @@ Changer la branche active
 
 On va maintenant voir comment changer la branche active,
 c'est à dire la branche vers laquelle ``HEAD`` pointe.
-Pour faire cela, on utilise `git-checkout(3)`_.
+Pour faire cela, on utilise `git-checkout(1)`_.
 
 .. code-block:: bash
 
@@ -885,7 +929,7 @@ Pour faire cela, on utilise `git-checkout(3)`_.
    * pid
      universal
 
-`git-checkout(3)`_ ne fait pas que changer la branche active, il modifie
+`git-checkout(1)`_ ne fait pas que changer la branche active, il modifie
 aussi le *working directory* pour refléter le commit référencé par la nouvelle
 branche active.
 
@@ -902,25 +946,25 @@ branche active.
      return EXIT_SUCCESS;
    }
 
-S'il y a des fichiers au modifié au moment du `git-checkout(3)`_,
-`Git`_ va faire du mieux qu'il peut pour ne garder vos modifications mais
-si le fichier modifié est justement un fichier qui diffère entre
-l'ancienne branche active et la nouvelle branche active, `Git`_ va
-abandonner le changement de branche car mettre ce fichier à la version
-de la nouvelle branche écraserait les changements.
+S'il y a des fichiers modifiés au moment du `git-checkout(1)`_,
+`Git`_ va faire du mieux qu'il peut pour changer de branche en gardant
+vos modifications mais si le fichier modifié est justement un fichier
+qui diffère entre l'ancienne branche active et la nouvelle branche active,
+`Git`_ va abandonner le changement de branche car mettre ce fichier à
+la version de la nouvelle branche écraserait les modifications.
 
 Les changements doivent alors soit être committés,
-soit sauvegardé par `git-stash(3)`_ (détailllé plus loin),
+soit sauvegardés par `git-stash(1)`_ (détailllé plus loin),
 soit abandonnés.
 Pour abandonner des changements et revenir à la version du commit référencé
-par la branche active, on utilise aussi `git-checkout(3)`_.
+par la branche active, on utilise aussi `git-checkout(1)`_.
 Avec `Git`_, pas mal de commandes ont de multiples usages.
 
-Dans notre exemple, si on change ``main.c``, ça pose problème car il
+Dans notre exemple, si on change ``main.c``, cela pose problème car il
 diffère entre ``master`` et ``pid`` mais
 si on change ``.gitignore``, ça n'en pose pas.
 Il nous montre d'ailleurs que ``.gitignore`` a des modifications et qu'il
-les a laissé lorsqu'on exécute ``git checkout master``
+les a laissées lorsqu'on exécute ``git checkout master``
 
 .. code-block:: bash
 
@@ -992,11 +1036,11 @@ Par contre si on la rend active et
 qu'on demande de la fusionner avec l'ancienne branche active,
 ce sera nécessairement une fusion *fast-forward*.
 
-`git-merge(3)`_ s'occupe de fusionner les branches
+`git-merge(1)`_ s'occupe de fusionner les branches
 (fusionner se dit *merge* en anglais),
 on lui donne en argument la branche à fusionner et la branche active est
 bien entendu celle référencée par ``HEAD`` qui a été définie par
-les appels à `git-checkout(3)`_.
+les appels à `git-checkout(1)`_.
 
 Dans notre exemple, on peut faire avancer ``pid`` et ``universal`` au niveau
 de ``master`` avec une fusion *fast-forward*.
@@ -1119,8 +1163,8 @@ C'est ce qu'on va vérifier
     1 file changed, 5 insertions(+)
     create mode 100644 Makefile
 
-On voit que `Git`_ a sur faire la fusion sans notre aide sans problème
-car tous les changements était dans le ``Makefile`` qui n'existait pas
+On voit que `Git`_ a su faire la fusion sans notre aide sans problème
+car tous les changements étaient dans le ``Makefile`` qui n'existait pas
 pour ``universal``
 
 .. figure:: /Outils/figures/hello_universal_makefile.png
@@ -1147,7 +1191,7 @@ pour ``universal``
    Historique après avoir fusionné ``master`` dans ``pid``
 
 Tant qu'on est sur la branche ``pid``,
-implémentons la fonctionnalités
+implémentons la fonctionnalité
 
 .. code-block:: bash
 
@@ -1210,7 +1254,7 @@ Retournons sur notre branche ``universal`` et essayons notre ``Makefile``
 
 Les deux premières lignes sont simplement les commandes que `make(3)`_ exécute.
 La troisième est plus inquiètante.
-Elle nous averti que le programme a été terminé par le signal ``SIGSEV``.
+Elle nous avertit que le programme a été terminé par le signal ``SIGSEV``.
 C'est dû au fait qu'on ne vérifie pas que ``argv`` ait au moins 2 éléments
 avant d'essayer accéder au deuxième élément.
 
@@ -1290,11 +1334,11 @@ large, `Git`_ nous montre ce qu'il y a pour ``HEAD`` c'est à dire
 la branche active ``master`` et ce qu'il y a pour ``universal``.
 On va devoir prendre un peu des deux.
 
-Si on fait `git-diff(3)`_ par la suite, `Git`_ met en début de ligne un
+Si on fait `git-diff(1)`_ par la suite, `Git`_ met en début de ligne un
 ``+`` ou un ``-`` en premier caractère
 si c'est une ligne qui vient de la branche qu'on veut fusionner,
 en deuxième caractère si ça vient de la branche active et en premier et
-deuxième caractère si ça vient d'aucune de deux pour le ``+``.
+deuxième caractère si ça vient d'aucune des deux pour le ``+``.
 
 .. code-block:: bash
 
@@ -1347,9 +1391,9 @@ Afficher l'historique
 #####################
 
 Pour afficher l'historique, outre l'outil utilisé pour faire les
-illustration de ce cours que vous pouvez retrouver
+illustrations de ce cours que vous pouvez retrouver
 `ici <https://github.com/blegat/git-dot>`_,
-il existe la commande `git-log(3)`_.
+il existe la commande `git-log(1)`_.
 Elle est très flexible comme on va le voir.
 ``git log`` affiche simplement l'historique à partir de ``HEAD``
 
@@ -1443,9 +1487,8 @@ avec l'option ``-p``
     }
 
 Il existe encore plein d'autres options comme ``--stat`` qui se contente
-de dire les fichiers qui ont changés.
-En les combinant on peut obtenir des résultats intéressants comme l'association
-suivant fort appréciée
+de lister les fichiers qui ont changés.
+En les combinant on peut obtenir des résultats intéressants comme ci-dessous
 
 .. code-block:: bash
 
@@ -1473,14 +1516,15 @@ On ajoute d'ailleurs souvent un raccourci pour avoir ce graphe avec
 
    $ git config --global alias.lol "log --graph --decorate --oneline"
 
+.. TODO comparer différents commits
 
 Sauvegarder des modifications hors de l'historique
 ##################################################
 
-On a vu que certaines opérations comme `git-checkout(3)`_ nécessite
-de ne pas avoir de modifications en conflits avec l'opération.
+On a vu que certaines opérations comme `git-checkout(1)`_ nécessitent
+de ne pas avoir de modifications en conflit avec l'opération.
 
-`git-stash(3)`_ permet de sauvegarder ces modifications pour qu'elles ne soient
+`git-stash(1)`_ permet de sauvegarder ces modifications pour qu'elles ne soient
 plus dans le *working directory* mais qu'elles ne soient pas perdues.
 On peut ensuite les réappliquer avec ``git stash apply`` puis les effacer
 avec ``git stash drop``.
@@ -1542,13 +1586,13 @@ Modifier un commit récent
 
 Si on a oublié d'ajouter des modifications dans le dernier commit et
 qu'on ne l'a pas encore *pushé*, on peut facilement les rajouter.
-Il suffit de donner l'option ``--amend`` à `git-commit(3)`_.
+Il suffit de donner l'option ``--amend`` à `git-commit(1)`_.
 Il ajoutera alors les modifications au commit actuel au lieu d'en créer un
 nouveau.
 
 On peut aussi annuler le dernier commit avec ``git reset HEAD^``.
 `Git`_ permet aussi de construire un commit qui a l'effet inverse d'un autre
-avec `git-revert(3)`_.
+avec `git-revert(1)`_.
 Ce dernier construit un commit qui annulera l'effet d'un autre commit.
 Voyons tout ça par un exemple qui pourrait être le code de *Deep Thought*.
 
@@ -1634,7 +1678,7 @@ Commençons par committer ``main.c`` et ``.gitignore`` en oubliant le
    nothing added to commit but untracked files present (use "git add" to track)
 
 On pourrait très bien faire un nouveau commit contenant le ``Makefile``
-mais si, pour quelconque raison,
+mais si, pour une quelconque raison,
 on aimerait l'ajouter dans le commit précédent,
 on peut le faire comme suit
 
@@ -1692,7 +1736,7 @@ les cas limites et committons le
     3 files changed, 15 insertions(+)
 
 Essayons maintenant de construire un commit qui retire les lignes qu'on
-vient d'ajouter avec `git-revert(3)`_
+vient d'ajouter avec `git-revert(1)`_
 
 .. code-block:: bash
 
