@@ -46,7 +46,7 @@ Introduction
 `Git`_ a développé initialement pour la gestion du code source du kernel Linux.
 Il est aussi utilisé pour la gestion des sources de ce document
 depuis https://github.com/obonaventure/SystemesInformatiques.
-On l'utilise le plus souvent à l'aide de l'utilitaire `git(3)`_ mais il
+On l'utilise le plus souvent à l'aide de l'utilitaire `git(1)`_ mais il
 existe aussi des
 `applications graphiques <http://git-scm.com/downloads/guis>`_.
 
@@ -538,8 +538,6 @@ Si on le place dans la *staging area*, il acquière le statut *staged*.
 Si on le modifie à nouveau, il aura le statut modifié mais
 son état avec uniquement les premières modifications aura le statut *staged*.
 
-.. TODO Add manpages for git
-
 Pour obtenir l'information sur le statut de tous les fichiers,
 utilisez `git-status(1)`_
 
@@ -679,7 +677,7 @@ et puis faire ``git add -p main.c`` comme tout à l'heure, soit faire
     }
    Unstage this hunk [y,n,q,a,d,/,K,g,e,?]? n
 
-Avant d'utiliser `git-add(3)`_ et `git-reset(1)`_,
+Avant d'utiliser `git-add(1)`_ et `git-reset(1)`_,
 il est utile de vérifier plus précisément ce qu'on a changé dans
 les fichiers que `git-status(1)`_ nous dit qu'on a modifié.
 C'est une des utilités de la commande `git-diff(1)`_.
