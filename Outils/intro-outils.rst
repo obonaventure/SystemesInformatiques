@@ -56,6 +56,12 @@ On sait ainsi facilement voir ce qui a changé entre deux versions
 (pas spécialement, une version et la suivante)
 et même restaurer l'état de certains fichiers à une version sauvegardée
 dans un commit.
+Du coup, si vous utilisez `Git`_ pour un projet, vous ne pouvez jamais
+perdre plus que les changements que vous n'avez pas encore committé.
+Toutes les versions du codes déjà committées sont sauvegardées et facilement
+accessibles.
+Cette garantie est extrêmement précieuse et constitue à elle seule une raison
+suffisante d'utiliser `Git`_ pour tous vos projets.
 
 Contrairement à `subversion`_, il est décentralisé, c'est à dire que chaque
 développeur a toute l'information nécessaire pour utiliser `Git`_,
@@ -82,9 +88,10 @@ qu'il a une façon assez différente de fonctionner des autres.
 .. FIXME je dis "historique" ou "arborescence" ? sur le wikipedia
    français, ils disent "arborescence :/ (http://fr.wikipedia.org/wiki/Git)
    Pour svn, historique est le bon terme mais pour Git...
+   Je dis "dépôt" ou "repository" ?
 
-Utilisation simple de Git
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Utilisation linéaire de Git
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 On peut utiliser `Git`_ à plusieurs niveaux.
 On peut tout à fait avoir un historique linéaire tout en profitant pleinement
@@ -111,13 +118,23 @@ avec `Git`_ mais ce n'est pas indispensable.
 
 Sur `Git`_, on appelle une version un *commit*.
 Chacun de ces commits est documenté en fournissant le nom de l'auteur,
-son email et un commentaire.
-On spécifiera l'email et l'auteur une fois pour toutes mais pour
-le titre, il sera différent pour chaque version.
-`Git`_ ouvrira un éditeur de texte pour que vous spécifiez ce titre.
-Pour donner votre nom, email et éditeur de texte à ouvrir pour le titre,
-exécutez les commandes suivantes en remplaçant le nom, l'email et
-l'éditeur de texte par le vôtre bien entendu
+son email, un commentaire et une description (optionnelle).
+Pour ne pas devoir respécifier le nom et l'email à chaque fois,
+on le stoque dans le fichier de configuration de `Git`_ ``~/.gitconfig``.
+Bien qu'on peut l'éditer manuellement, on préfère le faire à l'aide de
+la commande `git-config(1)`_.
+
+Pour spécifier le commentaire,
+`git-commit(1)`_ ouvrira un éditeur de texte.
+Pour entrer une description, laissez une ligne vide puis écrivez la.
+L'éditeur de texte à ouvrir est déterminé par `Git`_ en fonction de la variable
+``core.editor`` du fichier de configuration mentionné plus haut.
+Vous pouvez aussi spécifier le commentaire à l'aide de l'option ``-m``
+de `git-commit(1)`_ comme on verra dans les exemples par après.
+
+Voici les commandes à exécuter pour configurer le nom, l'email et l'éditeur
+de texte.
+Vous devez bien entendu remplacer les valeurs par celles qui vous conviennent.
 
 .. code-block:: bash
 
@@ -125,9 +142,12 @@ l'éditeur de texte par le vôtre bien entendu
    $ git config --global user.email jean@dupont.com
    $ git config --global core.editor gedit
 
-Comme vous avez spécifié ``--global``, `Git`_ appliquera ces configurations
-sur tous les dépôts `Git`_ (ce sont les projets pour lesquels
-vous avez un historique contrôlé par `Git`_) de votre ordinateur.
+L'option ``--global`` spécifie qu'on veut que ces configurations s'appliquent
+pour tous nos dépôts (`Git`_ éditera le fichier ``~/.gitconfig``).
+Sinon, `git-config(1)`_ ne modifie que le fichier
+``.git/config`` à l'intérieur du *git directory* du projet en cours.
+Ce dernier prône bien entendu sur ``~/.gitconfig`` quand une variable
+a des valeurs différentes dans ``~/.gitconfig`` et ``.git/config``.
 
 Vous voilà paré pour créer votre premier dépôt `Git`_.
 On va utiliser les commandes
@@ -176,7 +196,7 @@ On va sauvegarder un premier commit contenant cette version de ``main.c``
 Il indique que le fichier ``main.c`` n'est pas suivi par `Git`_ (`untracked`).
 Ce fichier est ajouté avec la commande `git-add(1)`_.
 `git-commit(1)`_ sauvegarde cette version du code dans un commit
-dont le titre, spécifié avec l'option ``-m``, est *First commit*.
+dont le commentaire, spécifié avec l'option ``-m``, est *First commit*.
 
 .. code-block:: bash
 
@@ -336,7 +356,8 @@ valeur par défaut.
       for (i = 1; i <= n; i++) {
         sum += i;
 
-On va maintenant committer ces changement dans un commit au titre *Fix SIGSEV*
+On va maintenant committer ces changement
+dans un commit au commentaire *Fix SIGSEV*
 
 .. code-block:: bash
 
@@ -439,10 +460,10 @@ committer vos changements, les ajouter à *origin*
 
 puis faire un nouveau pull request.
 
-Historique créé par Git
-~~~~~~~~~~~~~~~~~~~~~~~
+Utilisation non-linéaire de Git
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Git`_ crée un historique non-linéaire semblable à celui ci-dessous.
+`Git`_ peut créer un historique non-linéaire semblable à celui ci-dessous.
 C'est un exemple un peu exagéré de non-linéarité mais il est
 pédagogiquement intéressant.
 
@@ -465,7 +486,7 @@ Les noeuds sont de 3 types,
    et non par un nombre
    comme pour beaucoup d'autres systèmes de gestion de code
    partagé.
-   Ils ont aussi un titre qui est affiché sur la deuxième ligne,
+   Ils ont aussi un commentaire qui est affiché sur la deuxième ligne,
    une description (optionnelle), un auteur et une date;
  - en rouge, on a les branches, le nom est un peu trompeur car
    c'est juste un pointeur vers un commit.
@@ -731,36 +752,10 @@ commit.
 Aucune autre branche ne bouge, même celle qui référençait l'ancien commit.
 On peut retenir qu'*il n'y a toujours que la branche active qui est modifée*.
 
-Un commit contient non seulement l'état de tous les fichiers à cette version
-mais aussi le nom et l'email de l'auteur, la date, un titre
-et une description (optionnellle).
-`Git`_ peut trouver la date par lui même mais
-il faut l'avertir du nom et de l'email.
-Pour ne pas devoir le redire à chaque fois,
-on le stoque dans le fichier de configuration de `Git`_ ``~/.gitconfig``.
-Bien qu'on peut l'éditer manuellement, on préfère le faire à l'aide de
-la commande `git-config(1)`_
-
-.. code-block:: bash
-
-   $ git config --global user.name "Jean Dupont"
-   $ git config --global user.email jean@dupont.com
-
-L'option ``--global`` spécifie qu'on veut que ces configurations s'applique
-pour tous nos dépôts. Sinon, `git-config(1)`_ ne modifie que le fichier
-``.git/config`` à l'intérieur du *git directory*.
-
-Pour spécifier le titre,
-`git-config(1)`_ ouvrira un éditeur de texte.
-Pour entrer une description, laissez une ligne vide puis écrivez la.
-L'éditeur de texte à ouvrir est déterminé par `Git`_ en fonction de la variable
-``core.editor`` des fichiers de configurations mentionnés plus haut.
-
-Vous pouvez aussi spécifier le title à l'aide de l'option ``-m``.
 Dans notre exemple,
 l'historique était comme l'image ci-dessous
 
-.. it could be nice to have subfig here :/
+.. FIXME it could be nice to have subfig here :/
    like here http://jterrace.github.io/sphinxtr/
 
 .. figure:: /Outils/figures/hello_without_return.png
