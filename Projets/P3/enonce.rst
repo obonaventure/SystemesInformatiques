@@ -76,11 +76,11 @@ Vous devez fournir sur le SVN dans votre dossier de groupe:
 
 Les critères de cotation sont les suivants (liste non-exhaustive):
 
-        - Votre impémentation doit fonctionner dans les salles informatiques du département;
+	- Votre impémentation doit fonctionner dans les salles informatiques du département;
 	- Intégration de vos changements dans l'infrastructure de coreutils;
 	- L'appel à ``make`` génère correctement un binaire ``src/encode`` (sans warning ni erreurs).
 	- Intégralité de votre implémentation (manpages, ...);
 	- Optimalité de votre algorithme d'encodage;
 	- Respect des consignes;
-	- ....
+	- ...
 
