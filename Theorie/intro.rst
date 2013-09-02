@@ -215,6 +215,7 @@ Un autre exemple d'utilisation des codes de retour est le script :download:`src/
 Ce programme utilise le fichier spécial ``/dev/null``. Celui-ci est en pratique l'équivalent d'un trou noir. Il accepte toutes les données en écriture mais celles-ci ne peuvent jamais être relues. ``/dev/null`` est très utile lorsque l'on veut ignorer la sortie d'un programme et éviter qu'elle ne s'affiche sur le terminal. `bash(1)`_ supporte également ``/dev/stdin`` pour représenter l'entrée standard, ``/dev/stdout`` pour la sortie standard et ``/dev/stderr`` pour l'erreur standard.
 
 .. Faire implémenter un programme qui prend deux arguments en entier et en fait la somme, le produit ou la différence en fonction des trois arguments qui sont passés
+
 Une description complète de `bash(1)`_ sort du cadre de ce cours. De nombreuses références à ce sujet sont disponibles [Cooper2011]_.
 
 
