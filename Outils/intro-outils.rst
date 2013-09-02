@@ -338,6 +338,8 @@ valeur par défaut.
 
 On va maintenant committer ces changement dans un commit au titre *Fix SIGSEV*
 
+.. code-block:: bash
+
    $ git add main.c
    $ git commit -m "Fix SIGSEV"
    [master 7a26c63] Fix SIGSEV
@@ -1112,7 +1114,7 @@ lorsqu'on écrit ``make``.
 Comme un ``Makefile`` exécute la première règle, il suffit de mettre la règle
 qui exécute en premier
 
-.. code-block:: Makefile
+.. code-block:: makefile
 
    run: a.out
            ./a.out
@@ -1250,7 +1252,7 @@ Retournons sur notre branche ``universal`` et essayons notre ``Makefile``
    ./a.out
    make: *** [run] Segmentation fault (core dumped)
 
-Les deux premières lignes sont simplement les commandes que `make(3)`_ exécute.
+Les deux premières lignes sont simplement les commandes que `make(1)`_ exécute.
 La troisième est plus inquiètante.
 Elle nous avertit que le programme a été terminé par le signal ``SIGSEV``.
 C'est dû au fait qu'on ne vérifie pas que ``argv`` ait au moins 2 éléments
