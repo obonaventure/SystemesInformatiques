@@ -149,22 +149,40 @@ Sinon, `git-config(1)`_ ne modifie que le fichier
 Ce dernier prône bien entendu sur ``~/.gitconfig`` quand une variable
 a des valeurs différentes dans ``~/.gitconfig`` et ``.git/config``.
 
-Vous voilà paré pour créer votre premier dépôt `Git`_.
+Vous voilà paré pour créer votre premier dépôt `Git`_
+mais avant de voir comment faire des nouveaux commits,
+il est impératif de comprendre ce qu'est la *staging area*.
+
+Il y a 3 états dans lequel un fichier peut-être,
+ - il peut être dans le *working directory*,
+   c'est à dire que c'est le fichier tel qu'il est actuellement dans le code;
+ - il peut être dans la *staging area*,
+   c'est à dire que ses changements seront pris en compte dans le prochain
+   commit;
+ - et il peut être dans le *git directory*, c'est à dire sauvegardé dans
+   un commit à l'intérieur du dossier ``.git``.
+
+Pour committer des changements, on les mets d'abord dans la
+*staging area* puis on commit.
+Cette flexibilité permet de ne pas committer
+tout les changements du *working directory*.
+
+Voyons tout ça avec un programme exemple qui affiche en :math:`\LaTeX`
+la somme des entiers de :math:`1` à :math:`n`.
 On va utiliser les commandes
 
  * `git-init(1)`_ qui permet de transformer un projet en dépôt `Git`_
    (tout est stoqué dans le dossier ``.git``);
- * `git-diff(1)`_ qui donne les modifications des fichiers par rapport
-   à leur état dans la dernière version de l'historique maintenu par `Git`_;
+ * `git-diff(1)`_ qui donne la différence entre l'état des fichiers dans le
+   *working directory* avec leur état dans le *git directory*
+   au commit actuel;
  * `git-status(1)`_ qui affiche les fichiers modifiés et ceux qui vont être
    commités;
  * `git-add(1)`_ qui spécifie quels fichiers doivent faire partie du prochain
-   commit;
- * `git-commit(1)`_ qui commit les fichiers choisis;
+   commit en les ajoutant à la *staging area*;
+ * `git-commit(1)`_ qui commit les fichiers dans la *staging area*;
  * et `git-log(1)`_ qui montre tous les commits de l'historique.
 
-Voyons tout ça avec un programme exemple qui affiche en :math:`\LaTeX`
-la somme des entiers de :math:`1` à :math:`n`.
 La première version sera la suivante
 
 .. code-block:: c
@@ -201,7 +219,7 @@ dont le commentaire, spécifié avec l'option ``-m``, est *First commit*.
 .. code-block:: bash
 
    $ git init
-   Initialized empty Git repository in /home/blegat/tmp2/.git/
+   Initialized empty Git repository in /path/to/project/.git/
    $ git status
    # On branch master
    #
@@ -267,7 +285,7 @@ Avec `git-diff(1)`_, on peut voir quelles sont les lignes qui ont été
 retirées (elles commencent par un ``-``) et celles qui ont été ajoutées
 (elles commencent par un ``+``).
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git diff
    diff --git a/main.c b/main.c
@@ -330,7 +348,7 @@ Pour cela, on va simplement vérifier la valeur de ``argc`` et utiliser :math:`4
 valeur par défaut.
 `git-diff(1)`_ nous permet de voir les changements qu'on a fait
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git diff
    diff --git a/main.c b/main.c
@@ -386,14 +404,275 @@ dans un commit au commentaire *Fix SIGSEV*
 
 .. TODO 2 utilisateurs en même temps, conflits et merges
 
-Contribuer au syllabus
-######################
+Travailler à plusieurs sur un même projet
+#########################################
 
 `Git`_ est déjà un outil très pratique à utiliser seul mais c'est quand
 on l'utilise pour se partager du code qu'il devient vraiment indispensable.
 On se partage le code par l'intermédiaire de *remotes*.
-Ce sont en pratique des serveur auquels on peut avoir l'accès lecteur et/ou
+Ce sont en pratique des serveurs auquels on peut avoir l'accès lecture et/ou
 écriture.
+On va traiter ici le cas où deux développeurs, Alice et Bob,
+ont l'accès lecture et écriture.
+
+Alice va créer le projet avec
+
+.. code-block:: bash
+
+   $ git init
+   Initialized empty Git repository in /path/to/project/.git/
+
+puis elle créera une *remote*, c'est à dire un autre dépôt `Git`_ que celui
+qu'ils ont en local, avec lequel ils vont pouvoir synchroniser leur
+historique.
+Supposons qu'ils aient un projet *projectname* sur Github.
+Vous pouvez créer le *remote* comme suit
+
+.. code-block:: bash
+
+   $ git remote add https://github.com/alice/projectname.git
+
+Ensuite, vous pourrez obtenir les modifications de l'historique du *remote*
+avec ``git pull origin master``
+et ajouter vos modifications avec ``git push origin master``.
+
+Si vous exécutez ``git pull origin master``, que vous faites quelques
+commits et puis que vous essayer de mettre *origin* à jour avec
+``git push origin master``,
+il faut qu'aucun autre développeur n'ait pushé de modification entre temps.
+S'il en a pushé, `Git`_ ne saura pas effectuer votre *push*.
+Il vous faudra alors faire un *pull*.
+`Git`_ tentera alors de fusionner vos changements avec ceux d'*origin*.
+Si ces derniers sont à une même ligne d'un même fichier, il vous demandera
+de résoudre le conflit vous-même.
+Il est important pour cela que vous ayez commité vos changements avant
+le *pull* sinon `Git`_ l'abandonnera car il ne sait que fusionner des commits.
+C'est à dire que ce qu'il y a dans le *git directory*,
+pas ce qu'il y a dans le *working directory* ni dans la *staging area*.
+
+Prenons un exemple où Bob *push* en premier puis Alice doit résoudre
+un conflit.
+Alice commence avec le fichier ``main.c`` suivant
+
+.. code-block:: c
+
+   #include <stdio.h>
+   #include <stdlib.h>
+
+   int main (int argc, char *argv[]) {
+   }
+
+Elle fait le premier commit du projet
+
+.. code-block:: bash
+
+   $ git add main.c
+   $ git commit -m "Initial commit"
+   [master (root-commit) 80507e3] Initial commit
+    1 file changed, 5 insertions(+)
+    create mode 100644 main.c
+
+et va maintenant le *pusher* sur le serveur
+
+.. code-block:: bash
+
+   $ git push origin master
+   Counting objects: 3, done.
+   Delta compression using up to 4 threads.
+   Compressing objects: 100% (2/2), done.
+   Writing objects: 100% (3/3), 282 bytes, done.
+   Total 3 (delta 0), reused 0 (delta 0)
+   To https://github.com/alice/projectname.git
+   * [new branch]      master -> master
+
+Bob clone alors le projet pour en avoir une copie en local
+ainsi que tout l'historique et la remote *origin* déjà configurée
+
+.. code-block:: bash
+
+   $ git clone https://github.com/alice/projectname.git
+   Cloning into 'projectname'...
+   remote: Counting objects: 3, done.
+   remote: Compressing objects: 100% (2/2), done.
+   remote: Total 3 (delta 0), reused 3 (delta 0)
+   Unpacking objects: 100% (3/3), done.
+   $ git remote -v
+   origin	https://github.com/alice/projectname.git (fetch)
+   origin	https://github.com/alice/projectname.git (push)
+
+Ensuite, il ajoute ses modifications
+
+.. code-block:: diff
+
+   $ git diff
+   diff --git a/main.c b/main.c
+   index bf17640..0b0672a 100644
+   --- a/main.c
+   +++ b/main.c
+   @@ -2,4 +2,5 @@
+    #include <stdlib.h>
+
+    int main (int argc, char *argv[]) {
+   +  return 0;
+    }
+
+et les commit
+
+.. code-block:: bash
+
+   $ git add main.c
+   $ git commit -m "Add a return statement"
+   [master 205842a] Add a return statement
+    1 file changed, 1 insertion(+)
+
+et les push sur le serveur
+
+.. code-block:: bash
+
+   $ git push origin master
+   Counting objects: 5, done.
+   Delta compression using up to 4 threads.
+   Compressing objects: 100% (2/2), done.
+   Writing objects: 100% (3/3), 291 bytes, done.
+   Total 3 (delta 1), reused 0 (delta 0)
+   To https://github.com/alice/projectname.git
+      80507e3..205842a  master -> master
+
+Pendant ce temps là, Alice ne se doute de rien et
+fait ses propres modifications
+
+.. code-block:: diff
+
+   $ git diff
+   diff --git a/main.c b/main.c
+   index bf17640..407cd8a 100644
+   --- a/main.c
+   +++ b/main.c
+   @@ -2,4 +2,5 @@
+    #include <stdlib.h>
+
+    int main (int argc, char *argv[]) {
+   +  return EXIT_SUCCESS;
+    }
+
+puis les commit
+
+.. code-block:: bash
+
+   $ git add main.c
+   $ git commit -m "Add missing return statement"
+   [master 73c6a3a] Add missing return statement
+    1 file changed, 1 insertion(+)
+
+puis essaie de les pusher
+
+.. code-block:: bash
+
+   $ git push origin master
+   To https://github.com/alice/projectname.git
+    ! [rejected]        master -> master (non-fast-forward)
+   error: failed to push some refs to 'https://github.com/alice/projectname.git'
+   hint: Updates were rejected because the tip of your current branch is behind
+   hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
+   hint: before pushing again.
+   hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+mais `Git`_ lui fait bien comprendre que ce n'est pas possible.
+En faisant le *pull*, on voit que `Git`_ fait de son mieux pour
+fusionner les changements mais qu'il préfère nous laisser
+choisir quelle ligne est la bonne
+
+.. code-block:: bash
+
+   $ git pull origin master
+   remote: Counting objects: 5, done.
+   remote: Compressing objects: 100% (1/1), done.
+   remote: Total 3 (delta 1), reused 3 (delta 1)
+   Unpacking objects: 100% (3/3), done.
+   From https://github.com/alice/projectname
+      80507e3..205842a  master     -> origin/master
+   Auto-merging main.c
+   CONFLICT (content): Merge conflict in main.c
+   Automatic merge failed; fix conflicts and then commit the result.
+   $ cat main.c
+   #include <stdio.h>
+   #include <stdlib.h>
+
+   int main (int argc, char *argv[]) {
+   <<<<<<< HEAD
+     return EXIT_SUCCESS;
+   =======
+     return 0;
+   >>>>>>> 205842aa400e4b95413ff0ed21cfb1b090a9ef28
+   }
+   $ git status
+   # On branch master
+   # You have unmerged paths.
+   #   (fix conflicts and run "git commit")
+   #
+   # Unmerged paths:
+   #   (use "git add <file>..." to mark resolution)
+   #
+   #	both modified:      main.c
+   #
+   no changes added to commit (use "git add" and/or "git commit -a")
+
+Il nous suffit alors d'éditer le fichier pour lui donner le contenu
+de la fusion
+
+.. code-block:: c
+
+   #include <stdio.h>
+   #include <stdlib.h>
+
+   int main (int argc, char *argv[]) {
+     return EXIT_SUCCESS;
+   }
+
+puis de le committer
+
+.. code-block:: bash
+
+   $ git add main.c
+   $ git commit
+   [master eede1c8] Merge branch 'master' of https://github.com/alice/projectname
+
+On peut alors mettre le serveur à jour
+
+.. code-block:: bash
+
+   $ git push origin master
+   Counting objects: 8, done.
+   Delta compression using up to 4 threads.
+   Compressing objects: 100% (3/3), done.
+   Writing objects: 100% (4/4), 478 bytes, done.
+   Total 4 (delta 2), reused 0 (delta 0)
+   To https://github.com/alice/projectname.git
+      205842a..eede1c8  master -> master
+
+Paul peut alors récupérer les changements avec
+
+.. code-block:: bash
+
+   $ git pull origin master
+   remote: Counting objects: 8, done.
+   remote: Compressing objects: 100% (1/1), done.
+   remote: Total 4 (delta 2), reused 4 (delta 2)
+   Unpacking objects: 100% (4/4), done.
+   From https://github.com/alice/projectname
+      205842a..eede1c8  master     -> origin/master
+   Updating 205842a..eede1c8
+   Fast-forward
+    main.c | 2 +-
+    1 file changed, 1 insertion(+), 1 deletion(-)
+
+La plupart des fusions ne demande pas d'intervention manuelle mais
+dans les cas comme celui-ci,
+`Git`_ n'a pas d'autre choix que de nous demander notre avis.
+
+Contribuer au syllabus
+######################
+
 Dans le cas du syllabus, vous n'avez pas l'accès écriture.
 La manière dont Github utilise pour règler ça c'est que vous *forkez* le
 projet principal.
@@ -521,21 +800,7 @@ il suffit d'utiliser la commande `git-init(1)`_
 Staging area
 ############
 
-Avant de voir comment faire des nouveau commit,
-il est impératif de comprendre ce qu'est la *staging area*.
-
-.. TODO expliquer les 3 états avant
-
-Il y a 3 états dans lequel un fichier peut-être,
- - il peut être dans le *working directory*,
-   c'est à dire que c'est le fichier tel qu'il est actuellement dans le code;
- - il peut être dans la *staging area*,
-   c'est à dire que ses changements seront pris en compte dans le prochain
-   commit;
- - et il peut être dans le *git directory*, c'est à dire sauvegardé dans
-   un commit à l'intérieur du dossier *.git*.
-
-On peut maintenant définir les 4 statuts qu'un fichier peut avoir
+Commençons par définir les 4 statuts qu'un fichier peut avoir
  - il peut être non-traqué par `Git`_, c'est à dire qu'il n'est
    ni dans le *git directory*, ni dans la *staging area*.
    C'est un fichier que le autres développeurs peuvent ne même pas être
@@ -711,7 +976,7 @@ Si on ne lui dit rien, elle donne les changements de tous les fichiers mais
 on peut lui demander de se limiter à un fichier ou à un dossier spécifique.
 Dans notre exemple,
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git diff main.c
    diff --git a/main.c b/main.c
@@ -1069,7 +1334,7 @@ avec le reste de l'univers.
 On va rajouter une option ``--alien`` qui transforme le ``Hello world!``
 en ``Hello universe!``
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git diff
    diff --git a/main.c b/main.c
@@ -1093,6 +1358,11 @@ en ``Hello universe!``
    +  }
       return EXIT_SUCCESS;
     }
+
+Mettons tous les changements des fichiers traqués avec ``-a``
+
+.. code-block:: bash
+
    $ git commit -a -m "Make it universal"
    [universal 6c743f6] Make it universal
     1 file changed, 7 insertions(+), 1 deletion(-)
@@ -1186,9 +1456,9 @@ pour ``universal``
    Historique après avoir fusionné ``master`` dans ``pid``
 
 Tant qu'on est sur la branche ``pid``,
-implémentons la fonctionnalité
+implémentons la fonctionnalité comme suit
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git diff
    diff --git a/main.c b/main.c
@@ -1207,6 +1477,11 @@ implémentons la fonctionnalité
       printf("Hello world!\n");
       return EXIT_SUCCESS;
     }
+
+et committons la
+
+.. code-block:: bash
+
    $ git commit -a -m "Add pid/ppid info"
    [pid eda36d7] Add pid/ppid info
     1 file changed, 2 insertions(+)
@@ -1253,7 +1528,7 @@ Elle nous avertit que le programme a été terminé par le signal ``SIGSEV``.
 C'est dû au fait qu'on ne vérifie pas que ``argv`` ait au moins 2 éléments
 avant d'essayer accéder au deuxième élément.
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git diff
    diff --git a/main.c b/main.c
@@ -1269,9 +1544,14 @@ avant d'essayer accéder au deuxième élément.
         printf("Hello universe!\n");
       } else {
         printf("Hello world!\n");
+
+Ça marche maintenant sans *Segmentation fault*
+
+.. code-block:: bash
+
    $ make
    gcc main.c
-   ./a.out
+   $ ./a.out
    Hello world!
    $ ./a.out --alien
    Hello universe!
@@ -1335,7 +1615,7 @@ si c'est une ligne qui vient de la branche qu'on veut fusionner,
 en deuxième caractère si ça vient de la branche active et en premier et
 deuxième caractère si ça vient d'aucune des deux pour le ``+``.
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git diff
    diff --cc main.c
@@ -1362,6 +1642,12 @@ deuxième caractère si ça vient d'aucune des deux pour le ``+``.
    +   }
        return EXIT_SUCCESS;
      }
+
+Il n'y a pas besoin de spécifier de commentaire pour une fusion car
+`Git`_ en génère un automatiquement
+
+.. code-block:: bash
+
    $ git commit -a
    [master 0dd6cd7] Merge branch 'universal'
 
@@ -1556,6 +1842,11 @@ suivante
    #	modified:   main.c
    #
    no changes added to commit (use "git add" and/or "git commit -a")
+
+On voit que les changements on été appliqués
+
+.. code-block:: diff
+
    $ git diff
    diff --git a/.gitignore b/.gitignore
    index cba7efc..5df1452 100644
@@ -1573,6 +1864,11 @@ suivante
       return EXIT_SUCCESS;
     }
    +42
+
+On peut alors supprimer le *stash*
+
+.. code-block:: bash
+
    $ git stash drop
    Dropped refs/stash@{0} (ae5b4fdeb8bd751449d73f955f7727f660708225)
 
@@ -1640,7 +1936,7 @@ Commençons par committer ``main.c`` et ``.gitignore`` en oubliant le
 .. code-block:: bash
 
    $ git init
-   Initialized empty Git repository in /home/blegat/tmp/.git/
+   Initialized empty Git repository in /path/to_project/.git/
    $ git status
    # On branch master
    #
@@ -1696,9 +1992,9 @@ on peut le faire comme suit
 On voit qu'aucun commit n'a été créé mais c'est le commit précédent qui
 a été modifié.
 Ajoutons maintenant un check de la valeur retournée par `malloc(3)`_ pour gérer
-les cas limites et committons le
+les cas limites
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git diff
    diff --git a/main.c b/main.c
@@ -1716,6 +2012,11 @@ les cas limites et committons le
       *n = 42;
       printf("%d\n", *n);
       return EXIT_SUCCESS;
+
+et committons le
+
+.. code-block:: bash
+
    $ git add main.c
    $ git commit -m "Check malloc output"
    [master 9e45e79] Check malloc output
