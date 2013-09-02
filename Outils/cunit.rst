@@ -5,7 +5,7 @@
 .. _ref_cunit:
 
 CUnit: librairie de tests
-------------------------
+-------------------------
 
 `CUnit <http://cunit.sourceforge.net>`_ est une librairie de tests unitaires en C. Cette librairie doit être utilisée dans le cadre de ce projet. Un petit
 exemple de test est déjà disponible dans l'archive fournie dans le projet :ref:`projet1`.
