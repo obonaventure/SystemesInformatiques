@@ -594,7 +594,12 @@ choisir quelle ligne est la bonne
    Auto-merging main.c
    CONFLICT (content): Merge conflict in main.c
    Automatic merge failed; fix conflicts and then commit the result.
-   $ cat main.c
+
+Il marque dans ``main.c`` la ligne en conflit et ce qu'elle vaut
+dans les deux commits
+
+.. code-block:: c
+
    #include <stdio.h>
    #include <stdlib.h>
 
@@ -605,6 +610,12 @@ choisir quelle ligne est la bonne
      return 0;
    >>>>>>> 205842aa400e4b95413ff0ed21cfb1b090a9ef28
    }
+
+On peut retrouver les fichiers en conflits dans
+``Unmerged paths``
+
+.. code-block:: bash
+
    $ git status
    # On branch master
    # You have unmerged paths.
@@ -694,7 +705,7 @@ Vous pouvez maintenant obtenir le code du syllabus avec la commande
 
 .. code-block:: bash
 
-   git clone https://github.com/username/SystemesInformatiques.git
+   $ git clone https://github.com/username/SystemesInformatiques.git
 
 Vous pouvez alors faire les changements que vous désirez puis les committer
 comme expliqué à la section précédente.
@@ -703,20 +714,20 @@ Pour cela, il faut commencer par ajouter la remote
 
 .. code-block:: bash
 
-   git remote add upstream https://github.com/obonaventure/SystemesInformatiques.git
+   $ git remote add upstream https://github.com/obonaventure/SystemesInformatiques.git
 
 À chaque fois que vous voudrez vous mettre à jour, utilisez `git-pull(1)`_
 
 .. code-block:: bash
 
-   git pull upstream master
+   $ git pull upstream master
 
 Une fois vos changements commités, vous pouvez les ajouter à *origin* avec
 `git-push(1)`_
 
 .. code-block:: bash
 
-   git push origin master
+   $ git push origin master
 
 Votre amélioration devrait normalement être visible
 `ici <https://github.com/obonaventure/SystemesInformatiques/network>`_.
@@ -729,13 +740,13 @@ il vous suffira de mettre à jour le code en local
 
 .. code-block:: bash
 
-   git pull upstream master
+   $ git pull upstream master
 
 committer vos changements, les ajouter à *origin*
 
 .. code-block:: bash
 
-   git push origin master
+   $ git push origin master
 
 puis faire un nouveau pull request.
 
@@ -907,7 +918,7 @@ un ``return EXIT_SUCCESS;`` et un commentaire en début de fichier
 mais que je n'ai envie que de faire passer le ``return EXIT_SUCCESS;``
 dans la *staging area*, il me suffit de faire
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git add -p main.c
    diff --git a/main.c b/main.c
@@ -941,7 +952,7 @@ dans la *staging area* mais que je veux comme précédemment uniquement
 mettre le ``return EXIT_SUCCESS;``, je peux soit faire ``git reset main.c``
 et puis faire ``git add -p main.c`` comme tout à l'heure, soit faire
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git reset -p main.c
    diff --git a/main.c b/main.c
@@ -1192,10 +1203,10 @@ Pour faire cela, on utilise `git-checkout(1)`_.
 `git-checkout(1)`_ ne fait pas que changer la branche active, il modifie
 aussi le *working directory* pour refléter le commit référencé par la nouvelle
 branche active.
+Après le *checkout*, le contenu de ``main.c`` vaut
 
-.. code-block:: bash
+.. code-block:: c
 
-   $ cat main.c
    // includes
    #include <stdio.h>
    #include <stdlib.h>
@@ -1574,7 +1585,11 @@ avant d'essayer accéder au deuxième élément.
    Auto-merging main.c
    CONFLICT (content): Merge conflict in main.c
    Automatic merge failed; fix conflicts and then commit the result.
-   $ cat main.c
+
+Les conflits sont marqués dans ``main.c``
+
+.. code-block:: c
+
    /*
     * Print 'Hello world!'
     */
@@ -1708,7 +1723,7 @@ Elle est très flexible comme on va le voir.
 Mais on peut aussi demander d'afficher les modifications pour chaque commit
 avec l'option ``-p``
 
-.. code-block:: bash
+.. code-block:: diff
 
    $ git log -p
    commit 0dd6cd7e6ecf01b638cd631697bf9690baedcf20
@@ -2051,7 +2066,11 @@ vient d'ajouter avec `git-revert(1)`_
     Makefile   | 5 +++++
     main.c     | 9 +++++++++
     3 files changed, 15 insertions(+)
-   $ cat main.c
+
+Le contenu de ``main.c`` est alors
+
+.. code-block:: c
+
    #include <stdio.h>
    #include <stdlib.h>
 
