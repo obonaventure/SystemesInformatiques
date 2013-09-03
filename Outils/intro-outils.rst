@@ -402,8 +402,6 @@ dans un commit au commentaire *Fix SIGSEV*
 
        First commit
 
-.. TODO 2 utilisateurs en même temps, conflits et merges
-
 Travailler à plusieurs sur un même projet
 #########################################
 
@@ -1030,9 +1028,6 @@ On peut retenir qu'*il n'y a toujours que la branche active qui est modifée*.
 
 Dans notre exemple,
 l'historique était comme l'image ci-dessous
-
-.. FIXME it could be nice to have subfig here :/
-   like here http://jterrace.github.io/sphinxtr/
 
 .. figure:: /Outils/figures/hello_without_return.png
    :align: center
@@ -1824,8 +1819,6 @@ de ne pas avoir de modifications en conflit avec l'opération.
 plus dans le *working directory* mais qu'elles ne soient pas perdues.
 On peut ensuite les réappliquer avec ``git stash apply`` puis les effacer
 avec ``git stash drop``.
-
-.. FIXME comment faire une ref à un section ?
 
 Reprenons notre exemple de *Changer la branche active* illustré par la figure
 suivante
