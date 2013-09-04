@@ -433,7 +433,7 @@ différentes façons reprises ci-dessous.
 .. { 'U', 'n', 'i', 'x' }; mais certains compilateurs pourraient
 
 Lorsque la taille de la chaîne de caractères n'est pas indiquée à
-l'initialisation (c'est-à-dire dans les trois premières lignes
+l'initialisation (c'est-à-dire dans les deux dernières lignes
 ci-dessus), le compilateur C la calcule et alloue un tableau
 permettant de stocker la chaîne de caractères suivie du caractère ``\0``
 qui par convention termine `toujours` les chaînes de caractères en C.
