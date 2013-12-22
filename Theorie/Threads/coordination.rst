@@ -589,7 +589,7 @@ Plus les opérations réalisées à l'intérieur d'un programme sont indépendan
    :align: center
    :scale: 80
 
-   Loi de Amdahl (source `wikipedia<http://en.wikipedia.org/wiki/Amdahl's_law>`_)
+   Loi de Amdahl (source `wikipedia <http://en.wikipedia.org/wiki/Amdahl's_law>`_)
 
 La loi de Amdahl doit être considérée comme un maximum théorique qui est difficile d'atteindre. Elle suppose que la parallélisation est  parfaite, c'est-à-dire que la création et la terminaison de threads n'ont pas de coût en terme de performance. En pratique, c'est loin d'être le cas et il peut être difficile d'estimer a priori le gain qu'une parallélisation permettra d'obtenir. En pratique, avant de découper un programme séquentiel en threads, il est important de bien identifier la partie séquentielle et la partie parallélisable du programme. Si la partie séquentielle est trop importante, le gain dû à la parallélisation risque d'être faible. Si par contre la partie purement séquentielle est faible, il est possible d'obtenir théoriquement des gains élevés. Le tout sera de trouver des solutions efficaces qui permettront aux threads de fonctionner le plus indépendamment possible.
 
