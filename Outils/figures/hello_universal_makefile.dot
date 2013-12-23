@@ -1,0 +1,24 @@
+digraph "git history" {
+  "master" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="master"];
+  "master" -> "c35a8";
+  "pid" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="pid"];
+  "pid" -> "c1f21";
+  "universal" [shape="box",style="rounded,filled",color="indianred4", fillcolor="lightpink", label="universal"];
+  "universal" -> "88d2c";
+  "HEAD" [shape="box",style="rounded,filled",color="lightgoldenrod3", fillcolor="khaki1", label="HEAD"];
+  "HEAD" -> "universal";
+  "88d2c" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="88d2c\nMerge branch 'master' into universal"];
+  "88d2c" -> "e0c31";
+  "88d2c" -> "c35a8";
+  "c35a8" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="c35a8\nAdd Makefile"];
+  "c35a8" -> "c1f21";
+  "e0c31" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="e0c31\nMake it universal"];
+  "e0c31" -> "c1f21";
+  "c1f21" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="c1f21\nAdd intro"];
+  "c1f21" -> "b1485";
+  "b1485" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="b1485\nAdd .gitignore"];
+  "b1485" -> "bc620";
+  "bc620" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="bc620\nAdd return"];
+  "bc620" -> "76c16";
+  "76c16" [shape="box",style="rounded,filled",color="skyblue4", fillcolor="slategray1", label="76c16\nFirst commit"];
+}
