@@ -51,8 +51,8 @@ source_encoding = 'utf-8'
 master_doc = 'index'
 
 # General information about the project.
-project = u'SINF1252'
-copyright = u'2013, O. Bonaventure, G. Detal, C. Paasch'
+project = u'SINF1252 : Outils informatiques'
+copyright = u'2012-2014, O. Bonaventure, G. Detal, C. Paasch, B. Legat, N. Houtain, M. Demol'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -98,9 +98,9 @@ pygments_style = 'sphinx'
 #modindex_common_prefix = []
 
 rst_epilog = """
-.. include:: /links.rst
-.. include:: /man_links.rst
-.. include:: /incl_links.rst
+.. include:: /../Theorie/links.rst
+.. include:: /../Theorie/man_links.rst
+.. include:: /../Theorie/incl_links.rst
 """
 
 # -- Options for HTML output ---------------------------------------------------
@@ -300,9 +300,9 @@ epub_copyright = u'2013, O. Bonaventure, G. Detal, C. Paasch'
 # Allow duplicate toc entries.
 #epub_tocdup = True
 
-try:
-	open('.staff','r')
-	tags.add('staff')
-	print "Build as staff member"
-except:
-	print "Build as student"
+#try:
+#	open('.staff','r')
+#	tags.add('staff')
+#	print "Build as staff member"
+#except:
+#	print "Build as student"

@@ -7,9 +7,9 @@ Outils informatiques
 
 Cette annexe reprend les outils informatiques utiles pour le cours `SINF1252 <http://www.uclouvain.be/en-cours-2012-lsinf1252.html>`_ suivi par les `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Elle est disponible sous trois formats :
 
- - `HTML </notes/Outils/index.html>`_ accessible directement depuis un navigateur web
- - `pdf </notes/SINF1252-Outils.pdf>`_ utilisable avec Adobe Acrobat ou pour impression
- - `epub </notes/SINF1252-Outils.epub>`_ utilisable avec une tablette 
+ - `HTML <http://sites.uclouvain.be/SystInfo/notes/Outils/html/index.html>`_ accessible directement depuis un navigateur web
+ - `pdf <http://sites.uclouvain.be/SystInfo/distrib/SINF1252-Outils.pdf>`_ utilisable avec Adobe Acrobat ou pour impression
+ - `epub <http://sites.uclouvain.be/SystInfo/distrib/SINF1252-Outils.epub>`_ utilisable avec une tablette 
 
 
 La version HTML est préférable car elle contient de nombreux liens vers les pages de manuels des différents logiciels utilisés.

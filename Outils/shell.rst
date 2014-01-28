@@ -3,106 +3,86 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
-SHELL
+Shell
 =====
 
-Introduction
-------------
+L'interprèteur de commande, ou shell, est l'interface de communication entre l'utilisateur et le système d'exploitation. C'est un exécutable chargé d'interpréter les commandes écrites par l'utilisateur et de les exécuter.
 
-L'interpreteur de commande, ou shell, est l'interface de communication entre l'utilisateur et le système d'exploitation. C'est un exécutable chargé d'interpreter les commandes écrites par l'utilisateur et de les exécuter.
+Dans le cadre de ce cours nous utiliserons l'interpreteur `bash(1)`_. Cet exécutable est généralement placé dans le fichier ``/bin/bash``.
 
-Dans le cadre de ce cours nous utiliserons l'interpreteur `bash(1)`_. On peut trouver cet exécutable en /bin/bash.
-
-L'utilisation du shell est très puissante. Elle permet d'effectuer une multitude d'opérations qui peuvent difficilement être réalisées manuellement ou via une interface graphiques.
+Le shell est un outil très puissant. Il permet d'effectuer de nombreuses opérations qui peuvent difficilement être réalisées manuellement ou via une interface graphiques.
 
 
-Astuce : utilisez la complétion
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note:: Astuce : utilisez la complétion
 
-Lors de la frappe d'un fichier, d'un chemin d'accès ou même d'une commande taper sur la touche <tab> pour "compléter" le mot que vous écrivez. Si rien ne se passe tapez deux fois <tab> pour obtenir la liste des possibilités.
+ Lors de la frappe d'un nom de fichier, d'un chemin d'accès ou même d'une commande tapez sur la touche ``<tab>`` pour "compléter" le mot que vous écrivez. Si rien ne se passe tapez deux fois <tab> pour obtenir la liste des possibilités.
 
-Chemin absolu et relatif
-^^^^^^^^^^^^^^^^^^^^^^^^
+.. note:: Chemin absolu et relatif
 
-Pour décrire la position d'un fichier (son chemin), il y a deux manières de faire :
+ Pour écrire la position d'un fichier (son chemin), il y a deux manières de faire :
 	
-	* Le chemin absolu : il fait référence au chemin qu'il faut parcourir dans le système de fichier en démarrant de la racine, représenté par le caractère \.
+	* Le chemin absolu : il fait référence au chemin qu'il faut parcourir dans le système de fichier en démarrant de la racine, représenté par le caractère ``/``.
 
 	* Le chemin relatif: il fait référence au chemin à parcourir depuis le dossier courant.
 
-Exemple
 
-Expression régulière
---------------------
+Expressions régulières
+----------------------
 
-Avant de commencer à voir les commandes utiles avec le shell, il est important de définir ce qu'est une expression régulière (regex).
-Les expresions régulières caractérisent des chaines de caractères et elles sont utilisées avec une multitude de commande. Nous l'utiliserons notamment pour faire une recherche dans un fichier.
+Avant de commencer à voir les commandes utiles avec le shell, il est important de définir ce qu'est une expression régulière (`regex(3)`). Les expresions régulières caractérisent des chaînes de caractères et elles sont utiles pour de nombreuses commandes. Nous l'utiliserons notamment pour faire une recherche dans un fichier.
 
-Dans un regex, certain caractère ont une signification particulière :
+Dans un regex, certains caractères ont une signification particulière :
 
-		\ 	Caractère d'échappement 		[\.] contient un "."
-		^ 	Début de ligne 				^b commence par b
-		. 	N'importe quel caractère 		^.$ contient un seul caractère
-		$ 	Fin de ligne 				er$ finit par "er"
-		| 	Alternative 				^(a|A) commence par a ou A
-		( ) 	Groupement 				^((a)|(er)) commence par a ou er
-		- 	Intervalle de caractères 		^[a-d] commence par a,b,c ou d
-		[ ] 	Ensemble de caractères 			[0-9] contient un chiffre
-		[^] 	Tout sauf un ensemble de caractères 	^[^a] ne commence pas par a
-		+ 	1 fois ou plus 				^(a)+ commence par un ou plusieurs a
-		? 	0 ou 1 fois 	 			^(a)? commence ou non par un a
-		* 	0 fois ou plus 				^(a)* peut ou non commencer par a
-		{x} 	x fois exactement 			a{2} deux fois "a"
-		{x,} 	x fois au moins 			a{2,} deux fois "a" au moins
-		{x, y} 	x fois minimum, y maximum 		a{2,4} deux, trois ou quatre fois "a"
+         =============   ====================================   ====================================================
+         Expression      Explication                            Exemple
+         =============   ====================================   ====================================================
+	 ``\`` 	         Caractère d'échappement 		``[\.]`` contient un "."
+	 ``^`` 	 	 Début de ligne 			``^b`` commence par b
+	 ``.`` 	 	 N'importe quel caractère 		``^.$`` contient un seul caractère
+	 ``$`` 	 	 Fin de ligne 				``er$`` finit par "er"
+	 ``|`` 	 	 Alternative 				``^(a|A)`` commence par a ou A
+	 ``( )``	 Groupement 				``^((a)|(er))`` commence par a ou er
+	 ``-`` 	 	 Intervalle de caractères 		``^[a-d]`` commence par a,b,c ou d
+	 ``[ ]``  	 Ensemble de caractères 		``[0-9]`` contient un chiffre
+	 ``[^]``  	 Tout sauf un ensemble de caractères 	``^[^a]`` ne commence pas par a
+	 ``+`` 	 	 1 fois ou plus 			``^(a)+`` commence par un ou plusieurs a
+	 ``?`` 	 	 0 ou 1 fois 	 			``^(a)?`` commence ou non par un a
+	 ``*`` 	 	 0 fois ou plus 			``^(a)*`` peut ou non commencer par a
+	 ``{x}``    	 x fois exactement 			``a{2}`` deux fois "a"
+	 ``{x,}``     	 x fois au moins 			``a{2,}`` deux fois "a" au moins
+	 ``{x, y}``  	 x fois minimum, y maximum 		``a{2,4}`` deux, trois ou quatre fois "a"
+         =============   ====================================   ====================================================
 
-		
-		Note : 
-			^b$ 	= contient uniquement b
-			^$ 	= la ligne est vide
+Notes : 
+	
+	- ``^b$`` 	= contient uniquement le caractère ``b`
+	- ``^$` 	= la ligne est vide
 
 Nous verrons plus en détails leur utilisation avec les commandes plus complexes.
 
 
-Manipulation du répertoire courant
-----------------------------------
+Manipulation des répertoires
+----------------------------
 
-Connaitre le répertoire courant
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Chaque processus travaille dans un répertoire dit courant. C'est le répertoire dans lequel le processus accède pour lire ou écrire des fichiers lorsque le processus utilise un nom relatif. La commande `pwd(1)`_ affiche le chemin du répertoire courant. 
 
-`pwd(1)`_		affiche le chemin du répertoire courant.
+Il est possible de changer le répertoire courant du processus ou du shell en utilisant la commande `cd(1)`_. Exemples :
 
-Changer le répertoire courant
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  - `cd(1)`_ `chemin` :	change le répertoire courant par celui de "chemin".
+  - `cd(1)`_	: change le répertoire courant par le répertoire de login de l'utilisateur courant. 
+  - `cd(1)`_ .. : remonte dans le répertoire prédécesseur dans l'arborescence des fichiers.
 
-`cd(1)`_ chemin		change le répertoire courant par celui de "chemin".
-`cd(1)`_		change le répertoire courant par /home. 
-`cd(1)`_ ..		change le répertoire courant par le précédent.
+La commande `mkdir(1)`_ permet de créer un répertoire. Elle prend comme argument le nom du répertoire à créer.
+La commande `rmdir(1)`_ supprime un répertoire qui doit être vide vide. Pour effacer un répertoire et tous les fichiers qu'il contient, il faut utiliser la commande `rm(1)`_ avec l'option ``-r``. Ainsi, ``rm -r /tmp/t`` supprime le répertoire ``/tmp/t`` ainsi que tous les fichiers et sous-répertoire se trouvant dans ce répertoire. 
 
-Manipulation spécifique des répertoires
----------------------------------------
+La commande `ls(1)`_ permet de connaître l'ensemble des fichiers et répertoires contenus dans le répertoire courant. Elle supporte plusieurs options dont les plus utiles sont :
+	
+    * ``-F`` : 	Positionne à la fin des noms de fichier un ``/`` pour les répertoires et ``*`` pour les fichiers exécutables
+    * ``-a`` : 	Affiche tous les fichiers, y compris les fichiers cachés (ceux qui commencent par le caractère ``.`` )
+    * ``-d`` : 	Evite de lister le contenu d'un répertoire : si `rep` est un répertoire, ``ls -l`` `rep` listera le contenu du répertoire `rep`, alors que ``ls -ld`` `rep` listera la description du répertoire
+    * ``-l`` : 	Description complète du contenu d'un répertoire (une ligne par fichier)
 
-Créer et détruire 
-^^^^^^^^^^^^^^^^^
-
-`mkdir(1)`_ dir		crée un répertoire.
-`rmdir(1)`_ dir		supprime un répertoire vide.
-`rm(1)`_  -r dir	supprime le répertoire et ce qu'il contient.
-
-Visualiser
-^^^^^^^^^^
-
-`ls(1)`_ [-FaRl] 	liste le contenu d'un répertoire.
-			    * -F : 	Positionne à la fin des noms un / pour les répertoires et un * pour les fichiers exécutables
-			    * -a : 	Affiche tous les fichiers, y compris les fichiers cachés (ceux qui commencent par . )
-			    * -l : 	Description complète du contenu d'un répertoire (une ligne par fichier)
-
-					Le premier caractère de la ligne indique le type du fichier :
-			    						- : 	standard
-			    						d : 	répertoire
-			    * -d : 	Evite de lister le contenu d'un répertoire : si rep est un repertoire, ls -l rep listera le contenu du répertoire rep, alors que ls -ld rep listera la description du répertoire
-
-	Il est aussi possible de connaître le contenu d'un répertoire sans qu'il soit le répertoire courant
+Avec l'option ``-l``, le premier caractère de la ligne indique le type du fichier. Le caractère ``-`` correspond à un fichier standard et ``d`` à un répertoire. Il est aussi possible de connaître le contenu d'un autre répertoire quel le répertoire courant en fournissant le nom de ce répertoire comme argument à la commande ``ls``. 
 
 	.. code-block:: console
 		
@@ -113,8 +93,8 @@ Visualiser
 		first.txt  log.log  second.txt
 
 
-Manipulation spécifique des fichiers
-------------------------------------
+Manipulation de fichiers
+------------------------
 
 Créer et détruire 
 ^^^^^^^^^^^^^^^^^
@@ -191,14 +171,14 @@ Modifier
 					* -b nbr : decoupe selon un nombre d'octet
 					* -n nbr : decoupe selon un de ligne
 
-Extraire des données
-^^^^^^^^^^^^^^^^^^^^
+Extraction de données
+^^^^^^^^^^^^^^^^^^^^^
 
 `grep(1)`_ [-opt] regex file	recherche l'expression dans les fichiers.
 					* -i : ignore la casse
 				    	* -v : affiche les lignes ne contenant pas l'expression. 
 					* -c : compte les lignes ne contenant pas la chaine
-					* -n : numerote chaque ligne contenant la chaîne
+					* -n : numérote chaque ligne contenant la chaîne
 					* -x : affiche les lignes correspondant exactement à la chaine
 
 `uniq(1)`_ [-opt] filename	affiche le fichier en supprimant les lignes qui se répètent successivement.
@@ -459,22 +439,24 @@ Les permissions accordées à ces trois classes sont :
 `chmod(1)`_ mode files    	change les permissions du ou des fichiers/répertoires.
     
 	.. code-block:: console
+
 	    					user 	group 	other 	
 	    	mode désiré : rwxr-xr--		rwx 	 r-x 	 r-- 	
 	    					111 	 101 	 100 	 (en binaire)
 	    					 7 	  5 	  4 	 (en hexadecimal)
 	    	
-		d'ou la commande chmod 754 fichier
+		d'ou la commande ``chmod 754 fichier``
+
  
 `chown(1)`_ owner files    	change le propriétaire du fichier.
 
 `chgrp(1)`_ grp files	    	change le groupe du fichier.
 
-Obtenir des information
-^^^^^^^^^^^^^^^^^^^^^^^
+Obtenir des informations
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 `stat(1)`_ [-opt] filename	donne des informations sur les métadonnées associéées au fichier
-					* -f : affiche l'etat du systeme de fichiers plutot que celui du fichier
+					* -f : affiche l'état du systeme de fichiers plutot que celui du fichier
 					* -L : suit les liens du fichier
 					* -t : affiche les informations de façon concise
 					* --format=FORMAT : affiche les information selon le format choisi
@@ -645,15 +627,16 @@ Informations systemes
 Maniement des jobs
 ^^^^^^^^^^^^^^^^^^
 
-La plupart des commandes en consoles sont exécutées instantanément, mais ce n'est pas le cas de toutes. Certaines commandes, que l'on va appeler job, prennent plus de temps (comme par exemple copier un très gros fichier), et d'autres encore tournent indéfiniment (c'est le cas par exemple de yes).
+La plupart des commandes en console sont exécutées rapidement, mais ce n'est pas le cas de toutes. Certaines commandes, que l'on va appeler `jobs`, prennent plus de temps (comme par exemple copier un très gros fichier), et d'autres encore tournent indéfiniment.
 
 Evidemment, quand un job est en cours d'exécution à la console, plus aucune action ne peut être faite sur celle-ci. Unix nous vient en aide dans ce cas là avec les le raccourci ``Ctrl+z`` et les commandes `jobs(1)`_, `bg(1)`_ et `fg(1)`_.
 
     	* ``Ctrl+z``  : Le job passe dans l'état ``suspended``. Il est en pause, et placé en background.
-    	* ``jobs``    : Affiche à la console tous les jobs présent en background
-   	* ``bg``      : Passe un job mis en background de l'état ``suspended`` à l'état ``running``. Le job reste dans le background, mais il s'exécute
+    	* ``jobs``    : Affiche à la console la liste des jobs présents en background
+   	* ``bg``      : Passe un job mis en background de l'état ``suspended`` à l'état ``running``. Le job reste en background, mais il continue à s'exécuter
     	* ``fg``      : Passe un job du background à l'avant plan
 
+Exemples :
 
     .. code-block:: console
 
@@ -679,7 +662,6 @@ Evidemment, quand un job est en cours d'exécution à la console, plus aucune ac
       #nous vérifions le statut de yes avec jobs
       [1]+  Running                 yes > \dev\null &
       #il est en cours d'exécution
-
       
       $ fg yes
       #nous remettons yes en avant plan
@@ -702,8 +684,6 @@ Evidemment, quand un job est en cours d'exécution à la console, plus aucune ac
       #un deuxième appel à jobs nous affiche une liste vide
 
 
-
-
 .. _`jobs(1)`: http://www.manpagez.com/man/1/jobs/
 .. _`bg(1)`: http://linux.die.net/man/1/bg
 .. _`fg(1)`: http://linux.die.net/man/1/fg
@@ -714,6 +694,8 @@ Commandes complexes
 
 Modification d'un fichier
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 
 `sed(1)`_ [-n] [-e 'prog'] [-f cmdfile] [file]  	Applique des commandes de 'prog' sur un fichier
 				
@@ -875,7 +857,7 @@ Redirection nommé
 .. _bash:
 	
 Bash
-====
+----
 
 Tapez des commandes dans la console est inévitable lors d'opérations avancées sur un système Unix, et peut devenir très vite répétitif et fastidieux pour l'utilisateur. Le Bash est justement là pour éviter ces répétitions et automatiser certaines tâche à l'aide de scripts, qui sont des fichiers texte composés de différentes commandes Unix, lus, interprétés et exécutés par Bash.
 
@@ -934,8 +916,8 @@ Ce script produit comme résultat
 
 Il est interressant de visiter cette page : http://michel.mauny.net/sii/variables-shell.html
 
-Les structures de contrôles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Les structures de contrôle
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Comme dans chaque langage de programmation, bash offre les structures de contrôles habituelles telles que les boucles if, for ou encore while que nous allons démontrer maintenant.
 
@@ -943,7 +925,7 @@ Comme dit précédemment, il n'y a pas de type en bash, true et false n'existe p
 
 Dans le but de tester ces boucles nous utiliserons un petit programme en C, `return.c <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/return.c>`_, qui va renvoyer la valeur qu'il reçoit en argument. Le script de test est `structures.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/structures.sh>`_.
 
-    .. code-block:: bash
+   .. code-block:: bash
 
       #!/bin/bash
 

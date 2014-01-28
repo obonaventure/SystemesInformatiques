@@ -106,8 +106,8 @@ Exercices
 
       1 puisque tous les threads ont fait wait puis post alors que le dernier a fait post avant de faire son wait
 
-#. La librairie POSIX contient la fonction `sem_getvalue(3)`_ qui permet de récupérer la valeur d'un sémaphore sans pour autant effectuer d'opération `sem_wait(3)`_ sur ce sémaphore. Elle peut être utilisée pour observer l'évolution de la valeur d'un sémaphore. Modifiez le programme des philosophes contenant un deadlock (:download:`/Exercices/Programmes/src/pthread-philo-sem.c`) et ajoutez-y un thread qui observe toutes les 10 secondes l'évolution des sémaphores et arrête tout le programme via `exit(3)`_ en affichant un message d'erreur si les valeurs des sémaphores n'ont pas changé.
+#. La librairie POSIX contient la fonction `sem_getvalue(3)`_ qui permet de récupérer la valeur d'un sémaphore sans pour autant effectuer d'opération `sem_wait(3)`_ sur ce sémaphore. Elle peut être utilisée pour observer l'évolution de la valeur d'un sémaphore. Modifiez le programme des philosophes contenant un deadlock (:download:`/Programmes/src/pthread-philo-sem.c`) et ajoutez-y un thread qui observe toutes les 10 secondes l'évolution des sémaphores et arrête tout le programme via `exit(3)`_ en affichant un message d'erreur si les valeurs des sémaphores n'ont pas changé.
 
-#. Les mutex et les sémaphores peuvent être utilisés pour résoudre des problèmes d'exclusion mutuelle. Le programme :download:`/Exercices/QCM/S7/src/pthread-mutex-perf.c` utilise des mutex. Modifiez-le pour utiliser des sémaphores à la place et comparez le coût en termes de performance entre les mutex et les sémaphores.
+#. Les mutex et les sémaphores peuvent être utilisés pour résoudre des problèmes d'exclusion mutuelle. Le programme :download:`/QCM/S7/src/pthread-mutex-perf.c` utilise des mutex. Modifiez-le pour utiliser des sémaphores à la place et comparez le coût en termes de performance entre les mutex et les sémaphores.
 
 #. Faites l'exercice sur les producteurs/consommateurs sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/50>`_.

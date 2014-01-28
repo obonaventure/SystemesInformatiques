@@ -21,26 +21,26 @@ Exercices
 
 #. Un étudiant souhaite passer un tableau d'entiers comme argument à un thread et écrit le code suivant. Qu'en pensez-vous ?
 
-   .. literalinclude:: /Exercices/Programmes/src/pthread-array.c
+   .. literalinclude:: /Programmes/src/pthread-array.c
       :encoding: utf-8
       :language: c
       :start-after: ///AAA
 
 #. Considérons le programme de test des threads POSIX ci-dessous. Ce programme utilise 4 threads qui incrémentent chacun un million de fois une variable globale.
 
-   .. literalinclude:: /Exercices/Programmes/src/pthread-test.c
+   .. literalinclude:: /Programmes/src/pthread-test.c
       :encoding: utf-8
       :language: c
       :start-after: ///AAA
 
-   Exécutez ce programme (:download:`/Exercices/Programmes/src/pthread-test.c`) et observez le résultat qu'il affiche à l'écran. Pouvez-vous expliquer le comportement de ce programme ?
+   Exécutez ce programme (:download:`/Programmes/src/pthread-test.c`) et observez le résultat qu'il affiche à l'écran. Pouvez-vous expliquer le comportement de ce programme ?
 
 #. Résolvez des sudokus. Exercice disponible sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/42>`_.
 
 Mini-projet: Mesure de performance
 ==================================
 
-On vous demande de transformer un code monothreadé en un code multithreadé. Vous devez vous baser sur le code présent dans l'archive: :download:`/Exercices/Programmes/src/prog-5-measure/prog-5-measure.tar.gz`. Le programme permet de chiffrer ou déchiffrer des mots de passe passés en argument au programme. Ce dernier prend plusieurs arguments additionels:
+On vous demande de transformer un code monothreadé en un code multithreadé. Vous devez vous baser sur le code présent dans l'archive: :download:`/Programmes/src/prog-5-measure/prog-5-measure.tar.gz`. Le programme permet de chiffrer ou déchiffrer des mots de passe passés en argument au programme. Ce dernier prend plusieurs arguments additionels:
 
     * ``-p`` définit le mot de passe à utiliser
     * ``-n`` définit le nombre de fois que chaque mot de passe est chiffré/déchiffré

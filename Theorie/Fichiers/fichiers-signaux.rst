@@ -25,7 +25,7 @@ Pour être capable d'utiliser les signaux à bon escient, il est important de bi
 
 Il existe deux types de signaux.
 
- - Un :term:`signal synchrone` est un :term:`signal` qui a été directement causé par l'exécution d'une instruction du processus. Un exemple typique de :term:`signal synchrone` est le signal ``SIGFPE`` qui est généré par le système d'exploitation lorsqu'un processus provoque une exception lors du calcul d'expressions mathématiques. C'est le cas notamment lors d'une division par zéro. La sortie ci-dessous illustre ce qu'il se produit lors de l'exécution du programme :download:`/Theorie/Fichiers/src/sigfpe.c`.
+ - Un :term:`signal synchrone` est un :term:`signal` qui a été directement causé par l'exécution d'une instruction du processus. Un exemple typique de :term:`signal synchrone` est le signal ``SIGFPE`` qui est généré par le système d'exploitation lorsqu'un processus provoque une exception lors du calcul d'expressions mathématiques. C'est le cas notamment lors d'une division par zéro. La sortie ci-dessous illustre ce qu'il se produit lors de l'exécution du programme :download:`/Fichiers/src/sigfpe.c`.
 
    .. code-block:: console
 
@@ -98,7 +98,7 @@ Le premier argument de l'appel système `signal(2)`_ est généralement spécifi
 
 L'exemple ci-dessous est un programme simple qui compte le nombre de signaux ``SIGUSR1`` et ``SIGUSR2`` qu'il reçoit et se termine dès qu'il a reçu cinq signaux.
 
-.. literalinclude:: /Theorie/Fichiers/src/sigusr.c
+.. literalinclude:: /Fichiers/src/sigusr.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -143,20 +143,20 @@ La plupart des variantes de Unix, y compris Linux, utilisent la seconde stratég
 
 Pour illustrer ce problème, considérons le programme ci-dessous qui compte simplement le nombre de signaux ``SIGUSR1`` reçus.
 
-.. literalinclude:: /Theorie/Fichiers/src/sigusrcount.c
+.. literalinclude:: /Fichiers/src/sigusrcount.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
 
-Depuis un shell, il est possible d'envoyer plusieurs fois le signal ``SIGUSR1`` rapidement avec le script :download:`/Theorie/Fichiers/src/nkill.sh`. Ce script prend deux arguments : le nombre de signaux à envoyer et le processus destination.
+Depuis un shell, il est possible d'envoyer plusieurs fois le signal ``SIGUSR1`` rapidement avec le script :download:`/Fichiers/src/nkill.sh`. Ce script prend deux arguments : le nombre de signaux à envoyer et le processus destination.
 
-.. literalinclude:: /Theorie/Fichiers/src/nkill.sh
+.. literalinclude:: /Fichiers/src/nkill.sh
    :encoding: utf-8
    :language: console
 
 
-La sortie ci-dessous présente une exécution de ce script avec le processus :download:`/Theorie/Fichiers/src/sigusrcount.c` en tâche de fond.
+La sortie ci-dessous présente une exécution de ce script avec le processus :download:`/Fichiers/src/sigusrcount.c` en tâche de fond.
 
 .. code-block:: console
 
@@ -185,7 +185,7 @@ Traitement de signaux synchrones
 Le programme ci-dessous prend en arguments en ligne de commande une séquence d'entiers et divise la valeur ``1252`` par chaque entier passé en argument. Il enregistre la fonction ``sigfpe_handler`` comme fonction de traitement du signal ``SIGFPE``.
 
 
-.. literalinclude:: /Theorie/Fichiers/src/sigfpe2.c
+.. literalinclude:: /Fichiers/src/sigfpe2.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -247,7 +247,7 @@ La fonction `setjmp(3)`_ est équivalente à la déclaration d'une étiquette. E
 
 Le programme ci-dessous illustre l'utilisation de `setjmp(3)`_ et `longjmp(3)`_.
 
-.. literalinclude:: /Theorie/Fichiers/src/longjmp.c
+.. literalinclude:: /Fichiers/src/longjmp.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -255,7 +255,7 @@ Le programme ci-dessous illustre l'utilisation de `setjmp(3)`_ et `longjmp(3)`_.
 
 Le programme débute en exécutant la fonction ``f``. Dans cette exécution, la fonction `setjmp(3)`_ retourne la valeur ``0``. Ensuite, la fonction ``main`` appelle la fonction ``g`` qui elle exécute ``longjmp(label,1)``. Cela provoque un retour à la fonction ``f`` à l'endroit de l'exécution de ``setjmp(label)`` qui cette fois-ci va retourner la valeur ``1``. Lors de son exécution, le programme ci-dessus affiche :
 
-.. literalinclude:: /Theorie/Fichiers/src/longjmp.out
+.. literalinclude:: /Fichiers/src/longjmp.out
    :encoding: utf-8
    :language: console
 
@@ -263,7 +263,7 @@ Avec les fonctions `setjmp(3)`_ et `longjmp(3)`_, il est presque possible d'impl
 
 Le programme ci-dessous présente l'utilisation de `sigsetjmp(3)`_ et `siglongjmp(3)`_.
 
-.. literalinclude:: /Theorie/Fichiers/src/sigfpe3.c
+.. literalinclude:: /Fichiers/src/sigfpe3.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -297,7 +297,7 @@ Temporisateurs
 
 Parfois il est nécessaire dans un programme de limiter le temps d'attente pour réaliser une opération. Un exemple simple est lorsqu'un programme attend l'entrée d'un paramètre via l'entrée standard mais peut remplacer ce paramètre par une valeur par défaut si celui-ci n'est pas entré endéans quelques secondes. Lorsqu'un programme attend une information via l'entrée standard, il exécute l'appel système `read(2)`_ directement ou via des fonctions de la librairie comme `fgets(3)`_ ou `getchar(3)`_. Par défaut, celui-ci est bloquant, cela signifie qu'il ne se terminera que lorsqu'une donnée aura été lue. Si `read(2)`_ est utilisé seul, il n'est pas possible de borner le temps d'attente du programme et d'interrompre l'appel à `read(2)`_ après quelques secondes. Pour obtenir ce résultat, une possibilité est d'utiliser un signal. En effet, `read(2)`_ est un appel système lent qui peut être interrompu par la réception d'un signal. Il y a plusieurs façons de demander qu'un signal soit généré après un certain temps. Le plus général est `setitimer(2)`_. Cet appel système permet de générer un signal ``SIGALRM`` après un certain temps ou périodiquement. L'appel système `alarm(3posix)`_ est plus ancien mais plus simple à utiliser que `setitimer(2)`_. Nous l'utilisons afin d'illustrer comment un signal peut permettre de limiter la durée d'attente d'un appel système.
 
-.. literalinclude:: /Theorie/Fichiers/src/alarm.c
+.. literalinclude:: /Fichiers/src/alarm.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -308,7 +308,7 @@ Ce programme utilise `alarm(3posix)`_ pour limiter la durée d'un appel système
 Lors de son exécution, ce programme affiche la sortie suivante.
 
 
-.. literalinclude:: /Theorie/Fichiers/src/alarm.out
+.. literalinclude:: /Fichiers/src/alarm.out
    :encoding: utf-8
    :language: console
 
@@ -316,7 +316,7 @@ En essayant le programme ci-dessus, on pourrait conclure qu'il fonctionne parfai
 
 Pour éviter ce problème, il faut empêcher l'exécution de `read(2)`_ si le signal ``SIGALRM`` a déjà été reçu. Cela peut se réaliser en utilisant `sigsetjmp(3)`_ pour définir une étiquette avant l'exécution du bloc contenant l'appel à `alarm(3posix)`_ et l'appel à `read(2)`_. Si le signal n'est pas reçu, l'appel à `read(2)`_ s'effectue normalement. Si par contre le signal ``SIGALRM`` est reçu entre l'appel à `alarm(3posix)`_ et l'appel à `read(2)`_, alors l'exécution de `siglongjmp(3)`_ dans ``sig_handler`` empêchera l'exécution de l'appel système `read(2)`_ ce qui est bien le comportement attendu.
 
-.. literalinclude:: /Theorie/Fichiers/src/alarm2.c
+.. literalinclude:: /Fichiers/src/alarm2.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -356,7 +356,7 @@ A titre d'exemple, considérons un exemple simple d'utilisation de sémaphores n
 
 Le programme ci-dessous illustre le processus qui s'exécute en premier.
 
-.. literalinclude:: /Theorie/Fichiers/src/process-sem-before.c
+.. literalinclude:: /Fichiers/src/process-sem-before.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -365,7 +365,7 @@ Le programme ci-dessous illustre le processus qui s'exécute en premier.
 
 Ce processus commence par utiliser `sem_open(3)`_ pour créer un sémaphore qui porte le nom ``lsinf1252`` et est initialisé à zéro puis se met en veille pendant vingt secondes. Ensuite il exécute la fonction ``before`` qui se termine par l'exécution de ``sem_post(semaphore)``. Cet appel a pour résultat de libérer le second processus dont le code est présenté ci-dessous :
 
-.. literalinclude:: /Theorie/Fichiers/src/process-sem-after.c
+.. literalinclude:: /Fichiers/src/process-sem-after.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -415,7 +415,7 @@ A titre d'exemple, considérons l'exécution de la commande suivante depuis le s
 
 Lors de son exécution, deux open file objects sont créés dans le noyau. Le premier est relatif au fichier ``/tmp/t`` qui est associé au descripteur ``stdin``. Le second est lié au fichier ``/tmp/out`` et est associé au descripteur ``stdout``. Ces open-file objects sont représentés graphiquement dans la figure ci-dessous.
 
-.. figure:: /Theorie/Fichiers/fig/figures-10-001-c.png
+.. figure:: /Fichiers/fig/figures-10-001-c.png
    :align: center
    :scale: 60
 
@@ -429,7 +429,7 @@ Les open file objects sont également utilisés lorsque plusieurs processus ouvr
 
 Lors de l'exécution de ces deux processus, le noyau va attribuer un descripteur de fichiers à chacun d'eux. Si ``file`` est le premier fichier ouvert par chaque processus, il sera associé au descripteur ``3``. Le noyau créera un open-file object pour le fichier ``file`` utilisé par le processus ``prog1`` et un autre open-file object pour le fichier ``file`` utilisé par le processus ``prog2``. Ces deux open-file objects référencient le même inode et donc le même fichier, mais ils peuvent avoir des modes et des offset pointers qui sont totalement indépendants. Tous les accès faits par le processus ``prog2`` sont complètement indépendants des accès faits par le processus ``prog1``. Cette utilisation d'un même fichier par deux processus distincts est représentée graphiquement dans la figure ci-dessous.
 
-.. figure:: /Theorie/Fichiers/fig/figures-10-002-c.png
+.. figure:: /Fichiers/fig/figures-10-002-c.png
    :align: center
    :scale: 60
 
@@ -437,7 +437,7 @@ Lors de l'exécution de ces deux processus, le noyau va attribuer un descripteur
 Sous Unix et Linux, il est important d'analyser également ce qu'il se passe lors de la création d'un processus en utilisant l'appel système `fork(2)`_. Imaginons que le processus ``prog1`` discuté ci-dessous effectue `fork(2)`_ après avoir ouvert le fichier ``file``. Dans ce cas, le noyau du système d'exploitation va dupliquer la table des descripteurs de fichiers du processus père pour créer celle du processus fils. Le processus père et le processus fils ont donc chacun une table des descripteurs de fichiers qui leur est propre. Cela permet, comme nous l'avons vu lorsque nous avons présenté les pipes, que le fils ferme un de ses descripteurs de fichiers sans que cela n'ait d'impact sur l'utilisation de ce descripteur de fichier par le processus père. Par contre, l'exécution de l'appel système `fork(2)`_ ne copie pas les open-file objects. Après exécution de `fork(2)`_ le descripteur de fichiers ``3`` dans le processus père pointe vers l'open-file object associé au fichier ``file`` et le même descripteur dans le processus fils pointe vers le même open-file object. Cette situation est représentée schématiquement dans la figure ci-dessous.
 
 
-.. figure:: /Theorie/Fichiers/fig/figures-10-003-c.png
+.. figure:: /Fichiers/fig/figures-10-003-c.png
    :align: center
    :scale: 80
 
@@ -516,7 +516,7 @@ Le premier argument est le descripteur de fichiers sur lequel le lock doit être
 
 Cette structure permet de spécifier plus finement qu'avec la fonction `lockf(3)`_ la section du fichier sur laquelle le lock doit être placé. L'utilisation de locks force le noyau à maintenir des structures de données supplémentaires pour stocker ces locks et les processus qui peuvent être en attente sur chacun de ces locks. Conceptuellement, cette structure de données est associée à chaque fichier comme représenté dans la figure ci-dessous.
 
-.. figure:: /Theorie/Fichiers/fig/figures-10-004-c.png
+.. figure:: /Fichiers/fig/figures-10-004-c.png
    :align: center
    :scale: 80
 

@@ -1,3 +1,6 @@
+.. -*- coding: utf-8 -*-
+.. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
+.. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 .. raw:: html
 
@@ -93,7 +96,7 @@ La commande `ls(1)`_ permet de lister le contenu d'un répertoire. Elle supporte
 Question 3. Premier programme en langage C
 ------------------------------------------
 
-Depuis la publication du livre de référence [KernighanRitchie1998]_, le premier programme écrit en langage C affiche à l'écran la chaîne de caractères "Hello, world". Parmi les codes source ci-dessous, un seul est entièrement correct. Lequel ?
+Depuis la publication du livre de référence [KernighanRitchie1998], le premier programme écrit en langage C affiche à l'écran la chaîne de caractères "Hello, world". Parmi les codes source ci-dessous, un seul est entièrement correct. Lequel ?
 
 
 .. class:: positive

@@ -23,7 +23,7 @@ Exercices
 
       Il faut évidemment définir un handler pour SIGINT et traiter ce signal, ce n'est pas très difficile à faire
 
-#. Le programme :download:`/Exercices/Programmes/src/alarm.c` que nous avons utilisé pour illustrer l'appel système `alarm(2)`_ contient une condition de course qui peut dans certains cas empêcher l'interruption de l'appel système `read(2)`_. Un étudiant propose de résoudre ce problème en utilisant une variable modifiée par la fonction de traitement de ``SIGALRM``. Que pensez-vous du programme :download:`/Exercices/Programmes/src/alarm3.c` ?
+#. Le programme :download:`/Programmes/src/alarm.c` que nous avons utilisé pour illustrer l'appel système `alarm(2)`_ contient une condition de course qui peut dans certains cas empêcher l'interruption de l'appel système `read(2)`_. Un étudiant propose de résoudre ce problème en utilisant une variable modifiée par la fonction de traitement de ``SIGALRM``. Que pensez-vous du programme :download:`/Programmes/src/alarm3.c` ?
 
    .. only:: staff
 
@@ -60,7 +60,7 @@ Exercices
 
    Cette fonction utilise l'appel système `write(2)`_ qui peut modifier la variable ``errno`` en cas d'erreur. Modifiez-la de façon à ce que toute modification à ``errno`` n'affecte pas l'utilisation de ``errno`` dans le programme en cours d'exécution.
 
-#. Dans les programmes :download:`/Exercices/Programmes/src/process-sem-before.c` et :download:`/Exercices/Programmes/src/process-sem-after.c`, on a choisi de créer le sémaphore dans un processus avec `sem_open(3)`_ et de le supprimer avec `sem_unlink(3)`_ dans un autre processus. Est-ce possible de créer et supprimer le sémaphore dans le même processus ?
+#. Dans les programmes :download:`/Programmes/src/process-sem-before.c` et :download:`/Programmes/src/process-sem-after.c`, on a choisi de créer le sémaphore dans un processus avec `sem_open(3)`_ et de le supprimer avec `sem_unlink(3)`_ dans un autre processus. Est-ce possible de créer et supprimer le sémaphore dans le même processus ?
 
 #. Un processus ``P`` ouvre le fichier ``fichier`` avec l'appel système `open(2)`_. Celui-ci est associé au descripteur ``fd``. Ensuite, le processus utilise `fork(2)`_ pour créer un processus fils.
 
@@ -72,7 +72,7 @@ Exercices
 
 #. Même question que ci-dessus, mais en remplaçant le fichier par un sémaphore nommé et `open(2)`_ par `sem_open(3)`_ ?
 
-#. Le programme :download:`/Exercices/Programmes/src/miniprojet.c` utilise des sémaphores nommés pour synchroniser la production/consommation entre deux processus. Le processus père crée le fichier ``my_file.txt`` y écrit une valeur. Le processus fils est chargé de lire la donnée présente dans le fichier et l'affiche à la console. Ce programme tourne à l'infini et donc il faut l'arrèter avec la commande ``Ctrl-C``. Malheureusement dans ce cas les sémaphores nommés ne sont pas supprimés correctement. Après avoir terminé le programme  avec `Ctrl-C` vous verrez qu'il reste des sémaphores dans ``/dev/shm/``.
+#. Le programme :download:`/Programmes/src/miniprojet.c` utilise des sémaphores nommés pour synchroniser la production/consommation entre deux processus. Le processus père crée le fichier ``my_file.txt`` y écrit une valeur. Le processus fils est chargé de lire la donnée présente dans le fichier et l'affiche à la console. Ce programme tourne à l'infini et donc il faut l'arrèter avec la commande ``Ctrl-C``. Malheureusement dans ce cas les sémaphores nommés ne sont pas supprimés correctement. Après avoir terminé le programme  avec `Ctrl-C` vous verrez qu'il reste des sémaphores dans ``/dev/shm/``.
 
    Comment modifier ce programme pour gèrer la terminaison correcte des processus lors de la pression sur ``Ctrl-C``. Pour ce faire, vous devez modifier le programme de façon à ce qu'il libère toutes les ressources allouées avant de se terminer. Ceci peut se faire en traitant le signal envoyé au processus par le shell lorsque l'utilisateur presse ``Ctrl-C``.
 

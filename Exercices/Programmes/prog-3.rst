@@ -8,7 +8,7 @@ Questions
 
 #. Expliquez la différence entre `malloc(3)`_ et `calloc(3)`_. D'après vous, quel appel sera le plus lent ?
 
-#. Dans la fonction ``push`` du programme de manipulation d'un pile :download:`/Theorie/C/S3-src/stack.c`, faut-il remplacer l'appel à `malloc(3)`_ par un appel à `calloc(3)`_
+#. Dans la fonction ``push`` du programme de manipulation d'un pile :download:`/../Theorie/C/S3-src/stack.c`, faut-il remplacer l'appel à `malloc(3)`_ par un appel à `calloc(3)`_
 
 	.. only:: staff
 
@@ -16,7 +16,7 @@ Questions
 
 			Non. La zone mémoire est initialisée directement après.
 
-#.  Le prototype de la fonction ``push`` du programme de manipulation d'une pile :download:`/Theorie/C/S3-src/stack.c`,  est ``void push(struct fraction_t *)``. Serait-il possible d'écrire une function push ayant comme prototype ``void push(struct fraction_t)`` ? Qu'est-ce qui changerait dans ce cas ?
+#.  Le prototype de la fonction ``push`` du programme de manipulation d'une pile :download:`/../Theorie/C/S3-src/stack.c`,  est ``void push(struct fraction_t *)``. Serait-il possible d'écrire une function push ayant comme prototype ``void push(struct fraction_t)`` ? Qu'est-ce qui changerait dans ce cas ?
 
 	.. only:: staff
 
@@ -24,7 +24,7 @@ Questions
 
 			Pas possible.
 
-#. Les fonctions ``push`` et ``pop`` définies dans l'exemple de manipulation d'une pile :download:`/Theorie/C/S3-src/stack.c` utilisent une pile qui est définie par un pointeur qui est une variable locale. Est-il possible de réécrire ces fonctions de façon à ce qu'elles prennent comme argument un pointeur vers la pile ? Leurs prototypes deviendraient :
+#. Les fonctions ``push`` et ``pop`` définies dans l'exemple de manipulation d'une pile :download:`/../Theorie/C/S3-src/stack.c` utilisent une pile qui est définie par un pointeur qui est une variable locale. Est-il possible de réécrire ces fonctions de façon à ce qu'elles prennent comme argument un pointeur vers la pile ? Leurs prototypes deviendraient :
 
    - ``void push(struct node_t *, struct fraction_t *);``
    - ``struct fraction_t * pop(struct node_t *);``
@@ -116,7 +116,7 @@ Questions
 #. Vous travaillez sur un programme qui doit manipuler des vecteurs. Afin de pouvoir supporter des vecteurs de taille quelconque, vous décidez de réimplémenter ces vecteurs vous même en utilisant des pointeurs. Votre programme définit la structure ``struct vector_t`` et les fonctions ci-dessous.
 Implémentez ces fonctions sans jamais utiliser la notation des tableaux en C (``[`` et ``]``).
 
- .. literalinclude:: /Exercices/Programmes/src/vector.c
+ .. literalinclude:: /Programmes/src/vector.c
     :encoding: utf-8
     :language: c
     :start-after: ///AAA

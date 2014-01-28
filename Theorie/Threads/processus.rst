@@ -20,13 +20,13 @@ A côté des instructions qui correspondent aux lignes de code écrites par le d
 
 A titre d'exemple, considérons la librairie `math.h(7posix)`_. Cette librairie contient de nombreuses fonctions mathématiques. Pour les utiliser dans un programme, il faut non seulement y inclure le fichier header `math.h`_ qui contient les prototypes et constantes utilisées par la librairie, mais aussi indiquer au linker que l'exécutable doit être lié avec la librairie `math.h(7posix)`_. Cela se fait en utilisant le flag ``-l`` de `gcc(1)`_.
 
-.. literalinclude:: /Theorie/Threads/S8-src/math.c
+.. literalinclude:: /Threads/S8-src/math.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
 
-Le programme :download:`/Theorie/Threads/S8-src/math.c` ci-dessus doit être compilé en utilisant la commande ``gcc -Wall -Werror math.c -o math -lm``. Le paramètre ``-lm`` indique au compilateur qu'il doit charger la librairie ``m``. Cette librairie, est une des librairies standard du système, elle réside généralement dans le répertoire ``/usr/lib`` [#flib]_. En pratique, `gcc(1)`_ charge automatiquement la librairie ``C`` standard lors de la compilation de tout programme. Cela revient à utiliser implicitement le paramètre ``-lc``.
+Le programme :download:`/Threads/S8-src/math.c` ci-dessus doit être compilé en utilisant la commande ``gcc -Wall -Werror math.c -o math -lm``. Le paramètre ``-lm`` indique au compilateur qu'il doit charger la librairie ``m``. Cette librairie, est une des librairies standard du système, elle réside généralement dans le répertoire ``/usr/lib`` [#flib]_. En pratique, `gcc(1)`_ charge automatiquement la librairie ``C`` standard lors de la compilation de tout programme. Cela revient à utiliser implicitement le paramètre ``-lc``.
 
 Lors de l'utilisation de telles librairies, on s'attendrait à ce que toutes les instructions correspondant aux fonctions de la librairie utilisée soient présentes à l'intérieur de l'exécutable. En pratique, ce n'est pas exactement le cas. Même si notre programme d'exemple utilise `fmax(3)`_ de la librairie `math.h(7posix)`_ et `printf(3)`_ de la librairie standard, son exécutable ne contient que quelques milliers d'octets.
 
@@ -83,7 +83,7 @@ La taille réduite des exécutables sous Linux et de nombreuses variantes de Uni
 
 Il est parfois intéressant de pouvoir créer une librairie qui peut être liée de façon statique avec des programmes, par exemple lorsque ceux-ci doivent être exécutés sur d'autres ordinateurs que ceux sur lesquels ils ont été compilés. A titre d'illustration, considérons une librairie minuscule contenant une seule fonction ``imax`` qui calcule le maximum entre deux entiers. L'implémentation de cette fonction est très simple.
 
-.. literalinclude:: /Theorie/Threads/S8-src/imax.c
+.. literalinclude:: /Threads/S8-src/imax.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -92,7 +92,7 @@ Il est parfois intéressant de pouvoir créer une librairie qui peut être liée
 
 Cette fonction est déclarée dans le fichier header ``imax.h`` et peut être utilisée dans un programme comme ci-dessous.
 
-.. literalinclude:: /Theorie/Threads/S8-src/imath.c
+.. literalinclude:: /Threads/S8-src/imath.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -107,7 +107,7 @@ Il est aussi possible de lister le contenu de la librairie ``libname.a`` avec la
 
 L'archive contenant la librairie peut être liée en utilisant le linker à n'importe quel programme qui en utilise une ou plusieurs fonctions. Le linker de `gcc(1)`_ peut effectuer cette opération comme illustré par le ``Makefile`` ci-dessous. Il faut noter que l'argument ``--static`` permet de forcer le compilateur à inclure le code de la librairie dans l'exécutable.
 
-.. literalinclude:: /Theorie/Threads/S8-src/Makefile-lib
+.. literalinclude:: /Threads/S8-src/Makefile-lib
    :encoding: utf-8
    :language: makefile
 
@@ -217,9 +217,9 @@ L'appel système `fork(2)`_ est atypique car il est exécuté par un processus m
  - l'appel système `fork(2)`_ retourne la valeur ``0`` dans le processus fils.
  - l'appel système `fork(2)`_ retourne une valeur positive dans le processus père. Cette valeur est l'identifiant du processus fils créé.
 
-Pour bien comprendre le fonctionnement de `fork(2)`_, analysons l'exemple :download:`/Theorie/Threads/S8-src/fork.c` ci-dessous :
+Pour bien comprendre le fonctionnement de `fork(2)`_, analysons l'exemple :download:`/Threads/S8-src/fork.c` ci-dessous :
 
-.. literalinclude:: /Theorie/Threads/S8-src/fork.c
+.. literalinclude:: /Threads/S8-src/fork.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -227,7 +227,7 @@ Pour bien comprendre le fonctionnement de `fork(2)`_, analysons l'exemple :downl
 
 Lors de son exécution, ce programme affiche les deux lignes suivantes sur sa sortie standard :
 
-.. literalinclude:: /Theorie/Threads/S8-src/fork.out
+.. literalinclude:: /Threads/S8-src/fork.out
    :encoding: utf-8
    :language: console
 
@@ -244,7 +244,7 @@ L'exécution de ce programme illustre bien que le processus fils démarre avec u
 
 Le :term:`kernel` gère les processus et attribue un identifiant à chaque processus. Le type ``pid_t`` est utilisé pour les identifiants de processus sous Unix. Ce type correspond à un nombre entier généralement non-signé. Le nombre maximum de processus qui peuvent être lancés sur un système Linux est un des paramètres fixés à la compilation ou au démarrage du kernel. L'appel système `getpid(2)`_ retourne l'identifiant du processus courant tandis que l'appel système `getppid(2)`_ retourne l'identifiant du processus père.
 
-.. literalinclude:: /Theorie/Threads/S8-src/getpid.c
+.. literalinclude:: /Threads/S8-src/getpid.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -254,7 +254,7 @@ Après l'exécution de `fork(2)`_ le processus père et le processus fils ont un
 
 Pour mieux comprendre le problème, analysons l'exécution du programme ci-dessous. Il crée un processus fils puis le père et le fils écrivent sur :term:`stdout`.
 
-.. literalinclude:: /Theorie/Threads/S8-src/fork-buf.c
+.. literalinclude:: /Threads/S8-src/fork-buf.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -317,7 +317,7 @@ L'utilisation de `strace(1)` lors de cette exécution montre effectivement que c
 
 .. note:: Génération de nombres aléatoires
 
- Le programme :download:`/Theorie/Threads/S8-src/fork-buf.c` présenté ci-dessus est un exemple d'utilisation de nombres aléatoires. Ceux-ci sont générés avec la fonction `rand(3)`_ de la librairie standard. Cette fonction utilise un générateur de nombres aléatoires qui génère toujours la même séquence de nombres aléatoires lorsqu'elle est initialisée avec la même semence par la fonction `srand(3)`_. Souvent, les programmeurs qui utilisent des nombres aléatoires cherchent à ce que la séquence générée diffère d'une exécution du programme à l'autre. Une façon simple de procéder est d'utiliser comme semence la somme entre le temps courant retourné par `time(3posix)`_ et l'identifiant du processus obtenu via `getpid(2)`_. Une telle semence n'est cependant pas suffisante pour toutes les applications. Certaines applications cryptographiques notamment nécessitent des nombres aléatoires qui ne peuvent pas être facilement prédits. Pour ces applications, il est nécessaire d'utiliser des semences qui sont parfaitement aléatoires, comme `random(4)`_.
+ Le programme :download:`/Threads/S8-src/fork-buf.c` présenté ci-dessus est un exemple d'utilisation de nombres aléatoires. Ceux-ci sont générés avec la fonction `rand(3)`_ de la librairie standard. Cette fonction utilise un générateur de nombres aléatoires qui génère toujours la même séquence de nombres aléatoires lorsqu'elle est initialisée avec la même semence par la fonction `srand(3)`_. Souvent, les programmeurs qui utilisent des nombres aléatoires cherchent à ce que la séquence générée diffère d'une exécution du programme à l'autre. Une façon simple de procéder est d'utiliser comme semence la somme entre le temps courant retourné par `time(3posix)`_ et l'identifiant du processus obtenu via `getpid(2)`_. Une telle semence n'est cependant pas suffisante pour toutes les applications. Certaines applications cryptographiques notamment nécessitent des nombres aléatoires qui ne peuvent pas être facilement prédits. Pour ces applications, il est nécessaire d'utiliser des semences qui sont parfaitement aléatoires, comme `random(4)`_.
 
 .. index:: atexit, exit, wait, waitpid
 
@@ -333,7 +333,7 @@ Ces fonctions appellent en fait la fonction de la librairie `exit(3)`_. Cette fo
 
 L'exemple ci-dessous illustre brièvement l'utilisation de `atexit(3)`_.
 
-.. literalinclude:: /Theorie/Threads/S8-src/atexit.c
+.. literalinclude:: /Threads/S8-src/atexit.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -363,7 +363,7 @@ L'appel système `waitpid(2)`_ prend trois arguments. C'est un appel système bl
 
 Un processus qui lance un processus fils avec `fork(2)`_ *doit* attendre la terminaison de son processus fils en utilisant `waitpid(2)`_. Le programme ci-dessous illustre l'utilisation de `waitpid(2)`_.
 
-.. literalinclude:: /Theorie/Threads/S8-src/fork-wait.c
+.. literalinclude:: /Threads/S8-src/fork-wait.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -374,7 +374,7 @@ Dans ce programme, le processus père récupère la valeur retournée par le fil
 
 Même si un processus *doit* attendre la terminaison de tout processus fils qu'il a lancé, il arrive parfois qu'un processus n'attende pas ses fils. Cela peut arriver lorsqu'un processus s'arrête suite à une erreur avant de pouvoir récupérer ses fils. Ce cas est illustré par l'exemple ci-dessous dans lequel le processus père se termine sans attendre son fils.
 
-.. literalinclude:: /Theorie/Threads/S8-src/fork-orphan.c
+.. literalinclude:: /Threads/S8-src/fork-orphan.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -382,7 +382,7 @@ Même si un processus *doit* attendre la terminaison de tout processus fils qu'i
 
 Du point de vue du :term:`kernel` cette situation est ennuyeuse car il maintient pour chaque processus non seulement son identifiant de processus mais également l'identifiant de son processus père qui est retourné par `getpid(2)`_. Lorsque le père se termine avant son fils, le processus fils est dit `orphelin` et le kernel modifie ses structures de données pour que le père de ce :term:`processus orphelin` soit le processus dont l'identifiant est ``1``. Ce processus est le processus `init(8)`_ qui est lancé au démarrage du système et n'est jamais arrêté.
 
-.. literalinclude:: /Theorie/Threads/S8-src/fork-orphan.out
+.. literalinclude:: /Threads/S8-src/fork-orphan.out
    :encoding: utf-8
    :language: console
 
@@ -405,14 +405,14 @@ Exécution d'un programme
 
 `execve(2)`_ s'utilise souvent juste après l'exécution de `fork(2)`_, mais il est aussi possible de l'utiliser directement dans un programme. Dans ce cas, le programme qui exécute avec succès `execve(2)`_ disparaît et est remplacé par le programme appelé. Le programme ci-dessous illustre une utilisation simple de `execve(2)`_.
 
-.. literalinclude:: /Theorie/Threads/S8-src/execve.c
+.. literalinclude:: /Threads/S8-src/execve.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
 Lors de son exécution, ce programme affiche sur sa sortie standard les lignes suivantes :
 
-.. literalinclude:: /Theorie/Threads/S8-src/execve.out
+.. literalinclude:: /Threads/S8-src/execve.out
    :encoding: utf-8
    :language: console
 
@@ -422,7 +422,7 @@ L'appel système `execve(2)`_ est très souvent exécuté dans un shell tel que 
 
 La programme ci-dessous est un exemple un peu plus complexe de l'utilisation de `fork(2)`_, `execve(2)`_ et `waitpid(2)`_. Ce programme prend comme argument une liste d'exécutables et il essaye de les exécuter l'un à la suite de l'autre. Pour cela, il parcourt ses arguments et essaye pour chaque argument de créer un processus fils et d'y exécuter le programme correspondant. Si le programme a pu être exécuté, sa valeur de retour est récupérée par le processus père. Si l'appel à `execve(2)`_ a échoué, le processus fils se termine avec ``127`` comme valeur de retour. Comme celle-ci est stockée sur 8 bits, c'est la plus grande valeur de retour positive qu'il est possible de retourner depuis un processus fils. Cette valeur indique au processus père que le fils n'a pas réussi à exécuter `execve(2)`_.
 
-.. literalinclude:: /Theorie/Threads/S8-src/fork-manyexec.c
+.. literalinclude:: /Threads/S8-src/fork-manyexec.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -430,7 +430,7 @@ La programme ci-dessous est un exemple un peu plus complexe de l'utilisation de 
 
 Lors de son exécution, ce programme affiche sur sa sortie standard les lignes suivantes :
 
-.. literalinclude:: /Theorie/Threads/S8-src/fork-manyexec.out
+.. literalinclude:: /Threads/S8-src/fork-manyexec.out
    :encoding: utf-8
    :language: console
 
@@ -499,14 +499,14 @@ Pour les exécutables, deux cas de figure sont possibles:
 
  2. Le fichier contient un programme en langage interprété. Dans ce cas, la première ligne débute par ``#!`` suivi du nom complet de l'interpréteur à utiliser et de ses paramètres éventuels. Le programme interprété commence sur la deuxième ligne. A titre d'exemple, voici un petit script `bash(1)`_ qui permet de tester si un fichier est interprétable ou non en testant la valeur des deux premiers caractères du fichier et ses métadonnées.
 
- .. literalinclude:: /Theorie/Threads/S8-src/script.sh
+ .. literalinclude:: /Threads/S8-src/script.sh
     :encoding: utf-8
     :language: bash
 
 
 Sous Unix et Linux, n'importe quel programmeur peut définir son propre interpréteur. Il suffit qu'il s'agisse d'un exécutable compilé et que le nom de cet interpréteur soit présent dans la première ligne du fichier à interpréter. Lors de l'exécution d'un programme utilisant cet interpréteur, celui-ci recevra le contenu du fichier et pourra l'interpréter. Ainsi, par exemple le programme interprété ci-dessous est tout à fait valide.
 
-.. literalinclude:: /Theorie/Threads/S8-src/test.tail
+.. literalinclude:: /Threads/S8-src/test.tail
    :encoding: utf-8
    :language: bash
 

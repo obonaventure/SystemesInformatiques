@@ -10,7 +10,7 @@ Communication entre threads
 Lorsque un programme a été décomposé en plusieurs threads, ceux-ci ne sont en général pas complètement indépendants et ils doivent communiquer entre eux. Cette communication entre threads est un problème complexe comme nous allons le voir. Avant d'aborder ce problème, il est utile de revenir à l'organisation d'un processus et de ses threads en mémoire. La figure ci-dessous illustre schématiquement l'organisation de la mémoire après la création d'un thread POSIX.
 
 
-.. figure:: /Theorie/Threads/S6-fig/figures-001-c.png
+.. figure:: /Threads/S6-fig/figures-001-c.png
    :align: center
    :scale: 80
 
@@ -84,7 +84,7 @@ Malheureusement les difficultés surviennent lorsque deux threads exécutent en 
 
  La taille de la pile d'un thread POSIX est l'un des attributs qui peuvent être modifiés lors de l'appel à `pthread_create(3)`_  pour créer un nouveau thread. Cet attribut peut être fixé en utilisant la fonction `pthread_attr_setstackaddr(3posix)`_ comme illustré dans l'exemple ci-dessous [#fpthreadc]_ (où ``thread_first`` est la fonction qui sera appelée à la création du thread). En général, la valeur par défaut choisie par le système suffit, sauf lorsque le programmeur sait qu'un thread devra par exemple allouer un grand tableau auquel il sera le seul à avoir accès. Ce tableau sera alors alloué sur la pile qui devra être suffisamment grande pour le contenir.
 
- .. literalinclude:: /Theorie/Threads/S6-src/pthread.c
+ .. literalinclude:: /Threads/S6-src/pthread.c
     :encoding: utf-8
     :language: c
     :start-after: ///AAA
@@ -95,7 +95,7 @@ Ce problème d'accès concurrent à une zone de mémoire par plusieurs threads e
 
 Le fragment de code ci-dessus présente une autre illustration d'une section critique. Dans cet exemple, la fonction ``main`` (non présentée), créée deux threads. Le premier exécute la fonction ``inc`` qui incrémente la variable ``global``. Le second exécute la fonction ``is_even`` qui teste la valeur de cette variable et compte le nombre de fois qu'elle est paire. Après la terminaison des deux threads, le programme affiche le contenu des variables ``global`` et ``even``.
 
-.. literalinclude:: /Theorie/Threads/S6-src/pthread-test-if.c
+.. literalinclude:: /Threads/S6-src/pthread-test-if.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -162,7 +162,7 @@ Le deuxième type d'événement est l'exécution d'un appel système bloquant. U
 
 Ces interactions entre les threads et le système d'exploitation sont importantes. Pour bien les comprendre, il est utile de noter qu'un thread peut se trouver dans trois états différents du point de vue de son interaction avec le système d'exploitation. Ces trois états sont illustrés dans la figure ci-dessous.
 
-.. figure:: /Theorie/Threads/S6-fig/figures-003-c.png
+.. figure:: /Threads/S6-fig/figures-003-c.png
    :align: center
    :scale: 80
 
@@ -436,7 +436,7 @@ En C, cela se fait en utilisant les fonctions `pthread_mutex_lock(3posix)`_ et `
 
 L'exemple ci-dessous reprend le programme dans lequel une variable globale est incrémentée par plusieurs threads.
 
-.. literalinclude:: /Theorie/Threads/S6-src/pthread-mutex.c
+.. literalinclude:: /Threads/S6-src/pthread-mutex.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -475,7 +475,7 @@ Le problème de l'exclusion mutuelle considère le cas de plusieurs threads qui 
 
 Dans le :term:`problème des philosophes`, un ensemble de philosophes doivent se partager des baguettes pour manger. Tous les philosophes se trouvent dans une même pièce qui contient une table circulaire. Chaque philosophe dispose d'une place qui lui est réservée sur cette table. La table comprend autant de baguettes que de chaises et une baguette est placée entre chaque paire de chaises. Chaque philosophe est modélisé sous la forme d'un thread qui effectue deux types d'actions : `penser` et `manger`. Pour pouvoir manger, un philosophe doit obtenir la baguette qui se trouve à sa gauche et la baguette qui se trouve à sa droite. Lorsqu'il a fini de manger, il peut retourner à son activité philosophale. La figure ci-dessous illustre une table avec les assiettes de trois philosophes et les trois baguettes qui sont à leur disposition.
 
-.. figure:: /Theorie/Threads/S6-fig/figures-002-c.png
+.. figure:: /Threads/S6-fig/figures-002-c.png
    :align: center
 
    Problème des philosophes
@@ -483,13 +483,13 @@ Dans le :term:`problème des philosophes`, un ensemble de philosophes doivent se
 
 Ce problème de la vie courante peut se modéliser en utilisant un programme C avec les threads POSIX. Chaque baguette est une ressource partagée qui ne peut être utilisée que par un philosophe à la fois. Elle peut donc être modélisée par un :term:`mutex`. Chaque philosophe est modélisé par un thread qui pense puis ensuite appelle `pthread_mutex_lock(3posix)`_ pour obtenir chacune de ses baguettes. Le philosophe peut ensuite manger puis il libère ses baguettes en appelant `pthread_mutex_unlock(3posix)`_. L'extrait [#fphilo]_ ci-dessous comprend les fonctions utilisées par chacun des threads.
 
-.. literalinclude:: /Theorie/Threads/S6-src/pthread-philo.c
+.. literalinclude:: /Threads/S6-src/pthread-philo.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
    :end-before: ///BBB
 
-Malheureusement, cette solution ne permet pas de résoudre le problème des philosophes. En effet, la première exécution du programme (:download:`/Theorie/Threads/S6-src/pthread-philo.c`) indique à l'écran que les philosophes se partagent les baguettes puis après une fraction de seconde le programme s'arrête en affichant une sortie qui se termine :
+Malheureusement, cette solution ne permet pas de résoudre le problème des philosophes. En effet, la première exécution du programme (:download:`/Threads/S6-src/pthread-philo.c`) indique à l'écran que les philosophes se partagent les baguettes puis après une fraction de seconde le programme s'arrête en affichant une sortie qui se termine :
 
 .. code-block:: console
 
@@ -556,9 +556,9 @@ Avec cet ordre d'allocation des mutex, un deadlock n'est plus possible. Il y aur
 
 La solution présentée empêche tout deadlock puisqu'à tout moment il n'y a au moins un philosophe qui peut manger. Malheureusement, il est possible avec cette solution qu'un philosophe mange alors que chacun des autres philosophes a pu s'approprier une baguette. Lorsque le nombre de philosophes est élevé (imaginez un congrès avec une centaine de philosophes), cela peut être une source importante d'inefficacité au niveau des performances.
 
-Une implémentation possible de l'ordre présenté dans la table ci-dessus est reprise dans le programme :download:`/Theorie/Threads/S6-src/pthread-philo2.c` qui comprend la fonction ``philosophe`` suivante.
+Une implémentation possible de l'ordre présenté dans la table ci-dessus est reprise dans le programme :download:`/Threads/S6-src/pthread-philo2.c` qui comprend la fonction ``philosophe`` suivante.
 
-.. literalinclude:: /Theorie/Threads/S6-src/pthread-philo2.c
+.. literalinclude:: /Threads/S6-src/pthread-philo2.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -577,9 +577,9 @@ Ce problème des philosophes est à l'origine d'une règle de bonne pratique ess
 
 .. rubric:: Footnotes
 
-.. [#fexemple] Le programme complet est accessible via :download:`/Theorie/Threads/S5-src/pthread-test.c`
+.. [#fexemple] Le programme complet est accessible via :download:`/Threads/S5-src/pthread-test.c`
 
-.. [#fpthreadc] Le programme complet est accessible via :download:`/Theorie/Threads/S6-src/pthread.c`
+.. [#fpthreadc] Le programme complet est accessible via :download:`/Threads/S6-src/pthread.c`
 
 .. .. [#fframes] Il existe différents standards pour le nombre d'images par seconde en cinéma et en télévision. Les plus courants sont 24, 25 et 30 images par seconde. Voir http://en.wikipedia.org/wiki/Frame_rate
 
@@ -591,5 +591,5 @@ Ce problème des philosophes est à l'origine d'une règle de bonne pratique ess
 
 .. [#fstaticinit] Linux supporte également la macro ``PTHREAD_MUTEX_INITIALIZER`` qui permet d'initialiser directement un ``pthread_mutex_t`` déclaré comme variable globale. Dans cet exemple, la déclaration aurait été : ``pthread_mutex_t global_mutex=PTHREAD_MUTEX_INITIALIZER;`` et l'appel à `pthread_mutex_init(3posix)`_ aurait été inutile. Comme il s'agit d'une extension spécifique à Linux, il est préférable de ne pas l'utiliser pour garantir la portabilité du code.
 
-.. [#fphilo] Le programme complet est :download:`/Theorie/Threads/S6-src/pthread-philo.c`
+.. [#fphilo] Le programme complet est :download:`/Threads/S6-src/pthread-philo.c`
 

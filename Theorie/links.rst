@@ -12,8 +12,6 @@
 .. _Endianness: http://en.wikipedia.org/wiki/Endianness
 .. _llvm: http://llvm.org
 
-.. |fsf| replace:: Free Software Foundation (FSF - http://www.fsf.org)
-.. |gnu| replace:: GNU is Not Unix (GNU - http://www.gnu.org)
 
 
 

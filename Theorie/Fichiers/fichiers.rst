@@ -261,7 +261,7 @@ Cette structure comprend le numéro d'inode contenu dans ses deux premiers membr
 
 L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
 
-.. literalinclude:: /Theorie/Fichiers/src/read.c
+.. literalinclude:: /Fichiers/src/read.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -402,7 +402,7 @@ Ces deux appels systèmes prennent trois arguments. Le premier est le `descripte
 
 Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'écrire des séquences contigües d'octets. Lorsque l'on écrit ou lit des chaînes de caractères dans lesquels chaque caractère est représenté sous la forme d'un byte, il est possible d'utiliser `read(2)`_ et `write(2)`_ pour lire et écrire d'autres types de données que des octets comme le montre l'exemple ci-dessous.
 
-.. literalinclude:: /Theorie/Fichiers/src/read.c
+.. literalinclude:: /Fichiers/src/read.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -410,7 +410,7 @@ Il est important de noter que `read(2)`_ et `write(2)`_ permettent de lire et d'
 
 Lors de son exécution, ce programme affiche la sortie ci-dessous.
 
-.. literalinclude:: /Theorie/Fichiers/src/read.out
+.. literalinclude:: /Fichiers/src/read.out
    :encoding: utf-8
    :language: console
 
@@ -424,13 +424,13 @@ Le second problème est que les fabricants de processeurs ne se sont pas mis d'a
 
 Pour comprendre ces deux techniques, regardons comment l'entier 16 bits ``0b1111111100000000`` est stocké en mémoire. En :term:`big endian`, le byte ``11111111`` sera stocké à l'adresse `x` et le byte ``00000000`` à l'adresse `x+1`. En :term:`little endian`, c'est le byte ``00000000`` qui est stocké à l'adresse `x` et le byte ``11111111`` qui est stocké à  l'adresse `x+1`. Il en va de même pour les entiers encodés sur 32 bits comme illustré dans les deux figures ci-dessous [#fendianfig]_.
 
-.. figure:: /Theorie/Fichiers/fig/500px-Big-Endian.png
+.. figure:: /Fichiers/fig/500px-Big-Endian.png
    :align: center
    :scale: 40
 
    Ecriture d'un entier 32 bits en mémoire :term:`big endian`
 
-.. figure:: /Theorie/Fichiers/fig/500px-Little-Endian.png
+.. figure:: /Fichiers/fig/500px-Little-Endian.png
    :align: center
    :scale: 40
 
@@ -505,7 +505,7 @@ Les appels systèmes de manipulation des fichiers permettent d'accéder à des d
 
 Cet appel système prend comme argument un tableau permettant de stocker deux descripteurs de fichiers. Ces deux descripteurs de fichiers sont utilisés pour respectivement lire et écrire sur le :term:`pipe`. ``fd[0]`` est le descripteur de fichier sur lequel les opérations de lecture seront effectuées tandis que les opérations d'écriture se feront sur ``fd[1]``. Chaque fois qu'une donnée est écrite sur ``fd[1]`` avec l'appel système ``write(fd[1],...)``, elle devient disponible sur le descripteur de fichiers ``fd[0]`` et peut être lue avec ``read(fd[0],...)``. Même si il est possible de créer un :term:`pipe` dans un processus unique, `pipe(2)`_ s'utilise en général entre un père et son fils. Le programme ci-dessous illustre cette utilisation de pipes pour permettre à un processus père d'échanger de l'information avec son processus fils.
 
-.. literalinclude:: /Theorie/Fichiers/src/fork-pipe.c
+.. literalinclude:: /Fichiers/src/fork-pipe.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA

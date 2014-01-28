@@ -33,7 +33,7 @@ Un premier exemple sont les pointeurs vers des fonctions. Comme nous l'avons vu 
 
 Cette application qui supporte plusieurs niveaux de debugging utilise pourtant toujours le même appel pour afficher l'information de debugging : ``(debug_print[debug_level])(...);``. Cet appel profite des pointeurs vers les fonctions. Le tableau ``debug_print`` est un tableau de pointeurs vers des fonctions qui chacune prend comme argument un ``char *``. La variable globale ``debug_level`` est initialisée sur base de l'argument passé au programme.
 
-.. literalinclude:: /Theorie/C/S5-src/fctptr.c
+.. literalinclude:: /C/S5-src/fctptr.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -49,7 +49,7 @@ Ce n'est pas la seule utilisation des pointeurs vers des fonctions. Il y a notam
 
 Le premier est un pointeur vers le début de la zone mémoire à trier. Le second est le nombre d'éléments à trier. Le troisième contient la taille des éléments stockés dans le tableau. Le quatrième argument est un pointeur vers la fonction qui permet de comparer deux éléments du tableau. Cette fonction retourne un entier négatif si son premier argument est inférieur au second et positif ou nul sinon. Un exemple de fonction de comparaison est la fonction `strcmp(3)`_ de la librairie standard. Un autre exemple est repris ci-dessous avec une fonction de comparaison simple qui permet d'utiliser `qsort(3)`_ pour trier un tableau de ``double``.
 
-.. literalinclude:: /Theorie/C/S5-src/qsort.c
+.. literalinclude:: /C/S5-src/qsort.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -61,7 +61,7 @@ Il est utile d'analyser en détails les arguments de la fonction de comparaison 
 
 Le second type de pointeurs que nous n'avons pas encore abordé en détails sont les pointeurs vers des pointeurs. En fait, nous les avons utilisés sans vraiment le savoir dans la fonction ``main``. En effet, le second argument de cette fonction est un tableau de pointeurs qui pointent chacun vers des chaînes de caractères différentes. La notation ``char *argv[]`` est équivalente à la notation ``char **argv``. ``**argv`` est donc un pointeur vers une zone qui contient des pointeurs vers des chaînes de caractères. Ce pointeur vers un pointeur doit être utilisé avec précaution. ``argv[0]`` est un pointeur vers une chaîne de caractères. La construction ``&(argv[0])`` permet donc d'obtenir un pointeur vers un pointeur vers une chaîne de caractères, ce qui correspond bien à la déclaration ``char **``. Ensuite, l'utilisation de ``*p`` pourrait surprendre. ``*p`` est un pointeur vers une chaîne de caractères. Il peut donc être comparé à ``NULL`` qui est aussi un pointeur, incrémenté et la chaîne de caractères qu'il référencie peut être affichée par `printf(3)`_.
 
-.. literalinclude:: /Theorie/C/S5-src/ptrptr.c
+.. literalinclude:: /C/S5-src/ptrptr.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -84,14 +84,14 @@ L'utilisation principale de `strtol(3)`_ est de convertir une chaîne de caract�
 
 `strtol(3)`_ est un exemple de fonction qui doit retourner deux types d'informations. Tout d'abord, `strtol(3)`_ retourne un résultat (dans ce cas un nombre). Si la chaîne de caractères à convertir est erronée, `strtol(3)`_ convertit le début de la chaîne et retourne un pointeur indiquant le premier caractère en erreur. Pour bien comprendre le fonctionnement de `strtol(3)`_, considérons l'exemple ci-dessous.
 
-.. literalinclude:: /Theorie/C/S5-src/strtol.c
+.. literalinclude:: /C/S5-src/strtol.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
 
 Lors de son exécution, ce programme affiche la sortie suivante.
 
-.. literalinclude:: /Theorie/C/S5-src/strtol.out
+.. literalinclude:: /C/S5-src/strtol.out
    :encoding: utf-8
    :language: console
 
@@ -99,7 +99,7 @@ L'appel à `strtol(3)`_ prend trois arguments. Tout d'abord un pointeur vers la 
 
 Une implémentation partielle de `strtol(3)`_ pourrait être la suivante.
 
-.. literalinclude:: /Theorie/C/S5-src/mystrtol.c
+.. literalinclude:: /C/S5-src/mystrtol.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -122,7 +122,7 @@ Lorsque l'on développe de grands programmes en C, il est préférable de décou
 
 Pour comprendre l'utilisation de ces modules, considérons d'abord un programme trivial composé de deux modules. Le premier module est celui qui contient la fonction ``main``. Tout programme C doit contenir une fonction ``main`` pour pouvoir être exécuté. C'est en général l'interface avec l'utilisateur. Le second module contient une fonction générique qui est utilisée par le module principal.
 
-.. literalinclude:: /Theorie/C/S5-src/main.c
+.. literalinclude:: /C/S5-src/main.c
    :encoding: utf-8
    :language: c
 
@@ -132,7 +132,7 @@ Un module d'un programme C est en général décomposé en deux parties. Tout d'
  - les constantes qui sont utilisées à l'intérieur du module et doivent être visibles en dehors de celui-ci, notamment par les modules qui utilisent les fonctions du module. Ces constantes peuvent être définies en utilisant des directives ``#define`` du préprocesseur
  - les variables globales qui sont utilisées par les fonctions du module et doivent être accessibles en dehors de celui-ci
 
-.. literalinclude:: /Theorie/C/S5-src/min.h
+.. literalinclude:: /C/S5-src/min.h
    :encoding: utf-8
    :language: c
 
@@ -140,7 +140,7 @@ Un module d'un programme C est en général décomposé en deux parties. Tout d'
 
  L'exemple de :term:`fichier header` ci-dessus illustre une convention courante dans l'écriture de ces fichiers. Parfois, il est nécessaire d'inclure un :term:`fichier header` dans un autre fichier header. Suite à cela, il est possible que les mêmes définitions d'un :term:`fichier header` soient incluses deux fois ou plus dans le même module. Cela peut causer des erreurs de compilation qui risquent de perturber certains programmeurs. Une règle de bonne pratique pour éviter ce problème est d'inclure le contenu du :term:`fichier header` de façon conditionnelle comme présenté ci-dessus. Une constante, dans ce cas ``_MIN_H_``, est définie pour le :term:`fichier header` concerné. Cette constante est définie dans la première ligne effective du :term:`fichier header`. Celui-ci n'est inclus dans un module que si cette constante n'a pas été préalablement définie. Si cette constante est connue par le préprocesseur, cela indique qu'un autre :term:`fichier header` a déjà inclus les définitions de ce fichier et qu'elles ne doivent pas être incluses une seconde fois.
 
-.. literalinclude:: /Theorie/C/S5-src/min.c
+.. literalinclude:: /C/S5-src/min.c
    :encoding: utf-8
    :language: c
 
@@ -150,7 +150,7 @@ Un module d'un programme C est en général décomposé en deux parties. Tout d'
 
 Lorsque l'on doit compiler un programme qui fait appel à plusieurs modules, quelle que soit sa taille, il est préférable d'utiliser `make(1)`_ pour automatiser sa compilation. Le fichier ci-dessous est un exemple minimaliste de :term:`Makefile` utilisable pour un tel projet.
 
-.. literalinclude:: /Theorie/C/S5-src/Makefile2
+.. literalinclude:: /C/S5-src/Makefile2
    :encoding: utf-8
    :language: makefile
    :start-after: ###AAA
@@ -160,7 +160,7 @@ La compilation d'un tel programme se déroule en plusieurs étapes. La première
 
 La figure ci-dessous représente graphiquement les différentes étapes de compilation des modules ``min.c`` et ``main.c``.
 
-.. figure:: /Theorie/C/figures/figures-007-c.png
+.. figure:: /C/figures/figures-007-c.png
    :align: center
    :scale: 60
 
@@ -182,17 +182,17 @@ La qualificateur ``static`` peut aussi précéder des déclarations de fonctions
 
 Afin d'illustrer l'utilisation de ``static`` et ``extern``, considérons le programme ``prog.c`` ci-dessous qui inclut le module ``module.c`` et également le module ``min.c`` présenté plus haut.
 
-.. literalinclude:: /Theorie/C/S5-src/module.h
+.. literalinclude:: /C/S5-src/module.h
    :encoding: utf-8
    :language: c
 
-.. literalinclude:: /Theorie/C/S5-src/module.c
+.. literalinclude:: /C/S5-src/module.c
    :encoding: utf-8
    :language: c
 
 Ce module contient deux fonctions, ``vmin`` et ``min``. ``vmin`` est déclarée sans qualificatif. Elle est donc accessible depuis n'importe quel module. Sa signature est reprise dans le :term:`fichier header` ``module.h``. La fonction ``min`` par contre est déclarée avec le qualificatif ``static``. Cela implique qu'elle n'est utilisable qu'à l'intérieur de ce module et invisible de tout autre module. La variable globale ``num1`` est accessible depuis n'importe quel module. La variable ``num2`` également, mais elle est initialisée dans un autre module. Enfin, la variable ``num3`` n'est accessible qu'à l'intérieur de ce module.
 
-.. literalinclude:: /Theorie/C/S5-src/prog.c
+.. literalinclude:: /C/S5-src/prog.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
@@ -201,7 +201,7 @@ Ce module inclus les fichiers ``min.h`` et ``module.h`` qui contiennent les sign
 
 La fonction ``f`` mérite que l'on s'y attarde un peu. Cette fonction contient la définition de la variable ``static n``. Même si cette variable est locale à la fonction ``f`` et donc invisible en dehors de cette fonction, le compilateur va lui réserver une place dans la même zone que les variables globales. La valeur de cette variable ``static`` sera initialisée une seule fois : au démarrage du programme. Même si cette variable parait être locale, elle ne sera jamais réinitialisée lors d'un appel à la fonction ``f``. Comme cette variable est stockée en dehors de la pile, elle conserve sa valeur d'une invocation à l'autre de la fonction ``f``. Ceci est illustré par l'exécution du programme qui produit la sortie suivante.
 
-.. literalinclude:: /Theorie/C/S5-src/prog.out
+.. literalinclude:: /C/S5-src/prog.out
    :encoding: utf-8
    :language: console
 
@@ -217,7 +217,7 @@ Les systèmes Unix utilisent la variable globale :term:`errno` pour résoudre ce
 
 A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher un message d'erreur plus parlant lors d'appels erronés à la fonction `setenv(3)`_.
 
-.. literalinclude:: /Theorie/C/S5-src/errno.c
+.. literalinclude:: /C/S5-src/errno.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA

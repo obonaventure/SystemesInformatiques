@@ -19,7 +19,9 @@ Systèmes informatiques
     <span class='st_pinterest' displayText='Pinterest'></span>
     <span class='st_email' displayText='Email'></span>
 
- Ce site web contient le support du cours `SINF1252 <http://www.uclouvain.be/en-cours-2012-lsinf1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les notes sont mises à jour chaque semaine et les étudiants sont invités à ajouter leur commentaires soit directement sur le site web (l'identification via un login openid a uniquement pour but d'éviter les spams) ou en soumettant des patches via https://github.com/obonaventure/SystemesInformatiques .
+.. only:: html
+
+ Ce site web contient le support du cours `SINF1252 <http://www.uclouvain.be/en-cours-2012-lsinf1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/obonaventure/SystemesInformatiques .
 
  La version HTML est la préférable car elle contient des liens hypertextes vers les pages de manuel Linux qui font partie de la matière. D'autres formats sont possibles pour ceux qui veulent lire le document hors ligne :
 
@@ -87,26 +89,6 @@ Mémoire virtuelle
    Theorie/MemoireVirtuelle/vmem
 
 
-*********
-Exercices
-*********
-
-.. toctree::
-   :maxdepth: 2
-
-   Exercices/intro
-
-
-*******
-Projets
-*******
-
-.. toctree::
-   :maxdepth: 2
-
-   Projets/P1/projet-1
-   Projets/P2/enonce
-   Projets/P3/enonce
 
 ******
 Outils
@@ -116,6 +98,7 @@ Outils
    :maxdepth: 2
 
    Outils/intro-outils
+   Outils/git
    Outils/make
    Outils/ssh
    Outils/cunit
@@ -123,6 +106,8 @@ Outils
    Outils/valgrind
    Outils/gdb
    Outils/gprof
+   Outils/shell
+   Outils/gcc
 
 *******
 Annexes

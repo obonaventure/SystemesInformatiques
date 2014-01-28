@@ -753,7 +753,7 @@ Les noeuds sont de 3 types,
    C'est utile par exemple pour spécifier des versions d'un projet.
  - en jaune, on a ``HEAD``, c'est un pointeur vers la branche active.
 
-.. figure:: /Outils/figures/graph.png
+.. figure:: figures/graph.png
    :align: center
 
    Exemple d'historique.
@@ -994,7 +994,7 @@ On peut retenir qu'*il n'y a toujours que la branche active qui est modifée*.
 Dans notre exemple,
 l'historique était comme l'image ci-dessous
 
-.. figure:: /Outils/figures/hello_without_return.png
+.. figure:: figures/hello_without_return.png
    :align: center
 
    Historique avant le commit
@@ -1009,7 +1009,7 @@ l'historique était comme l'image ci-dessous
 Après le commit, il est comme l'image ci-dessous.
 On voit que la branche active a avancé alors que les autres n'ont pas bougé.
 
-.. figure:: /Outils/figures/hello_with_return.png
+.. figure:: figures/hello_with_return.png
    :align: center
 
    Historique après le commit
@@ -1042,7 +1042,7 @@ a changé, il fera comme si tout ``a.out`` avait changé.
     1 file changed, 1 insertion(+)
     create mode 100644 .gitignore
 
-.. figure:: /Outils/figures/hello_with_gitignore.png
+.. figure:: figures/hello_with_gitignore.png
    :align: center
 
    Historique l'ajout de .gitignore
@@ -1115,7 +1115,7 @@ pas quand on committait car ce n'était pas la branche active.
 L'historique ressemble maintenant à la figure suivante.
 On voit que `git-branch(1)`_ ne modifie pas la branche active.
 
-.. figure:: /Outils/figures/hello_branches.png
+.. figure:: figures/hello_branches.png
    :align: center
 
    Historique après la création de ``pid`` et ``universal`` et
@@ -1139,7 +1139,7 @@ dans ``master``. On obtient alors la figure suivante
    [master c1f2163] Add intro
     1 file changed, 4 insertions(+)
 
-.. figure:: /Outils/figures/hello_intro.png
+.. figure:: figures/hello_intro.png
    :align: center
 
    Historique après avoir ajouté un commentaire d'introduction
@@ -1295,7 +1295,7 @@ de ``master`` avec une fusion *fast-forward*.
 
 On a alors la figure suivante
 
-.. figure:: /Outils/figures/hello_2ff.png
+.. figure:: figures/hello_2ff.png
    :align: center
 
    Historique après avoir mis ``pid`` et ``universal`` à jour
@@ -1340,7 +1340,7 @@ Mettons tous les changements des fichiers traqués avec ``-a``
 
 Ce qui donne l'historique suivant
 
-.. figure:: /Outils/figures/hello_make_universal.png
+.. figure:: figures/hello_make_universal.png
    :align: center
 
    Historique après avoir committé ``Make it universal``
@@ -1380,7 +1380,7 @@ Committons cela
     1 file changed, 5 insertions(+)
     create mode 100644 Makefile
 
-.. figure:: /Outils/figures/hello_makefile.png
+.. figure:: figures/hello_makefile.png
    :align: center
 
    Historique après avoir committé ``Add Makefile``
@@ -1403,7 +1403,7 @@ On voit que `Git`_ a su faire la fusion sans notre aide sans problème
 car tous les changements étaient dans le ``Makefile`` qui n'existait pas
 pour ``universal``
 
-.. figure:: /Outils/figures/hello_universal_makefile.png
+.. figure:: figures/hello_universal_makefile.png
    :align: center
 
    Historique après avoir fusionné ``master`` dans ``universal``
@@ -1421,7 +1421,7 @@ pour ``universal``
 
 `Git`_ nous confirme que c'est *fast-forward*
 
-.. figure:: /Outils/figures/hello_pid_makefile.png
+.. figure:: figures/hello_pid_makefile.png
    :align: center
 
    Historique après avoir fusionné ``master`` dans ``pid``
@@ -1457,7 +1457,7 @@ et committons la
    [pid eda36d7] Add pid/ppid info
     1 file changed, 2 insertions(+)
 
-.. figure:: /Outils/figures/hello_ppid.png
+.. figure:: figures/hello_ppid.png
    :align: center
 
    Historique après avoir implémenté ``pid``
@@ -1477,7 +1477,7 @@ en a plus besoin
    $ git branch -d pid
    Deleted branch pid (was eda36d7).
 
-.. figure:: /Outils/figures/hello_dpid.png
+.. figure:: figures/hello_dpid.png
    :align: center
 
    Historique après avoir fusionné et supprimé ``pid``
@@ -1530,7 +1530,7 @@ avant d'essayer accéder au deuxième élément.
    [universal 6fd2e9b] Fix SIGSEV without args
     1 file changed, 1 insertion(+), 1 deletion(-)
 
-.. figure:: /Outils/figures/hello_fix.png
+.. figure:: figures/hello_fix.png
    :align: center
 
    Historique après avoir réparé le ``Segmentation fault``
@@ -1626,7 +1626,7 @@ Il n'y a pas besoin de spécifier de commentaire pour une fusion car
    $ git commit -a
    [master 0dd6cd7] Merge branch 'universal'
 
-.. figure:: /Outils/figures/hello_merge_universal.png
+.. figure:: figures/hello_merge_universal.png
    :align: center
 
    Historique après avoir fusionné la branche ``universal``
@@ -1788,7 +1788,7 @@ avec ``git stash drop``.
 Reprenons notre exemple de *Changer la branche active* illustré par la figure
 suivante
 
-.. figure:: /Outils/figures/hello_intro.png
+.. figure:: figures/hello_intro.png
    :align: center
 
    Historique après avoir ajouté un commentaire d'introduction

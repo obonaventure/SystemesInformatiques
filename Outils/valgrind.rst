@@ -76,7 +76,7 @@ Nous pouvons lire dans ce rapport plusieurs informations importante comme le ``H
 
 L' ``ERROR SUMMARY`` indique le nombre d'erreurs détectées.
 
-La phrase que nous voulons voir après chaque exécution de `valgrind(3)`_ est:
+La phrase que nous voulons voir après chaque exécution de `valgrind(1)`_ est:
 
       .. code-block:: console
 
@@ -211,7 +211,7 @@ Il est important de compiler avec le drapeau -g pour dire au compilateur de gard
 Détecter les deadlocks avec ``valgrind``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`valgrind(1)`_ contient des outils qui vont au-delà des simples tests de l'allocation de la mémoire. Notamment l'outil ``helgrind`` permet de détecter des deadlocks. Utilisez ``helgrind`` sur le petit programme :download:`/Outils/src/thread_crash.c` en faisant:
+`valgrind(1)`_ contient des outils qui vont au-delà des simples tests de l'allocation de la mémoire. Notamment l'outil ``helgrind`` permet de détecter des deadlocks. Utilisez ``helgrind`` sur le petit programme :download:`/src/thread_crash.c` en faisant:
 
         .. code-block:: console
 

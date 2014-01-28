@@ -46,7 +46,7 @@ Exercices
 
 #. Un ordinateur dispose de 32 GBytes de mémoire RAM. Il utilise des adresses virtuelles de 64 bits et des pages de 4 KBytes. Combien de lignes doit contenir sa table des pages ?
 
-#. Comparez les performances du programme :download:`/Theorie/MemoireVirtuelle/src/cp2.c` avec l'utilitaire `cp(1)`_ standard de Linux.
+#. Comparez les performances du programme :download:`/../Theorie/MemoireVirtuelle/src/cp2.c` avec l'utilitaire `cp(1)`_ standard de Linux.
 
 #. Un programme construit en mémoire un gros tableau contenant 10 millions d'entiers. Initialisez ce tableau avec des entiers ayant des valeurs croissante. Pour sauvegarder le fichier sur disque, trois solutions s'offrent à vous :
 

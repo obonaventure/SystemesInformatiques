@@ -3,3 +3,4 @@ _build
 # Ignore all files ending with ~
 *~
 *.o
+web/
