@@ -1,4 +1,3 @@
-
 .. raw:: html
 
   <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -58,20 +57,20 @@ La commande `ls(1)`_ permet de lister le contenu d'un répertoire. Elle supporte
 
 -
   - Dans un répertoire, la commande ``ls -a`` sans argument permet d'afficher la liste de tous les fichiers et répertoires présents
-  - La commande ``ls -d`` permet de lister les répertoires présents dans le répertoire courant
-  - La commande ``ls -l`` permet d'obtenir la liste détaillée du contenu du répertoire courant avec toutes les informations relatives à chaque fichier et répertoire
+  - La commande ``ls -r`` permet de lister les répertoires présents dans le répertoire courant en inversant l'ordre
+  - La commande ``ls -l`` permet d'obtenir la liste détaillée du contenu du répertoire courant avec toutes les informations relatives à chaque fichier et répertoire non cachés
 
 
 -
   - Dans un répertoire, la commande ``ls -a`` sans argument permet d'afficher la liste de tous les fichiers et répertoires présents
   - La commande ``ls -R`` permet de lister de façon récursive le contenu du répertoire courant et de ses sous-répertoires
-  - La commande ``ls -l`` permet d'obtenir la liste détaillée du contenu du répertoire courant avec toutes les informations relatives à chaque fichier et répertoire
+  - La commande ``ls -l`` permet d'obtenir la liste détaillée du contenu du répertoire courant avec toutes les informations relatives à chaque fichier et répertoire non cachés
 
 
 .. class:: negative
 
 -
-  - Dans un répertoire, la commande ``ls *`` sans argument permet d'afficher la liste de tous les fichiers et répertoires présents
+  - Dans un répertoire, la commande ``ls *`` permet d'afficher la liste de tous les fichiers et répertoires présents
   - La commande ``ls -f`` permet de lister le contenu du répertoire courant sans trier les fichiers par nom
   - La commande ``ls -l`` permet d'obtenir la liste détaillée du contenu du répertoire courant avec toutes les informations relatives à chaque fichier et répertoire
 
