@@ -18,7 +18,7 @@ Troisième semaine
 
 Cette semaine, la matière porte sur l'organisation de la mémoire et l'utilisation des fonctions `malloc(3)`_ et `free(3)`_
 
- - http://sinf1252.info.ucl.ac.be/Theorie/C/malloc/#organisation-de-la-memoire
+ - http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire
 
 
 
