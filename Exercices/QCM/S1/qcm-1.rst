@@ -173,7 +173,7 @@ Depuis la publication du livre de rÃ©fÃ©rence [KernighanRitchie1998], le pre
 
 
 Question 4. DeuxiÃ¨me programme en langage C
--------------------------------------------
+--------------------------------------------
 
 Votre deuxiÃ¨me programme en langage C doit afficher Ã  l'Ã©cran la chaÃ®ne de caractÃ¨res `SINF1252`. Lequel parmi les programmes ci-dessous affiche-t-il correctement cette chaÃ®ne de caractÃ¨res ?
 
@@ -250,7 +250,7 @@ Votre deuxiÃ¨me programme en langage C doit afficher Ã  l'Ã©cran la chaÃ�
 
 
 Question 5. Arguments passÃ©s Ã  un programme C
----------------------------------------------
+-----------------------------------------------
 
 ConsidÃ©rons le programme C ci-dessous qui permet de manipuler les arguments passÃ©s en ligne de commande.
 
