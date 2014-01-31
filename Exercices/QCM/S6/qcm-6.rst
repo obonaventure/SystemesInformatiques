@@ -20,8 +20,8 @@ Cette semaine porte sur la communication et la synchronisation entre threads. Pl
 
 .. - :ref:`complementsC`
 
-- `Communication entre threads <http://sinf1252.info.ucl.ac.be/Theorie/Threads/threads2/>`_
-- `Coordination entre threads <http://sinf1252.info.ucl.ac.be/Theorie/Threads/threads2/#coordination-entre-threads>`_
+- `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`_
+- `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`_
 
 .. - :ref:`thread`
 
