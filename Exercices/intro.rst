@@ -13,7 +13,7 @@ Première semaine
 
 .. only:: html
 
-   `QCM1 </static/_static/Mission-1-qcm.html>`_
+   `QCM1 <http://sites.uclouvain.be/SystInfo/qcm/Mission-1-qcm.html>`_
 
 Séance tutorée
 ^^^^^^^^^^^^^^
@@ -24,4 +24,20 @@ Séance tutorée
    Programmes/prog-1
 
 
+Deuxième semaine
+----------------
 
+La matière couverte cette semaine correspond à la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/datatypes/>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits http://sites.uclouvain.be/SystInfo/notes/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_)
+
+.. only:: html
+
+  `QCM2 <http://sites.uclouvain.be/SystInfo/qcm/Mission-2-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-2
