@@ -793,7 +793,7 @@ Laquelle des signatures ci-dessous peut-elle être utilisée pour effectuer cett
 -
  .. code:: c
 
-    void scale(struct *fract_t f, int s);
+    void scale(struct fract_t *f, int s);
     // appel à la fonction :
     // scale(&f,3);
 
