@@ -5,20 +5,13 @@
 Auteurs
 =======
 
-.. Les documents relatifs au cours ont été écrits par différents auteurs.
+Les documents relatifs au cours ont été écrits par différents auteurs.
 
 La partie théorique a été principalement écrite par Olivier Bonaventure avec l'aide de Grégory Detal, Christoph Paasch et de nombreuses suggestions d'étudiants, dont :
 
- - Quentin Deconinck
- - Adrien Scheuer
- - David Sarkozi
- - Simon Hardy
- - Benoît Legat
-
-
 La partie relative aux outils informatiques a été initié par Olivier Bonaventure, Grégory Detal et Christoph Paasch, mais la majorité du texte a été écrit par des étudiants après avoir suivi le cours avec fruit. Benoît Legat a écrit toute la section sur git. Nicolas Houtain et Maxime Demol ont écrit notamment les sections relatives au shell.
 
-Les exercices ont été écrits par Olivier Bonaventure, Grégory Detal et Christoph Paasch. Florian Chalet a écrit les exercices avec correction automatique sur la plateforme `pythia <http://www.pythia-project.org>`_.
+Les exercices ont été écrits par Olivier Bonaventure, Grégory Detal et Christoph Paasch. Floriant a écrit les exercices avec correction automatique sur la plateforme pythia.
 
 
 

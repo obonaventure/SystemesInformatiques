@@ -8,22 +8,22 @@ import tinkerer.paths
 # **************************************************************
 
 # Change this to the name of your blog
-project = u'Systèmes informatiques'
+project = 'My blog'
 
 # Change this to the tagline of your blog
-tagline = u''#Systèmes informatiques'
+tagline = 'Add intelligent tagline here'
 
 # Change this to the description of your blog
-description = u'Cours de systèmes informatiques à l\'UCL'
+description = 'This is an awesome blog'
 
 # Change this to your name
-author = 'O. Bonaventure'
+author = 'Winston Smith'
 
 # Change this to your copyright string
-copyright = '2014, ' + author
+copyright = '1984, ' + author
 
 # Change this to your blog root URL (required for RSS feed)
-website = 'http://sites.uclouvain.be/SystInfo/'
+website = 'http://127.0.0.1/blog/html/'
 
 # **************************************************************
 # More tweaks you can do
@@ -36,7 +36,7 @@ disqus_shortname = None
 html_favicon = 'tinkerer.ico'
 
 # Pick another Tinkerer theme or use your own
-html_theme = "modern5"
+html_theme = "flat"
 
 # Theme-specific options, see docs
 html_theme_options = { }
