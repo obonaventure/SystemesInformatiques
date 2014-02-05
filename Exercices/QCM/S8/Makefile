@@ -7,7 +7,9 @@
 
 MISSION=8
 
-EXNAME=../../../_static/Mission-$(MISSION)-qcm.html
+DEST=../../../web/qcm
+
+EXNAME=$(DEST)/Mission-$(MISSION)-qcm.html
 
 RST_FILES=qcm-$(MISSION).rst
 
