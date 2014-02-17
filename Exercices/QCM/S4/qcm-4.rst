@@ -1023,7 +1023,9 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
    {
      return i+a;
    }
+   
 
+Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit correctement la fonction ci-dessus. Laquelle ?
 
 .. class:: positive
 
