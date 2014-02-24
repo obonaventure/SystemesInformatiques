@@ -2075,8 +2075,9 @@ effectués, et vous permet facilement de revenir dans le passé pour vérifier s
 le bug était présent à un moment donné. En outre, vous vous rappelez vos cours
 d’algorithmiques et vous rendez compte que, puisque vous connaissez un point où
 le bug était présent et un autre ou il ne l’était pas, vous pouvez à l’aide
-d’une recherche binaire déterminer en un temps logarithmique quelle révision a
-introduit l’erreur.
+d’une recherche binaire déterminer en un temps logarithmique (par rapport aux
+nombres de révisions comprises dans l’intervalle) quelle révision a introduit
+l’erreur.
 
 C’est exactement l’idée derrière `git-bisect(1)` : vous donnez un intervalle de
 commits dans lequel vous êtes certains de pouvoir trouver le vilain commit
