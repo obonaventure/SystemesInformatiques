@@ -2054,12 +2054,12 @@ supprimons ce dernier commit
 Corriger des bugs grâce à Git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Git permet de garder des traces nombreux changements qui ont été effectué au
+Git permet de garder des traces des nombreux changements qui ont été effectué au
 cours de l’évolution d’un programme. Il contient d’ailleurs un outil très
 puissant vous permettant de retrouver la source de certaines erreurs, pourvu que
 les changements soient faits par petits commits : `git-bisect(1)`_.
 
-Supposez que vous ayant introduit une fonctionnalité dans votre programme. Tout
+Supposez que vous ayez introduit une fonctionnalité dans votre programme. Tout
 allait alors pour le mieux. Quelques semaines plus tard, à votre grand dam, vous
 vous rendez compte qu’elle ne fonctionne plus. Vous sillonnez tous les fichiers
 qui pourraient interagir avec cette fonction, en vain. Dans le désespoir, à
@@ -2128,7 +2128,7 @@ Sauvegardons aussi le fichier de test proposé, par exemple dans
                 end
                 x = A.new.a
 
-Vous devriez maintenant être capable de vérifier que la méhode ``A.a`` n’est pas
+Vous devriez maintenant être capable de vérifier que la méthode ``A.a`` n’est pas
 incluse dans la backtrace :
 
         .. code-block:: console
@@ -2151,7 +2151,7 @@ dans l’ordre :
                 $ git bisect start
                 $ git bisect bad
 
-Regardons ce dont il en était quelque mois auparavant (remarquez qu’il faut
+Regardons ce qu’il en était quelque mois auparavant (remarquez qu’il faut
 utiliser ``make clean`` pour s’assurer de tout recompiler ici) :
 
         .. code-block:: console
