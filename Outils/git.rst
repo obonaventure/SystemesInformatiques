@@ -2256,7 +2256,8 @@ Automatisation de la procédure
 Exécuter ce test à la main est cependant répétitif, prône aux erreurs
 d’inattention, et surtout très facile à automatiser. Écrivons donc un script qui
 vérifie que la ligne mentionnant ``A.a`` est bien présente à chaque fois,
-appelons le par exemple ``~/code/sh/Iznogoud.sh``.
+appelons le par exemple ``~/code/sh/Iznogoud.sh``. Il s’agit de renvoyer 0
+si tout se passe bien et une autre valeur s’il y a un problème.
 
         .. code-block:: bash
 
