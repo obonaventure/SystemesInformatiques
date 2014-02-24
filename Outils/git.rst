@@ -2290,9 +2290,10 @@ d’abord redonner à Git l’intervalle dans lequel se trouve la révision faut
 
 Il suffit maintenant d’utiliser ``git bisect run`` avec le nom du script pour
 l’utiliser. Il est possible de rajouter d’autres arguments après le nom du
-script, qui seront passés au script lors de chaque exécution. Par exemple,
-``git bisect run make test`` permettrait de trouver à partir de quand les tests
-ont cessé de fonctionner.
+script, qui seront passés au script lors de chaque exécution. Par exemple, si
+vous avez dans votre Makefile une tâche test qui renvoie 0 si tous les tests
+passent et 1 si certains échouent, alors ``git bisect run make test``
+permettrait de trouver à partir de quand les tests ont cessé de fonctionner.
 
 Si vous exécutez la ligne suivante, vous devriez bien trouver, après quelques
 compilations, le même résultat qu’avant :
