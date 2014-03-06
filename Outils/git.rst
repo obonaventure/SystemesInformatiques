@@ -8,7 +8,7 @@ Git
 Introduction
 ~~~~~~~~~~~~
 
-`Git`_ a développé initialement pour la gestion du code source du kernel Linux.
+`Git`_ a été développé initialement pour la gestion du code source du kernel Linux.
 Il est aussi utilisé pour la gestion des sources de ce document
 depuis https://github.com/obonaventure/SystemesInformatiques.
 On l'utilise le plus souvent à l'aide de l'utilitaire `git(1)`_ mais il
@@ -37,7 +37,7 @@ avec des documents de type texte, ce n'est pas critique.
 Les avantages, par contre, sont nombreux.
 On a pas besoin d'être connecté au serveur pour l'utiliser,
 il est beaucoup plus rapide
-et chaque développeur constitue un backup du code ce qui est confortable.
+et chaque développeur constitue un backup du code, ce qui est confortable.
 
 De plus, comme on va le voir, `Git`_ supporte une gestion des commits
 très flexible avec un historique pas linéaire
@@ -373,7 +373,7 @@ Travailler à plusieurs sur un même projet
 `Git`_ est déjà un outil très pratique à utiliser seul mais c'est quand
 on l'utilise pour se partager du code qu'il devient vraiment indispensable.
 On se partage le code par l'intermédiaire de *remotes*.
-Ce sont en pratique des serveurs auquels on peut avoir l'accès lecture et/ou
+Ce sont en pratique des serveurs auxquels on peut avoir l'accès lecture et/ou
 écriture.
 On va traiter ici le cas où deux développeurs, Alice et Bob,
 ont l'accès lecture et écriture.
@@ -648,11 +648,11 @@ Contribuer au syllabus
 ######################
 
 Dans le cas du syllabus, vous n'avez pas l'accès écriture.
-La manière dont Github utilise pour règler ça c'est que vous *forkez* le
+La manière dont Github fonctionne pour règler ça c'est que vous *forkez* le
 projet principal.
 C'est à dire que vous en faites un copie indépendante à votre nom.
 À celle là vous avez l'accès écriture.
-Vous allez ensuite soumettre vos changement sur celle là puis les
+Vous allez ensuite soumettre vos changements sur celle là puis les
 proposer à travers l'interface de Github qu'on appelle *Pull request*.
 Conventionnellement, on appelle la *remote* du dépôt principal *upstream*
 et la votre *origin*.
