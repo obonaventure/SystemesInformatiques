@@ -34,9 +34,9 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
 .. class:: positive
 
 -
- .. code-block:: c
+ .. code-block:: console
 
-    // initialisation
+    /* initialisation */
     bool in1 = false;
     bool in2 = false;
     int last = 1;
@@ -60,9 +60,9 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
      }
 
 -
- .. code-block:: c
+ .. code-block:: console
 
-    // initialisation
+    /* initialisation */
     bool in1 = false;
     bool in2 = false;
     int last = 2;
@@ -88,7 +88,7 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
 .. class:: negative
 
 -
- .. code-block:: c
+ .. code-block:: console
 
     // initialisation
     bool in1 = false;
@@ -118,7 +118,7 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
     Cette solution ne fonctionne pas. Si un des deux threads est seul, il n'entrera jamais en section critique.
 
 -
- .. code-block:: c
+ .. code-block:: console
 
     // initialisation
     bool in1 = false;
@@ -148,7 +148,7 @@ L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien compr
     Cette solution ne fonctionne pas. Il est possible que le thread 1 rentre en section critique puis le thread 2 met ``last`` à 2 et peut également y entrer sans que thread 1 n'en soit sorti.
 
 -
- .. code-block:: c
+ .. code-block:: console
 
     // initialisation
     bool in1 = false;
@@ -185,7 +185,7 @@ Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la str
 .. class:: positive
 
 -
- .. code-block:: c
+ .. code-block:: console
 
    pthread_mutex_t mutex;
    pthread_mutexattr_t attr;
@@ -204,7 +204,7 @@ Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la str
 
 
 -
- .. code-block:: c
+ .. code-block:: console
 
    pthread_mutex_t mutex;
 
@@ -219,7 +219,7 @@ Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la str
 .. class:: negative
 
 -
- .. code-block:: c
+ .. code-block:: console
 
    pthread_mutex_t mutex;
    pthread_mutexattr_t attr;
@@ -239,7 +239,7 @@ Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la str
 
 
 -
- .. code-block:: c
+ .. code-block:: console
 
    pthread_mutex_t mutex;
    pthread_mutexattr_t attr;
@@ -258,7 +258,7 @@ Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la str
 
 
 -
- .. code-block:: c
+ .. code-block:: console
 
    pthread_mutex_t *mutex;
    pthread_mutexattr_t *attr;
@@ -285,7 +285,7 @@ Un programme utilisant plusieurs threads doit mettre à jour une variable global
 .. class:: positive
 
 -
-  .. code-block:: c
+  .. code-block:: console
 
      void update(int * val, pthread_mutex_t * mutex) {
 
@@ -305,7 +305,7 @@ Un programme utilisant plusieurs threads doit mettre à jour une variable global
 .. class:: negative
 
 -
-  .. code-block:: c
+  .. code-block:: console
 
      void update(int * val, pthread_mutex_t * mutex) {
 
@@ -326,7 +326,7 @@ Un programme utilisant plusieurs threads doit mettre à jour une variable global
      Ce code est incorrect. Un mutex s'utilise en faisant d'abord ``pthread_mutex_lock`` et ensuite ``pthread_mutex_unlock``.
 
 -
-  .. code-block:: c
+  .. code-block:: console
 
      void update(int val, pthread_mutex_t mutex) {
 
@@ -349,7 +349,7 @@ Un programme utilisant plusieurs threads doit mettre à jour une variable global
 
 
 -
-  .. code-block:: c
+  .. code-block:: console
 
      void update(int * val, pthread_mutex_t mutex) {
 
@@ -376,7 +376,7 @@ Question 4. Utilisation de plusieurs mutex
 
 Dans certains programmes, il est nécessaire de définir plusieurs mutex qui sont utilisés par différents threads pour gérer l'accès à des variables partagées. Considérons un programme qui utilise trois variables globales et est découpé en plusieurs threads.
 
-.. code-block:: c
+.. code-block:: console
 
    long a=5;   // variable globale partagée
    long b=7;   // variable globale partagée
@@ -414,7 +414,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
 .. class:: positive
 
 -
-  .. code-block:: c
+  .. code-block:: console
 
      // thread A
 
@@ -428,7 +428,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
 
 
 -
-  .. code-block:: c
+  .. code-block:: console
 
      // thread A
 
@@ -444,7 +444,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
 .. class:: negative
 
 -
-  .. code-block:: c
+  .. code-block:: console
 
      // thread A
 
@@ -462,7 +462,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
 
 
 -
-  .. code-block:: c
+  .. code-block:: console
 
      // thread A
 
@@ -479,7 +479,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
      Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fasse chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``z``  puis à ``x`` dans le thread B et à ``x`` puis à ``z`` dans le thread A est une source de deadlocks potentiels.
 
 -
-  .. code-block:: c
+  .. code-block:: console
 
      // thread A
 

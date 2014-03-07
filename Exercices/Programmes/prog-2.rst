@@ -6,7 +6,7 @@
 1. Questions de base
 --------------------
 
-#. La zone mémoire utilisée diffère d'un type primitif à un autre. Ecrivez un code qui permet d'afficher le nombre de bytes utilisés sur un système 64 bits (une machine des salles) et une machine 32 bits (studssh, voir section :ref:`ssh`) pour représenter un ``int``, ``long``, ``void *``, ``char *``, ``size_t`` et ``uint64_t``. Expliquez les différences.
+#. La zone mémoire utilisée diffère d'un type primitif à un autre. Ecrivez un code qui permet d'afficher le nombre de bytes utilisés sur un système 64 bits (une machine des salles) et une machine 32 bits (studssh, voir section :ref:`outils:ssh`) pour représenter un ``int``, ``long``, ``void *``, ``char *``, ``size_t`` et ``uint64_t``. Expliquez les différences.
 
         .. important::
 
@@ -37,7 +37,7 @@
 
 
 
-#. Faites l'exercice sur `Pythia <http://pythia.info.ucl.ac.be/module/10/problem/30>`_
+#. Faites l'exercice sur `Pythia <http://pythia.info.ucl.ac.be/module/13/problem/30>`_
 
 #. La structure suivante ``foo_t`` est définie de façon à ce qu'elle contienne un ``char`` suivi d'un entier. D'après vous combien de bytes occupe cette structure en mémoire ? Vérifiez ce que vous pensiez en utilisant ``sizeof``. (bonus: expliquez vos résultats.)
 
@@ -60,7 +60,7 @@ Mini-Projets
 
    Le mini-projet est à soumettre via iCampus dans la partie Travaux.
    
-   Soumettez votre code dans une archive zip ou tar contenant un dossier ``Projet_S2``. Vous devrez créer un fichier ``string.c`` contenant la définition des fonctions et un fichier ``string.h`` avec les `déclarations <http://en.wikipedia.org/wiki/Declaration_(computer_programming)>`_ des fonctions. Vous devez aussi fournir un Makefile (cfr :ref:`make`) qui permettra à votre tuteur de recompiler facilement votre programme en tapant ``make``. Pensez à implémenter quelques tests pour vos fonctions dans la fonction ``main`` et n'incluez pas l'exécutable dans l'archive.
+   Soumettez votre code dans une archive zip ou tar contenant un dossier ``Projet_S2``. Vous devrez créer un fichier ``string.c`` contenant la définition des fonctions et un fichier ``string.h`` avec les `déclarations <http://en.wikipedia.org/wiki/Declaration_(computer_programming)>`_ des fonctions. Vous devez aussi fournir un Makefile (cfr :ref:`outils:make`) qui permettra à votre tuteur de recompiler facilement votre programme en tapant ``make``. Pensez à implémenter quelques tests pour vos fonctions dans la fonction ``main`` et n'incluez pas l'exécutable dans l'archive.
 
 
 

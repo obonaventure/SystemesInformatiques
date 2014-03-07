@@ -119,9 +119,9 @@ Exercices
 
 	Discuter les avantages et inconvénients des ces deux solutions. (Regardez la man page de `pthread_mutex_trylock(3posix)`_)
 
-#. L'outil ``helgrind`` (décrit dans la section :ref:`helgrind-ref`) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`/Programmes/src/pthread-philo.c` et analysez ce qu'il affiche.
+#. L'outil ``helgrind`` (décrit dans la section :ref:`theorie:helgrind-ref`) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`/Programmes/src/pthread-philo.c` et analysez ce qu'il affiche.
 
-#. Faites l'exercice sur les vecteurs thread-safe sur `pythia <http://pythia.info.ucl.ac.be/module/10/problem/45>`_.
+#. Faites l'exercice sur les vecteurs thread-safe sur `pythia <http://pythia.info.ucl.ac.be/module/13/problem/45>`_.
 
 
 .. exemple et tutoriel intéressant

@@ -25,7 +25,7 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax' ]
+extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx' ]
 
 # ucomment
 #sys.path.append(os.path.abspath(os.getcwd()))
@@ -102,6 +102,10 @@ rst_epilog = """
 .. include:: /../Theorie/man_links.rst
 .. include:: /../Theorie/incl_links.rst
 """
+# Intersphinx
+intersphinx_mapping = {'theorie': ('http://sites.uclouvain.be/SystInfo/notes/Theorie/html/', None), 'outils': ('http://sites.uclouvain.be/SystInfo/notes/Outils/html/', None), 'exercices': ('http://sites.uclouvain.be/SystInfo/notes/Exercices/html/', None)}
+
+
 
 # -- Options for HTML output ---------------------------------------------------
 

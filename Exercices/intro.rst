@@ -41,3 +41,89 @@ Séance tutorée
    :maxdepth: 2
 
    Programmes/prog-2
+
+
+Troisième semaine
+-----------------
+
+La matière couverte cette semaine correspond aux section relative à l'`organisation de la mémoire <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/malloc/#organisation-de-la-memoire>`_
+
+.. only:: html
+
+   `QCM3 <http://sites.uclouvain.be/SystInfo/qcm/Mission-3-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-3
+
+
+Quatrième semaine
+-----------------
+
+La matière couverte cette semaine correspond aux sections :
+
+ - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`_
+ - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`_
+
+.. only:: html
+
+   `QCM4 <http://sites.uclouvain.be/SystInfo/qcm/Mission-4-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-4
+
+
+Cinquième semaine
+-----------------
+
+La matière couverte cette semaine correspond aux sections :
+
+ - :ref:`theorie:complementsC`
+ - :ref:`theorie:threads`
+
+
+.. only:: html
+
+   `QCM5 <http://sites.uclouvain.be/SystInfo/qcm/Mission-5-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-5
+
+Sixième semaine
+---------------
+
+La matière de cette semaine porte sur la communication entre les threads. Elle est décrite dans la section  :
+
+ - :ref:`theorie:comthreads`
+
+.. only:: html
+
+   `http://sites.uclouvain.be/SystInfo/qcm/Mission-6-qcm.html>`_
+
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-6
+
+
