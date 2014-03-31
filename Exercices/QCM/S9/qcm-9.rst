@@ -286,7 +286,6 @@ Le système de fichiers Unix utilise des `inode` pour stocker les meta-données 
  - le champ ``nlinks`` est toujours positif
  - un accès au fichier modifie le ``atime`` associé à ce fichier
 
--
 
 .. class:: negative
 

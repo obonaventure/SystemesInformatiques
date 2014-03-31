@@ -17,7 +17,7 @@ Huitième semaine
 
 La matière couverte cette semaine couvre les processus. Elle est décrite dans les sections suivantes des notes :
 
- - :ref:`processus`
+ - `Les processus <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/processus.html>`_
 
 Question 1. `fork(2)`_
 -----------------------
@@ -43,11 +43,11 @@ L'appel système `fork(2)`_ permet de créer une copie du processus courant. Un 
   }
   return(EXIT_SUCCESS);
 
-Lors de l'exécution de ce programme, combien de processus sont créés en fonction de la valeur de ``n` ?
+Lors de l'exécution de ce programme, combien de processus sont créés en fonction de la valeur de ``n`` ?
 
 .. class:: positive
 
--  Lorsque ``n`` est initialisé à ``2``, quatre processus sont créés.
+- Lorsque ``n`` est initialisé à ``2``, quatre processus sont créés.
 
    .. class:: comment
 
@@ -61,34 +61,33 @@ Lors de l'exécution de ce programme, combien de processus sont créés en fonct
 
 .. class:: negative
 
--  Lorsque ``n`` est initialisé à ``2``, deux processus sont créés.
+- Lorsque ``n`` est initialisé à ``2``, deux processus sont créés.
+
+  .. class:: comment
+
+     Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
+
+- Lorsque ``n`` est initialisé à ``2``, trois processus sont créés.
 
   .. class:: comment
 
      Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
 
 
--  Lorsque ``n`` est initialisé à ``2``, trois processus sont créés.
+- Lorsque ``n`` est initialisé à ``3``, trois processus sont créés.
 
   .. class:: comment
 
      Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
 
-
--  Lorsque ``n`` est initialisé à ``3``, trois processus sont créés.
-
-  .. class:: comment
-
-     Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
-
--  Lorsque ``n`` est initialisé à ``3``, quatre processus sont créés.
+- Lorsque ``n`` est initialisé à ``3``, quatre processus sont créés.
 
   .. class:: comment
 
      Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
 
-Question 2. execve(2)_
-----------------------
+Question 2. `execve(2)`_
+------------------------
 
 Parmi les extraits de programme ci-dessous, lequel est un appel correct à `execve(2)`_ pour lancer le programme ``/bin/echo`` avec comme arguments ``-n`` et ``SINF1252`` ?
 
@@ -107,7 +106,7 @@ Parmi les extraits de programme ci-dessous, lequel est un appel correct à `exec
 
 
 -
-   .. code-block:: c
+  .. code-block:: c
 
 
       char prog[]="echo";
@@ -140,9 +139,9 @@ Parmi les extraits de programme ci-dessous, lequel est un appel correct à `exec
      }
 
 
-   .. class:: comment
+  .. class:: comment
 
-      Les deuxième et troisième arguments à `execve(2)`_ doivent être de type ``char *arg[]``.
+     Les deuxième et troisième arguments à `execve(2)`_ doivent être de type ``char *arg[]``.
 
 -
    .. code-block:: c
@@ -185,9 +184,9 @@ Parmi les extraits de programme ci-dessous, lequel est un appel correct à `exec
     	exit(EXIT_FAILURE);
       }
 
-    .. class:: comment
+   .. class:: comment
 
-       Le dernier élément des tableaux de pointeurs ``argv` et ``environnement`` doivent obligatoirement contenir ``NULL``. Sans cela, il n'est pas possible de déterminer le nombre d'éléments dans ces tableaux.
+      Le dernier élément des tableaux de pointeurs ``argv` et ``environnement`` doivent obligatoirement contenir ``NULL``. Sans cela, il n'est pas possible de déterminer le nombre d'éléments dans ces tableaux.
 
 -
   .. code-block:: c
@@ -200,9 +199,9 @@ Parmi les extraits de programme ci-dessous, lequel est un appel correct à `exec
        exit(EXIT_FAILURE);
      }
 
-    .. class:: comment
+  .. class:: comment
 
-       Le dernier élément des tableaux de pointeurs ``argv` et ``environnement`` doivent obligatoirement contenir ``NULL``. Sans cela, il n'est pas possible de déterminer le nombre d'éléments dans ces tableaux.
+     Le dernier élément des tableaux de pointeurs ``argv` et ``environnement`` doivent obligatoirement contenir ``NULL``. Sans cela, il n'est pas possible de déterminer le nombre d'éléments dans ces tableaux.
 
 
 Question 3. `execve(2)`_

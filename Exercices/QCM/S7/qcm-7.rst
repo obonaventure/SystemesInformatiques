@@ -24,7 +24,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
 .. class:: positive
 
 -
- .. code-block:: c
+ .. code-block:: console
 
     sem_t semaphore;
 
@@ -36,7 +36,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
 
 
 -
- .. code-block:: c
+ .. code-block:: console
 
     sem_t *semaphore;
     semaphore=(sem_t *)malloc(sizeof(struct sem_t));
@@ -53,7 +53,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
 .. class:: negative
 
 -
- .. code-block:: c
+ .. code-block:: console
 
     sem_t semaphore;
 
@@ -68,7 +68,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
     `sem_init(3)`_ et `sem_destroy(3)`_ prennent comme premier argument un pointeur vers une structure ``sem_t``. `sem_init(3)`_ prend comme troisième argument la valeur initiale du sémaphore.
 
 -
- .. code-block:: c
+ .. code-block:: console
 
     sem_t semaphore;
 
@@ -83,7 +83,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
     `sem_init(3)`_ prend comme troisième argument la valeur initiale du sémaphore.
 
 -
- .. code-block:: c
+ .. code-block:: console
 
     sem_t *semaphore;
     semaphore=(sem_t *)malloc(sizeof(struct sem_t));
@@ -102,7 +102,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
 
 
 -
- .. code-block:: c
+ .. code-block:: console
 
     sem_t *semaphore;
     semaphore=(sem_t *)malloc(sizeof(struct sem_t));
@@ -129,7 +129,7 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
 .. class:: positive
 
 -
- .. code-block:: c
+ .. code-block:: console
 
 
     static sem_t semaphore;
@@ -162,7 +162,7 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
       // reste non fourni
     }
 -
- .. code-block:: c
+ .. code-block:: console
 
 
     sem_t * semaphore;
@@ -201,7 +201,7 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
 .. class:: negative
 
 -
- .. code-block:: c
+ .. code-block:: console
 
 
     static sem_t semaphore;
@@ -239,7 +239,7 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
     Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple.
 
 -
- .. code-block:: c
+ .. code-block:: console
 
 
     static sem_t semaphore;
@@ -277,7 +277,7 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
     Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple. En outre, l'accès à la section critique doit être précédée par un appel à `sem_wait(3)`_  et suivie par un appel à `sem_post(3)`_ et non l'inverse comme dans cet exemple.
 
 -
- .. code-block:: c
+ .. code-block:: console
 
 
     sem_t * semaphore;
@@ -318,7 +318,7 @@ Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des 
     Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `sem_init(3)`_ et non à ``0`` comme dans cet exemple.
 
 -
- .. code-block:: c
+ .. code-block:: console
 
 
     sem_t * semaphore;
