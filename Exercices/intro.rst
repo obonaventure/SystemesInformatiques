@@ -252,8 +252,3 @@ La troisième commande permet de forcer l'utilisation de la version récente de 
 
 Pour exécuter un benchmark, lancez simplement ``make show`` dans le répertoire du benchmark. Il exécutera alors le benchmark et produira un fichier HTML contenant les résultats obtenus ainsi que des fichiers au format .csv avec les valeurs mesurées. Essayez d'interpréter les résultats obtenus. Pouvez-vous justifier l'évolution des performances que vous observez ?
 
-
-
-
-	  .   et installez-le sur une des machines Linux des salles.
-
