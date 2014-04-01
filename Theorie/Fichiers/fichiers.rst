@@ -261,7 +261,7 @@ Cette structure comprend le numéro d'inode contenu dans ses deux premiers membr
 
 L'extrait de code ci-dessous permet de lister tous les fichiers présents dans le répertoire ``name``.
 
-.. literalinclude:: /Fichiers/src/read.c
+.. literalinclude:: /Fichiers/src/readdir.c
    :encoding: utf-8
    :language: c
    :start-after: ///AAA
