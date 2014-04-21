@@ -195,7 +195,7 @@ Même si ces bits de protection sont contrôlés par le système d'exploitation,
 
    int mprotect(const void *addr, size_t len, int prot);
 
-Cette appel système prend trois arguments. Le première est un pointeur vers le début de la zone mémoire dont il faut modifier les bits de protection. Le second est la longueur de la zone mémoire concernée et le dernier la protection souhaitée. Celle-ci est spécifiée en utilisant les constantes ``PROT_NONE``, ``PROT_READ``, ``PROT_WRITE`` et ``PROT_EXEC`` qui peuvent être combinées en utilisant une disjonction logique. La protection demandée ne peut pas être plus libérale que la protection qui est déjà fixée par le système d'exploitation. Dans ce cas, le système d'exploitation génère un signal ``SIGSEGV``.
+Cet appel système prend trois arguments. Le première est un pointeur vers le début de la zone mémoire dont il faut modifier les bits de protection. Le second est la longueur de la zone mémoire concernée et le dernier la protection souhaitée. Celle-ci est spécifiée en utilisant les constantes ``PROT_NONE``, ``PROT_READ``, ``PROT_WRITE`` et ``PROT_EXEC`` qui peuvent être combinées en utilisant une disjonction logique. La protection demandée ne peut pas être plus libérale que la protection qui est déjà fixée par le système d'exploitation. Dans ce cas, le système d'exploitation génère un signal ``SIGSEGV``.
 
 
 .. todo:: l'ordre de présentaiton n'est pas le plus appropriée. il faudrait d'abord commencer par expliquer l'utilisation du disque avec des partitions de swap et les stratégies de remplacement de pages et ensuite arriver avec mmap, ce sera plus naturel
@@ -206,7 +206,9 @@ Utilisation des dispositifs de stockage
 ---------------------------------------
 
 La mémoire virtuelle permet non seulement à des pages d'un processus d'être placées à différents endroits de la mémoire, mais aussi elle permet de combiner la mémoire RAM et les dispositifs de stockage de façon transparente pour les processus.
+
 .. La section précédente a montré qu'il était possible de mettre en correspondance des fichiers ou des portions de fichiers avec des zones de mémoires dans un processus. En pratique, les interactions entre les dispositifs de stockage et la mémoire sont encore plus fortes que cela puisque
+
 Une partie des pages qui composent la mémoire virtuelle peut être stockée sur un dispositif de stockage (disque dur, SSD, ...). En pratique, la mémoire RAM peut jouer le rôle d'une sorte de mémoire cache pour la mémoire virtuelle. Les pages qui sont le plus fréquemment utilisées sont placées en mémoire RAM par le système d'exploitation et les pages les moins utilisées sont elles placées sur un dispositif de stockage et ramenées en mémoire RAM lorsqu'elle sont utilisées par le processeur.
 
 Pour bien comprendre cette utilisation de la mémoire virtuelle, il nous faut revenir à la table des pages. Celle-ci comprend autant d'entrées qu'il y a de pages dans l'espace d'adressage d'un processus. Nous avons vu qu'une entrée de cette table pouvait être structurée comme dans la figure ci-dessous.
@@ -442,7 +444,7 @@ Il est important de noter que si l'appel à `shmget(2)`_ réussit, cela indique 
 
    int shmdt(const void *shmaddr);
 
-L'appel système `shmdt(2)`_ permet de détacher un segment de mémoire qui avait été attaché en utilisant `shmat(2)`_. L'argument passé à `shmdt(2)`_ doit être l'adresse d'un segment de mémoire attaché préalablement par `shmat(2)`_. Lorsqu'un processus se termine, tous les segments auxquels il était attaché sont détachés lors de l'appel à `_exit(2)`_. Cela n'empêche pas un programme de détacher correctement tous les segments de mémoire qu'il utilise avant de se terminer.
+L'appel système `shmdt(2)`_ permet de détacher un segment de mémoire qui avait été attaché en utilisant `shmat(2)`_. L'argument passé à `shmdt(2)`_ doit être l'adresse d'un segment de mémoire attaché préalablement par `shmat(2)`_. Lorsqu'un processus se termine, tous les segments auxquels il était attaché sont détachés lors de l'appel à `exit(2)`_. Cela n'empêche pas un programme de détacher correctement tous les segments de mémoire qu'il utilise avant de se terminer.
 
 Le fragment de code ci-dessous présente comment un segment de mémoire peut être attaché et détaché après avoir été créé avec `shmget(2)`_.
 
