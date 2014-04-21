@@ -64,6 +64,7 @@ Exercices
 
 #. Ecrivez un programme similaire au précédent mais qui permet de comparer les performances en lecture. Utilisez `fscanf(3)`_ par exemple pour lire les données du fichier texte.
 
+# remplacer par un exercice git
 
 #. subversion (`svn(1)`_) est un outil permettant de générer intelligemment les projets informatiques dans lesquels plusieurs développeurs participent à l'écriture du code source. Il existe de nombreux livres et sites web concernant subversion. Cet exercice a pour objectif de vous présenter un workflow classique utilisant subversion [#fsvn]_. Pour réaliser cet exercice, vous avez besoin d'un répertoire partagé géré par subversion tel que celui du dernier projet.
 

@@ -252,3 +252,28 @@ La troisième commande permet de forcer l'utilisation de la version récente de 
 
 Pour exécuter un benchmark, lancez simplement ``make show`` dans le répertoire du benchmark. Il exécutera alors le benchmark et produira un fichier HTML contenant les résultats obtenus ainsi que des fichiers au format .csv avec les valeurs mesurées. Essayez d'interpréter les résultats obtenus. Pouvez-vous justifier l'évolution des performances que vous observez ?
 
+
+Onzième semaine
+---------------
+
+La matière de cette semaine porte sur la mémoire virtuelle et les fichiers mappés en mémoire :
+
+ - :ref:`theorie:vmem`
+ - :ref:`theorie:fctvmem`
+ - :ref:`theorie:stockage`
+ - :ref:`theorie:remplacement`
+ - :ref:`theorie:mmap`
+
+
+.. only:: html
+
+   `QCM11 <http://sites.uclouvain.be/SystInfo/qcm/Mission-11-qcm.html>`_
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-11
+
