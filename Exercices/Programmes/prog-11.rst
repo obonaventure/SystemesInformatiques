@@ -64,22 +64,20 @@ Exercices
 
 #. Ecrivez un programme similaire au précédent mais qui permet de comparer les performances en lecture. Utilisez `fscanf(3)`_ par exemple pour lire les données du fichier texte.
 
-# remplacer par un exercice git
+#. git est un outil permettant de générer intelligemment les projets informatiques dans lesquels plusieurs développeurs participent à l'écriture du code source. Il existe de nombreux livres et sites web concernant subversion. Cet exercice a pour objectif de vous présenter un workflow classique utilisant ``git``. Pour réaliser cet exercice, vous avez besoin d'un répertoire partagé géré par ``git``.
 
-#. subversion (`svn(1)`_) est un outil permettant de générer intelligemment les projets informatiques dans lesquels plusieurs développeurs participent à l'écriture du code source. Il existe de nombreux livres et sites web concernant subversion. Cet exercice a pour objectif de vous présenter un workflow classique utilisant subversion [#fsvn]_. Pour réaliser cet exercice, vous avez besoin d'un répertoire partagé géré par subversion tel que celui du dernier projet.
-
-   - `svn(1)`_ supporte de nombreuses sous-commandes. Pour accéder au manuel relatif à une de ces sous-commandes, il faut utiliser ``svn help commande``
+   - `git(1)`_ supporte de nombreuses sous-commandes. Pour accéder au manuel relatif à une de ces sous-commandes, il faut utiliser ``git help commande``
    - Créez un répertoire de test que vous pourrez supprimer par après, ``mkdir test``
-   - Ajoutez ce répertoire à votre repository subversion ``svn add test``
-   - Envoyez cette modification sur le serveur en utilisant ``svn commit -m "Ajout du répertoire de test"``. L'argument ``-m`` permet de spécifier un commentaire à votre ``commit``. Prenez l'habitude d'expliquer en une ou quelques lignes la modification que vous avez fait, cela vous permettra de revenir plus facilement en arrière si nécessaire.
-   - Créez un fichier texte nommé ``test.txt`` dans votre répertoire. Ce fichier contiendra une ligne de ``aaaaa`` et une deuxième ligne de ``bbbbbb``. Ajoutez ce fichier avec ``svn add``  puis faites le ``svn commit``
-   - Depuis un autre compte étudiant, faites ``svn up`` pour charger ce nouveau répertoire et le fichier le contenant.
-   - Un étudiant utilisant le répertoire modifie la première ligne du fichier et la remplace par ``aaXaa``. En même temps, l'autre étudiant modifie la deuxième ligne du fichier et la remplace par ``bbbYbbb``. Une fois ces modifications faites, utilisez ``svn commit`` pour pousser la modification sur le serveur.
-   - Faites ``svn log test.txt`` pour voir la liste des modifications faites sur ce fichier
-   - Utilisez ``svn diff test.txt`` pour voir la différence entre votre version du fichier et celle du serveur
-   - Essayez maintenant de faire des modifications à la même ligne du fichier, par exemple en ajoutant chacun une ligne supplémentaire. Ce faisant, vous allez créer un conflit. Utilisez ``svn merge`` pour résoudre ce conflit.
+   - Ajoutez ce répertoire à votre repository subversion ``git add test``
+   - Enregistrez cette modification sur le serveur en utilisant ``git commit -m "Ajout du répertoire de test"``. L'argument ``-m`` permet de spécifier un commentaire à votre ``commit``. Prenez l'habitude d'expliquer en une ou quelques lignes la modification que vous avez fait, cela vous permettra de revenir plus facilement en arrière si nécessaire. Envoyez ensuite votre modification sur le serveur via ``git push``.
+   - Créez un fichier texte nommé ``test.txt`` dans votre répertoire. Ce fichier contiendra une ligne de ``aaaaa`` et une deuxième ligne de ``bbbbbb``. Ajoutez ce fichier avec ``git add``  puis faites le ``git commit`` suivi du ``git push``
+   - Depuis un autre compte étudiant, faites ``git pull`` pour charger ce nouveau répertoire et le fichier le contenant.
+   - Un étudiant utilisant le répertoire modifie la première ligne du fichier et la remplace par ``aaXaa``. En même temps, l'autre étudiant modifie la deuxième ligne du fichier et la remplace par ``bbbYbbb``. Une fois ces modifications faites, utilisez ``git commit`` puis ``git push`` pour pousser la modification sur le serveur.
+   - Faites ``git log test.txt`` pour voir la liste des modifications faites sur ce fichier
+   - Utilisez ``git diff test.txt`` pour voir la différence entre votre version du fichier et celle du serveur
+   - Essayez maintenant de faire des modifications à la même ligne du fichier, par exemple en ajoutant chacun une ligne supplémentaire. Ce faisant, vous allez créer un conflit. Utilisez ``git merge`` pour résoudre ce conflit.
 
 
 .. rubric:: Footnotes
 
-.. [#fsvn] L'exercice utilise la ligne de commande `svn(1)`_. Il existe également des clients graphiques pour subversion, comme par exemple http://tortoisesvn.tigris.org/
+
