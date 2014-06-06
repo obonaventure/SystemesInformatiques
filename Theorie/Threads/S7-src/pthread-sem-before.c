@@ -61,7 +61,7 @@ int main (int argc, char *argv[])  {
       error(err,"pthread_join");
     }
   }
-  sem_destroy(&semaphore);
+  err=sem_destroy(&semaphore);
   if(err!=0) {
       error(err,"sem_destroy");
   }
