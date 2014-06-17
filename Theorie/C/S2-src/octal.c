@@ -8,18 +8,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 
   ///AAA
 
-  int i,j;
-  i=65;   // décimal
-  j=065;  // octal !!!
-  if(i==j)
-    printf("%d et %d sont égaux\n",i,j);
+  int i, j;
+  i = 65;   // décimal
+  j = 065;  // octal !!!
+  if (i == j)
+    printf("%d et %d sont égaux\n", i, j);
   else
-    printf("%d et %d sont différents\n",i,j);
+    printf("%d et %d sont différents\n", i, j);
 
    ///BBB
-   return(EXIT_SUCCESS);
+   
+   return EXIT_SUCCESS;
 }

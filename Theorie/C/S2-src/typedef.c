@@ -27,11 +27,11 @@ typedef struct fraction {
 
 typedef int Entier;
 
-int main(int argc, char *argv[]) {
-
-  Fraction demi={1,2};
-  Entier i=2;
+int main(int argc, char *argv[])
+{
+  Fraction demi = {1, 2};
+  Entier i = 2;
   // ...
-  return(EXIT_SUCCESS);
+  return EXIT_SUCCESS;
 }
 ///BBB

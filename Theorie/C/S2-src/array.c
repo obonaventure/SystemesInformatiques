@@ -9,6 +9,7 @@
 #include <stdlib.h>
 
 ///AAA
+
 #define N 10
 int vecteur[N];
 float matriceC[N][N];
@@ -17,23 +18,28 @@ float matriceR[N][2*N];
 ///BBB
 
 // calcule la somme des éléments d'un tableau
-int sum(int v[]) {
+int sum(int v[])
+{
   ///CCC
+  
   int i;
-  int sum=0;
-  for(i=0;i<N; i++) {
-    sum+=v[i];
+  int sum = 0;
+  for (i = 0; i < N; i++) {
+    sum += v[i];
   }
+  
   ///DDD
+  
   return sum;
 }
 
 // calcule la somme des éléments d'un tableau
-int sum2(int size, int v[size]) {
+int sum2(int size, int v[size])
+{
   int i;
-  int sum=0;
-  for(i=0;i<size; i++) {
-    sum+=v[i];
+  int sum = 0;
+  for (i = 0; i < size; i++) {
+    sum += v[i];
   }
   return sum;
 }
@@ -42,19 +48,20 @@ int sum2(int size, int v[size]) {
 
 // retourne le maximum d'un matrice
 // carrée de NxN élément
-float max() {
+float max()
+{
   ///EEE
   #define L 2
   #define C 3
-  float matriceR[L][C]={ {1.0,2.0,3.0},
-			 {4.0,5.0,6.0} };
-  int i,j;
-  float min=FLT_MAX;
-  for(i=0;i<L;i++)
-    for(j=0;j<C;j++){
-      if(matriceR[i][j]<min)
-	min=matriceR[i][j];
-    }
+  float matriceR[L][C] = { {1.0,2.0,3.0},
+                           {4.0,5.0,6.0} };
+  int i, j;
+  float min = FLT_MAX;
+  for (i = 0; i < L; i++)
+    for (j = 0; j < C; j++)
+      if (matriceR[i][j] < min)
+        min=matriceR[i][j];
+    
   ///FFF
   return min;
 }

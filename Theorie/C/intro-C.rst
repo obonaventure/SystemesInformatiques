@@ -123,7 +123,7 @@ Au niveau des constructions syntaxiques, on retrouve les mêmes boucles et tests
  - boucle ``do { ... } while (condition);``
  - boucle ``for (init; condition; incr) { ... }``
 
-En Java, les conditions sont des expressions qui doivent retourner un résultat de type ``boolean``. C est beaucoup plus permissif puisqu'une condition est une expression qui retourne un nombre entier.
+En Java, les conditions sont des expressions qui doivent retourner un résultat de type ``boolean``. Le langage C est beaucoup plus permissif puisqu'une condition est une expression qui retourne un nombre entier.
 
 La plupart des expressions et conditions en C s'écrivent de la même façon qu'en Java.
 
