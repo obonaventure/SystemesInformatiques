@@ -23,24 +23,23 @@ int length(char c[]) {
 ///BBB
 
 ///CCC
-void plusun(int size, int *v) {
+void plusun(int size, int *v)
+{
   int i;
-  for(i=0;i<size;i++)
+  for (i = 0; i < size; i++)
     v[i]++;
 }
 
 void print_vecteur(int size, int*v) {
   int i;
   printf("v={");
-  for(i=0;i<size-1;i++) {
-    printf("%d,",v[i]);
-  }
-  if(size>0){
-    printf("%d}",v[size-1]);
-  }
-  else{
+  for (i = 0;i < size - 1; i++)
+    printf("%d,", v[i]);
+    
+  if (size > 0)
+    printf("%d}", v[size - 1]);
+  else
     printf("}");
-  }
 }
 ///DDD
 
@@ -55,10 +54,12 @@ void wrong() {
 
 
 int main(int argc, char *argv[]) {
-  ///EEE
-  int vecteur[N]={1,2,3,4,5};
-  plusun(N,vecteur);
-  print_vecteur(N,vecteur);
-  ///FFF
-  return(EXIT_SUCCESS);
+
+///EEE
+int vecteur[N] = {1, 2, 3, 4, 5};
+plusun(N, vecteur);
+print_vecteur(N, vecteur);
+///FFF
+
+  return EXIT_SUCCESS;
 }

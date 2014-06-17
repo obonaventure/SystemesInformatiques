@@ -12,18 +12,18 @@
 #include <stdlib.h>
 #define BITS_CHAR 8
 
-  ///EEE
+///EEE
 #define BITS_INT 32
 // str[BITS_INT]
 void int2bin(unsigned int num, char *str)
 {
   int i;
-  str[BITS_INT]='\0';
-  for(i=BITS_INT-1; i>=0; i--) {
-    if( (num & 1)==1)
-      str[i]='1';
+  str[BITS_INT] = '\0';
+  for (i = BITS_INT - 1; i >= 0; i--) {
+    if ((num & 1) == 1)
+      str[i] = '1';
     else
-      str[i]='0';
+      str[i] = '0';
     num = num >> 1;
   }
 }
@@ -77,17 +77,21 @@ int main(int argc, char *argv[]) {
   char2bin(a^b,str3);
   printf("%s ^ %s = %s\n",str1,str2,str3);
 
-  ///AAA
-  r=~a; // négation bit à bit
-  r=a&b; // conjonction bit à bit
-  r=a|b; // disjonction bit à bit
-  r=a^b; // xor bit à bit
-  ///BBB
+///AAA
 
-  ///CCC
-  r=c & 0x7E;  // 0b01111110 force les bits de poids faible et fort à 0
-  r=d | 0x18;  // 0b00011000 force les bits 4 et 3 à 1
-  ///DDD
+r = ~a;    // négation bit à bit
+r = a & b; // conjonction bit à bit
+r = a | b; // disjonction bit à bit
+r = a ^ b; // xor bit à bit
+
+///BBB
+
+///CCC
+
+r = c & 0x7E; // 0b01111110 force les bits de poids faible et fort à 0
+r = d | 0x18; // 0b00011000 force les bits 4 et 3 à 1
+
+///DDD
 
   /*
   printf("0x%x & 0x%x = 0x%x\n",i2,i3,i2 & i3);
