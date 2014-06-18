@@ -22,15 +22,15 @@ types de nombres entiers :
  - les nombres entiers signés (``int`` notamment en C)
  - les nombres entiers non-signés (``unsigned int`` notamment en C)
 
-Par convention, une séquence de n bits, :math:`b_i` peut représenter le nombre
-entier  :math:`\sum_{i=0}^{n-1} b_i \times 2^i`. Le bit le plus à gauche
-de la séquence est appelé par convention le :term:`bit de poids fort`
-tandis que celui qui se trouve le plus à droite est appelé le
-:term:`bit de poids faible`. A titre d'exemple, la suite de bits
-``0101`` correspond à l'entier non signé représentant la valeur
-cinq. Le bit de poids fort (resp. faible) de cette séquence de quatre bits (ou :term:`nibble`) est ``0``
-(resp. ``1``). La table ci-dessous reprend les différentes valeurs décimales
-correspondant à toutes les séquences de quatre bits consécutifs.
+Une séquence de :math:`n` bits :math:`b_0 ... b_i ... b_n` peut représenter le
+nombre entier :math:`\sum_{i=0}^{n-1} b_i \times 2^i`. Par convention, le bit
+le plus à gauche de la séquence est appelé le :term:`bit de poids fort` tandis
+que celui qui se trouve le plus à droite est appelé le :term:`bit de poids
+faible`. A titre d'exemple, la suite de bits ``0101`` correspond à l'entier
+non signé représentant la valeur cinq. Le bit de poids fort (resp. faible) de
+cette séquence de quatre bits (ou :term:`nibble`) est ``0`` (resp. ``1``). La
+table ci-dessous reprend les différentes valeurs décimales correspondant à
+toutes les séquences de quatre bits consécutifs.
 
 =======      =====  ===========  =======
 binaire      octal  hexadécimal  décimal
