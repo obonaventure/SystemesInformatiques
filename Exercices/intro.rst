@@ -5,7 +5,7 @@
 Introduction
 ============
 
-Cette section comprendra deux types d'exercices afin de permettre aux étudiants de mieux ancrer leur compréhension des bases des systèmes informatiques. Les premiers sont des questionnaires à choix multiples. Pour chaque module de cours, entre 5 et 10 questions à choix multiples seront proposées. Elle permettront à chaque étudiant(e) de valider sa compréhension de la matière. Ensuite, les étudiants seront invités à écrire de petits programmes, généralement en langage C. Ces programmes sont l'occasion de mettre en pratiques les compétences acquises chaque semaine. La plupart des programmes ont un rôle formatif, ils permettront de guider la discussion avec les tuteurs durant les séances tutorées. Enfin, trois projets de groupe seront proposés aux étudiants. Leur évaluation contribuera à la cote finale.
+Cette section comprend deux types d'exercices afin de permettre aux étudiants de mieux ancrer leur compréhension des bases des systèmes informatiques. Les premiers sont des questionnaires à choix multiples. Pour chaque module de cours, entre 5 et 10 questions à choix multiples seront proposées. Elles permettront à chaque étudiant(e) de valider sa compréhension de la matière. Ensuite, les étudiants seront invités à écrire de petits programmes, généralement en langage C. Ces programmes sont l'occasion de mettre en pratique les compétences acquises chaque semaine. La plupart des programmes ont un rôle formatif, ils permettront de guider la discussion avec les tuteurs durant les séances tutorées. Enfin, deux projets de groupe seront proposés aux étudiants. Leur évaluation contribuera à la cote finale.
 
 
 Première semaine
@@ -46,7 +46,7 @@ Séance tutorée
 Troisième semaine
 -----------------
 
-La matière couverte cette semaine correspond aux section relative à l'`organisation de la mémoire <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/malloc/#organisation-de-la-memoire>`_
+La matière couverte cette semaine correspond aux sections relative à l'`organisation de la mémoire <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/malloc/#organisation-de-la-memoire>`_
 
 .. only:: html
 
@@ -277,3 +277,21 @@ Séance tutorée
 
    Programmes/prog-11
 
+
+Douzième semaine
+----------------
+
+La matière de cette semaine porte sur les utilisations avancées de la mémoire virtuelle :
+
+ - :ref:`theorie:shmem`
+ - :ref:`theorie:forkmem`
+ - :ref:`theorie:vmstat`
+ - :ref:`theorie:execvmem`
+
+Séance tutorée
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   Programmes/prog-12
