@@ -272,7 +272,7 @@ Parmi les groupes d'affirmations ci-dessous, un seul ne contient que des affirma
 -
 
   - Lors de l'exécution de la fonction ``main``, ``argc`` est initialisé au nombre d'arguments passés au programme (y compris le nom de l'exécutable lui-même).
-  - Lors de l'exécution de la fonction ``main``, le tableau ``argv[]`` contient dans ```argv[0]`` le nom du programme, dans ``argv[1]`` le premier argument, etc.
+  - Lors de l'exécution de la fonction ``main``, le tableau ``argv[]`` contient dans ``argv[0]`` le nom du programme, dans ``argv[1]`` le premier argument, etc.
   - La fonction ``atoi`` permet de convertir une chaîne de caractères en l'entier équivalent.
 
 
@@ -297,7 +297,7 @@ Parmi les groupes d'affirmations ci-dessous, un seul ne contient que des affirma
      Les deux premières affirmations sont fausses. ``argc`` contient le nombre d'arguments passés effectivement au programme. Le premier élément du tableau ``argv[]``, ``argv[0]``, est le nom du programme qui est exécuté.
 
 -
-  - Lors de l'exécution de la fonction ``main``, le tableau ``argv[]`` contient dans ```argv[0]`` le premier argument, dans ``argv[1]`` le second argument, etc.
+  - Lors de l'exécution de la fonction ``main``, le tableau ``argv[]`` contient dans ``argv[0]`` le premier argument, dans ``argv[1]`` le second argument, etc.
   - La fonction ``atoi`` permet de convertir une chaîne de caractères en l'entier équivalent.
 
   .. class:: comment
