@@ -37,7 +37,7 @@
 
 
 
-#. Faites l'exercice sur `Pythia <http://pythia.info.ucl.ac.be/module/13/problem/30>`_
+#. Faites l'exercice sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252-new/swap>`_
 
 #. La structure suivante ``foo_t`` est définie de façon à ce qu'elle contienne un ``char`` suivi d'un entier. D'après vous combien de bytes occupe cette structure en mémoire ? Vérifiez ce que vous pensiez en utilisant ``sizeof``. (bonus: expliquez vos résultats.)
 
