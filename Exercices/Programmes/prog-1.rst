@@ -178,12 +178,12 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 
 #.  Faites l'exercice sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252-new/commandetest>`_ sur la commande `test(1)`_.
 
-    Pythia est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécutés sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
+    INGInious est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécutés sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
 
-    Vous avez besoin d'un login sur Pythia, que vous recevrez durant l'après-midi du 29 janvier.
+    Pour vous connecter sur INGInious, utilisez votre login INGI que vous recevrez durant la première séance de TP.
 
 
-#. Faites de même pour la commande `expr(1)`_. On vous demande d'implémenter les expressions suivantes : ``+``, ``-``, ``*``, ``/`` et ``%``, mais cette fois-ci sans utiliser Pythia. Vous devriez tester votre programme vous-même et assurer le bon fonctionnement de celui-ci.
+#. Faites de même pour la commande `expr(1)`_. On vous demande d'implémenter les expressions suivantes : ``+``, ``-``, ``*``, ``/`` et ``%``, mais cette fois-ci sans utiliser INGInious. Vous devriez tester votre programme vous-même et assurer le bon fonctionnement de celui-ci.
 
    N'oubliez pas de respecter les valeurs de retour qui sont décrites dans les man-pages.
 
