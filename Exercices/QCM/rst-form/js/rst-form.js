@@ -3,7 +3,7 @@ $(function() {
     if (typeof $nmbr_prop == 'undefined') {
         $nmbr_prop = Infinity;
     }
-    $('.comment').hide();
+    $('.comment').not('.preproc').hide();
     $('ul.positive').before('<ul class="proposals"></ul>');
     $('ul.positive').each(function(index) {
         $(this).shuffle().children('li').first()
@@ -26,7 +26,7 @@ $(function() {
     $('ul.negative').hide();
     $('body').append('<div id="checker" class="checker"><h1>Vérifiez vos réponses</h1><input type="submit" value="Vérifier" id="verifier"></div>');
     $('#verifier').click(function () {
-        $('.comment').hide();
+        $('.comment').not('.preproc').hide();
         $('.checkmark').remove();
         $('.result').remove();
         $('li.false input:checked').parent().prepend('<img class="checkmark" src="images/false.png" style="display: none;"></img>');
