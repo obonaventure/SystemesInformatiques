@@ -21,7 +21,7 @@ Systèmes informatiques
 
 .. only:: html
 
- Ce site web contient le support du cours `SINF1252 <http://www.uclouvain.be/en-cours-2012-lsinf1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/obonaventure/SystemesInformatiques .
+ Ce site web contient le support du cours `SINF1252 <http://www.uclouvain.be/cours-2015-LSINF1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/obonaventure/SystemesInformatiques .
 
  La version HTML est la préférable car elle contient des liens hypertextes vers les pages de manuel Linux qui font partie de la matière. D'autres formats sont possibles pour ceux qui veulent lire le document hors ligne :
 

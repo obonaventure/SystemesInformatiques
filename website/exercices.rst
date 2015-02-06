@@ -21,6 +21,6 @@ Systèmes informatiques : Exercices
 
 .. only:: html
 
-    Ce site web contient les exercices du cours `SINF1252 <http://www.uclouvain.be/en-cours-2014-lsinf1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/obonaventure/SystemesInformatiques 
+    Ce site web contient les exercices du cours `SINF1252 <http://www.uclouvain.be/cours-2015-LSINF1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). Les étudiants sont invités à ajouter leur commentaires en soumettant des patches via https://github.com/obonaventure/SystemesInformatiques .
 
 Pour des raisons pratiques, les exercices sont uniquement disponibles sous la forme de `pages HTML<http://sites.uclouvain.be/SystInfo/notes/Exercices/html/>`_

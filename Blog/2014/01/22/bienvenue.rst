@@ -11,7 +11,7 @@ Bienvenue
 .. comments::
 
 
-Ce site comprend l'ensemble des informations relatives au cours `SINF1252 <http://www.uclouvain.be/en-cours-2012-lsinf1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). 
+Ce site comprend l'ensemble des informations relatives au cours `SINF1252 <http://www.uclouvain.be/cours-2015-LSINF1252.html>`_ donné aux `étudiants en informatique <http://www.uclouvain.be/info.html>`_ à l'`Université catholique de Louvain <http://www.uclouvain.be>`_ (UCL). 
 
  - `Théorie </pages/Theorie.html>`_
  - `Outils informatiques </pages/Outils.html>`_
