@@ -11,17 +11,12 @@ Cette section comprend deux types d'exercices afin de permettre aux étudiants d
 Première semaine
 ----------------
 
-.. only:: html
-
-   `QCM1 <http://sites.uclouvain.be/SystInfo/qcm/Mission-1-qcm.html>`_
-
-Séance tutorée
-^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1
 
    Programmes/prog-1
+   mcq-ex/qcm-1
 
 
 Deuxième semaine
