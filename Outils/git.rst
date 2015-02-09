@@ -132,7 +132,7 @@ Pour committer des changements, on les mets d'abord dans la
 Cette flexibilité permet de ne pas committer
 tout les changements du *working directory*.
 
-Voyons tout ça avec un programme exemple qui affiche en :math:`\LaTeX`
+Voyons tout ça avec un programme exemple qui affiche en LaTex
 la somme des entiers de :math:`1` à :math:`n`.
 On va utiliser les commandes
 

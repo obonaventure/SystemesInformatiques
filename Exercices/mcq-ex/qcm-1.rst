@@ -5,6 +5,7 @@
 
 Mission 1 : Mise en Route
 =========================
+:task_id: sinf1252-1
 
 Ces questions ont pour objectif de vous permettre de tester vous-même votre compréhension de la matière couverte par cette mission de mise en route. Elles supposent que vous avez lu le premier chapitre du syllabus contenant l'introduction à Unix et au langage C.
 
@@ -20,13 +21,13 @@ Question 1. Commande `man(1)`_
 
    .. positive::
 
-      .. code:: console
+      .. code-block:: console
 
          man -k intro
 
    .. negative::
 
-      .. code:: console
+      .. code-block:: console
 
          man intro
 
@@ -36,7 +37,7 @@ Question 1. Commande `man(1)`_
 
    .. negative::
 
-      .. code:: console
+      .. code-block:: console
 
          man -k *intro*
 
@@ -101,7 +102,7 @@ Question 3. Premier programme en langage C
 
    .. positive::
 
-      .. code:: c
+      .. code-block:: c
 
          #include <stdio.h>
          int main(int argc, const char *argv[]) {
@@ -112,7 +113,7 @@ Question 3. Premier programme en langage C
 
    .. positive::
 
-      .. code:: c
+      .. code-block:: c
 
          #include <stdio.h>
          int main(int argc, const char *argv[]) {
@@ -124,7 +125,7 @@ Question 3. Premier programme en langage C
 
    .. negative::
 
-      .. code:: c
+      .. code-block:: c
 
          #include <stdio.h>
          void main(int argc, const char *argv[]) {
@@ -135,7 +136,7 @@ Question 3. Premier programme en langage C
 
    .. negative::
 
-      .. code:: c
+      .. code-block:: c
 
          int main(int argc, const char *argv[]) {
            printf("Hello, world\n");
@@ -146,7 +147,7 @@ Question 3. Premier programme en langage C
 
    .. negative::
 
-      .. code:: c
+      .. code-block:: c
 
          #include <stdlib.h>
          int main() {
@@ -158,7 +159,7 @@ Question 3. Premier programme en langage C
 
    .. negative::
 
-      .. code:: c
+      .. code-block:: c
 
          #include <stdlib.h>
          void main()
@@ -180,7 +181,7 @@ Question 4. Deuxième programme en langage C
 
    .. positive::
 
-      .. code:: c
+      .. code-block:: c
 
          #include <stdlio.h>
          int main(int argc, const char *argv[]) {
@@ -192,7 +193,7 @@ Question 4. Deuxième programme en langage C
 
    .. positive::
 
-      .. code:: c
+      .. code-block:: c
 
          #include <stdlio.h>
          int main(int argc, const char *argv[]) {
@@ -205,7 +206,7 @@ Question 4. Deuxième programme en langage C
 
    .. negative::
 
-      .. code:: c
+      .. code-block:: c
 
          #include <stdlio.h>
          int main(int argc, const char *argv[]) {
@@ -217,7 +218,7 @@ Question 4. Deuxième programme en langage C
 
    .. negative::
 
-      .. code:: c
+      .. code-block:: c
 
          #include <stdlio.h>
          int main(int argc, const char *argv[]) {
@@ -230,7 +231,7 @@ Question 4. Deuxième programme en langage C
 
    .. negative::
 
-      .. code:: c
+      .. code-block:: c
 
          #include <stdlio.h>
          int main(int argc, const char *argv[]) {
@@ -297,6 +298,6 @@ Question 5. Arguments passés à un programme C
 
       .. comment:: Le premier élément du tableau ``argv[]``, ``argv[0]``, est le nom du programme qui est exécuté.
 
-.. include:: ../../../links.rst
-.. include:: ../../../man_links.rst
-.. include:: ../../../incl_links.rst
+.. include:: ../../links.rst
+.. include:: ../../man_links.rst
+.. include:: ../../incl_links.rst
