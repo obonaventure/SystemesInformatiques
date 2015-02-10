@@ -5,8 +5,8 @@
 
 
 
-Semaine 2 : Types de données
-============================
+Questions à choix multiples
+===========================
 
 :task_id: sinf1252-2
 
@@ -181,7 +181,7 @@ Question 4. Notation binaire
 
 .. question:: binaire2
    :nb_prop: 3
-   : nb_pos: 1
+   :nb_pos: 1
 
    Parmi les affirmations suivantes relatives aux nombres signés en représentation binaire, une seule est vraie. Laquelle ?
 

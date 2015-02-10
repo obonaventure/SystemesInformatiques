@@ -24,17 +24,10 @@ Deuxième semaine
 
 La matière couverte cette semaine correspond à la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/datatypes/>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_)
 
-.. only:: html
-
-  `QCM2 <http://sites.uclouvain.be/SystInfo/qcm/Mission-2-qcm.html>`_
-
-
-Séance tutorée
-^^^^^^^^^^^^^^
-
 .. toctree::
    :maxdepth: 2
 
+   mcq-ex/qcm-2
    Programmes/prog-2
 
 
@@ -43,17 +36,10 @@ Troisième semaine
 
 La matière couverte cette semaine correspond aux sections relative à l'`organisation de la mémoire <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/malloc/#organisation-de-la-memoire>`_
 
-.. only:: html
-
-   `QCM3 <http://sites.uclouvain.be/SystInfo/qcm/Mission-3-qcm.html>`_
-
-
-Séance tutorée
-^^^^^^^^^^^^^^
-
 .. toctree::
    :maxdepth: 2
-
+              
+   mcq-ex/qcm-3           
    Programmes/prog-3
 
 
