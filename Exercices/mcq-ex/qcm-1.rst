@@ -3,8 +3,8 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
-Mission 1 : Mise en Route
-=========================
+Questions à choix multiples
+===========================
 :task_id: sinf1252-1
 
 Ces questions ont pour objectif de vous permettre de tester vous-même votre compréhension de la matière couverte par cette mission de mise en route. Elles supposent que vous avez lu le premier chapitre du syllabus contenant l'introduction à Unix et au langage C.

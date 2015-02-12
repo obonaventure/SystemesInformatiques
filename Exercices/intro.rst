@@ -15,8 +15,9 @@ Première semaine
 .. toctree::
    :maxdepth: 1
 
-   Programmes/prog-1
    mcq-ex/qcm-1
+   Programmes/prog-1
+
 
 
 Deuxième semaine
