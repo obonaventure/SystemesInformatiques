@@ -75,7 +75,7 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 
                 $ gcc -Werror -std=c99 test.c -o test
                 $ ./test
-                42
+                1252
                 $ echo $?
                 0
 
