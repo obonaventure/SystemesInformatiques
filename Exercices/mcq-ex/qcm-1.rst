@@ -183,7 +183,7 @@ Question 4. Deuxième programme en langage C
 
       .. code-block:: c
 
-         #include <stdlio.h>
+         #include <stdio.h>
          int main(int argc, const char *argv[]) {
            int a = 1252;
            printf("SINF%d\n", a);
@@ -195,7 +195,7 @@ Question 4. Deuxième programme en langage C
 
       .. code-block:: c
 
-         #include <stdlio.h>
+         #include <stdio.h>
          int main(int argc, const char *argv[]) {
           int a = 1252;
           printf("SINF");
@@ -208,7 +208,7 @@ Question 4. Deuxième programme en langage C
 
       .. code-block:: c
 
-         #include <stdlio.h>
+         #include <stdio.h>
          int main(int argc, const char *argv[]) {
            int a = 1252;
            printf("SINF%a\n", a);
@@ -220,7 +220,7 @@ Question 4. Deuxième programme en langage C
 
       .. code-block:: c
 
-         #include <stdlio.h>
+         #include <stdio.h>
          int main(int argc, const char *argv[]) {
            int a = 1252;
            printf(SINF);
@@ -233,7 +233,7 @@ Question 4. Deuxième programme en langage C
 
       .. code-block:: c
 
-         #include <stdlio.h>
+         #include <stdio.h>
          int main(int argc, const char *argv[]) {
            int a = 1252;
            printf("SINF$a\n", a);
@@ -255,7 +255,7 @@ Question 5. Arguments passés à un programme C
    .. code-block:: c
 
 
-      #include <stdlio.h>
+      #include <stdio.h>
       #include <stdlib.h>
       int main(int argc, const char *argv[])
       {
