@@ -23,7 +23,7 @@ Première semaine
 Deuxième semaine
 ----------------
 
-La matière couverte cette semaine correspond à la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/datatypes/>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_)
+La matière couverte cette semaine correspond à la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html#les-expressions-de-manipulation-de-bits>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_)
 
 .. toctree::
    :maxdepth: 2
