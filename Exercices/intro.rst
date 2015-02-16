@@ -35,7 +35,7 @@ La matière couverte cette semaine correspond à la section relative aux `types 
 Troisième semaine
 -----------------
 
-La matière couverte cette semaine correspond aux sections relative à l'`organisation de la mémoire <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/malloc/#organisation-de-la-memoire>`_
+La matière couverte cette semaine correspond aux sections relative à l'`organisation de la mémoire <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire>`_
 
 .. toctree::
    :maxdepth: 2
