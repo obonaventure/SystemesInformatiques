@@ -55,13 +55,13 @@ Glossaire
     Sortie d'erreur standard sur un système Unix (par défaut l'écran)
 
  X11
-    à compléter
+    Aussi appelé X Window System, est la définition d'un ensemble de protocoles et de programmes servant à gérer les fenêtres et autres composants constituants une interface graphique sur un système Unix. XQuartz http://xquartz.macosforge.org/ et X.Org http://www.x.org/ en sont des implémentations open source.
 
  Gnome
-    à compléter
+    Un environnement de bureau.
 
  CDE
-    à compléter
+    Un environnement de bureau.
 
  shell
     Interpréteur de commandes sur un système Unix. `bash(1)`_ est l'interpréteur de commandes le plus utilisé de nos jours.
@@ -142,13 +142,13 @@ Glossaire
      Problème à compléter
 
  garbage collector
-     Algorithme permettant de libérer la mémoire qui n'est plus utilisée notamment dans des langages tels que Java
+     Algorithme permettant de libérer la mémoire qui n'est plus utilisée notamment dans des langages tels que Java.
 
  pointeur
-     à compléter
+     Une variable contenant une adresse mémoire.
 
  adresse
-     à compléter
+     Identifiant (typiquement représenté par un nombre entier) qui désigne une zone particulière de la mémoire physique où des données peuvent être lues et stockées.
 
  C99
      Standard international définissant le langage C [C99]_
@@ -208,7 +208,7 @@ Glossaire
 
  heap
  tas
-     à compléter
+     Zone dans laquelle un programme peut obtenir de la mémoire supplémentaire pour stocker de l’information.
 
  stack
  pile
