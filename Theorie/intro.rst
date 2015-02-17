@@ -218,32 +218,6 @@ Ce programme utilise le fichier spécial ``/dev/null``. Celui-ci est en pratique
 
 Une description complète de `bash(1)`_ sort du cadre de ce cours. De nombreuses références à ce sujet sont disponibles [Cooper2011]_.
 
-
-
-
-.. topic:: Pages de manuel
-
-  Les systèmes d'exploitation de la famille Unix contiennent un grand nombre de librairies, d'appels systèmes et d'utilitaires. Toutes ces fonctions et tous ces programmes sont documentés dans des pages de manuel qui sont accessibles via la commande ``man``. Les pages de manuel sont organisées en 8 sections.
-
-   - Section 1: Utilitaires disponibles pour tous les utilisateurs
-   - Section 2: Appels systèmes en C
-   - Section 3: Fonctions de la librairie
-   - Section 4: Fichiers spéciaux
-   - Section 5: Formats de fichiers et conventions pour certains types de fichiers
-   - Section 6: Jeux
-   - Section 7: Utilitaires de manipulation de fichiers textes
-   - Section 8: Commandes et procédure de gestion du système
-
-  Dans le cadre de ce cours, nous aborderons principalement les fonctionnalités décrites dans les trois premières sections des pages de manuel. L'accès à une page de manuel se fait via la commande ``man`` avec comme argument le nom de la commande concernée. Vous pouvez par exemple obtenir la page de manuel de ``gcc`` en tapant ``man gcc``. ``man`` supporte plusieurs paramètres qui sont décrits dans sa page de manuel accessible via ``man man``. Dans certains cas, il est nécessaire de spécifier la section du manuel demandée. C'est le cas par exemple pour ``printf`` qui existe comme utilitaire (section 1) et comme fonction de la librairie (section 3 - accessible via ``man 3 printf``).
-
-  Outre ces pages de manuel locales, il existe également de nombreux sites web où l'on peut accéder aux pages de manuels de différentes versions de Unix dont notamment :
-
-   - les pages de manuel de `Debian GNU/Linux <http://manpages.debian.net/>`_
-   - les pages de manuel de `FreeBSD <http://www.freebsd.org/cgi/man.cgi>`_
-   - les pages de manuel de `MacOS <http://developer.apple.com/documentation/Darwin/Reference/ManPages/index.html>`_
-
-  Dans la version online de ces notes, toutes les références vers un programme Unix, un appel système ou une fonction de la librairie pointent vers la page de manuel Linux correspondante.
-
 .. rubric:: Footnotes
 
 .. [#fbitreseau] Dans certaines applications, par exemple dans les réseaux informatiques, il peut être utile d'accéder à la valeur d'un bit particulier qui joue par exemple le rôle d'un drapeau. Celui-ci se trouve cependant généralement à l'intérieur d'une structure de données comprenant un ensemble de bits.
@@ -253,4 +227,3 @@ Une description complète de `bash(1)`_ sort du cadre de ce cours. De nombreuses
 .. [#ftermine] Certains processus sont lancés automatiquement au démarrage du système et ne se terminent qu'à son arrêt. Ces processus sont souvent appelés des `daemons`. Il peut s'agir de services qui fonctionnent en permanence sur la machine, comme par exemple un serveur web ou un `daemon` d'authentification.
 
 .. [#fexecbit] Sous Unix et contrairement à d'autres systèmes d'exploitation, le suffixe d'un nom de fichier ne joue pas de rôle particulier pour indiquer si un fichier contient un programme exécutable ou non. Comme nous le verrons ultérieurement, le système de fichiers Unix contient des bits de permission qui indiquent notamment si un fichier est exécutable ou non.
-
