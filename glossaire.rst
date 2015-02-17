@@ -8,7 +8,7 @@ Glossaire
 *********
 
 .. glossary::
-   :sorted:
+    :sorted:
 
  CPU
     Central Processing Unit
@@ -55,7 +55,7 @@ Glossaire
     Sortie d'erreur standard sur un système Unix (par défaut l'écran)
 
  X11
-    Aussi appelé X Window System, est la définition d'un ensemble de protocoles et de programmes servant à gérer les fenêtres et autres composants constituants une interface graphique sur un système Unix. XQuartz http://xquartz.macosforge.org/ et X.Org http://www.x.org/ en sont des implémentations open source.
+    Aussi appelé X Window System, est la définition d'un ensemble de protocoles et de programmes servant à gérer les fenêtres et autres composants constituants une interface graphique sur un système Unix. XQuartz http://xquartz.macosforge.org et X.Org http://www.x.org en sont des implémentations open source.
 
  Gnome
     Un environnement de bureau.
@@ -106,66 +106,66 @@ Glossaire
     GNU est un projet open-source de la Free Software Foundation qui a permis le développement d'un grand nombre d'utilitaires utilisés par les systèmes d'exploitation de la famille Unix actuellement.
 
  GNU/Linux
-     Nom générique donné à un système d'exploitation utilisant les utilitaires :term:`GNU` notamment et le noyau :term:`Linux` .
+    Nom générique donné à un système d'exploitation utilisant les utilitaires :term:`GNU` notamment et le noyau :term:`Linux` .
 
  Andrew Tanenbaum
-     Andrew Tanenbaum est professeur à la VU d'Amsterdam.
+    Andrew Tanenbaum est professeur à la VU d'Amsterdam.
 
  Linus Torvalds
-     Linus Torvalds est le créateur et le mainteneur principal du noyau :term:`Linux`.
+    Linus Torvalds est le créateur et le mainteneur principal du noyau :term:`Linux`.
 
  Aqua
-     Aqua est une interface graphique spécifique à :term:`MacOS`.
+    Aqua est une interface graphique spécifique à :term:`MacOS`.
 
  pipe
-     Mécanisme de redirection des entrées-sorties permettant de relier la sortie standard d'un programme à l'entrée standard d'un autre pour créer des pipelines de traitement.
+    Mécanisme de redirection des entrées-sorties permettant de relier la sortie standard d'un programme à l'entrée standard d'un autre pour créer des pipelines de traitement.
 
  assembleur
-     Programme permettant de convertir un programme écrit en langage d'assemblage dans le langage machine correspondant à un processeur donné.
+    Programme permettant de convertir un programme écrit en langage d'assemblage dans le langage machine correspondant à un processeur donné.
 
  warning
-     Message d'avertissement émis par un compilateur C. Un :term:`warning` n'empêche pas la compilation et la génération du code objet. Cependant, la plupart des warnings indiquent un problème dans le programme compilé et il est nettement préférable de les supprimer du code.
+    Message d'avertissement émis par un compilateur C. Un :term:`warning` n'empêche pas la compilation et la génération du code objet. Cependant, la plupart des warnings indiquent un problème dans le programme compilé et il est nettement préférable de les supprimer du code.
 
  bit de poids fort
-     Par convention, le bit le plus à gauche d'une séquence de n bits.
+    Par convention, le bit le plus à gauche d'une séquence de n bits.
 
  bit de poids faible
-     Par convention, bit le plus à droite d'une séquence de n bits.
+    Par convention, bit le plus à droite d'une séquence de n bits.
 
  simple précision
-     Représentation de nombre réels en virgule flottante (type ``float`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 32 bits.
+    Représentation de nombre réels en virgule flottante (type ``float`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 32 bits.
 
  double précision
-     Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 64 bits.
+    Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 64 bits.
 
  buffer overflow
-     Erreur intervante lorsqu'un processus tente d'écrire dans une zone de la mémoire tampon qui ne lui est pas allouée. Le processus peut écrire dés lors par dessus des informations pouvant être nécessaire au :term:`CPU` ou au système d'exploitation le rendant par l'occasion imprévisible.
+    Erreur survenante lorsqu'un processus tente d'écrire dans une zone mémoire tampon qui ne lui est pas allouée. Le processus peut écrire dès lors par dessus des informations pouvant être nécessaires au :term:`CPU` ou au système d'exploitation, le rendant par l'occasion imprévisible.
 
  garbage collector
-     Algorithme permettant de libérer la mémoire qui n'est plus utilisée notamment dans des langages tels que Java.
+    Algorithme permettant de libérer la mémoire qui n'est plus utilisée notamment dans des langages tels que Java.
 
  pointeur
-     Une variable contenant une adresse mémoire.
+    Une variable contenant une adresse mémoire.
 
  adresse
-     Identifiant (typiquement représenté par un nombre entier) qui désigne une zone particulière de la mémoire physique où des données peuvent être lues et stockées.
+    Identifiant (typiquement représenté par un nombre entier) qui désigne une zone particulière de la mémoire physique où des données peuvent être lues et stockées.
 
  C99
-     Standard international définissant le langage C [C99]_
+    Standard international définissant le langage C [C99]_
 
  fichier header
-     Fichier annexé à un fichier .c où sont incluses les directives de :term:`préprocesseur` et les prototypes des fonctions.
+    Fichier .h annexé à un fichier .c où sont en autres incluses les directives :term:`préprocesseur`, les définitions de structures, les typedef et les prototypes des fonctions.
 
  segmentation fault
-     Erreur à l'exécution lorsque le programme réclame un accès à une zone mémoire qui ne lui est pas allouée. Dés lors, le système d'exploitation termine le programme.
+    Erreur à l'exécution lorsque le programme réclame un accès en zone mémoire qui ne lui est pas allouée. Dés lors, le système d'exploitation termine le programme.
 
  NOT
  négation
-     Opération binaire logique.
+    Opération binaire logique.
 
  AND
  conjonction logique
-     Opération binaire logique.
+    Opération binaire logique.
 
  OR
  disjonction logique
@@ -176,389 +176,389 @@ Glossaire
     Opération binaire logique.
 
  libc
-     Librairie C standard. Contient de nombreuses fonctions utilisables par les programmes écrits en langage C et décrites dans la troisième section des pages de manuel. Linux utilise la librairie GNU `glibc <http://www.gnu.org/software/libc/manual/>`_ qui contient de nombreuses extensions par rapport à la libraire standard.
+    Librairie C standard. Contient de nombreuses fonctions utilisables par les programmes écrits en langage C et décrites dans la troisième section des pages de manuel. Linux utilise la librairie GNU `glibc <http://www.gnu.org/software/libc/manual/>`_ qui contient de nombreuses extensions par rapport à la libraire standard.
 
  FSF
-     Free Software Foundation, http://www.fsf.org
+    Free Software Foundation, http://www.fsf.org
 
  portée
-      Bloc dans le code source dans lequel un identifieur est assuré de pointer vers la même adresse mémoire.
+    Zone dans le code source dans lequel un identificateur est assuré de pointer vers la même adresse mémoire.
 
  portée locale
-     :term:`portée` d'un identifieur se limitant à son bloc parent, généralement défini par des accolades.
+    :term:`portée` d'un identificateur se limitant à son bloc parent, généralement défini par des accolades.
 
  portée globale
-     :term:`portée` d'un identifieur valable dans tout le fichier auquel il se trouve.
+    :term:`portée` d'un identificateur valable dans tout le fichier auquel il se trouve.
 
  debugger
-     Logiciel interpertant les erreurs d'exécution servant au programmeur à corriger son programme.
+    Logiciel interprétant les erreurs d'exécution dans le but d'aider le programmeur à corriger son programme.
 
  text
  segment text
-     à compléter
+    à compléter
 
  segment des données initialisées
-     à compléter
+    à compléter
 
  segment des données non-initialisées
-     à compléter
+    à compléter
 
  heap
  tas
-     Zone mémoire dans laquelle un programme peut obtenir de l'espace supplémentaire pour stocker de l’information.
+    Zone mémoire dans laquelle un programme peut obtenir de l'espace supplémentaire pour stocker de l’information.
 
  stack
  pile
-     Zone mémoire dans laquelle le processus stocke l’ensemble des variables locales mais également les valeurs de retour de toutes les fonctions qui sont appelées.
+    Zone mémoire dans laquelle le processus stocke l’ensemble des variables locales mais également les valeurs de retour et paramètres de toutes les fonctions qui sont appelées.
 
  etext
-     Variable indiquant le sommet du :term:`segment text` d’un processus.
+    Variable indiquant le sommet du :term:`segment text` d’un processus.
 
  memory leak
-      Defaut d'un programme gourmant en ressource, incrémentant sa mémoire allouée au lieu de la recycler, au point de consommer une quantité irrésonnable de mémoire amenant des réactions imprévisibles du système d'exploitation.
+    Defaut d'un programme gourmand en ressource, augmentant sa mémoire allouée au lieu de la recycler, au point de consommer une quantité irraisonnable de mémoire amenant des réactions imprévisibles du système d'exploitation.
 
  processus
-   Ensemble cohérent d'instructions utilisant une partie de la mémoire, initié par le système d'exploitation et exécuté sur un des processeurs du système. Le système d'exploitation libère les ressources qui lui sont allouées à la fin de son exécution.
+    Ensemble cohérent d'instructions utilisant une partie de la mémoire, initié par le système d'exploitation et exécuté sur un des processeurs du système. Le système d'exploitation libère les ressources qui lui sont allouées à la fin de son exécution.
 
  pid
  process identifier
-      identifiant de processus. Sous Unix, chaque processus est identifié par un entier unique. Cet identifiant sert de clé d'accès à la :term:`table des processus`. Voir `getpid(2)`_ pour récupérer l'identifiant du processus courant.
+    identifiant de processus. Sous Unix, chaque processus est identifié par un entier unique. Cet identifiant sert de clé d'accès à la :term:`table des processus`. Voir `getpid(2)`_ pour récupérer l'identifiant du processus courant.
 
  table des processus
-      Table contenant les identifiants (:term:`pid`) de tous les processus qui s'exécutent à ce moment sur un système Unix. Outre les identifiants, cette table contient de nombreuses informations relatives à chaque :term:`processus`. Voir également :term:`/proc`
+    Table contenant les identifiants (:term:`pid`) de tous les processus qui s'exécutent à ce moment sur un système Unix. Outre les identifiants, cette table contient de nombreuses informations relatives à chaque :term:`processus`. Voir également :term:`/proc`
 
  /proc
-      Sous Linux, représentation de l'information stockée dans la :term:`table des processus` sous la forme d'une arborescence directement accessible via les commandes du :term:`shell`. Voir `proc(5)`_
+    Sous Linux, représentation de l'information stockée dans la :term:`table des processus` sous la forme d'une arborescence directement accessible via les commandes du :term:`shell`. Voir `proc(5)`_
 
  signal
-     mécanisme permettant la communication entre processus. Utilisé notamment pour arrêter un processus via la commande `kill(1)`_
+    mécanisme permettant la communication entre processus. Utilisé notamment pour arrêter un processus via la commande `kill(1)`_
 
  von Neumann
-     Un des inventaires des premiers ordinateurs. A défini l'architecture de base des premiers ordinateurs qui est maintenant connue comme le modèle de von Neumann [Krakowiak2011]_
+    Un des inventeurs des premiers ordinateurs. A défini l'architecture de base des premiers ordinateurs qui est maintenant connue comme le modèle de von Neumann [Krakowiak2011]_
 
  mémoire
-     Composant essentiel d'une architecture de :term:`von Neumann` permetant le stockage d'information.
+    Composant essentiel d'une architecture de type :term:`von Neumann` permettant le stockage d'information.
 
  SRAM
  static RAM
-     Un des deux principaux types de mémoire. Dans une SRAM, l'information est mémorisée comme la présence ou l'absence d'un courant électrique. Les mémoires SRAM sont généralement assez rapides mais de faible capacité. Elles sont souvent utilisées pour construire des mémoires caches.
+    Un des deux principaux types de mémoire. Dans une SRAM, l'information est mémorisée comme la présence ou l'absence d'un courant électrique. Les mémoires SRAM sont généralement assez rapides mais de faible capacité. Elles sont souvent utilisées pour construire des mémoires caches.
 
  DRAM
  dynamic RAM
-     Un des deux principaux types de mémoire. Dans une DRAM, l'information est mémorisée comme la présence ou l'absence de charge dans un minuscule condensateur. Les mémoires DRAM sont plus lentes que les :term:`SRAM` mais ont une plus grande capacité.
+    Un des deux principaux types de mémoire. Dans une DRAM, l'information est mémorisée comme la présence ou l'absence de charge dans un minuscule condensateur. Les mémoires DRAM sont plus lentes que les :term:`SRAM` mais ont une plus grande capacité.
 
  RAM
  Random Access Memory
-     Mémoire à accès aléatoire. Mémoire permettant au processeur d'accéder à n'importe quelle donnée en connaissant son adresse. Voir :term:`DRAM` et :term:`SRAM`.
+    Mémoire vive à accès aléatoire. Mémoire permettant au processeur d'accéder à n'importe quelle donnée directement en connaissant son adresse. Voir :term:`DRAM` et :term:`SRAM`.
 
  registre
-     Unité de mémoire intégrée au processeur. Les registres sont utilisés comme source ou destination pour la plupart des opérations effectuées par un processeur.
+    Unité de mémoire intégrée au processeur. Les registres sont utilisés comme source ou destination pour la plupart des opérations effectuées par un processeur.
 
  hiérarchie de mémoire
-     Ensemble des mémoires utilisées sur un ordinateur. Depuis les registres jusqu'à la mémoire virtuelle en passant par la mémoire centrale et les mémoires caches.
+    Ensemble des mémoires utilisées sur un ordinateur. Depuis les registres jusqu'à la mémoire virtuelle en passant par la mémoire centrale et les mémoires caches.
 
  mémoire cache
-     Mémoire rapide de faible capacité. La mémoire cache peut stocker des données provenant de mémoires de plus grande capacité mais qui sont plus lentes, et exploite le :term:`principe de localité` en stockant de manière transparente les instructions et les données les plus récemment utilisées. Elle fait office d'interface entre le processeur et la mémoire principale et toutes les demandes d'accès à la mémoire principale passent par la mémoire cache, ce qui permet d'améliorer les performances de nombreux systèmes informatiques.
+    Mémoire rapide de faible capacité. La mémoire cache peut stocker des données provenant de mémoires de plus grande capacité mais qui sont plus lentes, et exploite le :term:`principe de localité` en stockant de manière transparente les instructions et les données les plus récemment utilisées. Elle fait office d'interface entre le processeur et la mémoire principale et toutes les demandes d'accès à la mémoire principale passent par la mémoire cache, ce qui permet d'améliorer les performances de nombreux systèmes informatiques.
 
  principe de localité
-     Voir :term:`localité spatiale` et :term:`localité temporelle`.
+    Voir :term:`localité spatiale` et :term:`localité temporelle`.
 
  localité spatiale
-     à compléter
+    à compléter
 
  localité temporelle
-     à compléter
+    à compléter
 
  lignes de cache
-     à compléter
+    à compléter
 
  write through
-     Technique d'écriture dans les mémoires caches. Toute écriture est faite simultanément en mémoire cache et en mémoire principale. Cela garantit la cohérence entre les deux mémoires mais réduit les performances.
+    Technique d'écriture dans les mémoires caches. Toute écriture est faite simultanément en mémoire cache et en mémoire principale. Cela garantit la cohérence entre les deux mémoires mais réduit les performances.
 
  write back
-     Technique d'écriture dans les mémoires caches.  Toute écriture est faite en mémoire cache. La mémoire principale n'est mise à jour que lorsque la donnée modifiée doit être retirée de la cache. Cette technique permet d'avoir de meilleures performances que :term:`write through` mais il faut faire parfois attention aux problèmes qui pourraient survenir sachant que la mémoire cache et la mémoire principale ne contiennent pas toujours exactement la même information.
+    Technique d'écriture dans les mémoires caches.  Toute écriture est faite en mémoire cache. La mémoire principale n'est mise à jour que lorsque la donnée modifiée doit être retirée de la cache. Cette technique permet d'avoir de meilleures performances que :term:`write through` mais il faut faire parfois attention aux problèmes qui pourraient survenir sachant que la mémoire cache et la mémoire principale ne contiennent pas toujours exactement la même information.
 
  eip
  pc
  compteur de programme
  instruction pointer
-     Registre spécial du processeur qui contient en permanence l'adresse de l'instruction en cours d'exécution. Le contenu de ce registre est incrémenté après chaque instruction et modifié par les instructions de saut.
+    Registre spécial du processeur qui contient en permanence l'adresse de l'instruction en cours d'exécution. Le contenu de ce registre est incrémenté après chaque instruction et modifié par les instructions de saut.
 
  mode d'adressage
-     à compléter
+    à compléter
 
  accumulateur
-     Registre utilisé dans les premiers processeurs comme destination pour la plupart des opérations arithmétiques et logiques. Sur l'architecture [IA32]_, le registre ``%eax`` est le successeur de cet accumulateur.
+    Registre utilisé dans les premiers processeurs comme destination pour la plupart des opérations arithmétiques et logiques. Sur l'architecture [IA32]_, le registre ``%eax`` est le successeur de cet accumulateur.
 
  bus
-     Composant central d'une architecture de :term:`von Neumann` semblable à un canal permettant de transporter de l'information d'un composant à l'autre.
+    Composant central d'une architecture de :term:`von Neumann` semblable à un canal permettant de transporter de l'information d'un composant à un l'autre.
 
  ligne de cache
-     à compléter. Voir notamment [McKenney2005]_ et  [Drepper2007]_
+    à compléter. Voir notamment [McKenney2005]_ et  [Drepper2007]_
 
  write-back
-       à compléter
+    à compléter
 
  program counter
-       à compléter
+    à compléter
 
  makefile
-       à compléter
+    Fichier executable par le programme Make servant à produire des fichiers compilés à partir de code source ou plus généralement n'importe quel projet.
 
  fichier objet
-       à compléter
+    à compléter
 
  linker
-       à compléter
+    à compléter
 
  errno
-       à compléter
+    à compléter
 
  loi de Moore
-       à compléter
+    à compléter
 
  kHz
-       à compléter
+    à compléter
 
  MHz
     à compléter
 
  GHz
-       à compléter
+    à compléter
 
  MIPS
-      Million d'instructions par seconde
+    Million d'instructions par seconde
 
  benchmark
-       à compléter
+    à compléter
 
  multi-coeurs
-       à compléter
+    à compléter
 
  multi-threadé
-       à compléter
+    à compléter
 
  section critique
-       à compléter
+    à compléter
 
  exclusion mutuelle
-       à compléter
+    à compléter
 
  sureté
  safety
-       à compléter
+    à compléter
 
  liveness
  vivacité
-       à compléter
+    à compléter
 
  multitâche
  multitasking
-        à compléter
+    à compléter
 
  contexte
-       à compléter
+    à compléter
 
  changement de contexte
-       à compléter
+    à compléter
 
  interruption
-       à compléter
+    à compléter
 
  scheduler
-       à compléter
+    à compléter
 
  round-robin
-       à compléter
+    à compléter
 
  livelock
-        à compléter
+    à compléter
 
  opération atomique
-       à compléter
+    Opération élémentaire ne pouvant pas être divisée.
 
  deadlock
-       à compléter
+    à compléter
 
  mutex
-       à compléter
+    à compléter
 
  problème des philosophes
-       à compléter
+    à compléter
 
  appel système
-       à compléter
+    à compléter
 
  appel système bloquant
-       à compléter
+    à compléter
 
  sémaphore
-       à compléter
+    à compléter
 
  problèmes des readers-writers
-       à compléter
+    à compléter
 
  inode
-       à compléter
+    à compléter
 
  segment de données
-       à compléter
+    à compléter
 
  problème des readers-writers
-       à compléter
+    à compléter
 
  thread-safe
-        à compléter
+    à compléter
 
  loi de Amdahl
-       à compléter
+    à compléter
 
  static library
  librairie statique
-        à compléter
+    à compléter
 
  shared library
  librairie dynamique
  librairie partagée
-       à compléter
+    à compléter
 
  kernel
-       à compléter
+    à compléter
 
  mode utilisateur
-       à compléter
+    à compléter
 
  mode protégé
-       à compléter
+    à compléter
 
  processus père
-       à compléter
+    à compléter
 
  processus fils
-       à compléter
+    à compléter
 
  processus orphelin
-       à compléter
+    à compléter
 
  processus zombie
-       à compléter
+    à compléter
 
  filesystem
  système de fichiers
-       à compléter
+    à compléter
 
  descripteur de fichier
-       à compléter
+    à compléter
 
  répertoire
-       à compléter
+    à compléter
 
  secteur
-       à compléter
+    à compléter
 
  répertoire courant
-       à compléter
+    à compléter
 
  offset pointer
-       à compléter
+    à compléter
 
  little endian
-       à compléter
+    à compléter
 
  big endian
-       à compléter
+    à compléter
 
  lien symbolique
-       à compléter
+    à compléter
 
  lock
-       à compléter
+    à compléter
 
  advisory lock
  advisory locking
-       à compléter
+    à compléter
 
  mandatory lock
  mandatory locking
-       à compléter
+    à compléter
 
  open file object
-       à compléter
+    à compléter
 
  sémaphore nommé
-       à compléter
+    à compléter
 
  appel système lent
-       à compléter
+    à compléter
 
  handler
-       à compléter
+    à compléter
 
  signal synchrone
-       à compléter
+    à compléter
 
  signal asynchrone
-       à compléter
+    à compléter
 
  interpréteur
-       à compléter
+    à compléter
 
  MMU
  Memory Management Unit
-       à compléter
+    à compléter
 
  adresse virtuelle
-       à compléter
+    à compléter
 
  mémoire virtuelle
-       à compléter
+    à compléter
 
  SSD
  Solid State Drive
-       Système de stockage de données s'appuyant uniquement sur de la mémoire flash.
+    Système de stockage de données s'appuyant uniquement sur de la mémoire flash.
 
  page
-       à compléter
+    à compléter
 
  table des pages
-       à compléter
+    à compléter
 
  bit de validité
-       à compléter
+    à compléter
 
  TLB
  Translation Lookaside Buffer
-       à compléter
+    à compléter
 
  Mémoire partagée
-       à compléter
+    à compléter
 
  copy-on-write
-       à compléter
+    à compléter
 
  adresse physique
-       à compléter
+    à compléter
 
  page fault
  défaut de page
-       à compléter
+    à compléter
 
  file FIFO
-       De "First In, First Out". Le premier élement à entrer dans la file sera le premier à en sortir. (!= LIFO, "Last In First Out")
+    De "First In, First Out". Le premier élement à entrer dans la file sera le premier à en sortir. (!= LIFO, "Last In First Out")
 
  dirty bit
  bit de modification
-       à compléter
+    à compléter
 
  reference bit
  bit de référence
-       à compléter
+    à compléter
 
  swapping
-       à compléter
+    à compléter
 
  pagination
-       à compléter
+    à compléter
 
 
 
