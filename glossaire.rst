@@ -139,7 +139,7 @@ Glossaire
      Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 64 bits.
 
  buffer overflow
-     Problème à compléter
+     Erreur intervante lorsqu'un processus tente d'écrire dans une zone de la mémoire tampon qui ne lui est pas allouée. Le processus peut écrire dés lors par dessus des informations pouvant être nécessaire au :term:`CPU` ou au système d'exploitation le rendant par l'occasion imprévisible.
 
  garbage collector
      Algorithme permettant de libérer la mémoire qui n'est plus utilisée notamment dans des langages tels que Java.
@@ -154,10 +154,10 @@ Glossaire
      Standard international définissant le langage C [C99]_
 
  fichier header
-     à compléter
+     Fichier annexé à un fichier .c où sont incluses les directives de :term:`préprocesseur` et les prototypes des fonctions.
 
  segmentation fault
-     Erreur à l'exécution à compléter
+     Erreur à l'exécution lorsque le programme réclame un accès à une zone mémoire qui ne lui est pas allouée. Dés lors, le système d'exploitation termine le programme.
 
  NOT
  négation
@@ -181,20 +181,17 @@ Glossaire
  FSF
      Free Software Foundation, http://www.fsf.org
 
- buffer overflow
-     à compléter
-
  portée
-      à compléter
+      Bloc dans le code source dans lequel un identifieur est assuré de pointer vers la même adresse mémoire.
 
  portée locale
-      à compléter
+     :term:`portée` d'un identifieur se limitant à son bloc parent, généralement défini par des accolades.
 
  portée globale
-     à compléter
+     :term:`portée` d'un identifieur valable dans tout le fichier auquel il se trouve.
 
  debugger
-     à compléter
+     Logiciel interpertant les erreurs d'exécution servant au programmeur à corriger son programme.
 
  text
  segment text
@@ -208,17 +205,17 @@ Glossaire
 
  heap
  tas
-     Zone dans laquelle un programme peut obtenir de la mémoire supplémentaire pour stocker de l’information.
+     Zone mémoire dans laquelle un programme peut obtenir de l'espace supplémentaire pour stocker de l’information.
 
  stack
  pile
-     à compléter
+     Zone mémoire dans laquelle le processus stocke l’ensemble des variables locales mais également les valeurs de retour de toutes les fonctions qui sont appelées.
 
  etext
-     à compléter
+     Variable indiquant le sommet du :term:`segment text` d’un processus.
 
  memory leak
-      à compléter
+      Defaut d'un programme gourmant en ressource, incrémentant sa mémoire allouée au lieu de la recycler, au point de consommer une quantité irrésonnable de mémoire amenant des réactions imprévisibles du système d'exploitation.
 
  processus
    Ensemble cohérent d'instructions utilisant une partie de la mémoire, initié par le système d'exploitation et exécuté sur un des processeurs du système. Le système d'exploitation libère les ressources qui lui sont allouées à la fin de son exécution.
@@ -240,7 +237,7 @@ Glossaire
      Un des inventaires des premiers ordinateurs. A défini l'architecture de base des premiers ordinateurs qui est maintenant connue comme le modèle de von Neumann [Krakowiak2011]_
 
  mémoire
-     à compléter
+     Composant essentiel d'une architecture de :term:`von Neumann` permetant le stockage d'information.
 
  SRAM
  static RAM
@@ -253,7 +250,6 @@ Glossaire
  RAM
  Random Access Memory
      Mémoire à accès aléatoire. Mémoire permettant au processeur d'accéder à n'importe quelle donnée en connaissant son adresse. Voir :term:`DRAM` et :term:`SRAM`.
-
 
  registre
      Unité de mémoire intégrée au processeur. Les registres sont utilisés comme source ou destination pour la plupart des opérations effectuées par un processeur.
@@ -289,16 +285,16 @@ Glossaire
      Registre spécial du processeur qui contient en permanence l'adresse de l'instruction en cours d'exécution. Le contenu de ce registre est incrémenté après chaque instruction et modifié par les instructions de saut.
 
  mode d'adressage
-      à compléter
+     à compléter
 
  accumulateur
-      Registre utilisé dans les premiers processeurs comme destination pour la plupart des opérations arithmétiques et logiques. Sur l'architecture [IA32]_, le registre ``%eax`` est le successeur de cet accumulateur.
+     Registre utilisé dans les premiers processeurs comme destination pour la plupart des opérations arithmétiques et logiques. Sur l'architecture [IA32]_, le registre ``%eax`` est le successeur de cet accumulateur.
 
  bus
-       à compléter
+     Composant central d'une architecture de :term:`von Neumann` semblable à un canal permettant de transporter de l'information d'un composant à l'autre.
 
  ligne de cache
-       à compléter. Voir notamment [McKenney2005]_ et  [Drepper2007]_
+     à compléter. Voir notamment [McKenney2005]_ et  [Drepper2007]_
 
  write-back
        à compléter
