@@ -231,7 +231,7 @@ Glossaire
     Sous Linux, représentation de l'information stockée dans la :term:`table des processus` sous la forme d'une arborescence directement accessible via les commandes du :term:`shell`. Voir `proc(5)`_
 
  signal
-    mécanisme permettant la communication entre processus. Utilisé notamment pour arrêter un processus via la commande `kill(1)`_
+    Mécanisme permettant la communication entre processus. Utilisé notamment pour arrêter un processus via la commande `kill(1)`_
 
  von Neumann
     Un des inventeurs des premiers ordinateurs. A défini l'architecture de base des premiers ordinateurs qui est maintenant connue comme le modèle de von Neumann [Krakowiak2011]_
@@ -315,16 +315,16 @@ Glossaire
     à compléter
 
  loi de Moore
-    à compléter
+    Loi empirique énoncée par Gordon E. Moore constatant que dans les microprocesseurs, le nombre de transistors sur une puce de circuit intégré double tous les dix-huit mois.
 
  kHz
-    à compléter
+    Fréquence de :math:`10^3` Hertz.
 
  MHz
-    à compléter
+    Fréquence de :math:`10^6` Hertz.
 
  GHz
-    à compléter
+    Fréquence de :math:`10^9` Hertz.
 
  MIPS
     Million d'instructions par seconde
