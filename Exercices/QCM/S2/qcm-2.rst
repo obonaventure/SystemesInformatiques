@@ -491,7 +491,7 @@ Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences
    int count1(char *s, char c) {
      int i=0;
      int count=0;
-     while(*s!=`\0`) {
+     while(*s!='\0') {
        if(*(s+i)==c) {
           count++;
        }
