@@ -205,11 +205,11 @@ Glossaire
 
  heap
  tas
-    Zone mémoire dans laquelle un programme peut obtenir de l'espace supplémentaire pour stocker de l’information.
+    Zone de mémoire dans laquelle un programme peut réserver de l'espace, notamment via les fonctions `malloc(3)`_ et `calloc(3)`_ , pour stocker de l’information.
 
  stack
  pile
-    Zone mémoire dans laquelle le processus stocke l’ensemble des variables locales mais également les valeurs de retour et paramètres de toutes les fonctions qui sont appelées.
+    Zone de mémoire dans laquelle sont stockés les arguments, l’ensemble des variables locales et les valeurs de retour des fonctions qui sont en cours d'exécution.
 
  etext
     Variable indiquant le sommet du :term:`segment text` d’un processus.
