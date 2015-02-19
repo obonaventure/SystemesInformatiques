@@ -52,17 +52,10 @@ La matière couverte cette semaine correspond aux sections :
  - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`_
  - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`_
 
-.. only:: html
-
-   `QCM4 <http://sites.uclouvain.be/SystInfo/qcm/Mission-4-qcm.html>`_
-
-
-Séance tutorée
-^^^^^^^^^^^^^^
-
 .. toctree::
    :maxdepth: 2
 
+   mcq-ex/qcm-4           
    Programmes/prog-4
 
 

@@ -325,7 +325,7 @@ Question 6. Multiplication entière
           (x>>3)-x
 
 
-       .. comment:: Cette expression divise d'abord ``x`` par ``8`` puis retire x au résultat de cette division.
+      .. comment:: Cette expression divise d'abord ``x`` par ``8`` puis retire x au résultat de cette division.
 
    .. negative::
 
