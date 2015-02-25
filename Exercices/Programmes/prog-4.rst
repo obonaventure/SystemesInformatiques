@@ -75,4 +75,4 @@ Exercices
 
 
 
-#. Trois exercices se trouvent sur Pythia. Un exercice sur la `Comparaison de Fractions <http://pythia.info.ucl.ac.be/module/13/problem/37>`_, l'implémentation d'une `Stack <http://pythia.info.ucl.ac.be/module/13/problem/38>`_ et finalement l'implémentation de `strsep <http://pythia.info.ucl.ac.be/module/13/problem/39>`_.
+#. Trois exercices se trouvent sur INGInious. Un exercice sur la `Comparaison de Fractions <https://inginious.info.ucl.ac.be/course/LSINF1252-new/fractions>`_, un nouvel exercice sur les `les chaînées <https://inginious.info.ucl.ac.be/course/LSINF1252-new/linked_lists_2>`_ et finalement l'implémentation de `strsep <https://inginious.info.ucl.ac.be/course/LSINF1252-new/strsep>`_.
