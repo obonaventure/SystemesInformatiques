@@ -10,7 +10,7 @@ Questions à choix multiples
 
 Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
 
-  - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`_
+ - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`_
  - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`_
 
 Question 1. Instruction ``mov``
@@ -75,9 +75,7 @@ Les instructions de la famille ``mov`` permettent de déplacer des données entr
          movl    s, %eax
          movl    g2, %eax
 
-         .. comment::
-
-         L'instruction ``mov`` prend comme premier argument la source et comme second la destination.
+      .. comment:: L'instruction ``mov`` prend comme premier argument la source et comme second la destination.
 
    .. negative::
 
@@ -92,9 +90,7 @@ Les instructions de la famille ``mov`` permettent de déplacer des données entr
          movl    s, %eax
          movl    %eax, g2
 
-         .. comment::
-
-         Ce code utilise les registres ``%edx`` et ``%eax``. ``%edx`` est utilisé sans être initialisé.
+      .. comment:: Ce code utilise les registres ``%edx`` et ``%eax``. ``%edx`` est utilisé sans être initialisé.
 
    .. negative::
 
@@ -109,9 +105,7 @@ Les instructions de la famille ``mov`` permettent de déplacer des données entr
          movb    s, %eax
          movb    %eax, g2
 
-         .. comment::
-
-         L'instruction ``movb`` déplace un ``byte`` et non le contenu complet d'un registre de 32 bits.
+      .. comment:: L'instruction ``movb`` déplace un ``byte`` et non le contenu complet d'un registre de 32 bits.
 
    .. negative::
 
@@ -127,7 +121,7 @@ Les instructions de la famille ``mov`` permettent de déplacer des données entr
          movb    %edx, g2
 
 
-         .. comment::
+      .. comment::
 
          L'instruction ``movb`` déplace un ``byte`` et non le contenu complet d'un registre de 32 bits.
 
@@ -194,7 +188,7 @@ Considérons le fragment de programme C ci-dessous :
              subl    b, %eax
              movl    %eax, c
 
-         .. comment::
+      .. comment::
 
                 Ceci est la traduction de  :
 
@@ -220,7 +214,7 @@ Considérons le fragment de programme C ci-dessous :
              subl    b, %eax
              movl    %eax, a
 
-         .. comment::
+      .. comment::
 
              Ceci est la traduction de  :
 
@@ -246,7 +240,7 @@ Considérons le fragment de programme C ci-dessous :
              subl    a, %eax
              movl    %eax, c
 
-         .. comment::
+      .. comment::
 
              Ceci est la traduction de  :
 
@@ -299,7 +293,7 @@ Les instructions conditionnelles sont fréquemment utilisées en langage C et en
              movl    %eax, a
          end:
 
-         .. comment:: 
+      .. comment:: 
 
             Ceci est la traduction de  :
 
@@ -325,7 +319,7 @@ Les instructions conditionnelles sont fréquemment utilisées en langage C et en
              movl    %eax, a
          end:
 
-         .. comment::
+      .. comment::
 
          Ceci est la traduction de  :
 
@@ -349,7 +343,7 @@ Les instructions conditionnelles sont fréquemment utilisées en langage C et en
 
 
 
-         .. comment::
+      .. comment::
 
          Ceci est la traduction de  :
 
@@ -371,7 +365,7 @@ Les instructions conditionnelles sont fréquemment utilisées en langage C et en
          end:
 
 
-         .. comment::
+      .. comment::
 
              Ceci est la traduction de  :
 
@@ -393,7 +387,7 @@ Les instructions conditionnelles sont fréquemment utilisées en langage C et en
          end:
 
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de  :
 
@@ -447,7 +441,7 @@ Les instructions conditionnelles sont fréquemment utilisées en langage C et en
              movl    %eax, c
          next:
 
-         .. comment::
+      .. comment::
 
             Ceci est en fait l'implémentation de :
 
@@ -471,14 +465,14 @@ Les instructions conditionnelles sont fréquemment utilisées en langage C et en
              movl    %eax, c
          next:
 
-         .. comment::
+      .. comment::
 
-            Ceci est l'implémentation de :
+         Ceci est l'implémentation de :
 
-            .. code-block:: c
+         .. code-block:: c
 
-                if(a==b)
-                   c++;
+            if(a==b)
+                c++;
 
    .. negative::
 
@@ -493,19 +487,20 @@ Les instructions conditionnelles sont fréquemment utilisées en langage C et en
              movl    %eax, c
          next:
 
-         .. comment::
+      .. comment::
 
-            Ceci est l'implémentation de :
+         Ceci est l'implémentation de :
 
-            .. code-block:: c
+         .. code-block:: c
 
-               if(a>b)
-                 c++;
+            if(a>b)
+              c++;
 
    .. negative::
 
       .. code-block:: nasm
 
+         
          if:
              movl    a, %eax
              cmpl    b, %eax
@@ -514,6 +509,7 @@ Les instructions conditionnelles sont fréquemment utilisées en langage C et en
              addl    $1, %eax
              movl    %eax, c
          next:
+         
 
          .. comment::
 
@@ -537,19 +533,21 @@ Les instructions conditionnelles sont fréquemment utilisées en langage C et en
              movl    %eax, c
          next:
 
-         .. comment::
+      .. comment:: 
 
-            Ceci est l'implémentation de :
+         Ceci est l'implémentation de :
 
-            .. code-block:: c
+         .. code-block:: c
 
-               if(a!=b)
-                 c++;
+            if(a!=b)
+              c++;
+
+
 
 Question 5. Instructions conditionnelles
 ----------------------------------------
 
-L'instruction conditionnelle ``if() ... else `` se retrouve dans de nombreux programmes en langage C. Considérons l'instruction ``if() ... else`` simple ci-dessous dans laquelle ``a`` et ``b`` sont des variables globales de type ``int`` :
+L'instruction conditionnelle ``if() ... else`` se retrouve dans de nombreux programmes en langage C. Considérons l'instruction ``if() ... else`` simple ci-dessous dans laquelle ``a`` et ``b`` sont des variables globales de type ``int`` :
 
 .. code-block:: c
 
@@ -600,7 +598,7 @@ L'instruction conditionnelle ``if() ... else `` se retrouve dans de nombreux pro
          end:
 
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -631,7 +629,7 @@ L'instruction conditionnelle ``if() ... else `` se retrouve dans de nombreux pro
           end:
 
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -663,7 +661,7 @@ L'instruction conditionnelle ``if() ... else `` se retrouve dans de nombreux pro
 
 
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -691,7 +689,7 @@ L'instruction conditionnelle ``if() ... else `` se retrouve dans de nombreux pro
              movl    %eax, a
           end:
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -718,7 +716,7 @@ L'instruction conditionnelle ``if() ... else `` se retrouve dans de nombreux pro
              movl    %eax, b
          end:
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -804,7 +802,7 @@ Les boucles ``while`` sont fréquemment utilisées dans des programmes C. Consid
              jmp     begin
          end:
 
-         .. comment::
+      .. comment::
 
          Ceci est la traduction de :
 
@@ -832,7 +830,7 @@ Les boucles ``while`` sont fréquemment utilisées dans des programmes C. Consid
              jne     begin
           end:
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -862,7 +860,7 @@ Les boucles ``while`` sont fréquemment utilisées dans des programmes C. Consid
              jmp     begin
          end:
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -953,7 +951,7 @@ Rares sont les programmes C qui ne contiennent pas de boucles ``for``. Considér
          end:
 
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -982,7 +980,7 @@ Rares sont les programmes C qui ne contiennent pas de boucles ``for``. Considér
              jmp     loop
           end:
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1009,7 +1007,7 @@ Rares sont les programmes C qui ne contiennent pas de boucles ``for``. Considér
              movl    %eax, a
          end:
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1039,7 +1037,7 @@ Rares sont les programmes C qui ne contiennent pas de boucles ``for``. Considér
              movl    %eax, a
              jmp     loop
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1098,7 +1096,7 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
              addl    $8, %esp
              ret
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1126,7 +1124,7 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
              ret
 
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1147,7 +1145,7 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
              popl    %edx
              ret
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1174,7 +1172,7 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
              ret
 
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1199,7 +1197,7 @@ Un programme C contient en général de nombreuses fonctions. Considérons une f
              popl    %edx
              ret
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1284,7 +1282,7 @@ Considérons la fonction C qui calcule le maximum entre deux entiers :
              ret
 
 
-         .. comment::
+      .. comment::
 
          Ceci est la traduction de :
 
@@ -1321,7 +1319,7 @@ Considérons la fonction C qui calcule le maximum entre deux entiers :
              addl    $8, %esp
              ret
 
-         .. comment::
+      .. comment::
 
          Ceci est la traduction de :
 
@@ -1359,7 +1357,7 @@ Considérons la fonction C qui calcule le maximum entre deux entiers :
              addl    $12, %esp
              ret
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1398,7 +1396,7 @@ Considérons la fonction C qui calcule le maximum entre deux entiers :
 
 
 
-         .. comment::
+      .. comment::
 
          Ceci est la traduction de :
 
@@ -1475,7 +1473,7 @@ Les fonctions récursives sont parfois utilisées en langage C. Lors de leur ex�
              popl    %ebp
              ret
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1512,7 +1510,7 @@ Les fonctions récursives sont parfois utilisées en langage C. Lors de leur ex�
              ret
 
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 
@@ -1541,7 +1539,7 @@ Les fonctions récursives sont parfois utilisées en langage C. Lors de leur ex�
              popl    %ebp
              ret
 
-         .. comment::
+      .. comment::
 
          Ceci est la traduction de :
 
@@ -1571,7 +1569,7 @@ Les fonctions récursives sont parfois utilisées en langage C. Lors de leur ex�
              popl    %ebp
              ret
 
-         .. comment::
+      .. comment::
 
             Ceci est la traduction de :
 

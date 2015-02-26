@@ -3,7 +3,7 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
-Questions à choix multiples
+Questions à choix multiples 
 ===========================
 
 :task_id: sinf1252-3

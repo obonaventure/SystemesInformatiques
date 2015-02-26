@@ -68,17 +68,10 @@ La matière couverte cette semaine correspond aux sections :
  - :ref:`theorie:threads`
 
 
-.. only:: html
-
-   `QCM5 <http://sites.uclouvain.be/SystInfo/qcm/Mission-5-qcm.html>`_
-
-
-Séance tutorée
-^^^^^^^^^^^^^^
-
 .. toctree::
    :maxdepth: 2
 
+   mcq-ex/qcm-5           
    Programmes/prog-5
 
 Sixième semaine
