@@ -14,7 +14,7 @@ Cette semaine porte sur deux modules de théorie. Le premier est la fin du chapi
 
 Le second est le début du chapitre consacré aux systèmes multiprocesseurs et l'utilisation de threads en particulier :
 
- - :ref:`thread`
+ - :ref:`threads`
 
 Question 1. Pointeurs en assembleur
 -----------------------------------
