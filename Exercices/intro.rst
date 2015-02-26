@@ -81,10 +81,6 @@ La matière de cette semaine porte sur la communication entre les threads. Elle 
 
  - :ref:`theorie:comthreads`
 
-.. only:: html
-
-   `QCM6 <http://sites.uclouvain.be/SystInfo/qcm/Mission-6-qcm.html>`_
-
 
 Séance tutorée
 ^^^^^^^^^^^^^^
@@ -92,6 +88,7 @@ Séance tutorée
 .. toctree::
    :maxdepth: 2
 
+   mcq-ex/qcm-6           
    Programmes/prog-6
 
 

@@ -112,6 +112,7 @@ L'exécution de ces deux threads donne, sans surprise des résultats qui varient
   global: 1000000, even:891266
   global: 1000000, even:895043
 
+.. _coordthreads:
 
 Coordination entre threads
 ==========================
