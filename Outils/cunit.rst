@@ -47,7 +47,7 @@ Compilation, édition des liens et exécution
 Comme la librairie n'est pas installée dans les chemins classiques, il faut
 pouvoir dire à gcc où se trouvent les fichiers d'entête ainsi que la librairie
 afin d'éviter les erreurs de compilation. Pour cela, il faut spécifier à la
-compilation l'argument ``-I$HOME/local/include`` afin de lui dire qu'il doit
+compilation l'argument ``-I$(HOME)/local/include`` afin de lui dire qu'il doit
 également aller chercher des fichiers d'entête dans le dossier
 ``$HOME/local/include`` en plus des chemins classiques tels que
 ``/usr/include`` et ``/usr/local/include``.
@@ -55,7 +55,7 @@ compilation l'argument ``-I$HOME/local/include`` afin de lui dire qu'il doit
 Lors de l'édition des liens avec le linker, il faut spécifier où se trouve la
 librairie dynamique afin de résoudre les symboles. Pour cela, il faut passer
 l'argument ``-lcunit`` pour effectuer la liaison avec la librairie CUnit ainsi
-que lui spécifier ``-L$HOME/local/lib`` afin qu'il cherche également des
+que lui spécifier ``-L$(HOME)/local/lib`` afin qu'il cherche également des
 librairies dans le dossier ``$HOME/local/lib``.
 
 Lors de l'exécution, il faut également spécifier où se trouvent les
