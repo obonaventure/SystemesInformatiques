@@ -85,7 +85,7 @@ Questions
 						long l;
 					} test_t;
 
-#. Expliquez à quoi sert l'attribut ``packed`` des structures dans `gcc(1)`_ (regardez la manpage). Appliquez cet attribut à la structure de l'exercice suivant. Qu'observez-vous comme différence ? Quel sont les avantages et désavantages d'utiliser cet attribut ? Dans quel cas est-il intéressant de l'utiliser ?
+#. Expliquez à quoi sert l'attribut ``packed`` des structures dans `gcc(1)`_ (regardez la manpage). Appliquez cet attribut à la structure de l'exercice précédent. Qu'observez-vous comme différence ? Quel sont les avantages et désavantages d'utiliser cet attribut ? Dans quel cas est-il intéressant de l'utiliser ?
 
 	.. only:: staff
 
