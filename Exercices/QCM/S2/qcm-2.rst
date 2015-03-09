@@ -89,7 +89,7 @@ Un seul des fragments de code ci-dessous contient des conversions de type qui so
 -
  .. code:: c
 
-    ui=(int) s;
+    ui=(unsigned int) s;
     s=(short) c;
     ul=(unsigned long )ui;
 

@@ -182,7 +182,7 @@ Votre deuxième programme en langage C doit afficher à l'écran la chaîne de c
 -
  .. code:: c
 
-    #include <stdlio.h>
+    #include <stdio.h>
     int main(int argc, const char *argv[]) {
         int a = 1252;
         printf("SINF%d\n", a);
@@ -195,7 +195,7 @@ Votre deuxième programme en langage C doit afficher à l'écran la chaîne de c
 -
  .. code:: c
 
-    #include <stdlio.h>
+    #include <stdio.h>
     int main(int argc, const char *argv[]) {
         int a = 1252;
         printf("SINF");
@@ -211,7 +211,7 @@ Votre deuxième programme en langage C doit afficher à l'écran la chaîne de c
 -
  .. code:: c
 
-    #include <stdlio.h>
+    #include <stdio.h>
     int main(int argc, const char *argv[]) {
         int a = 1252;
         printf("SINF%a\n", a);
@@ -224,7 +224,7 @@ Votre deuxième programme en langage C doit afficher à l'écran la chaîne de c
 -
  .. code:: c
 
-    #include <stdlio.h>
+    #include <stdio.h>
     int main(int argc, const char *argv[]) {
         int a = 1252;
         printf(SINF);
@@ -238,7 +238,7 @@ Votre deuxième programme en langage C doit afficher à l'écran la chaîne de c
 -
  .. code:: c
 
-    #include <stdlio.h>
+    #include <stdio.h>
     int main(int argc, const char *argv[]) {
         int a = 1252;
         printf("SINF$a\n", a);
@@ -256,7 +256,7 @@ Considérons le programme C ci-dessous qui permet de manipuler les arguments pas
 
         .. code-block:: c
 
-                #include <stdlio.h>
+                #include <stdio.h>
                 #include <stdlib.h>
                 int main(int argc, const char *argv[])
                 {
