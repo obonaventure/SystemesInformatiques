@@ -362,13 +362,13 @@ Question 5. Variable ``errno``
 
          Voir page de manuel.
 
-   .. positive::
+   .. negative::
 
       `malloc(3)`_
 
       .. comment::
 
-         Notez que `malloc(3)`_ retourne ``NULL`` en cas d'erreur d'allocation.
+         Notez que `malloc(3)`_ retourne ``NULL`` en cas d'erreur d'allocation mais met ENONMEM comme erreur dans ``errno``
 
    .. positive::
 
@@ -400,7 +400,7 @@ Question 5. Variable ``errno``
 
       .. comment::
 
-         Voir page de manuel.
+         Voir page de manuel et aussi http://pubs.opengroup.org/onlinepubs/9699919799/functions/pthread_join.html. La plupart des fonctions pthread_* ne modifient pas la valeur de ``errno``, mais le standard n'est pas 100% clair sur ce qu'une implémentation doit faire. Linux ne semble pas fixer la valeur de ``errno``.
 
 
 Question 6. Utilisation de `pthread_create(3)`_

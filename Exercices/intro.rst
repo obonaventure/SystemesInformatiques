@@ -82,9 +82,6 @@ La matière de cette semaine porte sur la communication entre les threads. Elle 
  - :ref:`theorie:comthreads`
 
 
-Séance tutorée
-^^^^^^^^^^^^^^
-
 .. toctree::
    :maxdepth: 2
 

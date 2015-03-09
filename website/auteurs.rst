@@ -48,3 +48,6 @@ La section `Outils` contient du texte écrit par :
 L'ensemble est distribué sous licence Creative Commons:
 
 	   http://creativecommons.org/licenses/by-sa/3.0/
+
+
+Les contributions des différents auteurs sont résumées dans les `statistiques <_static/gitinspector.html>`_ produites par `gitinspector <https://code.google.com/p/gitinspector/>`_ 
