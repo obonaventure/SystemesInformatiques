@@ -97,18 +97,10 @@ La matière de cette semaine porte sur l'utilisation des sémaphores et quelques
 
  - :ref:`theorie:coordinationthreads`
 
-.. only:: html
-
-  `QCM7 <http://sites.uclouvain.be/SystInfo/qcm/Mission-7-qcm.html>`_
-
-
-
-Séance tutorée
-^^^^^^^^^^^^^^
-
 .. toctree::
    :maxdepth: 2
 
+   mcq-ex/qcm-7
    Programmes/prog-7
 
 Huitième semaine
@@ -118,17 +110,8 @@ La matière de cette semaine porte sur le fonctionnement des processus. Elle est
 
  - :ref:`theorie:processus`
 
-.. only:: html
 
-   `QCM8 <http://sites.uclouvain.be/SystInfo/qcm/Mission-8-qcm.html>`_
-
-
-Séance tutorée
-^^^^^^^^^^^^^^
-
-.. toctree::
-   :maxdepth: 2
-
+   mcq-ex/qcm-8
    Programmes/prog-8
 
 
