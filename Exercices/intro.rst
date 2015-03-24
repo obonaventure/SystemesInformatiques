@@ -110,6 +110,8 @@ La matière de cette semaine porte sur le fonctionnement des processus. Elle est
 
  - :ref:`theorie:processus`
 
+.. toctree::
+   :maxdepth: 2
 
    mcq-ex/qcm-8
    Programmes/prog-8
