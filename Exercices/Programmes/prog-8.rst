@@ -49,7 +49,7 @@ Exercices
      // ...
    }
 
-  Consultez les pages de manuel pour déterminer comment le système d'exploitation peut se protéger contre de telles `fork bomb <http://en.wikipedia.org/wiki/Fork_bomb>`_.
+Consultez les pages de manuel pour déterminer comment le système d'exploitation peut se protéger contre de telles `fork bomb <http://en.wikipedia.org/wiki/Fork_bomb>`_.
 
 7. Comparez les performances de la création et la terminaison de threads et de processus en compilant et exécutant sur un ordinateur non chargé les programmes :download:`/Programmes/src/fork-perf.c` et :download:`/Programmes/src/pthread-perf.c`. Utilisez la commande `time(1posix)`_ pour mesurer le temps d'exécution de chacun des ces programmes qui créent 100000 processus ou threads. Expliquez vos résultats.
 
