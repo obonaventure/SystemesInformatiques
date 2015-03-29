@@ -13,7 +13,7 @@ Première semaine
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    mcq-ex/qcm-1
    Programmes/prog-1
@@ -127,19 +127,11 @@ La matière de cette semaine porte sur l'utilisation du système de fichiers et 
  - :ref:`theorie:fichiers`
  - :ref:`theorie:pipe`
 
-.. only:: html
-
-   `QCM9 <http://sites.uclouvain.be/SystInfo/qcm/Mission-9-qcm.html>`_
-
-
-
-
-Séance tutorée
-^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 2
 
+   mcq-ex/qcm-9
    Programmes/prog-9
 
 
