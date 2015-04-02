@@ -187,12 +187,12 @@ Les valeurs de ces bits sont représentés pas les symboles ``rwx`` dans l'outpu
   - ``S_IRUSR (00400)`` : permission de lecture par le propriétaire
   - ``S_IWUSR (00200)`` : permission d'écriture par le propriétaire
   - ``S_IXUSR (00100)`` : permission d'exécution par le propriétaire
-  - ``S_IRGRP (00040)`` : permission de lecture par le groupe
-  - ``S_IWGRP (00020)`` : permission d'écriture par le groupe
-  - ``S_IXGRP (00010)`` : permission d'exécution par le groupe
-  - ``S_IROTH (00004)`` : permission de lecture par n'importe quel utilisateur
-  - ``S_IWOTH (00002)`` : permission d'écriture par n'importe quel utilisateur
-  - ``S_IXOTH (00001)`` : permission d'exécution par n'importe quel utilisateur
+  - ``S_IRGRP (00040)`` : permission de lecture par le groupe hormis le propriétaire
+  - ``S_IWGRP (00020)`` : permission d'écriture par le groupe hormis le propriétaire
+  - ``S_IXGRP (00010)`` : permission d'exécution par le groupe hormis le propriétaire
+  - ``S_IROTH (00004)`` : permission de lecture par tout utilisateur hormis le propriétaire et son groupe
+  - ``S_IWOTH (00002)`` : permission d'écriture par tout utilisateur hormis le propriétaire et son groupe
+  - ``S_IXOTH (00001)`` : permission d'exécution par tout utilisateur hormis le propriétaire et son groupe
 
   .. code-block:: c
 
