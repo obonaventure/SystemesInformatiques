@@ -146,7 +146,7 @@ La première zone est appelée par convention le :term:`segment text`. Cette zon
 Le segment des données initialisées
 -----------------------------------
 
-La deuxième zone, baptisée :term:`segment des données initialisées`, contient l'ensemble des données et chaînes de caractères qui sont utilisées dans le programme. Ce segment contient deux types de données. Tout d'abord, il comprend l'ensemble des variables globales. Celles-ci sont soit initialisées explicitement par le programme ou alors initialisées à zéro par le compilateur. Ensuite, les constantes et les chaînes de caractères utilisées par le programme.
+La deuxième zone, baptisée :term:`segment des données initialisées`, contient l'ensemble des données et chaînes de caractères qui sont utilisées dans le programme. Ce segment contient deux types de données. Tout d'abord, il comprend l'ensemble des variables globales explicitement initialisées par le programme (dans le cas contraire, elles sont initialisées à zéro par le compilateur et appartiennent alors au :term:`segment des données non-initialisées`). Ensuite, les constantes et les chaînes de caractères utilisées par le programme.
 
 .. literalinclude:: /C/S3-src/dataseg.c
    :encoding: utf-8
@@ -168,7 +168,7 @@ Cette sortie illustre bien les adresses où les variables globales sont stockée
 Le segment des données non-initialisées
 ---------------------------------------
 
-La troisième zone est le :term:`segment des données non-initialisées`. réservée aux variables non initialisées. Cette zone mémoire est initialisée à zéro par le système d'exploitation lors du démarrage du programme. Dans l'exemple ci-dessus, c'est dans cette zone que l'on stockera les valeurs de la variable ``g`` et des tableaux ``array`` et ``msg``.
+La troisième zone est le :term:`segment des données non-initialisées`, réservée aux variables non-initialisées. Cette zone mémoire est initialisée à zéro par le système d'exploitation lors du démarrage du programme. Dans l'exemple ci-dessus, c'est dans cette zone que l'on stockera les valeurs de la variable ``g`` et des tableaux ``array`` et ``msg``.
 
 .. note:: Initialisation des variables
 
