@@ -31,7 +31,7 @@ Expressions régulières
 
 Avant de commencer à voir les commandes utiles avec le shell, il est important de définir ce qu'est une expression régulière (`regex(3)`). Les expresions régulières caractérisent des chaînes de caractères et elles sont utiles pour de nombreuses commandes. Nous l'utiliserons notamment pour faire une recherche dans un fichier.
 
-Dans un regex, certains caractères ont une signification particulière :
+Dans une regex, certains caractères ont une signification particulière :
 
          =============   ====================================   ====================================================
          Expression      Explication                            Exemple
@@ -55,8 +55,8 @@ Dans un regex, certains caractères ont une signification particulière :
 
 Notes : 
 	
-	- ``^b$`` 	= contient uniquement le caractère ``b`
-	- ``^$` 	= la ligne est vide
+	- ``^b$`` 	= contient uniquement le caractère ``b``
+	- ``^$`` 	= la ligne est vide
 
 Nous verrons plus en détails leur utilisation avec les commandes plus complexes.
 
@@ -66,11 +66,11 @@ Manipulation des répertoires
 
 Chaque processus travaille dans un répertoire dit courant. C'est le répertoire dans lequel le processus accède pour lire ou écrire des fichiers lorsque le processus utilise un nom relatif. La commande `pwd(1)`_ affiche le chemin du répertoire courant. 
 
-Il est possible de changer le répertoire courant du processus ou du shell en utilisant la commande `cd(1)`_. Exemples :
+Il est possible de changer le répertoire courant du processus ou du shell en utilisant la commande `cd(1posix)`_. Exemples :
 
-  - `cd(1)`_ `chemin` :	change le répertoire courant par celui de "chemin".
-  - `cd(1)`_	: change le répertoire courant par le répertoire de login de l'utilisateur courant. 
-  - `cd(1)`_ .. : remonte dans le répertoire prédécesseur dans l'arborescence des fichiers.
+  - `cd(1posix)`_ `chemin` :	change le répertoire courant par celui de "chemin".
+  - `cd(1posix)`_	: change le répertoire courant par le répertoire de login de l'utilisateur courant. 
+  - `cd(1posix)`_ .. : remonte dans le répertoire prédécesseur dans l'arborescence des fichiers.
 
 La commande `mkdir(1)`_ permet de créer un répertoire. Elle prend comme argument le nom du répertoire à créer.
 La commande `rmdir(1)`_ supprime un répertoire qui doit être vide vide. Pour effacer un répertoire et tous les fichiers qu'il contient, il faut utiliser la commande `rm(1)`_ avec l'option ``-r``. Ainsi, ``rm -r /tmp/t`` supprime le répertoire ``/tmp/t`` ainsi que tous les fichiers et sous-répertoire se trouvant dans ce répertoire. 
@@ -113,6 +113,7 @@ Visualiser
 
 `cat(1)`_ [-opt] f1 f2		concatène et affiche les deux fichiers.
 `cat(1)`_ [-opt] file		Affiche le fichier sur la sortie standard.
+
 					* -v : convertit les caractères spéciaux en caractères affichables
 					* -n : numérote les lignes
 					* -b : numérote seulement les lignes non vides
@@ -522,7 +523,7 @@ Gestion des processus
 		$ strace -c ./monexecutable -o fichierRecoltantLesInformations.log
 		
 
-`lsof(1)`_ [-opt]		affiche les fichiers ouverts.
+`lsof(8)`_ [-opt]		affiche les fichiers ouverts.
 					* -p PID : uniquement les fichiers ouverts du processus
 					* -i : affiche les connexions réseaux ouvertes
 
@@ -553,18 +554,18 @@ Lors de l'exécution d'une commande, un processus est créé et celui-ci va ouvr
 Symboles pour les commandes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	? 		caractère joker remplaçant un seul caractère
-	! 		Inverse le sens d’un test ou l’état de sortie d’une commande. 
+	``?`` 		caractère joker remplaçant un seul caractère
+	``!`` 		Inverse le sens d’un test ou l’état de sortie d’une commande. 
 
-	* 		caractère joker remplaçant une chaîne de caractère
-	& 		exécute une commande en arrière plan
-	; 		sépare des instructions sur une seule ligne
+	``*`` 		caractère joker remplaçant une chaîne de caractère
+	``&`` 		exécute une commande en arrière plan
+	``;`` 		sépare des instructions sur une seule ligne
 
-  cmd1 && cmd 2		cmd2 n'est exécuté que si cmd1 réussi
-  cmd1 || cmd 2		cmd2 n'est exécuté que si cmd1 rate
+        ``cmd1 && cmd 2``		cmd2 n'est exécuté que si cmd1 réussi
+        ``cmd1 || cmd 2``		cmd2 n'est exécuté que si cmd1 échoue
 
-	\		annule l'effet du caractère spécial suivant
-	" "		annule l'effet de tout les caractères spéciaux dans les guillements, sauf $ et \
+	``\``		annule l'effet du caractère spécial suivant
+	``" "``		annule l'effet de tout les caractères spéciaux entre les guillemets, sauf ``$`` et ``\``
 
 
 Commandes utiles
@@ -606,13 +607,13 @@ Informations générales
 `date(1)`_			Donne l'heure, selon l'horloge de votre ordinateur
 `cal(1)`_			Affiche un calendrier du mois courant
 
-`halt(1)`_			Eteint l'ordinateur.
-`reboot(1)`_			Redémarre l'ordinateur
+`halt(8)`_			Eteint l'ordinateur.
+`reboot(8)`_			Redémarre l'ordinateur
 
-Informations systemes
-^^^^^^^^^^^^^^^^^^^^^
+Informations système
+^^^^^^^^^^^^^^^^^^^^
 
-`time(1)`_ programme		Permet de calculer le temps d'exécution d'un programme
+`time(1posix)`_ programme		Permet de calculer le temps d'exécution d'un programme
 
 `df(1)`_ [-opt] [file]		Indique l'espace disque utilisé et disponible sur tous les systèmes de fichiers. 
 				Si des fichiers sont passés en arguments, seul les systemes de fichier contenant un des fichiers sont montrés.		
