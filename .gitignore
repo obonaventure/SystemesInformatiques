@@ -4,3 +4,5 @@ _build
 *~
 *.o
 web/
+#Info on vagrant image
+.vagrant
