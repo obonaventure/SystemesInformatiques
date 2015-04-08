@@ -11,7 +11,7 @@ Des versions HTML, pdf et epub sont disponibles via  http://sites.uclouvain.be/S
 Compilation
 -----------
 
-Les notes sont écrites en [restructured text](http://docutils.sourceforge.net/rst.html) et peuvent être transformées en un document au format HTML, epub ou pdf en utilisant le logiciel [http://www.sphinx-doc.org](sphinx). Pour faciliter cette compilation, une configuration [vagrant](https://www.vagrantup.com) est reprise dans le fichier [[https://github.com/obonaventure/SystemesInformatiques/tree/master/Vagrantfile](Vagrantfile) se trouvant à la racine du projet. [vagrant](https://www.vagrantup.com) est un logiciel fonctionnant sur Linux, Windows et MacOS qui permet d'automatiser et de faciliter la création de machines virtuelles supportées notamment par [Virtualbox](https://www.virtualbox.org).
+Les notes sont écrites en [restructured text](http://docutils.sourceforge.net/rst.html) et peuvent être transformées en un document au format HTML, epub ou pdf en utilisant le logiciel [http://www.sphinx-doc.org](sphinx). Pour faciliter cette compilation, une configuration [vagrant](https://www.vagrantup.com) est reprise dans le fichier [https://github.com/obonaventure/SystemesInformatiques/tree/master/Vagrantfile](Vagrantfile) se trouvant à la racine du projet. [vagrant](https://www.vagrantup.com) est un logiciel fonctionnant sur Linux, Windows et MacOS qui permet d'automatiser et de faciliter la création de machines virtuelles supportées notamment par [Virtualbox](https://www.virtualbox.org).
 
 
 Comment créer de nouvelles questions à choix multiples
