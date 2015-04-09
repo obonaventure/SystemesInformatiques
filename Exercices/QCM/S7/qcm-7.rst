@@ -117,7 +117,7 @@ Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Aprè
 
  .. class:: comment
 
-    `sem_init(3)`_ prend comme troisième argument la valeur initiale du sémaphore. `sem_destroy(3)`_ prennent comme premier argument un pointeur vers une structure ``sem_t``.
+    `sem_init(3)`_ prend comme troisième argument la valeur initiale du sémaphore. `sem_destroy(3)`_ prend comme premier argument un pointeur vers une structure ``sem_t``.
 
 
 
