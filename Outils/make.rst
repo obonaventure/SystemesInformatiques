@@ -105,7 +105,7 @@ Exemple ``$(CC)``, ``$(OPT)``, ``$(VARIABLE_AU_NOM_TRES_LONG)``.
         build:
             $(CC) $(OPT) foo.c -o foo
 
-Vous aurez compris qu'ici, la directive build effectue la commande ``gcc -ansi foo.c -o foo``.
+Vous aurez compris qu'ici, la règle build effectue la commande ``gcc -ansi foo.c -o foo``.
 Il est très intérressant de savoir qu'il n'existe pas seulement les variables que vous avez déclarées qui sont disponibles
 mais aussi toutes les variables d'environnements présentes lors de l'appel au Makefile.
 Vous pouvez donc très bien utiliser la variable ``$(HOME)`` indiquant le répertoire attribué à l'uilisateur sans la définir.
@@ -171,8 +171,8 @@ Les directives .PHONY
 
 Make garde en mémoire les fichiers qu'il a construit. Cela lui permet de ne pas devoir recompiler des fichiers qui n'auraient pas changé d'un appel à
 l'un. Malheureusement ce comportement qui peut sembler avantageux amène aussi des problèmes. En l'occurence pour des directives qui ne créent rien sans dépendance.
-Une solution pour pallier au problème consiste à indiquer que la directive ne crée rien en lui attribuant le mot-clé ``.PHONY``.
-Ainsi une directive ``.PHONY`` ne rencontrera jamais le problème d'être déjà à jour.
+Une solution pour pallier au problème consiste à indiquer que la règle ne crée rien en lui attribuant le mot-clé ``.PHONY``.
+Ainsi une règle ``.PHONY`` ne rencontrera jamais le problème d'être déjà à jour.
 Une bonne pratique est de déclarer en ``.PHONY`` toutes les directives de nettoyage de votre projet.
 
     .. code-block:: make
@@ -185,7 +185,7 @@ Une bonne pratique est de déclarer en ``.PHONY`` toutes les directives de netto
         clean:
             rm -f *.o
 
-Vous pouvez aussi forcer une directive à s'exécuter malgré qu'elle soit déjà à jour grâce à ce mot-clé. Cela est pratique pour forcer une re-compilation.
+Vous pouvez aussi forcer une règle à s'exécuter malgré qu'elle soit déjà à jour grâce à ce mot-clé. Cela est pratique pour forcer une re-compilation.
 
     .. code-block:: make
 
@@ -198,6 +198,40 @@ Vous pouvez aussi forcer une directive à s'exécuter malgré qu'elle soit déj�
             rm -f *.o foo
 
         rebuild: clean build
+
+Compléments
+~~~~~~~~~~~
+
+Afin de rendre vos Makefiles plus lisibles, vous pouvez y insérer des commentaires en plaçant un croisillon en début de ligne.
+Cette syntaxe est semblable au script shell.
+
+    .. code-block:: make
+
+        # Commentaire sur
+        # plusieurs lignes
+        build:
+            gcc -o foo foo.c # commentaire en fin de ligne
+
+Débugger les erreurs de vos Makefiles peut sembler difficile lorsque vous êtes baignez dans un flux d'instructions. Vous pouvez néanmoins régler leur verbosité.
+Il est possible de rendre silencieuse une commande en plaçant une arobase devant. Ceci indique juste à Make de ne pas imprimer la ligne de commande. La sortie
+standard de cette commande restera visibble.
+
+    .. code-block:: make
+
+        build:
+            @echo "Building foo"
+            @gcc -o foo foo.c
+
+Pour rendre une règle silencieuse, insérer une arobase devant chaque commande serait fastidieux. Make vous offre ainsi un autre mot-clé ``.SILENT``, dont
+l'usage est semblable au ``.PHONY`` vu précédemment, rendant toute une règle silencieuse. La commande ``@echo`` reste cependante fonctionnelle.
+
+    .. code-block:: make
+
+        .SILENT clean:
+            @echo "Cleaning the mess"
+            rm -rf .o
+            rm -rf .c~
+            rm -rf .a
 
 Pour plus d'information en français sur l'écriture ou utilisation des Makefiles voir http://gl.developpez.com/tutoriel/outil/makefile/
 Documentation complète en anglais sur http://www.gnu.org/software/make/manual/make.html
