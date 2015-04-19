@@ -399,7 +399,23 @@ Glossaire
     à compléter
 
  inode
-    à compléter
+    Structure de données contenant des informations (méta-données) relatives à un fichier sur certains systèmes de fichiers (Unix par exemple). Il peut être représenté par une structure similaire à celle-ci:
+
+
+.. code-block:: c
+
+ struct simple_inode {
+         uint16 mode; /*drapeaux contenant les permissions
+			 associées aux fichiers*/
+         uid_t  uid; /*proprietaire du fichier*/
+	 gid_t  gid; /*groupe auquel le fichier appartient*/
+         uint32 size; /*taille du fichier en bytes*/
+         unit32 atime; /*dernier acces*/
+         unit32 mtime; /*dernière modification*/
+         unit32 ctime; /*dernier changement d'état*/
+         uint16 nlinks; /* nombre de liens vers ce fichier*/
+         uint16 zone[10]; /*liste des secteurs contenant le fichier*/
+ };
 
  segment de données
     à compléter
@@ -408,7 +424,9 @@ Glossaire
     à compléter
 
  thread-safe
-    à compléter
+    Un programme est considéré thread-safe s'il fonctionne correctement lors d'une éxecution simultannée par plusieurs threads. En particulier, le programme doit satisfaire le besoin pour plusieurs threads d'accéder à la même donnée partagée entre eux et le besoin pour une donnée partagée entre threads d'être accessible par un seul thread à un moment donné. En C, on utilise notamment les :term:`mutex` pour résoudre ce genre de problème.
+
+Source: http://stackoverflow.com/questions/261683/what-is-meant-by-thread-safe-code
 
  loi de Amdahl
     à compléter
@@ -432,16 +450,16 @@ Glossaire
     à compléter
 
  processus père
-    à compléter
+    Processus ayant lancé un autre processus (:term:`processus fils`) suite à un appel à la fonction fork().
 
  processus fils
-    à compléter
+    Processus lancé suite à un appel à la fonction fork().
 
  processus orphelin
-    à compléter
+    :term:`Processus fils` dont le père est mort, terminé. Il est adopté par le processus numéro 1, généralement init.
 
  processus zombie
-    à compléter
+    :term:`Processus fils` qui a terminé son exécution mais dont le :term:`processus père` n'a pas encore récupérer le code de retour à l'aide de waitpid().
 
  filesystem
  système de fichiers
