@@ -136,7 +136,7 @@ Glossaire
     Représentation de nombre réels en virgule flottante (type ``float`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 32 bits.
 
  double précision
-    Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 64 bits.
+    Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme  définit le format de ces nombres sur 64 bits.
 
  buffer overflow
     Erreur survenante lorsqu'un processus tente d'écrire dans une zone mémoire tampon qui ne lui est pas allouée. Le processus peut écrire dès lors par dessus des informations pouvant être nécessaires au :term:`CPU` ou au système d'exploitation, le rendant par l'occasion imprévisible.
@@ -399,23 +399,9 @@ Glossaire
     à compléter
 
  inode
-    Structure de données contenant des informations (méta-données) relatives à un fichier sur certains systèmes de fichiers (Unix par exemple). Il peut être représenté par une structure similaire à celle-ci:
+    Structure de données contenant des informations (méta-données) relatives à un fichier sur certains systèmes de fichiers (Unix par exemple). Ces informations comportent notamment les permissions associées au fichier, l'utilisateur propriétaire du fichier, le groupe du propriétaire du fichier.
+    Pour plus d'informations, voir la section `Système de fichier <https://github.com/obonaventure/SystemesInformatiques/blob/master/Theorie/Fichiers/fichiers.rst#syst%C3%A8mes-de-fichiers>`_ .
 
-
-.. code-block:: c
-
- struct simple_inode {
-         uint16 mode; /*drapeaux contenant les permissions
-			 associées aux fichiers*/
-         uid_t  uid; /*proprietaire du fichier*/
-	 gid_t  gid; /*groupe auquel le fichier appartient*/
-         uint32 size; /*taille du fichier en bytes*/
-         unit32 atime; /*dernier acces*/
-         unit32 mtime; /*dernière modification*/
-         unit32 ctime; /*dernier changement d'état*/
-         uint16 nlinks; /* nombre de liens vers ce fichier*/
-         uint16 zone[10]; /*liste des secteurs contenant le fichier*/
- };
 
  segment de données
     à compléter
@@ -424,9 +410,8 @@ Glossaire
     à compléter
 
  thread-safe
-    Un programme est considéré thread-safe s'il fonctionne correctement lors d'une éxecution simultannée par plusieurs threads. En particulier, le programme doit satisfaire le besoin pour plusieurs threads d'accéder à la même donnée partagée entre eux et le besoin pour une donnée partagée entre threads d'être accessible par un seul thread à un moment donné. En C, on utilise notamment les :term:`mutex` pour résoudre ce genre de problème.
+    Un programme est considéré thread-safe s'il fonctionne correctement lors d'une éxecution simultannée par plusieurs threads.En particulier, le programme doit satisfaire le besoin pour plusieurs threads d'accéder à la même donnée partagée entre eux et le besoin pour une donnée partagée entre threads d'être accessible par un seul thread à un moment donné. En C, on utilise notamment les :term:`mutex` ou d'autres types de locks pour résoudre ce genre de problème.
 
-Source: http://stackoverflow.com/questions/261683/what-is-meant-by-thread-safe-code
 
  loi de Amdahl
     à compléter
