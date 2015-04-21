@@ -400,7 +400,7 @@ Glossaire
 
  inode
     Structure de données contenant des informations (méta-données) relatives à un fichier sur certains systèmes de fichiers (Unix par exemple). Ces informations comportent notamment les permissions associées au fichier, l'utilisateur propriétaire du fichier, le groupe du propriétaire du fichier.
-    Pour plus d'informations, voir la section `Système de fichier <https://github.com/obonaventure/SystemesInformatiques/blob/master/Theorie/Fichiers/fichiers.rst#syst%C3%A8mes-de-fichiers>`_ .
+    Pour plus d'informations, voir la section `Système de fichier <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Fichiers/fichiers.html#systemes-de-fichiers>`_ .
 
 
  segment de données
