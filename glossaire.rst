@@ -136,7 +136,7 @@ Glossaire
     Représentation de nombre réels en virgule flottante (type ``float`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 32 bits.
 
  double précision
-    Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme  définit le format de ces nombres sur 64 bits.
+    Représentation de nombre réels en virgule flottante (type ``double`` en C). La norme `IEEE754 <http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933>`_ définit le format de ces nombres sur 64 bits.
 
  buffer overflow
     Erreur survenante lorsqu'un processus tente d'écrire dans une zone mémoire tampon qui ne lui est pas allouée. Le processus peut écrire dès lors par dessus des informations pouvant être nécessaires au :term:`CPU` ou au système d'exploitation, le rendant par l'occasion imprévisible.
