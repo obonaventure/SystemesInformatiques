@@ -399,7 +399,9 @@ Glossaire
     à compléter
 
  inode
-    à compléter
+    Structure de données contenant des informations (méta-données) relatives à un fichier sur certains systèmes de fichiers (Unix par exemple). Ces informations comportent notamment les permissions associées au fichier, l'utilisateur propriétaire du fichier, le groupe du propriétaire du fichier.
+    Pour plus d'informations, voir la section `Système de fichier <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Fichiers/fichiers.html#systemes-de-fichiers>`_ .
+
 
  segment de données
     à compléter
@@ -408,7 +410,8 @@ Glossaire
     à compléter
 
  thread-safe
-    à compléter
+    Un programme est considéré thread-safe s'il fonctionne correctement lors d'une éxecution simultannée par plusieurs threads.En particulier, le programme doit satisfaire le besoin pour plusieurs threads d'accéder à la même donnée partagée entre eux et le besoin pour une donnée partagée entre threads d'être accessible par un seul thread à un moment donné. En C, on utilise notamment les :term:`mutex` ou d'autres types de locks pour résoudre ce genre de problème.
+
 
  loi de Amdahl
     à compléter
@@ -432,16 +435,16 @@ Glossaire
     à compléter
 
  processus père
-    à compléter
+    Processus ayant lancé un autre processus (:term:`processus fils`) suite à un appel à la fonction fork().
 
  processus fils
-    à compléter
+    Processus lancé suite à un appel à la fonction fork().
 
  processus orphelin
-    à compléter
+    :term:`Processus fils` dont le père est mort, terminé. Il est adopté par le processus numéro 1, généralement init.
 
  processus zombie
-    à compléter
+    :term:`Processus fils` qui a terminé son exécution mais dont le :term:`processus père` n'a pas encore récupérer le code de retour à l'aide de waitpid().
 
  filesystem
  système de fichiers

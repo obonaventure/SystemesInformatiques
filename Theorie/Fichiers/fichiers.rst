@@ -282,7 +282,7 @@ La lecture d'un répertoire avec `readdir(3)`_ commence au début de ce réperto
   Cette fonction prend comme arguments le pointeur ``entry`` vers un buffer propre à l'appelant qui permet de stocker le résultat de `readdir_r(3)`_.
 
 
-Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particulier et méritent une description plus détaillée. Sous Unix, un :term:`inode` est associé à chaque fichier mais l':term:`inode` ne contient pas le nom de fichier parmi les méta-données qu'il stocke. Par contre, chaque :term:`inode` contient un compteur (``nlinks``) du nombre de liens vers un fichier. Cela permet d'avoir une seule copie d'un fichier qui est accessible depuis plusieurs répertoires. Pour comprendre cette utilisation des liens sur un système de fichiers Unix, considérons le scénario suivant.
+Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particuliers et méritent une description plus détaillée. Sous Unix, un :term:`inode` est associé à chaque fichier mais l':term:`inode` ne contient pas le nom de fichier parmi les méta-données qu'il stocke. Par contre, chaque :term:`inode` contient un compteur (``nlinks``) du nombre de liens vers un fichier. Cela permet d'avoir une seule copie d'un fichier qui est accessible depuis plusieurs répertoires. Pour comprendre cette utilisation des liens sur un système de fichiers Unix, considérons le scénario suivant.
 
 .. code-block:: console
 
