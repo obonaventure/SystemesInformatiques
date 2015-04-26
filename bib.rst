@@ -35,6 +35,8 @@ Bibliographie
 
 .. [CSyntax] Wikipedia, C syntax, http://en.wikipedia.org/wiki/C_syntax
 
+.. [DeveloppezMake] Introduction à Makefile, http://gl.developpez.com/tutoriel/outil/makefile/
+
 .. [Dijkstra1965b] Dijkstra, E., `Cooperating sequential processes`, 1965, http://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html
 
 .. [Dijkstra1965] Dijkstra, E.,  `Solution of a problem in concurrent programming control`. Commun. ACM 8, 9 (September 1965), 569 http://doi.acm.org/10.1145/365559.365617
@@ -54,7 +56,7 @@ Bibliographie
 
 .. [Gove2011] Gove, D., `Multicore Application Programming for Windows, Linux and Oracle Solaris`, Addison-Wesley, 2011, http://books.google.be/books?id=NF-C2ZQZXekC
 
-.. [GNUMake] http://www.gnu.org/software/make/manual/make.html
+.. [GNUMake] The GNU Make Manual, http://www.gnu.org/software/make/manual/make.html
 
 .. [GNUPTH] Engelschall, R., `GNU Portable Threads`, http://www.gnu.org/software/pth/
 
