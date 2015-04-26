@@ -86,6 +86,8 @@ Ce Makefile permettra de générer un binaire ``test`` à chaque fois que le fic
 Les variables
 ~~~~~~~~~~~~~
 
+.. sectionauthor:: Alexis Nootens <alexis.nootens@student.uclouvain.be>
+
 Il est possible d'utiliser des variables dans un fichier Makefile. Celles-ci sont généralement définies au début du fichier, une par ligne comme :
 
     .. code-block:: make
@@ -123,7 +125,7 @@ Il existe six différentes manières d'assigner une valeur à une variable. Nous
 - La troisième permet d'assigner une valeur à la variable uniquement si celle-ci n'en a pas encore.
 - La quatrième permet d'ajouter une valeur à une autre déjà déclarée.
 
-Une description détaillée de ces méthodes d'assignation et des deux autres restantes se trouve à l'adresse suivante http://www.gnu.org/software/make/manual/make.html#Setting
+Une description détaillée de ces méthodes d'assignation et des deux autres restantes se trouve à l'adresse suivante `<http://www.gnu.org/software/make/manual/make.html#Setting>`_
 
 Les conditions
 ~~~~~~~~~~~~~~
@@ -156,7 +158,7 @@ conditionnelle sur votre nom.
         USER := $(shell whoami)
 
         build:
-        ifeq ($(USER), obo)
+        ifeq ($(USER), sfeldman)
             gcc -I($HOME)/local/include -o foo foo.c
         else
             gcc -o foo foo.c
@@ -168,7 +170,7 @@ nom de l'utilisateur actuel. Cela ne fonctionnera que si la commande ``whoami`` 
 La cible .PHONY
 ~~~~~~~~~~~~~~~
 
-Make garde en mémoire les fichiers qu'il a construit. Cela lui permet de ne pas devoir recompiler des fichiers qui n'auraient pas changé d'un appel à
+Make compare les dates de modification des fichiers produits avec les dates de leur(s) source(s) pour savoir si celles-ci ont été modifiées depuis leur dernière compilation. Cela lui permet de ne pas devoir recompiler des fichiers qui n'auraient pas changé d'un appel à
 l'autre. Malheureusement ce comportement qui peut sembler avantageux amène aussi des problèmes, en l’occurrence pour des règles ne produisant aucun fichier.
 Une solution pour pallier le problème consiste à indiquer que la règle ne crée rien. Pour faire cela il existe une cible spéciale ``.PHONY`` permettant de définir
 quelles règles doivent toujours être exécutées à nouveau. Ainsi une règle ``.PHONY`` ne rencontrera jamais le problème d'être déjà à jour.
@@ -221,5 +223,6 @@ standard de cette commande restera visible.
             @echo "Building foo"
             @gcc -o foo foo.c
 
-Pour plus d'informations en français sur l'écriture ou utilisation des Makefiles voir http://gl.developpez.com/tutoriel/outil/makefile/
-Documentation complète en anglais sur http://www.gnu.org/software/make/manual/make.html
+Pour plus d'informations en français sur l'écriture ou utilisation des Makefiles voir [DeveloppezMake]_.
+
+Documentation complète en anglais sur le site officiel [GNUMake]_.
