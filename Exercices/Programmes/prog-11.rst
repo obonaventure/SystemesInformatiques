@@ -6,7 +6,7 @@ Exercices
 ---------
 
 
-#. Considérons le disque dur ST31500341AS dont les caractéristiques techniques sont présentées dans les notes. Le constructeur annonce un débit de transfert de 300 MBytes par seconde au maximum. Sachant que chaque secteur fait 512 bytes, et que ce disque utilise 63 secteurs par piste, calculez le débit obtenu lors du transfert d'une piste complète et comparez ce débit à celui annoncé par le constructeur.
+#. Considérons le disque dur ST31500341AS dont les caractéristiques techniques sont présentées dans les notes (1.5TB, 7200 RPM, 32MB Cache, la datasheet est disponible `ici <http://www.seagate.com/staticfiles/support/disc/manuals/desktop/Barracuda%207200.11/100507013e.pdf>`_). Le constructeur annonce un débit de transfert de 300 MBytes par seconde au maximum. Sachant que chaque secteur fait 512 bytes, et que ce disque utilise 63 secteurs par piste, calculez le débit obtenu lors du transfert d'une piste complète et comparez ce débit à celui annoncé par le constructeur.
 
 #. Considérons un ordinateur utilisant des pages de 1024 bytes et des adresses virtuelles encodées sur 13 bits et des adresses réelles également sur 13 bits. La table des pages actuellement utilisée est la suivante :
 
