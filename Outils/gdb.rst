@@ -86,6 +86,20 @@ Lors d'un débuggage long et fastidieux, il est parfois indispensable d'effectue
 	* ``commands [numerobreakpoint]`` definit une liste de commande associé à un breakpoint. Celles ci seront exécutées quand on s'arretera sur ce breakpoint. Il suffit de taper les commandes à effectuer les unes après les autres et de terminer par ``end``. Si vous ne fournissez pas de numero, les commandes sont assigné au dernier break point créé.
 	* ``display [variablename]`` affiche la variable à chaque breakpoint.
 
+Gestion des Signaux
+^^^^^^^^^^^^^^^^^^^
+
+En plus des breakpoints, `gdb(1)`_ interrompt l'exécution du programme en cours lorsqu'il intercepte certains signaux d'erreurs comme les signaux ``SIGSEGV`` et ``SIGINT``. `gdb(1)`_ permettra alors de corriger plus facilement certaines erreurs comme les erreurs de segmentation ou les problèmes de deadlock.
+
+Il est possible de gérer le comportement de `gdb(1)`_ lorsque des signaux sont interceptés. Tout d'abord, la commande ``info signals`` permet d'afficher la liste des signaux reconnus par `gdb(1)`_ ainsi que la façon dont il les traite (par exemple interrompre le programme en cours ou non). On peut changer la façon de traiter un signal avec la commande ``handle [SIGNAL] [HANDLING...]`` où ``[SIGNAL]`` est le signal à intercepter (son numéro ou son nom complet) et ``[HANDLING]`` la façon de traiter ce signal par `gdb(1)`_ [#fSigList]_. Par exemple, la commande ``handle SIGALRM stop print`` permet d'interrompre le programme et d'afficher un message quand gdb intercepte le signal ``SIGALRM``.
+
+Localiser un signal
+"""""""""""""""""""
+
+Avec `gdb(1)`_, il est donc possible de localiser un signal et de débugguer certaines erreurs comme une erreur de segmentation. En effet, lorsque `gdb(1)`_ interrompt le programme en cours après l'interception d'un signal d'erreur comme ``SIGSEGV``, il est possible de trouver la ligne du programme à laquelle le signal a été intercepté en tapant le mot-clé ``where`` une fois le programme interrompu (il est cependant important d'avoir compilé le programme avec l'option ``-g`` de ``gcc`` pour trouver la ligne précise). Ensuite, grâce aux commandes expliquées plus tôt, il sera possible de vérifier les valeurs des variables lors de l'interception du signal pour trouver l'origine du problème.
+
+En plus de localiser facilement les erreurs de segmentation dans un programme, vous pourrez régler plus aisément les problèmes de deadlock des threads. En effet, lorsque le programme est lancé sur le shell et que vous remarquez un deadlock, vous pouvez appuyer sur ``CTRL + C`` pour lancer le signal ``SIGINT`` au programme. Cela permettra de trouver les endroits où bloquent les différents threads du programme à l'aide des commandes décrites dans la section de débuggage des threads ci-dessous.
+
 Extraction de code assembleur
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -192,3 +206,8 @@ Débuggage des threads avec GDB
 
 D'autres commandes pour utiliser `gdb(1)`_ avec les threads:
         * http://sourceware.org/gdb/current/onlinedocs/gdb/Threads.html
+
+
+.. rubric:: Footnotes
+
+.. [#fSigList] Une liste plus complète des mots-clés utilisables pour modifier le comportement de gestion des signaux peut-être consultée ici : ftp://ftp.gnu.org/old-gnu/Manuals/gdb/html_node/gdb_38.html .
