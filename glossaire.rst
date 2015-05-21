@@ -357,7 +357,7 @@ Glossaire
     à compléter
 
  contexte
-    Ensemble de registres contenant l'état actuel du programme, il y a notamment %esp qui contient l'adresse du sommet de la pile (stack), %eip qui contient l'adresse de l'instruction en cours d'exécution et eflags qui contient notamment les drapeaux de comparaisons. 
+    Ensemble de registres nécéssaires à l'exécution du programme. Il est notamment composé de %esp qui contient l'adresse du sommet de la pile (stack), %eip qui contient l'adresse de l'instruction en cours d'exécution et eflags qui contient notamment les drapeaux de comparaisons. 
 
  changement de contexte
     à compléter
@@ -415,7 +415,7 @@ Glossaire
 
 
  loi de Amdahl
-    à compléter
+    Formule proposée par Gene Amdahl permettant de calculer une limite théorique sur le gain en temps d'exécution du programme lorsque l'on parallélise ce programme.
 
  static library
  librairie statique
