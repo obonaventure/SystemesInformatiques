@@ -195,13 +195,13 @@ Glossaire
 
  text
  segment text
-    à compléter
+    Zone mémoire contenant toutes les instructions à exécuter par le processeur.
 
  segment des données initialisées
-    à compléter
+    Zone mémoire contenant les variables globales initialisées et les chaînes de caractères utilisées dans le code (les arguments passés à printf() par exemple).
 
  segment des données non-initialisées
-    à compléter
+    Zone mémoire contenant les variables globales non-initialisées. Elles seront initialisées à zéro par le compilateur.
 
  heap
  tas
@@ -357,7 +357,7 @@ Glossaire
     à compléter
 
  contexte
-    à compléter
+    Ensemble de registres contenant l'état actuel du programme, il y a notamment %esp qui contient l'adresse du sommet de la pile (stack), %eip qui contient l'adresse de l'instruction en cours d'exécution et eflags qui contient notamment les drapeaux de comparaisons. 
 
  changement de contexte
     à compléter
@@ -366,7 +366,8 @@ Glossaire
     à compléter
 
  scheduler
-    à compléter
+ ordonnanceur
+    Ensemble d'algorithmes utilisés par le système d'exploitation pour sélectionner le ou les threads qui peuvent utiliser un processeur à un moment donné.
 
  round-robin
     à compléter
@@ -426,7 +427,7 @@ Glossaire
     à compléter
 
  kernel
-    à compléter
+    Partie fondamentale du système d'exploitation. Elle fournit une interface entre le hardware et le software et gère l'ensemble des ressources du système. On utilise notamment le kernel via les :term:`appels système`
 
  mode utilisateur
     à compléter
@@ -498,10 +499,10 @@ Glossaire
     à compléter
 
  signal synchrone
-    à compléter
+    Signal directement causé par l'exécution d'une instruction du processus en cours d'exécution (SIGFPE par exemple lors d'une division par zéro).
 
  signal asynchrone
-    à compléter
+    Signal causé par une raison autre que l'exécution du processus. Il peut provenir du système d'exploitation ou d'un autre processus.
 
  interpréteur
     à compléter
