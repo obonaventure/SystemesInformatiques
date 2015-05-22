@@ -264,10 +264,10 @@ Glossaire
     Voir :term:`localité spatiale` et :term:`localité temporelle`.
 
  localité spatiale
-    à compléter
+    Si une partie de la mémoire est utilisée par un programme à un moment donné, il est fort probable que les parties de mémoire proches soient utilisées prochainement par le programme (par exemple lors du parcours d'un tableau).
 
  localité temporelle
-    à compléter
+    Si une partie de la mémoire est utilisée par un programme à un moment donné, il est fort probable que cette partie soit réutilisée prochainement par le programme (par exemple lors de l'exécution d'une boucle).
 
  lignes de cache
     à compléter
@@ -300,19 +300,19 @@ Glossaire
     à compléter
 
  program counter
-    à compléter
+    Registre du processeur qui contient l'adresse mémoire de l'instruction du programme en cours d'exécution. Il est incrémenté à chaque fois qu'une instruction est chargée et exécutée.
 
  makefile
     Fichier executable par le programme Make servant à produire des fichiers compilés à partir de code source ou plus généralement n'importe quel projet.
 
  fichier objet
-    à compléter
+    Fichier intermédiaire lors du processus de compilation. Il contient le code machine pour un module ou une librairie en particulier et n'a pas encore été lié avec le reste du code du projet pour former un exécutable.
 
  linker
-    à compléter
+    Programme qui prend en arguments un ou plusieurs fichiers objects et les combine pour former un fichier exécutable.
 
  errno
-    à compléter
+    Variable globale utilisée par de nombreux appels système et fonctions de la librairie standard C pour retourner un code d'erreur.
 
  loi de Moore
     Loi empirique énoncée par Gordon E. Moore constatant que dans les microprocesseurs, le nombre de transistors sur une puce de circuit intégré double tous les dix-huit mois.
@@ -330,16 +330,16 @@ Glossaire
     Million d'instructions par seconde
 
  benchmark
-    à compléter
+    Test de performance (relative) d'un programme ou système informatique.
 
  multi-coeurs
-    à compléter
+    Un processeur est multi-coeurs s'il contient deux ou plusieurs unités de calcul indépendantes qui peuvent travailler en parallèle.
 
  multi-threadé
-    à compléter
+    Un programme est multi-threadé s'il se composent de plusieurs threads d'exécution. Un processeur est dit multithread s'il est capable d'exécuter de manière efficace plusieurs threads d'exécution sur un même coeur (chaque thread dispose par exemple de ses propres registres et compteur de programme).
 
  section critique
-    à compléter
+    Section de code dans laquelle il ne doit jamais y avoir plus d'un thread simultanément.
 
  exclusion mutuelle
     à compléter
@@ -360,16 +360,16 @@ Glossaire
     à compléter
 
  changement de contexte
-    à compléter
+    Processus d'enregistrement et de restauration de l'état d'un thread ou processus par le processeur pour que son exécution puisse reprendre ultérieurement. Un changement de contexte est par exemple effectué lorsque le processeur transitionne d'un processus à un autre, ou lorsque qu'une interruption force le processeur à exécuter une routine du noyau.
 
  interruption
-    à compléter
+    Signal logiciel ou matériel envoyé au processeur pour l'informer d'un évènement qui requiert son attention immédiate. Lorsqu'il reçoit une interruption, le processeur sauvegarde son état (changement de contexte) et exécute une routine de traitement d'interruption. Lorsque la routine de traitement d'interruption termine, le processeur reprend son exécution normale.
 
  scheduler
-    à compléter
+    Algorithme du noyau du système d'exploitation qui décide à tout moment quel processus doit être exécuté.
 
  round-robin
-    à compléter
+    Dans le cadre du scheduler, il s'agit d'un algorithme qui alloue à tour de rôle un temps d'exécution égal à chaque processus sans distinction aucune.
 
  livelock
     à compléter
@@ -378,22 +378,22 @@ Glossaire
     Opération élémentaire ne pouvant pas être divisée.
 
  deadlock
-    à compléter
+    Dans un programme concurrent, une situation de deadlock est une situation de blocage définitif qui survient lorsque que plusieurs threads ou processus concurrents s'attendent mutuellement. Chacun attend que l'autre finisse et donc aucun ne finit jamais.
 
  mutex
-    à compléter
+    Primitive de synchronisation entre threads basé sur le principe d'exclusion mutuelle. Quand plusieurs threads veulent accéder à la même ressource ou section critique, un mutex peut protéger cette ressource ou section critique et assurer qu'un seul thread ne puisse y accèder à tout moment.
 
  problème des philosophes
     à compléter
 
  appel système
-    à compléter
+    Permet à un programme de demander l'exécution d'un service fourni par le noyau du système d'exploitation.
 
  appel système bloquant
     à compléter
 
  sémaphore
-    à compléter
+    Mécanisme de synchronisation entre threads inventé par Edsger Dijkstra pour limiter le nombre de threads qui peuvent accèder de manière concurrente à une ressource partagée.
 
  problèmes des readers-writers
     à compléter
@@ -562,9 +562,3 @@ Glossaire
 
  pagination
     à compléter
-
-
-
-
-
-
