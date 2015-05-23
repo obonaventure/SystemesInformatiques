@@ -537,7 +537,7 @@ Pour bien comprendre le fonctionnement de la pile, il est utile de considérer u
    push %ebx ; %esp contient 0x04 et M[0x04]=0xFF
    pop %eax  ; %esp contient 0x08 et %eax 0xFF
    pop %ebx  ; %esp contient 0x0C et %ebx 0x02
-   pop %eax  ; %esp contient 0x10 et %eax 0x04
+   pop %eax  ; %esp contient 0x10 et %eax 0x00
 
 
 Les fonctions et procédures
