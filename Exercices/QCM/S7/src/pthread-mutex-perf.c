@@ -26,13 +26,12 @@ void error(int err, char *msg) {
   exit(EXIT_FAILURE);
 }
 
-void usage() {
-    printf("Usage : %s percent nthreads\n\n",argv[0]);
+void usage(char *arg) {
+    printf("Usage : %s percent nthreads\n\n",arg);
     printf("        percent: 0-100 pourcentage de temps en section critique\n");
     printf("        nthreads : nombre de threads à lancer\n");
 }
 ///AAA
-#include <pthread.h>
 #define LOOP 40000
 #define LOOP_CRITIQUE 40000
 #define N 4
@@ -75,20 +74,20 @@ int main (int argc, char *argv[])  {
   long sum=0;
 
   if(argc!=3) {
-    usage();
+    usage(argv[0]);
     return(EXIT_FAILURE);
   }
 
   char *endptr;
   percent=strtol(argv[1],&endptr,10);
   if(percent<1 || percent >100) {
-    usage();
+    usage(argv[0]);
     return(EXIT_FAILURE);
   }
   nthreads=strtol(argv[2],&endptr,10);
 
   if(nthreads<0) {
-    usage();
+    usage(argv[0]);
     return(EXIT_FAILURE);
   }
   pthread_t thread[nthreads];

@@ -458,7 +458,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
 
   .. class:: comment
 
-     Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fasse chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``z``  puis à ``x`` dans le thread A et à ``x`` puis à ``z`` dans le thread B est une source de deadlocks potentiels.
+     Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fassent chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``z``  puis à ``x`` dans le thread A et à ``x`` puis à ``z`` dans le thread B est une source de deadlocks potentiels.
 
 
 -
@@ -476,7 +476,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
 
   .. class:: comment
 
-     Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fasse chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``z``  puis à ``x`` dans le thread B et à ``x`` puis à ``z`` dans le thread A est une source de deadlocks potentiels.
+     Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fassent chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``z``  puis à ``x`` dans le thread B et à ``x`` puis à ``z`` dans le thread A est une source de deadlocks potentiels.
 
 -
   .. code-block:: console
@@ -493,7 +493,7 @@ Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` 
 
   .. class:: comment
 
-     Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fasse chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``a``  puis à ``y`` dans le thread A et à ``y`` puis à ``x`` dans le thread B est une source de deadlocks potentiels.
+     Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fassent chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``a``  puis à ``y`` dans le thread A et à ``y`` puis à ``x`` dans le thread B est une source de deadlocks potentiels.
 
 
 .. include:: ../../../links.rst
