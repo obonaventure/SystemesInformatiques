@@ -195,13 +195,13 @@ Glossaire
 
  text
  segment text
-    Zone mémoire contenant toutes les instructions à exécuter par le processeur.
+    Zone mémoire contenant toutes les instructions à exécuter par le processeur. Le contenu de cette zone de la mémoire provient directement de l'exécutable qui est chargé du système de fichiers.
 
  segment des données initialisées
-    Zone mémoire contenant les variables globales initialisées et les chaînes de caractères utilisées dans le code (les arguments passés à printf() par exemple).
+    Zone mémoire contenant les variables globales initialisées, les chaînes de caractères utilisées dans le code (les arguments passés à printf() par exemple) et diverses constantes utilisées par le programme. Le contenu de cette zone de la mémoire provient directement de l'exécutable qui est chargé du système de fichiers.
 
  segment des données non-initialisées
-    Zone mémoire contenant les variables globales non-initialisées. Elles seront initialisées à zéro par le compilateur.
+    Zone mémoire contenant les variables globales non-initialisées. Le contenu de cette zone est généralement initialisé à zéro et sa taille est calculée sur base d'information se trouvant dans l'exécutable qui est chargé du système de fichiers
 
  heap
  tas
@@ -357,7 +357,7 @@ Glossaire
     à compléter
 
  contexte
-    Ensemble de registres nécéssaires à l'exécution du programme. Il est notamment composé de %esp qui contient l'adresse du sommet de la pile (stack), %eip qui contient l'adresse de l'instruction en cours d'exécution et eflags qui contient notamment les drapeaux de comparaisons. 
+    Ensemble de registres nécéssaires à l'exécution du programme. Il est notamment composé des registres de données (%eax, %ebx,...),  de %esp qui contient l'adresse du sommet de la pile (stack), %eip qui contient l'adresse de l'instruction en cours d'exécution et eflags qui contient notamment les drapeaux de comparaisons. 
 
  changement de contexte
     à compléter
@@ -367,7 +367,7 @@ Glossaire
 
  scheduler
  ordonnanceur
-    Ensemble d'algorithmes utilisés par le système d'exploitation pour sélectionner le ou les threads qui peuvent utiliser un processeur à un moment donné.
+    Ensemble d'algorithmes utilisés par le système d'exploitation pour sélectionner le ou les threads/processus qui peuvent utiliser un processeur à un moment donné.
 
  round-robin
     à compléter
@@ -427,7 +427,7 @@ Glossaire
     à compléter
 
  kernel
-    Partie fondamentale du système d'exploitation. Elle fournit une interface entre le hardware et le software et gère l'ensemble des ressources du système. On utilise notamment le kernel via les :term:`appels système`
+    Noyau du système d'exploitation. Il fournit une interface entre le hardware et le software et gère l'ensemble des ressources du système. Le noyau offre des services via les :term:`appels système`.
 
  mode utilisateur
     à compléter
