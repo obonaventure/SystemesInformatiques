@@ -306,7 +306,7 @@ Glossaire
     Fichier executable par le programme Make servant à produire des fichiers compilés à partir de code source ou plus généralement n'importe quel projet.
 
  fichier objet
-    Fichier intermédiaire lors du processus de compilation. Il contient le code machine pour un module ou une librairie en particulier et n'a pas encore été lié avec le reste du code du projet pour former un exécutable.
+    Fichier intermédiaire produit durant le processus de compilation. Il contient le code machine pour un module ou une librairie en particulier et n'a pas encore été lié avec le reste du code du projet pour former un exécutable.
 
  linker
     Programme qui prend en arguments un ou plusieurs fichiers objects et les combine pour former un fichier exécutable.
@@ -336,7 +336,7 @@ Glossaire
     Un processeur est multi-coeurs s'il contient deux ou plusieurs unités de calcul indépendantes qui peuvent travailler en parallèle.
 
  multi-threadé
-    Un programme est multi-threadé s'il se composent de plusieurs threads d'exécution. Un processeur est dit multithread s'il est capable d'exécuter de manière efficace plusieurs threads d'exécution sur un même coeur (chaque thread dispose par exemple de ses propres registres et compteur de programme).
+    Un programme est multi-threadé s'il se composent de plusieurs threads d'exécution. Un processeur est dit multithread s'il est capable d'exécuter de manière efficace plusieurs threads d'exécution (chaque thread dispose par exemple de ses propres registres et compteur de programme).
 
  section critique
     Section de code dans laquelle il ne doit jamais y avoir plus d'un thread simultanément.
@@ -360,7 +360,7 @@ Glossaire
     à compléter
 
  changement de contexte
-    Processus d'enregistrement et de restauration de l'état d'un thread ou processus par le processeur pour que son exécution puisse reprendre ultérieurement. Un changement de contexte est par exemple effectué lorsque le processeur transitionne d'un processus à un autre, ou lorsque qu'une interruption force le processeur à exécuter une routine du noyau.
+    Processus d'enregistrement et de restauration de l'état d'un thread ou processus par le noyau pour que son exécution puisse reprendre ultérieurement. Un changement de contexte est par exemple effectué lorsque le noyau/scheduler provoque la transition d'un processus à un autre, ou lorsqu'une interruption force l'exécution d'une routine du noyau.
 
  interruption
     Signal logiciel ou matériel envoyé au processeur pour l'informer d'un évènement qui requiert son attention immédiate. Lorsqu'il reçoit une interruption, le processeur sauvegarde son état (changement de contexte) et exécute une routine de traitement d'interruption. Lorsque la routine de traitement d'interruption termine, le processeur reprend son exécution normale.
