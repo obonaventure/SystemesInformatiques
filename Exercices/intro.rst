@@ -39,8 +39,8 @@ La matière couverte cette semaine correspond aux sections relative à l'`organi
 
 .. toctree::
    :maxdepth: 2
-              
-   mcq-ex/qcm-3           
+
+   mcq-ex/qcm-3
    Programmes/prog-3
 
 
@@ -55,7 +55,7 @@ La matière couverte cette semaine correspond aux sections :
 .. toctree::
    :maxdepth: 2
 
-   mcq-ex/qcm-4           
+   mcq-ex/qcm-4
    Programmes/prog-4
 
 
@@ -71,7 +71,7 @@ La matière couverte cette semaine correspond aux sections :
 .. toctree::
    :maxdepth: 2
 
-   mcq-ex/qcm-5           
+   mcq-ex/qcm-5
    Programmes/prog-5
 
 Sixième semaine
@@ -85,7 +85,7 @@ La matière de cette semaine porte sur la communication entre les threads. Elle 
 .. toctree::
    :maxdepth: 2
 
-   mcq-ex/qcm-6           
+   mcq-ex/qcm-6
    Programmes/prog-6
 
 
@@ -150,6 +150,7 @@ Séance tutorée
 .. toctree::
    :maxdepth: 2
 
+   mcq-ex/qcm-10
    Programmes/prog-10
 
 
