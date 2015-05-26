@@ -35,7 +35,7 @@ Un signal est dit synchrone lorsqu'il est causé par l'exécution d'une instruct
 
       .. class:: comment
 
-         Ce signal indique qu'un processus fils s'est arrêté ou a fini son exécution. Il est résulte d'une cause externe au programme.
+         Ce signal indique qu'un processus fils s'est arrêté ou a fini son exécution. Il résulte d'une cause externe au programme.
 
    .. negative::
 
@@ -43,7 +43,7 @@ Un signal est dit synchrone lorsqu'il est causé par l'exécution d'une instruct
 
       .. class:: comment
 
-         Ce signal est envoyé par le shell lorsque l'utlisateur tape Ctrl-C pendant l'exécution d'un programme. Il est résulte d'une cause externe au programme.
+         Ce signal est envoyé par le shell lorsque l'utlisateur tape Ctrl-C pendant l'exécution d'un programme. Il résulte d'une cause externe au programme.
 
    .. negative::
 
@@ -51,7 +51,7 @@ Un signal est dit synchrone lorsqu'il est causé par l'exécution d'une instruct
 
       .. class:: comment
 
-         Ce signal est le signal utilisé par défaut par la commande kill pour demander la fin d'un processus. Il est résulte d'une cause externe au programme.
+         Ce signal est le signal utilisé par défaut par la commande kill pour demander la fin d'un processus. Il résulte d'une cause externe au programme.
 
    .. negative::
 
@@ -59,7 +59,7 @@ Un signal est dit synchrone lorsqu'il est causé par l'exécution d'une instruct
 
       .. class:: comment
 
-         Ce signal correspond à une erreur matérielle. Il est résulte d'une cause externe au programme.
+         Ce signal correspond à une erreur matérielle. Il résulte d'une cause externe au programme.
 
 
 
@@ -78,7 +78,7 @@ Trois signaux permettent d'arrêter un processus: SIGTERM, SIGINT et SIGKILL. Pa
 
    .. positive::
 
-      - Lorsque l'on tappe Ctrl-C dans le shell pendant l'exécution d'un programme, le signal SIGINT est envoyé au processus en cours d'exécution.
+      - Lorsque l'on tappe Ctrl-C dans le shell pendant l'exécution d'un programme, un signal SIGINT est envoyé au processus en cours d'exécution.
 
    .. positive::
 
@@ -90,11 +90,11 @@ Trois signaux permettent d'arrêter un processus: SIGTERM, SIGINT et SIGKILL. Pa
 
       .. class:: comment
 
-         Par défaut, la réception de ce signal provoque la terminaison du processus. Néanmoins, le processus prévoir une routine de traitement pour ce signal ou choisir d'ignorer ce type de signal.
+         Par défaut, la réception de ce signal provoque la terminaison du processus. Néanmoins, le processus peut prévoir une routine de traitement pour ce type de signal ou choisir d'ignorer ce type de signal.
 
    .. negative::
 
-      - Lorsque l'on tappe Ctrl-C dans le shell pendant l'exécution d'un programme, le signal SIGTERM est envoyé au processus en cours d'exécution.
+      - Lorsque l'on tappe Ctrl-C dans le shell pendant l'exécution d'un programme, un signal SIGTERM est envoyé au processus en cours d'exécution.
 
       .. class:: comment
 
@@ -151,7 +151,7 @@ Ce programme, bien qu'en apparence fonctionnel, contient plusieurs erreurs de pr
 
    .. positive::
 
-      - Il y a un risque pour la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de la déclarer sig_atomic_t pour résoudre ce problème.
+      - Il y a un risque que la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de la déclarer sig_atomic_t pour résoudre ce problème.
 
       .. class:: comment
 
@@ -160,38 +160,38 @@ Ce programme, bien qu'en apparence fonctionnel, contient plusieurs erreurs de pr
 
    .. positive::
 
-      - La fonction printf n'est pas réentrante et ne doit pas être utilisée dans une routine de traitement de signal.
+      - La fonction `printf(3)`_ n'est pas réentrante et ne doit pas être utilisée dans une routine de traitement de signal.
 
       .. class:: comment
 
-         La fonction printf modifie des données globales (le buffer attaché au stream). Cette dernière est documentée comme non réentrante et ne doit donc pas être utilisée dans une routine de traitement de signal.
+         La fonction `printf(3)`_ modifie des données globales (le buffer attaché au stream). Cette dernière est documentée comme non réentrante et ne doit donc pas être utilisée dans une routine de traitement de signal.
 
 
    .. negative::
 
-      - Il y a un risque pour la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de protéger cette variable par un mutex.
+      - Il y a un risque que la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de protéger cette variable par un mutex.
 
       .. class:: comment
 
-         Cette solution peut causer un deadlock. La routine de traitement de signal est asynchrone et peut être appelée à tout moment. Si le mutex est déjà utilisé à ce moment là, la routine de traitement de signal restera bloquée sur l'appel pthread_mutex_lock.
+         Cette solution peut causer un deadlock. La routine de traitement de signal est asynchrone et peut être appelée à tout moment. Si le mutex est déjà utilisé à ce moment là, la routine de traitement de signal restera bloquée sur l'appel `pthread_mutex_lock(3posix)`_.
 
 
    .. negative::
 
-      - Il y a un risque pour la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de la déclarer volatile pour résoudre ce problème.
+      - Il y a un risque que la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de la déclarer volatile pour résoudre ce problème.
 
       .. class:: comment
 
-         Il est toujours possible que le processus exécute l'instruction de chargement de la valeur de la variable puis qu'un signal lui soit délivré. Lorsqu'il revient à son flux d'éxécution, la valeur de la variable a changé mais elle n'est pas rechargée.
+         Il est toujours possible que le processus exécute l'instruction de chargement de la valeur de la variable puis qu'un signal lui soit délivré. Lorsque le processus revient à son flux d'éxécution normal, la valeur de la variable a changé mais elle n'est pas rechargée depuis la mémoire.
 
 
    .. negative::
 
-      - Il est interdit de modifier une variable globale (telle que counter) dans un routine de traitement de signal.
+      - Il est interdit de modifier une variable globale (telle que counter) dans une routine de traitement de signal.
 
       .. class:: comment
 
-         La modification de variables globales dans les routines de traitement de signal sont autorisées. Il est néanmoins nécessaire de prendre certaines précautions et la déclarer avec sig_atomic_t pour garantir que tous les accès à la variable se feront de façon atomique.
+         La modification de variables globales dans une routine de traitement de signal est autorisée. Il est néanmoins nécessaire de prendre certaines précautions et la déclarer avec sig_atomic_t pour garantir que tous les accès à la variable se feront de façon atomique.
 
 
 
@@ -210,7 +210,7 @@ Deux stratégies existent pour implémenter les signaux sous Unix: maintenir une
 
    .. positive::
 
-      - La solution sous forme de drapeaux binaires ne nécessite qu'un seul bit de mémoire par signal mais n'est  pas forcément meilleure que la solution utilisant une queue.
+      - La solution sous forme de drapeaux binaires ne nécessite qu'un seul bit de mémoire par signal mais n'est pas forcément meilleure que la solution utilisant une queue.
 
       .. class:: comment
 
@@ -227,11 +227,11 @@ Deux stratégies existent pour implémenter les signaux sous Unix: maintenir une
 
    .. negative::
 
-      - Une solution intermédiaire utilisant 10 drapeaux par signaux permettrait d'être à la fois fiable et économe en mémoire.
+      - Une solution intermédiaire utilisant 10 drapeaux par type de signal permettrait d'être à la fois fiable et économe en mémoire.
 
       .. class:: comment
 
-         Elle permettrait d'être fiable seulement pour les 10 premiers signaux reçus.
+         Elle permettrait d'être fiable seulement pour les 10 premiers signaux de même type reçus.
 
 
    .. negative::
@@ -245,11 +245,11 @@ Deux stratégies existent pour implémenter les signaux sous Unix: maintenir une
 
    .. negative::
 
-      - Avec la solution utilisant des drapeaux binaires, seul les signaux envoyés plusieurs fois avant la routine de traitement de signal seront perdus.
+      - Avec la solution utilisant des drapeaux binaires, seul les signaux envoyés plusieurs fois avant l'exécution routine de traitement de signal seront perdus.
 
       .. class:: comment
 
-         Si un autre signal arrive durant l'exécution de la routine de traitement de signal, celui-ci sera perdu car bloqué par le système d'exploitation pour empêcher l'interruption de la routine de traitement du précédant signal.
+         Si un autre signal arrive durant l'exécution de la routine de traitement de signal, celui-ci sera perdu car bloqué par le système d'exploitation pour empêcher l'interruption de la routine de traitement du précédent signal.
 
 
 .. include:: ../links.rst
