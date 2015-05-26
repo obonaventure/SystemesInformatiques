@@ -10,10 +10,10 @@ Questions à choix multiples
 :task_id: sinf1252-revision
 
 
-Question 1. Structure et allocation de mémoire avec malloc
-----------------------------------------------------------
+Question 1. Structure et allocation de mémoire avec `malloc(3)`_
+---------------------------------------------------------------
 
-Dans le langage C, l'allocation de zone mémoire se fait souvent avec malloc. 
+Dans le langage C, l'allocation de zone mémoire se fait souvent avec `malloc(3)`_ 
 Pour une structure chainée définie comme suit : 
 
 .. code-block:: c
@@ -29,7 +29,7 @@ Pour une structure chainée définie comme suit :
    :nb_prop: 3
    :nb_pos: 1
 
-   Quel fragment de code ci-dessous alloue correctement la zone mémoire pour une telle structure avec malloc?
+   Quel fragment de code ci-dessous alloue correctement la zone mémoire pour une telle structure avec `malloc(3)`_ ?
 
    .. positive::
 
@@ -57,7 +57,7 @@ Pour une structure chainée définie comme suit :
          if(l == NULL)
          error("malloc");
 
-      .. comment:: La variable ``list`` est non déclarée. Pour référencer la structure, il faut faire appel à ``struct list`` et non à ``list``.
+      .. comment:: La variable ``list`` est non déclarée. Pour référencer la structure, il faut faire appel à ``struct list`` et non à ``list``. De plus, `malloc(3)`_ retourne un pointeur de type ``void *`` qui doit donc être casté en pointeur de type ``struct list *``.
 
 
    .. negative::
@@ -78,7 +78,7 @@ Pour une structure chainée définie comme suit :
          if(l == NULL)
          error("malloc");
 
-      .. comment:: malloc prend en argument la taille de la zone mémoire à allouer.
+      .. comment:: `malloc(3)`_ prend en argument la taille de la zone mémoire à allouer, et doit donc prendre en argument une expression commençant par ``sizeof``.
 
 
 Question 2. Allocation et libération de mémoire sur une structure chainée
@@ -214,7 +214,7 @@ Pour une structure chainée définie comme suit :
 
 
 
-      .. comment:: La mémoire n'est pas bien libérée. L'appel à free ne va libérer que la mémoire associée au premier noeud de la liste.
+      .. comment:: La mémoire n'est pas bien libérée. L'appel à `free(3)`_ ne va libérer que la mémoire associée au premier noeud de la liste.
 
    .. negative::
    
@@ -290,7 +290,7 @@ Pour une structure chainée définie comme suit :
            return (EXIT_SUCCESS);
          }
 
-      .. comment:: les valeurs de retour des pointeurs alloués avec malloc n'ont pas été vérifiées.
+      .. comment:: les valeurs de retour des pointeurs alloués avec `malloc(3)`_ n'ont pas été vérifiées.
 
    .. negative::
    
