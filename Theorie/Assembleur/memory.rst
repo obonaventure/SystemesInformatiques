@@ -293,7 +293,7 @@ Outre les opérations arithmétiques, un processeur doit être capable de réali
  - `CF` (Carry Flag) : indique si le résultat de la dernière instruction arithmétique non signée nécessitait plus de 32 bits pour être stocké
  - `OF` (Overflow Flag) : indique si le résultat de la dernière instruction arithmétique signée a provoqué un dépassement de capacité
 
-Nous utiliserons principalement les drapeaux `ZF` et `SF` dans ce chapitre. Ces drapeaux peuvent être fixés par les instructions arithmétiques standard, mais aussi par des instructions dédiées comme ``cmp`` et ``test``. L'instruction ``cmp`` effectue l'équivalent d'une soustraction et met à jour les drapeaux `CF` et `SF` mais sans sauvegarder son résultat dans un registre. L'instruction ``test`` effectue elle une conjonction logique sans sauvegarder son résultat mais en mettant à jour les drapeaux.
+Nous utiliserons principalement les drapeaux `ZF` et `SF` dans ce chapitre. Ces drapeaux peuvent être fixés par les instructions arithmétiques standard, mais aussi par des instructions dédiées comme ``cmp`` et ``test``. L'instruction ``cmp`` effectue l'équivalent d'une soustraction et met à jour les drapeaux `ZF` et `SF` mais sans sauvegarder son résultat dans un registre. L'instruction ``test`` effectue elle une conjonction logique sans sauvegarder son résultat mais en mettant à jour les drapeaux.
 
 Ces instructions de comparaison peuvent être utilisées avec les instructions ``set`` qui permettent de fixer la valeur d'un registre en fonction des valeurs de certains drapeaux du registre ``eflags``. Chaque instruction ``set`` prend comme argument un registre. Pour des raisons historiques, ces instructions modifient uniquement les bits de poids faible du registre indiqué et non le registre complet. C'est un détail qui est lié à l'histoire de l'architecture [IA32]_.
 
@@ -749,5 +749,3 @@ Ce code illustre la complexité de supporter des appels récursifs en C et le co
 .. [#fmov] On parle de famille d'instructions car il existe de nombreuses instructions de déplacement en mémoire. Les plus simples sont suffixées par un caractère qui indique le type de données transféré. Ainsi, ``movb`` permet le transfert d'un byte tandis que ``movl`` permet le transfert d'un mot de 32 bits. Des détails sur ces instructions peuvent être obtenus dans [IA32]_
 
 .. [#fllvm] Cette traduction et la plupart des traductions utilisées dans ce chapitre ont été obtenues en utilisant l'interface `web de démo <http://llvm.org/demo/index.cgi>`_ du compilateur llvm_ qui a été configuré pour générer du code 32 bits sans optimisation. Quelques détails ont été supprimés du code assembleur pour le rendre plus compact.
-
-
