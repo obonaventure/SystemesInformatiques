@@ -260,7 +260,7 @@ Une première solution à ce problème est d'utiliser un mutex et un sémaphore 
 
  sem_init(&db, NULL, 1).
 
-La solution utilise une variable partagée : ``readcount``. L'accès à cette variable est protégé par ``mutex``. Le sémaphore ``db`` sert à réguler l'accès des `writers` à la base de données. Le mutex est initiliasé comme d'habitude par la fonction `pthread_mutex_init(3posix)`_. Le sémaphore ``db`` est initialisé à la valeur ``1``. Le `writer` est assez simple :
+La solution utilise une variable partagée : ``readcount``. L'accès à cette variable est protégé par ``mutex``. Le sémaphore ``db`` sert à réguler l'accès des `writers` à la base de données. Le mutex est initialisé comme d'habitude par la fonction `pthread_mutex_init(3posix)`_. Le sémaphore ``db`` est initialisé à la valeur ``1``. Le `writer` est assez simple :
 
 .. code-block:: c
 
@@ -609,5 +609,3 @@ Dans un programme découpé en threads, toute utilisation de fonctions de coordi
 .. [#fstrerror_r] Cette implémentation est adaptée de https://www-asim.lip6.fr/trac/netbsdtsar/browser/vendor/netbsd/5/src/lib/libc/string/strerror_r.c?rev=2 et est `Copyright (c) 1988 Regents of the University of California.`
 
 .. [#famdahl] Source : http://en.wikipedia.org/wiki/Amdahl's_law
-
-
