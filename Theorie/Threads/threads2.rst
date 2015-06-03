@@ -239,7 +239,7 @@ Analysons une seconde solution. Celle-ci utilise un tableau ``flag`` contenant d
 
    #define A 0
    #define B 1
-   int flag[];
+   int flag[2];
    flag[A]=false;
    flag[B]=false;
 
@@ -291,7 +291,7 @@ L'algorithme de Peterson [Peterson1981]_ combine les deux idées présentées pl
 
    #define A 0
    #define B 1
-   int flag[];
+   int flag[2];
    flag[A]=false;
    flag[B]=false;
 
