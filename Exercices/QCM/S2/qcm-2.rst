@@ -428,7 +428,7 @@ Il est parfois nécessaire en C de manipuler directement la représentation bina
 Question 8. Chaînes de caractères
 ---------------------------------
 
-Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences du caractère ``c`` dans la chaîne de caractères ``c``. Laquelle ?
+Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences du caractère ``c`` dans la chaîne de caractères ``s``. Laquelle ?
 
 .. class:: positive
 
