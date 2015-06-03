@@ -7,7 +7,7 @@
 Utilisation de plusieurs threads
 ================================
 
-Les performances des microprocesseurs se sont continuellement améliorées depuis les années 1960s. Cette amélioration a été possible grâce aux progrès constants de la microélectronique qui a permis d'assembler des microprocesseurs contenant de plus en plus de transistors sur une surface de  plus en plus réduite. La figure [#ftransistors]_ ci-dessous illustre bien cette évolution puisqu'elle représente le nombre transistors par microprocesseur en fonction du temps.
+Les performances des microprocesseurs se sont continuellement améliorées depuis les années 1960s. Cette amélioration a été possible grâce aux progrès constants de la microélectronique qui a permis d'assembler des microprocesseurs contenant de plus en plus de transistors sur une surface de  plus en plus réduite. La figure [#ftransistors]_ ci-dessous illustre bien cette évolution puisqu'elle représente le nombre de transistors par microprocesseur en fonction du temps.
 
 
 .. figure:: /Threads/figures/534px-Transistor_Count_and_Moore's_Law_-_2011.png
@@ -16,7 +16,7 @@ Les performances des microprocesseurs se sont continuellement améliorées depui
    Evolution du nombre de transistors par microprocesseur
 
 
-Cette évolution avait été prédite par Gordon Moore dans les années 1960s [Stokes2008]_. Il a formulé en 1965 une hypothèse qui prédisait que le nombre de composants par chip continuerait à doubler tous les douze mois pour la prochaine décennie. Cette prédiction s'est avérée tout à fait réaliste. Elle est maintenant connue sous le nom de :term:`Loi de Moore` et est fréquemment utilisée pour expliquer les amélioration de performance des ordinateurs.
+Cette évolution avait été prédite par Gordon Moore dans les années 1960s [Stokes2008]_. Il a formulé en 1965 une hypothèse qui prédisait que le nombre de composants par chip continuerait à doubler tous les douze mois pour la prochaine décennie. Cette prédiction s'est avérée tout à fait réaliste. Elle est maintenant connue sous le nom de :term:`Loi de Moore` et est fréquemment utilisée pour expliquer les améliorations de performance des ordinateurs.
 
 Le fonctionnement d'un microprocesseur est régulé par une horloge. Celle-ci rythme la plupart des opérations du processeur et notamment le chargement des instructions depuis la mémoire. Pendant de nombreuses années, les performances des microprocesseurs ont fortement dépendu de leur vitesse d'horloge. Les premiers microprocesseurs avaient des fréquences d'horloge de quelques centaines de :term:`kHz`. A titre d'exemple, le processeur intel 4004 avait une horloge à 740 kHz en 1971. Aujourd'hui, les processeurs rapides dépassent la fréquence de 3 :term:`GHz`. La figure ci-dessous présente l'évolution de la fréquence d'horloge des microprocesseurs depuis les années 1970s [#fperf]_. On remarque une évolution rapide jusqu'aux environs du milieu de la dernière décennie. La barrière des 10 MHz a été franchie à la fin des années 1970s. Les 100 :term:`MHz` ont étés atteints en 1994 et le Ghz aux environs de l'an 2000.
 
@@ -51,7 +51,7 @@ Cette progression continue des performances en MIPS a été possible grâce à l
 .. Aujourd'hui, les processeurs standards sont capables d'exécuter 4, 8 16 voire 32 threads d'exécution simultanément.
 
 
-La notion de thread d'exécution est très importante dans un système informatique. Elle permet non seulement de comprendre comme un ordinateur équipé d'un seul microprocesseur peut exécuter plusieurs programmes simultanément, mais aussi comment des programmes peuvent profiter des nouveaux processeurs capables d'exécuter plusieurs threads simultanément. Pour comprendre cette notion, il est intéressant de revenir à nouveau sur l'exécution d'une fonction en langage assembleur. Considérons la fonction ``f`` :
+La notion de thread d'exécution est très importante dans un système informatique. Elle permet non seulement de comprendre comment un ordinateur équipé d'un seul microprocesseur peut exécuter plusieurs programmes simultanément, mais aussi comment des programmes peuvent profiter des nouveaux processeurs capables d'exécuter plusieurs threads simultanément. Pour comprendre cette notion, il est intéressant de revenir à nouveau sur l'exécution d'une fonction en langage assembleur. Considérons la fonction ``f`` :
 
  .. code-block:: c
 
@@ -206,4 +206,3 @@ Concernant `pthread_join(3)`_, le code ci-dessus illustre la récupération du r
 .. [#ftransistors] Source : http://en.wikipedia.org/wiki/File:Transistor_Count_and_Moore%27s_Law_-_2011.svg
 
 .. [#fperf] Plusieurs sites web recensent cette information, notamment http://www.intel.com/pressroom/kits/quickreffam.htm, http://en.wikipedia.org/wiki/List_of_Intel_microprocessors et http://en.wikipedia.org/wiki/Instructions_per_second
-
