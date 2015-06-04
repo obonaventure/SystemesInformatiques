@@ -169,7 +169,7 @@ Lors de son exécution, ce programme affiche :
 
 
 Le langage C permet bien entendu la définition de fonctions. Outre la fonction ``main`` qui doit être présente dans tout programme, le langage C permet la définition de fonctions qui retournent ou non une valeur. En C, comme en Java, une fonction de type ``void`` ne retourne aucun résultat tandis qu'une fonction de type ``int`` retournera un entier. Le programme ci-dessous présente deux fonctions simples. La première, ``usage`` ne retourne aucun résultat. Elle affiche un message d'erreur sur la sortie d'erreur standard et termine le programme via `exit(2)`_ avec un code de retour indiquant un échec. La seconde, ``digit`` prend comme argument un caractère et retourne ``1`` si c'est un chiffre et ``0`` sinon. Le code de cette fonction peut paraître bizarre à un programmeur habitué à Java. En C, les `char` sont représentés par l'entier qui correspond au caractère dans la table des caractères utilisées (voir :rfc:`20` pour une table ASCII simple).
-Toutes les tables de caractères placent les chiffres ``0`` à ``9`` à des positions consécutives. En outre, en C une expression a priori booléenne comme ``a < b`` est définie comme ayant la valeur ``1`` si elle est vraie et ``0`` sinon. Il en va de même pour les expressions qui sont combinées en utilisant ``&&`` ou ``||``. Enfin, les fonctions `getchar(3)`_  et `putchar(3)`_ sont des fonctions de la librairie standard qui permettent respectivement de lire (écrire) un caractère sur l'entrée (la sortie) standard.
+Toutes les tables de caractères placent les chiffres ``0`` à ``9`` à des positions consécutives. En outre, en C une expression à priori booléenne comme ``a < b`` est définie comme ayant la valeur ``1`` si elle est vraie et ``0`` sinon. Il en va de même pour les expressions qui sont combinées en utilisant ``&&`` ou ``||``. Enfin, les fonctions `getchar(3)`_  et `putchar(3)`_ sont des fonctions de la librairie standard qui permettent respectivement de lire (écrire) un caractère sur l'entrée (la sortie) standard.
 
 
 .. literalinclude:: src/filterdigit.c
@@ -212,5 +212,3 @@ Toutes les tables de caractères placent les chiffres ``0`` à ``9`` à des posi
 .. [#fmain] Il est également possible d'utiliser dans un programme C une fonction ``main`` qui ne prend pas d'argument. Sa signature sera alors ``int main (void)``.
 
 .. [#fenvp] En pratique, le système d'exploitation passe également les variables d'environnement à la fonction ``main``. Nous verrons plus tard comment ces variables d'environnement sont passées du système au programme et comment celui-ci peut y accéder. Sachez cependant que sous certaines variantes de Unix, et notamment Darwin/MacOS ainsi que sous certaines versions de Windows, le prototype de la fonction ``main`` inclut explicitement ces variables d'environnement (``int main(int argc, char *argv[], char *envp[])``
-
-
