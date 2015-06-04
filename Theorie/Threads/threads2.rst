@@ -380,7 +380,7 @@ En pratique, rares sont les programmes qui coordonnent leurs threads en utilisan
 Coordination par Mutex
 ^^^^^^^^^^^^^^^^^^^^^^
 
-L'algorithme de Peterson et l'utilisation d'instructions atomiques sont des mécanismes de base permettant de résoudre le problème de l'exclusion mutuelle. Ils sont utilisés par des fonctions de la libraire POSIX threads. Il est préférable pour des raisons de portabilité et de prise en compte de spécificités matérielles de certains processeurs d'utiliser les fonctions de la librairie POSIX threads plutôt que de redévelopper soi-même ces primitives de coordination entre threads.
+L'algorithme de Peterson et l'utilisation d'instructions atomiques sont des mécanismes de base permettant de résoudre le problème de l'exclusion mutuelle. Ils sont utilisés par des fonctions de la librairie POSIX threads. Il est préférable pour des raisons de portabilité et de prise en compte de spécificités matérielles de certains processeurs d'utiliser les fonctions de la librairie POSIX threads plutôt que de redévelopper soi-même ces primitives de coordination entre threads.
 
 Le premier mécanisme de coordination entre threads dans la librairie POSIX sont les :term:`mutex`. Un :term:`mutex` (abréviation de `mutual exclusion`) est une structure de données qui permet de contrôler l'accès à une ressource. Un :term:`mutex` qui contrôle une ressource peut se trouver dans deux états :
 

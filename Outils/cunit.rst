@@ -87,7 +87,7 @@ de réaliser les différentes étapes suivantes:
 
 La suite de la section détaille chacune de ces étapes.
 
-Tout d'abord, il est nécessaire d'écrire les tests. Aucune libraire ne peut
+Tout d'abord, il est nécessaire d'écrire les tests. Aucune librairie ne peut
 les écrire pour vous. Toutefois, CUnit vient avec un certain nombre de macros
 permettant de vérifier les propriétés qui nous intéressent. Pour pouvoir
 utiliser ces macros, il est nécessaire d'importer ``CUnit.h``. La table
@@ -125,22 +125,22 @@ Par exemple, les méthodes ci-dessous vérifie chacune certaines propriétés.
             {
               CU_ASSERT(true);
             }
-            
+
             void test_assert_2_not_equal_minus_1(void)
             {
               CU_ASSERT_NOT_EQUAL(2, -1);
             }
-            
+
             void test_string_equals(void)
             {
               CU_ASSERT_STRING_EQUAL("string #1", "string #1");
             }
-            
+
             void test_failure(void)
             {
               CU_ASSERT(false);
             }
-            
+
             void test_string_equals_failure(void)
             {
               CU_ASSERT_STRING_EQUAL("string #1", "string #2");
@@ -175,11 +175,11 @@ code retourné par la méthode. La table suivante décrit les codes d'erreurs.
 ===================== =========================
 Code d'erreur         Définition
 ===================== =========================
-``CUE_SUCCESS``       Aucune erreur             
-``CUE_NOREGISTRY``    Erreur d'initialisation   
-``CUE_NO_SUITENAME``  Nom manquant              
-``CUE_DUP_SUITE``     Nom non unique            
-``CUE_NOMEMORY``      Pas de mémoire disponible 
+``CUE_SUCCESS``       Aucune erreur
+``CUE_NOREGISTRY``    Erreur d'initialisation
+``CUE_NO_SUITENAME``  Nom manquant
+``CUE_DUP_SUITE``     Nom non unique
+``CUE_NOMEMORY``      Pas de mémoire disponible
 ===================== =========================
 
 Par exemple, le code suivant crée une nouvelle suite de test nommée *ma_suite*,
@@ -197,7 +197,7 @@ avec une fonction d'initialisation et une fonction de terminaison.
               CU_cleanup_registry();
               return CU_get_error();
             }
-              
+
 Les tests peuvent ensuite être ajoutés à la suite de test. Pour cela, il faut
 faire appel à la méthode ``CU_add_test(CU_pSuite pSuite, const char*
 strName, CU_TestFunc pTestFunc)``. Comme pour une suite de tests, il est
@@ -213,7 +213,7 @@ Code d'erreur         Définition
 ``CUE_NO_TESTNAME``   Nom manquant
 ``CUE_DUP_TEST``      Nom non unique
 ``CUE_NO_TEST``       Pointeur de fonction ``NULL`` ou invalide
-``CUE_NOMEMORY``      Pas de mémoire disponible 
+``CUE_NOMEMORY``      Pas de mémoire disponible
 ===================== =========================================
 
 Le code suivant ajoute les tests décrits ci-dessus à la suite de test que nous
@@ -230,7 +230,7 @@ avons créé juste avant.
               CU_cleanup_registry();
               return CU_get_error();
             }
-            
+
 Maintenant que le catalogue est initialisé, qu'il contient des suites de tests
 et que les tests ont été ajoutés à ces suites, il nous est possible d'exécuter
 ces tests. Il existe plusieurs moyens d'exécuter les tests CUnit, nous
@@ -252,27 +252,27 @@ Avec le programme illustré ci-dessous, la console nous affiche les messages
 suivants :
 
     .. code-block:: console
-            
-            
+
+
                  CUnit - A unit testing framework for C - Version 2.1-2
                  http://cunit.sourceforge.net/
-            
-            
+
+
             Suite ma_suite, Test Test failure had failures:
                 1. cunit.c:24  - false
             Suite ma_suite, Test Test string equals failure had failures:
                 1. cunit.c:29  - CU_ASSERT_STRING_EQUAL("string #1","string #2")
-            
+
             Run Summary:    Type  Total    Ran Passed Failed Inactive
                           suites      1      1    n/a      0        0
                            tests      5      5      3      2        0
                          asserts      5      5      3      2      n/a
-            
+
             Elapsed time =    0.000 seconds
-            
-            
+
+
               1. cunit.c:24  - false
               2. cunit.c:29  - CU_ASSERT_STRING_EQUAL("string #1","string #2")
-            
+
 Enfin, il est nécessaire de libérer les ressources en appelant
 ``CU_cleanup_registry()``.

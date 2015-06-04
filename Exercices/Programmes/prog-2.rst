@@ -52,14 +52,14 @@
 Mini-Projets
 ------------
 
-#. La libraire `string(3)`_ implémente un grand nombre de fonctions de manipulation des strings qui vous serons utile lors de différents projets de programmation. Pour ce mini-projet vous devriez implémenter les fonctions suivantes:
+#. La librairie `string(3)`_ implémente un grand nombre de fonctions de manipulation des strings qui vous serons utile lors de différents projets de programmation. Pour ce mini-projet vous devriez implémenter les fonctions suivantes:
 
         * `strlen(3)`_
         * `strcat(3)`_
         * `strcasecmp(3)`_
 
    Le mini-projet est à soumettre via iCampus dans la partie Travaux.
-   
+
    Soumettez votre code dans une archive zip ou tar contenant un dossier ``Projet_S2``. Vous devrez créer un fichier ``string.c`` contenant la définition des fonctions et un fichier ``string.h`` avec les `déclarations <http://en.wikipedia.org/wiki/Declaration_(computer_programming)>`_ des fonctions. Vous devez aussi fournir un Makefile (cfr :ref:`outils:make`) qui permettra à votre tuteur de recompiler facilement votre programme en tapant ``make``. Pensez à implémenter quelques tests pour vos fonctions dans la fonction ``main`` et n'incluez pas l'exécutable dans l'archive.
 
 
@@ -71,5 +71,3 @@ Mini-Projets
                 :language: c
 
    Pour certaines opérations, les performances dépendent du type de données utilisé. Modifiez le programme ci-dessous de façon à utiliser un calcul plus compliqué que la simple addition et comparez sur de longues itérations (:math:`10^7` ou plus) les performances de cette opération lorsqu'elle utilise des ``int``, ``long long``, ``double`` ou ``float``. Les performances sont-elles identiques ?
-
-
