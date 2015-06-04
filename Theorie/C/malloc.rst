@@ -182,7 +182,7 @@ La troisième zone est le :term:`segment des données non-initialisées`, réser
     :start-after: ///AAA
     :end-before: ///BBB
 
- Cet extrait de programme contient deux fonctions erronées. La seconde, baptisée ``read(void)`` déclare un tableau local et retourne la somme des éléments de ce tableau sans l'initialiser. En Java, une telle utilisation d'un tableau non-initialisé serait détectée par le compilateur. En C, elle est malheureusement valide (mais fortement découragée évidemment). La première fonction, ``init(void)`` se contente d'initialiser un tableau local mais ne retourne aucun résultat. Cette fonction ne sert a priori à rien puisqu'elle n'a aucun effet sur les variables globales et ne retourne aucun résultat. L'exécution de ces fonctions via le fragment de code ci-dessous donne cependant un résultat interpellant.
+ Cet extrait de programme contient deux fonctions erronées. La seconde, baptisée ``read(void)`` déclare un tableau local et retourne la somme des éléments de ce tableau sans l'initialiser. En Java, une telle utilisation d'un tableau non-initialisé serait détectée par le compilateur. En C, elle est malheureusement valide (mais fortement découragée évidemment). La première fonction, ``init(void)`` se contente d'initialiser un tableau local mais ne retourne aucun résultat. Cette fonction ne sert à priori à rien puisqu'elle n'a aucun effet sur les variables globales et ne retourne aucun résultat. L'exécution de ces fonctions via le fragment de code ci-dessous donne cependant un résultat interpellant.
 
  .. literalinclude:: /C/S3-src/initvar.c
     :encoding: utf-8
