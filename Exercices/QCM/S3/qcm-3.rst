@@ -423,7 +423,7 @@ Considérons le programme `stack.c` présenté dans le syllabus. Cette implémen
          int count = 0;
          while (curr!=NULL) {
              count ++;
- 	     curr = stack->next;
+ 	     curr = curr->next;
          }
          return count;
      }
