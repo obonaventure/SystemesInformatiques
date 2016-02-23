@@ -3,7 +3,7 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
-Questions à choix multiples 
+Questions à choix multiples
 ===========================
 
 :task_id: sinf1252-3
@@ -187,14 +187,14 @@ Considérons le fragment de programme ci-dessous.
    .. positive::
 
 
-      - la variable ``i`` déclarée et initialisée en ``ligne A`` est stockée dans la zone des variable initialisées
+      - la variable ``i`` déclarée et initialisée en ``ligne A`` est stockée dans la zone des variables initialisées
       - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
       - la variable ``j`` déclarée en ``ligne D`` est stockée sur la pile
       - la variable ``k`` déclarée en ``ligne F`` est stockée sur la pile
 
    .. positive::
 
-      - la variable ``i`` déclarée et initialisée en ``ligne A`` est stockée dans la zone des variable initialisées
+      - la variable ``i`` déclarée et initialisée en ``ligne A`` est stockée dans la zone des variables initialisées
       - le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
       - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
       - la variable ``i`` déclarée en ``ligne E`` est stockée sur la pile
@@ -227,7 +227,7 @@ Considérons le fragment de programme ci-dessous.
 
    .. negative::
 
-      - la variable ``i`` déclarée et initialisée en ``ligne A`` est stockée dans la zone des variable initialisées
+      - la variable ``i`` déclarée et initialisée en ``ligne A`` est stockée dans la zone des variables initialisées
       - le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
       - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
       - la variable ``k`` déclarée en ``ligne F`` est stockée sur le tas
@@ -251,7 +251,7 @@ En C, une règle de bonne pratique est d'initialiser toutes les variables avant 
     int* ptr;
     ptr=(int*) malloc(5*sizeof(int));
 
-.. question: varinit
+.. question:: varinit
    :nb_prop: 3
    :nb_pos: 1
 
@@ -380,26 +380,26 @@ Question 5. `malloc(3)`_ et compagnie
 
    .. negative::
 
-  - la fonction `calloc(3)`_ retourne un pointeur de type ``void *``
-  - la fonction `free(3)`_ prend comme argument un pointeur de type ``void *`` qui a été précédemment alloué par la fonction `malloc(3)`_
-  - si l'appel à `malloc(3)`_ a retourné un pointeur différent de ``NULL``, alors la zone mémoire demandée a été allouée et est initialisée
-  - une implémentation possible (non efficace) de `realloc(3)`_ est :
+      - la fonction `calloc(3)`_ retourne un pointeur de type ``void *``
+      - la fonction `free(3)`_ prend comme argument un pointeur de type ``void *`` qui a été précédemment alloué par la fonction `malloc(3)`_
+      - si l'appel à `malloc(3)`_ a retourné un pointeur différent de ``NULL``, alors la zone mémoire demandée a été allouée et est initialisée
+      - une implémentation possible (non efficace) de `realloc(3)`_ est :
 
-    .. code-block:: c
+        .. code-block:: c
 
-       void *realloc(void *ptr, size_t len)
-       {
-         void *r;
-         r = malloc(len);
-         if(r)
-         {
-           return r;
-         }
-         else
-         {
-           return NULL;
-         }
-       }
+           void *realloc(void *ptr, size_t len)
+           {
+             void *r;
+             r = malloc(len);
+             if(r)
+             {
+               return r;
+             }
+             else
+             {
+               return NULL;
+             }
+           }
 
 
 
