@@ -24,7 +24,7 @@ Questions
 
 			Pas possible.
 
-#. Les fonctions ``push`` et ``pop`` définies dans l'exemple de manipulation d'une pile :download:`/../Theorie/C/S3-src/stack.c` utilisent une pile qui est définie par un pointeur qui est une variable locale. Est-il possible de réécrire ces fonctions de façon à ce qu'elles prennent comme argument un pointeur vers la pile ? Leurs prototypes deviendraient :
+#. Les fonctions ``push`` et ``pop`` définies dans l'exemple de manipulation d'une pile :download:`/../Theorie/C/S3-src/stack.c` utilisent une pile qui est définie par un pointeur qui est une variable globale. Est-il possible de réécrire ces fonctions de façon à ce qu'elles prennent comme argument un pointeur vers la pile ? Leurs prototypes deviendraient :
 
    - ``void push(struct node_t *, struct fraction_t *);``
    - ``struct fraction_t * pop(struct node_t *);``
@@ -123,4 +123,3 @@ Implémentez ces fonctions sans jamais utiliser la notation des tableaux en C (`
     :language: c
     :start-after: ///AAA
     :end-before: ///BBB
-
