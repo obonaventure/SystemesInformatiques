@@ -115,7 +115,7 @@ Unix ayant été initialement développé pour manipuler des documents contenant
  - `wc(1)`_ : utilitaire permettant de compter le nombre de caractères et de lignes d'un fichier
  - `grep(1)`_ : utilitaire permettant notamment d'extraire d'un fichier texte les lignes qui contiennent ou ne contiennent pas une chaîne de caractères passée en argument
  - `sort(1)`_ : utilitaire permettant de trier les lignes d'un fichier texte
- - `uniq(1)`_ : utilitaire permettant de filtrer le contenu d'un fichier texte afin d'en extraire les lignes qui sont dupliquées
+ - `uniq(1)`_ : utilitaire permettant de filtrer le contenu d'un fichier texte afin d'en extraire les lignes qui sont uniques ou dupliquées (requiert que le fichier d'entrée soit trié, car ne compare que les lignes consécutives)
  - `more(1)`_ : utilitaire permettant d'afficher page par page un fichier texte sur la sortie standard (`less(1)`_  est une variante courante de `more(1)`_)
  - `gzip(1)`_ et `gunzip(1)`_ : utilitaires permettant respectivement de compresser et de décompresser des fichiers. Les fichiers compressés prennent moins de place sur le disque que les fichiers standard et ont par convention un nom qui se termine par ``.gz``.
  - `tar(1)`_ : utilitaire permettant de regrouper plusieurs fichiers dans une archive. Souvent utilisé en combinaison avec `gzip(1)`_ pour réaliser des backups ou distribuer des logiciels.
