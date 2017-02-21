@@ -57,7 +57,7 @@ Le rôle principal du :term:`MMU` est de traduire toute adresse virtuelle en une
    :align: center
    :scale: 60
 
-   :term:`MMU` et :term:`mémoire virtuelle`
+   `MMU` et `mémoire virtuelle`
 
 
 
@@ -73,7 +73,7 @@ Le dernier avantage de l'utilisation de la mémoire virtuelle est qu'il est poss
    :align: center
    :scale: 60
 
-   Organisation de la :term:`mémoire virtuelle`
+   Organisation de la `mémoire virtuelle`
 
 Cette possibilité de combiner la mémoire RAM et les dispositifs de stockage offre encore plus de possibilités. Comme nous le verrons, grâce à la mémoire virtuelle, un processus pourra accéder à des fichiers via des pointeurs et des écriture/lectures en mémoire. Le chargement d'un programme pourra s'effectuer en passant par la mémoire virtuelle de façon à charger uniquement les parties du programme qui sont nécessaires en mémoire. Nous verrons également qu'il existe plusieurs appels systèmes qui permettent à des processus de contrôler leur utilisation de la mémoire virtuelle.
 

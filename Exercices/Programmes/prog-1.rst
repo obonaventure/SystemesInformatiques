@@ -176,7 +176,7 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 --------------------
 
 
-#.  Faites l'exercice sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252-new/commandetest>`_ sur la commande `test(1)`_.
+#.  Faites l'exercice sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/commandetest>`_ sur la commande `test(1)`_.
 
     INGInious est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécutés sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
 

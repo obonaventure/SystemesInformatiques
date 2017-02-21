@@ -13,7 +13,7 @@ Exercices
 
 #. Avec les threads POSIX, comment peut-on passer plusieurs arguments à la fonction démarrée par `pthread_create(3)`_ ? Ecrivez un petit exemple en C qui permet de passer un entier et un caractère à cette fonction.
 
-#. Ecrivez un code qui permet de récupérer un tableau d'entiers d'un thread. Exercice disponible sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252-new/threads_1>`_.
+#. Ecrivez un code qui permet de récupérer un tableau d'entiers d'un thread. Exercice disponible sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/threads_1>`_.
 
 #. Essayez de lancer un grand nombre de threads d'exécution sur votre machine. Quel est le nombre maximum de threads que `pthread_create(3)`_ vous autorise à lancer ?
 
@@ -35,7 +35,7 @@ Exercices
 
    Exécutez ce programme (:download:`/Programmes/src/pthread-test.c`) et observez le résultat qu'il affiche à l'écran. Pouvez-vous expliquer le comportement de ce programme ?
 
-#. Résolvez des sudokus. Exercice disponible sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252-new/sudoku>`_.
+#. Résolvez des sudokus. Exercice disponible sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/sudoku>`_.
 
 Mini-projet: Mesure de performance
 ==================================

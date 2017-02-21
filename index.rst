@@ -7,17 +7,6 @@
 Systèmes informatiques
 ######################
 
-.. only:: html
-
- .. raw:: html
-
-    <span class='st_sharethis' displayText='ShareThis'></span>
-    <span class='st_googleplus' displayText='Google +'></span>
-    <span class='st_facebook' displayText='Facebook'></span>
-    <span class='st_twitter' displayText='Tweet'></span>
-    <span class='st_linkedin' displayText='LinkedIn'></span>
-    <span class='st_pinterest' displayText='Pinterest'></span>
-    <span class='st_email' displayText='Email'></span>
 
 .. only:: html
 

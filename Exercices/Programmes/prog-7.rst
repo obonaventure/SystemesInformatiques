@@ -110,4 +110,4 @@ Exercices
 
 #. Les mutex et les sémaphores peuvent être utilisés pour résoudre des problèmes d'exclusion mutuelle. Le programme :download:`/QCM/S7/src/pthread-mutex-perf.c` utilise des mutex. Modifiez-le pour utiliser des sémaphores à la place et comparez le coût en termes de performance entre les mutex et les sémaphores.
 
-#. Faites l'exercice sur les producteurs/consommateurs sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252-new/producteur-consommateur>`_.
+#. Faites l'exercice sur les producteurs/consommateurs sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/producteur-consommateur>`_.

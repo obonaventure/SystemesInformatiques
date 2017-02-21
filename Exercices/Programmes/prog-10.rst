@@ -76,5 +76,5 @@ Exercices
 
    Comment modifier ce programme pour gèrer la terminaison correcte des processus lors de la pression sur ``Ctrl-C``. Pour ce faire, vous devez modifier le programme de façon à ce qu'il libère toutes les ressources allouées avant de se terminer. Ceci peut se faire en traitant le signal envoyé au processus par le shell lorsque l'utilisateur presse ``Ctrl-C``.
 
-#. Faites les deux exercices INGInious sur `les signaux <https://inginious.info.ucl.ac.be/course/LSINF1252-new/signaux>`_ et `le sleep <https://inginious.info.ucl.ac.be/course/LSINF1252-new/sleep>`_.
+#. Faites les deux exercices INGInious sur `les signaux <https://inginious.info.ucl.ac.be/course/LSINF1252/signaux>`_ et `le sleep <https://inginious.info.ucl.ac.be/course/LSINF1252/sleep>`_.
 

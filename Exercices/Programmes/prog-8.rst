@@ -75,5 +75,5 @@ Consultez les pages de manuel pour déterminer comment le système d'exploitatio
 
 14. Le répertoire ``/proc`` contient une image de la table des processus maintenue par le :term:`kernel` et d'autres structures de données maintenues par le :term:`kernel`. Compilez le programme :download:`/Programmes/src/fork-pthread.c` qui lance un processus fils puis crée un thread à l'intérieur du processus père. Lancez ce programme en background via `bash(1)`_ et observez les entrées relatives au père, au fils et au thread créé par le processus père dans ``/proc``.
 
-15. Faites l'exercice sur les shell sur `IngiNIOUS <https://inginious.info.ucl.ac.be/course/LSINF1252-new/shell>`_
+15. Faites l'exercice sur les shell sur `IngiNIOUS <https://inginious.info.ucl.ac.be/course/LSINF1252/shell>`_
 

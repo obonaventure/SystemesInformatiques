@@ -95,7 +95,7 @@ Exercices
 
      Les performances décroissent car il y a plus d'appels systèmes qui sont effectués. sync force l'écriture et bypasse le buffer. Il est utile de mentionner l'existence de ce buffer
 
-15. Effectuez l'exercice sur la manipulation de fichiers sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252-new/fichiers>`_.
+15. Effectuez l'exercice sur la manipulation de fichiers sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/fichiers>`_.
 
 .. 17. `tee(1)`_ est un utilitaire qui permet de recopier son entrée standard vers un ou plusieurs fichiers et également vers sa sortie standard. Il peut être utile pour par exemple inspecter des données échangées entre deux processus à travers un :term:`pipe`. Quels sont les appels systèmes exécutés par `tee(1)`_ lors de l'exécution de la commande ``cat /tmp/t | tee /tmp/tee.out | grep "sinf1252" ``
 

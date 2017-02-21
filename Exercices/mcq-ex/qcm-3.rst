@@ -204,7 +204,6 @@ Considérons le fragment de programme ci-dessous.
    .. negative::
 
 
-
       - le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables initialisées
       - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
       - la variable ``j`` déclarée en ``ligne D`` est stockée sur la pile
@@ -263,11 +262,12 @@ En C, une règle de bonne pratique est d'initialiser toutes les variables avant 
       - la variable ``i`` est initialisée à  la valeur ``0``
       - le pointeur ``string`` est initialisé à la valeur ``NULL``
       - ``c[2]`` contient le caractère ``'\0'``
-      - Après exécution de ``malloc``, le contenu de l'adresse ``ptr+1`` est indéterminé
+      -  Après exécution de ``malloc``, le contenu de l'adresse ``ptr+1`` est indéterminé
 
       .. comment:: Pour des raisons d'efficacité, `malloc(3)`_ n'initialise pas à zéro les zones mémoires allouées, contrairement à `calloc(3)`_
 
    .. positive::
+
 
       - la variable ``j`` est initialisée à  la valeur ``0``
       - le pointeur ``v`` est initialisé à la valeur ``NULL``
@@ -284,9 +284,10 @@ En C, une règle de bonne pratique est d'initialiser toutes les variables avant 
       - ``c[2]`` contient le caractère espace
       - Après exécution de ``malloc``, l'adresse ``ptr+1`` contient le caractère ``'\0'``
 
-    .. comment:: `malloc(3)`_ n'initialise pas la zone mémoire allouée. ``string`` contient ``NULL`` et ``c[2]`` le caractère ``'\0'``
+      .. comment:: `malloc(3)`_ n'initialise pas la zone mémoire allouée. ``string`` contient ``NULL`` et ``c[2]`` le caractère ``'\0'``
 
    .. negative::
+
 
       - la variable ``f`` est initialisée à  la valeur ``0.0``
       - le pointeur ``v`` n'a aucune valeur et n'est pas utilisable
@@ -294,6 +295,7 @@ En C, une règle de bonne pratique est d'initialiser toutes les variables avant 
       - Après exécution de ``malloc``, l'adresse ``ptr`` contient le caractère ``'\0'``
 
    .. negative::
+
 
       - la variable ``f`` est initialisée à  la valeur ``0.0``
       - le pointeur ``string`` est initialisé à ``NULL``
@@ -303,6 +305,7 @@ En C, une règle de bonne pratique est d'initialiser toutes les variables avant 
       .. comment:: ``c[10]`` est hors du tableau ``c``. `malloc(3)`_ n'initialise pas la zone mémoire allouée.
 
    .. negative::
+
 
       - la variable ``f`` est initialisée à  la valeur ``0.0``
       - le pointeur ``v`` est initialisé à ``NULL``
@@ -315,11 +318,13 @@ En C, une règle de bonne pratique est d'initialiser toutes les variables avant 
 Question 5. `malloc(3)`_ et compagnie
 -------------------------------------
 
+Cette question porte sur les fonctions `malloc(3)`_ et `free(3)`_ qui sont importantes pour la manipulation de la mémoire sur le tas.
+
 .. question:: malloc
    :nb_prop: 3
    :nb_pos: 1
 
-   Les fonctions `malloc(3)`_ et `free(3)`_ sont importantes pour la manipulation de la mémoire sur le tas. Parmi les groupes d'affirmation suivants, un seul est correct. Lequel ?
+   Parmi les groupes d'affirmation suivants, un seul est correct. Lequel ?
 
    .. positive::
 
@@ -327,7 +332,7 @@ Question 5. `malloc(3)`_ et compagnie
       - la fonction `malloc(3)`_ retourne un pointeur de type ``void *``
       - la fonction `free(3)`_ prend comme argument un pointeur de type ``void *`` qui a été précédemment alloué par la fonction `malloc(3)`_
       - si l'appel à `calloc(3)`_ a retourné un pointeur différent de ``NULL``, alors la zone mémoire demandée a été allouée et est initialisée à zéro
-      - une implémentation possible (non efficace) de `realloc(3)`_ est :
+      - une implémentation possible (non efficace) de `realloc(3)`_ est 
 
         .. code-block:: c
 
@@ -351,7 +356,7 @@ Question 5. `malloc(3)`_ et compagnie
       - la fonction `malloc(3)`_ retourne un pointeur de type ``void *``
       - la fonction `free(3)`_ prend comme argument n'importe quel type de pointeur
       - si l'appel à `malloc(3)`_ a retourné un pointeur différent de ``NULL``, alors la zone mémoire demandée a été allouée mais n'est pas initialisée à zéro
-      - une implémentation possible (non efficace) de `realloc(3)`_ est :
+      - une implémentation possible (non efficace) de `realloc(3)`_ est
 
         .. code-block:: c
 
@@ -369,7 +374,7 @@ Question 5. `malloc(3)`_ et compagnie
       - la fonction `calloc(3)`_ retourne un pointeur de type ``void *``
       - la fonction `free(3)`_ prend comme argument un pointeur de type ``void *`` qui a été précédemment alloué par la fonction `malloc(3)`_
       - si l'appel à `malloc(3)`_ a retourné un pointeur différent de ``NULL``, alors la zone mémoire demandée a été allouée et est initialisée
-      - une implémentation possible (non efficace) de `realloc(3)`_ est :
+      - une implémentation possible (non efficace) de `realloc(3)`_ est
 
         .. code-block:: c
 
@@ -378,12 +383,13 @@ Question 5. `malloc(3)`_ et compagnie
              return malloc(len);
            }
 
+
    .. negative::
 
       - la fonction `calloc(3)`_ retourne un pointeur de type ``void *``
       - la fonction `free(3)`_ prend comme argument un pointeur de type ``void *`` qui a été précédemment alloué par la fonction `malloc(3)`_
       - si l'appel à `malloc(3)`_ a retourné un pointeur différent de ``NULL``, alors la zone mémoire demandée a été allouée et est initialisée
-      - une implémentation possible (non efficace) de `realloc(3)`_ est :
+      - une implémentation possible (non efficace) de `realloc(3)`_ est
 
         .. code-block:: c
 

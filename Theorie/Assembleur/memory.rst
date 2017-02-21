@@ -98,10 +98,10 @@ Pour les opérations d'écriture, la situation est plus compliquée. Si le proce
 
 .. C'est particulièrement important lorsque des dispositifs tels qu'une carte réseau ou un controleur de disque dur peuvent aller lire des données en mémoire. Ces dispositifs doivent trouver en mémoire :term:`RAM` la dernière donnée écrite par le processeur
 
-.. _ia32:
+.. _ia32_section:
 
-Etude de cas : Architecture [IA32]_
-===================================
+Etude de cas : Architecture IA32
+================================
 
 Pour comprendre le fonctionnement d'un microprocesseur, la solution la plus efficace est de considérer une architecture en particulier et de voir comment fonctionnent les processeurs qui l'implémentent. Dans cette section, nous analysons brièvement le fonctionnement des processeurs [#fintel]_ de la famille [IA32]_.
 

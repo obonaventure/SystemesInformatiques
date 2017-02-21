@@ -428,13 +428,13 @@ Pour comprendre ces deux techniques, regardons comment l'entier 16 bits ``0b1111
    :align: center
    :scale: 40
 
-   Ecriture d'un entier 32 bits en mémoire :term:`big endian`
+   Ecriture d'un entier 32 bits en mémoire en `big endian`
 
 .. figure:: /Fichiers/fig/500px-Little-Endian.png
    :align: center
    :scale: 40
 
-   Ecriture d'un entier 32 bits en mémoire :term:`little endian`
+   Ecriture d'un entier 32 bits en mémoire en `little endian`
 
 
 Pour les nombres en virgule flottante, ce problème ne se pose heureusement pas car tous les processeurs actuels utilisent la même norme pour représenter les nombres en virgule flottant en mémoire.

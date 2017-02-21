@@ -11,7 +11,7 @@ Questions à choix multiples
 
 
 Question 1. Structure et allocation de mémoire avec `malloc(3)`_
----------------------------------------------------------------
+----------------------------------------------------------------
 
 Dans le langage C, l'allocation de zone mémoire se fait souvent avec `malloc(3)`_ 
 Pour une structure chainée définie comme suit : 

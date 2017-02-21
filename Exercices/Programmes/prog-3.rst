@@ -113,7 +113,7 @@ Questions
 
 			L'adresse de ``global`` ne change pas, car elle fait partie du segment texte du programme. Les autres sont soit sur la pile (stack), ou sur le tas (heap).
 
-#. Faites l'exercice sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252-new/linked_lists_1>`_
+#. Faites l'exercice sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/linked_lists_1>`_
 
 #. Vous travaillez sur un programme qui doit manipuler des vecteurs. Afin de pouvoir supporter des vecteurs de taille quelconque, vous décidez de réimplémenter ces vecteurs vous même en utilisant des pointeurs. Votre programme définit la structure ``struct vector_t`` et les fonctions ci-dessous.
 Implémentez ces fonctions sans jamais utiliser la notation des tableaux en C (``[`` et ``]``).

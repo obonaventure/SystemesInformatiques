@@ -109,9 +109,6 @@ Extraction de code assembleur
 Pour arrêter la console de gdb, tappez ``quit``.
 
 
-
-
-
 Illustration avec des exemples
 ------------------------------
 
@@ -137,6 +134,7 @@ Premier programme
 		Il est interressant de noter une particularité du language C par rapport à java : une variable déclaré n'est pas initialisé à 0 par défault, elle reprend juste la valeur de la mémoire avant son affectation. ``print i`` et ``print res`` vous donnerons donc des résultats aléatoires.
 	
 	Puisque le problème vient du calcul arithmetique, placez un break sur cette ligne pour pouvoir observer à chaque itération les variables. ``break 9`` puis ``commands`` qui permet d'automatiser des commandes. Nous rajouterons comme commandes :
+
 		* ``echo i : ``
 		* ``print i``
 		* ``echo b : ``
@@ -145,7 +143,7 @@ Premier programme
 		* ``print a*5 -10``
 		* ``echo denominateur : ``
 		* ``print b-i``
-		* et enfin ``end`` pour terminer la liste de commande.
+		* et enfin ``end`` pour terminer la liste de commandeq.
 	
 	Il ne reste plus qu'à avancer avec ``continue`` pour aller de breakpoint en breakpoint et d'observer les variables pour comprendre le problème. On va pouvoir deviner que le problème vient d'un dénominateur nul. Pour résoudre ce problème, il faut passer une valeur plus grande que 6 à calc lors de son appel depuis la fonction main. ``list main`` suivi de plusieurs ``list`` permet de visualiser la main. On peut repérer l'appel de la fonction calc à la ligne 18.
  

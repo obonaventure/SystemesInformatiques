@@ -75,4 +75,4 @@ Exercices
 
 
 
-#. Trois exercices se trouvent sur INGInious. Un exercice sur la `Comparaison de Fractions <https://inginious.info.ucl.ac.be/course/LSINF1252-new/fractions>`_, un nouvel exercice sur les `les chaînées <https://inginious.info.ucl.ac.be/course/LSINF1252-new/linked_lists_2>`_ et finalement l'implémentation de `strsep <https://inginious.info.ucl.ac.be/course/LSINF1252-new/strsep>`_.
+#. Trois exercices se trouvent sur INGInious. Un exercice sur la `Comparaison de Fractions <https://inginious.info.ucl.ac.be/course/LSINF1252/fractions>`_, un nouvel exercice sur les `les chaînées <https://inginious.info.ucl.ac.be/course/LSINF1252/linked_lists_2>`_ et finalement l'implémentation de `strsep <https://inginious.info.ucl.ac.be/course/LSINF1252/strsep>`_.

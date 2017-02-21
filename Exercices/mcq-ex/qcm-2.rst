@@ -646,27 +646,27 @@ Considérons le fragment de code ci-dessous.
 
    .. positive::
 
-      - l'expression ``ptr2-ptr1`` vaut ``2``
+      l'expression ``ptr2-ptr1`` vaut ``2``
 
    .. positive::
 
-      - les expressions ``*(ptr1-1)`` et ``*(ptr2-3)`` retournent toutes les deux la même valeur, ``10``
+      les expressions ``*(ptr1-1)`` et ``*(ptr2-3)`` retournent toutes les deux la même valeur, ``10``
 
    .. negative::
 
-      - l'expression ``ptr2-ptr1`` vaut ``20``
+      l'expression ``ptr2-ptr1`` vaut ``20``
 
       .. comment:: ``ptr2`` et ``ptr1`` sont des pointeurs vers des entiers. L'arithmétique des pointeurs s'applique pour cette opération. Vu leur initialisation, la différence vaut ``2``.
 
    .. negative::
 
-      - les expressions ``*(ptr1-1)`` et ``*(ptr2-3)`` retournent toutes les deux la même valeur, ``1``
+      les expressions ``*(ptr1-1)`` et ``*(ptr2-3)`` retournent toutes les deux la même valeur, ``1``
 
       .. comment:: L'expression ``*(ptr1-1)`` équivaut à ``tab[0]`` et ``*(ptr2-3)`` à ``tab[0]``. Cet élément du tableau contient la valeur ``10``.
 
    .. negative::
 
-      - l'expression ``*(ptr2-ptr1)`` retourne la valeur ``20``
+      l'expression ``*(ptr2-ptr1)`` retourne la valeur ``20``
 
       .. comment:: ``ptr2`` et ``ptr1`` sont des pointeurs vers des entiers. L'arithmétique des pointeurs s'applique pour cette opération. Vu leur initialisation, la différence vaut ``2``. L'expression ``*(2)`` correspond à une donnée à une adresse dans le bas de la mémoire qui n'est normalement pas accessible au programme.
 
@@ -771,7 +771,7 @@ Dans un programme de manipulation de fractions, on définit la structure suivant
             int denum;
        };
 
-   On veut pouvoir facilement écrire une fonction de type ``void`` qui remplace la valeur stockée dans la fraction par le résultat de l'addition de la fraction et un nombre entier passé en fragment. La spécification de cette fonction pourrait être :
+On veut pouvoir facilement écrire une fonction de type ``void`` qui remplace la valeur stockée dans la fraction par le résultat de l'addition de la fraction et un nombre entier passé en fragment. La spécification de cette fonction pourrait être :
 
  .. code-block:: c
 
