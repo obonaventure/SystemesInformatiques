@@ -3,7 +3,7 @@
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
 
-Questions à choix multiples 
+Questions à choix multiples
 ===========================
 
 :task_id: sinf1252-5
@@ -146,7 +146,7 @@ Lors de son exécution, ce programme affiche ``2 4 3 8`` sur sa sortie standard.
 
       .. comment::
 
-            Cette ligne affiche ``4 3 4 3``
+            Cette ligne affiche ``2 2 4 ???``. La dernière expression ``*(ptr+*(ptr++))`` accède une zone de mémoire en dehors du tableau et dont la valeur est inconnue (notez que la valeur de ``ptr++`` est la valeur de ptr AVANT l'incrémentation, contrairement à ``++ptr``).
 
    .. negative::
 
