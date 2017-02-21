@@ -121,8 +121,6 @@ Exercices
 
 #. L'outil ``helgrind`` (décrit dans la section :ref:`theorie:helgrind-ref`) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`/Programmes/src/pthread-philo.c` et analysez ce qu'il affiche.
 
-#. Faites l'exercice sur les vecteurs thread-safe sur `pythia <http://pythia.info.ucl.ac.be/module/13/problem/45>`_.
-
 
 .. exemple et tutoriel intéressant
 .. https://computing.llnl.gov/tutorials/pthreads/
