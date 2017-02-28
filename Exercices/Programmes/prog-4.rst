@@ -35,7 +35,20 @@ Exercices
 		    { b=0; }
 
 
-#. En utilisant l'assembleur [IA32]_, écrivez les instructions assembleur qui permettent d'implémenter une fonction qui ne prend aucun argument et retourne toujours l'entier ``1``.
+#. Avec le compilateur gcc, il est aussi possible de compiler du code assembleur directement dans une programme C. Cette fonctionnalité est intéressante si vous voulez tester de petites fonctions écrites en langage assembleur. Ainsi, une fonction baptisée ``rien`` et qui ne fait absolument rien peut s'écrire comme suit:
+
+
+  .. code-block:: c
+
+     extern void rien();  // indique au compilateur que la fonction est externe
+
+     __asm__(
+     "rien:\n"
+     "   ret\n"
+     );
+
+
+  En utilisant l'assembleur [IA32]_, écrivez les instructions assembleur qui permettent d'implémenter une fonction qui ne prend aucun argument et retourne toujours l'entier ``1``.
 
 	.. only:: staff
 
@@ -45,6 +58,27 @@ Exercices
 
 				movl $1,%eax
 				ret
+
+
+  De la même façon, écrivez la fonction ``add`` qui prend deux arguments de type ``int`` et retourne la somme de ces deux arguments.
+
+        .. only:: staff
+
+                .. note::
+
+		       .. code-block:: c
+
+		          /* add(int a, int b) */
+			  __asm__(
+			  "add:\n"
+			  "   subl $8, %esp\n"
+			  "   movl 16(%esp), %eax\n"
+			  "   movl 12(%esp), %ebx\n"
+			  "   movl %ebx, %eax\n"
+			  "   addl $8, %esp\n"
+			  "   ret\n"
+        		  );
+
 
 #. Considérons une fraction de la mémoire représentée dans le tableau ci-dessous.
 
@@ -75,4 +109,7 @@ Exercices
 
 
 
-#. Trois exercices se trouvent sur INGInious. Un exercice sur la `Comparaison de Fractions <https://inginious.info.ucl.ac.be/course/LSINF1252/fractions>`_, un nouvel exercice sur les `les chaînées <https://inginious.info.ucl.ac.be/course/LSINF1252/linked_lists_2>`_ et finalement l'implémentation de `strsep <https://inginious.info.ucl.ac.be/course/LSINF1252/strsep>`_.
+#. Trois exercices se trouvent sur INGInious. Un exercice sur la `Comparaison de Fractions <https://inginious.info.ucl.ac.be/course/LSINF1252/fractions>`_, un nouvel exercice sur les `les listes chaînées <https://inginious.info.ucl.ac.be/course/LSINF1252/linked_lists_2>`_ et finalement l'implémentation de `strsep <https://inginious.info.ucl.ac.be/course/LSINF1252/strsep>`_.
+
+#. Vous trouverez également sur INGInious plusieurs exemples de questions typiques sur l'assembleur à l'examen. Ces questions portent sur la traduction d'un code assembleur dans son équivalent en C. `Première question <https://inginious.info.ucl.ac.be/course/LSINF1252/asm1>`_, `deuxième question <https://inginious.info.ucl.ac.be/course/LSINF1252/asm2>`_, `troisième question <https://inginious.info.ucl.ac.be/course/LSINF1252/asm3>`_ et `quatrième question <https://inginious.info.ucl.ac.be/course/LSINF1252/asm4>`_ .
+
