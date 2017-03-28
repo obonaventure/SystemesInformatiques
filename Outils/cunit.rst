@@ -21,16 +21,17 @@ aider dans l'installation de celle-ci.
 
 La première étape consiste à récupérer les sources de CUnit sur
 `<http://sourceforge.net/projects/cunit/files/>`_. Les sources se trouvent
-dans une archive ``CUnit-*-src.tar.bz2`` et la dernière version devrait se
-nommer ``CUnit-2.1.2-src.tar.bz2``. Une fois l'archive téléchargée, ouvrez un
+dans une archive ``CUnit-*.tar.bz2`` et la dernière version devrait se
+nommer ``CUnit-2.1-3.tar.bz2``. Une fois l'archive téléchargée, ouvrez un
 terminal et placez-vous dans le dossier où se trouve celle-ci. Exécutez:
 
     .. code-block:: console
 
-            $ tar xjvf CUnit-2.1.2-src.tar.bz2
-            $ cd CUnit-2.1-2
+            $ tar -xvf CUnit-2.1-3.tar.bz2
+            $ cd CUnit-2.1-3
+            $ autoreconf --install
             $ ./configure --prefix=$HOME/local
-            $ make
+            $ make -j4
             $ make install
 
 Une fois ces commandes exécutées, la librairie ainsi que ses fichiers d'entête
