@@ -118,7 +118,7 @@ Questions
 - ``break string.c:9`` met un point d'arrêt à la ligne 9 du fichier string.c
 - ``next`` permet d'executer la ligne courante et de s'arrêter à la ligne suivante
 - ``print var`` affiche la valeur de la variable ``var``
-- ``backtrace`` affiche la pile d'appel des fonctions courante
+- ``backtrace`` affiche la pile d'appel des fonctions courantes
 - ``quit`` quitte gdb
 
 	.. only:: staff
