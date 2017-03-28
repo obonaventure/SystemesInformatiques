@@ -113,7 +113,21 @@ Questions
 
 			L'adresse de ``global`` ne change pas, car elle fait partie du segment texte du programme. Les autres sont soit sur la pile (stack), ou sur le tas (heap).
 
-#. Faites l'exercice sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/linked_lists_1>`_
+#. Un étudiant a fait l'implémentation d'un sous-ensemble des fonctions définies dans string.h, mais il rencontre quelques problèmes avec son code :download:`/Programmes/src/string.c`. Utilisez `gdb <http://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>` pour corriger son code. Utilisez le flag ``-g`` de ``gcc`` pour ajouter les informations de debug dans votre executable. Pour rappel, voici quelques commandes importantes de `gdb <http://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`:
+- ``run [ARGS]`` permet de lancer l'execution du programme avec les arguments ARGS si spécifiés.
+- ``break string.c:9`` met un point d'arrêt à la ligne 9 du fichier string.c
+- ``next`` permet d'executer la ligne courante et de s'arrêter à la ligne suivante
+- ``print var`` affiche la valeur de la variable ``var``
+- ``backtrace`` affiche la pile d'appel des fonctions courantes
+- ``quit`` quitte gdb
+
+	.. only:: staff
+
+		.. note::
+
+		4 erreurs: strlen ne check pas NULL, strlen appelé à chaque itération de strcat, argc pas vérifié, concat_2 pas initialisé
+
+#. Faites l'exercice sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/linked_lists_1>`
 
 #. Vous travaillez sur un programme qui doit manipuler des vecteurs. Afin de pouvoir supporter des vecteurs de taille quelconque, vous décidez de réimplémenter ces vecteurs vous même en utilisant des pointeurs. Votre programme définit la structure ``struct vector_t`` et les fonctions ci-dessous.
 Implémentez ces fonctions sans jamais utiliser la notation des tableaux en C (``[`` et ``]``).
