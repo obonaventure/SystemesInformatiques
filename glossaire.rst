@@ -195,7 +195,7 @@ Glossaire
 
     text
     segment text
-      Zone de mémoire contenant les instructions qui sont exécutées par le micro-processeur. 
+      Zone de mémoire contenant les instructions qui sont exécutées par le micro-processeur.
 
     segment des données initialisées
       Zone de mémoire contenant l'ensemble des variables globales explicitement initialisées ainsi que les constantes et chaînes de caractères utilisée par le programme.
@@ -285,7 +285,7 @@ Glossaire
        Registre spécial du processeur qui contient en permanence l'adresse de l'instruction en cours d'exécution. Le contenu de ce registre est incrémenté après chaque instruction et modifié par les instructions de saut.
 
     mode d'adressage
-       Spécifie la façon dont est calculée l'adresse mémoire effective d'un opérande à partir de valeurs contenues dans des registres et de constantes contenues dans l'instrucion ou ailleurs dans la machine. 
+       Spécifie la façon dont est calculée l'adresse mémoire effective d'un opérande à partir de valeurs contenues dans des registres et de constantes contenues dans l'instrucion ou ailleurs dans la machine.
 
     accumulateur
        Registre utilisé dans les premiers processeurs comme destination pour la plupart des opérations arithmétiques et logiques. Sur l'architecture [IA32]_, le registre ``%eax`` est le successeur de cet accumulateur.
@@ -384,19 +384,19 @@ Glossaire
        Primitive de synchronisation entre threads basé sur le principe d'exclusion mutuelle. Quand plusieurs threads veulent accéder à la même ressource ou section critique, un mutex peut protéger cette ressource ou section critique et assurer qu'un seul thread ne puisse y accèder à tout moment.
 
     problème des philosophes
-       à compléter
+       Problème sur le partage de ressources en informatique. Il concerne l'ordonnancement des processus et l'allocation des ressouces à ces derniers.
 
     appel système
        Permet à un programme de demander l'exécution d'un service fourni par le noyau du système d'exploitation.
 
     appel système bloquant
-       à compléter
+       Un appel sysème bloquant mets un processus en attente (état W) et ne le réveillera (état R) que lorsque cet appel système sera prêt ) retourner
 
     sémaphore
        Mécanisme de synchronisation entre threads inventé par Edsger Dijkstra pour limiter le nombre de threads qui peuvent accèder de manière concurrente à une ressource partagée.
 
     problèmes des readers-writers
-       à compléter
+       Modélise un problème qui survient lorsque des threads (readers et writers) doivent accèder à une base de données.
 
     inode
        Structure de données contenant des informations (méta-données) relatives à un fichier sur certains systèmes de fichiers (Unix par exemple). Ces informations comportent notamment les permissions associées au fichier, l'utilisateur propriétaire du fichier, le groupe du propriétaire du fichier.
@@ -406,8 +406,6 @@ Glossaire
     segment de données
        à compléter
 
-    problème des readers-writers
-       à compléter
 
     thread-safe
        Un programme est considéré thread-safe s'il fonctionne correctement lors d'une éxecution simultannée par plusieurs threads.En particulier, le programme doit satisfaire le besoin pour plusieurs threads d'accéder à la même donnée partagée entre eux et le besoin pour une donnée partagée entre threads d'être accessible par un seul thread à un moment donné. En C, on utilise notamment les :term:`mutex` ou d'autres types de locks pour résoudre ce genre de problème.
@@ -418,21 +416,21 @@ Glossaire
 
     static library
     librairie statique
-       à compléter
+       Librairie destinée à être copiée dans les programmes qui l'utilisent lors de la constructions de ces derniers.
 
     shared library
     librairie dynamique
     librairie partagée
-       à compléter
+       Librairie destinée à être associée aux programmes où ils sont exécutés. Avec une librairie dynamique, la même copie de la librairie peut être utilisée par plusieurs programmes.
 
     kernel
        à compléter
 
     mode utilisateur
-       à compléter
+       En mode utilisateur, le code exécuté n'a pas la possibilité d'accéder directement au matériel ou à la mémoire. Il faut passer par les API du système pour accéder le matériel ou la mémoire. Grâce à cette protection, qui est une sorte d'isolation, les crashs en mode utilisateur sont toujours récupérable.
 
     mode protégé
-       à compléter
+       En mode protégé, le code exécuté a un accès complet au matériel sous-jacent. Il peut exécuter n'importe quelle instruction CPU et référencer n'importe quelle adresse mémoire.
 
     processus père
        Processus ayant lancé un autre processus (:term:`processus fils`) suite à un appel à la fonction fork().
@@ -448,10 +446,10 @@ Glossaire
 
     filesystem
     système de fichiers
-       à compléter
+       Facon de stocker les informations et de les organiser dans des fichiers sur ce que l'on appelle des mémoires secondaires (exemple : disque dur, SSD, CD-ROM, USB,...).
 
     descripteur de fichier
-       à compléter
+       Clés abstraite pour accéder à un fichier.
 
     répertoire
        à compléter
