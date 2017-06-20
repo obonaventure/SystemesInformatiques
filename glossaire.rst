@@ -195,13 +195,13 @@ Glossaire
 
     text
     segment text
-       à compléter
+      Zone de mémoire contenant les instructions qui sont exécutées par le micro-processeur. 
 
     segment des données initialisées
-       à compléter
+      Zone de mémoire contenant l'ensemble des variables globales explicitement initialisées ainsi que les constantes et chaînes de caractères utilisée par le programme.
 
     segment des données non-initialisées
-       à compléter
+      Zone de mémoire contenant les variables non-initialisées. Celles-ci sont initialisées à 0 par le système d'exploitation.
 
     heap
     tas
@@ -270,7 +270,7 @@ Glossaire
        Si une partie de la mémoire est utilisée par un programme à un moment donné, il est fort probable que cette partie soit réutilisée prochainement par le programme (par exemple lors de l'exécution d'une boucle).
 
     lignes de cache
-       à compléter
+       Plus petit élément de données qui peut être transféré entre la mémoire cache et la mémoire de niveau supérieur.
 
     write through
        Technique d'écriture dans les mémoires caches. Toute écriture est faite simultanément en mémoire cache et en mémoire principale. Cela garantit la cohérence entre les deux mémoires mais réduit les performances.
@@ -285,19 +285,13 @@ Glossaire
        Registre spécial du processeur qui contient en permanence l'adresse de l'instruction en cours d'exécution. Le contenu de ce registre est incrémenté après chaque instruction et modifié par les instructions de saut.
 
     mode d'adressage
-       à compléter
+       Spécifie la façon dont est calculée l'adresse mémoire effective d'un opérande à partir de valeurs contenues dans des registres et de constantes contenues dans l'instrucion ou ailleurs dans la machine. 
 
     accumulateur
        Registre utilisé dans les premiers processeurs comme destination pour la plupart des opérations arithmétiques et logiques. Sur l'architecture [IA32]_, le registre ``%eax`` est le successeur de cet accumulateur.
 
     bus
        Composant central d'une architecture de :term:`von Neumann` semblable à un canal permettant de transporter de l'information d'un composant à un l'autre.
-
-    ligne de cache
-       à compléter. Voir notamment [McKenney2005]_ et  [Drepper2007]_
-
-    write-back
-       à compléter
 
     program counter
        Registre du processeur qui contient l'adresse mémoire de l'instruction du programme en cours d'exécution. Il est incrémenté à chaque fois qu'une instruction est chargée et exécutée.
@@ -342,22 +336,28 @@ Glossaire
        Section de code dans laquelle il ne doit jamais y avoir plus d'un thread simultanément.
 
     exclusion mutuelle
-       à compléter
+       Primitive de synchronisation utilisée pour éviter que des ressources partagées d'un système ne soient utilisées en même temps.Voir :term:'mutex'
 
     sureté
     safety
-       à compléter
+       Deux processus ne peuvent pas utiliser la même section critique simultanément.
 
     liveness
     vivacité
-       à compléter
+       Toutes les requêtes d'accès à la section critique sont garanties.
+
+    fairness
+    équité
+       Les requêtes d'accès sont effectuées dans l'ordre d'appel.
+
 
     multitâche
     multitasking
-       à compléter
+       Capacité de faire tourner plusieurs programmes simultanément en partageant les ressources de l'ordinateur.
+
 
     contexte
-       à compléter
+       Ensemble des données utilisées par le thread en question. Ces données sont situées dans les registres du processeur sur lequel la tâche est exécutée, dans la zone de la mémoire utilisée par la tâche ou pour certaines systèmes d'exploitation, dans des registres de contrôle stockant les informations nécessaires au système pour gérer ce processus.
 
     changement de contexte
        Processus d'enregistrement et de restauration de l'état d'un thread ou processus par le noyau pour que son exécution puisse reprendre ultérieurement. Un changement de contexte est par exemple effectué lorsque le noyau/scheduler provoque la transition d'un processus à un autre, ou lorsqu'une interruption force l'exécution d'une routine du noyau.
@@ -372,7 +372,7 @@ Glossaire
        Dans le cadre du scheduler, il s'agit d'un algorithme qui alloue à tour de rôle un temps d'exécution égal à chaque processus sans distinction aucune.
 
     livelock
-       à compléter
+       Dans un programme concurrent, une situation de livelock est une situation de non-progression qui survient lorsque plusieurs threads ou processus concurrents changent continuellement d'état en simultanés et qu'aucuns ne progressent.
 
     opération atomique
        Opération élémentaire ne pouvant pas être divisée.
