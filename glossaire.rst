@@ -285,7 +285,7 @@ Glossaire
        Registre spécial du processeur qui contient en permanence l'adresse de l'instruction en cours d'exécution. Le contenu de ce registre est incrémenté après chaque instruction et modifié par les instructions de saut.
 
     mode d'adressage
-       Spécifie la façon dont est calculée l'adresse mémoire effective d'un opérande à partir de valeurs contenues dans des registres et de constantes contenues dans l'instrucion ou ailleurs dans la machine.
+       Spécifie la façon dont est calculée l'adresse mémoire effective d'un opérande à partir de valeurs contenues dans des registres et de constantes contenues dans l'instruction ou ailleurs dans la machine.
 
     accumulateur
        Registre utilisé dans les premiers processeurs comme destination pour la plupart des opérations arithmétiques et logiques. Sur l'architecture [IA32]_, le registre ``%eax`` est le successeur de cet accumulateur.
@@ -357,7 +357,7 @@ Glossaire
 
 
     contexte
-       Ensemble des données utilisées par le thread en question. Ces données sont situées dans les registres du processeur sur lequel la tâche est exécutée, dans la zone de la mémoire utilisée par la tâche ou pour certaines systèmes d'exploitation, dans des registres de contrôle stockant les informations nécessaires au système pour gérer ce processus.
+       Ensemble des données utilisées par le thread en question. Ces données sont situées dans les registres du processeur sur lequel la tâche est exécutée, dans la zone de la mémoire utilisée par la tâche ou pour certains systèmes d'exploitation, dans des registres de contrôle stockant les informations nécessaires au système pour gérer ce processus.
 
     changement de contexte
        Processus d'enregistrement et de restauration de l'état d'un thread ou processus par le noyau pour que son exécution puisse reprendre ultérieurement. Un changement de contexte est par exemple effectué lorsque le noyau/scheduler provoque la transition d'un processus à un autre, ou lorsqu'une interruption force l'exécution d'une routine du noyau.
@@ -390,7 +390,7 @@ Glossaire
        Permet à un programme de demander l'exécution d'un service fourni par le noyau du système d'exploitation.
 
     appel système bloquant
-       Un appel sysème bloquant mets un processus en attente (état W) et ne le réveillera (état R) que lorsque cet appel système sera prêt ) retourner
+       Un appel sysème bloquant mets un processus en attente (état W) et ne le réveillera (état R) que lorsque cet appel système sera prêt à retourner
 
     sémaphore
        Mécanisme de synchronisation entre threads inventé par Edsger Dijkstra pour limiter le nombre de threads qui peuvent accèder de manière concurrente à une ressource partagée.
@@ -401,11 +401,6 @@ Glossaire
     inode
        Structure de données contenant des informations (méta-données) relatives à un fichier sur certains systèmes de fichiers (Unix par exemple). Ces informations comportent notamment les permissions associées au fichier, l'utilisateur propriétaire du fichier, le groupe du propriétaire du fichier.
        Pour plus d'informations, voir la section `Système de fichier <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Fichiers/fichiers.html#systemes-de-fichiers>`_ .
-
-
-    segment de données
-       à compléter
-
 
     thread-safe
        Un programme est considéré thread-safe s'il fonctionne correctement lors d'une éxecution simultannée par plusieurs threads.En particulier, le programme doit satisfaire le besoin pour plusieurs threads d'accéder à la même donnée partagée entre eux et le besoin pour une donnée partagée entre threads d'être accessible par un seul thread à un moment donné. En C, on utilise notamment les :term:`mutex` ou d'autres types de locks pour résoudre ce genre de problème.
@@ -452,114 +447,114 @@ Glossaire
        Clés abstraite pour accéder à un fichier.
 
     répertoire
-       à compléter
+       Fichier spécial contenant les adresses d'autres fichiers.
 
     secteur
-       à compléter
+       Plus petite unité physique de stockage pour un support de donnée.
 
     répertoire courant
-       à compléter
+       Répertoire dans lequel on est présentement positionné.
 
     offset pointer
-       à compléter
+       Valeur entière représentant le déplacement en mémoire nécessaire, par rapport à une adresse de référence pour atteindre une autre adresse. C'est la distance séparant deux emplacements mémoire.
 
     little endian
-       à compléter
+       L'octet de poids le plus faible est enregistré à l'adresse mémoire la plus petite, l'octet de poids supérieur est enregistré à l'adresse mémoire suivante et ainsi de suite.
 
     big endian
-       à compléter
+       L'octet de poids le plus fort est enregistré à l'adresse mémoire la plus petite, l'octet de poids inférieur est enregistré à l'adresse mémoire suivante et ainsi de suite.
 
     lien symbolique
-       à compléter
+       Permet de référencer d'autres entrées de répertoire ou de fichiers ordinaires.
 
     lock
-       à compléter
+       Permet à un processus d'obtenir l'accès exclusif à un fichier ou une partie de fichier.
 
     advisory lock
     advisory locking
-       à compléter
+       Les processus doivent vérifier eux-mêmes que les accès qu'ils effectuent ne violent pas les locks qui ont été associés aux différents fichier.
 
     mandatory lock
     mandatory locking
-       à compléter
+       Dans ce cas, les processus placent des locks sur certains fichiers ou zones de fichiers et le système d’exploitation vérifie qu’aucun accès fait aux fichiers avec les appels systèmes standards ne viole ces locks.
 
     open file object
-       à compléter
+       Contient toutes les informations qui sont nécessaires au noyau pour pouvoir effectuer les opérations de manipulation d'un fichier ouvert par un processus.
 
     sémaphore nommé
-       à compléter
+       Sémaphore utilisant une zone mémoire qui est gérée par le noyau et qui peut être utilisée par plusieurs processus.
 
     appel système lent
-       à compléter
+       Appel système dont l'exécution peut être interrompue par la réception d'un signal. (Exemple : open(2), write(2), sendto(2), recvfrom(2), sendmsg(2), recvmsg(2), wait(2) ioctl(2))
 
     handler
-       à compléter
+       Un handler est associé à un signal et est exécuté dès que ce signal survient.
 
     signal synchrone
-       à compléter
+       Signal qui a été directement causé par l'exécution  d'une instruction du processus.
 
     signal asynchrone
-       à compléter
+      Signal qui n’a pas été directement causé par l’exécution d’une instruction du processus.
 
     interpréteur
-       à compléter
+       Outil ayant pour tâche d'analyser, de traduire et d'exécuter les programmes écrits dans un langage informatique.
 
     MMU
     Memory Management Unit
-       à compléter
+       Traduit toute adresse virtuelle en adresse physique.
 
     adresse virtuelle
-       à compléter
+       Adresse qui est utilisée à l’intérieur d’un programme
 
     mémoire virtuelle
-       à compléter
+       Repose sur l'utilisation de traduction des adresses virtuelles en adresses physiques.
 
     SSD
     Solid State Drive
        Système de stockage de données s'appuyant uniquement sur de la mémoire flash.
 
     page
-       à compléter
+       Bloc de mémoire virtuelle.
 
     table des pages
-       à compléter
+       Structure de données utilisée pour stocker les liens entre adresses virtuelles et adresses physiques.
 
     bit de validité
-       à compléter
+       Permet de voir la validité ou non d'un numéro de frame à la page actuelle. Si celui-ci est à 0, cela signigie que le numéro de frame est invalide.
 
     TLB
     Translation Lookaside Buffer
-       à compléter
+       Mémoire cache du processeur utilisée par l'unité de gestion mémoire (:term:'MMU') dans le but d'accélérer la traduction des adresses virtuelles en adresses physiques.
 
     Mémoire partagée
-       à compléter
+       Moyen de partager des données entre différents processus : une même zone de la mémoire vive est accédée par plusieurs processus.
 
     copy-on-write
        à compléter
 
     adresse physique
-       à compléter
+       Adresse utilisée par des puces de RAM pour les opérations d'écriture et de lecture.
 
     page fault
     défaut de page
-       à compléter
+       Erreur de page introuvable en mémoire. Plus précisément, interruption qui suspend l'exécution d'un processus pour éventuellement lui libérer de la mémoire vive en la déchargeant dans la mémoire virtuelle, mais surtout le charger dans la RAM ensuite, en modifiant son bit de validation à un.
 
     file FIFO
        De "First In, First Out". Le premier élement à entrer dans la file sera le premier à en sortir. (!= LIFO, "Last In First Out")
 
     dirty bit
     bit de modification
-       à compléter
+       Bit indiquant si une page a été modifiée depuis son chargement en mémoire vive. Il est donc égal à zéro si un processus a déjà figuré dans la mémoire virtuelle, et à un si la page a été modifiée depuis son chargement ou si elle est nouvellement allouée.
 
     reference bit
     bit de référence
-       à compléter
+       Bit indiquant si une page a été accédée récemment, il est remis à 0 régulièrement.
 
     swapping
-       à compléter
+       Toutes  les données appartenant au processus seront stockées en mémoire de masse.
 
     pagination
-       à compléter
+       Technique permettant de découper la mémoire vive en zones (:term:'page') et change la correspondance entre mémoire virtuelle et mémoire physique.
 
     stratégie de remplace de pages
-       à compléter
+       Définit quelle page doit être préférentiellement retirée de la mémoire RAM et placée sur le dispositif de stockage.
