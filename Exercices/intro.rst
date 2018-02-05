@@ -11,6 +11,8 @@ Cette section comprend deux types d'exercices afin de permettre aux étudiants d
 Première semaine
 ----------------
 
+La matière couverte cette semaine correspond à l'`introduction aux systèmes informatiques <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/intro.html>`_ et au `langage C <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/intro-C.html>`_ . Le volet pratique est important et les sections relatives au `shell <https://sites.uclouvain.be/SystInfo/notes/Outils/html/shell.html>`_ et aux `processus <https://sites.uclouvain.be/SystInfo/notes/Outils/html/processus.html>`_ de la section dédiée aux `outils <https://sites.uclouvain.be/SystInfo/notes/Outils/html>`_ devraient vous être utiles.
+
 
 .. toctree::
    :maxdepth: 2
@@ -23,7 +25,7 @@ Première semaine
 Deuxième semaine
 ----------------
 
-La matière couverte cette semaine correspond à la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html#les-expressions-de-manipulation-de-bits>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_)
+La matière couverte cette semaine correspond à la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html#les-expressions-de-manipulation-de-bits>`_ (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sites.uclouvain.be/SystInfo/notes/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`_) 
 
 .. toctree::
    :maxdepth: 2
@@ -135,26 +137,8 @@ La matière de cette semaine porte sur l'utilisation du système de fichiers et 
    Programmes/prog-9
 
 
+
 Dixième semaine
----------------
-
-La matière de cette semaine porte sur les signaux, les sémaphores nommés et le partage de fichiers :
-
- - :ref:`theorie:signaux`
- - :ref:`theorie:semname`
- - :ref:`theorie:fileshare`
-
-Séance tutorée
-^^^^^^^^^^^^^^
-
-.. toctree::
-   :maxdepth: 2
-
-   mcq-ex/qcm-10
-   Programmes/prog-10
-
-
-Onzième semaine
 ---------------
 
 La matière de cette semaine porte sur la mémoire virtuelle et les fichiers mappés en mémoire :
@@ -179,8 +163,8 @@ Séance tutorée
    Programmes/prog-11
 
 
-Douzième semaine
-----------------
+Onzième semaine
+---------------
 
 La matière de cette semaine porte sur les utilisations avancées de la mémoire virtuelle :
 
@@ -196,3 +180,23 @@ Séance tutorée
    :maxdepth: 2
 
    Programmes/prog-12
+
+
+Douzième semaine 
+----------------
+
+La matière de cette semaine porte sur les signaux, les sémaphores nommés et le partage de fichiers :
+
+ - :ref:`theorie:signaux`
+ - :ref:`theorie:semname`
+ - :ref:`theorie:fileshare`
+
+Séance tutorée 
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2 
+
+   mcq-ex/qcm-10 
+   Programmes/prog-10 
+

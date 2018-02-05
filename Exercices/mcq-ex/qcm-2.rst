@@ -818,6 +818,6 @@ On veut pouvoir facilement écrire une fonction de type ``void`` qui remplace la
 
 
 
-.. include:: ../../../links.rst
-.. include:: ../../../man_links.rst
-.. include:: ../../../incl_links.rst
+.. include:: ../../links.rst
+.. include:: ../../man_links.rst
+.. include:: ../../incl_links.rst
