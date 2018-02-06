@@ -156,9 +156,9 @@ Visualiser
 `more(1)`_ file			visualise le contenu du ou des fichiers par page.
 		    		Si il contient plus d'une page :
 				    	* q ou Q : 	pour terminer la visualisation
-				    	* RETURN : 	pour visualiser une ligne supplémentaire
-				    	* ESPACE : 	pour visualiser la page suivante
-				    	* h 	 : 	pour obtenir de l'aide 
+					* RETURN : 	pour visualiser une ligne supplémentaire
+					* ESPACE : 	pour visualiser la page suivante
+					* h 	 : 	pour obtenir de l'aide 
 
 Modifier
 ^^^^^^^^
@@ -291,7 +291,7 @@ Obtenir des informations
 	   				* -w : le nombre de mots
 
 Manipulations communes aux répertoires et fichiers
--------------------------------------------------
+--------------------------------------------------
 
 Copier
 ^^^^^^
@@ -548,8 +548,7 @@ Lors de l'exécution d'une commande, un processus est créé et celui-ci va ouvr
 	* > 		La sortie standard est redirigée dans un fichier. Si le fichier existe, il est vidé avant d'écrire.
 	* >> 		La sortie standard est redirigée dans un fichier. Si le fichier existe, la sortie standard est ajoutée à la fin de celui ci.
 	* 2>		La sortie d'erreur standard est redirigée
-
-   * cmd1 | cmd2		La sortie standard de cmd1 devient l'entrée standard de cmd2
+   	* cmd1 | cmd2		La sortie standard de cmd1 devient l'entrée standard de cmd2
 
 Symboles pour les commandes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -600,14 +599,17 @@ Informations générales
 `su(1)`_			Passe en mode "root", c'est à dire administrateur
 
 `whatis(1)`_ cmd		Explique briévement l'utilité d'une commande
+
 `apropos(1)`_ [-opt] motclé	Recherche dans les man pages les commandes correspondants aux mots clés.
 				* -a : Affiche seulement les résultats répondant à tout les mots clés. 
 				       L'inverse est le fonctionnement par défault
 
 `date(1)`_			Donne l'heure, selon l'horloge de votre ordinateur
+
 `cal(1)`_			Affiche un calendrier du mois courant
 
 `halt(8)`_			Éteint l'ordinateur.
+
 `reboot(8)`_			Redémarre l'ordinateur
 
 Informations système
@@ -617,6 +619,7 @@ Informations système
 
 `df(1)`_ [-opt] [file]		Indique l'espace disque utilisé et disponible sur tous les systèmes de fichiers. 
 				Si des fichiers sont passés en argument, seul les systèmes de fichiers contenant un des fichiers sont montrés.		
+				
 				* -h 	Imprime les dimensions dans un format lisible par l’utilisateur
 				* -H 	Idem que -h, mais il utilise des puissances de 1000 au lieu de 1024
 				* -i 	Affiche l’information i-node au lieu de l’utilisation des blocs
@@ -837,7 +840,7 @@ Pour contrecarrer ce problème, il est possible de placer dans le script un labe
 
 
 Appliquer des actions à un fichier
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `awk(1)`_ [-Fs] [-v variable] [-f fichier de commandes] 'program' fichier
   		* -F : Spécifie les séparateurs de champ
