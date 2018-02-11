@@ -122,7 +122,7 @@ Unix ayant été initialement développé pour manipuler des documents contenant
  - `sed(1)`_ : utilitaire permettant d'éditer, c'est-à-dire de modifier les caractères présents dans un flux de données.
  - `awk(1)`_ : utilitaire incluant un petit langage de programmation et qui permet d'écrire rapidement de nombreux programmes de manipulation de fichiers textes
 
-La plupart des utilitaires fournis avec un système Unix ont été conçus pour être utilisés en combinaison avec d'autres. Cette combinaison efficace de plusieurs petits utilitaire est un des points forts des systèmes Unix par rapport à d'autres systèmes d'exploitation.
+La plupart des utilitaires fournis avec un système Unix ont été conçus pour être utilisés en combinaison avec d'autres. Cette combinaison efficace de plusieurs petits utilitaires est un des points forts des systèmes Unix par rapport à d'autres systèmes d'exploitation.
 
 
 Shell
@@ -222,7 +222,7 @@ Une description complète de `bash(1)`_ sort du cadre de ce cours. De nombreuses
 
 .. [#fbitreseau] Dans certaines applications, par exemple dans les réseaux informatiques, il peut être utile d'accéder à la valeur d'un bit particulier qui joue par exemple le rôle d'un drapeau. Celui-ci se trouve cependant généralement à l'intérieur d'une structure de données comprenant un ensemble de bits.
 
-.. [#funix] Formellement, Unix est une marque déposée par l'`Open Group <http://www.opengroup.org>`_ un ensemble d'entreprises qui développent des standards dans le monde de l'informatique. La première version de Unix écrite en C date de 1973, http://www.unix.org/what_is_unix/history_timeline.html
+.. [#funix] Formellement, Unix est une marque déposée par l'`Open Group <http://www.opengroup.org>`_, un ensemble d'entreprises qui développent des standards dans le monde de l'informatique. La première version de Unix écrite en C date de 1973, http://www.unix.org/what_is_unix/history_timeline.html
 
 .. [#ftermine] Certains processus sont lancés automatiquement au démarrage du système et ne se terminent qu'à son arrêt. Ces processus sont souvent appelés des `daemons`. Il peut s'agir de services qui fonctionnent en permanence sur la machine, comme par exemple un serveur web ou un `daemon` d'authentification.
 
