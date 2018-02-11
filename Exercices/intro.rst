@@ -21,7 +21,6 @@ La matière couverte cette semaine correspond à l'`introduction aux systèmes i
    Programmes/prog-1
 
 
-
 Deuxième semaine
 ----------------
 
