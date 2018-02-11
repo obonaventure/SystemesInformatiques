@@ -42,7 +42,7 @@ Lorsqu'il est exécuté, le programme `hello` affiche simplement le message suiv
 .. code-block:: console
 
         $ ./hello
-        hello, world
+        Hello, world!
         $
 
 Même si ce programme est très simple, il illustre quelques concepts de base en langage C. Tout d'abord comme en Java, les compilateurs récents supportent deux façons d'indiquer des commentaires en C :
@@ -50,7 +50,7 @@ Même si ce programme est très simple, il illustre quelques concepts de base en
  - un commentaire sur une ligne est précédé des caractères `//`
  - un commentaire qui comprend plusieurs lignes débute par `/*` et se termine par `*/`
 
-Ensuite, un programme écrit en langage C comprend principalement des expressions en langage C mais également des expressions qui doivent être traduites par le :term:`préprocesseur`. Lors de la compilation d'un fichier en langage C, le compilateur commence toujours par exécuter le préprocesseur. Celui-ci implémente différentes formes de macros qui permettent notamment d'inclure des fichiers (directives ``#include``), de compiler de façon conditionnelle certaines lignes ou de définir des constantes. Nous verrons différentes utilisations du préprocesseur C dans le cadre de ce cours. A ce stade, les trois principales fonctions du préprocesseur sont :
+Ensuite, un programme écrit en langage C comprend principalement des expressions en langage C mais également des expressions qui doivent être traduites par le :term:`préprocesseur`. Lors de la compilation d'un fichier en langage C, le compilateur commence toujours par exécuter le préprocesseur. Celui-ci implémente différentes formes de macros qui permettent notamment d'inclure des fichiers (directives ``#include``), de compiler de façon conditionnelle certaines lignes ou de définir des constantes. Nous verrons différentes utilisations du préprocesseur C dans le cadre de ce cours. À ce stade, les trois principales fonctions du préprocesseur sont :
 
  - définir des substitutions via la macro ``#define``. Cette macro est très fréquemment utilisée pour définir des constantes ou des substitutions qui sont valables dans l'ensemble du programme.
 
@@ -90,7 +90,7 @@ Le langage Java a été largement inspiré du langage C et de nombreuses constru
  - ``char`` : utilisé lors de la déclaration d'une variable permettant de stocker un caractère
  - ``double`` et ``float`` pour les variables permettant de stocker un nombre représenté en virgule flottante.
 
-Notez que dans les premières versions du langage  C, contrairement à Java, il n'y avait pas de type spécifique permettant de représenter un booléen. Dans de nombreux programmes écrits en C, les booléens sont représentés par des entiers et les valeurs booléenne sont définies [#fbool]_ comme suit.
+Notez que dans les premières versions du langage  C, contrairement à Java, il n'y avait pas de type spécifique permettant de représenter un booléen. Dans de nombreux programmes écrits en C, les booléens sont représentés par des entiers et les valeurs booléennes sont définies [#fbool]_ comme suit.
 
 .. code-block:: c
 
@@ -147,12 +147,12 @@ Par convention, en C le premier argument (se trouvant à l'indice ``0`` du table
 Outre le traitement des arguments, une autre différence importante entre Java et C est la valeur de retour de la fonction ``main``. En C, la fonction ``main`` retourne un entier. Cette valeur de retour est passée par le système d'exploitation au programme (typiquemment un :term:`shell` ou interpréteur de commandes) qui a demandé l'exécution du programme. Grâce à cette valeur de retour il est possible à un programme d'indiquer s'il s'est exécuté correctement ou non. Par convention, un programme qui s'exécute sous Unix doit retourner ``EXIT_SUCCESS`` lorsqu'il se termine correctement et ``EXIT_FAILURE`` en cas d'échec. La plupart des programmes fournis avec un Unix standard respectent cette convention. Dans certains cas, d'autres valeurs de retour non nulles sont utilisées pour fournir plus d'informations sur la raison de l'échec.
 En pratique, l'échec d'un programme peut être dû aux arguments incorrects fournis par l'utilisateur ou à des fichiers qui sont inaccessibles.
 
-A titre d'illustration, le programme :download:`src/failure.c` est le programme le plus simple qui échoue lors de son exécution.
+À titre d'illustration, le programme :download:`src/failure.c` est le programme le plus simple qui échoue lors de son exécution.
 
 .. literalinclude:: src/failure.c
    :language: c
 
-Enfin, le dernier point à mentionner concernant notre programme :download:`src/hello.c` est la fonction ``printf``. Cette fonction de la librairie standard se retrouve dans la plupart des programmes écrits en C. Elle permet l'affichage de différentes formes de textes sur la sortie standard. Comme toutes les fonctions de la librairie standard, elle est documentée dans sa page de manuel `printf(3)`_. `printf(3)`_ prend un nombre variable d'arguments. Le premier argument est une chaîne de caractères qui spécifie le format de la chaîne de caractères à afficher. Une présentation détaillée de `printf(3)`_ prendrait de nombreuses pages. A titre d'exemple, voici un petit programme utilisant `printf(3)`_
+Enfin, le dernier point à mentionner concernant notre programme :download:`src/hello.c` est la fonction ``printf``. Cette fonction de la librairie standard se retrouve dans la plupart des programmes écrits en C. Elle permet l'affichage de différentes formes de textes sur la sortie standard. Comme toutes les fonctions de la librairie standard, elle est documentée dans sa page de manuel `printf(3)`_. `printf(3)`_ prend un nombre variable d'arguments. Le premier argument est une chaîne de caractères qui spécifie le format de la chaîne de caractères à afficher. Une présentation détaillée de `printf(3)`_ prendrait de nombreuses pages. À titre d'exemple, voici un petit programme utilisant `printf(3)`_
 
 .. literalinclude:: src/printf.c
    :language: c
@@ -211,6 +211,6 @@ Toutes les tables de caractères placent les chiffres ``0`` à ``9`` à des posi
 
 .. [#fmain] Il est également possible d'utiliser dans un programme C une fonction ``main`` qui ne prend pas d'argument. Sa signature sera alors ``int main (void)``.
 
-.. [#fenvp] En pratique, le système d'exploitation passe également les variables d'environnement à la fonction ``main``. Nous verrons plus tard comment ces variables d'environnement sont passées du système au programme et comment celui-ci peut y accéder. Sachez cependant que sous certaines variantes de Unix, et notamment Darwin/MacOS ainsi que sous certaines versions de Windows, le prototype de la fonction ``main`` inclut explicitement ces variables d'environnement (``int main(int argc, char *argv[], char *envp[])``
+.. [#fenvp] En pratique, le système d'exploitation passe également les variables d'environnement à la fonction ``main``. Nous verrons plus tard comment ces variables d'environnement sont passées du système au programme et comment celui-ci peut y accéder. Sachez cependant que sous certaines variantes de Unix, et notamment Darwin/MacOS ainsi que sous certaines versions de Windows, le prototype de la fonction ``main`` inclut explicitement ces variables d'environnement (``int main(int argc, char *argv[], char *envp[])``)
 
 
