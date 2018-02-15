@@ -7,7 +7,7 @@ Types de données
 ================
 
 Durant la première semaine, nous avons abordé quelques types de
-données de base dont les ``int`` et les ``char``. Pour utiliser ces types de données à bon escient, il est important de comprendre en détails la façon dont ils sont supportés par le compilateur et leurs limitations. Celles-ci dépendent souvent de leur représentation en mémoire et durant cette semaine nous allons commencer à analyser de façon plus détaillée comment la mémoire d'un ordinateur est structurée.
+données de base dont les ``int`` et les ``char``. Pour utiliser ces types de données à bon escient, il est important de comprendre en détail la façon dont ils sont supportés par le compilateur et leurs limitations. Celles-ci dépendent souvent de leur représentation en mémoire et durant cette semaine nous allons commencer à analyser de façon plus détaillée comment la mémoire d'un ordinateur est structurée.
 
 
 
@@ -22,12 +22,12 @@ types de nombres entiers :
  - les nombres entiers signés (``int`` notamment en C)
  - les nombres entiers non-signés (``unsigned int`` notamment en C)
 
-Une séquence de :math:`n` bits :math:`b_0 ... b_i ... b_n` peut représenter le
+Une séquence de :math:`n` bits :math:`b_0 ... b_i ... b_{n-1}` peut représenter le
 nombre entier :math:`\sum_{i=0}^{n-1} b_i \times 2^i`. Par convention, le bit
-:math:`b_n`, associé au facteur du plus grand indice :math:`2^n`, est appelé le
+:math:`b_{n-1}`, associé au facteur du plus grand indice :math:`2^{n-1}`, est appelé le
 :term:`bit de poids fort` tandis que le bit :math:`b_0`, associé à :math:`2^0`,
 est appelé le :term:`bit de poids faible`. Les suites de bits sont communément
-écrites dans l'ordre descendant des indices :math:`b_n ... b_i ... b_0`. A titre
+écrites dans l'ordre descendant des indices :math:`b_{n-1} ... b_i ... b_0`. A titre
 d'exemple, la suite de bits ``0101`` correspond à l'entier non signé représentant
 la valeur cinq. Le bit de poids fort (resp. faible) de cette séquence de quatre bits
 (ou :term:`nibble`) est ``0`` (resp. ``1``). La table ci-dessous reprend les
@@ -36,29 +36,29 @@ différentes valeurs décimales correspondant à toutes les séquences de quatre
 =======      =====  ===========  =======
 binaire      octal  hexadécimal  décimal
 =======      =====  ===========  =======
-0000         00     0            0
-0001         01     1            1
-0010         02     2            2
-0011         03     3            3
-0100         04     4            4
-0101         05     5            5
-0110         06     6            6
-0111         07     7            7
-1000         10     8            8
-1001         11     9            9
-1010         12     A            10
-1011         13     B            11
-1100         14     C            12
-1101         15     D            13
-1110         16     E            14
-1111         17     F            15
+``0000``         ``00``     ``0``            ``0``
+``0001``         ``01``     ``1``            ``1``
+``0010``         ``02``     ``2``            ``2``
+``0011``         ``03``     ``3``            ``3``
+``0100``         ``04``     ``4``            ``4``
+``0101``         ``05``     ``5``            ``5``
+``0110``         ``06``     ``6``            ``6``
+``0111``         ``07``     ``7``            ``7``
+``1000``         ``10``     ``8``            ``8``
+``1001``         ``11``     ``9``            ``9``
+``1010``         ``12``     A            ``10``
+``1011``         ``13``     B            ``11``
+``1100``         ``14``     C            ``12``
+``1101``         ``15``     D            ``13``
+``1110``         ``16``     E            ``14``
+``1111``         ``17``     F            ``15``
 =======      =====  ===========  =======
 
 .. todo cafe, deadbeef adresses ipv6    http://www.qa.com/about-qa/blogs/2011/november/ipv6-the-return-of-badbeef-and-5adcafe/
 
-Ecrire une séquence de bits sous la forme d'une suite de
+Écrire une séquence de bits sous la forme d'une suite de
 ``0`` et de ``1`` peut s'avérer fastidieux. La représentation décimale
-traditionnelle n'est pas pratique non plus car il faut un ou deux
+traditionnelle n'est pas optimale non plus car il faut un ou deux
 chiffres pour représenter une séquence de quatre bits (ou :term:`nibble`) en fonction de la
 valeur de ces bits. En pratique, de nombreux systèmes informatiques
 utilisent une représentation hexadécimale pour afficher des séquences
@@ -69,7 +69,7 @@ la représentation décimale habituelle, il est possible d'utiliser la
 représentation hexadécimale pour de longues séquences de bits. La
 notation octale est parfois utilisée et est supportée par les
 compilateurs C. Elle utilise un chiffre pour représenter trois bits
-consécutifs. A titre
+consécutifs. À titre
 d'exemple, voici quelques conversions de nombres en notation
 décimale vers les notations hexadécimales et binaires.
 
@@ -165,14 +165,14 @@ un nombre entier négatif qui n'a pas d'équivalent positif.
 
 =======      =============
 binaire      décimal signé
-=======      =============
-0000         0
-0001         1
-0010         2
-0011         3
-0100         4
-0101         5
-0110         6
+=======      =============
+0000         0
+0001         1
+0010         2
+0011         3
+0100         4
+0101         5
+0110         6
 0111         7
 1000         -8
 1001         -7
@@ -186,7 +186,7 @@ binaire      décimal signé
 
 En C, les types de données utilisés pour représenter des entiers sont
 signés par défaut. Ils ont la même taille que leurs équivalents
-non-signés et sont repris dans la table ci-dessous.
+non signés et sont repris dans la table ci-dessous.
 
 =============================     ===================================================
 Type                              Explication
