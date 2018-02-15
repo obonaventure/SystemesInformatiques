@@ -32,7 +32,7 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 #. Retournez dans le répertoire parent de ``my_dir`` et copiez le dossier complet ``my_dir`` dans ``my_dir_2``.
 #. Effacez le dossier entier ``my_dir`` en une seule commande (utilisez `rm(1)`_).
 
-Vous trouverez également sur `inginious<https://inginious.info.ucl.ac.be/course/LSINF1252>`_ les exercices suivants :
+Vous trouverez également sur `inginious <https://inginious.info.ucl.ac.be/course/LSINF1252>`_ les exercices suivants :
 
 #. Utilisation de la commande `grep(1)`_ : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_grep
 #. Utilisation des pipes : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_pipes
