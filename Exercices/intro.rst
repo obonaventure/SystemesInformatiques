@@ -36,7 +36,7 @@ La matière couverte cette semaine correspond à la section relative aux `types 
 Troisième semaine
 -----------------
 
-La matière couverte cette semaine correspond aux sections relative à l'`organisation de la mémoire <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire>`_
+La matière couverte cette semaine correspond aux sections relative à l'`organisation de la mémoire <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire>`_ Vous commencez à développer des programmes complets, le debugger `gdb <https://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`_ pourrait vous aider. Il est décrit dans la section `outils <https://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`_
 
 .. toctree::
    :maxdepth: 2
@@ -48,10 +48,20 @@ La matière couverte cette semaine correspond aux sections relative à l'`organi
 Quatrième semaine
 -----------------
 
+Durant les dernières semaines, vous avez appris les bases de l'écriture de fonctions en C. L'objectif de cette semaine est de vous amener à être capable d'écrire des programmes comprenant plusieurs fonctions. 
 La matière couverte cette semaine correspond aux sections :
 
- - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`_
- - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`_
+ - :ref:`theorie:ordinateurs`
+ - :ref:`theorie:complementsC`
+
+En outre, vous devrez aussi lire les sections de la partie Outils qui sont relatives à 
+
+-  :ref:`outils:make`
+-  :ref:`outils:ref_cunit`
+
+.. only:: staff
+
+          - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`_
 
 .. toctree::
    :maxdepth: 2
@@ -65,7 +75,7 @@ Cinquième semaine
 
 La matière couverte cette semaine correspond aux sections :
 
- - :ref:`theorie:complementsC`
+
  - :ref:`theorie:threads`
 
 
