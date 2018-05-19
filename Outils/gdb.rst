@@ -130,7 +130,7 @@ Premier programme
 
 	.. code-block:: console
 
-		Il est intéressant de noter une particularité du language C par rapport à java : une variable déclaré n'est pas initialisé à 0 par défault, elle reprend juste la valeur de la mémoire avant son affectation. ``print i`` et ``print res`` vous donneront donc des résultats aléatoires.
+		Il est intéressant de noter une particularité du language C par rapport à java : une variable déclarée n'est pas initialisée à 0 par défaut, elle reprend juste la valeur de la mémoire avant son affectation. ``print i`` et ``print res`` vous donneront donc des résultats aléatoires.
 
 	Puisque le problème vient du calcul arithmétique, placez un break sur cette ligne pour pouvoir observer à chaque itération les variables. ``break 9`` puis ``commands`` qui permet d'automatiser des commandes. Nous rajouterons comme commandes :
 
