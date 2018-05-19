@@ -46,7 +46,7 @@ Avant d'analyser en détails le fonctionnement des appels systèmes `signal(2)`_
  - ``SIGBUS``. Ce signal correspond à une erreur au niveau matériel.  Par défaut, la réception de ce signal provoque la terminaison du processus.
  - ``SIGSEGV``. Ce signal correspond à une erreur dans l'accès à la mémoire, typiquement une tentative d'accès en dehors de la zone mémoire allouée au processus. Par défaut, la réception de ce signal provoque la terminaison du processus.
  - ``SIGFPE``. Ce signal correspond à une erreur au niveau de l'utilisation des fonctions mathématiques, notamment en virgule flottante mais pas seulement.  Par défaut, la réception de ce signal provoque la terminaison du processus.
- - ``SIGTERM``. Ce signal est le signal utilisé par défaut par la commande `kill(1)`_ pour demander la fin d'un processus. Par défaut, le réception de ce signal provoque la terminaison du processus.
+ - ``SIGTERM``. Ce signal est le signal utilisé par défaut par la commande `kill(1)`_ pour demander la fin d'un processus. Par défaut, la réception de ce signal provoque la terminaison du processus.
  - ``SIGKILL``. Ce signal permet de forcer la fin d'un processus. Alors qu'un processus peut définir un handler pour le signal ``SIGTERM``, il n'est pas possible d'en définir un pour ``SIGKILL``. Ce signal est le seul qui ne peut être traité et ignoré par un processus.
  - ``SIGUSR1`` et ``SIGUSR2`` sont deux signaux qui peuvent être utilisés par des processus sans conditions particulières. Par défaut, la réception d'un tel signal provoque la terminaison du processus.
  - ``SIGCHLD``. Ce signal indique qu'un processus fils s'est arrêté ou a fini son exécution. Par défaut ce signal est ignoré.
