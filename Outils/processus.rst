@@ -37,7 +37,7 @@ Ce programme peut être compilé avec `gcc(1)`_ pour produire un exécutable.
  -rwxr-xr-x  1 obo  obo  8800 10 fév 12:12 getpid
  -rw-r--r--  1 obo  obo   608 10 fév 12:11 getpid.c
 
-Cet exemple utilise la commande `ls(1)`_ pour lister le contenu d'un répertoire. L'argument ``-l`` permet de d'obtenir pour chaque fichier son nom, sa date de modification, sa taille, l'utilisateur et le groupe auxquels il appartient ainsi que ses permissions. Sous Unix, les permissions associées à un fichier sont divisées en trois blocs. Le premier bloc correspond aux permissions qui sont applicables à l'utilisateur qui possède le fichier. Pour l'exécutable ``getpid``, les permissions du propriétaire sont ``rwx``. Elles indiquent que le propriétaire peut lire le fichier (permission ``r``), l'écrire ou l'effacer (permission ``w``) et l'exécuter (permission ``x``). Sous Unix, seuls les fichiers qui possèdent la permission à l'exécution peuvent être lancés depuis l'interpréteur. Ces permissions peuvent être modifiées en utilisant la commande `chmod(1)`_. Les deux autres blocs de permissions sont relatifs aux membres du même groupe que le propriétaire et à un utilisateur quelconque. Nous y reviendrons plus en détail lorsque nous abordons les systèmes de fichiers. En pratique, il est important de savoir qu'un fichier shell ou un fichier compilé qui n'a pas le bit de permission ``x`` ne peut pas être exécuté par le système. Ceci est illustré par l'exemple ci-dessous.
+Cet exemple utilise la commande `ls(1)`_ pour lister le contenu d'un répertoire. L'argument ``-l`` permet de d'obtenir pour chaque fichier son nom, sa date de modification, sa taille, l'utilisateur et le groupe auquel il appartient ainsi que ses permissions. Sous Unix, les permissions associées à un fichier sont divisées en trois blocs. Le premier bloc correspond aux permissions qui sont applicables à l'utilisateur qui possède le fichier. Pour l'exécutable ``getpid``, les permissions du propriétaire sont ``rwx``. Elles indiquent que le propriétaire peut lire le fichier (permission ``r``), l'écrire ou l'effacer (permission ``w``) et l'exécuter (permission ``x``). Sous Unix, seuls les fichiers qui possèdent la permission à l'exécution peuvent être lancés depuis l'interpréteur. Ces permissions peuvent être modifiées en utilisant la commande `chmod(1)`_. Les deux autres blocs de permissions sont relatifs aux membres du même groupe que le propriétaire et à un utilisateur quelconque. Nous y reviendrons plus en détail lorsque nous abordons les systèmes de fichiers. En pratique, il est important de savoir qu'un fichier shell ou un fichier compilé qui n'a pas le bit de permission ``x`` ne peut pas être exécuté par le système. Ceci est illustré par l'exemple ci-dessous.
 
 .. code-block:: console
 
@@ -59,7 +59,7 @@ L'interpréteur de commande `bash(1)`_ permet lancer plusieurs processus en tâc
  [1] 10975
  $ Processus : 10975
  [pid=10975] Sleep : 30 secondes
- ./getpid &
+ $ ./getpid &
  [2] 10976
  $ Processus : 10976
  [pid=10976] Sleep : 30 secondes
@@ -68,7 +68,7 @@ L'interpréteur de commande `bash(1)`_ permet lancer plusieurs processus en tâc
  obo   8361   0,0  0,0  2435548    208 s003  S+    9:24     0:00.14 -bash
  obo  10975   0,0  0,0  2434832    340 s000  S    12:05     0:00.00 ./getpid
  obo  10976   0,0  0,0  2434832    340 s000  S    12:05     0:00.00 ./getpid
- $ [pid=10975] Fin du processus
+ [pid=10975] Fin du processus
  [pid=10976] Fin du processus
  [1]-  Done                    ./getpid
  [2]+  Done                    ./getpid
