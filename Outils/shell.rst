@@ -233,7 +233,7 @@ Extraction de données
 		zorro,01,20
 		zorro,5,4
 
-		$ cat file.txt | sort -t; -k2n
+		$ cat file.txt | sort -t, -k2n
 		zorro,01,20
 		pcr,01,3
 		pcr,1,3
