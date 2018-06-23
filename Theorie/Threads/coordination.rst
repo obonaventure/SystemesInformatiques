@@ -260,7 +260,7 @@ Une première solution à ce problème est d'utiliser un mutex et un sémaphore 
 
  sem_init(&db, NULL, 1).
 
-La solution utilise une variable partagée : ``readcount``. L'accès à cette variable est protégé par ``mutex``. Le sémaphore ``db`` sert à réguler l'accès des `writers` à la base de données. Le mutex est initiliasé comme d'habitude par la fonction `pthread_mutex_init(3posix)`_. Le sémaphore ``db`` est initialisé à la valeur ``1``. Le `writer` est assez simple :
+La solution utilise une variable partagée : ``readcount``. L'accès à cette variable est protégé par ``mutex``. Le sémaphore ``db`` sert à réguler l'accès des `writers` à la base de données. Le mutex est initialisé comme d'habitude par la fonction `pthread_mutex_init(3posix)`_. Le sémaphore ``db`` est initialisé à la valeur ``1``. Le `writer` est assez simple :
 
 .. code-block:: c
 
@@ -426,7 +426,7 @@ Normalement, dans un programme C, lorsqu'une variable est définie, ses accès s
 
 Les premiers compilateurs C avaient pris en compte un problème similaire. Lorsqu'un programme ou un système d'exploitation interagit avec des dispositifs d'entrée-sortie, cela se fait parfois en permettant au dispositif d'écrire directement en mémoire à une adresse connue par le système d'exploitation. La valeur présente à cette adresse peut donc être modifiée par le dispositif d'entrée-sortie sans que le programme ne soit responsable de cette modification. Face à ce problème, les inventeurs du langage C ont introduit le qualificatif ``volatile``. Lorsqu'une variable est ``volatile``, cela indique au compilateur qu'il doit recharger la variable de la mémoire chaque fois qu'elle est utilisée.
 
-Pour bien comprendre l'impact de ce qualificatif, il est intéressant d'analyser le code assembleur générée par un compilateur C dans l'exemple suivant.
+Pour bien comprendre l'impact de ce qualificatif, il est intéressant d'analyser le code assembleur généré par un compilateur C dans l'exemple suivant.
 
 .. code-block:: c
 
@@ -471,7 +471,7 @@ Une première solution serait d'utiliser une zone mémoire qui est spécifique a
 
 Une deuxième solution serait d'avoir un tableau global qui contiendrait des pointeurs vers des zones de mémoires qui ont été allouées pour chaque thread. Chaque thread pourrait alors accéder à ce tableau sur base de son identifiant. Cette solution pourrait fonctionner si le nombre de threads est fixe et que les identifiants de threads sont des entiers croissants. Malheureusement la libraire threads POSIX ne fournit pas de tels identifiants croissants. Officiellement, la fonction `pthread_self(3)`_ retourne un identifiant unique d'un thread qui a été créé. Malheureusement cet identifiant est de type ``pthread_t`` et ne peut pas être utilisé comme index dans un tableau. Sous Linux, l'appel système non-standard `gettid(2)`_ retourne l'identifiant du thread, mais il ne peut pas non plus être utilisé comme index dans un tableau.
 
-Pour résoudre ce problème, deux solutions sont possibles. La première combine une extension au langage C qui est supportée par `gcc(1)`_ avec la librairie threads POSIX. il s'agit du qualificatif ``__thread`` qui peut être utilisé avant une déclaration de variable. Lorsqu'il est utilisé dans la déclaration d'une variable globale, il indique au compilateur et à la libraire POSIX qu'une copie de cette variable doit être créée pour chaque thread. Cette variable est initialisée au démarrage du thread et est utilisable uniquement à l'intérieur de ce thread. Le programme ci-dessous illustre cette utilisation du qualificatif ``__thread``.
+Pour résoudre ce problème, deux solutions sont possibles. La première combine une extension au langage C qui est supportée par `gcc(1)`_ avec la librairie threads POSIX. Il s'agit du qualificatif ``__thread`` qui peut être utilisé avant une déclaration de variable. Lorsqu'il est utilisé dans la déclaration d'une variable globale, il indique au compilateur et à la libraire POSIX qu'une copie de cette variable doit être créée pour chaque thread. Cette variable est initialisée au démarrage du thread et est utilisable uniquement à l'intérieur de ce thread. Le programme ci-dessous illustre cette utilisation du qualificatif ``__thread``.
 
 .. literalinclude:: /Threads/S7-src/pthread-specific.c
    :encoding: utf-8

@@ -169,7 +169,7 @@ Chaque répertoire du système de fichiers contient un ou plusieurs répertoires
 
 Le répertoire racine contient quelques fichiers et des répertoires. Tout répertoire contient deux répertoires spéciaux. Le premier répertoire, identifié par le caractère ``.`` (un seul point) est un alias vers le répertoire lui-même. Cette entrée de répertoire est présente dans chaque répertoire dès qu'il est créé avec une commande telle que `mkdir(1)`_. Le deuxième répertoire spécial est ``..`` (deux points consécutifs). Ce répertoire est un alias vers le répertoire parent du répertoire courant.
 
-Les méta-données qui sont associées à chaque fichier ou répertoire contienent outre les informations de type les bits de permission. Ceux-ci permettent d'encoder trois types de permissions et d'autorisation :
+Les méta-données qui sont associées à chaque fichier ou répertoire contiennent, outre les informations de type, les bits de permission. Ceux-ci permettent d'encoder trois types de permissions et d'autorisation :
 
  - ``r`` : autorisation de lecture
  - ``w`` : autorisation d'écriture ou de modification
@@ -294,8 +294,8 @@ Les appels systèmes `link(2)`_ et `unlink(2)`_ sont un peu particuliers et mér
    $ ln a/test.txt a/test2.txt
    $ ls -li a
    total 16
-   9624126 -rw-r--r--  3 obo  stafinfo  5 24 mar 21:14 test.txt
-   9624126 -rw-r--r--  3 obo  stafinfo  5 24 mar 21:14 test2.txt
+   9624126 -rw-r--r--  2 obo  stafinfo  5 24 mar 21:14 test.txt
+   9624126 -rw-r--r--  2 obo  stafinfo  5 24 mar 21:14 test2.txt
    $ ln a/test.txt b/test3.txt
    $ stat --format "inode=%i nlinks=%h" b/test3.txt
    inode=9624126 nlinks=3
@@ -387,7 +387,7 @@ Toutes les opérations qui sont faites sur un fichier se font en utilisant le :t
 
 Tout processus doit correctement fermer tous les fichiers qu'il a utilisé. Par défaut, le système d'exploitation ferme automatiquement les descripteurs de fichiers correspondant ``0``, ``1`` et ``2`` lorsqu'un processus se termine. Les autres descripteurs de fichiers doivent être explicitement fermés par le processus. Si nécessaire, cela peut se faire en enregistrant une fonction permettant de fermer correctement les fichiers ouverts via `atexit(3)`_. Il faut noter que par défaut un appel à `execve(2)`_ ne ferme pas les descripteurs de fichiers ouverts par le processus. C'est nécessaire pour permettre au programme exécuté d'avoir les entrées et sorties standard voulues.
 
-Lorsqu'un fichier a été ouvert, le noyau du système d'exploitation maintient outre les références vers l':term:`inode` du fichier un :term:`offset pointer`. Cet :term:`offset pointer` est la position actuelle de la tête de lecture/écriture du fichier. Lorsqu'un fichier est ouvert, son :term:`offset pointer` est positionné au premier octet du fichier, sauf si le drapeau ``O_APPEND`` a été spécifié lors de l'ouverture du fichier, dans ce cas l':term:`offset pointer` est positionné juste après le dernier octet du fichier de façon à ce qu'une écriture s'ajoute à la suite du fichier.
+Lorsqu'un fichier a été ouvert, le noyau du système d'exploitation maintient, outre les références vers l':term:`inode` du fichier, un :term:`offset pointer`. Cet :term:`offset pointer` est la position actuelle de la tête de lecture/écriture du fichier. Lorsqu'un fichier est ouvert, son :term:`offset pointer` est positionné au premier octet du fichier, sauf si le drapeau ``O_APPEND`` a été spécifié lors de l'ouverture du fichier, dans ce cas l':term:`offset pointer` est positionné juste après le dernier octet du fichier de façon à ce qu'une écriture s'ajoute à la suite du fichier.
 
 Les deux appels systèmes permettant de lire et d'écrire dans un fichier sont respectivement `read(2)`_ et `write(2)`_.
 
@@ -472,7 +472,7 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
       // le fichier est effacé, mais reste accessible
       // via son descripteur jusqu'à close(fd)
 
-      / Accès au fichier avec read et write
+      // Accès au fichier avec read et write
 
       if(close(fd)==-1)
         exit_on_error("close");
