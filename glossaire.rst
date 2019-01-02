@@ -447,13 +447,13 @@ Glossaire
        Clés abstraite pour accéder à un fichier.
 
     répertoire
-       Fichier spécial contenant les adresses d'autres fichiers.
+       Fichier spécial contenant les noms et inodes d'autres fichiers et répertoires.
 
     secteur
-       Plus petite unité physique de stockage pour un support de donnée.
+       Plus petite unité physique de stockage pour un support de données.
 
     répertoire courant
-       Répertoire dans lequel on est présentement positionné.
+       Répertoire dans lequel le processus en cours d'exécution ouvrira les fichiers via open.
 
     offset pointer
        Valeur entière représentant le déplacement en mémoire nécessaire, par rapport à une adresse de référence pour atteindre une autre adresse. C'est la distance séparant deux emplacements mémoire.
@@ -465,7 +465,7 @@ Glossaire
        L'octet de poids le plus fort est enregistré à l'adresse mémoire la plus petite, l'octet de poids inférieur est enregistré à l'adresse mémoire suivante et ainsi de suite.
 
     lien symbolique
-       Permet de référencer d'autres entrées de répertoire ou de fichiers ordinaires.
+       à compléter
 
     lock
        Permet à un processus d'obtenir l'accès exclusif à un fichier ou une partie de fichier.
