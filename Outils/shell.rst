@@ -396,7 +396,7 @@ Il est important de noter qu'une archive n'est pas forcément compressée.
 						* x : 	désarchive
 						* t : 	inspection de l'archive
 
-	.. code-block:: console
+	.. code-block:: none
 
 		$ tar cf monarchive.tar firstfile.c  secondfile.c  	 = 	crée une archive contenant deux fichiers
 		$ tar cfz monarchive.tar.gz firstfile.c  secondfile.c	 =	crée une archive compressée
@@ -642,7 +642,7 @@ La plupart des commandes en console sont exécutées rapidement, mais ce n'est p
 
 Exemples :
 
-    .. code-block:: console
+    .. code-block:: none 
 
       $ yes > \dev\null
       #nous lançons la commande yes
@@ -777,7 +777,7 @@ Une commande d'un 'prog' est constituée d'un adressage, c-à-d les lignes sur l
 
 	Quelques illustrations basiques :
 
-	.. code-block:: console
+	.. code-block:: none
 
 		$ sed '' test.txt			= Le script est vide, il renvoie simplement le fichier
 

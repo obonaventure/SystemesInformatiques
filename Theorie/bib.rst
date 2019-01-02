@@ -16,7 +16,6 @@ Bibliographie
 
 .. [Bashar1997] Bashar, N., `Ariane 5: Who Dunnit?`, IEEE Software 14(3): 15–16. May 1997. doi:10.1109/MS.1997.589224.
 
-.. [BovetCesati2005] Bovet, D., Cesati, M, `Understanding the Linux Kernel, Third Edition`, O'Reilly, 2005, http://my.safaribooksonline.com/book/operating-systems-and-server-administration/linux/0596005652
 
 .. [BryantOHallaron2011] Bryant, R. and O'Hallaron, D., `Computer Systems : A programmer's perspective`, Second Edition, Pearson, 2011, http://www.amazon.com/Computer-Systems-Programmers-Perspective-2nd/dp/0136108040/ref=sr_1_1?s=books&ie=UTF8&qid=1329058781&sr=1-1
 
@@ -32,9 +31,6 @@ Bibliographie
 
 .. [CPP] C preprocessor manual, http://gcc.gnu.org/onlinedocs/cpp/
 
-
-.. [CSyntax] Wikipedia, C syntax, http://en.wikipedia.org/wiki/C_syntax
-
 .. [Dijkstra1965b] Dijkstra, E., `Cooperating sequential processes`, 1965, http://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html
 
 .. [Dijkstra1965] Dijkstra, E.,  `Solution of a problem in concurrent programming control`. Commun. ACM 8, 9 (September 1965), 569 http://doi.acm.org/10.1145/365559.365617
@@ -49,8 +45,6 @@ Bibliographie
 
 .. [Goldberg1991] Goldberg, D., `What every computer scientist should know about floating-point arithmetic`. ACM Comput. Surv. 23, 1 (March 1991), 5-48. http://doi.acm.org/10.1145/103162.103163 ou http://www.validlab.com/goldberg/paper.pdf
 
-.. [Goldberg+1996] Goldberg, I., Wagner, D., `Randomness and the Netscape Browser`, Dr. Dobb's Journal, January 1996, http://www.cs.berkeley.edu/~daw/papers/ddj-netscape.html
-
 
 .. [Gove2011] Gove, D., `Multicore Application Programming for Windows, Linux and Oracle Solaris`, Addison-Wesley, 2011, http://books.google.be/books?id=NF-C2ZQZXekC
 
@@ -61,8 +55,6 @@ Bibliographie
 .. [Graham+1982] Graham, S., Kessler, P. and Mckusick, M., `Gprof: A call graph execution profiler`. SIGPLAN Not. 17, 6 (June 1982), 120-126. http://doi.acm.org/10.1145/872726.806987
 
 .. [HennessyPatterson] Hennessy, J. and Patterson, D., `Computer Architecture: A Quantitative Approach`, Morgan Kauffmann, http://books.google.be/books?id=gQ-fSqbLfFoC
-
-.. [Honeyford2006] Honeyford, M., `Speed your code with the GNU profiler`, http://www.ibm.com/developerworks/library/l-gnuprof.html
 
 .. [HP] HP, `Memory technology evolution: an overview of system memory technologies`, http://h20000.www2.hp.com/bc/docs/support/SupportManual/c00256987/c00256987.pdf
 
@@ -90,7 +82,6 @@ Bibliographie
 
 .. [Mitchell+2001] Mitchell, M., Oldham, J. and Samuel, A., `Advanced Linux Programming`, New Riders Publishing, ISBN 0-7357-1043-0, June 2001, http://www.advancedlinuxprogramming.com/
 
-.. [MorrisThomson1979] Morris, R. and Thompson, K. `Password security: a case history`. Commun. ACM 22, 11 (November 1979), 594-597. http://doi.acm.org/10.1145/359168.359172
 
 .. [Nemeth+2010] Nemeth, E., Hein, T., Snyder, G., Whaley, B., `Unix and Linux System Administration Handbook`, Prentice Hall, 2010, http://books.google.be/books?id=rgFIAnLjb1wC
 
@@ -104,7 +95,6 @@ Bibliographie
 
 .. [Tanenbaum+2009] Tanenbaum, A., Woodhull, A., `Operating systems: design and implementation`, Prentice Hall, 2009
 
-.. [Toomey2011] Toomey, W.,  `The Strange Birth and Long Life of Unix`, IEEE Spectrum, December 2011, http://spectrum.ieee.org/computing/software/the-strange-birth-and-long-life-of-unix
 
 .. [Tribble2005] Tribble, D., `Go To Statement Considered Harmful: A Retrospective`, 2005, http://david.tribble.com/text/goto.html
 

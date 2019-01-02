@@ -246,6 +246,6 @@ A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher 
 
 .. rubric:: Footnotes
 
-.. [#frestrict] La qualificateur ``restrict`` est également parfois utilisé pour indiquer des contraintes sur les pointeurs passés en argument à une fonction [Walls2006].
+.. [#frestrict] La qualificateur ``restrict`` est également parfois utilisé pour indiquer des contraintes sur les pointeurs passés en argument à une fonction [Walls2006]_.
 
 
