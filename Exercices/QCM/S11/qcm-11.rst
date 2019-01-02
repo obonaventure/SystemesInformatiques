@@ -84,7 +84,7 @@ Parmi les affirmations suivantes relatives au bit de validité utilisé dans la 
 
 .. class:: negative
 
-- il y a un seule bit de validité pour une table des pages
+- il y a un seul bit de validité pour une table des pages
 
  .. class:: comment
 
