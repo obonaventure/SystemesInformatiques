@@ -22,10 +22,17 @@ import sys, os
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
-
+sys.path.append(os.path.abspath('mcq'))
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx' ]
+extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx','mcq' ]
+
+
+# mcq
+
+mcq_nb_prop=3
+mcq_upload_url='http://inginious.info.ucl.ac.be'
+mcq_inginious_url='http://inginious.info.ucl.ac.be/cnp3'
 
 # ucomment
 #sys.path.append(os.path.abspath(os.getcwd()))
@@ -51,8 +58,8 @@ source_encoding = 'utf-8'
 master_doc = 'index'
 
 # General information about the project.
-project = u'SINF1252 : Systèmes informatiques'
-copyright = u'2013, O. Bonaventure, G. Detal, C. Paasch'
+project = u'SINF1252 : Exercices '
+copyright = u'2012-2014, O. Bonaventure, G. Detal, C. Paasch'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -75,7 +82,7 @@ language = 'fr'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build/**', '.#*', '**/.#**', 'Exercices/QCM/**', "**.BASE.**", "**.REMOTE.**", "**.LOCAL.**", "**.BACKUP.**" ]
+exclude_patterns = ['_build', '.#*', '*/.#*', 'QCM/*' ]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -98,13 +105,14 @@ pygments_style = 'sphinx'
 #modindex_common_prefix = []
 
 rst_epilog = """
-.. include:: /links.rst
-.. include:: /man_links.rst
-.. include:: /incl_links.rst
+.. include:: /../Theorie/links.rst
+.. include:: /../Theorie/man_links.rst
+.. include:: /../Theorie/incl_links.rst
 """
 
 # Intersphinx
 intersphinx_mapping = {'theorie': ('https://sites.uclouvain.be/SystInfo/notes/Theorie/html/', None), 'outils': ('https://sites.uclouvain.be/SystInfo/notes/Outils/html/', None), 'exercices': ('https://sites.uclouvain.be/SystInfo/notes/Exercices/html/', None)}
+
 
 
 # -- Options for HTML output ---------------------------------------------------
@@ -140,7 +148,7 @@ html_title = u'Systèmes informatiques'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['_static', 'mcq/static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -203,7 +211,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'SINF1252.tex', u'SINF1252 : Systèmes informatiques',
+  ('index', 'SINF1252.tex', u'SINF1252',
    u'O. Bonaventure, G. Detal, C. Paasch', 'manual'),
 ]
 
@@ -247,7 +255,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'SINF1252', u'SINF1252 : Systèmes informatiques',
+  ('index', 'SINF1252', u'SINF1252',
    u'O. Bonaventure, G. Detal, C. Paasch', 'SINF1252', 'One line description of project.',
    'Miscellaneous'),
 ]
@@ -265,7 +273,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'SINF1252 : Systèmes informatiques'
+epub_title = u'SINF1252'
 epub_author = u'O. Bonaventure, G. Detal, C. Paasch'
 epub_publisher = u'O. Bonaventure, G. Detal, C. Paasch'
 epub_copyright = u'2013, O. Bonaventure, G. Detal, C. Paasch'
@@ -310,5 +318,3 @@ epub_copyright = u'2013, O. Bonaventure, G. Detal, C. Paasch'
 #	print "Build as staff member"
 #except:
 #	print "Build as student"
-
-mathjax_path="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
