@@ -103,7 +103,7 @@ Question 1. Utilisation des sémaphores
 
    .. negative::
 
-      .. code-block:: c
+      .. code-block:: none
 
          sem_t *semaphore;
          semaphore=(sem_t *)malloc(sizeof(struct sem_t));

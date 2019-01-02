@@ -362,7 +362,7 @@ Question 7. Extraction de bits
 
    Il est parfois nécessaire en C de manipuler directement la représentation binaire d'un nombre. Si ``f`` est un nombre de type ``float`` stocké sur 32 bits, laquelle des expressions ci-dessous peut-elle être intégrée dans ce code pour afficher positif ou négatif en fonction du signe de ce nombre ?
 
-   .. code-block:: c
+   .. code-block:: none
 
       if(<à compléter>)
         printf("positif\n");
@@ -481,7 +481,7 @@ Question 8. Chaînes de caractères
 
    .. negative::
 
-      .. code-block:: c
+      .. code-block:: none
 
           int count1(char *s, char c) {
             int i=0;

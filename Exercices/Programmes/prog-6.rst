@@ -144,7 +144,7 @@ Exercices
 
 	Discuter les avantages et inconvénients des ces deux solutions. (Regardez la man page de `pthread_mutex_trylock(3posix)`_) 
 
-#. L'outil ``helgrind`` (décrit dans la section :ref:`theorie:helgrind-ref`) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`/Programmes/src/pthread-philo.c` et analysez ce qu'il affiche. 
+#. L'outil ``helgrind`` (décrit dans la section :ref:`outils:helgrind-ref`) permet de trouver des deadlocks ou autres problèmes. Exécutez-le sur le petit programme suivant :download:`/Programmes/src/pthread-philo.c` et analysez ce qu'il affiche. 
 
 
 
@@ -163,7 +163,7 @@ On vous demande de transformer un code monothreadé en un code multithreadé. Vo
 
 Un exemple d'utilisation du programme est le suivant:
 
-    .. code-block:: c
+    .. code-block:: console
 
         $ ./crypt -p toto -n 10000 test Bonjour!
         CAC7EF483F90C988 0F5766990DFA0914
@@ -174,7 +174,7 @@ Vous devez donc vous baser sur le code existant afin de paralléliser le chiffre
 
 On vous demande également d'évaluer l'impact des arguments ``-t`` et ``-n`` sur l'exécution du programme. Pensez à exécuter votre programme avec un argument ``-n`` suffisamment grand si vous voulez évaluer l'impact de ``-t``. On vous demande plus spécifiquement de générer un graphique qui montre pour différentes valeurs le temps de calcul. Vous pouvez utiliser `time(1posix)`_ afin de récupérer le temps d'exécution d'un programme:
 
-    .. code-block:: c
+    .. code-block:: console
 
         $ time ./crypt -p toto -n 10000 -d CAC7EF483F90C988 0F5766990DFA0914
         test Bonjour!

@@ -206,7 +206,7 @@ Question 4. Deuxième programme en langage C
 
    .. negative::
 
-      .. code-block:: c
+      .. code-block:: none
 
          #include <stdio.h>
          int main(int argc, const char *argv[]) {
@@ -218,7 +218,7 @@ Question 4. Deuxième programme en langage C
 
    .. negative::
 
-      .. code-block:: c
+      .. code-block:: none
 
          #include <stdio.h>
          int main(int argc, const char *argv[]) {
