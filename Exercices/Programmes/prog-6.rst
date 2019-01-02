@@ -14,7 +14,7 @@ Exercices
 
 .. only:: staff
 
-   Ecrivez un code qui permet de récupérer un tableau d'entiers d'un thread. Exercice disponible sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252-new/threads_1>`_.
+   Ecrivez un code qui permet de récupérer un tableau d'entiers d'un thread. Exercice disponible sur `INGInious threads_1 <https://inginious.info.ucl.ac.be/course/LSINF1252-new/threads_1>`_.
 
 #. Essayez de lancer un grand nombre de threads d'exécution sur votre machine. Quel est le nombre maximum de threads que `pthread_create(3)`_ vous autorise à lancer ?
 
@@ -150,7 +150,7 @@ Exercices
 
 .. only:: staff
 
-   Résolvez des sudokus. Exercice disponible sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252-new/sudoku>`_.
+   Résolvez des sudokus. Exercice disponible sur `INGInious sudoku <https://inginious.info.ucl.ac.be/course/LSINF1252-new/sudoku>`_.
 
 Mini-projet: Mesure de performance
 ==================================

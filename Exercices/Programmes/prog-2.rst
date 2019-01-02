@@ -11,7 +11,7 @@ Questions INGINIOUS
 
 #. L'an dernier, vous avez écrit un programme permettant de détecter si une chaîne de caractères était un palindrome. Faites de même en C avec l'exercice INGINIOUS https://inginious.info.ucl.ac.be/course/LSINF1252/palindrome
 
-#. Ecrivez le corps de la fonction `swap <https://inginious.info.ucl.ac.be/course/LSINF1252/swap2>`_ permettant d'échanger les valeurs stockées dans deux variables de type entier. Faites de même lorsque les arguments de cette fonction sont des structures contenant des fractions : https://inginious.info.ucl.ac.be/admin/LSINF1252/task/swap
+#. Ecrivez le corps de la fonction `swap2 <https://inginious.info.ucl.ac.be/course/LSINF1252/swap2>`_ permettant d'échanger les valeurs stockées dans deux variables de type entier. Faites de même lorsque les arguments de cette fonction sont des structures contenant des fractions : https://inginious.info.ucl.ac.be/admin/LSINF1252/task/swap
 
 #. La libraire `string(3)`_ implémente un grand nombre de fonctions de manipulation des strings qui vous serons utile lors de différents projets de programmation. 
 
@@ -24,7 +24,7 @@ Questions INGINIOUS
 
   Lorsque vous considérez que votre programme est correct, testez son bon fonctionnement via l'exercice correspondant sur inginious : https://inginious.info.ucl.ac.be/course/LSINF1252/mini-projet-string
  
-#. Faites l'exercice `swap <https://inginious.info.ucl.ac.be/course/LSINF1252/swap>`_ sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/swap>`_
+#. Faites l'exercice `swap <https://inginious.info.ucl.ac.be/course/LSINF1252/swap>`_ sur INGInious
 
 #. Faites les exercices de manipulation de bits sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252>`_. Pour réaliser ces exercices, réfléchissez d'abord sur papier, par exemple sur des blocs de 4 ou 8 bits. Pour la plupart des questions, il faut combiner des décalages à gauche ou à droite avec des opérations ``AND`` (``&``), ``OR`` (``|``) et ``NOT`` (``~``) bit à bit.
 
