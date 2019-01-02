@@ -202,6 +202,8 @@ Toutes les tables de caractères placent les chiffres ``0`` à ``9`` à des posi
 
   Dans la version online de ces notes, toutes les références vers un programme Unix, un appel système ou une fonction de la librairie pointent vers la page de manuel Linux correspondante.
 
+Il existe de nombreux livres consacrés au langage C. La référence la plus classique est [KernighanRitchie1998]_, mais certains éléments comments à dater. Un tutorial intéressant a été publié par Brian Kernighan [Kernighan]_. [King2008]_ propose une présentation plus moderne du langage C.
+
 .. rubric:: Footnotes
 
 

@@ -36,7 +36,7 @@ Le mot de passe ne servant à rien sans les clé et vice versa, on devine aisém
 
 Pour générer ces clés et choisir votre mot de passe, il suffit d'entrer la commande
 
-    .. code-block:: console
+    .. code-block:: none
 
       $ ssh-keygen -t rsa -C "login"
       # remplacer "login" par votre nom d'utilisateur

@@ -103,7 +103,7 @@ Question 1. Utilisation des sémaphores
 
    .. negative::
 
-      .. code-block:: c
+      .. code-block:: none
 
          sem_t *semaphore;
          semaphore=(sem_t *)malloc(sizeof(struct sem_t));
@@ -443,7 +443,3 @@ Question 3. Fonctions 'thread-safe'
          Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`_.
 
 
-
-.. include:: ../../links.rst
-.. include:: ../../man_links.rst
-.. include:: ../../incl_links.rst

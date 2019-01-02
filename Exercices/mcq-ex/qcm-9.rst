@@ -532,7 +532,3 @@ Considérons un répertoire dans lequel les commandes suivantes sont exécutées
       - les fichiers ``a`` et ``c`` ont la même taille
       - l'`inode` correspondant au fichier ``a`` indique qu'il y a deux liens vers lui
 
-
-.. include:: ../../links.rst
-.. include:: ../../man_links.rst
-.. include:: ../../incl_links.rst

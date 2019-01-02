@@ -29,11 +29,12 @@ html {
     background: #FFF url(bg-page.png) top left repeat-x;
 }
 
+/*     font-family: Arial, Helvetica, sans-serif; */
+
 body {
     line-height: 1.5;
     margin: auto;
     padding: 0px;
-    font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
     min-width: 59em;
     max-width: 60em;
     color: #333333;

@@ -692,8 +692,8 @@ Une fois vos changements commités, vous pouvez les ajouter à *origin* avec
 
    $ git push origin master
 
-Votre amélioration devrait normalement être visible
-`ici <https://github.com/obonaventure/SystemesInformatiques/network>`_.
+Votre amélioration devrait normalement être visible via
+`https://github.com/obonaventure/SystemesInformatiques/network <https://github.com/obonaventure/SystemesInformatiques/network>`_.
 Vous pouvez maintenant aller sur Github à la page de votre fork et
 cliquer sur *Pull Requests* puis *New pull request* et expliquer
 vos changements.
@@ -1648,7 +1648,7 @@ Afficher l'historique
 
 Pour afficher l'historique, outre l'outil utilisé pour faire les
 illustrations de ce cours que vous pouvez retrouver
-`ici <https://github.com/blegat/git-dot>`_,
+`https://github.com/blegat/git-dot <https://github.com/blegat/git-dot>`_,
 il existe la commande `git-log(1)`_.
 Elle est très flexible comme on va le voir.
 ``git log`` affiche simplement l'historique à partir de ``HEAD``

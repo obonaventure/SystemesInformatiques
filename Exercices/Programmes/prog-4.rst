@@ -19,10 +19,13 @@ programmes composés de plusieurs fonctions. Pour cela, l'utilitaire `make(1)`_ 
  - https://inginious.info.ucl.ac.be/course/LSINF1252/s2_make
  - https://inginious.info.ucl.ac.be/course/LSINF1252/s2_make_calc
  - https://inginious.info.ucl.ac.be/course/LSINF1252/s2_make_mcq
- - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_make
- - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_make_mcq
- - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_cunit_basics
- - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_make_tests
+
+.. only:: staff
+
+    - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_make
+    - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_make_mcq
+    - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_cunit_basics
+    - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_make_tests
 
 Lorsque l'on écrit des programmes en C ou dans un autre langage, il est important de tester
 le bon fonctionnement de toutes les fonctions du programme pour éviter des erreurs et autres

@@ -313,7 +313,3 @@ Question 4. Variable ``errno``
          Voir page de manuel et aussi http://pubs.opengroup.org/onlinepubs/9699919799/functions/pthread_join.html. La plupart des fonctions pthread_* ne modifient pas la valeur de ``errno``, mais le standard n'est pas 100% clair sur ce qu'une implémentation doit faire. Linux ne semble pas fixer la valeur de ``errno``.
 
 
-
-.. include:: ../../links.rst
-.. include:: ../../man_links.rst
-.. include:: ../../incl_links.rst
