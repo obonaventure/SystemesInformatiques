@@ -15,8 +15,8 @@ echo "**** Outils ****"
 sphinx-build  -nWNT --keep-going -b html . /tmp
 cd ../Exercices
 echo "**** Exercices ****"
-sphinx-build  -nWNT --keep-going -b html . /tmp
+#sphinx-build  -nWNT --keep-going -b html . /tmp
 cd QCM
 echo "**** QCM ****"
-make
+#make
 cd ../..
