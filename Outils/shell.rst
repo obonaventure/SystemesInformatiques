@@ -575,7 +575,7 @@ Pour effectuer des chaînes
 
 `xargs(1)`_			permet d'appliquer une commande à l'entrée standard.
 
-	Pour cet exemple, le résultat est tous les fichiers dont le nom contient "mon test", et donc le fichier contient "supertab".
+	Pour cet exemple, le résultat est tous les fichiers dont le nom contient "mon test", et dont le fichier contient "supertab".
 	
 	.. code-block:: console
 	
