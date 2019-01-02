@@ -1582,7 +1582,7 @@ Les fonctions récursives sont parfois utilisées en langage C. Lors de leur ex�
 
 
 Question 10. Pointeurs en assembleur
------------------------------------
+------------------------------------
 
 Pour comprendre le fonctionnement des pointeurs en C, il est parfois utile de se ramener à la traduction en assembleur de fragments de code C. Considérons les lignes suivantes :
 

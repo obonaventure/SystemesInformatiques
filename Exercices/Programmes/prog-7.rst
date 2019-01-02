@@ -117,4 +117,4 @@ Outils
 
 #. Si vous ne l'aviez pas fait durant la troisième semaine, prenez le temps pour faire l'exercice relatif à `gdb(1)`_ . Le debugger pourra vous être très utile pour le projet.
 
-#. Un autre outil particulièrement intéressant est  :ref:`outils:valgrind` qui permet de détecter différents problèmes d'allocation de la mémoire. Prenez le temps nécessaire pour comprendre comment ce logiciel fonctionne, cette compétence vous fera gagner du temps plus tard et vous évitera de perdre du temps pour corriger un problème d'allocation de mémoire difficile à détecter.
+#. Un autre outil particulièrement intéressant est  :ref:`outils:valgrind-ref` qui permet de détecter différents problèmes d'allocation de la mémoire. Prenez le temps nécessaire pour comprendre comment ce logiciel fonctionne, cette compétence vous fera gagner du temps plus tard et vous évitera de perdre du temps pour corriger un problème d'allocation de mémoire difficile à détecter.
