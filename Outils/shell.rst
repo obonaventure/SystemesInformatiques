@@ -73,7 +73,7 @@ Il est possible de changer le répertoire courant du processus ou du shell en ut
   - `cd(1posix)`_ .. : remonte dans le répertoire prédécesseur dans l'arborescence des fichiers.
 
 La commande `mkdir(1)`_ permet de créer un répertoire. Elle prend comme argument le nom du répertoire à créer.
-La commande `rmdir(1)`_ supprime un répertoire qui doit être vide vide. Pour effacer un répertoire et tous les fichiers qu'il contient, il faut utiliser la commande `rm(1)`_ avec l'option ``-r``. Ainsi, ``rm -r /tmp/t`` supprime le répertoire ``/tmp/t`` ainsi que tous les fichiers et sous-répertoires se trouvant dans ce répertoire. 
+La commande `rmdir(1)`_ supprime un répertoire qui doit être vide. Pour effacer un répertoire et tous les fichiers qu'il contient, il faut utiliser la commande `rm(1)`_ avec l'option ``-r``. Ainsi, ``rm -r /tmp/t`` supprime le répertoire ``/tmp/t`` ainsi que tous les fichiers et sous-répertoires se trouvant dans ce répertoire. 
 
 La commande `ls(1)`_ permet de connaître l'ensemble des fichiers et répertoires contenus dans le répertoire courant. Elle supporte plusieurs options dont les plus utiles sont :
 	
@@ -233,7 +233,7 @@ Extraction de données
 		zorro,01,20
 		zorro,5,4
 
-		$ cat file.txt | sort -t; -k2n
+		$ cat file.txt | sort -t, -k2n
 		zorro,01,20
 		pcr,01,3
 		pcr,1,3
@@ -660,7 +660,7 @@ Exemples :
       $ bg 1
       #nous relançons yes en arrière-plan. On peut utiliser son nom comme son numéro avec la commande bg et fg
       [1]+ yes > \dev\null &
-      #yes set remix en route
+      #yes s'est remis en route
 
       $ jobs
       #nous vérifions le statut de yes avec jobs
@@ -682,7 +682,7 @@ Exemples :
       $ jobs
       #nous vérifions les jobs
       [1]+  Terminated: 15          yes > \dev\null
-      #yes set marqué Terminated
+      #yes est marqué Terminated
 
       $ jobs
       #un deuxième appel à jobs nous affiche une liste vide
@@ -705,7 +705,7 @@ Modification d'un fichier
 				
 				* -n : n'affiche aucune ligne, sauf celle spécifiée avec la commande p
 				* -e : specifie les commandes à appliquer sur le fichier
-					Note : I faut mieux encadrer la commande avec des ' ou des " 
+					Note : Il vaut mieux encadrer la commande avec des ' ou des " 
 				* -f : les commandes sont lues à partir d'un fichier
 
 Pour bien comprendre la puissance de sed, il est important de comprendre son fonctionnement. sed fonctionne en 4 étapes :
@@ -900,7 +900,7 @@ Après il ne reste plus qu'à l'exécuter et observer le résultat.
 Les variables
 ^^^^^^^^^^^^^
 
-Bash permet l'utilisation de variables dans les scripts. Il peut s'agir de simples variables ou de tableaux. Bash n'est pas un langage typé, des Int ou des String n'existent pas, toutes les variables sont traitées de la même façon. Pour illustrer ceci nous allons écrire le script `variables.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/variables.sh>`_
+Bash permet l'utilisation de variables dans les scripts. Il peut s'agir de simples variables ou de tableaux. Bash n'est pas un langage typé, les Int ou les String n'existent pas, toutes les variables sont traitées de la même façon. Pour illustrer ceci nous allons écrire le script `variables.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/variables.sh>`_
 
     .. code-block:: bash
 
@@ -942,7 +942,7 @@ Dans le but de tester ces boucles nous utiliserons un petit programme en C, `ret
       #!/bin/bash
 
       if ./return 0; then
-      #la valeur de renvoi sera 0 quand la boucle est exécutée
+      #la valeur de renvoi sera 0 quand la boucle aura été exécutée
       echo "Hello"
       fi
 

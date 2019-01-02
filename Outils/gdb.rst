@@ -111,12 +111,12 @@ Pour arrêter la console de gdb, tappez ``quit``.
 Illustration avec des exemples
 ------------------------------
 
-A titre d'exemple, télécharger l'archive :download:`src/gdb.c`. L'archive contient un Makefile qui vous permettra de compiler plusieurs programmes.
+.. A titre d'exemple, télécharger l'archive :download:`src/gdb.c`. L'archive contient un Makefile qui vous permettra de compiler plusieurs programmes.
 
 Premier programme
 ^^^^^^^^^^^^^^^^^
 
-	Le premier programme est ``calc``. Exécutez le pour vous apercevoir que le programme est erroné. A priori vous avez peu, ou pas, d'informations sur l'erreur. Lancez donc gdb à l'aide de ``gdb calc`` puis lancez le programme avec ``run``.
+	Le premier programme est :download:`src/calc.c`. Compilez-le et exécutez le pour vous apercevoir que le programme est erroné. A priori vous avez peu, ou pas, d'informations sur l'erreur. Lancez donc gdb à l'aide de ``gdb calc`` puis lancez le programme avec ``run``.
 
 	.. code-block:: console
 
@@ -130,7 +130,9 @@ Premier programme
 
 	.. code-block:: console
 
-		Il est intéressant de noter une particularité du language C par rapport à java : une variable déclarée n'est pas initialisé à 0 par défault, elle reprend juste la valeur de la mémoire avant son affectation. ``print i`` et ``print res`` vous donneront donc des résultats aléatoires.
+
+		Il est intéressant de noter une particularité du language C par rapport à java : une variable déclarée n'est pas initialisée à 0 par défaut, elle reprend juste la valeur de la mémoire avant son affectation. ``print i`` et ``print res`` vous donneront donc des résultats aléatoires.
+
 
 	Puisque le problème vient du calcul arithmétique, placez un break sur cette ligne pour pouvoir observer à chaque itération les variables. ``break 9`` puis ``commands`` qui permet d'automatiser des commandes. Nous rajouterons comme commandes :
 
@@ -154,7 +156,7 @@ Premier programme
 Deuxième programme
 ^^^^^^^^^^^^^^^^^^
 
-	Le deuxième programme est appelé ``recursive``. Celui ne présente aucun bug et se déroulera normalement. Toutefois, il est intéressant d'utiliser `gdb(1)`_ pour bien comprendre les différents contextes au sein d'un programme. Mettez un break sur la fonction factTmp avec ``break factTmp`` et ajoutez automatiquement à ce breakpoint la commande ``backtrace``, via ``commands``. Ensuite, lancez le programme.
+	Le deuxième programme est appelé :download:`src/recursive.s`. Celui ne présente aucun bug et se déroulera normalement. Toutefois, il est intéressant d'utiliser `gdb(1)`_ pour bien comprendre les différents contextes au sein d'un programme. Mettez un break sur la fonction factTmp avec ``break factTmp`` et ajoutez automatiquement à ce breakpoint la commande ``backtrace``, via ``commands``. Ensuite, lancez le programme.
 	``backtrace`` vous permet de visualiser les appels de fonction effectués. Nous pouvons voir que la fonction factTmp a été appellée par factTerminal, elle même appellée par la fonction main.
 
 	.. code-block:: console
@@ -174,7 +176,7 @@ Deuxième programme
 Troisième programme
 ^^^^^^^^^^^^^^^^^^^
 
-	Le troisième programme est ``tab``. Ce programme s'exécute correctement, et pourtant, il y contient une erreur. Lancez le programme avec gdb et mettez un breakpoint sur la première instruction, à savoir la ligne 9. Pour comprendre un problème sans savoir où commencer, il est utile de suivre l'évolution des variables.
+	Le troisième programme est :download:`src/tab.c`. Compilez-le. Ce programme s'exécute correctement, et pourtant, il y contient une erreur. Lancez le programme avec gdb et mettez un breakpoint sur la première instruction, à savoir la ligne 9. Pour comprendre un problème sans savoir où commencer, il est utile de suivre l'évolution des variables.
 
 	.. code-block:: console
 
