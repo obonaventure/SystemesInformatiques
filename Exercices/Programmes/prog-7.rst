@@ -110,4 +110,11 @@ Exercices
 
 #. Les mutex et les sémaphores peuvent être utilisés pour résoudre des problèmes d'exclusion mutuelle. Le programme :download:`/QCM/S7/src/pthread-mutex-perf.c` utilise des mutex. Modifiez-le pour utiliser des sémaphores à la place et comparez le coût en termes de performance entre les mutex et les sémaphores.
 
-#. Faites l'exercice sur les producteurs/consommateurs sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/producteur-consommateur>`_.
+#. Faites l'exercice sur les `producteurs/consommateurs <https://inginious.info.ucl.ac.be/course/LSINF1252/PC>`_ sur `INGInious <https://inginious.info.ucl.ac.be>`_.
+
+Outils
+======
+
+#. Si vous ne l'aviez pas fait durant la troisième semaine, prenez le temps pour faire l'exercice relatif à `gdb(1)`_ . Le debugger pourra vous être très utile pour le projet.
+
+#. Un autre outil particulièrement intéressant est  :ref:`outils:valgrind` qui permet de détecter différents problèmes d'allocation de la mémoire. Prenez le temps nécessaire pour comprendre comment ce logiciel fonctionne, cette compétence vous fera gagner du temps plus tard et vous évitera de perdre du temps pour corriger un problème d'allocation de mémoire difficile à détecter.
