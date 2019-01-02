@@ -156,7 +156,7 @@ Premier programme
 Deuxième programme
 ^^^^^^^^^^^^^^^^^^
 
-	Le deuxième programme est appelé :download:`src/recursive.s`. Celui ne présente aucun bug et se déroulera normalement. Toutefois, il est intéressant d'utiliser `gdb(1)`_ pour bien comprendre les différents contextes au sein d'un programme. Mettez un break sur la fonction factTmp avec ``break factTmp`` et ajoutez automatiquement à ce breakpoint la commande ``backtrace``, via ``commands``. Ensuite, lancez le programme.
+	Le deuxième programme est appelé :download:`src/recursive.c`. Celui ne présente aucun bug et se déroulera normalement. Toutefois, il est intéressant d'utiliser `gdb(1)`_ pour bien comprendre les différents contextes au sein d'un programme. Mettez un break sur la fonction factTmp avec ``break factTmp`` et ajoutez automatiquement à ce breakpoint la commande ``backtrace``, via ``commands``. Ensuite, lancez le programme.
 	``backtrace`` vous permet de visualiser les appels de fonction effectués. Nous pouvons voir que la fonction factTmp a été appellée par factTerminal, elle même appellée par la fonction main.
 
 	.. code-block:: console
