@@ -462,7 +462,7 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 
    .. code-block:: c
 
-      char template[]="/tmp/sinf1252PROCXXXXXX"
+      char template[]="/tmp/sinf1252PROCXXXXXX";
 
       int fd=mkstemp(template);
       if(fd==-1)

@@ -422,7 +422,7 @@ Lors de son exécution, deux open file objects sont créés dans le noyau. Le pr
 
 Les open file objects sont également utilisés lorsque plusieurs processus ouvrent le même fichier. Considérons l'exécutions simultanée des deux commandes suivantes :
 
-.. code-block:: c
+.. code-block:: console
 
    $ prog1 file &
    $ prog2 file &
