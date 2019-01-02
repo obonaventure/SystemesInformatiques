@@ -462,7 +462,7 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
 
    .. code-block:: c
 
-      char template[]="/tmp/sinf1252PROCXXXXXX"
+      char template[]="/tmp/sinf1252PROCXXXXXX";
 
       int fd=mkstemp(template);
       if(fd==-1)
@@ -472,7 +472,7 @@ Cet appel système prend trois arguments. Le premier est le :term:`descripteur d
       // le fichier est effacé, mais reste accessible
       // via son descripteur jusqu'à close(fd)
 
-      / Accès au fichier avec read et write
+      // Accès au fichier avec read et write
 
       if(close(fd)==-1)
         exit_on_error("close");

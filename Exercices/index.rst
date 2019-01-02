@@ -20,7 +20,7 @@ Exercices
    :maxdepth: 2
 
    intro
-
+   bib
 
 ..   Projets/P1/projet-1
 ..   Projets/P2/enonce

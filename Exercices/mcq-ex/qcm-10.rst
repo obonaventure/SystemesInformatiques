@@ -226,6 +226,3 @@ Deux stratégies existent pour implémenter les signaux sous Unix: maintenir une
       .. comment:: Si un autre signal arrive durant l'exécution de la routine de traitement de signal, celui-ci sera perdu car bloqué par le système d'exploitation pour empêcher l'interruption de la routine de traitement du précédent signal.
 
 
-.. include:: ../links.rst
-.. include:: ../man_links.rst
-.. include:: ../incl_links.rst

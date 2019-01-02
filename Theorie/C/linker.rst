@@ -80,7 +80,7 @@ Un autre exemple d'utilisation de pointeurs vers des pointeurs est la fonction `
     long
     strtol(const char *restrict str, char **restrict endptr, int base);
 
-L'utilisation principale de `strtol(3)`_ est de convertir une chaîne de caractères en un nombre. La fonction `atoi(3)`_ fait de même et l'expression ``atoi("1252")`` retourne l'entier ``1252``. Malheureusement, la fonction `atoi(3)`_ ne traite pas correctement les chaînes de caractères qui ne contiennent pas un nombre. Elle ne retourne pas de code d'erreur et ne permet pas savoir quelle partie de la chaîne de caractères passée en argument était en erreur.
+L'utilisation principale de `strtol(3)`_ est de convertir une chaîne de caractères en un nombre. La fonction `atoi(3)`_ fait de même et l'expression ``atoi("1252")`` retourne l'entier ``1252``. Malheureusement, la fonction `atoi(3)`_ ne traite pas correctement les chaînes de caractères qui ne contiennent pas un nombre. Elle ne retourne pas de code d'erreur et ne permet pas de savoir quelle partie de la chaîne de caractères passée en argument était en erreur.
 
 `strtol(3)`_ est un exemple de fonction qui doit retourner deux types d'informations. Tout d'abord, `strtol(3)`_ retourne un résultat (dans ce cas un nombre). Si la chaîne de caractères à convertir est erronée, `strtol(3)`_ convertit le début de la chaîne et retourne un pointeur indiquant le premier caractère en erreur. Pour bien comprendre le fonctionnement de `strtol(3)`_, considérons l'exemple ci-dessous.
 
@@ -95,7 +95,7 @@ Lors de son exécution, ce programme affiche la sortie suivante.
    :encoding: utf-8
    :language: console
 
-L'appel à `strtol(3)`_ prend trois arguments. Tout d'abord un pointeur vers la chaîne de caractères à convertir. Ensuite l'adresse d'un pointeur vers une chaîne de caractères. Enfin la base de conversion. La première chaîne de caractères est correcte. Elle est convertie directement. La seconde par contre contient un caractère erroné. Lors de son exécution, `strtol(3)`_ va détecter la présence du caractère ``m`` et placera un pointeur vers ce caractère dans ``*p``. Pour que la fonction `strtol(3)`_ puisse retourner un pointeur de cette façon, il est nécessaire que son second argument soit de type ``char **``. Si le second argument était de type ``char *``, la fonction `strtol(3)`_ recevrait l'adresse d'une zone mémoire contenant un caractère. Comme le langage C utilise la passage par valeur, `strtol(3)`_ pourrait modifier la caractère pointé par ce pointeur mais pas son adresse. En utilisant un second argument de type ``char **``, `strtol(3)`_ a la possibilité de modifier la valeur pointée par ce pointeur.
+L'appel à `strtol(3)`_ prend trois arguments. Tout d'abord un pointeur vers la chaîne de caractères à convertir. Ensuite l'adresse d'un pointeur vers une chaîne de caractères. Enfin la base de conversion. La première chaîne de caractères est correcte. Elle est convertie directement. La seconde par contre contient un caractère erroné. Lors de son exécution, `strtol(3)`_ va détecter la présence du caractère ``m`` et placera un pointeur vers ce caractère dans ``*p``. Pour que la fonction `strtol(3)`_ puisse retourner un pointeur de cette façon, il est nécessaire que son second argument soit de type ``char **``. Si le second argument était de type ``char *``, la fonction `strtol(3)`_ recevrait l'adresse d'une zone mémoire contenant un caractère. Comme le langage C utilise le passage par valeur, `strtol(3)`_ pourrait modifier la caractère pointé par ce pointeur mais pas son adresse. En utilisant un second argument de type ``char **``, `strtol(3)`_ a la possibilité de modifier la valeur pointée par ce pointeur.
 
 Une implémentation partielle de `strtol(3)`_ pourrait être la suivante.
 
@@ -246,6 +246,8 @@ A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher 
 
 .. rubric:: Footnotes
 
-.. [#frestrict] La qualificateur ``restrict`` est également parfois utilisé pour indiquer des contraintes sur les pointeurs passés en argument à une fonction [Walls2006].
+
+.. [#frestrict] La qualificateur ``restrict`` est également parfois utilisé pour indiquer des contraintes sur les pointeurs passés en argument à une fonction [Walls2006]_.
+
 
 

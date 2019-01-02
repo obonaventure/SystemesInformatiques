@@ -38,7 +38,7 @@ Lors de l'utilisation de telles librairies, on s'attendrait à ce que toutes les
 
 Une analyse plus détaillée de l'exécutable avec `objdump(1)`_ révèle que si l'exécutable contient bien des appels à ces fonctions, leur code n'y est pas entièrement inclus.
 
-.. code-block:: c-objdump
+.. code-block:: console
 
    $gcc -g -lm math.c -o math
    $objdump -S -d math

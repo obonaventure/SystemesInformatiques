@@ -596,6 +596,3 @@ Question 7. `strdup(3)`_
 
 
 
-.. include:: ../../links.rst
-.. include:: ../../man_links.rst
-.. include:: ../../incl_links.rst

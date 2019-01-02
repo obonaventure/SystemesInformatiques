@@ -32,7 +32,7 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 #. Retournez dans le répertoire parent de ``my_dir`` et copiez le dossier complet ``my_dir`` dans ``my_dir_2``.
 #. Effacez le dossier entier ``my_dir`` en une seule commande (utilisez `rm(1)`_).
 
-Vous trouverez également sur `inginious <https://inginious.info.ucl.ac.be/course/LSINF1252>`_ les exercices suivants :
+Vous trouverez également sur `le cours LSINF1252 sur inginious <https://inginious.info.ucl.ac.be/course/LSINF1252>`_ les exercices suivants :
 
 #. Utilisation de la commande `grep(1)`_ : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_grep
 #. Utilisation des pipes : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_pipes
@@ -67,7 +67,7 @@ Vous trouverez également sur `inginious <https://inginious.info.ucl.ac.be/cours
 Certains côtés du C sont très proches du langage Java que vous connaissez déjà. Ce n'est pas surprenant
 puisque Java a été conçu avec le langage C comme base. Les inventeurs de Java ont ajouté tout ce qui 
 était nécessaire pour supporter les objets et ont retiré la gestion explicite de la mémoire. Les premiers
-exercices `inginious <https://inginious.info.ucl.ac.be/course/LSINF1252>`_ en C sont très proches de ceux
+exercices `inginious en C <https://inginious.info.ucl.ac.be/course/LSINF1252>`_ sont très proches de ceux
 que vous aviez réalisé en Java.
 
 #. Calcul de la valeur absolue d'une entier: https://inginious.info.ucl.ac.be/course/LSINF1252/absolute_value
@@ -216,7 +216,7 @@ que vous aviez réalisé en Java.
 
 .. only:: staff
 
-          #.  Faites l'exercice sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/commandetest>`_ sur la commande `test(1)`_.
+          #.  Faites l'exercice sur `commandetest <https://inginious.info.ucl.ac.be/course/LSINF1252/commandetest>`_ sur la commande `test(1)`_.
 
               INGInious est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécutés sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
 

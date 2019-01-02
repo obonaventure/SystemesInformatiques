@@ -1,17 +1,20 @@
 Systèmes Informatiques
 ======================
 
-Ce repository git est destiné à contenir les notes et exercices du cours de [Systèmes informatiques 1](http://www.uclouvain.be/cours-2014-LSINF1252) (C, Unix/Linux, ...) donné en deuxième année aux étudiants ingénieurs option informatique et aux étudiants en sciences informatiques de l'[UCL](http://www.uclouvain.be). Il sera mis régulièrement à jour et les étudiants sont encouragés à soumettre des bugs reports, envoyer des patches ( notamment pour la section relative aux outils) ou proposer de nouvelles questions à choix multiples.
+[![Build Status](https://travis-ci.com/obonaventure/SystemesInformatiques.svg?branch=master)](https://travis-ci.com/obonaventure/SystemesInformatiques)
+
+
+Ce repository git est destiné à contenir les notes et exercices du cours de [Systèmes informatiques 1](https://uclouvain.be/cours-2018-lsinf1252) (C, Unix/Linux, ...) donné en deuxième année aux étudiants ingénieurs option informatique et aux étudiants en sciences informatiques de l'[UCL](https://www.uclouvain.be). Il sera mis régulièrement à jour et les étudiants sont encouragés à soumettre des bugs reports, envoyer des patches ( notamment pour la section relative aux outils) ou proposer de nouvelles questions à choix multiples.
 
 Ce cours est écrit en restructured text et est distribué sous une licence creative commons
-http://creativecommons.org/licenses/by-sa/3.0/fr/
+https://creativecommons.org/licenses/by-sa/3.0/fr/
 
-Des versions HTML, pdf et epub sont disponibles via  http://sites.uclouvain.be/SystInfo
+Des versions HTML, pdf et epub sont disponibles via https://sites.uclouvain.be/SystInfo
 
 Compilation
 -----------
 
-Les notes sont écrites en [restructured text](http://docutils.sourceforge.net/rst.html) et peuvent être transformées en un document au format HTML, epub ou PDF en utilisant le logiciel [sphinx](http://sphinx-doc.org). Pour faciliter cette compilation, une configuration [vagrant](https://www.vagrantup.com) est reprise dans le fichier [Vagrantfile](https://github.com/obonaventure/SystemesInformatiques/tree/master/Vagrantfile) se trouvant à la racine du projet.  [Vagrant](https://www.vagrantup.com) est un logiciel fonctionnant sur Linux, Windows et MacOS qui permet d'automatiser et de faciliter la création de machines virtuelles supportées notamment par [Virtualbox](https://www.virtualbox.org).
+Les notes sont écrites en [restructured text](http://docutils.sourceforge.net/rst.html) et peuvent être transformées en un document au format HTML, epub ou PDF en utilisant le logiciel [sphinx](https://sphinx-doc.org). Pour faciliter cette compilation, une configuration [vagrant](https://www.vagrantup.com) est reprise dans le fichier [Vagrantfile](https://github.com/obonaventure/SystemesInformatiques/tree/master/Vagrantfile) se trouvant à la racine du projet.  [Vagrant](https://www.vagrantup.com) est un logiciel fonctionnant sur Linux, Windows et MacOS qui permet d'automatiser et de faciliter la création de machines virtuelles supportées notamment par [Virtualbox](https://www.virtualbox.org).
 
 Pour démarrer votre environnement [Vagrant](https://www.vagrantup.com), commencez par installer [Vagrant](https://www.vagrantup.com) et [Virtualbox](https://www.virtualbox.org). [Vagrant](https://www.vagrantup.com) utilise le [Vagrantfile](https://github.com/obonaventure/SystemesInformatiques/tree/master/Vagrantfile) pour créer les machines virtuelles. Ce dernier marque le dossier racine du projet et décrit le type de machine ainsi que les dépendances logicielles nécessaires au projet.
 
@@ -28,7 +31,7 @@ Finalement, lorsque que vous avez terminé de travailler sur le projet, vous pou
 Comment créer de nouvelles questions à choix multiples
 ------------------------------------------------------
 
-Une des améliorations récentes aux notes du cours reprises sur ce repository git est le support de questions à choix multiples. Ces questions à choix multiples sont écrites grâce à une petite extension à [http://www.sphinx-doc.org](sphinx) qui est intégrée au projet. Plusieurs dizaines de questions à choix multiples ont déjà étés écrites et les étudiants sont invités à proposer de nouvelles questions en s'appuyant sur les difficultés qu'ils ont rencontré en préparant les travaux pratiques du cours ou en révisant la théorie.
+Une des améliorations récentes aux notes du cours reprises sur ce repository git est le support de questions à choix multiples. Ces questions à choix multiples sont écrites grâce à une petite extension à [https://www.sphinx-doc.org](sphinx) qui est intégrée au projet. Plusieurs dizaines de questions à choix multiples ont déjà étés écrites et les étudiants sont invités à proposer de nouvelles questions en s'appuyant sur les difficultés qu'ils ont rencontré en préparant les travaux pratiques du cours ou en révisant la théorie.
 
 Une bonne question à choix multiples doit répondre à plusieurs critères :
 
