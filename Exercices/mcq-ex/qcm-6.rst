@@ -720,7 +720,3 @@ Dans certains programmes, il est nécessaire de définir plusieurs mutex qui son
 
       .. comment:: Lorsqu'un thread utilise plusieurs ressources protégées par un mutex, il est important que les accès à ces mutex se fasse chaque fois dans le même ordre. Dans cet exemple, il faut toujours accéder à ``x`` puis à ``y`` puis à ``z`` (ou un autre ordre). Accéder à ``a``  puis à ``y`` dans le thread A et à ``y`` puis à ``x`` dans le thread B est une source de deadlocks potentiels.
 
-
-.. include:: ../../links.rst
-.. include:: ../../man_links.rst
-.. include:: ../../incl_links.rst

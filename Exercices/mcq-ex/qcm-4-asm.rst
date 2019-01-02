@@ -1664,7 +1664,3 @@ Pour comprendre le fonctionnement des pointeurs en C, il est parfois utile de se
             Cette séquence d'instructions est la traduction de ``ptr=&a+1;``.
 
 
-
-.. include:: ../../links.rst
-.. include:: ../../man_links.rst
-.. include:: ../../incl_links.rst

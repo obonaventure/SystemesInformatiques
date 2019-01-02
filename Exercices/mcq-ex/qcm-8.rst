@@ -486,7 +486,3 @@ Question 5. Récupération du résultat d'un processus avec `waitpid(2)`_
 
          La valeur de retour de `waitpid(2)`_ indique si l'appel système s'est exécuté correctement ou non. Pour récupérer le statut du processus fils ``pid``, il faut utiliser la macro ``WEXITSTATUS``. Le pointeur ``int * status`` doit pointer vers une zone mémoire allouée par malloc. Ici, il pointe vers ``NULL``.
 
-
-.. include:: ../../links.rst
-.. include:: ../../man_links.rst
-.. include:: ../../incl_links.rst

@@ -299,6 +299,3 @@ Question 5. Arguments passés à un programme C
 
       .. comment:: Le premier élément du tableau ``argv[]``, ``argv[0]``, est le nom du programme qui est exécuté.
 
-.. include:: ../../links.rst
-.. include:: ../../man_links.rst
-.. include:: ../../incl_links.rst

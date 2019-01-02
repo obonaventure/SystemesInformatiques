@@ -11,7 +11,7 @@ Cette section comprend deux types d'exercices afin de permettre aux étudiants d
 Première semaine
 ----------------
 
-La matière couverte cette semaine correspond à l'`introduction aux systèmes informatiques <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/intro.html>`_ et au `langage C <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/intro-C.html>`_ . Le volet pratique est important et les sections relatives au `shell <https://sites.uclouvain.be/SystInfo/notes/Outils/html/shell.html>`_ et aux `processus <https://sites.uclouvain.be/SystInfo/notes/Outils/html/processus.html>`_ de la section dédiée aux `outils <https://sites.uclouvain.be/SystInfo/notes/Outils/html>`_ devraient vous être utiles.
+La matière couverte cette semaine correspond à l'`introduction aux systèmes informatiques <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/intro.html>`_ et au `langage C <https://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/intro-C.html>`_ . Le volet pratique est important et les sections relatives au `shell <https://sites.uclouvain.be/SystInfo/notes/Outils/html/shell.html>`_ et aux `processus <https://sites.uclouvain.be/SystInfo/notes/Outils/html/processus.html>`_ de la section dédiée aux `autres outils <https://sites.uclouvain.be/SystInfo/notes/Outils/html>`_ devraient vous être utiles.
 
 
 .. toctree::
@@ -36,7 +36,7 @@ La matière couverte cette semaine correspond à la section relative aux `types 
 Troisième semaine
 -----------------
 
-La matière couverte cette semaine correspond aux sections relative à l'`organisation de la mémoire <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire>`_ Vous commencez à développer des programmes complets, le debugger `gdb <https://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`_ pourrait vous aider. Il est décrit dans la section `outils <https://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`_
+La matière couverte cette semaine correspond aux sections relative à l'`organisation de la mémoire <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire>`_ Vous commencez à développer des programmes complets, le debugger `gdb <https://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`_ pourrait vous aider. Il est décrit dans la section `gdb  <https://sites.uclouvain.be/SystInfo/notes/Outils/html/gdb.html>`_
 
 .. toctree::
    :maxdepth: 2
