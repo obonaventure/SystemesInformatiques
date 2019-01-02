@@ -183,7 +183,7 @@ Considérons le fragment de programme ci-dessous.
     }
 
 
-Lors de l'exécution de ce programmes, les valeurs des différentes variables sont stockées en mémoire. Un seul des groupes d'affirmations ci-dessous est correct. Lequel ?
+Lors de l'exécution de ce programme, les valeurs des différentes variables sont stockées en mémoire. Un seul des groupes d'affirmations ci-dessous est correct. Lequel ?
 
 
 .. class:: positive
