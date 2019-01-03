@@ -161,12 +161,31 @@ Implémentez ces fonctions sans jamais utiliser la notation des tableaux en C (`
 
 .. only:: staff 
 
-          #. Expliquez à quoi sert l'attribut ``packed`` des structures dans `gcc(1)`_ (regardez la manpage). Appliquez cet attribut à la structure de l'exercice précédent. Qu'observez-vous comme différence ? Quel sont les avantages et désavantages d'utiliser cet attribut ? Dans quel cas est-il intéressant de l'utiliser ?
+		.. note::
 
+			Elle bypasse l'alignement décrit dans la question précédente. L'avantage est que la structure prend l'espace minimale n'importe soit l'ordonnancement des champs. Le désavatage est que la CPU doît faire plus de travail pour lire la variable, car des parties de la variable sont sur plusieurs registres, et donc la CPU doît faire des bit-shifts.
+
+
+
+
+#. Expliquez à quoi sert l'attribut ``packed`` des structures dans `gcc(1)`_ (regardez la manpage). Appliquez cet attribut à la structure de l'exercice précédent. Qu'observez-vous comme différence ? Quel sont les avantages et désavantages d'utiliser cet attribut ? Dans quel cas est-il intéressant de l'utiliser ?
 
 
 		.. note::
 
-			Elle bypasse l'alignement décrit dans la question précédente. L'avantage est que la structure prend l'espace minimale n'importe soit l'ordonnancement des champs. Le désavatage est que la CPU doît faire plus de travail pour lire la variable, car des parties de la variable sont sur plusieurs registres, et donc la CPU doît faire des bit-shifts. 
+			Il bypasse l'alignement décrit dans la question précédente. L'avantage est que la structure prend l'espace minimal n'importe soit l'ordonnancement des champs. Le désavantage est que la CPU doît faire plus de travail pour lire la variable, car des parties de la variable sont sur plusieurs registres, et donc la CPU doît faire des bit-shifts. 
 
 
+#. Exécutez plusieurs fois le code suivant. Expliquez les différents résultats obtenus.
+	.. code-block:: c
+
+		int global;
+		-int main (int argc, char** argv) 
+		{
+			int local;
+			int *ptr1 = (int *)malloc(sizeof(*ptr1));
+			int *ptr2 = (int *)malloc(sizeof(*ptr2));
+
+			printf("global %p loc %p p1 %p p2 %p\n", &global, &local, ptr1, ptr2);
+			return EXIT_SUCCESS;
+		}
