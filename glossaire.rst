@@ -195,13 +195,13 @@ Glossaire
 
     text
     segment text
-       à compléter
+      Zone de mémoire contenant les instructions qui sont exécutées par le micro-processeur.
 
     segment des données initialisées
-       à compléter
+      Zone de mémoire contenant l'ensemble des variables globales explicitement initialisées ainsi que les constantes et chaînes de caractères utilisée par le programme.
 
     segment des données non-initialisées
-       à compléter
+      Zone de mémoire contenant les variables non-initialisées. Celles-ci sont initialisées à 0 par le système d'exploitation.
 
     heap
     tas
@@ -270,7 +270,7 @@ Glossaire
        Si une partie de la mémoire est utilisée par un programme à un moment donné, il est fort probable que cette partie soit réutilisée prochainement par le programme (par exemple lors de l'exécution d'une boucle).
 
     lignes de cache
-       à compléter
+       Plus petit élément de données qui peut être transféré entre la mémoire cache et la mémoire de niveau supérieur.
 
     write through
        Technique d'écriture dans les mémoires caches. Toute écriture est faite simultanément en mémoire cache et en mémoire principale. Cela garantit la cohérence entre les deux mémoires mais réduit les performances.
@@ -285,19 +285,13 @@ Glossaire
        Registre spécial du processeur qui contient en permanence l'adresse de l'instruction en cours d'exécution. Le contenu de ce registre est incrémenté après chaque instruction et modifié par les instructions de saut.
 
     mode d'adressage
-       à compléter
+       Spécifie la façon dont est calculée l'adresse mémoire effective d'un opérande à partir de valeurs contenues dans des registres et de constantes contenues dans l'instruction ou ailleurs dans la machine.
 
     accumulateur
        Registre utilisé dans les premiers processeurs comme destination pour la plupart des opérations arithmétiques et logiques. Sur l'architecture [IA32]_, le registre ``%eax`` est le successeur de cet accumulateur.
 
     bus
        Composant central d'une architecture de :term:`von Neumann` semblable à un canal permettant de transporter de l'information d'un composant à un l'autre.
-
-    ligne de cache
-       à compléter. Voir notamment [McKenney2005]_ et  [Drepper2007]_
-
-    write-back
-       à compléter
 
     program counter
        Registre du processeur qui contient l'adresse mémoire de l'instruction du programme en cours d'exécution. Il est incrémenté à chaque fois qu'une instruction est chargée et exécutée.
@@ -342,22 +336,28 @@ Glossaire
        Section de code dans laquelle il ne doit jamais y avoir plus d'un thread simultanément.
 
     exclusion mutuelle
-       à compléter
+       Primitive de synchronisation utilisée pour éviter que des ressources partagées d'un système ne soient utilisées en même temps.Voir :term:'mutex'
 
     sureté
     safety
-       à compléter
+       Deux processus ne peuvent pas utiliser la même section critique simultanément.
 
     liveness
     vivacité
-       à compléter
+       Toutes les requêtes d'accès à la section critique sont garanties.
+
+    fairness
+    équité
+       Les requêtes d'accès sont effectuées dans l'ordre d'appel.
+
 
     multitâche
     multitasking
-       à compléter
+       Capacité de faire tourner plusieurs programmes simultanément en partageant les ressources de l'ordinateur.
+
 
     contexte
-       à compléter
+       Ensemble des données utilisées par le thread en question. Ces données sont situées dans les registres du processeur sur lequel la tâche est exécutée, dans la zone de la mémoire utilisée par la tâche ou pour certains systèmes d'exploitation, dans des registres de contrôle stockant les informations nécessaires au système pour gérer ce processus.
 
     changement de contexte
        Processus d'enregistrement et de restauration de l'état d'un thread ou processus par le noyau pour que son exécution puisse reprendre ultérieurement. Un changement de contexte est par exemple effectué lorsque le noyau/scheduler provoque la transition d'un processus à un autre, ou lorsqu'une interruption force l'exécution d'une routine du noyau.
@@ -372,7 +372,7 @@ Glossaire
        Dans le cadre du scheduler, il s'agit d'un algorithme qui alloue à tour de rôle un temps d'exécution égal à chaque processus sans distinction aucune.
 
     livelock
-       à compléter
+       Dans un programme concurrent, une situation de livelock est une situation de non-progression qui survient lorsque plusieurs threads ou processus concurrents changent continuellement d'état en simultanés et qu'aucuns ne progressent.
 
     opération atomique
        Opération élémentaire ne pouvant pas être divisée.
@@ -384,30 +384,23 @@ Glossaire
        Primitive de synchronisation entre threads basé sur le principe d'exclusion mutuelle. Quand plusieurs threads veulent accéder à la même ressource ou section critique, un mutex peut protéger cette ressource ou section critique et assurer qu'un seul thread ne puisse y accèder à tout moment.
 
     problème des philosophes
-       à compléter
+       Problème sur le partage de ressources en informatique. Il concerne l'ordonnancement des processus et l'allocation des ressouces à ces derniers.
 
     appel système
        Permet à un programme de demander l'exécution d'un service fourni par le noyau du système d'exploitation.
 
     appel système bloquant
-       à compléter
+       Un appel sysème bloquant mets un processus en attente (état W) et ne le réveillera (état R) que lorsque cet appel système sera prêt à retourner
 
     sémaphore
        Mécanisme de synchronisation entre threads inventé par Edsger Dijkstra pour limiter le nombre de threads qui peuvent accèder de manière concurrente à une ressource partagée.
 
     problèmes des readers-writers
-       à compléter
+       Modélise un problème qui survient lorsque des threads (readers et writers) doivent accèder à une base de données.
 
     inode
        Structure de données contenant des informations (méta-données) relatives à un fichier sur certains systèmes de fichiers (Unix par exemple). Ces informations comportent notamment les permissions associées au fichier, l'utilisateur propriétaire du fichier, le groupe du propriétaire du fichier.
        Pour plus d'informations, voir la section `Système de fichier <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Fichiers/fichiers.html#systemes-de-fichiers>`_ .
-
-
-    segment de données
-       à compléter
-
-    problème des readers-writers
-       à compléter
 
     thread-safe
        Un programme est considéré thread-safe s'il fonctionne correctement lors d'une éxecution simultannée par plusieurs threads.En particulier, le programme doit satisfaire le besoin pour plusieurs threads d'accéder à la même donnée partagée entre eux et le besoin pour une donnée partagée entre threads d'être accessible par un seul thread à un moment donné. En C, on utilise notamment les :term:`mutex` ou d'autres types de locks pour résoudre ce genre de problème.
@@ -418,21 +411,21 @@ Glossaire
 
     static library
     librairie statique
-       à compléter
+       Librairie destinée à être copiée dans les programmes qui l'utilisent lors de la constructions de ces derniers.
 
     shared library
     librairie dynamique
     librairie partagée
-       à compléter
+       Librairie destinée à être associée aux programmes où ils sont exécutés. Avec une librairie dynamique, la même copie de la librairie peut être utilisée par plusieurs programmes.
 
     kernel
        à compléter
 
     mode utilisateur
-       à compléter
+       En mode utilisateur, le code exécuté n'a pas la possibilité d'accéder directement au matériel ou à la mémoire. Il faut passer par les API du système pour accéder le matériel ou la mémoire. Grâce à cette protection, qui est une sorte d'isolation, les crashs en mode utilisateur sont toujours récupérable.
 
     mode protégé
-       à compléter
+       En mode protégé, le code exécuté a un accès complet au matériel sous-jacent. Il peut exécuter n'importe quelle instruction CPU et référencer n'importe quelle adresse mémoire.
 
     processus père
        Processus ayant lancé un autre processus (:term:`processus fils`) suite à un appel à la fonction fork().
@@ -448,120 +441,120 @@ Glossaire
 
     filesystem
     système de fichiers
-       à compléter
+       Facon de stocker les informations et de les organiser dans des fichiers sur ce que l'on appelle des mémoires secondaires (exemple : disque dur, SSD, CD-ROM, USB,...).
 
     descripteur de fichier
-       à compléter
+       Clés abstraite pour accéder à un fichier.
 
     répertoire
-       à compléter
+       Fichier spécial contenant les noms et inodes d'autres fichiers et répertoires.
 
     secteur
-       à compléter
+       Plus petite unité physique de stockage pour un support de données.
 
     répertoire courant
-       à compléter
+       Répertoire dans lequel le processus en cours d'exécution ouvrira les fichiers via open.
 
     offset pointer
-       à compléter
+       Valeur entière représentant le déplacement en mémoire nécessaire, par rapport à une adresse de référence pour atteindre une autre adresse. C'est la distance séparant deux emplacements mémoire.
 
     little endian
-       à compléter
+       L'octet de poids le plus faible est enregistré à l'adresse mémoire la plus petite, l'octet de poids supérieur est enregistré à l'adresse mémoire suivante et ainsi de suite.
 
     big endian
-       à compléter
+       L'octet de poids le plus fort est enregistré à l'adresse mémoire la plus petite, l'octet de poids inférieur est enregistré à l'adresse mémoire suivante et ainsi de suite.
 
     lien symbolique
        à compléter
 
     lock
-       à compléter
+       Permet à un processus d'obtenir l'accès exclusif à un fichier ou une partie de fichier.
 
     advisory lock
     advisory locking
-       à compléter
+       Les processus doivent vérifier eux-mêmes que les accès qu'ils effectuent ne violent pas les locks qui ont été associés aux différents fichier.
 
     mandatory lock
     mandatory locking
-       à compléter
+       Dans ce cas, les processus placent des locks sur certains fichiers ou zones de fichiers et le système d’exploitation vérifie qu’aucun accès fait aux fichiers avec les appels systèmes standards ne viole ces locks.
 
     open file object
-       à compléter
+       Contient toutes les informations qui sont nécessaires au noyau pour pouvoir effectuer les opérations de manipulation d'un fichier ouvert par un processus.
 
     sémaphore nommé
-       à compléter
+       Sémaphore utilisant une zone mémoire qui est gérée par le noyau et qui peut être utilisée par plusieurs processus.
 
     appel système lent
-       à compléter
+       Appel système dont l'exécution peut être interrompue par la réception d'un signal. (Exemple : open(2), write(2), sendto(2), recvfrom(2), sendmsg(2), recvmsg(2), wait(2) ioctl(2))
 
     handler
-       à compléter
+       Un handler est associé à un signal et est exécuté dès que ce signal survient.
 
     signal synchrone
-       à compléter
+       Signal qui a été directement causé par l'exécution  d'une instruction du processus.
 
     signal asynchrone
-       à compléter
+      Signal qui n’a pas été directement causé par l’exécution d’une instruction du processus.
 
     interpréteur
-       à compléter
+       Outil ayant pour tâche d'analyser, de traduire et d'exécuter les programmes écrits dans un langage informatique.
 
     MMU
     Memory Management Unit
-       à compléter
+       Traduit toute adresse virtuelle en adresse physique.
 
     adresse virtuelle
-       à compléter
+       Adresse qui est utilisée à l’intérieur d’un programme
 
     mémoire virtuelle
-       à compléter
+       Repose sur l'utilisation de traduction des adresses virtuelles en adresses physiques.
 
     SSD
     Solid State Drive
        Système de stockage de données s'appuyant uniquement sur de la mémoire flash.
 
     page
-       à compléter
+       Bloc de mémoire virtuelle.
 
     table des pages
-       à compléter
+       Structure de données utilisée pour stocker les liens entre adresses virtuelles et adresses physiques.
 
     bit de validité
-       à compléter
+       Permet de voir la validité ou non d'un numéro de frame à la page actuelle. Si celui-ci est à 0, cela signigie que le numéro de frame est invalide.
 
     TLB
     Translation Lookaside Buffer
-       à compléter
+       Mémoire cache du processeur utilisée par l'unité de gestion mémoire (:term:'MMU') dans le but d'accélérer la traduction des adresses virtuelles en adresses physiques.
 
     Mémoire partagée
-       à compléter
+       Moyen de partager des données entre différents processus : une même zone de la mémoire vive est accédée par plusieurs processus.
 
     copy-on-write
        à compléter
 
     adresse physique
-       à compléter
+       Adresse utilisée par des puces de RAM pour les opérations d'écriture et de lecture.
 
     page fault
     défaut de page
-       à compléter
+       Erreur de page introuvable en mémoire. Plus précisément, interruption qui suspend l'exécution d'un processus pour éventuellement lui libérer de la mémoire vive en la déchargeant dans la mémoire virtuelle, mais surtout le charger dans la RAM ensuite, en modifiant son bit de validation à un.
 
     file FIFO
        De "First In, First Out". Le premier élement à entrer dans la file sera le premier à en sortir. (!= LIFO, "Last In First Out")
 
     dirty bit
     bit de modification
-       à compléter
+       Bit indiquant si une page a été modifiée depuis son chargement en mémoire vive. Il est donc égal à zéro si un processus a déjà figuré dans la mémoire virtuelle, et à un si la page a été modifiée depuis son chargement ou si elle est nouvellement allouée.
 
     reference bit
     bit de référence
-       à compléter
+       Bit indiquant si une page a été accédée récemment, il est remis à 0 régulièrement.
 
     swapping
-       à compléter
+       Toutes  les données appartenant au processus seront stockées en mémoire de masse.
 
     pagination
-       à compléter
+       Technique permettant de découper la mémoire vive en zones (:term:'page') et change la correspondance entre mémoire virtuelle et mémoire physique.
 
     stratégie de remplace de pages
-       à compléter
+       Définit quelle page doit être préférentiellement retirée de la mémoire RAM et placée sur le dispositif de stockage.

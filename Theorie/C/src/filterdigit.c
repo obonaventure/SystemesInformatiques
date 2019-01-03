@@ -10,6 +10,8 @@
 #include <stdlib.h>
 
 // retourne vrai si c est un chiffre, faux sinon
+// exemple simplifié, voir isdigit dans la librarire standard
+// pour une solution complète 
 int digit(char c)
 {
   return ((c >= '0') && (c <= '9'));

@@ -23,4 +23,5 @@ Vous pouvez accéder aux différentes parties du syllabus via les liens dans la 
     Théorie <theorie> 
     Exercices <exercices>
     Outils <outils>
+    Blog <blog>
     Auteurs <auteurs>

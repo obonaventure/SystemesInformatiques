@@ -6,11 +6,11 @@
 Shell
 =====
 
-L'interprèteur de commande, ou shell, est l'interface de communication entre l'utilisateur et le système d'exploitation. C'est un exécutable chargé d'interpréter les commandes écrites par l'utilisateur et de les exécuter.
+L'interpréteur de commande, ou shell, est l'interface de communication entre l'utilisateur et le système d'exploitation. C'est un exécutable chargé d'interpréter les commandes écrites par l'utilisateur et de les exécuter.
 
-Dans le cadre de ce cours nous utiliserons l'interpreteur `bash(1)`_. Cet exécutable est généralement placé dans le fichier ``/bin/bash``.
+Dans le cadre de ce cours nous utiliserons l'interpréteur `bash(1)`_. Cet exécutable est généralement placé dans le fichier ``/bin/bash``.
 
-Le shell est un outil très puissant. Il permet d'effectuer de nombreuses opérations qui peuvent difficilement être réalisées manuellement ou via une interface graphiques.
+Le shell est un outil très puissant. Il permet d'effectuer de nombreuses opérations qui peuvent difficilement être réalisées manuellement ou via une interface graphique.
 
 
 .. note:: Astuce : utilisez la complétion
@@ -29,7 +29,7 @@ Le shell est un outil très puissant. Il permet d'effectuer de nombreuses opéra
 Expressions régulières
 ----------------------
 
-Avant de commencer à voir les commandes utiles avec le shell, il est important de définir ce qu'est une expression régulière (`regex(3)`). Les expresions régulières caractérisent des chaînes de caractères et elles sont utiles pour de nombreuses commandes. Nous l'utiliserons notamment pour faire une recherche dans un fichier.
+Avant de commencer à voir les commandes utiles avec le shell, il est important de définir ce qu'est une expression régulière (`regex(3)`). Les expressions régulières caractérisent des chaînes de caractères et elles sont utiles pour de nombreuses commandes. Nous l'utiliserons notamment pour faire une recherche dans un fichier.
 
 Dans une regex, certains caractères ont une signification particulière :
 
@@ -58,7 +58,7 @@ Notes :
 	- ``^b$`` 	= contient uniquement le caractère ``b``
 	- ``^$`` 	= la ligne est vide
 
-Nous verrons plus en détails leur utilisation avec les commandes plus complexes.
+Nous verrons plus en détail leur utilisation avec les commandes plus complexes.
 
 
 Manipulation des répertoires
@@ -73,7 +73,7 @@ Il est possible de changer le répertoire courant du processus ou du shell en ut
   - `cd(1posix)`_ .. : remonte dans le répertoire prédécesseur dans l'arborescence des fichiers.
 
 La commande `mkdir(1)`_ permet de créer un répertoire. Elle prend comme argument le nom du répertoire à créer.
-La commande `rmdir(1)`_ supprime un répertoire qui doit être vide vide. Pour effacer un répertoire et tous les fichiers qu'il contient, il faut utiliser la commande `rm(1)`_ avec l'option ``-r``. Ainsi, ``rm -r /tmp/t`` supprime le répertoire ``/tmp/t`` ainsi que tous les fichiers et sous-répertoire se trouvant dans ce répertoire. 
+La commande `rmdir(1)`_ supprime un répertoire qui doit être vide. Pour effacer un répertoire et tous les fichiers qu'il contient, il faut utiliser la commande `rm(1)`_ avec l'option ``-r``. Ainsi, ``rm -r /tmp/t`` supprime le répertoire ``/tmp/t`` ainsi que tous les fichiers et sous-répertoires se trouvant dans ce répertoire. 
 
 La commande `ls(1)`_ permet de connaître l'ensemble des fichiers et répertoires contenus dans le répertoire courant. Elle supporte plusieurs options dont les plus utiles sont :
 	
@@ -82,7 +82,7 @@ La commande `ls(1)`_ permet de connaître l'ensemble des fichiers et répertoire
     * ``-d`` : 	Evite de lister le contenu d'un répertoire : si `rep` est un répertoire, ``ls -l`` `rep` listera le contenu du répertoire `rep`, alors que ``ls -ld`` `rep` listera la description du répertoire
     * ``-l`` : 	Description complète du contenu d'un répertoire (une ligne par fichier)
 
-Avec l'option ``-l``, le premier caractère de la ligne indique le type du fichier. Le caractère ``-`` correspond à un fichier standard et ``d`` à un répertoire. Il est aussi possible de connaître le contenu d'un autre répertoire quel le répertoire courant en fournissant le nom de ce répertoire comme argument à la commande ``ls``. 
+Avec l'option ``-l``, le premier caractère de la ligne indique le type du fichier. Le caractère ``-`` correspond à un fichier standard et ``d`` à un répertoire. Il est aussi possible de connaître le contenu d'un autre répertoire que le répertoire courant en fournissant le nom de ce répertoire comme argument à la commande ``ls``. 
 
 	.. code-block:: console
 		
@@ -99,32 +99,32 @@ Manipulation de fichiers
 Créer et détruire 
 ^^^^^^^^^^^^^^^^^
 
-> filename			Crée un fichier vide.
-`touch(1)`_ filename		Crée un fichier vide.
-`echo(1)`_ mon_texte > filename	Crée un fichier avec "mon_texte" dedans.
-
-`rm(1)`_ [-irf] files	    	efface les fichiers
+	* > filename			crée un fichier vide.
+	* `touch(1)`_ filename		crée un fichier vide.
+	* `echo(1)`_ mon_texte > filename	crée un fichier avec "mon_texte" dedans.
+	
+	`rm(1)`_ [-irf] files	    	efface les fichiers
 				    	* -i : 	intéractif, demande une confirmation sur chaque fichier
 				    	* -f : 	force la suppression du fichier
-				    	* -r : 	Efface un répertoire et son contenu
+				    	* -r :  efface un répertoire et son contenu
 
 Visualiser
 ^^^^^^^^^^
 
-`cat(1)`_ [-opt] f1 f2		concatène et affiche les deux fichiers.
-`cat(1)`_ [-opt] file		Affiche le fichier sur la sortie standard.
+	* `cat(1)`_ [-opt] f1 f2		concatène et affiche les deux fichiers.
+	* `cat(1)`_ [-opt] file			affiche le fichier sur la sortie standard.
 
 					* -v : convertit les caractères spéciaux en caractères affichables
 					* -n : numérote les lignes
 					* -b : numérote seulement les lignes non vides
 					* -E : affiche le symbôle $ à la fin de chaque ligne
-					* -T : affiche les caractères de tabulations comme ^I
+					* -T : affiche les caractères de tabulation comme ^I
 					* -A : équivalent à -vET
 					* -e : équivalent à -vE
 					* -t : équivalent à -vT
 
 	Avec cat, il est possible d'écrire depuis la console dans un fichier. 
-	Appuyer sur ctrl+D au début d'une ligne pour terminer la saisie
+	Appuyez sur ctrl+D au début d'une ligne pour terminer la saisie
 
 	.. code-block:: console
 
@@ -143,12 +143,12 @@ Visualiser
 		et je rajoute ceci à la fin
 
 
-`nl(1)`_ [-opt] file		Affiche le contenu d'un fichier et en numérote les lignes. 
-					* -bt     : numérote les lignes non-vides (par défaut)
+`nl(1)`_ [-opt] file		affiche le contenu d'un fichier et en numérote les lignes. 
+					* -bt     : numérote les lignes non vides (par défaut)
 					* -ba     : numérote toutes les lignes
 					* -bpXXX  : numérote seulement les lignes qui contiennent la chaîne de caractères XXX
-					* -sX     : supprime le décalage du à la numérotation et utilise le séparateur X
-					* -s'XXX' : supprime le décalage du à la numérotation et utilise la chaîne 'XXX' 
+					* -sX     : supprime le décalage dû à la numérotation et utilise le séparateur X
+					* -s'XXX' : supprime le décalage dû à la numérotation et utilise la chaîne 'XXX' 
 
 `paste(1)`_ [-opt] f1 f2	concatène horizontalement et affiche les deux fichiers. 
 					* -s : copie les lignes d'un fichier sur une ligne
@@ -156,21 +156,21 @@ Visualiser
 `more(1)`_ file			visualise le contenu du ou des fichiers par page.
 		    		Si il contient plus d'une page :
 				    	* q ou Q : 	pour terminer la visualisation
-				    	* RETURN : 	pour visualiser une ligne supplémentaire
-				    	* ESPACE : 	pour visualiser la page suivante
-				    	* h 	 : 	pour obtenir de l'aide 
+					* RETURN : 	pour visualiser une ligne supplémentaire
+					* ESPACE : 	pour visualiser la page suivante
+					* h 	 : 	pour obtenir de l'aide 
 
 Modifier
 ^^^^^^^^
 
-`touch(1)`_ filename		Met à jour les dates d'accès et de modification du fichier. Crée le fichier si il n'existe pas.
-					* -c : empeche la création du fichier si celui ci n'existe pas
+`touch(1)`_ filename		met à jour les dates d'accès et de modification du fichier. Crée le fichier si il n'existe pas.
+					* -c : empêche la création du fichier si celui ci n'existe pas
 					* -m : change uniquement la date de modification du fichier
-					* -a : change uniquement la date d'acces du fichier
+					* -a : change uniquement la date d'accès du fichier
 
-`split(1)`_ [-opt] file [out]	Coupe le fichier en plusieurs petite partie
-					* -b nbr : decoupe selon un nombre d'octet
-					* -n nbr : decoupe selon un de ligne
+`split(1)`_ [-opt] file [out]	coupe le fichier en plusieurs petites parties
+					* -b nbr : decoupe selon un nombre d'octets
+					* -n nbr : decoupe selon un nombre de lignes
 
 Extraction de données
 ^^^^^^^^^^^^^^^^^^^^^
@@ -197,7 +197,7 @@ Extraction de données
 					* -o : modifie la sortie standard
 					* -t : modifie le caractère séparateur. Par défaut c'est une chaîne de blancs
 					* -n : compare selon la valeur arithmétique
-					* -k : spécifie la colonne utilisé pour le tri
+					* -k : spécifie la colonne utilisée pour le tri
 
 	uniq et sort sont souvent utilisés ensemble. Par exemple, cette commande trie les lignes de file.txt selon leur nombre d'apparitions.
 	
@@ -233,7 +233,7 @@ Extraction de données
 		zorro,01,20
 		zorro,5,4
 
-		$ cat file.txt | sort -t; -k2n
+		$ cat file.txt | sort -t, -k2n
 		zorro,01,20
 		pcr,01,3
 		pcr,1,3
@@ -246,8 +246,8 @@ Extraction de données
 					* -i : ignore la casse
 					* -c : rapport plus clair
 					* -q : indique uniquement si les fichiers sont différents
-					* -b : ignore les différences du à des espaces blancs
-					* -B : ignore les différences du à des lignes blanches
+					* -b : ignore les différences dues à des espaces blancs
+					* -B : ignore les différences dues à des lignes blanches
 
 	.. code-block:: console
 		
@@ -282,22 +282,22 @@ Extraction de données
 Obtenir des informations
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-`wc(1)`_ [-opt] filename	Donne sur stdout des informations au sujet de l'entrée standard ou d'une liste de fichiers. 
+`wc(1)`_ [-opt] filename	donne sur stdout des informations au sujet de l'entrée standard ou d'une liste de fichiers. 
 				Première colonne est le nombre de lignes, deuxième le nombre de mots et en dernier le nombre d'octets.
 					* -l : nombre de lignes
 	   				* -c : nombre d'octets
 	   				* -m : nombre de caractères
-	   				* -L : la longueur de la plus longue d'une ligne
+	   				* -L : la longueur de la plus longue ligne
 	   				* -w : le nombre de mots
 
-Manipulation communes aux répertoires et fichiers
--------------------------------------------------
+Manipulations communes aux répertoires et fichiers
+--------------------------------------------------
 
 Copier
 ^^^^^^
 
 `cp(1)`_ [-opt] src dst		copie la src dans le fichier dst.
-		    		Si dst n'existe pas, il est créé. Sinon, si c'est un fichier, son contenu est ecrasé.
+		    		Si dst n'existe pas, il est créé. Sinon, si c'est un fichier, son contenu est écrasé.
 					* -r : spécifie la copie d'un répertoire
 					* -u : copie uniquement si src est plus récent que dst ou si il est manquant dans dst
 		    	
@@ -312,10 +312,10 @@ Copier
 Déplacer ou renomer
 ^^^^^^^^^^^^^^^^^^^
 
-`mv(1)`_ [-opt] src dst    	renomme ou deplace src en dst.
-					* -f : ecrase les fichiers existant
-					* -i : demande comfirmation avant d'écraser un fichier existant
-					* -n : n'ecrase aucun fichier déja existant
+`mv(1)`_ [-opt] src dst    	renomme ou déplace src en dst.
+					* -f : écrase les fichiers existants
+					* -i : demande confirmation avant d'écraser un fichier existant
+					* -n : n'écrase aucun fichier déja existant
 		
 			Note : Si la destination est un répertoire, alors la source peut être une liste de fichiers. 
 
@@ -333,7 +333,7 @@ Pour les critères de recherche :
 		* !critère 			= non logique
 		* critère1 -a critère2	 	= ou logique
 
-`find(1)`_ chemin regex	 	recherche les fichiers/répertoire caractérisé par nom, à partir du répertoire rep et affiche le résultat.
+`find(1)`_ chemin regex	 	recherche les fichiers/répertoires caractérisés par nom, à partir du répertoire rep et affiche le résultat.
 			    		* -name  : sur le nom du fichier
 			    		* -perm  : sur les droits d'accès du fichier
 			    		* -links : sur le nombre de liens du fichier
@@ -359,12 +359,12 @@ Pour les critères de recherche :
 
 		* Il est parfois nécessaire de mettre -print dans la commande pour afficher le résultat
 		
-		* Lors de larges recherches, il peut y avoir un message d'erreur pour chaque tentative d'accès à un fichier où vous n'avez pas d'autorisation d'accès, par exemple des fichiers systemes. Pour éviter que ces messages d'erreurs ne polluent la recherche, il faut rediriger la sortie d'erreur standard dans "un puit sans fond". Pour cela, rajouter 2>/dev/null
+		* Lors de larges recherches, il peut y avoir un message d'erreur pour chaque tentative d'accès à un fichier où vous n'avez pas d'autorisation d'accès, par exemple des fichiers système. Pour éviter que ces messages d'erreur ne polluent la recherche, il faut rediriger la sortie d'erreur standard dans "un puits sans fond". Pour cela, rajoutez 2>/dev/null
 		
-		* Il est parfois très utile de pouvoir exécuter une commande sur les fichiers trouvés. La solution la plus légère est de rediriger la sortie et de lui attribuer une commande. Pour cela, il faut faire : "find rep -name expr| xargs commande". Cette commande est expliqué dans la section "Commandes plus complexes".
+		* Il est parfois très utile de pouvoir exécuter une commande sur les fichiers trouvés. La solution la plus légère est de rediriger la sortie et de lui attribuer une commande. Pour cela, il faut faire : "find rep -name expr| xargs commande". Cette commande est expliquée dans la section "Commandes plus complexes".
 
 	
-	Pour cet exemple, le résultat est tout les fichiers dont le nom contient "mon test", et donc le fichier contient "supertab".
+	Pour cet exemple, le résultat est tous les fichiers dont le nom contient "mon test", et donc le fichier contient "supertab".
 	.. code-block:: console
 	
 		$ find /testdirectory -name *mon test* -type f | xargs grep supertab 
@@ -373,10 +373,10 @@ Pour les critères de recherche :
 Création de lien
 ^^^^^^^^^^^^^^^^
 
-`ln(1)`_ [-opt] src dst		Création d'un lien (raccourci) sur un fichier ou un répertoire. Attention un lien n'est pas une copie.
+`ln(1)`_ [-opt] src dst		création d'un lien (raccourci) sur un fichier ou un répertoire. Attention un lien n'est pas une copie.
 	    			Il existe deux sortes de liens: 
 					* le lien physique 			 : uniquement des fichiers
-					* le lien symbolique (avec l'option -s)  : fichier et répertoires
+					* le lien symbolique (avec l'option -s)  : fichiers et répertoires
 
    "SHEMA"
 
@@ -388,7 +388,7 @@ Archivage et compression
 
 Il est important de noter qu'une archive n'est pas forcément compressée.
 
-`tar(1)`_ [-opt] tarname.tar files	crée une archive à partir d'une liste de fichier ou de répertoires.
+`tar(1)`_ [-opt] tarname.tar files	crée une archive à partir d'une liste de fichiers ou de répertoires.
 						* f : 	argument obligatoire, sauf si l'on veut lire ou écrire vers/depuis un lecteur de bande
 						* c : 	crée une archive
 						* z :	compresse l'archive créée, en utilisant gzip. (Attention, l'extension doit être "tar.gz")
@@ -396,7 +396,7 @@ Il est important de noter qu'une archive n'est pas forcément compressée.
 						* x : 	désarchive
 						* t : 	inspection de l'archive
 
-	.. code-block:: console
+	.. code-block:: none
 
 		$ tar cf monarchive.tar firstfile.c  secondfile.c  	 = 	crée une archive contenant deux fichiers
 		$ tar cfz monarchive.tar.gz firstfile.c  secondfile.c	 =	crée une archive compressée
@@ -408,7 +408,7 @@ Il est important de noter qu'une archive n'est pas forcément compressée.
 
  
 `gzip(1)`_ file				compresse un fichier ou une archive
-						* -c  :	la compression est effectuée sur la sortie standard au lieu du fichier lui même
+						* -c  :	la compression est effectuée sur la sortie standard au lieu du fichier lui-même
 						* -c1 :	compression plus rapide
 						* -c9 :	meilleur compression
 
@@ -446,7 +446,7 @@ Les permissions accordées à ces trois classes sont :
 	    					111 	 101 	 100 	 (en binaire)
 	    					 7 	  5 	  4 	 (en hexadecimal)
 	    	
-		d'ou la commande ``chmod 754 fichier``
+		d'où la commande ``chmod 754 fichier``
 
  
 `chown(1)`_ owner files    	change le propriétaire du fichier.
@@ -456,11 +456,11 @@ Les permissions accordées à ces trois classes sont :
 Obtenir des informations
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-`stat(1)`_ [-opt] filename	donne des informations sur les métadonnées associéées au fichier
-					* -f : affiche l'état du systeme de fichiers plutot que celui du fichier
+`stat(1)`_ [-opt] filename	donne des informations sur les métadonnées associées au fichier
+					* -f : affiche l'état du système de fichiers plutôt que celui du fichier
 					* -L : suit les liens du fichier
 					* -t : affiche les informations de façon concise
-					* --format=FORMAT : affiche les information selon le format choisi
+					* --format=FORMAT : affiche les informations selon le format choisi
 
 		.. code-block:: console
 
@@ -489,7 +489,7 @@ Obtenir des informations
 				%y date de la dernière modification au format lisible
 				%z date du dernier changement au format lisible
 
-			 Séquences de format valables pour les systemes de fichiers :
+			 Séquences de format valables pour les systèmes de fichiers :
 				%a nombre de blocs libres disponibles pour les utilisateurs normaux
 				%b nombre total de blocs de données dans le système de fichiers
 				%c nombre total d'inodes dans le système de fichiers
@@ -525,11 +525,11 @@ Gestion des processus
 
 `lsof(8)`_ [-opt]		affiche les fichiers ouverts.
 					* -p PID : uniquement les fichiers ouverts du processus
-					* -i : affiche les connexions réseaux ouvertes
+					* -i : affiche les connexions réseau ouvertes
 
 	.. code-block:: console
 	
-		$ lsof -i -p 2735	  =  Les connexions ouvertes ET les fichiers ouvert par le processus 2735
+		$ lsof -i -p 2735	  =  Les connexions ouvertes ET les fichiers ouverts par le processus 2735
 		$ lsof -i -a -p 2735	  =  Les connexions ouvertes par le processus 2735
 
 
@@ -544,28 +544,27 @@ Redirection de l'entrée, sortie et erreur standard
 
 Lors de l'exécution d'une commande, un processus est créé et celui-ci va ouvrir trois flux : l'entrée, la sortie et l'erreur standard. Par défaut lorsque l'on exécute un programme, les données sont donc lues à partir du clavier et le programme envoie sa sortie et ses erreurs sur l'écran. toutefois, il est possible de rediriger ces flux.
 
-	< 		l'entrée standard est lue à partir d'un fichier
-	> 		La sortie standard est redirigée dans un fichier. Si le fichier existe, il est vidé avant d'écrire.
-	>> 		La sortie standard est redirigée dans un fichier. Si le fichier existe, la sortie standart est ajouté à la fin de celui ci.
-	2>		La sortie d'erreur standard est redirigée
-
-   cmd1 | cmd2		La sortie standard de cmd1 devient l'entrée standard de cmd2
+	* < 		l'entrée standard est lue à partir d'un fichier
+	* > 		La sortie standard est redirigée dans un fichier. Si le fichier existe, il est vidé avant d'écrire.
+	* >> 		La sortie standard est redirigée dans un fichier. Si le fichier existe, la sortie standard est ajoutée à la fin de celui ci.
+	* 2>		La sortie d'erreur standard est redirigée
+   	* cmd1 | cmd2		La sortie standard de cmd1 devient l'entrée standard de cmd2
 
 Symboles pour les commandes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	``?`` 		caractère joker remplaçant un seul caractère
-	``!`` 		Inverse le sens d’un test ou l’état de sortie d’une commande. 
+	* ``?`` 		caractère joker remplaçant un seul caractère
+	* ``!`` 		inverse le sens d’un test ou l’état de sortie d’une commande. 
 
-	``*`` 		caractère joker remplaçant une chaîne de caractère
-	``&`` 		exécute une commande en arrière plan
-	``;`` 		sépare des instructions sur une seule ligne
+	* ``*`` 		caractère joker remplaçant une chaîne de caractères
+	* ``&`` 		exécute une commande en arrière-plan
+	* ``;`` 		sépare des instructions sur une seule ligne
 
-        ``cmd1 && cmd 2``		cmd2 n'est exécuté que si cmd1 réussi
-        ``cmd1 || cmd 2``		cmd2 n'est exécuté que si cmd1 échoue
+        * ``cmd1 && cmd 2``		cmd2 n'est exécuté que si cmd1 réussit
+        * ``cmd1 || cmd 2``		cmd2 n'est exécuté que si cmd1 échoue
 
-	``\``		annule l'effet du caractère spécial suivant
-	``" "``		annule l'effet de tout les caractères spéciaux entre les guillemets, sauf ``$`` et ``\``
+	* ``\``		annule l'effet du caractère spécial suivant
+	* ``" "``		annule l'effet de tous les caractères spéciaux entre les guillemets, sauf ``$`` et ``\``
 
 
 Commandes utiles
@@ -574,15 +573,15 @@ Commandes utiles
 Pour effectuer des chaînes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`xargs(1)`_			Il permet d'appliquer une commande à l'entrée standard.
+`xargs(1)`_			permet d'appliquer une commande à l'entrée standard.
 
-	Pour cet exemple, le résultat est tous les fichiers dont le nom contient "mon test", et donc le fichier contient "supertab".
+	Pour cet exemple, le résultat est tous les fichiers dont le nom contient "mon test", et dont le fichier contient "supertab".
 	
 	.. code-block:: console
 	
 		$ find /testdirectory -name *mon test* -type f | xargs grep supertab 
 
-`tee(1)`_ file			lit depuis l'entrée standard, écrit dans la sortie standard et dans le fichier. Elle est utilisé pour continuer une chaîne tout en faisant une sauvegarde des informations
+`tee(1)`_ file			lit depuis l'entrée standard, écrit dans la sortie standard et dans le fichier. Elle est utilisée pour continuer une chaîne tout en faisant une sauvegarde des informations.
 
 	.. code-block:: console
 
@@ -591,32 +590,36 @@ Pour effectuer des chaînes
 		% cat fichier.txt 
 		Les tubes sont un mécanisme puissant.
 
-	On peut voir que le texte a bien été relayé vers la commande "wc" et qu'en même temps, ce texte à été écrit dans fichier.txt
+	On peut voir que le texte a bien été relayé vers la commande "wc" et qu'en même temps, ce texte a été écrit dans fichier.txt
 
 
 Informations générales
 ^^^^^^^^^^^^^^^^^^^^^^
 
-`su(1)`_			Passe en mode "root", c'est à dire administrateur
+`su(1)`_			passe en mode "root", c'est à dire administrateur
 
-`whatis(1)`_ cmd		Explique briévement l'utilité d'une commande
-`apropos(1)`_ [-opt] motclé	Recherche dans les man pages les commandes correspondants aux mots clés.
+`whatis(1)`_ cmd		explique briévement l'utilité d'une commande
+
+`apropos(1)`_ [-opt] motclé	recherche dans les man pages les commandes correspondants aux mots clés.
 				* -a : Affiche seulement les résultats répondant à tout les mots clés. 
 				       L'inverse est le fonctionnement par défault
 
-`date(1)`_			Donne l'heure, selon l'horloge de votre ordinateur
-`cal(1)`_			Affiche un calendrier du mois courant
+`date(1)`_			donne l'heure, selon l'horloge de votre ordinateur
 
-`halt(8)`_			Eteint l'ordinateur.
-`reboot(8)`_			Redémarre l'ordinateur
+`cal(1)`_			affiche un calendrier du mois courant
+
+`halt(8)`_			éteint l'ordinateur.
+
+`reboot(8)`_			redémarre l'ordinateur
 
 Informations système
 ^^^^^^^^^^^^^^^^^^^^
 
-`time(1posix)`_ programme		Permet de calculer le temps d'exécution d'un programme
+`time(1posix)`_ programme		permet de calculer le temps d'exécution d'un programme
 
-`df(1)`_ [-opt] [file]		Indique l'espace disque utilisé et disponible sur tous les systèmes de fichiers. 
-				Si des fichiers sont passés en arguments, seul les systemes de fichier contenant un des fichiers sont montrés.		
+`df(1)`_ [-opt] [file]		indique l'espace disque utilisé et disponible sur tous les systèmes de fichiers. 
+				Si des fichiers sont passés en argument, seul les systèmes de fichiers contenant un des fichiers sont montrés.		
+				
 				* -h 	Imprime les dimensions dans un format lisible par l’utilisateur
 				* -H 	Idem que -h, mais il utilise des puissances de 1000 au lieu de 1024
 				* -i 	Affiche l’information i-node au lieu de l’utilisation des blocs
@@ -630,16 +633,16 @@ Maniement des jobs
 
 La plupart des commandes en console sont exécutées rapidement, mais ce n'est pas le cas de toutes. Certaines commandes, que l'on va appeler `jobs`, prennent plus de temps (comme par exemple copier un très gros fichier), et d'autres encore tournent indéfiniment.
 
-Evidemment, quand un job est en cours d'exécution à la console, plus aucune action ne peut être faite sur celle-ci. Unix nous vient en aide dans ce cas là avec les le raccourci ``Ctrl+z`` et les commandes `jobs(1)`_, `bg(1)`_ et `fg(1)`_.
+Évidemment, quand un job est en cours d'exécution à la console, plus aucune action ne peut être faite sur celle-ci. Unix nous vient en aide dans ce cas-là avec le raccourci ``Ctrl+z`` et les commandes `jobs(1)`_, `bg(1)`_ et `fg(1)`_.
 
     	* ``Ctrl+z``  : Le job passe dans l'état ``suspended``. Il est en pause, et placé en background.
     	* ``jobs``    : Affiche à la console la liste des jobs présents en background
    	* ``bg``      : Passe un job mis en background de l'état ``suspended`` à l'état ``running``. Le job reste en background, mais il continue à s'exécuter
-    	* ``fg``      : Passe un job du background à l'avant plan
+    	* ``fg``      : Passe un job du background à l'avant-plan
 
 Exemples :
 
-    .. code-block:: console
+    .. code-block:: none 
 
       $ yes > \dev\null
       #nous lançons la commande yes
@@ -647,7 +650,7 @@ Exemples :
       ^Z
       #nous la suspendons avec Ctrl+z
       [1]+  Stopped                 yes > \dev\null
-      #elle est placé en arrière plan
+      #elle est placée en arrière-plan
 
       $ jobs
       #nous regardons la liste des jobs en arrière plan
@@ -655,9 +658,9 @@ Exemples :
       #chaque job à un numéro qui lui est attribué. ici 1
 
       $ bg 1
-      #nous relançons yes en arrière plan. on peut utiliser son nom comme son numéro avec la commande bg et fg
+      #nous relançons yes en arrière-plan. On peut utiliser son nom comme son numéro avec la commande bg et fg
       [1]+ yes > \dev\null &
-      #yes set remix en route
+      #yes s'est remis en route
 
       $ jobs
       #nous vérifions le statut de yes avec jobs
@@ -665,7 +668,7 @@ Exemples :
       #il est en cours d'exécution
       
       $ fg yes
-      #nous remettons yes en avant plan
+      #nous remettons yes en avant-plan
       yes > \dev\null
 
       ^Z
@@ -679,7 +682,7 @@ Exemples :
       $ jobs
       #nous vérifions les jobs
       [1]+  Terminated: 15          yes > \dev\null
-      #yes set marqué Terminated
+      #yes est marqué Terminated
 
       $ jobs
       #un deuxième appel à jobs nous affiche une liste vide
@@ -698,99 +701,107 @@ Modification d'un fichier
 
 
 
-`sed(1)`_ [-n] [-e 'prog'] [-f cmdfile] [file]  	Applique des commandes de 'prog' sur un fichier
+`sed(1)`_ [-n] [-e 'prog'] [-f cmdfile] [file]  	applique des commandes de 'prog' sur un fichier
 				
-				* -n : n'affiche aucune ligne, sauf celle spécifié avec la commande p
+				* -n : n'affiche aucune ligne, sauf celle spécifiée avec la commande p
 				* -e : specifie les commandes à appliquer sur le fichier
-					Note : I faut mieux encadrer la commande avec des ' ou des " 
-				* -f : les commandes sont lu à partir d'un fichier
+					Note : Il vaut mieux encadrer la commande avec des ' ou des " 
+				* -f : les commandes sont lues à partir d'un fichier
 
 Pour bien comprendre la puissance de sed, il est important de comprendre son fonctionnement. sed fonctionne en 4 étapes :
 
 	* Lecture d'une ligne sur le flux d'entrée, et stockage dans l'espace de travail
-	* Execute les commandes sur l'espace de travail
+	* Exécute les commandes sur l'espace de travail
 	* Envoie la ligne au flux de sortie en lui rajoutant un '\n'
 	* Recommence avec la ligne suivante ...  
 
 
-Une commande d'un 'prog' est constitué d'un adressage, c-à-d les lignes sur lequelle la commande est appliquée, et de l'action à exécuter.
+Une commande d'un 'prog' est constituée d'un adressage, c-à-d les lignes sur lesquelles la commande est appliquée, et de l'action à exécuter.
 
 1) L'adressage est décomposé en deux catégories.
 	
 	* 			: toutes les lignes
-	*         num		: la ligne "num". La dernière ligne est symbolisé par $
+	*         num		: la ligne "num". La dernière ligne est symbolisée par $
 	*      num1, num2	: les lignes entre num1 et num2
 
-	*       /regex/		: les lignes correspondants à l'expression régulière regex
+	*       /regex/		: les lignes correspondant à l'expression régulière regex
 	*  /regex1/, /regex2/	: les lignes entre la première ligne correspondant à regex1 et la première ligne correspondant à regex2
-				  Si regex2 est vide, la commande sera appliqué jusqu'à la fin du fichier.
+				  Si regex2 est vide, la commande sera appliquée jusqu'à la fin du fichier.
 
 	Note : 	Le ! représente la négation. Mettez le après votre spécification des lignes pour prendre la négation
 
 	RAPPEL sur les regex :
 
-		\ 	Caractère d'échappement 		[\.] contient un "."
-		^ 	Début de ligne 				^b commence par b
-		. 	N'importe quel caractère 		^.$ contient un seul caractère
-		$ 	Fin de ligne 				er$ finit par "er"
-		| 	Alternative 				^(a|A) commence par a ou A
-		( ) 	Groupement 				^((a)|(er)) commence par a ou er
-		- 	Intervalle de caractères 		^[a-d] commence par a,b,c ou d
-		[ ] 	Ensemble de caractères 			[0-9] contient un chiffre
-		[^] 	Tout sauf un ensemble de caractères 	^[^a] ne commence pas par a
-		+ 	1 fois ou plus 				^(a)+ commence par un ou plusieurs a
-		? 	0 ou 1 fois 	 			^(a)? commence ou non par un a
-		* 	0 fois ou plus 				^(a)* peut ou non commencer par a
-		{x} 	x fois exactement 			a{2} deux fois "a"
-		{x,} 	x fois au moins 			a{2,} deux fois "a" au moins
-		{x, y} 	x fois minimum, y maximum 		a{2,4} deux, trois ou quatre fois "a"
+		
+         =============   ====================================   ====================================================
+         Expression      Explication                            Exemple
+         =============   ====================================   ====================================================
+	 ``\`` 	         Caractère d'échappement 		``[\.]`` contient un "."
+	 ``^`` 	 	 Début de ligne 			``^b`` commence par b
+	 ``.`` 	 	 N'importe quel caractère 		``^.$`` contient un seul caractère
+	 ``$`` 	 	 Fin de ligne 				``er$`` finit par "er"
+	 ``|`` 	 	 Alternative 				``^(a|A)`` commence par a ou A
+	 ``( )``	 Groupement 				``^((a)|(er))`` commence par a ou er
+	 ``-`` 	 	 Intervalle de caractères 		``^[a-d]`` commence par a,b,c ou d
+	 ``[ ]``  	 Ensemble de caractères 		``[0-9]`` contient un chiffre
+	 ``[^]``  	 Tout sauf un ensemble de caractères 	``^[^a]`` ne commence pas par a
+	 ``+`` 	 	 1 fois ou plus 			``^(a)+`` commence par un ou plusieurs a
+	 ``?`` 	 	 0 ou 1 fois 	 			``^(a)?`` commence ou non par un a
+	 ``*`` 	 	 0 fois ou plus 			``^(a)*`` peut ou non commencer par a
+	 ``{x}``    	 x fois exactement 			``a{2}`` deux fois "a"
+	 ``{x,}``     	 x fois au moins 			``a{2,}`` deux fois "a" au moins
+	 ``{x, y}``  	 x fois minimum, y maximum 		``a{2,4}`` deux, trois ou quatre fois "a"
+         =============   ====================================   ====================================================
 
 		
-		Note : 
-			^b$ 	= contient uniquement b
-			^$ 	= la ligne est vide
+	Notes : 
+	
+	- ``^b$`` 	= contient uniquement le caractère ``b``
+	- ``^$`` 	= la ligne est vide
 
 2) Les actions
 
 	* p 		: affiche les lignes
 	* d 		: supprime les lignes
-	* y/l1/l2 	: remplace les caractères de la première liste par les caractère de la seconde
+	* y/l1/l2 	: remplace les caractères de la première liste par les caractères de la seconde
 	* s/mtf/sbst/ 	: substitue le mtf par le sbst
-				  Note : Par défaut seule la première occurence est remplacé. 
-					Pour toutes les remplacées : /s/motif/substitut/g
-					Pour en remplacer 4	   : /s/motif/substitut/4
+				  Note : Par défaut seule la première occurrence est remplacée. 
+					* Pour toutes les remplacer : /s/motif/substitut/g
+					* Pour en remplacer 4	   : /s/motif/substitut/4
 
 	* N		: charge une ligne supplémentaire dans l'espace de travail
-	* D		: Efface l'espace de travail jusqu'au premier saut de ligne incorporé
-	* b		: Reviens 
+	* D		: efface l'espace de travail jusqu'au premier saut de ligne incorporé
+	* b		: revient
 
-	Pour faire des commandes groupées, placer vos commandes entre {} spérarées par ;.
+	Pour faire des commandes groupées, placez vos commandes entre {} séparées par ";".
 
-	Quel illustrations basiques :
+	Quelques illustrations basiques :
 
-	.. code-block:: console
+	.. code-block:: none
 
-		$ sed '' test.txt			= Le script est vide, il renvoit simplement le fichier
+		$ sed '' test.txt			= Le script est vide, il renvoie simplement le fichier
 
 		$ sed -n '/Ici/p' test.txt		= Affiche les lignes contenant Ici
-		$ sed 'p' test.txt			= Double toute les lignes
+		$ sed 'p' test.txt			= Double toutes les lignes
 		
-		$ sed -e '4d; 7d' test.txt		= Supprime les ligne 4 et 7
+		$ sed -e '4d; 7d' test.txt		= Supprime les lignes 4 et 7
 		$ sed -e '4,7d' test.txt		= Supprime les lignes entre 4 et 7
 		
 		$ sed '/^#/ d' test.txt			= Supprime les lignes commencant par #
 		$ sed '/e$/ d' test.txt			= Supprime les lignes se terminant par e
-		$ sed '/#/,/@/d' test.txt		= supprime les lignes comprises entre le premier # et le premier @
+		$ sed '/#/,/@/d' test.txt		= Supprime les lignes comprises entre le premier # et le premier @
 
-		$ sed -e 's/^#//' test.txt		= Supprime le commentaire en début de ligne, puisqu'il est remplacé par ''
+		$ sed -e 's/^#//' test.txt		= Supprime le commentaire en début de ligne, puisqu'il 
+							  est remplacé par ''
 		
-		$ sed -e 'y/éèê/eee/' test.txt		= Retire les accents, puisqu'ils sont remplacé par 'e'
+		$ sed -e 'y/éèê/eee/' test.txt		= Retire les accents, puisqu'ils sont remplacés par 'e'
 
 		$ sed -e ' 4,7 {y/éèê/eee/;s/e/[]/} test.txt 	= Remplace les accents, puis remplace les "e" par "[]"
 	
-		$ sed -e '/^$/ {N; D}' test.txt		= Suprimme les sauts à la lignes
-		   |	
-		   -->	Explication : Pour les lignes vides, on charge la ligne suivant, on envoie ce qui se trouve dans l'espace de travail jusqu'au premier '\n', puis on continue le traitement du texte. Pour continuer le traitement, une nouvelle ligne est chargée et va donc "écraser" les '\n' qui sont toujours présent dans l'espace de travail.
+		$ sed -e '/^$/ {N; D}' test.txt		= Supprime les sauts de ligne
+		
+		
+	Explication : Pour les lignes vides, on charge la ligne suivante, on envoie ce qui se trouve dans l'espace de travail jusqu'au premier '\n', puis on continue le traitement du texte. Pour continuer le traitement, une nouvelle ligne est chargée et va donc "écraser" les '\n' qui sont toujours présents dans l'espace de travail.
 
 		
 Lors du remplacement d'un mot par un autre, il peut survenir un problème de taille. En effet, le remplacement n'est effectué que sur le premier mot de la ligne trouvé.
@@ -808,7 +819,7 @@ Lors du remplacement d'un mot par un autre, il peut survenir un problème de tai
 
 		Au r[voir
 
-	On remarque que tout les 'e' et 'o' n'ont pas été remplacé..
+	On remarque que tout les 'e' et 'o' n'ont pas été remplacés...
 
 Pour contrecarrer ce problème, il est possible de placer dans le script un label et de revenir dessus, comme un goto en C. Pour effectuer ce retour utilisez la commande 'b'.
 
@@ -825,24 +836,24 @@ Pour contrecarrer ce problème, il est possible de placer dans le script un labe
 
 		Au r[v[ir
 
-	Explication : Un label est placé au début des commandes. La première commande remplace le premier [eo] trouvé. La seconde retourne au label si il reste encore un [eo] dans la ligne. Une fois qu'il n'y a plus de [eo], la ligne suivant est chargée. 
+	Explication : Un label est placé au début des commandes. La première commande remplace le premier [eo] trouvé. La seconde retourne au label si il reste encore un [eo] dans la ligne. Une fois qu'il n'y a plus de [eo], la ligne suivante est chargée. 
 
 
-Appliqué des actions à un fichier
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Appliquer des actions à un fichier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `awk(1)`_ [-Fs] [-v variable] [-f fichier de commandes] 'program' fichier
-  		* -F : Spécifie les séparateurs de champs
-  		* -v : Définie une variable utilisée à l'intérieur du programme.
-  		* -f : Les commandes sont lu à partir d'un fichier. 
+  		* -F : Spécifie les séparateurs de champ
+  		* -v : Définit une variable utilisée à l'intérieur du programme.
+  		* -f : Les commandes sont lues à partir d'un fichier. 
 
-Note : awk est une commande extrement puissante, elle permet d'effectuer une multitude d'opération. Son utilisation est complexe et elle est bien détaillé sur ce site : http://www.shellunix.com/awk.html. Je vous encourage à le lire.
+Note : awk est une commande extrêmement puissante, elle permet d'effectuer une multitude d'opérations. Son utilisation est complexe et elle est bien détaillée sur ce site : http://www.shellunix.com/awk.html. Je vous encourage à le lire.
 
 
-Redirection nommé
-^^^^^^^^^^^^^^^^^
+Redirection nommée
+^^^^^^^^^^^^^^^^^^
 
-`mkfifo(1)`_ nom		Crée un tube nommée
+`mkfifo(1)`_ nom		crée un tube nommé
 
 	.. code-block:: console
 
@@ -860,13 +871,13 @@ Redirection nommé
 Bash
 ----
 
-Tapez des commandes dans la console est inévitable lors d'opérations avancées sur un système Unix, et peut devenir très vite répétitif et fastidieux pour l'utilisateur. Le Bash est justement là pour éviter ces répétitions et automatiser certaines tâche à l'aide de scripts, qui sont des fichiers texte composés de différentes commandes Unix, lus, interprétés et exécutés par Bash.
+Taper des commandes dans la console est inévitable lors d'opérations avancées sur un système Unix, et peut devenir très vite répétitif et fastidieux pour l'utilisateur. Le Bash est justement là pour éviter ces répétitions et automatiser certaines tâches à l'aide de scripts, qui sont des fichiers texte composés de différentes commandes Unix, lus, interprétés et exécutés par Bash.
 
 
 Premier script
 ^^^^^^^^^^^^^^
 
-Nous allons écrire un premier script bash pour présenter la manière générale de procéder avec un tel outils. Les scripts commencent toujours par la ligne ``#!/bin/bash`` qui indique à l'exécution qu'il s'agit d'un script et avec quel interpréteur le lire (ici bash).
+Nous allons écrire un premier script bash pour présenter la manière générale de procéder avec un tel outil. Les scripts commencent toujours par la ligne ``#!/bin/bash`` qui indique à l'exécution qu'il s'agit d'un script et avec quel interpréteur le lire (ici bash).
 
     .. code-block:: bash
 
@@ -889,14 +900,14 @@ Après il ne reste plus qu'à l'exécuter et observer le résultat.
 Les variables
 ^^^^^^^^^^^^^
 
-Bash permet l'utilisation de variables dans les scripts. Il peut s'agir de simples variables ou, de tableaux. Bash n'est pas un langage typé, des Int ou des String n'existe pas, toutes les variables sont traitées de la même façon. Pour illustrer ceci nous allons écrire le script `variables.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/variables.sh>`_
+Bash permet l'utilisation de variables dans les scripts. Il peut s'agir de simples variables ou de tableaux. Bash n'est pas un langage typé, les Int ou les String n'existent pas, toutes les variables sont traitées de la même façon. Pour illustrer ceci nous allons écrire le script `variables.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/variables.sh>`_
 
     .. code-block:: bash
 
       #!/bin/bash
 
       bonjour='Hello, '
-      #il est important de ne pas mettre d'espace autour du =
+      #il est important de ne pas mettre d'espaces autour du =
       nombre[0]=12
       nombre[1]=52
 
@@ -904,7 +915,7 @@ Bash permet l'utilisation de variables dans les scripts. Il peut s'agir de simpl
       #on accède à une variable simple avec un $ devant son nom
       #on accède à un élément d'un tableau avec un $ devant et des {} autour
       echo $bonjour${nombre[*]}
-      #le caractère * indique qu'on veut utiliser tout les éléments du tableau (séparer
+      #le caractère * indique qu'on veut utiliser tous les éléments du tableau (séparés
       #par un espace à chaque fois)
 
 Ce script produit comme résultat
@@ -920,9 +931,9 @@ Il est interressant de visiter cette page : http://michel.mauny.net/sii/variable
 Les structures de contrôle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Comme dans chaque langage de programmation, bash offre les structures de contrôles habituelles telles que les boucles if, for ou encore while que nous allons démontrer maintenant.
+Comme dans chaque langage de programmation, bash offre les structures de contrôle habituelles telles que les boucles if, for ou encore while que nous allons démontrer maintenant.
 
-Comme dit précédemment, il n'y a pas de type en bash, true et false n'existe pas. Les conditions que les boucles vont utiliser seront les valeurs renvoyées par l'exécution d'une commande. Un 0 renvoyé correspond à un true, tandis que tout le reste est considéré comme un false.
+Comme dit précédemment, il n'y a pas de type en bash, true et false n'existent pas. Les conditions que les boucles vont utiliser seront les valeurs renvoyées par l'exécution d'une commande. Un 0 renvoyé correspond à un true, tandis que tout le reste est considéré comme un false.
 
 Dans le but de tester ces boucles nous utiliserons un petit programme en C, `return.c <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/return.c>`_, qui va renvoyer la valeur qu'il reçoit en argument. Le script de test est `structures.sh <https://raw.github.com/HappyRave/SystInfo1/master/valgrind/structures.sh>`_.
 
@@ -931,7 +942,7 @@ Dans le but de tester ces boucles nous utiliserons un petit programme en C, `ret
       #!/bin/bash
 
       if ./return 0; then
-      #la valeur de renvoi sera 0 dans la boucle sera exécutée
+      #la valeur de renvoi sera 0 quand la boucle aura été exécutée
       echo "Hello"
       fi
 

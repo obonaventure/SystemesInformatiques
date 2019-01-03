@@ -42,6 +42,6 @@ Dans de nombreux projets informatiques, il est nécessaire d'utiliser des outils
 Compilateurs
 ============
 
-Le compilateur C utilisé dans de nombreuses distributions Linux est `gcc(1)`_. C'est un compilateur open-source développé activement dans le cadre du projet |gnu| par la `Free Software Foundation <http://www.fsf.org>`_. Nous utiliserons principalement `gcc(1)`_ dans le cadre de ce cours.
+Le compilateur C utilisé dans de nombreuses distributions Linux est `gcc(1)`_. C'est un compilateur open-source développé activement dans le cadre du projet GNU par la `Free Software Foundation <http://www.fsf.org>`_. Nous utiliserons principalement `gcc(1)`_ dans le cadre de ce cours.
 
 Il existe des alternatives à `gcc(1)`_ comme llvm_ que nous utiliserons lorsque nous analyserons le code assembleur généré par un compilateur C. Les variantes commerciales de Unix utilisent généralement des compilateurs propriétaires, dont par exemple `Oracle Studio <http://www.oracle.com/technetwork/server-storage/solarisstudio/overview/index.html>`_ ou la `suite de compilateurs <http://software.intel.com/en-us/c-compilers>`_ développée par intel_.

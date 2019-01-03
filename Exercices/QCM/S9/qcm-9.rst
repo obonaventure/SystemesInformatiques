@@ -21,7 +21,7 @@ La matière couverte cette semaine porte sur le système de fichiers et sa manip
 Question 1. Accès aux fichiers
 ------------------------------
 
-Les bits de permissions permet de contrôler l'accès aux fichiers. Considérons le répertoire ci-dessous :
+Les bits de permissions permettent de contrôler l'accès aux fichiers. Considérons le répertoire ci-dessous :
 
 .. code-block:: console
 
@@ -481,7 +481,7 @@ Après exécution de ces commandes, un seul des groupes d'affirmations suivant e
 .. class:: negative
 
 -
-  - les fichiers ``a`` et ``c`` ont des `inode` différents
+  - les fichiers ``a`` et ``c`` ont des `inodes` différents
   - les fichiers ``e`` et ``d`` ont la même taille
   - l'`inode` correspondant au fichier ``d`` indique qu'il y a trois liens vers lui
 

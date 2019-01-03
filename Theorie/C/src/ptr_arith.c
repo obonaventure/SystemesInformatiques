@@ -18,7 +18,7 @@ tab[2] = 0x090A0B0C;
   
 int i;
 for (i = 0; i < SIZE; i++) {
-  printf("%X est a l'adresse %p\n", tab[i], &(tab[i]));
+  printf("%X est à l'adresse %p\n", tab[i], &(tab[i]));
 }
 
 ///DDD
@@ -27,7 +27,7 @@ for (i = 0; i < SIZE; i++) {
   
 unsigned int* ptr = tab;
 for (i = 0; i < SIZE; i++) {
-  printf("%X est a l'adresse %p\n", *ptr, ptr);
+  printf("%X est à l'adresse %p\n", *ptr, ptr);
   ptr++;
 }
 
@@ -38,7 +38,7 @@ for (i = 0; i < SIZE; i++) {
 unsigned char* ptr_char = (unsigned char *) tab;
 printf("ptr_char contient %p\n", ptr_char);
 for (i = 0; i < SIZE + 1; i++) {
-  printf("%X est a l'adresse %p\n", *ptr_char, ptr_char);
+  printf("%X est à l'adresse %p\n", *ptr_char, ptr_char);
   ptr_char++;
 }
 

@@ -32,4 +32,5 @@ Systèmes informatiques : Outils
    gprof
    shell
    gcc
+   bib
 

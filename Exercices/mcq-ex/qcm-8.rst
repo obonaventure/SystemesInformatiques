@@ -49,49 +49,49 @@ L'appel système `fork(2)`_ permet de créer une copie du processus courant. Un 
 
       Lorsque ``n`` est initialisé à ``2``, quatre processus sont créés.
 
-   .. comment::
+      .. comment::
 
-      Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Ces deux processus exécutent à leur tour `fork(2)`_ et deux processus supplémentaires sont donc créés.
+         Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Ces deux processus exécutent à leur tour `fork(2)`_ et deux processus supplémentaires sont donc créés.
 
    .. positive::
 
       Lorsque ``n`` est initialisé à ``3``, huit processus sont créés.
 
-   .. comment::
+      .. comment::
 
-      Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Ces deux processus exécutent à leur tour `fork(2)`_ et deux processus supplémentaires sont donc créés. Chacun de ces quatre processus exécute à son tour `fork(2)`_ et il y a donc huit processus au total.
+         Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Ces deux processus exécutent à leur tour `fork(2)`_ et deux processus supplémentaires sont donc créés. Chacun de ces quatre processus exécute à son tour `fork(2)`_ et il y a donc huit processus au total.
 
    .. negative::
 
       Lorsque ``n`` est initialisé à ``2``, deux processus sont créés.
 
-   .. comment::
+      .. comment::
 
-      Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
+         Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
 
    .. negative::
 
       Lorsque ``n`` est initialisé à ``2``, trois processus sont créés.
 
-   .. comment::
+      .. comment::
 
-      Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
+         Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
 
    .. negative::
 
       Lorsque ``n`` est initialisé à ``3``, trois processus sont créés.
 
-   .. comment::
+      .. comment::
 
-      Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
+         Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
 
    .. negative::
 
       Lorsque ``n`` est initialisé à ``3``, quatre processus sont créés.
 
-  .. comment::
+      .. comment::
 
-     Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
+         Le premier processus démarre son exécution. Il exécute `fork(2)`_. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
 
 Question 2. `execve(2)`_
 ------------------------
@@ -486,7 +486,3 @@ Question 5. Récupération du résultat d'un processus avec `waitpid(2)`_
 
          La valeur de retour de `waitpid(2)`_ indique si l'appel système s'est exécuté correctement ou non. Pour récupérer le statut du processus fils ``pid``, il faut utiliser la macro ``WEXITSTATUS``. Le pointeur ``int * status`` doit pointer vers une zone mémoire allouée par malloc. Ici, il pointe vers ``NULL``.
 
-
-.. include:: ../../links.rst
-.. include:: ../../man_links.rst
-.. include:: ../../incl_links.rst

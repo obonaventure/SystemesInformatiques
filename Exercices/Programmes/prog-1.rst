@@ -7,8 +7,8 @@ Exercices
 
 
 
-1. Exercices en bash
---------------------
+1. Exercices de manipulation du shell
+-------------------------------------
 
 Pour rappel, quelques commandes de base dans le shell pour gérer les dossiers et fichiers:
 
@@ -32,8 +32,47 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 #. Retournez dans le répertoire parent de ``my_dir`` et copiez le dossier complet ``my_dir`` dans ``my_dir_2``.
 #. Effacez le dossier entier ``my_dir`` en une seule commande (utilisez `rm(1)`_).
 
-2. Questions de base
---------------------
+Vous trouverez également sur `le cours LSINF1252 sur inginious <https://inginious.info.ucl.ac.be/course/LSINF1252>`_ les exercices suivants :
+
+#. Utilisation de la commande `grep(1)`_ : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_grep
+#. Utilisation des pipes : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_pipes
+#. Utilisation de la commande `tar(1)`_ : https://inginious.info.ucl.ac.be/course/LSINF1252/s1_tar
+#. Capture the flag (1): https://inginious.info.ucl.ac.be/course/LSINF1252/s1_ctf1
+#. Capture the flag (2): https://inginious.info.ucl.ac.be/course/LSINF1252/s1_ctf2
+
+.. only:: staff
+
+   - Il faudrait quand même qu'ils l'aient fait une fois avant le TP
+   - Faire l'exercice sur les pipes avant de faire le CTF
+   - Si un élève est bloqué, relire les dernières consignes, si rien d'explicite taper "./.suite"
+   - Quand les consignes disent de
+            dire quelque chose de spécifique = "echo parole | ./interlocuteur"
+            parler à quelqu'un = "./interlocuteur"
+   - Faire TRÈS attention à taper correctement l'identifiant inginious au début, sinon ce n'est qu'en ayant fini le CTF qu'ils verront l'erreur
+   - Attention, quand on tape la réponse finale dans inginious, elle est écrite sous la forme "[hash] -", il faut copier-coller la sortie en entier, le tiret compris, pas juste le hash
+   - L'exercice est individuel, la réponse dépend de l'identifiant de l'étudiant
+   - En cas de problème avec le code de vérification (il n'y en a théoriquement pas, mais qui sait) le tuteur peut générer la clé à entrer dans inginious comme suit (depuis la racine) :
+     	cd .ressources/script
+	./init lIdentifiantInginious
+	./next
+	./next
+	./next
+	./next
+	./next 
+
+
+2. Découverte du C
+------------------
+
+Certains côtés du C sont très proches du langage Java que vous connaissez déjà. Ce n'est pas surprenant
+puisque Java a été conçu avec le langage C comme base. Les inventeurs de Java ont ajouté tout ce qui 
+était nécessaire pour supporter les objets et ont retiré la gestion explicite de la mémoire. Les premiers
+exercices `inginious en C <https://inginious.info.ucl.ac.be/course/LSINF1252>`_ sont très proches de ceux
+que vous aviez réalisé en Java.
+
+#. Calcul de la valeur absolue d'une entier: https://inginious.info.ucl.ac.be/course/LSINF1252/absolute_value
+#. Calcul de la factorielle d'un nombre entier: https://inginious.info.ucl.ac.be/course/LSINF1252/factorial
+#. Recherche d'un élément dans un tableau d'entiers: https://inginious.info.ucl.ac.be/course/LSINF1252/tab_find
 
 #. Compilez et exécutez le code suivant. Expliquez ce que fait l'appel à `printf(3)`_.
 
@@ -83,7 +122,7 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 
                 .. note::
 
-                        voir note du cours.
+                        voir notes de cours.
 
 #. Expliquez à quoi sert l'option ``-Wall`` de ``gcc``.
 
@@ -100,11 +139,14 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
 
                 .. note::
 
-                        ``-Wall``: warning si une fonction ne renvoi pas de valeur. Il faut donc ajouter ``return 0;`` à la fin de la ``main``.
+                        ``-Wall``: warning si une fonction ne renvoie pas de valeur. Il faut donc ajouter ``return 0;`` à la fin de la ``main``.
 
-#. Compiler le code suivant (sans les options ``-Wall`` et ``-Werror``). Expliquez ce que sont les arguments de la fonction ``main``. Expliquez ce que fait `atoi(3)`_ (voir `strtol(3)`_ pour une fonction similaire). Exécutez ensuite le code avec ou sans arguments. Qu'observez-vous ? Comment se protéger du fait qu'un utilisateur ne va pas forcément rentrer le bon nombre d'arguments ?
 
-        .. code-block:: c
+.. only:: staff
+
+          #. Compilez le code suivant (sans les options ``-Wall`` et ``-Werror``). Expliquez ce que sont les arguments de la fonction ``main``. Expliquez ce que fait `atoi(3)`_ (voir `strtol(3)`_ pour une fonction similaire). Exécutez ensuite le code avec ou sans arguments. Qu'observez-vous ? Comment se protéger du fait qu'un utilisateur ne va pas forcément rentrer le bon nombre d'arguments ?
+
+             .. code-block:: c
 
                 #include <stdlib.h>
                 int main(int argc, const char *argv[])
@@ -113,8 +155,6 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
                         printf("%d\n", a);
                 }
 
-        .. only:: staff
-
                 .. note::
 
                         ``argc`` = nombre d'arguments.
@@ -122,9 +162,10 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
                         ``atoi`` = transforme une chaine de caractère en un entier.
                         Le programme renvoi une segmentation fault lorsque l'on ne passe pas d'argument. Il faut donc utiliser ``argc`` pour tester que l'on a le bon nombre d'argument.
 
-#. Ecrivez un programme qui va itérer (avec une boucle ``for`` et une boucle ``while``) et afficher tous les arguments qui lui sont passés à la sortie standard.
 
-        .. only:: staff
+.. only:: staff
+       
+          #. Ecrivez un programme qui va itérer (avec une boucle ``for`` et une boucle ``while``) et afficher tous les arguments qui lui sont passés à la sortie standard.
 
                 .. note::
 
@@ -148,7 +189,7 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
                 $ if ! ./false; then echo "false fonctionne"; fi
                 false fonctionne
 
-   Bash permet aussi de faire des ``else``. Trouvez comme faire en regardant ce `lien <http://tldp.org/LDP/abs/html/tests.html>`_.
+   Bash permet aussi de faire des ``else``. Trouvez comment faire en regardant ce `lien <http://tldp.org/LDP/abs/html/tests.html>`_.
         .. only:: staff
 
                 .. note::
@@ -172,20 +213,21 @@ Pour vous familiariser avec le shell, faites les petits exercices suivants dans 
                                         }
 
 
-3. Petits programmes
---------------------
+
+.. only:: staff
+
+          #.  Faites l'exercice sur `commandetest <https://inginious.info.ucl.ac.be/course/LSINF1252/commandetest>`_ sur la commande `test(1)`_.
+
+              INGInious est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécutés sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
+
+              Pour vous connecter sur INGInious, utilisez votre login INGI que vous recevrez durant la première séance de TP.
 
 
-#.  Faites l'exercice sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252/commandetest>`_ sur la commande `test(1)`_.
+          #. Faites de même pour la commande `expr(1)`_. On vous demande d'implémenter les expressions suivantes : ``+``, ``-``, ``*``, ``/`` et ``%``, mais cette fois-ci sans utiliser INGInious. Vous devriez tester votre programme vous-même et assurer le bon fonctionnement de celui-ci.
 
-    INGInious est un environnement qui permet de soumettre du code, et des tests sont automatiquement exécutés sur ce code. Cela vous permettra de vérifier que votre programme fonctionne.
-
-    Pour vous connecter sur INGInious, utilisez votre login INGI que vous recevrez durant la première séance de TP.
+          N'oubliez pas de respecter les valeurs de retour qui sont décrites dans les man-pages.
 
 
-#. Faites de même pour la commande `expr(1)`_. On vous demande d'implémenter les expressions suivantes : ``+``, ``-``, ``*``, ``/`` et ``%``, mais cette fois-ci sans utiliser INGInious. Vous devriez tester votre programme vous-même et assurer le bon fonctionnement de celui-ci.
-
-   N'oubliez pas de respecter les valeurs de retour qui sont décrites dans les man-pages.
-
-
-#. En utilisant le shell et un programme C, essayez de déterminer expérimentalement le nombre maximum d'arguments que vous pouvez passer à un programme C. Y a-t-il une limite à ce nombre d'arguments ? Si oui, d'où vient-elle et de quoi dépend-elle ?
+.. only:: staff 
+          
+          #. En utilisant le shell et un programme C, essayez de déterminer expérimentalement le nombre maximum d'arguments que vous pouvez passer à un programme C. Y a-t-il une limite à ce nombre d'arguments ? Si oui, d'où vient-elle et de quoi dépend-elle ?

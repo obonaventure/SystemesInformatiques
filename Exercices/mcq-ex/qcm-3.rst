@@ -187,14 +187,14 @@ Considérons le fragment de programme ci-dessous.
    .. positive::
 
 
-      - la variable ``i`` déclarée et initialisée en ``ligne A`` est stockée dans la zone des variables non-initialisées
+      - la variable ``i`` déclarée en ``ligne A`` est stockée dans la zone des variables non-initialisées
       - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
       - la variable ``j`` déclarée en ``ligne D`` est stockée sur la pile
       - la variable ``k`` déclarée en ``ligne F`` est stockée sur la pile
 
    .. positive::
 
-      - la variable ``i`` déclarée et initialisée en ``ligne A`` est stockée dans la zone des variables non-initialisées
+      - la variable ``i`` déclarée en ``ligne A`` est stockée dans la zone des variables non-initialisées
       - le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
       - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
       - la variable ``i`` déclarée en ``ligne E`` est stockée sur la pile
@@ -596,6 +596,3 @@ Question 7. `strdup(3)`_
 
 
 
-.. include:: ../../../links.rst
-.. include:: ../../../man_links.rst
-.. include:: ../../../incl_links.rst

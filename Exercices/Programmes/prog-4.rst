@@ -2,6 +2,46 @@
 .. Copyright |copy| 2012 by `Olivier Bonaventure <http://inl.info.ucl.ac.be/obo>`_, Christoph Paasch et Grégory Detal
 .. Ce fichier est distribué sous une licence `creative commons <http://creativecommons.org/licenses/by-sa/3.0/>`_
 
+Exercices INGINIOUS
+===================
+
+Deux sortes d'exercices INGINIOUS vous sont proposés durant cette semaine. Les premiers portent sur les structures chaînées car ces structures de données permettent de bien vérifier la compréhension des pointeurs en C.
+
+ - https://inginious.info.ucl.ac.be/course/LSINF1252/simple_stack
+ - https://inginious.info.ucl.ac.be/course/LSINF1252/cmp_func
+ - https://inginious.info.ucl.ac.be/course/LSINF1252/linked_structs
+ - https://inginious.info.ucl.ac.be/course/LSINF1252/advanced_queue
+ - https://inginious.info.ucl.ac.be/course/LSINF1252/order_relation_linked_list 
+
+Après avoir écrit de nombreuses fonctions C, il est maintenant temps pour vous de commencer à écrire des 
+programmes composés de plusieurs fonctions. Pour cela, l'utilitaire `make(1)`_ vous sera très utile. Prenez un peu de temps pour lire le chapitre qui lui est consacré dans le syllabus et essayez de répondre aux questions ci-dessous :
+
+ - https://inginious.info.ucl.ac.be/course/LSINF1252/s2_make
+ - https://inginious.info.ucl.ac.be/course/LSINF1252/s2_make_calc
+ - https://inginious.info.ucl.ac.be/course/LSINF1252/s2_make_mcq
+
+.. only:: staff
+
+    - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_make
+    - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_make_mcq
+    - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_cunit_basics
+    - https://inginious.info.ucl.ac.be/course/LSINF1252/s3_make_tests
+
+Lorsque l'on écrit des programmes en C ou dans un autre langage, il est important de tester
+le bon fonctionnement de toutes les fonctions du programme pour éviter des erreurs et autres
+bugs difficiles à corriger. L'idéal est de commencer par écrire les tests qui valident le bon 
+fonctionnement de chaque fonction *avant* d'écrire cette fonction. Plusieurs librairies peuvent vous
+aider à écrire de tels tests. CUnit (:ref:`outils:ref_cunit`) est l'un d'entre elles. 
+Prenez le temps de lire le chapitre
+qui lui est consacré dans le syllabus.
+
+Pour démontrer votre bon utilisation de `make(1)`_ et CUnit, reprenez le programme que vous
+avez écrit pour l'exercice `test <https://inginious.info.ucl.ac.be/course/LSINF1252/commandetest>`_ 
+,
+divisez-le en plusieurs fichiers, ajoutez-y des tests unitaires pour chaque fonction et
+utilisez `make(1)`_ pour automatiser le tout. Si vous voulez allez plus loin, essayez d'utiliser
+la librarie `getopt(3)`_ pour traiter les arguments reçus en ligne de commande.
+
 
 Exercices
 =========
@@ -25,7 +65,9 @@ Exercices
 		:start-after: ///AAA
 		:end-before: ///BBB
 
-#. Dans le cours théorique, nous avons parlé des instructions ``set`` qui permettent de fixer la valeur d'un byte d'un registre en fonction de la valeur des drapeaux du registre ``eflags``. Comment feriez-vous pour compiler en assembleur la ligne ``b=(a>0)`` sans utilisez cette instruction et en sachant que les valeurs de ``a`` et ``b`` sont initialement dans les registres ``%eax`` et ``%ecx``. Pour répondre à cette question, écrivez d'abord un code en C semblable au code ci-dessous :
+.. only:: staff
+
+   #. Dans le cours théorique, nous avons parlé des instructions ``set`` qui permettent de fixer la valeur d'un byte d'un registre en fonction de la valeur des drapeaux du registre ``eflags``. Comment feriez-vous pour compiler en assembleur la ligne ``b=(a>0)`` sans utilisez cette instruction et en sachant que les valeurs de ``a`` et ``b`` sont initialement dans les registres ``%eax`` et ``%ecx``. Pour répondre à cette question, écrivez d'abord un code en C semblable au code ci-dessous :
 
 	.. code-block:: c
 
@@ -35,9 +77,20 @@ Exercices
 		    { b=0; }
 
 
-#. En utilisant l'assembleur [IA32]_, écrivez les instructions assembleur qui permettent d'implémenter une fonction qui ne prend aucun argument et retourne toujours l'entier ``1``.
+   #. Avec le compilateur gcc, il est aussi possible de compiler du code assembleur directement dans une programme C. Cette fonctionnalité est intéressante si vous voulez tester de petites fonctions écrites en langage assembleur. Ainsi, une fonction baptisée ``rien`` et qui ne fait absolument rien peut s'écrire comme suit:
 
-	.. only:: staff
+
+    .. code-block:: c
+
+       extern void rien();  // indique au compilateur que la fonction est externe
+
+       __asm__(
+       "rien:\n"
+       "   ret\n"
+       );
+
+
+    En utilisant l'assembleur [IA32]_, écrivez les instructions assembleur qui permettent d'implémenter une fonction qui ne prend aucun argument et retourne toujours l'entier ``1``.
 
 		.. note::
 
@@ -46,7 +99,26 @@ Exercices
 				movl $1,%eax
 				ret
 
-#. Considérons une fraction de la mémoire représentée dans le tableau ci-dessous.
+
+    De la même façon, écrivez la fonction ``add`` qui prend deux arguments de type ``int`` et retourne la somme de ces deux arguments.
+
+                  .. note::
+
+		       .. code-block:: c
+
+		          /* add(int a, int b) */
+			  __asm__(
+			  "add:\n"
+			  "   subl $8, %esp\n"
+			  "   movl 16(%esp), %eax\n"
+			  "   movl 12(%esp), %ebx\n"
+			  "   movl %ebx, %eax\n"
+			  "   addl $8, %esp\n"
+			  "   ret\n"
+        		  );
+
+
+    #. Considérons une fraction de la mémoire représentée dans le tableau ci-dessous.
 
 	==========   ========
 	Adresse      Valeur
@@ -65,9 +137,7 @@ Exercices
 		pushl %ebx
 		popl %ecx
 
-#. En C, il n'est pas rare de voir dans certains programmes que la valeur de retour de certaines fonctions est ignorée. C'est une mauvaise pratique qui peut donner lieu à pas mal de problèmes. Connaissant la façon dont la valeur de retour d'une fonction ``int f()`` est gérée en assembleur, expliquez ce qu'il se passe en pratique lorsque la valeur de retour de ``f`` n'est pas sauvegardée.
-
-	.. only:: staff
+     #. En C, il n'est pas rare de voir dans certains programmes que la valeur de retour de certaines fonctions est ignorée. C'est une mauvaise pratique qui peut donner lieu à pas mal de problèmes. Connaissant la façon dont la valeur de retour d'une fonction ``int f()`` est gérée en assembleur, expliquez ce qu'il se passe en pratique lorsque la valeur de retour de ``f`` n'est pas sauvegardée.
 
 		.. note::
 
@@ -75,4 +145,7 @@ Exercices
 
 
 
-#. Trois exercices se trouvent sur INGInious. Un exercice sur la `Comparaison de Fractions <https://inginious.info.ucl.ac.be/course/LSINF1252/fractions>`_, un nouvel exercice sur les `les chaînées <https://inginious.info.ucl.ac.be/course/LSINF1252/linked_lists_2>`_ et finalement l'implémentation de `strsep <https://inginious.info.ucl.ac.be/course/LSINF1252/strsep>`_.
+     #. Trois exercices se trouvent sur INGInious. Un exercice sur la `Comparaison de Fractions <https://inginious.info.ucl.ac.be/course/LSINF1252/fractions>`_, un nouvel exercice sur les `les listes chaînées <https://inginious.info.ucl.ac.be/course/LSINF1252/linked_lists_2>`_ et finalement l'implémentation de `strsep <https://inginious.info.ucl.ac.be/course/LSINF1252/strsep>`_.
+
+     #. Vous trouverez également sur INGInious plusieurs exemples de questions typiques sur l'assembleur à l'examen. Ces questions portent sur la traduction d'un code assembleur dans son équivalent en C. `Première question <https://inginious.info.ucl.ac.be/course/LSINF1252/asm1>`_, `deuxième question <https://inginious.info.ucl.ac.be/course/LSINF1252/asm2>`_, `troisième question <https://inginious.info.ucl.ac.be/course/LSINF1252/asm3>`_ et `quatrième question <https://inginious.info.ucl.ac.be/course/LSINF1252/asm4>`_ .
+
