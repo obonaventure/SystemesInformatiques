@@ -231,3 +231,62 @@ que vous aviez réalisé en Java.
 .. only:: staff 
           
           #. En utilisant le shell et un programme C, essayez de déterminer expérimentalement le nombre maximum d'arguments que vous pouvez passer à un programme C. Y a-t-il une limite à ce nombre d'arguments ? Si oui, d'où vient-elle et de quoi dépend-elle ?
+
+3. Question de bilan final
+--------------------------
+
+Le fizz buzz est un programme qui affiche sur la sortie standard pour chaque entier ``n``:
+
+- ``fizz buzz`` si le nombre est divisible par 3 et par 5;
+- ``fizz`` si le nombre est divisible par 3;
+- ``buzz`` si le nombre est divisible par 5;
+- La valeur de ``n`` sinon.
+
+Un étudiant implémente cet algorithme en Bash. Malheureusement, son script comporte plusieurs erreurs.
+Pouvez-vous identifier et corriger les erreurs en question? Son code est disponible ci-dessous.
+
+.. code-block:: bash
+
+        #!/bin/bash
+
+        x=1
+        limit=100
+        if [ ! -z "$1" ]
+        then
+            limit=$1
+        fi
+
+        while [[ $x < "$limit" ]]
+        do
+            if [[0 -eq "($x%3)"  && 0 -eq "($x%5)"]]
+            then
+                # Check if divide by 3 & 5
+                echo "fizz buzz"
+            elif [[0 == "($x%5)"]]
+            then
+                # Check if divide by 5
+                echo "buzz"
+            elif [[0 == "($x%3)"]]
+            then
+                # Check if divide by 3
+                echo "fizz"
+            else
+                echo "$x"
+            fi
+            x=$(( x + 1 ))
+        done
+
+
+Il y a 4 différents groupes d'erreurs. Trois d'entre-eux peuvent être facilement repérés via
+`ShellCheck <https://www.shellcheck.net>`_, un outil de vérification statique de code Bash. L'utilisation
+systématique de ce genre d'outils vous évitera bon nombre d'erreurs fréquentes lors de la rédaction de code.
+
+.. only:: staff
+
+          #. Double crochets qui manque un espace
+
+          #. == au lieu de -eq
+
+          #. ! -z au lieu de -n
+
+          #. < au lieu de -lt . Cette erreur n'est pas détectée par ShellCheck.
