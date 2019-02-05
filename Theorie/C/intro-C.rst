@@ -88,7 +88,7 @@ Le langage Java a été largement inspiré du langage C et de nombreuses constru
 
  - ``int`` et ``long`` : utilisés lors de la déclaration d'une variable de type entier
  - ``char`` : utilisé lors de la déclaration d'une variable permettant de stocker un caractère
- - ``double`` et ``float`` pour les variables permettant de stocker un nombre représenté en virgule flottante.
+ - ``double`` et ``float`` : utilisés lors de la déclaration d'une variable permettant de stocker un nombre représenté en virgule flottante.
 
 Notez que dans les premières versions du langage  C, contrairement à Java, il n'y avait pas de type spécifique permettant de représenter un booléen. Dans de nombreux programmes écrits en C, les booléens sont représentés par des entiers et les valeurs booléennes sont définies [#fbool]_ comme suit.
 

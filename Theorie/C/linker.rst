@@ -224,7 +224,7 @@ A titre d'exemple, le programme ci-dessous utilise `strerror(3)`_ pour afficher 
 
 .. note:: La valeur de ``errno`` n'indique pas la réussite ou l'échec d'une fonction
 
- Il faut noter que la variable ``errno`` n'est modifiée par les fonctions de la librairie ou les appels systèmes que si l'appel échoue. Si l'appel réussit, la valeur de ``errno`` n'est pas modifiée. Cela implique qu'il ne faut surtout pas tester la valeur de ``errno`` pour déterminer si une fonction de la librairie a échoué ou réussi. Il ne faut surtout par utiliser le pattern suivant :
+ Il faut noter que la variable ``errno`` n'est modifiée par les fonctions de la librairie ou les appels systèmes que si l'appel échoue. Si l'appel réussit, la valeur de ``errno`` n'est pas modifiée. Cela implique qu'il ne faut surtout pas tester la valeur de ``errno`` pour déterminer si une fonction de la librairie a échoué ou réussi. Il ne faut surtout pas utiliser le pattern suivant :
 
   .. code-block:: c
 

@@ -323,7 +323,7 @@ En langage C, les tableaux permettent d'agréger des données d'un même type. I
    :start-after: ///AAA
    :end-before: ///BBB
 
-Les premières versions du langage C ne permettaient que la définition de tableaux dont la taille est connue à la compilation. Cette restriction était nécessaire pour permettre au compilateur de réserver la zone mémoire pour stocker le tableau. Face à cette limitation, de nombreux programmeurs définissaient la taille du tableau via une directive ``#define`` du pré-processeur comme dans l'exemple ci-dessus. Cette directive permet d'associer une chaîne de caractères quelconque à un symbôle. Dans l'exemple ci-dessus, la chaîne ``10`` est associée au symbôle ``N``. Lors de chaque compilation, le préprocesseur remplace toutes les occurences de ``N`` par ``10``. Cela permet au compilateur de ne traiter que des tableaux de taille fixe.
+Les premières versions du langage C ne permettaient que la définition de tableaux dont la taille est connue à la compilation. Cette restriction était nécessaire pour permettre au compilateur de réserver la zone mémoire pour stocker le tableau. Face à cette limitation, de nombreux programmeurs définissaient la taille du tableau via une directive ``#define`` du pré-processeur comme dans l'exemple ci-dessus. Cette directive permet d'associer une chaîne de caractères quelconque à un symbole. Dans l'exemple ci-dessus, la chaîne ``10`` est associée au symbole ``N``. Lors de chaque compilation, le préprocesseur remplace toutes les occurences de ``N`` par ``10``. Cela permet au compilateur de ne traiter que des tableaux de taille fixe.
 
 Un tableau à une dimension peut s'utiliser avec une syntaxe similaire à celle utilisée par Java. Dans un tableau contenant ``n`` éléments, le premier se trouve à l'indice ``0`` et le dernier à l'indice ``n-1``. L'exemple ci-dessous présente le calcul de la somme des éléments d'un vecteur.
 
@@ -951,7 +951,7 @@ En C, ces expressions logiques s'utilisent comme dans le fragment de code suivan
    :start-after: ///AAA
    :end-before: ///BBB
 
-En pratique, les opérations logiques sont utiles pour effectuer des manipulations au niveau des bits de données stockées en mémoire. Une utilisation fréquente dans certaines applications réseaux ou systèmes est de forcer certains bits à la prendre la valeur ``0`` ou ``1``. La conjonction logique permet de forcer facilement un bit à zéro tandis que la disjonction logique permet de forcer facilement un bit à un. L'exemple ci-dessous montre comment forcer les valeurs de certains bits dans un ``unsigned char``. Il peut évidemment se généraliser à des séquences de bits plus longues.
+En pratique, les opérations logiques sont utiles pour effectuer des manipulations au niveau des bits de données stockées en mémoire. Une utilisation fréquente dans certaines applications réseaux ou systèmes est de forcer certains bits à prendre la valeur ``0`` ou ``1``. La conjonction logique permet de forcer facilement un bit à zéro tandis que la disjonction logique permet de forcer facilement un bit à un. L'exemple ci-dessous montre comment forcer les valeurs de certains bits dans un ``unsigned char``. Il peut évidemment se généraliser à des séquences de bits plus longues.
 
 .. literalinclude:: /C/S2-src/exprbin.c
    :encoding: utf-8
