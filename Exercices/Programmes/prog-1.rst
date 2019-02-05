@@ -92,7 +92,7 @@ que vous aviez réalisé en Java.
                         ``-Werror``
                                    Make all warnings into errors.
 
-#. Recompilez le code du point `1` avec l'option ``-Werror``, que se passe-t-il ? Que faut-t-il rajouter dans le code pour qu'il compile sans erreurs ?
+#. Recompilez le code du point `4` avec l'option ``-Werror``, que se passe-t-il ? Que faut-t-il rajouter dans le code pour qu'il compile sans erreurs ?
 
         .. only:: staff
 
@@ -100,7 +100,7 @@ que vous aviez réalisé en Java.
 
                         Le programme ne compile plus. Il faut inclure ``stdio.h`` parce que C nécessite d'avoir une déclaration des fonctions.
 
-#. (bonus) comment se fait-il que ``gcc`` compilait sans problème au point `1`?
+#. (bonus) comment se fait-il que ``gcc`` compilait sans problème au point `4`?
 
         .. only:: staff
 
@@ -108,7 +108,7 @@ que vous aviez réalisé en Java.
 
                         ``gcc`` crée une déclaration implicite des fonctions de la librairie C. Il n'affiche qu'un warning.
 
-#. Lorsque j'exécute le programme corrigé du point `3` dans une console, j'ai accès à plusieurs variables. L'une d'elles est ``$?`` qui permet de récupérer la valeur de retour du dernier programme exécuté. Expliquez à quoi sert cette valeur.
+#. Lorsque j'exécute le programme corrigé du point `6` dans une console, j'ai accès à plusieurs variables. L'une d'elles est ``$?`` qui permet de récupérer la valeur de retour du dernier programme exécuté. Expliquez à quoi sert cette valeur.
 
         .. code-block:: console
 
@@ -133,7 +133,7 @@ que vous aviez réalisé en Java.
                         ``-Wall``
                                 This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid (or modify to prevent the warning), even in conjunction with macros.
 
-#. Recompilez le code corrigé du point `3` avec les options ``-Wall`` et ``-Werror``, que se passe-t-il ? Que faut-il rajouter dans le code pour qu'il compile sans erreurs ?
+#. Recompilez le code corrigé du point `6` avec les options ``-Wall`` et ``-Werror``, que se passe-t-il ? Que faut-il rajouter dans le code pour qu'il compile sans erreurs ?
 
         .. only:: staff
 
@@ -142,43 +142,43 @@ que vous aviez réalisé en Java.
                         ``-Wall``: warning si une fonction ne renvoie pas de valeur. Il faut donc ajouter ``return 0;`` à la fin de la ``main``.
 
 
-.. only:: staff
+        .. only:: staff
 
-          #. Compilez le code suivant (sans les options ``-Wall`` et ``-Werror``). Expliquez ce que sont les arguments de la fonction ``main``. Expliquez ce que fait `atoi(3)`_ (voir `strtol(3)`_ pour une fonction similaire). Exécutez ensuite le code avec ou sans arguments. Qu'observez-vous ? Comment se protéger du fait qu'un utilisateur ne va pas forcément rentrer le bon nombre d'arguments ?
+                  #. Compilez le code suivant (sans les options ``-Wall`` et ``-Werror``). Expliquez ce que sont les arguments de la fonction ``main``. Expliquez ce que fait `atoi(3)`_ (voir `strtol(3)`_ pour une fonction similaire). Exécutez ensuite le code avec ou sans arguments. Qu'observez-vous ? Comment se protéger du fait qu'un utilisateur ne va pas forcément rentrer le bon nombre d'arguments ?
 
-             .. code-block:: c
+                     .. code-block:: c
 
-                #include <stdlib.h>
-                int main(int argc, const char *argv[])
-                {
-                        int a = atoi(argv[1]);
-                        printf("%d\n", a);
-                }
+                        #include <stdlib.h>
+                        int main(int argc, const char *argv[])
+                        {
+                                int a = atoi(argv[1]);
+                                printf("%d\n", a);
+                        }
 
-                .. note::
+                        .. note::
 
-                        ``argc`` = nombre d'arguments.
-                        ``argv`` = tableau de chaine de caractère contenant le nom de l'exécutable suivi des arguments.
-                        ``atoi`` = transforme une chaine de caractère en un entier.
-                        Le programme renvoi une segmentation fault lorsque l'on ne passe pas d'argument. Il faut donc utiliser ``argc`` pour tester que l'on a le bon nombre d'argument.
+                                ``argc`` = nombre d'arguments.
+                                ``argv`` = tableau de chaine de caractère contenant le nom de l'exécutable suivi des arguments.
+                                ``atoi`` = transforme une chaine de caractère en un entier.
+                                Le programme renvoi une segmentation fault lorsque l'on ne passe pas d'argument. Il faut donc utiliser ``argc`` pour tester que l'on a le bon nombre d'argument.
 
 
-.. only:: staff
+        .. only:: staff
        
-          #. Ecrivez un programme qui va itérer (avec une boucle ``for`` et une boucle ``while``) et afficher tous les arguments qui lui sont passés à la sortie standard.
+                  #. Ecrivez un programme qui va itérer (avec une boucle ``for`` et une boucle ``while``) et afficher tous les arguments qui lui sont passés à la sortie standard.
 
-                .. note::
+                        .. note::
 
-                        .. code-block:: c
+                                .. code-block:: c
 
-                                #include <stdio.h>
-                                int main(int argc, const char *argv[])
-                                {
-                                        int i;
-                                        for (i = 1; i < argc; i++)
-                                                printf("%s\n", argv[i]);
-                                        return 0;
-                                }
+                                        #include <stdio.h>
+                                        int main(int argc, const char *argv[])
+                                        {
+                                                int i;
+                                                for (i = 1; i < argc; i++)
+                                                        printf("%s\n", argv[i]);
+                                                return 0;
+                                        }
 
 #. Ecrivez deux programmes qui réagissent de façon similaire à `true(1)`_ et `false(1)`_ en utilisant `exit(3)`_. Vous pouvez tester le bon fonctionnement de votre programme en exécutant le code suivant dans une console:
 
