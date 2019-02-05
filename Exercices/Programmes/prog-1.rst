@@ -78,11 +78,17 @@ que vous aviez réalisé en Java.
 
         .. code-block:: c
 
-	        int main(int argc, const char *argv[])
+                int f()
                 {
                         int a = 1252;
                         printf("%d\n", a);
                 }
+
+                int main(int argc, const char *argv[])
+                {
+                        f();
+                }
+
 
 #. Expliquez à quoi sert l'option ``-Werror`` de ``gcc``. Regardez la manpage (`gcc(1)`_).
 
