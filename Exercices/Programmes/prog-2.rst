@@ -9,9 +9,11 @@ Questions INGINIOUS
 
 #. Faites l'exercice relatif à `printf(3)`_ sur INGINIOUS : https://inginious.info.ucl.ac.be/course/LSINF1252/printf
 
+#. Un utilisateur peut adapter le comportement d'un programme via les arguments passés en ligne de commande. Ecrivez un programme permettant d'afficher un argument sur deux tel qu'indiqué sur INGINIOUS: https://inginious.info.ucl.ac.be/course/LSINF1252/main_argc
+
 #. L'an dernier, vous avez écrit un programme permettant de détecter si une chaîne de caractères était un palindrome. Faites de même en C avec l'exercice INGINIOUS https://inginious.info.ucl.ac.be/course/LSINF1252/palindrome
 
-#. Ecrivez le corps de la fonction `swap2 <https://inginious.info.ucl.ac.be/course/LSINF1252/swap2>`_ permettant d'échanger les valeurs stockées dans deux variables de type entier. Faites de même lorsque les arguments de cette fonction sont des structures contenant des fractions : https://inginious.info.ucl.ac.be/admin/LSINF1252/task/swap
+#. Ecrivez le corps de la fonction `swap2 <https://inginious.info.ucl.ac.be/course/LSINF1252/swap2int>`_ permettant d'échanger les valeurs stockées dans deux variables de type entier. Faites de même lorsque les arguments de cette fonction sont des structures contenant des fractions : https://inginious.info.ucl.ac.be/course/LSINF1252/swap2int
 
 #. La libraire `string(3)`_ implémente un grand nombre de fonctions de manipulation des strings qui vous serons utile lors de différents projets de programmation. 
 
@@ -20,10 +22,10 @@ Questions INGINIOUS
         * `strcasecmp(3)`_
 
    
-  Ecrivez le code implémentant ces trois fonctions. Pour cela, créez un fichier ``string.c`` contenant la définition des fonctions et un fichier ``string.h`` avec les `déclarations <http://en.wikipedia.org/wiki/Declaration_(computer_programming)>`_ des fonctions. Vous devez aussi fournir un Makefile (cfr :ref:`outils:make`) qui permet de recompiler facilement votre programme en tapant ``make``. Pensez à implémenter quelques tests pour vos fonctions dans la fonction ``main`` et n'incluez pas l'exécutable dans l'archive. Pour la réalisation de ces tests, utilisez une librairie de tests unitaires telle que `CUnit <http://cunit.sourceforge.net>`_
+   Ecrivez le code implémentant ces trois fonctions. Pour cela, créez un fichier ``string.c`` contenant la définition des fonctions et un fichier ``string.h`` avec les `déclarations <http://en.wikipedia.org/wiki/Declaration_(computer_programming)>`_ des fonctions. Vous devez aussi fournir un Makefile (cfr :ref:`outils:make`) qui permet de recompiler facilement votre programme en tapant ``make``. Pensez à implémenter quelques tests pour vos fonctions dans la fonction ``main`` et n'incluez pas l'exécutable dans l'archive. Pour la réalisation de ces tests, utilisez une librairie de tests unitaires telle que `CUnit <http://cunit.sourceforge.net>`_
 
-  Lorsque vous considérez que votre programme est correct, testez son bon fonctionnement via l'exercice correspondant sur inginious : https://inginious.info.ucl.ac.be/course/LSINF1252/mini-projet-string
- 
+   Lorsque vous considérez que votre programme est correct, testez son bon fonctionnement via l'exercice correspondant sur inginious : https://inginious.info.ucl.ac.be/course/LSINF1252/mini-projet-string
+
 #. Faites l'exercice `swap <https://inginious.info.ucl.ac.be/course/LSINF1252/swap>`_ sur INGInious
 
 #. Faites les exercices de manipulation de bits sur `INGInious <https://inginious.info.ucl.ac.be/course/LSINF1252>`_. Pour réaliser ces exercices, réfléchissez d'abord sur papier, par exemple sur des blocs de 4 ou 8 bits. Pour la plupart des questions, il faut combiner des décalages à gauche ou à droite avec des opérations ``AND`` (``&``), ``OR`` (``|``) et ``NOT`` (``~``) bit à bit.
@@ -70,6 +72,9 @@ Questions de discussion
 
 #. Soit ``char *ptr = "Test"``. Itérez sur ce pointeur et affichez avec `printf(3)`_ la valeur et l'adresse mémoire où se trouve stocké chaque caractère de deux façons différentes. Regardez la manpage de `printf(3)`_ pour savoir comment afficher la valeur d'un pointeur.
 
+
+Questions de bilan final
+------------------------
 
 #. La structure suivante ``foo_t`` est définie de façon à ce qu'elle contienne un ``char`` suivi d'un entier. D'après vous combien de bytes occupe cette structure en mémoire ? Vérifiez ce que vous pensiez en utilisant ``sizeof``. (bonus: expliquez vos résultats.)
 
