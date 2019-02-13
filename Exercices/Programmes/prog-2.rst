@@ -72,6 +72,14 @@ Questions de discussion
 
 #. Soit ``char *ptr = "Test"``. Itérez sur ce pointeur et affichez avec `printf(3)`_ la valeur et l'adresse mémoire où se trouve stocké chaque caractère de deux façons différentes. Regardez la manpage de `printf(3)`_ pour savoir comment afficher la valeur d'un pointeur.
 
+#. Lorsque l'on veut améliorer les performances d'un programme, il est utile de pouvoir mesurer précisément son temps d'exécution. La commande `time(1posix)`_ permet d'effectuer cette mesure depuis la ligne de commande. Parfois, on souhaite mesurer le temps de calcul une partie critique d'un code. Une façon simple pour obtenir cette mesure est d'utiliser `gettimeofday(2)`_ comme dans l'exemple ci-dessous (:download:`/Programmes/s2_perf.c`).
+
+        .. literalinclude:: /Programmes/s2_perf.c
+                :encoding: utf-8
+                :language: c
+
+   Pour certaines opérations, les performances dépendent du type de données utilisé. Modifiez le programme ci-dessous de façon à utiliser un calcul plus compliqué que la simple addition et comparez sur de longues itérations (:math:`10^7` ou plus) les performances de cette opération lorsqu'elle utilise des ``int``, ``long long``, ``double`` ou ``float``. Les performances sont-elles identiques ?
+
 
 Questions de bilan final
 ------------------------
@@ -86,12 +94,12 @@ Questions de bilan final
                 };
 
 
-#. Lorsque l'on veut améliorer les performances d'un programme, il est utile de pouvoir mesurer précisément son temps d'exécution. La commande `time(1posix)`_ permet d'effectuer cette mesure depuis la ligne de commande. Parfois, on souhaite mesurer le temps de calcul une partie critique d'un code. Une façon simple pour obtenir cette mesure est d'utiliser `gettimeofday(2)`_ comme dans l'exemple ci-dessous (:download:`/Programmes/s2_perf.c`).
+#. Considérez le programme suivant.
 
-        .. literalinclude:: /Programmes/s2_perf.c
+        .. literalinclude:: /Programmes/s2_qbf.c
                 :encoding: utf-8
                 :language: c
 
-   Pour certaines opérations, les performances dépendent du type de données utilisé. Modifiez le programme ci-dessous de façon à utiliser un calcul plus compliqué que la simple addition et comparez sur de longues itérations (:math:`10^7` ou plus) les performances de cette opération lorsqu'elle utilise des ``int``, ``long long``, ``double`` ou ``float``. Les performances sont-elles identiques ?
-
-
+      * Sans executer le programme, essayez de comprendre son fonctionnement. En particulier, quelles seront les adresses affichées à chaque tour de boucle?
+      * Compilez le programme et exécutez le. Expliquez sa sortie et comparez avec vos attentes.
+      * (Bonus) Expliquez les valeurs affichées lors de l'exécution de la dernière boucle.
