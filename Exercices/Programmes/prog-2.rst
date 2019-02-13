@@ -100,6 +100,6 @@ Questions de bilan final
                 :encoding: utf-8
                 :language: c
 
-      * Sans executer le programme, essayer de comprendre son fonctionnement. En particulier, quelles seront les adresses affichées à chaque tour de boucle?
+      * Sans executer le programme, essayez de comprendre son fonctionnement. En particulier, quelles seront les adresses affichées à chaque tour de boucle?
       * Compilez le programme et exécutez le. Expliquez sa sortie et comparez avec vos attentes.
       * (Bonus) Expliquez les valeurs affichées lors de l'exécution de la dernière boucle.
