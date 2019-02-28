@@ -196,11 +196,17 @@ Questions de bilan final
 ------------------------
 
 #. Lisez attentivement le code suivant et essayez de deviner ce qui sera affiché
-   sur la sortie standard. Ensuite, compilez et exécutez le code. Avez-vous bien
+   sur la sortie standard. Ensuite, compilez le code en activant l'option 
+   ``-fno-stack-protector`` de `gcc(1)`_ et exécutez le code. Avez-vous bien
    deviné ? Comment expliquez-vous les lignes affichées par le programme ?
 
 	   .. code-block:: c
 
+		 		#include <stdlib.h>
+				#include <stdio.h>
+				#include <string.h>
+				#include <stdint.h>
+                                
 				int f() {
 				        uint32_t zero = 0;
 				        char a = 'a';
