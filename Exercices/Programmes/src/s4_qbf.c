@@ -13,6 +13,6 @@ int main(int argc, char *argv[]) {
 	int d = 42;
 	char *tab = malloc(20 * sizeof(char));
 	int *res = (int *) tab;
-	*tab = f(&cours, d);
+	*res = f(&cours, d);
 	return 0;
 }
