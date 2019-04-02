@@ -32,8 +32,7 @@ int main (int argc, char *argv[])  {
 
   if (pid==-1) {
     // erreur à l'exécution de fork
-    perror("fork");
-    exit(EXIT_FAILURE);
+    exit_on_error("fork");
   }
   // pas d'erreur
   if (pid==0) {
@@ -73,8 +72,7 @@ int main (int argc, char *argv[])  {
 
     int fils=waitpid(pid,&status,0);
     if(fils==-1) {
-      perror("wait");
-      exit(EXIT_FAILURE);
+      exit_on_error("wait");
     }
     // fils terminé correctement
   }
