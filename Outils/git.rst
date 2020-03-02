@@ -41,7 +41,7 @@ et chaque développeur constitue un backup du code, ce qui est confortable.
 
 De plus, comme on va le voir, `Git`_ supporte une gestion des commits
 très flexible avec un historique pas linéaire
-mais composés de plusieurs branches et il
+mais composé de plusieurs branches et il
 permet aux développeurs de ne pas avoir toutes les branches en local.
 
 Cette efficacité de `Git`_ et sa flexibilité sont ses arguments majeurs et
